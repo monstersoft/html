@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2016 a las 21:48:01
+-- Tiempo de generación: 21-11-2016 a las 22:39:31
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -42,11 +42,20 @@ CREATE TABLE `archivos` (
 --
 
 CREATE TABLE `clientes` (
-  `CORREO_CLIENTE` varchar(9) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CORREO_CLIENTE` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `PASSWORD_CLIENTE` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
   `NOMBRE` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `CARGO` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `EMPRESA` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`CORREO_CLIENTE`, `PASSWORD_CLIENTE`, `NOMBRE`, `CARGO`, `EMPRESA`) VALUES
+('agonzalez@arauco.cl', 'agonzalez', 'Alberto Gonzalez', 'Gerente General', 'Arauco'),
+('hperez@masisa.cl', 'hperez', 'Humberto Pérez', 'Jefe de Abastecimiento', 'Masisa');
 
 -- --------------------------------------------------------
 
@@ -153,6 +162,7 @@ CREATE TABLE `empresas_clientes` (
 
 CREATE TABLE `maquinas` (
   `PATENTE` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ID_ZONA` int(11) NOT NULL,
   `MARCA` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `MODELO` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ANHO` year(4) NOT NULL,
@@ -161,8 +171,18 @@ CREATE TABLE `maquinas` (
   `TASA` float NOT NULL,
   `TAMA` float NOT NULL,
   `TONELAJE` float NOT NULL,
-  `CARGA` float NOT NULL
+  `CARGA` float NOT NULL,
+  `LAT` float(10,6) NOT NULL,
+  `LON` float(10,6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `maquinas`
+--
+
+INSERT INTO `maquinas` (`PATENTE`, `ID_ZONA`, `MARCA`, `MODELO`, `ANHO`, `VELOCIDADMAX`, `TARA`, `TASA`, `TAMA`, `TONELAJE`, `CARGA`, `LAT`, `LON`) VALUES
+('P31Z19UDEC01', 19, 'CAT', '100', 2016, 100, 100, 100, 100, 100, 100, -36.830318, -73.038963),
+('P31Z19UDEC02', 19, 'CAT', '2016', 2016, 100, 100, 100, 100, 100, 100, -36.828690, -73.035179);
 
 -- --------------------------------------------------------
 
@@ -397,7 +417,8 @@ ALTER TABLE `empresas_clientes`
 -- Indices de la tabla `maquinas`
 --
 ALTER TABLE `maquinas`
-  ADD PRIMARY KEY (`PATENTE`);
+  ADD PRIMARY KEY (`PATENTE`),
+  ADD KEY `ID_ZONA` (`ID_ZONA`);
 
 --
 -- Indices de la tabla `no_disponibles_maquinas`
@@ -457,17 +478,17 @@ ALTER TABLE `datos`
 -- AUTO_INCREMENT de la tabla `proyectos`
 --
 ALTER TABLE `proyectos`
-  MODIFY `ID_PROYECTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `ID_PROYECTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT de la tabla `supervisores_zonas`
 --
 ALTER TABLE `supervisores_zonas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT de la tabla `zonas`
 --
 ALTER TABLE `zonas`
-  MODIFY `ID_ZONA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `ID_ZONA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- Restricciones para tablas volcadas
 --
@@ -515,6 +536,12 @@ ALTER TABLE `empresas`
 ALTER TABLE `empresas_clientes`
   ADD CONSTRAINT `empresas_clientes_ibfk_1` FOREIGN KEY (`RUT_EMPRESA`) REFERENCES `empresas` (`RUT_EMPRESA`) ON UPDATE CASCADE,
   ADD CONSTRAINT `empresas_clientes_ibfk_2` FOREIGN KEY (`CORREO_CLIENTE`) REFERENCES `clientes` (`CORREO_CLIENTE`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `maquinas`
+--
+ALTER TABLE `maquinas`
+  ADD CONSTRAINT `maquinas_ibfk_1` FOREIGN KEY (`ID_ZONA`) REFERENCES `zonas` (`ID_ZONA`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `no_disponibles_maquinas`
