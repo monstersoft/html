@@ -16,7 +16,7 @@
 						$arreglo['error'] = false;
 						$arreglo['titulo'] = 'Inicio de sesión';
 						$arreglo['mensaje'] = 'Bienvenidos '.$correo;
-						$arreglo['url'] = 'public_html/cliente/panel.php';
+						$arreglo['url'] = 'public_html/c/panel.php';
 					}
 					else {
 						$arreglo['titulo'] = 'Error de sesión';
@@ -56,7 +56,7 @@
 						$arreglo['error'] = false;
 						$arreglo['titulo'] = 'Inicio de sesión';
 						$arreglo['mensaje'] = 'Bienvenidos '.$correo;
-						$arreglo['url'] = 'public_html/supervisor/panel.php';
+						$arreglo['url'] = 'public_html/s/panel.php';
 					}
 					else {
 						$arreglo['titulo'] = 'Error de sesión';
