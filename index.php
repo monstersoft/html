@@ -12,7 +12,6 @@
         <style type="text/css">
             body {
                 background-color: #262626;
-                background-image: url("stardust.png");
             }
             .column {
                 max-width: 500px;
@@ -21,7 +20,7 @@
                 margin-top: 50px;
             }
             #btnLogin {
-                background: #494344;
+                background: #F5A214;
                 color: white;
             }
         </style>
