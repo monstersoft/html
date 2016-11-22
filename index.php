@@ -65,6 +65,7 @@
         <script src="semantic/semantic.js"></script>
         <script src="toast/toast.js"></script>
         <script src="hammer/hammer.min.js"></script>
-        <script src="validaLogin.js"></script>
+        <script src="js/validaLogin.js"></script>
+        <script src="js/msg.js"></script>
     </body>
 </html>

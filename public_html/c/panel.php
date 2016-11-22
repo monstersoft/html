@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-    	<?php require_once '../../php/head.php'; ?>	
+    	<?php require_once 'head.php'; ?>
+    	<style>
+            .iz {
+                float: left;
+            }
+            .ce {
+                text-align: center;
+            }
+            .ui.vertical.menu .item:before {
+                width: 0%;
+            }
+        </style>
     </head>
     <body>
-        <?php require_once '../../php/barra.php'; ?>
-        <?php require_once '../../php/lateral.php'; ?>
-        <?php require_once '../../php/lateral.php'; ?>
+        <?php require_once 'barra.php'; ?>
+        <?php require_once 'lateral.php'; ?>
         <div class="pusher">
         	<div class="ui grid container" style="padding-top: 50px">
+        	<h1>RESULTADOS ACTUALES - PERFIL ARAUCO</h1>
 				<div class="sixteen wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="content">
@@ -369,7 +380,7 @@
         <script src="../../semantic/semantic.min.js"></script>
         <script src="../../toast/toast.js"></script>
         <script src="../../hammer/hammer.min.js"></script>
-        <script src="../../validaLogin.js"></script>
+        <script src="../../js/msg.js"></script>
         <script>
             $(document).ready(function(){
                 $('#menu').click(function(){
