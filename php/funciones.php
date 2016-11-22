@@ -16,7 +16,7 @@
 						$arreglo['error'] = false;
 						$arreglo['titulo'] = 'Inicio de sesión';
 						$arreglo['mensaje'] = 'Bienvenidos '.$correo;
-						$arreglo['url'] = 'public_html/cliente/cPanel.php';
+						$arreglo['url'] = 'public_html/cliente/panel.php';
 					}
 					else {
 						$arreglo['titulo'] = 'Error de sesión';
@@ -56,7 +56,7 @@
 						$arreglo['error'] = false;
 						$arreglo['titulo'] = 'Inicio de sesión';
 						$arreglo['mensaje'] = 'Bienvenidos '.$correo;
-						$arreglo['url'] = 'public_html/supervisores/sSubirArchivo.php';
+						$arreglo['url'] = 'public_html/supervisor/panel.php';
 					}
 					else {
 						$arreglo['titulo'] = 'Error de sesión';
