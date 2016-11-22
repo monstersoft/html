@@ -30,7 +30,7 @@
                     Machine Monitors
                     <div class="sub header">Plan de vigilancia de maquinaria pesada</div>
                     </div>
-                </h2>-
+                </h2>
                 <form class="ui form">
                     <div class="ui segment">
                         <div class="field">

@@ -1,63 +1,59 @@
-<div class="ui vertical teal left sidebar menu black" style="padding-top: 40px;">
-    <div class="item" href="/introduction/getting-started.html" style="height: 110px;">
-        <div style="text-align: center;">
-            <i class="circular inverted large teal user icon"></i><br><br>
-            SERVICIOS BÍO BÍO<br>
-            PAVILLANUEVA@ING.UCSC.CL
-        </div>
+<div class="ui vertical left sidebar menu">
+    <div id="perfil" class="item" href="/introduction/getting-started.html">
+        <h5 class="ui icon header">
+            <i class="settings icon"></i>
+            <div class="content">
+                Arauco
+                <div class="sub header">pavillanueva@arauco.cl</div>
+            </div>
+        </h5>
     </div>
-    <a class="item" href="/introduction/getting-started.html">
+    <a id="hola" class="item" href="/introduction/getting-started.html">
         <div class="ce">
-            <i class="fa fa-exchange iz"></i>
-            <div>Cambiar Zona</div>
+            <i class="fa fa-tachometer iz"></i>
+            <div>Dashboard</div>
         </div>
     </a>
-    <a class="item" href="/introduction/getting-started.html">
+    <a id="hola" class="item" href="/introduction/getting-started.html">
     <div class="ce">
-        <i class="fa fa-plus iz"></i>
-        <div>Añadir Máquina</div>
+        <i class="fa fa-industry iz"></i>
+        <div>Empresas</div>
     </div>
     </a>
-    <a class="item" href="/introduction/new.html">
+    <a id="hola" class="item" href="/introduction/new.html">
         <div class="ce">
-            <i class="fa fa-bar-chart iz"></i>
-            <div>Reportes</div>
+            <i class="fa fa-file-text iz"></i>
+            <div>Proyectos</div>
         </div>
     </a>
-    <a class="item" href="/introduction/getting-started.html">
+    <a id="hola" class="item" href="/introduction/getting-started.html">
         <div class="ce">
-            <i class="fa fa-calendar iz"></i>
-            <div>Históricos</div>
+            <i class="fa fa-map iz"></i>
+            <div>Zonas</div>
         </div>
     </a>
-    <a class="item" href="/introduction/new.html">
+    <a id="hola" class="item" href="/introduction/new.html">
         <div class="ce">
-            <i class="fa fa-upload iz"></i>
-            <div>Subir Archivo</div>
+            <i class="fa fa-users iz"></i>
+            <div>Supervisores</div>
         </div>
     </a>
-    <a class="item" href="/introduction/getting-started.html">
-        <div class="ce">
-            <i class="fa fa-list-ul iz"></i>
-            <div>Registro de Actividad</div>
-        </div>
-    </a>
-    <h4 class="ui horizontal divider header">
-        <i class="fa fa-address-book-o fa-2x"></i>
-    </h4>
-    <a class="item" href="/introduction/new.html">
+    <h6 class="ui horizontal divider header">
+        <i class="user icon" style="color: #fff;"></i>
+    </h6>
+    <a id="hola" class="item" href="/introduction/new.html">
         <div class="ce">
             <i class="fa fa-send iz"></i>
             <div>Contactar Administrador</div>
         </div>
     </a>
-    <a class="item" href="/introduction/getting-started.html">
+    <a id="hola" class="item" href="/introduction/getting-started.html">
         <div class="ce">
             <i class="fa fa-unlock iz"></i>
             <div>Cambiar Contraseña</div>
         </div>
     </a>
-    <a class="item" href="/introduction/new.html">
+    <a id="hola" class="item" href="/introduction/new.html">
         <div class="ce">
             <i class="fa fa-sign-out iz"></i>
             <div>Cerrar Sesión</div>

@@ -2,25 +2,16 @@
 <html>
     <head>
     	<?php require_once 'head.php'; ?>
-    	<style>
-            .iz {
-                float: left;
-            }
-            .ce {
-                text-align: center;
-            }
-            .ui.vertical.menu .item:before {
-                width: 0%;
-            }
-        </style>
     </head>
     <body>
         <?php require_once 'barra.php'; ?>
-        <?php require_once 'lateral.php'; ?>
         <div class="pusher">
-        	<div class="ui grid container" style="padding-top: 50px">
-        	<h1>RESULTADOS ACTUALES - PERFIL ARAUCO</h1>
-				<div class="sixteen wide mobile eight wide computer column">
+        <?php require_once 'lateral.php'; ?>
+        	<div class="ui grid">
+        		<div class="sixteen wide column">
+					<h1>RESULTADOS ACTUALES - PERFIL ARAUCO</h1>
+				</div>
+				<div class="sixteen wide mobile six wide computer column">
 					<div class="ui fluid card">
 						<div class="content">
 							<i class="industry icon right floated"></i>
@@ -31,7 +22,7 @@
 					</div>
 				</div>
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="content">
 							<i class="file icon right floated"></i>
@@ -47,7 +38,7 @@
 					</div>
 				</div>
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="content">
 							<i class="globe icon right floated"></i>
@@ -59,7 +50,7 @@
 					</div>
 				</div>
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="content">
 							<i class="users icon right floated"></i>
@@ -88,7 +79,7 @@
 				</div>
 
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="content">
 							<i class="users icon right floated"></i>
@@ -114,7 +105,7 @@
 					</div>
 				</div>
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card ">
 						<div class="content">
 							<div class="header">
@@ -139,7 +130,7 @@
 					</div>
 				</div>
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="card">
 							<div class="content">
@@ -158,7 +149,7 @@
 					</div>
 				</div>
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="card">
 							<div class="content">
@@ -177,27 +168,7 @@
 					</div>
 				</div>
 
-				<div class="sixteen wide mobile eight wide computer column">
-					<div class="ui fluid card">
-						<div class="card">
-							<div class="content">
-								<img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
-								<div class="header">Elliot Fu</div>
-								<div class="meta">Friends of Veronika</div>
-								<div class="description">Elliot requested permission to view your contact details</div>
-							</div>
-							<div class="extra content">
-								<div class="ui two buttons">
-									<div class="ui basic green button">Approve</div>
-									<div class="ui basic red button">Decline</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="card">
 							<div class="content">
@@ -217,7 +188,7 @@
 				</div>
 
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="card">
 							<div class="content">
@@ -237,7 +208,7 @@
 				</div>
 
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="card">
 							<div class="content">
@@ -257,7 +228,7 @@
 				</div>
 
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="card">
 							<div class="content">
@@ -277,7 +248,7 @@
 				</div>
 
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="card">
 							<div class="content">
@@ -297,7 +268,7 @@
 				</div>
 
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="card">
 							<div class="content">
@@ -317,7 +288,7 @@
 				</div>
 
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="card">
 							<div class="content">
@@ -337,7 +308,27 @@
 				</div>
 
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
+					<div class="ui fluid card">
+						<div class="card">
+							<div class="content">
+								<img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
+								<div class="header">Elliot Fu</div>
+								<div class="meta">Friends of Veronika</div>
+								<div class="description">Elliot requested permission to view your contact details</div>
+							</div>
+							<div class="extra content">
+								<div class="ui two buttons">
+									<div class="ui basic green button">Approve</div>
+									<div class="ui basic red button">Decline</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="card">
 							<div class="content">
@@ -346,7 +337,7 @@
 								<div class="meta">Friends of Veronika</div>
 								<div class="description">Elliot requested permission to view your contact details</div>
 							</div>
-							<div class="extra content" style="padding: 10px;">
+							<div class="extra content">
 								<div class="ui two buttons">
 									<div class="ui basic green button">Approve</div>
 									<div class="ui basic red button">Decline</div>
@@ -356,7 +347,7 @@
 					</div>
 				</div>
 
-				<div class="sixteen wide mobile eight wide computer column">
+				<div class="six wide mobile eight wide computer column">
 					<div class="ui fluid card">
 						<div class="card">
 							<div class="content">
