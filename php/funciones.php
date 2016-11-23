@@ -1,5 +1,33 @@
 <?php
 	include("conexion.php");
+
+	function empresas($correo) {
+        $conexion = conectar();
+        $consulta = "SELECT nombre FROM empresas"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+        	$arreglo = array();
+            while($row = mysqli_fetch_row($resultado)) {
+            	$arreglo[] = $row;
+            }
+        }
+        mysqli_close($conexion);
+        return $arreglo;
+    }
+
+	function datosPerfil($correo) {
+        $conexion = conectar();
+        $consulta = "SELECT correo_cliente,empresa FROM clientes WHERE correo_cliente = '$correo'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+        	$arreglo = array();
+            while($row = mysqli_fetch_assoc($resultado)) {
+            	$arreglo['correo'] = $row['correo_cliente'];
+            	$arreglo['empresa'] = $row['empresa'];
+            }
+        }
+        mysqli_close($conexion);
+        return $arreglo;
+    }
+
 	function iniciaSesionCliente ($correo,$password) {
 		$conexion = conectar();
 		$arreglo = array();

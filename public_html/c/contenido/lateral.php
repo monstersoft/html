@@ -1,10 +1,10 @@
-<div class="ui vertical left sidebar menu">
+<div class="ui sidebar inverted vertical menu">
     <div id="perfil" class="item" href="/introduction/getting-started.html">
         <h5 class="ui icon header">
             <i class="settings icon"></i>
             <div class="content">
-                Arauco
-                <div class="sub header">pavillanueva@arauco.cl</div>
+                <?php echo $perfil['empresa']; ?>
+                <div class="sub header"><?php echo $perfil['correo']; ?></div>
             </div>
         </h5>
     </div>

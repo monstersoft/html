@@ -56,5 +56,8 @@
 #hola:hover {
 	background: rgba(255, 255, 255, 0.1);
 }
+.ui.basic.modal {
+	color: white;
+}
 
 

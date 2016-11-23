@@ -6,19 +6,19 @@
     else {
         include("../../php/funciones.php");
         $email = $_SESSION['correo'];
-        //$empresa = devuelve_empresa($email);
+        $perfil = datosPerfil($email);
     }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-    	<?php require_once 'contenido/head.php'; ?>
+        <?php require_once 'contenido/head.php'; ?>
     </head>
     <body>
-        <?php require_once 'contenido/barra.php'; ?>
+        <?php require_once 'contenido/lateral.php'; ?>
         <div class="pusher">
-        	<?php require_once 'contenido/lateral.php'; ?>
-        	<div class="ui grid">
+        <?php require_once 'contenido/barra.php'; ?>
+            <div class="ui grid">
         		<div class="sixteen wide column">
 					<h1>RESULTADOS ACTUALES - PERFIL ARAUCO</h1>
 				</div>
