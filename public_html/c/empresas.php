@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['correo'])){
+        header("Location:../../index.php");
+    }
+    else {
+        include("../../php/funciones.php");
+        $email = $_SESSION['correo'];
+        //$empresa = devuelve_empresa($email);
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,6 +20,12 @@
             <?php require_once 'contenido/lateral.php'; ?>
             <div class="ui grid">
                 <!--CONTENIDO ..............................................................................-->
+                <div class="sixteen wide mobile sixteen wide computer column">
+                    <div class="ui fluid action input">
+                        <input type="text" placeholder="Buscar empresa">
+                        <div class="ui button">Search</div>
+                    </div>
+                </div>
                 <div class="sixteen wide mobile sixteen wide computer column">
                     <div class="ui fluid card">
                         <div class="content">

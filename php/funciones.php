@@ -13,6 +13,8 @@
 				if($resultado = mysqli_query($conexion,$consulta)) {
 					$numero = mysqli_fetch_assoc($resultado);
 					if($numero['cantidad'] == 1) {
+						session_start();
+                    	$_SESSION['correo'] = $correo;
 						$arreglo['error'] = false;
 						$arreglo['titulo'] = 'Inicio de sesión';
 						$arreglo['mensaje'] = 'Bienvenidos '.$correo;
@@ -53,6 +55,8 @@
 				if($resultado = mysqli_query($conexion,$consulta)) {
 					$numero = mysqli_fetch_assoc($resultado);
 					if($numero['cantidad'] == 1) {
+						session_start();
+                    	$_SESSION['correo'] = $correo;
 						$arreglo['error'] = false;
 						$arreglo['titulo'] = 'Inicio de sesión';
 						$arreglo['mensaje'] = 'Bienvenidos '.$correo;

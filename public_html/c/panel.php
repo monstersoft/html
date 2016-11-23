@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['correo'])){
+        header("Location:../../index.php");
+    }
+    else {
+        include("../../php/funciones.php");
+        $email = $_SESSION['correo'];
+        //$empresa = devuelve_empresa($email);
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
