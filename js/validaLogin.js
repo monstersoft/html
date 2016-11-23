@@ -48,6 +48,7 @@ $(document).ready(function(){
                         msg({mensaje: arreglo.mensaje,titulo: arreglo.titulo,accion: 'errorAjax'});
                     }
                     else {
+                        msg({mensaje: arreglo.mensaje,titulo: 'Inicio de sesión',accion: 'success'});
                     	$(window).attr('location', arreglo.url);
                     }
 
