@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-    	<?php require_once 'head.php'; ?>
+    	<?php require_once 'contenido/head.php'; ?>
     </head>
     <body>
-        <?php require_once 'barra.php'; ?>
+        <?php require_once 'contenido/barra.php'; ?>
         <div class="pusher">
-        <?php require_once 'lateral.php'; ?>
+        	<?php require_once 'contenido/lateral.php'; ?>
         	<div class="ui grid">
         		<div class="sixteen wide column">
 					<h1>RESULTADOS ACTUALES - PERFIL ARAUCO</h1>
@@ -18,7 +18,7 @@
 							<div class="header">Empresas</div>
 							<div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque repellat aperiam quae nostrum minima quo quam tempora adipisci, sint temporibus sunt expedita ipsa maiores, laborum, placeat maxime velit modi nobis.</div>
 						</div>
-						<a class="ui bottom attached button" href="ingresarEmpresa.php"><i class="user icon"></i>Ver</a>
+						<a id="wena" class="ui bottom attached button" href="#"><i class="user icon"></i>Ver</a>
 					</div>
 				</div>
 
@@ -367,20 +367,6 @@
 				</div>
 			</div>
 		</div>
-        <script src="../../jquery/jquery-2.2.4.min.js"></script>
-        <script src="../../semantic/semantic.min.js"></script>
-        <script src="../../toast/toast.js"></script>
-        <script src="../../hammer/hammer.min.js"></script>
-        <script src="../../js/msg.js"></script>
-        <script>
-            $(document).ready(function(){
-                $('#menu').click(function(){
-                    $('.ui.sidebar').sidebar('toggle');
-                });
-                $('.ui.sidebar').sidebar({
-    				context: 'body'
-				});
-            });
-        </script>
+		<?php require_once 'contenido/script.php'; ?>
     </body>
 </html>

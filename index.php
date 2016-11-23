@@ -53,7 +53,7 @@
                             <div class="field">
                                 <div class="ui slider checkbox">
                                     <input id="supervisor" type="checkbox">
-                                    <label>¿ Quires ingresar como supervisor ?</label>
+                                    <label>¿ Quieres ingresar como supervisor ?</label>
                                 </div>
                             </div>
                           </div>

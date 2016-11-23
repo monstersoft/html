@@ -6,4 +6,5 @@
 <link rel="stylesheet" href="../../toast/toast.css">
 <link rel="stylesheet" href="../../fontawesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/panel.css">
+<link rel="stylesheet" href="css/loader.css">
 

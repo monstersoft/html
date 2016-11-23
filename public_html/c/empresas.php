@@ -1,84 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../semantic/semantic.min.css">
-    <title>Machine Monitor</title>
-  </head>
-  <body>
-    <div class="ui container">
-    <h1>Ingresar Empresa</h1>
-        <form class="ui form" id="frm-prueba" method="post">
-            <div class="field">
-                <label>Nombre</label>
-                <input type="text" name="nombre" placeholder="Nombre">
+    <head>
+        <?php require_once 'contenido/head.php'; ?>
+    </head>
+    <body>
+        <?php require_once 'contenido/barra.php'; ?>
+        <div class="pusher">
+            <?php require_once 'contenido/lateral.php'; ?>
+            <div class="ui grid">
+                <!--CONTENIDO ..............................................................................-->
+                <div class="sixteen wide mobile sixteen wide computer column">
+                    <div class="ui fluid card">
+                        <div class="content">
+                            <i class="industry icon right floated"></i>
+                            <div class="header" style="background: red">Servicios Bío Bío</div>
+                            <div class="ui divider"></div>
+                            <div class="description">
+                                <div class="ui mini statistics">
+                                    <div class="statistic">
+                                        <div class="value"><i class="plane icon"></i>50</div>
+                                        <div class="label">Proyectos</div>
+                                    </div>
+                                
+                                    <div class="statistic">
+                                        <div class="value"><i class="map icon"></i>10</div>
+                                        <div class="label">Zonas</div>
+                                    </div>
+                                    <div class="statistic">
+                                        <div class="value"><i class="user icon"></i>5</div>
+                                        <div class="label">Supervisores</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="ui bottom attached button" href="ingresarEmpresa.php"><i class="user icon"></i>Ver</a>
+                    </div>
+                </div>
+                <!--CONTENIDO ..............................................................................-->
             </div>
-            <div class="field">
-                <label>Rut</label>
-                <input type="text" name="rut" placeholder="Rut">
-            </div>
-            <div class="field">
-                <label>Correo</label>
-                <input type="text" name="correo" placeholder="Correo">
-            </div>
-            <div class="field">
-                <label>Teléfono</label>
-                <input type="text" name="telefono" placeholder="Teléfono">
-            </div>
-            <div class="field">
-                <label>Dirección</label>
-                <input type="text" name="direccion" placeholder="Dirección">
-            </div>
-            <div class="field">
-                <label>Giro Comercial</label>
-                <input type="text" name="giro" placeholder="Giro Comercial">
-            </div>
-            <div class="ui error message"></div>
-            <button class="ui button" type="submit">Añadir</button>
-        </form>
-    </div>
-    <script src="../../js/jquery-3.1.0.js"></script>
-    <script src="../../0/Semantic-UI-CSS-master/semantic.min.js"></script>
-    <script>
-      $(document).ready(function(){
-          $('.ui.sticky').sticky({
-            context: '#context'
-            });
-          $('#esto').click(function(){
-              
-              $('.ui.labeled.icon.sidebar').sidebar('toggle');
-          });
-      });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#frm-prueba').form({
-                nombre: {
-                    identifier: 'nombre',
-                    rules: [{
-                        type: 'empty',
-                        prompt: 'porfa'
-                    },{
-                        type: 'minLength[6]',
-                        prompt: 'mINIMO 6'
-                    },{
-                        type: 'maxLength[12]',
-                        prompt: 'maximo12'
-                    },
-                    {
-                        type: 'regExp[/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/]',
-                        prompt: 'formato erroneo'
-                    }
-                           ]
-                }
-            },{
-                onSuccess: function(e){
-                    e.preventDefault();
-                    //alert();
-                }
-            });
-        });
-    </script>
-  </body>
+        </div>
+        <?php require_once 'contenido/script.php' ?>
+        <script src="../../jquery/jquery-2.2.4.min.js"></script>
+        <script src="../../semantic/semantic.min.js"></script>
+        <script src="../../toast/toast.js"></script>
+        <script src="../../hammer/hammer.min.js"></script>
+        <script src="../../js/msg.js"></script>
+    </body>
 </html>
