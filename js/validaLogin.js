@@ -40,7 +40,8 @@ $(document).ready(function(){
                 type: "POST",
                 dataType: "json",
                 beforeSend: function() {
-                    $('#btnLogin').html('<i class="fa fa-cog fa-spin fa-5x fa-fw" style="color: #F5A214"></i>');
+                    $('#btnLogin').addClass('disabled');
+                    $('#btnLogin').html('<i class="fa fa-cog fa-spin fa-2x fa-fw" style="color: white"></i>');
                 },
                 success: function(arreglo) {
                     if(arreglo.error == true){
@@ -52,6 +53,7 @@ $(document).ready(function(){
 
             }
             }).complete(function(){
+                    $('#btnLogin').removeClass('disabled');
                     $('#btnLogin').html('Ingresar');
                 }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){

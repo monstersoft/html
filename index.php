@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                           </div>
-                        <div id="btnLogin" class="ui fluid large submit button">Ingresar</div>
+                        <div id="btnLogin" style="background: #262626;" class="ui fluid large submit button">Ingresar</div>
                     </div>
                 </form>
                 <div class="ui message">
