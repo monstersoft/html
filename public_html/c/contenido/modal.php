@@ -20,37 +20,70 @@
 
 <div class="ui basic test modal" id="insertar">
     <div class="ui icon header">
-        <i class="archive icon"></i>
+        <i class="industry icon"></i>
         <div class="ui center aligned content">
             Agregar Empresa
         </div>
     </div>
-        <form class="ui form">
-  <div class="field">
-    <label>First Name</label>
-    <input type="text" name="first-name" placeholder="First Name">
-  </div>
-  <div class="field">
-    <label>Last Name</label>
-    <input type="text" name="last-name" placeholder="Last Name">
-  </div>
-  <div class="field">
-    <div class="ui checkbox">
-      <input type="checkbox" tabindex="0" class="hidden">
-      <label>I agree to the Terms and Conditions</label>
-    </div>
-  </div>
-  <button class="ui button" type="submit">Submit</button>
-</form>
-    
-    <div class="actions">
-        <div class="ui red basic cancel inverted button">
-            <i class="remove icon"></i>
-            ¡ No !
+    <form class="ui form" style="padding: 50px;">
+        <div class="field">
+            <div class="ui labeled input">
+                <div class="ui label">Rut</div>
+                <input type="text" placeholder="17286211k">
+            </div>
         </div>
-        <div class="ui green ok inverted button">
-            <i class="checkmark icon"></i>
-            Si , estoy seguro
+        <div class="field">
+            <label>Nombre</label>
+            <input type="text" placeholder="Last Name">
         </div>
-    </div>
+        <div class="field">
+<div class="ui right labeled left icon input">
+  <i class="tags icon"></i>
+  <input type="text" placeholder="Enter tags">
+  <a class="ui tag label">
+    Add Tag
+  </a>
+</div>
+        </div>
+        <div class="field">
+<div class="ui right labeled input">
+  <input type="text" placeholder="Enter weight..">
+  <div class="ui basic label">
+    kg
+  </div>
+</div>
+        </div>
+        <div class="field">
+            <label>Dirección</label>
+            <input type="text" placeholder="Last Name">
+        </div>
+        <div class="field">
+            <label>Teléfono</label>
+            <input type="text" placeholder="Last Name">
+        </div>
+        <div class="field">
+            <div class="ui corner labeled input">
+                <input type="text" placeholder="Search...">
+                <div class="ui corner label">
+                    <i class="asterisk icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui left icon input">
+                <input type="text" placeholder="Search users...">
+                <i class="users icon"></i>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui red basic cancel inverted button">
+                <i class="remove icon"></i>
+                Cancelar
+            </div>
+            <div class="ui green ok inverted button">
+                <i class="checkmark icon"></i>
+                Añadir
+            </div>
+        </div>
+    </form>
 </div>
