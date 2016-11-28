@@ -28,8 +28,17 @@
     <form class="ui form" style="margin: 0 auto;max-width: 600px;padding: 20px;">
         <div class="field">
             <div class="ui labeled input">
-                <div class="ui olive label">Rut</div>
-                <input type="text" placeholder="17286211k">
+                <div class="ui olive label rut">Rut</div>
+                <input type="text" placeholder="17286211-k" id="rut">
+                <div class="ui corner label">
+                    <i class="asterisk icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui labeled input">
+                <div class="ui olive label correo">Correo</div>
+                <input type="text" placeholder="Correo" id="correo">
                 <div class="ui corner label">
                     <i class="asterisk icon"></i>
                 </div>
@@ -46,37 +55,22 @@
         </div>
         <div class="field">
             <div class="ui labeled input">
-                <div class="ui olive label"><i class="user icon"></i></div>
-                <input type="text" placeholder="@">
-                <div class="ui corner label">
-                    <i class="asterisk icon"></i>
-                </div>
+                <div class="ui olive label">Teléfono</div>
+                <input type="text" placeholder="995007812">
             </div>
         </div>
         <div class="field">
             <div class="ui labeled input">
-                <div class="ui grey label">Giro Comercial</div>
-                <input type="text" placeholder="Giro comercial">
-            </div>
-        </div>
-        <div class="field">
-            <div class="ui labeled input">
-                <div class="ui yellow label">Dirección</div>
+                <div class="ui olive label">Dirección</div>
                 <input type="text" placeholder="Dirección">
             </div>
         </div>
         <div class="field">
             <div class="ui labeled input">
-                <div class="ui blue label">Teléfono</div>
-                <input type="text" placeholder="995007812">
+                <div class="ui olive label">Giro Comercial</div>
+                <input type="text" placeholder="Giro comercial">
             </div>
         </div>
-        <!--<div class="field">
-            <div class="ui left icon input">
-                <input type="text" placeholder="Teléfono">
-                <i class="users olive icon"></i>
-            </div>
-        </div>-->
         <div class="actions" style="text-align: right;">
             <div class="ui red basic cancel inverted button">
                 <i class="remove icon"></i>
