@@ -19,9 +19,25 @@
             $('#preloader').delay(100).fadeOut(1000);
             $('body').delay(3500).css({'overflow':'visible'});
         });
-        $('#m').click(function(){
-                alert("asdasdsd");
-                //$('.ui.basic.modal').modal('show');
+        $('div').on('click','.eliminar', function(){
+            	$('#eliminar').modal({
+                closable  : false,
+                onApprove : function() {
+                  alert('Approved!');
+              	}
+                });
+                //alert('asdasd');
+               	$('#eliminar').modal('show');
+        });
+        $('div').on('click','.insertar', function(){
+            	$('#insertar').modal({
+                closable  : false,
+                onApprove : function() {
+                  alert('Approved!');
+              	}
+                });
+                //alert('asdasd');
+               	$('#insertar').modal('show');
         });
     });
 </script>

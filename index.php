@@ -65,7 +65,7 @@
                 </div>
             </div>
         </div>  
-        <script src="jquery/jquery-2.2.4.min.js"></script>
+        <script src="jquery/jquery2.js"></script>
         <script src="semantic/semantic.js"></script>
         <script src="toast/toast.js"></script>
         <script src="hammer/hammer.min.js"></script>

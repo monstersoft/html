@@ -1,11 +1,11 @@
 <?php
 	include("conexion.php");
 
-	function empresas($correo) {
+	function empresas() {
         $conexion = conectar();
-        $consulta = "SELECT nombre FROM empresas"; 
+        $arreglo = array();
+        $consulta = 'SELECT * FROM empresascliente'; 
         if($resultado = mysqli_query($conexion,$consulta)) {
-        	$arreglo = array();
             while($row = mysqli_fetch_row($resultado)) {
             	$arreglo[] = $row;
             }
@@ -16,11 +16,11 @@
 
 	function datosPerfil($correo) {
         $conexion = conectar();
-        $consulta = "SELECT correo_cliente,empresa FROM clientes WHERE correo_cliente = '$correo'"; 
+        $consulta = "SELECT correo,empresa FROM clientes WHERE correo = '$correo'"; 
         if($resultado = mysqli_query($conexion,$consulta)) {
         	$arreglo = array();
             while($row = mysqli_fetch_assoc($resultado)) {
-            	$arreglo['correo'] = $row['correo_cliente'];
+            	$arreglo['correo'] = $row['correo'];
             	$arreglo['empresa'] = $row['empresa'];
             }
         }
@@ -32,12 +32,12 @@
 		$conexion = conectar();
 		$arreglo = array();
 		$arreglo['error'] = true;
-		$consulta = "SELECT COUNT(*) AS cantidad FROM clientes WHERE correo_cliente = '$correo'";
+		$consulta = "SELECT COUNT(*) AS cantidad FROM clientes WHERE correo = '$correo'";
 
 		if($resultado = mysqli_query($conexion,$consulta)) {
 			$numero = mysqli_fetch_assoc($resultado);
 			if($numero['cantidad'] == 1) {
-				$consulta = "SELECT COUNT(*) AS cantidad FROM clientes WHERE correo_cliente = '$correo' AND password_cliente = '$password'";
+				$consulta = "SELECT COUNT(*) AS cantidad FROM clientes WHERE correo = '$correo' AND password = '$password'";
 				if($resultado = mysqli_query($conexion,$consulta)) {
 					$numero = mysqli_fetch_assoc($resultado);
 					if($numero['cantidad'] == 1) {
@@ -75,11 +75,11 @@
 		$conexion = conectar();
 		$arreglo = array();
 		$arreglo['error'] = true;
-		$consulta = "SELECT COUNT(*) AS cantidad FROM supervisores WHERE correo_supervisor = '$correo'";
+		$consulta = "SELECT COUNT(*) AS cantidad FROM supervisores WHERE correo = '$correo'";
 		if($resultado = mysqli_query($conexion,$consulta)) {
 			$numero = mysqli_fetch_assoc($resultado);
 			if($numero['cantidad'] == 1) {
-				$consulta = "SELECT COUNT(*) AS cantidad FROM supervisores WHERE correo_supervisor = '$correo' AND password = '$password'";
+				$consulta = "SELECT COUNT(*) AS cantidad FROM supervisores WHERE correo = '$correo' AND password = '$password'";
 				if($resultado = mysqli_query($conexion,$consulta)) {
 					$numero = mysqli_fetch_assoc($resultado);
 					if($numero['cantidad'] == 1) {

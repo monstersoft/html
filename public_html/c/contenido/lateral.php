@@ -22,20 +22,14 @@
     </a>
     <a id="hola" class="item" href="/introduction/new.html">
         <div class="ce">
-            <i class="fa fa-file-text iz"></i>
-            <div>Proyectos</div>
+            <i class="fa fa-tasks iz"></i>
+            <div>Actividad reciente</div>
         </div>
     </a>
     <a id="hola" class="item" href="/introduction/getting-started.html">
         <div class="ce">
-            <i class="fa fa-map iz"></i>
-            <div>Zonas</div>
-        </div>
-    </a>
-    <a id="hola" class="item" href="/introduction/new.html">
-        <div class="ce">
-            <i class="fa fa-users iz"></i>
-            <div>Supervisores</div>
+            <i class="fa fa-bar-chart iz"></i>
+            <div>Históricos</div>
         </div>
     </a>
     <h6 class="ui horizontal divider header">
