@@ -25,57 +25,59 @@
             Agregar Empresa
         </div>
     </div>
-    <form class="ui form" style="padding: 50px;">
+    <form class="ui form" style="margin: 0 auto;max-width: 600px;padding: 20px;">
         <div class="field">
             <div class="ui labeled input">
-                <div class="ui label">Rut</div>
+                <div class="ui olive label">Rut</div>
                 <input type="text" placeholder="17286211k">
-            </div>
-        </div>
-        <div class="field">
-            <label>Nombre</label>
-            <input type="text" placeholder="Last Name">
-        </div>
-        <div class="field">
-<div class="ui right labeled left icon input">
-  <i class="tags icon"></i>
-  <input type="text" placeholder="Enter tags">
-  <a class="ui tag label">
-    Add Tag
-  </a>
-</div>
-        </div>
-        <div class="field">
-<div class="ui right labeled input">
-  <input type="text" placeholder="Enter weight..">
-  <div class="ui basic label">
-    kg
-  </div>
-</div>
-        </div>
-        <div class="field">
-            <label>Dirección</label>
-            <input type="text" placeholder="Last Name">
-        </div>
-        <div class="field">
-            <label>Teléfono</label>
-            <input type="text" placeholder="Last Name">
-        </div>
-        <div class="field">
-            <div class="ui corner labeled input">
-                <input type="text" placeholder="Search...">
                 <div class="ui corner label">
                     <i class="asterisk icon"></i>
                 </div>
             </div>
         </div>
         <div class="field">
-            <div class="ui left icon input">
-                <input type="text" placeholder="Search users...">
-                <i class="users icon"></i>
+            <div class="ui labeled input">
+                <div class="ui olive label">Nombre</div>
+                <input type="text" placeholder="Nombre empresa">
+                <div class="ui corner label">
+                    <i class="asterisk icon"></i>
+                </div>
             </div>
         </div>
-        <div class="actions">
+        <div class="field">
+            <div class="ui labeled input">
+                <div class="ui olive label"><i class="user icon"></i></div>
+                <input type="text" placeholder="@">
+                <div class="ui corner label">
+                    <i class="asterisk icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui labeled input">
+                <div class="ui grey label">Giro Comercial</div>
+                <input type="text" placeholder="Giro comercial">
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui labeled input">
+                <div class="ui yellow label">Dirección</div>
+                <input type="text" placeholder="Dirección">
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui labeled input">
+                <div class="ui blue label">Teléfono</div>
+                <input type="text" placeholder="995007812">
+            </div>
+        </div>
+        <!--<div class="field">
+            <div class="ui left icon input">
+                <input type="text" placeholder="Teléfono">
+                <i class="users olive icon"></i>
+            </div>
+        </div>-->
+        <div class="actions" style="text-align: right;">
             <div class="ui red basic cancel inverted button">
                 <i class="remove icon"></i>
                 Cancelar
