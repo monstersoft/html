@@ -15,14 +15,13 @@
       /*$(".ui.vertical.left.sidebar.menu").on("click", ".item", function(){
         $('.pusher').html('<i style="margin: 500px auto;" class="fa fa-cog fa-spin fa-5x fa-fw">').delay(5000).fadeOut(1000);
       });*/
-
-            var okMail = false;
-            $('#correo').change(function(){
-                okMail = validaMail($('#correo').val(),'change');
-            });
-            $('#correo').keyup(function(){
-                okMail = validaMail($('#correo').val(),'keyup');
-            });
+        var okMail;
+        $('#correo').change(function(){
+            okMail = validaMail($('#correo').val(),'change');
+        });
+        $('#correo').keyup(function(){
+            okMail = validaMail($('#correo').val(),'keyup');
+        });
     	$('#rut').Rut({
 			on_error: function(){
 				if($('.rut').hasClass('red')) {
@@ -76,21 +75,19 @@
             	$('#insertar').modal({
                 closable  : false,
                 onApprove : function() {
-                  alert('Approved!');
+                  alert('Este es el valor de okMail: '+okMail);
               	}
                 });
                 //alert('asdasd');
                	$('#insertar').modal('show');
         });
         function validaMail(correo,evento) {
-            var mailOk;
+            var mailOk = false;
             var expresion = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
-            
             if (evento == 'change') {
                 if(correo != '') {
                     if(!expresion.test(correo)) {
                         $('.correo').removeClass('green').removeClass('olive').addClass('red');
-                        mailOk = false;
                     }
                     else {
                         $('.correo').removeClass('olive').addClass('green');
@@ -102,15 +99,11 @@
                 if(correo.length == 0){
                     if($('.correo').hasClass('red') || $('.correo').hasClass('green')){
                         $('.correo').removeClass('red').removeClass('green').addClass('olive');
-                        mailOk = false;
                     }
                 }
             }
-            else {
-                mailOk = false;
-            }
             return mailOk;
-            }
+        }
     });
 </script>
 

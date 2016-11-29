@@ -64,24 +64,24 @@
                                 <div class="ui fluid card">
                                     <div class="content">
                                         <i class="industry icon right floated"></i>
-                                        <div class="header">'.$value[2].'</div>
+                                        <div class="header">'.$value['nombre'].'</div>
                                         <div class="ui divider"></div>
                                         <div class="description">
                                             <div class="ui four mini statistics">
                                                 <div class="statistic">
-                                                    <div class="value"><i class="fa fa-file-text"></i>'.$value[7].'</div>
+                                                    <div class="value"><i class="fa fa-file-text"></i>'.$value['proyectos'].'</div>
                                                     <div class="label">Proyectos</div>
                                                 </div>
                                                 <div class="statistic">
-                                                    <div class="value"><i class="map icon"></i>'.$value[8].'</div>
+                                                    <div class="value"><i class="map icon"></i>'.$value['zonas'].'</div>
                                                     <div class="label">Zonas</div>
                                                 </div>
                                                 <div class="statistic">
-                                                    <div class="value"><i class="setting icon"></i>0</div>
+                                                    <div class="value"><i class="setting icon"></i>'.$value['maquinas'].'</div>
                                                     <div class="label">Máquinas</div>
                                                 </div>
                                                 <div class="statistic">
-                                                    <div class="value"><i class="user icon"></i>'.$value[9].'</div>
+                                                    <div class="value"><i class="user icon"></i>'.$value['supervisores'].'</div>
                                                     <div class="label">Supervisores</div>
                                                 </div>
                                             </div>

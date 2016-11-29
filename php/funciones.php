@@ -4,10 +4,24 @@
 	function empresas() {
         $conexion = conectar();
         $arreglo = array();
-        $consulta = 'SELECT * FROM empresascliente'; 
+        $consulta = 'SELECT empresas.idEmpresa, empresas.nombre, COUNT(DISTINCT proyectos.idProyecto) AS proyectos, COUNT(DISTINCT zonas.idZona) AS zonas, COUNT(DISTINCT maquinas.idMaquina) AS maquinas, COUNT(DISTINCT supervisores.idSupervisor) AS supervisores
+					 FROM empresas
+					 LEFT JOIN proyectos ON empresas.idEmpresa = proyectos.idEmpresa
+					 LEFT JOIN zonas ON zonas.idProyecto = proyectos.idProyecto
+					 LEFT JOIN maquinas ON maquinas.idZona = zonas.idZona
+					 LEFT JOIN supervisoreszonas ON supervisoreszonas.idZona = zonas.idZona
+					 LEFT JOIN supervisores ON supervisores.idSupervisor = supervisoreszonas.idSupervisor
+					 GROUP BY empresas.idEmpresa'; 
         if($resultado = mysqli_query($conexion,$consulta)) {
-            while($row = mysqli_fetch_row($resultado)) {
-            	$arreglo[] = $row;
+        	$i = 0;
+            while($row = mysqli_fetch_array($resultado)) {
+                $arreglo[$i]['idEmpresa']= $row['idEmpresa'];
+                $arreglo[$i]['nombre']= $row['nombre'];
+                $arreglo[$i]['proyectos']= $row['proyectos'];
+                $arreglo[$i]['zonas']    = $row['zonas'];
+                $arreglo[$i]['maquinas'] = $row['maquinas'];
+                $arreglo[$i]['supervisores']= $row['supervisores'];
+                $i++;
             }
         }
         mysqli_close($conexion);
