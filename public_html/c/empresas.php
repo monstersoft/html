@@ -108,5 +108,6 @@
             </div>
         </div>
         <?php require_once 'contenido/script.php'; ?>
+        <script src="../../js/modalEmpresa.js"></script>
     </body>
 </html>
