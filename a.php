@@ -57,37 +57,33 @@
       Agregar Empresa
     </div>
     <div class="content">
-      <div class="description" style="padding: 30px;">
-        <form class="ui form">
-          <div class="field">
-            <label>Nombre</label>
-            <input type="text" placeholder="Nombre empresa" id="nombre">
-          </div>
-          <div class="field">
-            <label>Rut</label>
-            <input type="text" placeholder="Rut empresa" name="rut">
-          </div>
-          <div class="field">
-            <label>Correo</label>
-            <input type="text" placeholder="Correo electrónico" name="correo">
-          </div>
-          <div class="field">
-            <label>Teléfono</label>
-            <input type="text" placeholder="995007812" name="telefono">
-          </div>
-          <div class="field">
-            <label>Dirección</label>
-            <input type="text" placeholder="Dirección empresa" name="direccion">
-          </div>
-          <div class="ui error message"></div>
-          <div class="actions">
-            <div class="ui right floated black deny button">
-              Cancelar
-            </div>
-            <button class="ui right floated green labeled icon button" type="submit">Añadir<i class="checkmark icon"></i></button>
-          </div>
-        </form>
-      </div>
+      <form class="ui form">
+        <div class="field">
+          <label>Nombre</label>
+          <input type="text" placeholder="Nombre empresa" id="nombre">
+        </div>
+        <div class="field">
+          <label>Rut</label>
+          <input type="text" placeholder="Rut empresa" name="rut">
+        </div>
+        <div class="field">
+          <label>Correo</label>
+          <input type="text" placeholder="Correo electrónico" name="correo">
+        </div>
+        <div class="field">
+          <label>Teléfono</label>
+          <input type="text" placeholder="995007812" name="telefono">
+        </div>
+        <div class="field">
+          <label>Dirección</label>
+          <input type="text" placeholder="Dirección empresa" name="direccion">
+        </div>
+        <div class="ui error message"></div>
+        <div class="ui right floated black deny button">
+          Cancelar
+        </div>
+        <button class="ui right floated green labeled icon button" type="submit">Añadir<i class="checkmark icon"></i></button><br><br>
+      </form>
     </div>
   </div>
   <!--.............................................-->
