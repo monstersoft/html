@@ -79,9 +79,7 @@
           <input type="text" placeholder="Dirección empresa" name="direccion">
         </div>
         <div class="ui error message"></div>
-        <div class="ui right floated black deny button">
-          Cancelar
-        </div>
+        <button class="ui right floated black deny button">Cancelar</button>
         <button class="ui right floated green labeled icon button" type="submit">Añadir<i class="checkmark icon"></i></button><br><br>
       </form>
     </div>
