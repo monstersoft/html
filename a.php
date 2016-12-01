@@ -1,3 +1,9 @@
+<?php 
+  require_once 'php/funciones.php';
+  $empresas = empresas();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,87 +12,92 @@
     <link rel="stylesheet" href="semantic/semantic.min.css">
 </head>
 <body>
-            <div class="ui grid">
-                <!--CONTENIDO ..............................................................................-->
-                <div class="sixteen wide mobile sixteen wide computer column">
-                    <div class="ui fluid action input">
-                        <input type="text" placeholder="Buscar empresa">
-                        <div class="ui button">Search</div>
-                    </div>
-                </div>
-                <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
-                                <div class="ui fluid card">
-                                    <div class="content">
-                                        <i class="industry icon right floated"></i>
-                                        <div class="header">Nueva Empresa</div>
-                                        <div class="ui divider"></div>
-                                        <div class="description">
-                                            <div class="ui four mini statistics">
-                                            <div class="ui grid">
-                                            <div class="ui eight wide mobile four wide tablet  eight wide computer column">
-                                                <div class="statistic">
-                                                    <div class="value"><i class="plane icon"></i>0</div>
-                                                    <div class="label">Proyectos</div>
-                                                </div>
-                                              </div>
-                                              <div class="ui eight wide mobile four wide tablet  eight wide computer column">
-                                                <div class="statistic">
-                                                    <div class="value"><i class="map icon"></i>0</div>
-                                                    <div class="label">Zonas</div>
-                                                </div>
-                                                </div>
-                                                                                              <div class="ui eight wide mobile four wide tablet  eight wide computer column">
-                                                <div class="statistic">
-                                                    <div class="value"><i class="map icon"></i>0</div>
-                                                    <div class="label">Zonas</div>
-                                                </div>
-                                                </div>
-                                                                                              <div class="ui eight wide mobile four wide tablet  eight wide computer column">
-                                                <div class="statistic">
-                                                    <div class="value"><i class="map icon"></i>0</div>
-                                                    <div class="label">Zonas</div>
-                                                </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="ui bottom attached button insertar" href="#"><i class="plus icon"></i></a>
-                                </div>
-                            </div>
-              </div>
-    
-    <script src="jquery/jquery2.js"></script>
-    <script src="semantic/semantic.min.js"></script>
-    <script>
-$('.ui.form')
-  .form({
-    fields: {
-      name: {
-        identifier: 'name',
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'Please enter your name'
-          }
-        ]
-      },
-      email: {
-        identifier: 'correo',
-        rules: [
-          {
-            type   : 'email',
-            prompt : 'No está en el formato adecuado'
-          },
-          {
-            type : 'empty',
-            prompt: 'Está vacío'
-          }
-        ]
-      }
-    }
-  })
-;
-    </script>
+  <div class="ui container">
+    <div class="ui grid">
+      <div class="column">
+        <table class="ui unstackable table">
+          <thead>
+            <tr>
+              <th class="center aligned">ID</th>
+              <th class="center aligned">Empresa</th>
+              <th class="center aligned">Proyectos</th>
+              <th class="center aligned">Zonas</th>
+              <th class="center aligned">Máquinas</th>
+              <th class="center aligned">Supervisores</th>
+              <th class="center aligned">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+              foreach ($empresas as $key => $value) {
+                echo ' 
+                <tr class="center aligned">
+                  <td>'.$value['idEmpresa'].'</td>
+                  <td>'.$value['nombre'].'</td>
+                  <td>'.$value['proyectos'].'</td>
+                  <td>'.$value['zonas'].'</td>
+                  <td>'.$value['maquinas'].'</td>
+                  <td>'.$value['supervisores'].'</td>
+                  <td><a href="#">Editar</a>/<a href="#">Eliminar</a></td>
+                </tr>
+                ';
+              }
+            ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <button class="ui mini circular teal icon button" id="insertar"><i class="icon add"></i></button>
+  </div>
+  <!--.............................................-->
+  <div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+      <i class="industry icon"></i>
+      Agregar Empresa
+    </div>
+    <div class="description" style="padding: 30px;">
+      <form class="ui form">
+        <div class="field">
+          <label>Nombre</label>
+          <input type="text" placeholder="Nombre empresa" id="nombre">
+        </div>
+        <div class="field">
+          <label>Rut</label>
+          <input type="text" placeholder="Rut empresa" name="rut">
+        </div>
+        <div class="field">
+          <label>Correo</label>
+          <input type="text" placeholder="Correo electrónico" name="correo">
+        </div>
+        <div class="field">
+          <label>Teléfono</label>
+          <input type="text" placeholder="995007812" name="telefono">
+        </div>
+        <div class="field">
+          <label>Dirección</label>
+          <input type="text" placeholder="Dirección empresa" name="direccion">
+        </div>
+        <div class="ui error message"></div>
+        <div class="actions">
+          <div class="ui right floated black deny button">
+            Cancelar
+          </div>
+          <button class="ui right floated green labeled icon button" type="submit">Añadir<i class="checkmark icon"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--.............................................-->
+  <script src="jquery/jquery2.js"></script>
+  <script src="semantic/semantic.min.js"></script>
+  <script>
+    $(document).ready(function(){
+        $('#insertar').click(function(){
+          $('.ui.modal').modal('show');
+        });
+    });
+  </script>
+  <script src="valida.js"></script>
 </body>
 </html>

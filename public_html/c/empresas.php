@@ -36,6 +36,7 @@
                                         <div class="description">
                                             <div class="ui four mini statistics">
                                                 <div class="statistic">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque molestiae, nulla veritatis voluptates eius ut ipsum cum cumque magnam possimus voluptate qui maxime accusamus enim blanditiis repellendus dolorum magni voluptatibus.
                                                     <div class="value"><i class="plane icon"></i>0</div>
                                                     <div class="label">Proyectos</div>
                                                 </div>
