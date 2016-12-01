@@ -52,6 +52,7 @@
   </div>
   <!--.............................................-->
   <div class="ui modal">
+    <i class="close icon"></i>
     <div class="header">
       <i class="industry icon"></i>
       Agregar Empresa
@@ -79,8 +80,12 @@
           <input type="text" placeholder="Dirección empresa" name="direccion">
         </div>
         <div class="ui error message"></div>
-        <button class="ui right floated black deny button">Cancelar</button>
-        <button class="ui right floated green labeled icon button" type="submit">Añadir<i class="checkmark icon"></i></button><br><br>
+        <div class="actions" style="text-align: right;">
+            <div class="ui black cancel reset button">
+                <i class="remove icon"></i>Cancelar
+            </div>
+            <button class="ui green button" type="submit"><i class="checkmark icon"></i>Añadir</button>
+        </div>
       </form>
     </div>
   </div>
@@ -91,6 +96,9 @@
     $(document).ready(function(){
         $('#insertar').click(function(){
           $('.ui.modal').modal('show');
+        });
+        $('.cancelar').click(function(){
+          $('.ui.modal').modal('close');
         });
     });
   </script>
