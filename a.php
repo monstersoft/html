@@ -56,7 +56,7 @@
       <i class="industry icon"></i>
       Agregar Empresa
     </div>
-    <div class="image content">
+    <div class="content">
       <div class="description" style="padding: 30px;">
         <form class="ui form">
           <div class="field">
