@@ -1,112 +1,170 @@
-<?php 
-  require_once 'php/funciones.php';
-  $empresas = empresas();
-
-
-?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="semantic/semantic.min.css">
-    <link rel="stylesheet" href="fontawesome/css/font-awesome.css">
-</head>
-<body>
-  <div class="ui container">
-    <div class="ui grid">
-      <div class="column">
-        <table class="ui unstackable table">
-          <thead>
-            <tr>
-              <th class="center aligned">Empresa</th>
-              <th class="center aligned">Proyectos</th>
-              <th class="center aligned">Zonas</th>
-              <th class="center aligned">Máquinas</th>
-              <th class="center aligned">Supervisores</th>
-              <th class="center aligned">Acción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-              foreach ($empresas as $key => $value) {
-                echo ' 
-                <tr class="center aligned">
-                  <td>'.$value['nombre'].'</td>
-                  <td>'.$value['proyectos'].'</td>
-                  <td>'.$value['zonas'].'</td>
-                  <td>'.$value['maquinas'].'</td>
-                  <td>'.$value['supervisores'].'</td>
-                  <td><a  class="editar" href="#" id="'.$value['idEmpresa'].'">Editar</a>/<a  class="eliminar" href="#" id="'.$value['idEmpresa'].'">Eliminar</a></td>
-                </tr>
-                ';
-              }
-            ?>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <button class="ui mini circular teal icon button mas"><i class="icon add"></i></button>
-  </div>
-  <!--.............................................-->
-  <div class="ui modal">
-    <div class="header">
-      <i class="industry icon"></i>
-      Agregar Empresa
-    </div>
-    <div class="content">
-      <form class="ui form" id="formulario" method="POST">
-        <div class="field">
-          <label>Nombre</label>
-          <input type="text" placeholder="Nombre empresa" name="nombre" value='patricio'>
-        </div>
-        <div class="field">
-          <label>Rut</label>
-          <input type="text" placeholder="Rut empresa" name="rut" value="17286211-k">
-        </div>
-        <div class="field">
-          <label>Correo</label>
-          <input type="text" placeholder="Correo electrónico" name="correo" value='paaaa@gmail.com'>
-        </div>
-        <div class="field">
-          <label>Teléfono</label>
-          <input type="text" placeholder="995007812" name="telefono" value="995007812">
-        </div>
-        <div class="field">
-          <label>Dirección</label>
-          <input type="text" placeholder="Dirección empresa" name="direccion" value="jsjsjsjsjsj">
-        </div>
-        <div class="ui error message"></div>
-        <div class="actions" style="text-align: right;">
-            <div class="ui black button cancel reset cancelar">
-                <i class="remove icon"></i>Cancelar
+<html>
+    <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+      <meta name="theme-color" content="#262626">
+      <link rel="stylesheet" type="text/css" class="ui" href="../../semantic/semantic.min.css">
+      <link rel="stylesheet" href="toast/toast.css">
+      <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/panel.css">
+      <link rel="stylesheet" href="css/loader.css">
+    </head>
+    <body>
+        <div class="ui sidebar inverted vertical menu">
+    <div id="perfil" class="item" href="/introduction/getting-started.html">
+        <h5 class="ui icon header">
+            <i class="settings icon"></i>
+            <div class="content">
+                <?php echo $perfil['empresa']; ?>
+                <div class="sub header"><?php echo $perfil['correo']; ?></div>
             </div>
-            <button class="ui green button" type="submit" id="añadir"><i class="checkmark icon"></i>Añadir</button>
-        </div>
-      </form>
+        </h5>
     </div>
-  </div>
-  <!--.............................................-->
-  <script src="jquery/jquery2.js"></script>
-  <script src="semantic/semantic.min.js"></script>
-  <script>
-    $(document).ready(function(){
-        $('.mas').click(function(){
-          $('.ui.form').trigger("reset");
-          $('.ui.form .field.error').removeClass( "error" );
-          $('.ui.form.error').removeClass( "error" );
-          $('.modal').modal('show');
-        });
-        $('.editar').click(function(){
-          alert($(this).attr('id'));
-        });
-        $('.eliminar').click(function(){
-          alert($(this).attr('id'));
-        })
-    });
-  </script>
-  <script src="valida.js"></script>
-  <script src="js/msg.js"></script>
-</body>
+    <a id="hola" class="item" href="panel.php">
+        <div class="ce">
+            <i class="fa fa-tachometer iz"></i>
+            <div>Dashboard</div>
+        </div>
+    </a>
+    <a id="hola" class="item" href="empresas.php">
+    <div class="ce">
+        <i class="fa fa-industry iz"></i>
+        <div>Empresas</div>
+    </div>
+    </a>
+    <a id="hola" class="item" href="/introduction/new.html">
+        <div class="ce">
+            <i class="fa fa-tasks iz"></i>
+            <div>Actividad reciente</div>
+        </div>
+    </a>
+    <a id="hola" class="item" href="/introduction/getting-started.html">
+        <div class="ce">
+            <i class="fa fa-bar-chart iz"></i>
+            <div>Históricos</div>
+        </div>
+    </a>
+    <h6 class="ui horizontal divider header">
+        <i class="user icon" style="color: #fff;"></i>
+    </h6>
+    <a id="hola" class="item" href="/introduction/new.html">
+        <div class="ce">
+            <i class="fa fa-send iz"></i>
+            <div>Contactar Administrador</div>
+        </div>
+    </a>
+    <a id="hola" class="item" href="/introduction/getting-started.html">
+        <div class="ce">
+            <i class="fa fa-unlock iz"></i>
+            <div>Cambiar Contraseña</div>
+        </div>
+    </a>
+    <a id="hola" class="item" href="panel.php">
+        <div class="ce">
+            <i class="fa fa-sign-out iz"></i>
+            <div>Cerrar Sesión</div>
+        </div>
+    </a>
+</div>
+
+        <div class="pusher">
+<div class="ui top fixed menu">
+    <a id="menu" class="launch icon item"><i class="content icon"></i></a>
+    <p id="letra" class="ui center aligned header">
+        Machine Monitors
+    </p>
+</div>
+            <div class="ui grid">
+                <!--CONTENIDO ..............................................................................-->
+                <div class="sixteen wide mobile sixteen wide computer column">
+                    <div class="ui fluid action input">
+                        <input type="text" placeholder="Buscar empresa">
+                        <div class="ui button">Search</div>
+                    </div>
+                </div>
+                <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
+                                <div class="ui fluid card">
+                                    <div class="content">
+                                        <i class="industry icon right floated"></i>
+                                        <div class="header">Nueva Empresa</div>
+                                        <div class="ui divider"></div>
+                                        <div class="description">
+                                            <div class="ui four mini statistics">
+                                                <div class="statistic">
+                                                    <div class="value"><i class="plane icon"></i>0</div>
+                                                    <div class="label">Proyectos</div>
+                                                </div>
+                                                <div class="statistic">
+                                                    <div class="value"><i class="map icon"></i>0</div>
+                                                    <div class="label">Zonas</div>
+                                                </div>
+                                                <div class="statistic">
+                                                    <div class="value"><i class="setting icon"></i>0</div>
+                                                    <div class="label">Máquinas</div>
+                                                </div>
+                                                <div class="statistic">
+                                                    <div class="value"><i class="user icon"></i>0</div>
+                                                    <div class="label">Supervisores</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="ui bottom attached button mas" href="#"><i class="plus icon"></i></a>
+                                </div>
+                            </div>
+                <?php
+                    foreach ($empresas as $key => $value) { 
+                        echo ' 
+                            <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
+                                <div class="ui fluid card">
+                                    <div class="content">
+                                        <i class="industry icon right floated"></i>
+                                        <div class="header">'.$value['nombre'].'</div>
+                                        <div class="ui divider"></div>
+                                        <div class="description">
+                                            <div class="ui four mini statistics">
+                                                <div class="statistic">
+                                                    <div class="value"><i class="fa fa-file-text"></i>'.$value['proyectos'].'</div>
+                                                    <div class="label">Proyectos</div>
+                                                </div>
+                                                <div class="statistic">
+                                                    <div class="value"><i class="map icon"></i>'.$value['zonas'].'</div>
+                                                    <div class="label">Zonas</div>
+                                                </div>
+                                                <div class="statistic">
+                                                    <div class="value"><i class="setting icon"></i>'.$value['maquinas'].'</div>
+                                                    <div class="label">Máquinas</div>
+                                                </div>
+                                                <div class="statistic">
+                                                    <div class="value"><i class="user icon"></i>'.$value['supervisores'].'</div>
+                                                    <div class="label">Supervisores</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ui three bottom attached buttons">
+                                        <div class="ui button eliminar">
+                                            <i class="trash icon"></i>
+                                        </div>
+                                        <div class="ui button editar">
+                                            <i class="write icon"></i>
+                                        </div>
+                                        <div class="ui button ver">
+                                            <i class="unhide icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ';
+                    }
+                ?>
+                <!--CONTENIDO ..............................................................................-->
+                <?php require_once 'contenido/modalEmpresa.php' ?>
+            </div>
+        </div>
+        <?php require_once 'public_html/c/contenido/script.php'; ?>
+        <script src="js/modalEmpresa.js"></script>
+    </body>
 </html>

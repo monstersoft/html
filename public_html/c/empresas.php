@@ -36,7 +36,6 @@
                                         <div class="description">
                                             <div class="ui four mini statistics">
                                                 <div class="statistic">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque molestiae, nulla veritatis voluptates eius ut ipsum cum cumque magnam possimus voluptate qui maxime accusamus enim blanditiis repellendus dolorum magni voluptatibus.
                                                     <div class="value"><i class="plane icon"></i>0</div>
                                                     <div class="label">Proyectos</div>
                                                 </div>
@@ -55,7 +54,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="ui bottom attached button insertar" href="#"><i class="plus icon"></i></a>
+                                    <a class="ui bottom attached button mas" href="#"><i class="plus icon"></i></a>
                                 </div>
                             </div>
                 <?php
@@ -105,7 +104,7 @@
                     }
                 ?>
                 <!--CONTENIDO ..............................................................................-->
-                <?php require_once 'contenido/modal.php' ?>
+                <?php require_once 'contenido/modalEmpresa.php' ?>
             </div>
         </div>
         <?php require_once 'contenido/script.php'; ?>
