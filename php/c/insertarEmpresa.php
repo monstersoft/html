@@ -1,10 +1,9 @@
-<?php 
-  $nombre = $_POST['nombre'];
-  $rut = $_POST['rut'];
-  $correo = $_POST['correo'];
-  $telefono = $_POST['telefono'];
-  $direccion = $_POST['direccion'];
-  $arreglo = array();
-  $arreglo['mensaje'] = 'FUNCIONA'.$nombre.$rut.$correo.$telefono.$direccion.$telefono;
-  echo json_encode($arreglo);
+<?php
+	$rut = $_POST['rut'];
+	$nombre = $_POST['nombre'];
+	$correo = $_POST['correo'];
+	$direccion = $_POST['direccion'];
+	$telefono = $_POST['telefono'];
+	$arreglo = insertarEmpresa($rut,$nombre,$correo,$direccion,$telefono);
+	echo json_encode($arreglo);
 ?>

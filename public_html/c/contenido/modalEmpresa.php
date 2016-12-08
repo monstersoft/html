@@ -1,12 +1,13 @@
 <!--MODAL ELIMINAR EMPRESA .....................................-->
-<div class="ui basic test modal" id="eliminar">
+<div class="ui basic test modal" id="modalEliminar">
     <div class="ui icon header">
         <i class="archive icon"></i>
         <div class="ui center aligned content">
             Eliminar Registro
         </div>
     </div>
-        <p style="text-align: center;">Estas seguro que quieres eliminar esta empresa de la base de datos ?</p>  
+        <p style="text-align: center;">Estas seguro que quieres eliminar esta empresa de la base de datos ?</p>
+        <p id="idEmpresa" style="color: red"></p> 
     <div class="actions">
         <div class="ui red basic cancel inverted button">
             <i class="remove icon"></i>
@@ -20,13 +21,13 @@
 </div>
 <!--MODAL ELIMINAR EMPRESA .....................................-->
 <!--MODAL INSERTAR EMPRESA .....................................-->
-<div class="ui modal">
+<div class="ui modal" id="modalInsertar">
     <div class="header">
       <i class="industry icon"></i>
       Agregar Empresa
     </div>
     <div class="content">
-        <form class="ui form" id="formulario" method="POST">
+        <form class="ui form">
             <div class="field">
                 <label>Nombre</label>
                 <input type="text" placeholder="Nombre empresa" name="nombre" value='patricio'>
@@ -52,7 +53,7 @@
                 <div class="ui black button cancel reset cancelar">
                     <i class="remove icon"></i>Cancelar
                 </div>
-                <button class="ui green button" type="submit" id="añadir"><i class="checkmark icon"></i>Añadir</button>
+                <button class="ui green button" type="submit" id="btnAñadir"><i class="checkmark icon" id='iconoAñadir'></i>Añadir</button>
             </div>
         </form>
     </div>

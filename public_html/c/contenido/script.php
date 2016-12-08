@@ -12,22 +12,12 @@
         $('.ui.sidebar').sidebar({
             context: 'body'
         });
-        $(window).load(function(){
+        /*$(window).load(function(){
             $('#loader').html('<i class="fa fa-cog fa-spin fa-5x fa-fw" style="color: #F5A214"></i>');
             $('#preloader').delay(100).fadeOut(1000);
             $('body').delay(3500).css({'overflow':'visible'});
         });
-        $('div').on('click','.eliminar', function(){
-            	$('#eliminar').modal({
-                closable  : false,
-                onApprove : function() {
-                  alert('Approved!');
-              	}
-                });
-                //alert('asdasd');
-               	$('#eliminar').modal('show');
-        });
-        /*$('div').on('click','.insertar', function(){
+        $('div').on('click','.insertar', function(){
             	/*$('#insertar').modal({
                 closable  : false,
                 onApprove : function() {

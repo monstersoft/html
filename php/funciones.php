@@ -1,6 +1,22 @@
 <?php
 	include("conexion.php");
 
+	function insertarEmpresa($rut,$nombre,$correo,$direccion,$telefono) {
+		$conexion = conectar();
+		$arreglo = array();
+		$consulta = "INSERT INTO empresas (rut,nombre,correo,direccion,telefono) VALUES ('$rut','$nombre','$correo','$direccion','$telefono')";
+		if(mysqli_query($conexion,$consulta)) {
+			$arreglo['mensaje'] = 'Ingreso correcto';
+			$arreglo['exito'] = 1;
+		}
+
+		else {
+			$arreglo['mensaje'] = 'Ingreso erroneo';
+			$arreglo['exito'] = 0;
+		}
+		echo $arreglo;
+	}
+
 	function empresas() {
         $conexion = conectar();
         $arreglo = array();

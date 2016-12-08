@@ -50,38 +50,43 @@ $(document).ready(function(){
     },{
       onSuccess: function(){
         var datos = $('#formulario').serialize();
+            if(window.lock != 'locked') {
                 $.ajax({//INICIO PETICIÓN                     
-                url: 'prueba.php',
-                data: datos,
-                type: "POST",
-                dataType: "json",
-                beforeSend: function() {
-                    $('#añadir').addClass('disabled');
-                    $('#añadir').addClass('ui loading button');
-                },
-                success: function(arreglo) {
-                  $('.modal').modal('toogle');
-                  msg({mensaje: 'La contrasena debe tener entre 6 y 12 caracteres',titulo: 'Error de formato',accion: 'warning'});
-                    $(window).attr('location', 'a.php');
-            }
-            }).fail(function( jqXHR, textStatus, errorThrown ){
-                if (jqXHR.status === 0){
-                    alert('No hay coneccion con el servidor');
-                } else if (jqXHR.status == 404) {
-                    alert('La pagina solicitada no fue encontrada, error 404');
-                } else if (jqXHR.status == 500) {
-                    alert('jqXHR.status == 500');
-                } else if (textStatus === 'parsererror') {
-                    alert('textStatus === parsererror');
-                } else if (textStatus === 'timeout') {
-                    alert('textStatus timeout');
-                } else if (textStatus === 'abort') {
-                    alert('La peticion fue abortada');
-                } else {
-                    alert('Error desconocido');
+                    url: 'prueba.php',
+                    data: datos,
+                    type: "POST",
+                    dataType: "json",
+                    beforeSend: function() {
+                        $('#añadir').addClass('disabled');
+                        $('#añadir').addClass('ui loading button');
+                    },
+                    success: function(arreglo) {
+                      $('.modal').modal('toogle');
+                      msg({mensaje: 'La contrasena debe tener entre 6 y 12 caracteres',titulo: 'Error de formato',accion: 'warning'});
+                        $(window).attr('location', 'a.php');
                 }
-            });//FIN PETICION AJAX
-    }
-  });
+                }).fail(function( jqXHR, textStatus, errorThrown ){
+                    if (jqXHR.status === 0){
+                        alert('No hay coneccion con el servidor');
+                    } else if (jqXHR.status == 404) {
+                        alert('La pagina solicitada no fue encontrada, error 404');
+                    } else if (jqXHR.status == 500) {
+                        alert('jqXHR.status == 500');
+                    } else if (textStatus === 'parsererror') {
+                        alert('textStatus === parsererror');
+                    } else if (textStatus === 'timeout') {
+                        alert('textStatus timeout');
+                    } else if (textStatus === 'abort') {
+                        alert('La peticion fue abortada');
+                    } else {
+                        alert('Error desconocido');
+                    }
+                });//FIN PETICION AJAX
+            }
+      } // FIN ONSUCCESS
+    } // FIN ARREGLO FORM
+  }).submit(function(event){
+      return false;
+  }); // FIN FORM
 
 });

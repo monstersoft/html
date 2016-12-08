@@ -88,13 +88,13 @@
                                         </div>
                                     </div>
                                     <div class="ui three bottom attached buttons">
-                                        <div class="ui button eliminar">
+                                        <div class="ui button eliminar" id="'.$value['idEmpresa'].'">
                                             <i class="trash icon"></i>
                                         </div>
-                                        <div class="ui button editar">
+                                        <div class="ui button editar" id="'.$value['idEmpresa'].'">
                                             <i class="write icon"></i>
                                         </div>
-                                        <div class="ui button ver">
+                                        <div class="ui button ver" id="'.$value['idEmpresa'].'">
                                             <i class="unhide icon"></i>
                                         </div>
                                     </div>
