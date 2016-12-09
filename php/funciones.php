@@ -1,6 +1,43 @@
 <?php
 	include("conexion.php");
 
+	function verificaNombreDuplicado2($nombre) {
+		$conexion = conectar();
+		$arreglo = array();
+		$consulta = "SELECT idEmpresa, nombre FROM empresas WHERE empresas.nombre = '$nombre'";
+        if($resultado = mysqli_query($conexion,$consulta)) {
+        	$i = 0;
+            while($row = mysqli_fetch_array($resultado)) {
+                $arreglo[$i]['idEmpresa']= $row['idEmpresa'];
+                $arreglo[$i]['nombre']= $row['nombre'];
+                $i++;
+            }
+        }
+		mysqli_close($conexion);
+		return $arreglo;
+	}
+
+	function verificaNombreDuplicado($nombre) {
+		$conexion = conectar();
+		$arreglo = array();
+		$consulta = "SELECT COUNT(*) AS nombres FROM empresas WHERE empresas.nombre = '$nombre'";
+		if($resultado = mysqli_query($conexion,$consulta)) {
+			$nombres = mysqli_fetch_assoc($resultado);
+			if($nombres['nombres'] == 1) {
+				$arreglo['mensaje'] = 'La empresa ya existe';
+				$arreglo['exito']  = 0;
+				$arreglo['cantidadEmpresas'] = $nombres['nombres'];
+			}
+			else {
+				$arreglo['mensaje'] = 'El nombre de la empresa está disponible';
+				$arreglo['exito'] = 1;
+				$arreglo['cantidadEmpresas'] = $nombres['nombres'];
+			}
+		}
+		mysqli_close($conexion);
+		return $arreglo;
+	}
+
 	function insertarEmpresa($rut,$nombre,$correo,$direccion,$telefono) {
 		$conexion = conectar();
 		$arreglo = array();
