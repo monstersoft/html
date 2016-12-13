@@ -54,7 +54,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="ui bottom attached button mas" href="#"><i class="plus icon"></i></a>
+                                    <a class="ui bottom attached button insertar" href="#"><i class="plus icon"></i></a>
                                 </div>
                             </div>
                 <?php
@@ -109,5 +109,6 @@
         </div>
         <?php require_once 'contenido/script.php'; ?>
         <script src="../../js/modalEmpresa.js"></script>
+        <script src="../../js/jquery.rut.chileno.js"></script>
     </body>
 </html>

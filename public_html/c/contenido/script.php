@@ -1,9 +1,8 @@
 <div id="preloader"><div id="loader"></div></div>
-<script src="../../toast/toast.js"></script>
-<script src="../../hammer/hammer.min.js"></script>
 <script src="../../jquery/jquery2.js"></script>
 <script src="../../semantic/semantic.js"></script>
-<script src="../../jquery/jquery.rut.js"></script>
+<script src="../../toast/toast.js"></script>
+<script src="../../hammer/hammer.min.js"></script>
 <script>
     $(document).ready(function(){
         $('#menu').click(function(){

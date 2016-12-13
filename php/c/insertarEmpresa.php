@@ -1,9 +1,10 @@
 <?php
+	include '../funciones.php';
+	$name = $_POST['nombre'];
 	$rut = $_POST['rut'];
-	$nombre = $_POST['nombre'];
-	$correo = $_POST['correo'];
-	$direccion = $_POST['direccion'];
-	$telefono = $_POST['telefono'];
-	$arreglo = insertarEmpresa($rut,$nombre,$correo,$direccion,$telefono);
-	echo json_encode($arreglo);
+	$email = $_POST['email'];
+	$phone = $_POST['telefono'];
+	$address= $_POST['direccion'];
+	$returnedData = verificaFormularioEmpresa($name,$rut,$email,$phone,$address);
+	echo json_encode($returnedData);
 ?>

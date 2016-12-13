@@ -20,42 +20,102 @@
     </div>
 </div>
 <!--MODAL ELIMINAR EMPRESA .....................................-->
-<!--MODAL INSERTAR EMPRESA .....................................-->
-<div class="ui modal" id="modalInsertar">
+<!--MODAL EDITAR   EMPRESA .....................................-->
+<div class="ui modal" id="modalEditar">
     <div class="header">
-      <i class="industry icon"></i>
+      <i class="industry icon" style="float: right;"></i>
       Agregar Empresa
     </div>
     <div class="content">
-        <form class="ui form">
+        <form class="ui form" id="editarFormulario">
             <div class="field">
                 <label>Nombre</label>
-                <input type="text" placeholder="Nombre empresa" name="nombre" value='patricio'>
+                <div class="ui corner labeled input">
+                    <input type="text" placeholder="Empresa" name="nombre" id="nombre" value="Servicios bio biof">
+                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                </div>
             </div>
             <div class="field">
                 <label>Rut</label>
-                <input type="text" placeholder="Rut empresa" name="rut" value="17286211-k">
+                <div class="ui corner labeled input">
+                    <input type="text" placeholder="17286211-K" name="rut" id="rut" value="17286211-k">
+                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                </div>
             </div>
             <div class="field">
                 <label>Correo</label>
-                <input type="text" placeholder="Correo electrónico" name="correo" value='paaaa@gmail.com'>
+                <div class="ui corner labeled input">
+                    <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="email" value="contacto@servisiosbiobio.cl">
+                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                </div>
             </div>
             <div class="field">
                 <label>Teléfono</label>
-                <input type="text" placeholder="995007812" name="telefono" value="995007812">
+                <div class="ui corner labeled input">
+                    <input type="text" placeholder="995007812" name="telefono" id="telefono" value="412424026">
+                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                </div>
             </div>
             <div class="field">
                 <label>Dirección</label>
-                <input type="text" placeholder="Dirección empresa" name="direccion" value="jsjsjsjsjsj">
-            </div>
-            <div class="ui error message" style="margin-bottom: 15px"></div>
-            <div class="actions" style="text-align: right">
-                <div class="ui black button cancel reset cancelar">
-                    <i class="remove icon"></i>Cancelar
-                </div>
-                <button class="ui green button" type="submit" id="btnAñadir"><i class="checkmark icon" id='iconoAñadir'></i>Añadir</button>
+                <input type="text" placeholder="Calle 1359, Santiago" name="direccion" id="direccion">
             </div>
         </form>
+        <div style="text-align: right;margin-top: 15px">
+            <a href="#" class="ui button black" id="cancelar"><i class="close icon"></i>Cancelar</a>
+            <a href="#" class="ui button green" id="btnAñadir"><i class="add icon"></i>Añadir</a>
+        </div>
+        <div class="message" style="margin: 15px 0px 0px 0px"></div>
+    </div>
+</div>
+<!--MODAL INSERTAR EMPRESA .....................................-->
+
+<!--MODAL INSERTAR EMPRESA .....................................-->
+<div class="ui modal" id="modalInsertar">
+    <div class="header">
+      <i class="industry icon" style="float: right;"></i>
+      Agregar Empresa
+    </div>
+    <div class="content">
+        <form class="ui form" id="businessForm">
+            <div class="field">
+                <label>Nombre</label>
+                <div class="ui corner labeled input">
+                    <input type="text" placeholder="Empresa" name="nombre" id="nombre" value="Servicios bio biof">
+                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                </div>
+            </div>
+            <div class="field">
+                <label>Rut</label>
+                <div class="ui corner labeled input">
+                    <input type="text" placeholder="17286211-K" name="rut" id="rut" value="17286211-k">
+                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                </div>
+            </div>
+            <div class="field">
+                <label>Correo</label>
+                <div class="ui corner labeled input">
+                    <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="email" value="contacto@servisiosbiobio.cl">
+                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                </div>
+            </div>
+            <div class="field">
+                <label>Teléfono</label>
+                <div class="ui corner labeled input">
+                    <input type="text" placeholder="995007812" name="telefono" id="telefono" value="412424026">
+                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                </div>
+            </div>
+            <div class="field">
+                <label>Dirección</label>
+                <input type="text" placeholder="Calle 1359, Santiago" name="direccion" id="direccion">
+            </div>
+        </form>
+        <div style="text-align: right;margin-top: 15px">
+            <a href="#" class="ui button black" id="cancelar"><i class="close icon"></i>Cancelar</a>
+            <a href="#" class="ui button green" id="btnAñadir"><i class="add icon"></i>Añadir</a>
+        </div>
+        <div class="message" style="margin: 15px 0px 0px 0px"></div>
     </div>
 </div>
 <!--MODAL INSERTAR EMPRESA .....................................-->

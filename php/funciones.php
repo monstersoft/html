@@ -1,54 +1,63 @@
 <?php
 	include("conexion.php");
+	
+	function datosEmpresa($id) {
+        $conexion = conectar();
+        $consulta = "SELECT * FROM empresas WHERE empresas.idEmpresa = '$id'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+        	$arreglo = array();
+            while($row = mysqli_fetch_assoc($resultado)) {
+            	$arreglo['idEmpresa'] = $row['idEmpresa'];
+            	$arreglo['rut'] = $row['rut'];
+            	$arreglo['nombre'] = $row['nombre'];
+            	$arreglo['correo'] = $row['correo'];
+            	$arreglo['direccion'] = $row['direccion'];
+            	$arreglo['telefono'] = $row['telefono'];
+            }
+        }
+        mysqli_close($conexion);
+        return $arreglo;
+    }
 
-	function verificaFormularioEmpresa($nombre,$rut,$email) {
+	function verificaFormularioEmpresa($name,$rut,$email,$phone,$address) {
 		$conexion = conectar();
 		$arreglo = array();
-		$consulta = "SELECT COUNT(*) AS nombres FROM empresas WHERE empresas.nombre = '$nombre'";
+		$consulta = "SELECT COUNT(*) AS nombres FROM empresas WHERE empresas.nombre = '$name'";
 		if($resultado = mysqli_query($conexion,$consulta)) {
 			$nombres = mysqli_fetch_assoc($resultado);
 			if($nombres['nombres'] == 1) {
-				$arreglo[] = 'El nombre ingresado ya está en uso';
+				$arreglo['msg'][]= 'El nombre ingresado ya está en uso';
+				$arreglo['exito'] = 0;
 			}
 		}
 		$consulta = "SELECT COUNT(*) AS ruts FROM empresas WHERE empresas.rut = '$rut'";
 		if($resultado = mysqli_query($conexion,$consulta)) {
 			$ruts = mysqli_fetch_assoc($resultado);
 			if($ruts['ruts'] == 1) {
-				$arreglo[] = 'El rut ingresado ya está en uso';
+				$arreglo['msg'][] = 'El rut ingresado ya está en uso';
+				$arreglo['exito'] = 0;
 			}
 		}
 		$consulta = "SELECT COUNT(*) AS correos FROM empresas WHERE empresas.correo = '$email'";
 		if($resultado = mysqli_query($conexion,$consulta)) {
 			$correos = mysqli_fetch_assoc($resultado);
 			if($correos['correos'] == 1) {
-				$arreglo[] = 'El correo ingresado ya está en uso';
+				$arreglo['msg'][] = 'El correo ingresado ya está en uso';
+				$arreglo['exito'] = 0;
 			}
 		}
 		if($nombres['nombres'] == "0" && $ruts['ruts'] == "0" && $correos['correos'] == "0") {
-			$arreglo[] = 'Inserción realizada con éxito';
-
+			$consulta = "INSERT INTO empresas (rut,nombre,correo,direccion,telefono) VALUES ('$rut','$name','$email','$address','$phone')";
+			if(mysqli_query($conexion,$consulta)) {
+				$arreglo['exito'] = 1;
+			}
+			else {
+				$arreglo['exito'] = 0;
+			}
 		}
 		mysqli_close($conexion);
 		return $arreglo;
 	}
-
-	function insertarEmpresa($rut,$nombre,$correo,$direccion,$telefono) {
-		$conexion = conectar();
-		$arreglo = array();
-		$consulta = "INSERT INTO empresas (rut,nombre,correo,direccion,telefono) VALUES ('$rut','$nombre','$correo','$direccion','$telefono')";
-		if(mysqli_query($conexion,$consulta)) {
-			$arreglo['mensaje'] = 'Ingreso correcto';
-			$arreglo['exito'] = 1;
-		}
-
-		else {
-			$arreglo['mensaje'] = 'Ingreso erroneo';
-			$arreglo['exito'] = 0;
-		}
-		echo $arreglo;
-	}
-
 	function empresas() {
         $conexion = conectar();
         $arreglo = array();
