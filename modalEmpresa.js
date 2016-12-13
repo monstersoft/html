@@ -55,10 +55,9 @@ $(document).ready(function() {
                   //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
                 },
                 success: function(returnedData) {
-                    $('.errorMessage').html('<div class="ui warning message">'+JSON.stringify(returnedData)+'</div>');
+                    warningMessage(returnedData)
                     $('#cancelar').removeClass('disabled');
                     $('#btnAñadir').removeClass('disabled loading');
-                    //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
                 }
             }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){
@@ -87,7 +86,17 @@ $(document).ready(function() {
         arrayErrors.forEach(function(element){
             list += element;
         });
-        $('.errorMessage').html('<div class="ui negative message"><ul>'+list+'</ul></div>');
+        $('.message').html('<div class="ui negative message"><ul>'+list+'</ul></div>');
+    }
+    function warningMessage(arrayWarnings) {
+        var list = '';
+        arrayWarnings.forEach(function(element){
+            list += '<li>'+element+'</li>';
+        });
+        $('.message').html('<div class="ui warning message"><ul>'+list+'</ul></div>');
+    }
+    function successMessage(value) {
+        $('.message').html('<div class="ui icon message"><i class="inbox icon"><div class="content"><div class="header">Registro realizado con éxito</div><p>Redireccionando al panel de empresas</p></div></i></div>');
     }
     function isEmpty(value) {
         if (value == ''){

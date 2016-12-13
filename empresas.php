@@ -4,9 +4,11 @@
 	$rut = $_POST['rut'];
 	$email = $_POST['email'];
 	$phone = $_POST['telefono'];
-	$adrress= $_POST['direccion'];
+	$address= $_POST['direccion'];
+	/*$name = 'Servicios bio bio';
+	$rut = 762454181;
+	$email = 'contacto@serviciosbiobio.cl';
+	$phone = '412424026';*/
 	$returnedData = verificaFormularioEmpresa($name,$rut,$email);
-	$returnedData['phone'] = $phone;
-	$returnedData['adrress'] = $adrress;
 	echo json_encode($returnedData);
 ?>

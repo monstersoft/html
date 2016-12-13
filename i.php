@@ -12,26 +12,38 @@
     <a href="#" class="ui green button " id="modal">Modal</a>
         <div class="ui modal" id="modalInsertar">
             <div class="header">
-              <i class="industry icon"></i>
+              <i class="industry icon" style="float: right;"></i>
               Agregar Empresa
             </div>
             <div class="content">
                 <form class="ui form" id="businessForm">
                     <div class="field">
                         <label>Nombre</label>
-                        <input type="text" placeholder="Empresa" name="nombre" id="nombre">
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="Empresa" name="nombre" id="nombre" value="Servicios bio bio">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                        </div>
                     </div>
                     <div class="field">
                         <label>Rut</label>
-                        <input type="text" placeholder="17286211-K" name="rut" id="rut">
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="17286211-K" name="rut" id="rut" value="76245418-1">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                        </div>
                     </div>
                     <div class="field">
                         <label>Correo</label>
-                        <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="email">
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="email" value="contacto@serviciosbiobio.cl">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                        </div>
                     </div>
                     <div class="field">
                         <label>Teléfono</label>
-                        <input type="text" placeholder="995007812" name="telefono" id="telefono">
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="995007812" name="telefono" id="telefono" value="412424026">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                        </div>
                     </div>
                     <div class="field">
                         <label>Dirección</label>
@@ -42,7 +54,7 @@
                     <a href="#" class="ui button black" id="cancelar"><i class="close icon"></i>Cancelar</a>
                     <a href="#" class="ui button green" id="btnAñadir"><i class="add icon"></i>Añadir</a>
                 </div>
-                <div class="errorMessage" style="margin: 15px 0px 0px 0px"></div>
+                <div class="message" style="margin: 15px 0px 0px 0px"></div>
             </div>
         </div>
         <script src="jquery/jquery2.js"></script>
