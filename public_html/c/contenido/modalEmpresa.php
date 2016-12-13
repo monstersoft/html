@@ -48,8 +48,8 @@
                 <label>Dirección</label>
                 <input type="text" placeholder="Dirección empresa" name="direccion" value="jsjsjsjsjsj">
             </div>
-            <div class="ui error message"></div>
-            <div class="actions" style="text-align: right;">
+            <div class="ui error message" style="margin-bottom: 15px"></div>
+            <div class="actions" style="text-align: right">
                 <div class="ui black button cancel reset cancelar">
                     <i class="remove icon"></i>Cancelar
                 </div>
