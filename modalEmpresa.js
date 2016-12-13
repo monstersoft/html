@@ -49,8 +49,16 @@ $(document).ready(function() {
                 type: 'POST',
                 data: data,
                 dataType: 'json',
+                beforeSend: function() {
+                  $('#cancelar').addClass('disabled');
+                  $('#btnAñadir').addClass('disabled loading');
+                  //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
+                },
                 success: function(returnedData) {
                     $('.errorMessage').html('<div class="ui warning message">'+JSON.stringify(returnedData)+'</div>');
+                    $('#cancelar').removeClass('disabled');
+                    $('#btnAñadir').removeClass('disabled loading');
+                    //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
                 }
             }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){

@@ -37,13 +37,11 @@
                         <label>Dirección</label>
                         <input type="text" placeholder="Calle 1359, Santiago" name="direccion" id="direccion">
                     </div>
-                    <!--<div style="text-align: right;">
-                        <button class="ui black button ancelar"><i class="remove icon"></i>Cancelar</button>
-                        <button class="ui green button" id="btnAñadir"><i class="checkmark icon" id='iconoAñadir'></i>Añadir</button>
-                    </div>-->
                 </form>
-                <a href="#" id="btnAñadir">add</a>
-                <a href="#" id="cancelar">cancel</a>
+                <div style="text-align: right;margin-top: 15px">
+                    <a href="#" class="ui button black" id="cancelar"><i class="close icon"></i>Cancelar</a>
+                    <a href="#" class="ui button green" id="btnAñadir"><i class="add icon"></i>Añadir</a>
+                </div>
                 <div class="errorMessage" style="margin: 15px 0px 0px 0px"></div>
             </div>
         </div>
