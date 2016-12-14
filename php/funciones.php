@@ -1,6 +1,18 @@
 <?php
 	include("conexion.php");
-	
+	function editarEmpresa($id,$rut,$name,$email,$phone,$address) {
+		$conexion = conectar();
+		$arreglo = array();
+		$consulta = "UPDATE empresas SET rut = '$rut',nombre = '$name',correo = '$email',direccion = '$address',telefono = '$phone' WHERE idEmpresa = '$id'";
+		if(mysqli_query($conexion,$consulta)) {
+			$arreglo['exito'] = 1;
+		}
+		else {
+			$arreglo['exito'] = 0;
+		}
+		return $arreglo;
+	}
+
 	function datosEmpresa($id) {
         $conexion = conectar();
         $consulta = "SELECT * FROM empresas WHERE empresas.idEmpresa = '$id'"; 
@@ -181,5 +193,15 @@
 		}
 		mysqli_close($conexion);
 		return $arreglo;
+	}
+
+
+	function utf8Converter($array) {
+	    array_walk_recursive($array, function(&$item, $key){
+	        if(!mb_detect_encoding($item, 'utf-8', true)){
+	                $item = utf8_encode($item);
+	        }
+	    });
+    return $array;
 	}
 ?>

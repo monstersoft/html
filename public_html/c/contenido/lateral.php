@@ -20,12 +20,6 @@
         <div>Empresas</div>
     </div>
     </a>
-    <a id="hola" class="item" href="/introduction/new.html">
-        <div class="ce">
-            <i class="fa fa-tasks iz"></i>
-            <div>Actividad reciente</div>
-        </div>
-    </a>
     <a id="hola" class="item" href="/introduction/getting-started.html">
         <div class="ce">
             <i class="fa fa-bar-chart iz"></i>

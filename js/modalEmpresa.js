@@ -22,14 +22,19 @@ $(document).ready(function() {
     });// FIN CLASE ELIMINAR*/
     $('.editar').click(function(){
         var id =  $(this).attr('id');
-        var url = devuelveUrl('html/php/c/editarEmpresa.php');
+        var url = devuelveUrl('html/php/c/datosEmpresa.php');
         $.ajax({
             url: url,
             type: 'POST',
             data: {idEmpresa: id},
             dataType: 'json',
             success: function(arreglo) {
-                alert(JSON.stringify(arreglo));
+                $('#idEditar').val(arreglo.idEmpresa);
+                $('#nombreEditar').val(arreglo.nombre);
+                $('#rutEditar').val(arreglo.rut);
+                $('#emailEditar').val(arreglo.correo);
+                $('#telefonoEditar').val(arreglo.telefono);
+                $('#direccionEditar').val(arreglo.direccion);
             }
         }).fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){
@@ -48,6 +53,9 @@ $(document).ready(function() {
                 alert('Error desconocido');
             }
         });
+        $('.ui.negative.message').remove();
+        $('.ui.warning.message').remove();
+        $('#modalEditar').modal('show');
     });
     $('.insertar').click(function(){
         $('.ui.negative.message').remove();
@@ -66,6 +74,7 @@ $(document).ready(function() {
         var rut = $('#rut').val();
         var email = $('#email').val();
         var telefono = $('#telefono').val();
+        var direccion = $('#direccion').val();
         var numberErrors = 0;
         if(isEmpty(nombre)) {
             arreglo.push('<li>El campo nombre es obigatorio</li>');
@@ -88,7 +97,7 @@ $(document).ready(function() {
         if(isNumber(telefono)) {
             arreglo.push('<li>El teléfono no es un número o no está en un formato adecuado</li>');
         }
-        if(isRut()) {
+        if(isRut(rut)) {
             arreglo.push('<li>Formato no adecuado de rut o no es válido</li>');
         }
         //alert(arreglo.length);
@@ -107,7 +116,7 @@ $(document).ready(function() {
                 },
                 success: function(returnedData) {
                     if(returnedData.exito == 1) {
-                        successMessage();
+                        successMessage('Registro realizado con éxito','Serás redireccionado al panel de empresas');
                         location.reload();
                     }
                     else {
@@ -115,6 +124,86 @@ $(document).ready(function() {
                     }
                     $('#cancelar').removeClass('disabled');
                     $('#btnAñadir').removeClass('disabled loading');
+                }
+            }).fail(function( jqXHR, textStatus, errorThrown ){
+                if (jqXHR.status === 0){
+                    alert('No hay coneccion con el servidor');
+                } else if (jqXHR.status == 404) {
+                    alert('La pagina solicitada no fue encontrada, error 404');
+                } else if (jqXHR.status == 500) {
+                    alert('Error interno del servidor');
+                } else if (textStatus === 'parsererror') {
+                    alert('Error en la respuesta, debes analizar la sintaxis JSON');
+                } else if (textStatus === 'timeout') {
+                    alert('Ya ha pasado mucho tiempo');
+                } else if (textStatus === 'abort') {
+                    alert('La peticion fue abortada');
+                } else {
+                    alert('Error desconocido');
+                }
+            });
+        }
+        else {
+            errorMessage(arreglo);
+        }
+    });
+    $('#btnEditar').click(function(){
+        var arreglo = new Array();
+        var id = $('#idEditar').val();
+        var nombre = $('#nombreEditar').val();
+        var rut = $('#rutEditar').val();
+        var email = $('#emailEditar').val();
+        var telefono = $('#telefonoEditar').val();
+        var direccion = $('#direccionEditar').val();
+        var numberErrors = 0;
+        if(isEmpty(nombre)) {
+            arreglo.push('<li>El campo nombre es obigatorio</li>');
+        }
+        if(isEmpty(rut)) {
+            arreglo.push('<li>El campo rut es obigatorio</li>');
+        }
+        if(isEmpty(email)) {
+            arreglo.push('<li>El campo correo es obigatorio</li>');
+        }
+        if(isEmpty(telefono)) {
+            arreglo.push('<li>El campo teléfono es obigatorio</li>');
+        }
+        if(isMail(email)) {
+            arreglo.push('<li>Formato erróneo de correo electrónico</li>');
+        }
+        if(isExactly(telefono)) {
+            arreglo.push('<li>El teléfono debe tener 9 dígitos</li>');
+        }
+        if(isNumber(telefono)) {
+            arreglo.push('<li>El teléfono no es un número o no está en un formato adecuado</li>');
+        }
+        if(isRutEditar()) {
+            arreglo.push('<li>Formato no adecuado de rut o no es válido</li>');
+        }
+        //alert(arreglo.length);
+        if(arreglo.length == 0) {
+            var data = $('#formularioEditar').serialize();
+            var url = devuelveUrl('html/php/c/editarEmpresa.php');
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: data,
+                dataType: 'json',
+                beforeSend: function() {
+                  $('#cancelar').addClass('disabled');
+                  $('#btnEditar').addClass('disabled loading');
+                  //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
+                },
+                success: function(returnedData) {
+                    if(returnedData.exito == 1) {
+                        successMessage('Edición realizada con éxito','Serás redireccionado al panel de empresas');
+                        location.reload();
+                    }
+                    else {
+                        warningMessage(returnedData);
+                    }
+                    $('#cancelar').removeClass('disabled');
+                    $('#btnEditar').removeClass('disabled loading');
                 }
             }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){
@@ -159,8 +248,8 @@ $(document).ready(function() {
         });
         $('.message').html('<div class="ui warning message"><ul>'+list+'</ul></div>');
     }
-    function successMessage() {
-        $('.message').html('<div class="ui icon success message"><i class=" icon checkmark"></i><div class="content"><div class="header">Registro realizado con éxito</div><p>Serás redireccionado al panel de empresas</p></div></div>');
+    function successMessage(titulo,parrafo) {
+        $('.message').html('<div class="ui icon success message"><i class=" icon checkmark"></i><div class="content"><div class="header">'+titulo+'</div><p>'+parrafo+'</p></div></div>');
     }
     function isEmpty(value) {
         if (value == ''){
@@ -204,6 +293,20 @@ $(document).ready(function() {
     }
     function isRut() {
         var rut = $('#rut').val();
+        var error = $.rut.validar(rut);
+        if(rut == '')
+            return false;
+        else {
+          if(error == false) {
+            return true;
+          }
+          else {
+            return false;
+          }
+        }
+    }
+    function isRutEditar() {
+        var rut = $('#rutEditar').val();
         var error = $.rut.validar(rut);
         if(rut == '')
             return false;
