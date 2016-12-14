@@ -1,14 +1,3 @@
-<?php
-    session_start();
-    if(!isset($_SESSION['correo'])){
-        header("Location:../../index.php");
-    }
-    else {
-        include("../../php/funciones.php");
-        $email = $_SESSION['correo'];
-        $perfil = datosPerfil($email);
-    }
-?>
 <!DOCTYPE html>
 <html>
     <head>
