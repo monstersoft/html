@@ -21,12 +21,6 @@
         <?php require_once 'contenido/barra.php'; ?>
             <div class="ui grid">
                 <!--CONTENIDO ..............................................................................-->
-                <div class="sixteen wide mobile sixteen wide computer column">
-                    <div class="ui fluid action input">
-                        <input type="text" placeholder="Buscar empresa">
-                        <div class="ui button">Search</div>
-                    </div>
-                </div>
                 <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
                     <div class="ui fluid card">
                         <div class="content">
@@ -88,15 +82,15 @@
                                         </div>
                                     </div>
                                     <div class="ui three bottom attached buttons">
-                                        <div class="ui button eliminar" id="'.$value['idEmpresa'].'">
+                                        <a class="ui button eliminar" id="'.$value['idEmpresa'].'">
                                             <i class="trash icon"></i>
-                                        </div>
-                                        <div class="ui button editar" id="'.$value['idEmpresa'].'">
+                                        </a>
+                                        <a class="ui button editar" id="'.$value['idEmpresa'].'">
                                             <i class="write icon"></i>
-                                        </div>
-                                        <div class="ui button ver" id="'.$value['idEmpresa'].'">
+                                        </a>
+                                        <a href="verEmpresas.php" class="ui button ver" id="'.$value['idEmpresa'].'">
                                             <i class="unhide icon"></i>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
