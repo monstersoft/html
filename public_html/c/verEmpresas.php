@@ -10,33 +10,55 @@
             <div class="ui grid">
                 <!--CONTENIDO ..............................................................................-->
                                 <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
-<table class="ui single line table">
+<table class="ui unstackable table">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Registration Date</th>
-      <th>E-mail address</th>
-      <th>Premium Plan</th>
+      <th>Status</th>
+      <th class="right aligned">Notes</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>John Lilki</td>
-      <td>September 14, 2013</td>
-      <td>jhlilk22@yahoo.com</td>
-      <td>No</td>
+      <td>John</td>
+      <td>Approved</td>
+      <td class="right aligned">None</td>
     </tr>
     <tr>
-      <td>Jamie Harington</td>
-      <td>January 11, 2014</td>
-      <td>jamieharingonton@yahoo.com</td>
-      <td>Yes</td>
+      <td>Jamie</td>
+      <td>Approved</td>
+      <td class="right aligned">Requires call</td>
     </tr>
     <tr>
-      <td>Jill Lewis</td>
-      <td>May 11, 2014</td>
-      <td>jilsewris22@yahoo.com</td>
-      <td>Yes</td>
+      <td>Jill</td>
+      <td>Denied</td>
+      <td class="right aligned">None</td>
+    </tr>
+  </tbody>
+</table>
+<table class="ui tablet stackable table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th class="right aligned">Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>John</td>
+      <td>Approved</td>
+      <td class="right aligned">None</td>
+    </tr>
+    <tr>
+      <td>Jamie</td>
+      <td>Approved</td>
+      <td class="right aligned">Requires call</td>
+    </tr>
+    <tr>
+      <td>Jill</td>
+      <td>Denied</td>
+      <td class="right aligned">None</td>
     </tr>
   </tbody>
 </table>
