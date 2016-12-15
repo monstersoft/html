@@ -9,14 +9,14 @@
         <?php require_once 'contenido/barra.php'; ?>
             <div class="ui grid">
                 <!--CONTENIDO ..............................................................................-->
-                                <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
+                    <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
                     <div class="ui fluid card">
                         <div class="content">
                             <i class="industry icon right floated"></i>
                             <div class="header">Los Acacios</div>
                             <div class="ui divider"></div>
                             <div class="description">
-                            <table class="ui very basic unstackable table">
+                            <table class="ui very basic stackable table">
                               <thead>
                                 <tr>
                                   <th>Patente</th>
