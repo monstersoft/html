@@ -16,7 +16,7 @@
                             <div class="header">Los Acacios</div>
                             <div class="ui divider"></div>
                             <div class="description">
-                            <table class="ui very basic stackable table">
+                            <table class="ui very basic unstackable table">
                               <thead>
                                 <tr>
                                   <th>Patente</th>
