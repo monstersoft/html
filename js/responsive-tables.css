@@ -15,7 +15,7 @@ table td, table th {
 		position: absolute; 
 		left: 0; top: 0; 
 		background: #fff; 
-		width: 15%; 
+		width: 20%; 
 		overflow: hidden; 
 		overflow-x: scroll;
 	}
@@ -34,7 +34,7 @@ table td, table th {
 		overflow: hidden;
 	}
 	div.table-wrapper div.scrollable table { 
-		margin-left: 15%; 
+		margin-left: 20%; 
 	}
 	div.table-wrapper div.scrollable { 
 		overflow: scroll; 
