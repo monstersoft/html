@@ -30,7 +30,7 @@
                             <div class="description">
                                 <div class="ui four mini statistics">
                                     <div class="statistic">
-                                        <div class="value"><i class="plane icon"></i>0</div>
+                                        <div class="value"><i class="file icon"></i>0</div>
                                         <div class="label">Proyectos</div>
                                     </div>
                                     <div class="statistic">
@@ -57,13 +57,20 @@
                             <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
                                 <div class="ui fluid card">
                                     <div class="content">
-                                        <i class="industry icon right floated"></i>
+                                        <div class="big compact ui top right basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
+                                            <i class="plus icon"></i>
+                                            <div class="menu">
+                                                <div class="item"><i class="file icon"></i>Proyecto</div>
+                                                <div class="item"><i class="map icon"></i>Zona</div>
+                                                <div class="item"><i class="user icon"></i>Supervisor</div>
+                                            </div>
+                                        </div>
                                         <div class="header">'.$value['nombre'].'</div>
                                         <div class="ui divider"></div>
                                         <div class="description">
                                             <div class="ui four mini statistics">
                                                 <div class="statistic">
-                                                    <div class="value"><i class="fa fa-file-text"></i>'.$value['proyectos'].'</div>
+                                                    <div class="value"><i class="file icon"></i>'.$value['proyectos'].'</div>
                                                     <div class="label">Proyectos</div>
                                                 </div>
                                                 <div class="statistic">
@@ -104,5 +111,10 @@
         <?php require_once 'contenido/script.php'; ?>
         <script src="../../js/modalEmpresa.js"></script>
         <script src="../../js/jquery.rut.chileno.js"></script>
+        <script>
+                      $('.ui.dropdown')
+  .dropdown()
+;
+        </script>
     </body>
 </html>

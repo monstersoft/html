@@ -13,13 +13,7 @@
                 <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
                     <div class="ui fluid card">
                         <div class="content">
-                            <div class="big compact ui top right basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
-                            <i class="plus icon"></i>
-                                <div class="menu">
-                                    <div class="item"><i class="user icon"></i>Supervisor</div>
-                                    <div class="item"><i class="map icon"></i>Zona</div>
-                                </div>
-                            </div>
+                            <i class="file icon right floated"></i>
                             <div class="header">Los Acacios</div>
                             <div class="ui divider"></div>
                             <div class="description">
@@ -51,7 +45,8 @@
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
                                             <div class="description">jperez@serviciosbiobio.cl</div>
-                                            <div class="description">Fono: 995007812</div>
+                                            <div class="description">Fono: 569 9 500 78 12</div>
+                                            <div class="description">Fecha de registro: 25/11/16</div>
                                         </div>
                                     </div>
                                     <div class="item">
@@ -60,7 +55,8 @@
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
                                             <div class="description">jperez@serviciosbiobio.cl</div>
-                                            <div class="description">Fono: 995007812</div>
+                                            <div class="description">Fono: 569 9 500 78 12</div>
+                                            <div class="description">Fecha de registro: 25/11/16</div>
                                         </div>
                                     </div>
                                     <div class="item">
@@ -69,7 +65,8 @@
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
                                             <div class="description">jperez@serviciosbiobio.cl</div>
-                                            <div class="description">Fono: 995007812</div>
+                                            <div class="description">Fono: 569 9 500 78 12</div>
+                                            <div class="description">Fecha de registro: 25/11/16</div>
                                         </div>
                                     </div>
                                 </div>
@@ -80,13 +77,7 @@
 <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
                     <div class="ui fluid card">
                         <div class="content">
-                            <div class="big compact ui top right basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
-                            <i class="plus icon"></i>
-                                <div class="menu">
-                                    <div class="item"><i class="user icon"></i>Supervisor</div>
-                                    <div class="item"><i class="map icon"></i>Zona</div>
-                                </div>
-                            </div>
+                            <i class="file icon right floated"></i>
                             <div class="header">Los Acacios</div>
                             <div class="ui divider"></div>
                             <div class="description">
@@ -118,7 +109,8 @@
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
                                             <div class="description">jperez@serviciosbiobio.cl</div>
-                                            <div class="description">Fono: 995007812</div>
+                                            <div class="description">Fono: 569 9 500 78 12</div>
+                                            <div class="description">Fecha de registro: 25/11/16</div>
                                         </div>
                                     </div>
                                     <div class="item">
@@ -127,7 +119,8 @@
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
                                             <div class="description">jperez@serviciosbiobio.cl</div>
-                                            <div class="description">Fono: 995007812</div>
+                                            <div class="description">Fono: 569 9 500 78 12</div>
+                                            <div class="description">Fecha de registro: 25/11/16</div>
                                         </div>
                                     </div>
                                     <div class="item">
@@ -136,7 +129,8 @@
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
                                             <div class="description">jperez@serviciosbiobio.cl</div>
-                                            <div class="description">Fono: 995007812</div>
+                                            <div class="description">Fono: 569 9 500 78 12</div>
+                                            <div class="description">Fecha de registro: 25/11/16</div>
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +141,7 @@
                 <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
                     <div class="ui fluid card">
                         <div class="content">
-                            <i class="industry icon right floated"></i>
+                            <i class="file icon right floated"></i>
                             <div class="header">Los Lirios</div>
                             <div class="ui divider"></div>
                             <div class="description">
@@ -199,7 +193,8 @@
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
                                             <div class="description">jperez@serviciosbiobio.cl</div>
-                                            <div class="description">Fono: 995007812</div>
+                                            <div class="description">Fono: 569 9 500 78 12</div>
+                                            <div class="description">Fecha de registro: 25/11/16</div>
                                         </div>
                                     </div>
                                     <div class="item">
@@ -207,7 +202,8 @@
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
                                             <div class="description">jperez@serviciosbiobio.cl</div>
-                                            <div class="description">Fono: 995007812</div>
+                                            <div class="description">Fono: 569 9 500 78 12</div>
+                                            <div class="description">Fecha de registro: 25/11/16</div>
                                         </div>
                                     </div>
                                     <div class="item">
@@ -215,7 +211,8 @@
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
                                             <div class="description">jperez@serviciosbiobio.cl</div>
-                                            <div class="description">Fono: 995007812</div>
+                                            <div class="description">Fono: 569 9 500 78 12</div>
+                                            <div class="description">Fecha de registro: 25/11/16</div>
                                         </div>
                                     </div>
                                 </div>
@@ -226,7 +223,7 @@
                 <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
                     <div class="ui fluid card">
                         <div class="content">
-                            <i class="industry icon right floated"></i>
+                            <i class="file icon right floated"></i>
                             <div class="header">Los Robles</div>
                             <div class="ui divider"></div>
                             <div class="description">
@@ -292,7 +289,8 @@
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
                                             <div class="description">jperez@serviciosbiobio.cl</div>
-                                            <div class="description">Fono: 995007812</div>
+                                            <div class="description">Fono: 569 9 500 78 12</div>
+                                            <div class="description">Fecha de registro: 25/11/16</div>
                                         </div>
                                     </div>
                                     <div class="item">
@@ -300,7 +298,8 @@
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
                                             <div class="description">jperez@serviciosbiobio.cl</div>
-                                            <div class="description">Fono: 995007812</div>
+                                            <div class="description">Fono: 569 9 500 78 12</div>
+                                            <div class="description">Fecha de registro: 25/11/16</div>
                                         </div>
                                     </div>
                                     <div class="item">
@@ -308,7 +307,8 @@
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
                                             <div class="description">jperez@serviciosbiobio.cl</div>
-                                            <div class="description">Fono: 995007812</div>
+                                            <div class="description">Fono: 569 9 500 78 12</div>
+                                            <div class="description">Fecha de registro: 25/11/16</div>
                                         </div>
                                     </div>
                                 </div>
@@ -331,10 +331,6 @@
 $('.menu .item')
   .tab()
 ;
-          $('.ui.dropdown')
-  .dropdown()
-;
-
         </script>
     </body>
 </html>
