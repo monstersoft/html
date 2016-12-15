@@ -10,10 +10,16 @@
         <?php require_once 'contenido/barra.php'; ?>
             <div class="ui grid">
 <!--CONTENIDO ..............................................................................-->
-                <div class="ui sixteen wide mobile sixteen wide tablet  four wide computer column">
+                <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
                     <div class="ui fluid card">
                         <div class="content">
-                            <i class="industry icon right floated"></i>
+                            <div class="big compact ui top right basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
+                            <i class="plus icon"></i>
+                                <div class="menu">
+                                    <div class="item"><i class="user icon"></i>Supervisor</div>
+                                    <div class="item"><i class="map icon"></i>Zona</div>
+                                </div>
+                            </div>
                             <div class="header">Los Acacios</div>
                             <div class="ui divider"></div>
                             <div class="description">
@@ -40,6 +46,7 @@
                                 <div class="ui divider"></div>
                                 <div class="ui relaxed divided list">
                                     <div class="item">
+                                        <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
                                         <i class="large user middle aligned icon"></i>
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
@@ -48,6 +55,7 @@
                                         </div>
                                     </div>
                                     <div class="item">
+                                        <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
                                         <i class="large user middle aligned icon"></i>
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
@@ -56,6 +64,7 @@
                                         </div>
                                     </div>
                                     <div class="item">
+                                        <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
                                         <i class="large user middle aligned icon"></i>
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
@@ -68,11 +77,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="ui sixteen wide mobile sixteen wide tablet  four wide computer column">
+<div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
                     <div class="ui fluid card">
                         <div class="content">
-                            <i class="industry icon right floated"></i>
-                            <div class="header">Los Pirineos</div>
+                            <div class="big compact ui top right basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
+                            <i class="plus icon"></i>
+                                <div class="menu">
+                                    <div class="item"><i class="user icon"></i>Supervisor</div>
+                                    <div class="item"><i class="map icon"></i>Zona</div>
+                                </div>
+                            </div>
+                            <div class="header">Los Acacios</div>
                             <div class="ui divider"></div>
                             <div class="description">
                                 <table class="ui very basic unstackable table responsive">
@@ -93,18 +108,12 @@
                                         <td class="center aligned">50 kg</td>
                                         <td class="center aligned">100 kg</td>
                                     </tr>
-                                    <tr>
-                                        <td class="center aligned">A1B233</td>
-                                        <td class="center aligned">10/11/12</td>
-                                        <td class="center aligned">10 km/hr</td>
-                                        <td class="center aligned">50 kg</td>
-                                        <td class="center aligned">100 kg</td>
-                                    </tr>                                   
                                 </tbody>
                                 </table>
                                 <div class="ui divider"></div>
                                 <div class="ui relaxed divided list">
                                     <div class="item">
+                                        <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
                                         <i class="large user middle aligned icon"></i>
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
@@ -113,6 +122,7 @@
                                         </div>
                                     </div>
                                     <div class="item">
+                                        <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
                                         <i class="large user middle aligned icon"></i>
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
@@ -121,6 +131,7 @@
                                         </div>
                                     </div>
                                     <div class="item">
+                                        <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
                                         <i class="large user middle aligned icon"></i>
                                         <div class="content">
                                             <a class="header">Juanito Pérez Pérez</a>
@@ -133,7 +144,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ui sixteen wide mobile sixteen wide tablet  four wide computer column">
+                <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
                     <div class="ui fluid card">
                         <div class="content">
                             <i class="industry icon right floated"></i>
@@ -212,7 +223,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ui sixteen wide mobile sixteen wide tablet  four wide computer column">
+                <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
                     <div class="ui fluid card">
                         <div class="content">
                             <i class="industry icon right floated"></i>
@@ -319,6 +330,9 @@
 ;
 $('.menu .item')
   .tab()
+;
+          $('.ui.dropdown')
+  .dropdown()
 ;
 
         </script>
