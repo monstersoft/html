@@ -10,12 +10,6 @@
             <div class="ui grid">
                 <!--CONTENIDO ..............................................................................-->
                                 <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
-                    <div class="ui fluid card">
-                        <div class="content">
-                            <i class="industry icon right floated"></i>
-                            <div class="header">Nueva Empresa</div>
-                            <div class="ui divider"></div>
-                            <div class="description">
 <table class="ui single line table">
   <thead>
     <tr>
