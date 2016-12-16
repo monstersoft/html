@@ -1,5 +1,5 @@
 <?php
-	include '../funciones.php';
+	include '../php/funciones.php'; 
 	$id = $_POST['idEditar'];
 	$rut = $_POST['rutEditar'];
 	$name = $_POST['nombreEditar'];

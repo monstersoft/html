@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="theme-color" content="#DADADA" />
         <title>Machine Monitors</title>
-        <link rel="stylesheet" href="semantic/semantic.css">
-        <link rel="stylesheet" href="toast/toast.css">
-        <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/semantic.css">
+        <link rel="stylesheet" href="css/toast.css">
+        <link rel="stylesheet" href="css/font-awesome.css">
         <style type="text/css">
             body {
                 background-color: #262626;
@@ -65,10 +65,10 @@
                 </div>
             </div>
         </div>  
-        <script src="jquery/jquery2.js"></script>
-        <script src="semantic/semantic.js"></script>
-        <script src="toast/toast.js"></script>
-        <script src="hammer/hammer.min.js"></script>
+        <script src="js/jquery2.js"></script>
+        <script src="js/semantic.js"></script>
+        <script src="js/toast.js"></script>
+        <script src="js/hammer.min.js"></script>
         <script src="js/validaLogin.js"></script>
         <script src="js/msg.js"></script>
     </body>
