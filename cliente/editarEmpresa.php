@@ -6,12 +6,12 @@
 	$email = $_POST['emailEditar'];
 	$phone = $_POST['telefonoEditar'];
 	$address= $_POST['direccionEditar'];
-	/*$id = 3;
-	$name = 'A';
-	$rut = 'B';
-	$email = 'C';
-	$phone = '9';
-	$address= 'KSAKLDKASDJ';*/
-	$returnedData = editarEmpresa($id,$rut,$name,$email,$phone,$address);
-	echo json_encode($returnedData);
+	$verificar = verificaFormularioEmpresa($name,$rut,$email,$phone,$address);
+	if($verificar['exito']) == 0) {
+		$returnedData = editarEmpresa($id,$rut,$name,$email,$phone,$address);
+		echo json_encode($returnedData);
+	}
+	else {
+		echo json_encode($verificar);
+	}
 ?>

@@ -18,9 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="theme-color" content="#262626">
         <link rel="stylesheet" type="text/css" class="ui" href="../../css/semantic.css">
-        <link rel="stylesheet" href="../../css/toast.css">
-        <link rel="stylesheet" href="../../css/font-awesome.css">
-        <link rel="stylesheet" href="../../css/cliente/panel.css">
+        <link rel="stylesheet" href="../../cliente/css/panel.css">
         <!--<link rel="stylesheet" href="css/loader.css">-->
     </head>
     <body>

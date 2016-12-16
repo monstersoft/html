@@ -17,11 +17,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="theme-color" content="#262626">
-        <link rel="stylesheet" type="text/css" class="ui" href="../../semantic/semantic.css">
-        <link rel="stylesheet" href="../../css/toast.css">
-        <link rel="stylesheet" href="../../css/font-awesome.css">
-        <link rel="stylesheet" href="../../css/cliente/panel.css">
-        <!--<link rel="stylesheet" href="css/loader.css">-->
+        <link rel="stylesheet" type="text/css" class="ui" href="../../css/semantic.css">
+        <link rel="stylesheet" href="../../cliente/css/panel.css">
     </head>
     <body>
         <div class="ui sidebar inverted vertical menu">
@@ -82,7 +79,7 @@
                 </p>
             </div>
             <div class="ui grid">
-                <!--CONTENIDO ..............................................................................-->
+<!--CONTENIDO ..............................................................................-->
                 <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
                     <div class="ui fluid card">
                         <div class="content">
@@ -110,7 +107,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="ui bottom attached button insertar" href="#"><i class="plus icon"></i></a>
+                        <a class="ui bottom attached button insertarEmpresa" href="#"><i class="plus icon"></i></a>
                     </div>
                 </div>
                 <?php
@@ -151,10 +148,10 @@
                                         </div>
                                     </div>
                                     <div class="ui three bottom attached buttons">
-                                        <a class="ui button eliminar" id="'.$value['idEmpresa'].'">
+                                        <a class="ui button eliminarEmpresa" id="'.$value['idEmpresa'].'">
                                             <i class="trash icon"></i>
                                         </a>
-                                        <a class="ui button editar" id="'.$value['idEmpresa'].'">
+                                        <a class="ui button editarEmpresa" id="'.$value['idEmpresa'].'">
                                             <i class="write icon"></i>
                                         </a>
                                         <a href="verEmpresas.php" class="ui button ver" id="'.$value['idEmpresa'].'">
@@ -166,37 +163,70 @@
                         ';
                     }
                 ?>
-                <!--CONTENIDO ..............................................................................-->
-                <!--MODAL ELIMINAR EMPRESA .....................................-->
-                <div class="ui basic test modal" id="modalEliminar">
-                    <div class="ui icon header">
-                        <i class="archive icon"></i>
-                        <div class="ui center aligned content">
-                            Eliminar Registro
-                        </div>
+<!--CONTENIDO ..............................................................................-->
+            </div>
+        </div>
+
+
+
+
+<!--VENTANAS MODALES ..............................................................................-->
+<!--    INSERTAR .....................................................................................--> 
+                <div class="ui modal modalInsertarEmpresa">
+                    <div class="header">
+                      <i class="industry icon" style="float: right;"></i>
+                      Agregar Empresa
                     </div>
-                        <p style="text-align: center;">Estas seguro que quieres eliminar esta empresa de la base de datos ?</p>
-                        <p id="idEmpresa" style="color: red"></p> 
-                    <div class="actions">
-                        <div class="ui red basic cancel inverted button">
-                            <i class="remove icon"></i>
-                            ¡ No !
+                    <div class="content">
+                        <form class="ui form" id="formularioInsertarEmpresa">
+                            <div class="field">
+                                <label>Nombre</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="Empresa" name="nombre" id="nombre" value="Servicios bio biof">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Rut</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="17286211-K" name="rut" id="rut" value="17286211-k">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Correo</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="email" value="contacto@servisiosbiobio.cl">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Teléfono</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="995007812" name="telefono" id="telefono" value="412424026">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Dirección</label>
+                                <input type="text" placeholder="Calle 1359, Santiago" name="direccion" id="direccion">
+                            </div>
+                        </form>
+                        <div style="text-align: right;margin-top: 15px">
+                            <a href="#" class="ui button black cancelar""><i class="close icon"></i>Cancelar</a>
+                            <a href="#" class="ui button green" id="btnAñadirEmpresa"><i class="add icon"></i>Añadir</a>
                         </div>
-                        <div class="ui green ok inverted button">
-                            <i class="checkmark icon"></i>
-                            Si , estoy seguro
-                        </div>
+                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
                 </div>
-                <!--MODAL ELIMINAR EMPRESA .....................................-->
-                <!--MODAL EDITAR   EMPRESA .....................................-->
-                <div class="ui modal" id="modalEditar">
+<!--    EDITAR .....................................................................................--> 
+                <div class="ui modal modalEditarEmpresa">
                     <div class="header">
                       <i class="industry icon" style="float: right;"></i>
                       Editar Empresa
                     </div>
                     <div class="content">
-                        <form class="ui form" id="formularioEditar">
+                        <form class="ui form" id="formularioEditarEmpresa">
                             <div class="field">
                                 <label>Nombre</label>
                                 <div class="ui corner labeled input">
@@ -232,80 +262,47 @@
                             <input type="text" name="idEditar" id="idEditar">
                         </form>
                         <div style="text-align: right;margin-top: 15px">
-                            <a href="#" class="ui button black" id="cancelar"><i class="close icon"></i>Cancelar</a>
-                            <a href="#" class="ui button green" id="btnEditar"><i class="write icon"></i>Editar</a>
+                            <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                            <a href="#" class="ui button green" id="btnEditarEmpresa"><i class="write icon"></i>Editar</a>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
                 </div>
-                <!--MODAL INSERTAR EMPRESA .....................................-->
-
-                <!--MODAL INSERTAR EMPRESA .....................................-->
-                <div class="ui modal" id="modalInsertar">
-                    <div class="header">
-                      <i class="industry icon" style="float: right;"></i>
-                      Agregar Empresa
-                    </div>
-                    <div class="content">
-                        <form class="ui form" id="businessForm">
-                            <div class="field">
-                                <label>Nombre</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Empresa" name="nombre" id="nombre" value="Servicios bio biof">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Rut</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="17286211-K" name="rut" id="rut" value="17286211-k">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Correo</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="email" value="contacto@servisiosbiobio.cl">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Teléfono</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="995007812" name="telefono" id="telefono" value="412424026">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Dirección</label>
-                                <input type="text" placeholder="Calle 1359, Santiago" name="direccion" id="direccion">
-                            </div>
-                        </form>
-                        <div style="text-align: right;margin-top: 15px">
-                            <a href="#" class="ui button black" id="cancelar"><i class="close icon"></i>Cancelar</a>
-                            <a href="#" class="ui button green" id="btnAñadir"><i class="add icon"></i>Añadir</a>
+<!--    ELIMINAR .....................................................................................-->           
+                <div class="ui basic test modal" id="modalEliminar">
+                    <div class="ui icon header">
+                        <i class="archive icon"></i>
+                        <div class="ui center aligned content">
+                            Eliminar Registro
                         </div>
-                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                    </div>
+                        <p style="text-align: center;">Estas seguro que quieres eliminar esta empresa de la base de datos ?</p>
+                        <p id="idEmpresa" style="color: red"></p> 
+                    <div class="actions">
+                        <div class="ui red basic cancel inverted button">
+                            <i class="remove icon"></i>
+                            ¡ No !
+                        </div>
+                        <div class="ui green ok inverted button">
+                            <i class="checkmark icon"></i>
+                            Si , estoy seguro
+                        </div>
                     </div>
                 </div>
-                <!--MODAL INSERTAR EMPRESA .....................................-->
-            </div>
-        </div>
-        <!--<div id="preloader"><div id="loader"></div></div>-->
-        <script src="../../cliente/js/modalEmpresa.js"></script>
+<!--SCRIPTS ......................................................................................-->
+        <script src="../../js/jquery2.js"></script>
+        <script src="../../js/semantic.js"></script>
+        <script src="../../cliente/js/modalInsertarEmpresa.js"></script>
+        <script src="../../cliente/js/modalEditarEmpresa.js"></script>
         <script src="../../js/jquery.rut.chileno.js"></script>
-        <script src="../../jquery/jquery2.js"></script>
-        <script src="../../semantic/semantic.js"></script>
-        <script src="../../toast/toast.js"></script>
-        <script src="../../hammer/hammer.min.js"></script>
+        <script src="../../cliente/js/compruebaInputs.js"></script>
+        <script src="../../cliente/js/mensajes.js"></script>
+        <script src="../../cliente/js/devuelveUrl.js"></script>
         <script>
             $(document).ready(function(){
-                $('#menu').click(function(){
-                    $('.ui.sidebar').sidebar('toggle');
-                });
-                $('.ui.sidebar').sidebar({
-                    context: 'body'
-                });
+                $('#menu').click(function(){$('.ui.sidebar').sidebar('toggle');});
+                $('.ui.sidebar').sidebar({context: 'body'});
+                $('.ui.dropdown').dropdown();
                 /*$(window).load(function(){
                     $('#loader').html('<i class="fa fa-cog fa-spin fa-5x fa-fw" style="color: #F5A214"></i>');
                     $('#preloader').delay(100).fadeOut(1000);
@@ -321,10 +318,15 @@
                         //alert('asdasd');
                         $('#insertar').modal('show');
                 });*/
+                $('.cancelar').click(function(){
+                    $('#formularioInsertarEmpresa').trigger("reset");
+                    $('.ui.negative.message').remove();
+                    $('.ui.warning.message').remove();
+                    $('.modalInsertarEmpresa').modal('hide');
+                    $('.modalEditarEmpresa').modal('hide');
+                    $('#formularioInsertarEmpresa').trigger("reset");
+                });
             });
-        </script>
-        <script>
-            $('.ui.dropdown').dropdown();
         </script>
     </body>
 </html>

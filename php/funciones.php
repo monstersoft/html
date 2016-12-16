@@ -31,7 +31,7 @@
         return $arreglo;
     }
 
-	function verificaFormularioEmpresa($name,$rut,$email,$phone,$address) {
+	function verificaFormularioEmpresa($name,$rut,$email,$phone) {
 		$conexion = conectar();
 		$arreglo = array();
 		$consulta = "SELECT COUNT(*) AS nombres FROM empresas WHERE empresas.nombre = '$name'";
@@ -58,8 +58,16 @@
 				$arreglo['exito'] = 0;
 			}
 		}
-		if($nombres['nombres'] == "0" && $ruts['ruts'] == "0" && $correos['correos'] == "0") {
-			$consulta = "INSERT INTO empresas (rut,nombre,correo,direccion,telefono) VALUES ('$rut','$name','$email','$address','$phone')";
+		$consulta = "SELECT COUNT(*) AS telefonos FROM empresas WHERE empresas.telefono = '$phone'";
+		if($resultado = mysqli_query($conexion,$consulta)) {
+			$telefonos = mysqli_fetch_assoc($resultado);
+			if($telefonos['telefonos'] == 1) {
+				$arreglo['msg'][] = 'El teléfono ingresado ya está en uso';
+				$arreglo['exito'] = 0;
+			}
+		}
+		if($nombres['nombres'] == "0" && $ruts['ruts'] == "0" && $correos['correos'] == "0" && $telefonos['telefonos'] == "0") {
+			$consulta = "INSERT INTO empresas (rut,nombre,correo,telefono) VALUES ('$rut','$name','$email','$phone')";
 			if(mysqli_query($conexion,$consulta)) {
 				$arreglo['exito'] = 1;
 			}
@@ -129,7 +137,7 @@
 						$arreglo['error'] = false;
 						$arreglo['titulo'] = 'Inicio de sesión';
 						$arreglo['mensaje'] = 'Bienvenidos '.$correo;
-						$arreglo['url'] = 'public_html/c/panel.php';
+						$arreglo['url'] = 'vistas/cliente/panel.php';
 					}
 					else {
 						$arreglo['titulo'] = 'Error de sesión';
@@ -171,7 +179,7 @@
 						$arreglo['error'] = false;
 						$arreglo['titulo'] = 'Inicio de sesión';
 						$arreglo['mensaje'] = 'Bienvenidos '.$correo;
-						$arreglo['url'] = 'public_html/s/panel.php';
+						$arreglo['url'] = 'vistas/supervisor/panel.php';
 					}
 					else {
 						$arreglo['titulo'] = 'Error de sesión';
