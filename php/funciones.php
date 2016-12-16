@@ -1,9 +1,9 @@
 <?php
 	include("conexion.php");
-	function editarEmpresa($id,$rut,$name,$email,$phone,$address) {
+	function editarEmpresa($id,$rut,$name,$email,$phone) {
 		$conexion = conectar();
 		$arreglo = array();
-		$consulta = "UPDATE empresas SET rut = '$rut',nombre = '$name',correo = '$email',direccion = '$address',telefono = '$phone' WHERE idEmpresa = '$id'";
+		$consulta = "UPDATE empresas SET rut = '$rut',nombre = '$name',correo = '$email',telefono = '$phone' WHERE idEmpresa = '$id'";
 		if(mysqli_query($conexion,$consulta)) {
 			$arreglo['exito'] = 1;
 		}
@@ -23,7 +23,6 @@
             	$arreglo['rut'] = $row['rut'];
             	$arreglo['nombre'] = $row['nombre'];
             	$arreglo['correo'] = $row['correo'];
-            	$arreglo['direccion'] = $row['direccion'];
             	$arreglo['telefono'] = $row['telefono'];
             }
         }

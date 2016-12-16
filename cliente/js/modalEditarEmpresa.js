@@ -36,14 +36,17 @@ $(document).ready(function(){
         $('.ui.warning.message').remove();
         $('.modalEditarEmpresa').modal('show');
     });
-    $('#btnEditarEmpresa').click(function(){
+    /*$('#btnEditarEmpresa').click(function(){
         var arreglo = new Array();
+        $('#nombreEditar').on('change',function(){
+            alert('Cambió el nombre');
+        });*/
+        /*var arreglo = new Array();
         var id = $('#idEditar').val();
         var nombre = $('#nombreEditar').val();
         var rut = $('#rutEditar').val();
         var email = $('#emailEditar').val();
         var telefono = $('#telefonoEditar').val();
-        var direccion = $('#direccionEditar').val();
         var numberErrors = 0;
         if(isEmpty(nombre)) {
             arreglo.push('<li>El campo nombre es obigatorio</li>');
@@ -113,6 +116,5 @@ $(document).ready(function(){
         }
         else {
             errorMessage(arreglo);
-        }
-    });
+        }*/
 });

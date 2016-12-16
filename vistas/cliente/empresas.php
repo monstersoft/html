@@ -207,10 +207,6 @@
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
-                            <div class="field">
-                                <label>Dirección</label>
-                                <input type="text" placeholder="Calle 1359, Santiago" name="direccion" id="direccion">
-                            </div>
                         </form>
                         <div style="text-align: right;margin-top: 15px">
                             <a href="#" class="ui button black cancelar""><i class="close icon"></i>Cancelar</a>
@@ -254,10 +250,6 @@
                                     <input type="text" placeholder="995007812" name="telefonoEditar" id="telefonoEditar">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
-                            </div>
-                            <div class="field">
-                                <label>Dirección</label>
-                                <input type="text" placeholder="Calle 1359 Santiago" name="direccionEditar" id="direccionEditar">
                             </div>
                             <input type="text" name="idEditar" id="idEditar">
                         </form>

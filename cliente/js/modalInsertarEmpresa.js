@@ -31,7 +31,6 @@ $(document).ready(function() {
         var rut = $('#rut').val();
         var email = $('#email').val();
         var telefono = $('#telefono').val();
-        var direccion = $('#direccion').val();
         var numberErrors = 0;
         if(isEmpty(nombre)) {
             arreglo.push('<li>El campo nombre es obigatorio</li>');
@@ -72,13 +71,11 @@ $(document).ready(function() {
                   //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
                 },
                 success: function(returnedData) {
-                    alert(JSON.stringify(returnedData));
                     if(returnedData.exito == 1) {
                         successMessage('Registro realizado con éxito','Serás redireccionado al panel de empresas');
                         location.reload();
                     }
                     else {
-                        alert(JSON.stringify(returnedData));
                         warningMessage(returnedData);
                     }
                     $('#cancelar').removeClass('disabled');
