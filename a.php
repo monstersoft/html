@@ -4,31 +4,38 @@
         <link rel="stylesheet" href="css/semantic.css">
     </head>
     <body>
-        <a href="#" id="apretar">Apretar !</a>
+        <a href="#" class="apretar" id="1">Apretar !</a>
         <div class="ui modal">
-            <input type="text" id="numero" value="100"><br>
-            <input type="text" id="palabra" value="hola"><br>
+            <input type="text" id="numero"><br>
+            <input type="text" id="letra"><br>
+            <input type="text" id="id" value="1"></input>
             <button class="ui button" id="btn">Comprobar</button>
         </div>
         <script src="js/jquery2.js"></script>
         <script src="js/semantic.js"></script>
         <script>
             $(document).ready(function(){
-                function retornaAjax(numero,name) {
+                function ajax(id) {
                     return $.ajax({
                         url: 'b.php',
                         type: 'POST',
-                        data: {id: numero, nombre: name},
+                        data: {id: id},
                         dataType: 'json',
                         success: function(arreglo){
-                            alert(JSON.stringify(arreglo));
+                            $('#numero').val(arreglo.numero);
+                            $('#letra').val(arreglo.letra);
+                            
                         }
                     });
                 }
-                $('#apretar').click(function(){
-                    var ajax = retornaAjax(1,'bien');
-                    ajax.success(function(res1){
-                        console.log(res1);
+                $('.apretar').click(function(){
+                    var id = $(this).attr('id');
+                    var aer = ajax(id);
+                    aer.success(function(res1){
+                        $('#btn').click(function(){
+                            alert(JSON.stringify(res1));
+                            alert($('#numero').val());
+                        });
                     });
                     $('.ui.modal').modal('show');
                 });
