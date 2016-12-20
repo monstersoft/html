@@ -1,0 +1,12 @@
+/*{
+	"nombre": [{"original": "Patricio"},{"modificado": "Pato"},{"cambio": true}],
+	"rut": [{"original": "17286211-K"},{"modificado": "17286211-K"},{"cambio": false}]
+}*/
+
+[
+	"nombre": {
+		"original" : "patricio",
+		"modificado: "pato",
+		"cambio": "true"
+	}
+]
