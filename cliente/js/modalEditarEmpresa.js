@@ -28,7 +28,6 @@ $(document).ready(function(){
         return data;
     }
     function retornaDatos(id,url) {
-        alert(url); ///////////////////////////////////////////////////////////////////////////////
         return $.ajax({
             url: url,
             type: 'POST',
@@ -65,7 +64,7 @@ $(document).ready(function(){
         $('.ui.warning.message').remove();
         $('.ui.icon.success.message').remove();
         $('.modalEditarEmpresa').modal('show');
-        var url = devuelveUrl('html/cliente/datosEmpresa.php');
+        var url = devuelveUrl('cliente/datosEmpresa.php');
         alert(url); ///////////////////////////////////////////////////////////////////////////////
         var id = $(this).attr('id');
         var datos = retornaDatos(id,url);
@@ -123,7 +122,7 @@ $(document).ready(function(){
                 alert('Cambiaste el telefono');
             }
             if(flag != true){
-                var url = devuelveUrl('html/cliente/editarEmpresa.php');
+                var url = devuelveUrl('cliente/editarEmpresa.php');
                 alert(url); ///////////////////////////////////////////////////////////////////////////////
                 $.ajax({
                     url : url,
