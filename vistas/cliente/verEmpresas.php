@@ -19,6 +19,7 @@
         <meta name="theme-color" content="#262626">
         <link rel="stylesheet" type="text/css" class="ui" href="../../css/semantic.css">
         <link rel="stylesheet" href="../../cliente/css/panel.css">
+        <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
         <!--<link rel="stylesheet" href="css/loader.css">-->
     </head>
     <body>

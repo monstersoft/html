@@ -1,16 +1,24 @@
 <?php
 	include("conexion.php");
-	function editarEmpresa($id,$rut,$name,$email,$phone) {
+	function verificaCampoEmpresa($id,$valor,$nombreCampo) {
 		$conexion = conectar();
 		$arreglo = array();
-		$consulta = "UPDATE empresas SET rut = '$rut',nombre = '$name',correo = '$email',telefono = '$phone' WHERE idEmpresa = '$id'";
-		if(mysqli_query($conexion,$consulta)) {
-			$arreglo['exito'] = 1;
+		$consulta = "SELECT COUNT(*) AS campos FROM empresas WHERE ".$nombreCampo." = '$valor'";
+		if($resultado = mysqli_query($conexion,$consulta)) {
+			$campos = mysqli_fetch_assoc($resultado);
+			if($campos['campos'] >= 1) {
+				$mensaje = 'El '.$nombreCampo.' ingresado ya existe';
+			}
+			else {
+				$consulta = "UPDATE empresas SET ".$nombreCampo." = '$valor' WHERE idEmpresa = '$id'";
+				if(mysqli_query($conexion,$consulta))
+					$mensaje = 'El '.$nombreCampo.' ha sido actualizado correctamente';
+				else
+					$mensaje = 'Error de consulta en: '.$nombreCampo;
+			}
 		}
-		else {
-			$arreglo['exito'] = 0;
-		}
-		return $arreglo;
+        mysqli_close($conexion);
+        return $mensaje;
 	}
 
 	function datosEmpresa($id) {
