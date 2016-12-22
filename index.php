@@ -8,7 +8,7 @@
         <title>Machine Monitors</title>
         <link rel="stylesheet" href="css/semantic.css">
         <link rel="stylesheet" href="css/toast.css">
-        <link rel="stylesheet" href="css/font-awesome.css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
         <style type="text/css">
             body {
                 background-color: #262626;
