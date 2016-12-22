@@ -1,6 +1,6 @@
 <?php
 	include("conexion.php");
-	function verificaCampoEmpresa($id,$valor,$nombreCampo) {
+	/*function verificaCampoEmpresa($id,$valor,$nombreCampo) {
 		$conexion = conectar();
 		$arreglo = array();
 		$consulta = "SELECT COUNT(*) AS campos FROM empresas WHERE ".$nombreCampo." = '$valor'";
@@ -11,14 +11,43 @@
 			}
 			else {
 				$consulta = "UPDATE empresas SET ".$nombreCampo." = '$valor' WHERE idEmpresa = '$id'";
-				if(mysqli_query($conexion,$consulta))
+				if(mysqli_query($conexion,$consulta)){
 					$mensaje = 'El '.$nombreCampo.' ha sido actualizado correctamente';
+				}
 				else
 					$mensaje = 'Error de consulta en: '.$nombreCampo;
 			}
 		}
         mysqli_close($conexion);
         return $mensaje;
+	}*/
+	function verifica($arreglo) {
+		$conexion = conectar();
+		$arreglo = array();
+		$arreglo['fracaso'] = 0;
+		$arreglo['exito'] = 0;
+		$arreglo['error'] = 0;
+		if($arreglo[0]['nombre']['cambio'] == 1){
+			$nombre = $arreglo[0]['nombre']['modificado'];
+			$consulta = "SELECT COUNT(*) AS nombres FROM empresas WHERE empresas.nombre = '$nombre'";
+			if($resultado = mysqli_query($conexion,$consulta)) {
+				$nombres = mysqli_fetch_assoc($resultado);
+				if($nombres['nombres'] >= 1) {
+					$arreglo['msgFracaso'][] = 'El nombre ingresado ya está en uso';
+					$arreglo['fracaso']++;
+				}
+				else {
+					$arreglo['msgExito'][] = 'Nombre editado correctamente';
+					$arreglo['exito']++;
+				}
+			}
+			else
+				$arreglo['msgError'] = 'Error de consulta en nombre';
+				$arreglo['error']++;
+
+		}
+		mysqli_close($conexion);
+		return $arreglo;
 	}
 
 	function datosEmpresa($id) {
@@ -41,6 +70,9 @@
 	function verificaFormularioEmpresa($name,$rut,$email,$phone) {
 		$conexion = conectar();
 		$arreglo = array();
+		//SI EL NOMBRE FUE CAMBIADO HAGO LA CONSULTA
+			//SI HAY REGISTROS IGUALES DEVUELVO MENSAJE Y EXITO 0
+			//SI NO 
 		$consulta = "SELECT COUNT(*) AS nombres FROM empresas WHERE empresas.nombre = '$name'";
 		if($resultado = mysqli_query($conexion,$consulta)) {
 			$nombres = mysqli_fetch_assoc($resultado);
@@ -49,6 +81,7 @@
 				$arreglo['exito'] = 0;
 			}
 		}
+
 		$consulta = "SELECT COUNT(*) AS ruts FROM empresas WHERE empresas.rut = '$rut'";
 		if($resultado = mysqli_query($conexion,$consulta)) {
 			$ruts = mysqli_fetch_assoc($resultado);

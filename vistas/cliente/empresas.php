@@ -17,7 +17,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="theme-color" content="#262626">
-        <link rel="stylesheet" href="../../semantic/semantic.css">
+        <link rel="stylesheet" type="text/css" class="ui" href="../../semantic/semantic.css">
         <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
         <link rel="stylesheet" href="../../cliente/css/panel.css">
     </head>
@@ -259,6 +259,7 @@
                             <a href="#" class="ui button green" id="btnEditarEmpresa"><i class="write icon"></i>Editar</a>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                        <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
                     </div>
                 </div>
 <!--    ELIMINAR .....................................................................................-->           

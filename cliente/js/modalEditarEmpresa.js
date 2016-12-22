@@ -65,7 +65,7 @@ $(document).ready(function(){
         $('.ui.icon.success.message').remove();
         $('.modalEditarEmpresa').modal('show');
         var url = devuelveUrl('html/cliente/datosEmpresa.php');
-        alert(url); ///////////////////////////////////////////////////////////////////////////////
+        //alert(url); ///////////////////////////////////////////////////////////////////////////////
         var id = $(this).attr('id');
         var datos = retornaDatos(id,url);
         datos.success(function(respuesta){
@@ -104,38 +104,48 @@ $(document).ready(function(){
             if(data[1].nombre.original != data[1].nombre.modificado){
                 data[1].nombre.cambio = 1;
                 flag = false;
-                alert('Cambiaste el nombre');
             }
             if(data[2].rut.original != data[2].rut.modificado){
                 data[2].rut.cambio = 1;
                 flag = false;
-                alert('Cambiaste el rut');
             }
             if(data[3].correo.original != data[3].correo.modificado){
                 data[3].correo.cambio = 1;
                 flag = false;
-                alert('Cambiaste el correo');
             }
             if(data[4].telefono.original != data[4].telefono.modificado){
                 data[4].telefono.cambio = 1;
                 flag = false;
-                alert('Cambiaste el telefono');
             }
             if(flag != true){
                 var url = devuelveUrl('html/cliente/editarEmpresa.php');
-                alert(url); ///////////////////////////////////////////////////////////////////////////////
+                //alert(url); ///////////////////////////////////////////////////////////////////////////////
                 $.ajax({
                     url : url,
                     type: 'POST',
                     data:{datos: data },
-                    success: function(arreglo) {     
-                        alert(arreglo);
+                    success: function(arreglo) {
+                            var list = JSON.parse(arreglo);
+                            var lisp = '';
+                            var lispError = '';
+                            alert(JSON.stringify(list));
+                            if(list.exitos >=1){
+                                list.msgExito.forEach(function(element){
+                                    lisp += '<li>'+element+'</li>';
+                                });
+                                $('.message').html('<div class="ui success message"><div class="content"><ul>'+lisp+'</ul></div>');
+                            }
+                            if(list.fracasos >=1){
+                                list.msgFracaso.forEach(function(element){
+                                    lispError += '<li>'+element+'</li>';
+                                });
+                                $('.messageError').html('<div class="ui error message"><div class="content"><ul>'+lispError+'</ul></div>');
+                            }
                     }
                 });
-                successMessage('SI cambiaste','SI cambiaste');
             }
             else
-                successMessage('NO cambiaste','NO cambiaste');
+                infoMessage('No hay cambios','Debes ingresar nuevos valores para editar');
             
         }
         else 

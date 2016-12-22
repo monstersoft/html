@@ -59,6 +59,8 @@
 .ui.basic.modal {
 	color: white;
 }
-
+.ui.message {
+	padding: 0.01px;
+}
 
 

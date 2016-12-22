@@ -17,7 +17,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="theme-color" content="#262626">
-        <link rel="stylesheet" type="text/css" class="ui" href="../../css/semantic.css">
+        <link rel="stylesheet" type="text/css" class="ui" href="../../semantic/semantic.css">
         <link rel="stylesheet" href="../../cliente/css/panel.css">
         <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
     </head>
