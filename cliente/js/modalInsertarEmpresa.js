@@ -1,28 +1,8 @@
 $(document).ready(function() {
-    /*$('div').on('click','.eliminar', function(){
-          $('#modalEliminar').modal({
-            closable  : false,
-            onApprove : function() {
-              alert('Approved!');
-            }
-            });
-            $('#modalEliminar').modal('show');
-    });
-
-    $('.mas').click(function(){ //CLASE MAS
-        $('.cancelar').removeClass('disabled');
-        $('#btnAñadir').removeClass('disabled loading');
-        $('.ui.form').trigger("reset");
-        $('.ui.form .field.error').removeClass( "error" );
-        $('.ui.form.error').removeClass( "error" );
-        $('#modalInsertar').modal({transition: 'fade up'}).modal('show');
-    }); // FIN CLASE MAS
-    $('.eliminar').click(function(){ //CLASE ELIMINAR
-        $('#idEmpresa').html('idEmpresa = '+$(this).attr('id'));
-    });// FIN CLASE ELIMINAR*/
     $('.insertarEmpresa').click(function(){
         $('.ui.negative.message').remove();
         $('.ui.warning.message').remove();
+        $('.ui.icon.success.message').remove();
         $('.modalInsertarEmpresa').modal('show');
     });
     $('#btnAñadirEmpresa').click(function(){

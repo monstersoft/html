@@ -5,40 +5,37 @@
 	<title>Document</title>
 </head>
 <body>
-	<a href="#" class="modalEditarEmpresa">Click!</a>
+    <button id="container" value="Llamar ajax">Lllamar ajax</button>
+    <div id="response-container">
+        The returned data will appear here..
+    </div>
 	<script src="js/jquery2.js"></script>
 	<script>
-$(document).ready(function(){
-    $('.modalEditarEmpresa').click(function(){
-    		var datos = {"userName":"654321@zzzz.com","password":"12345","emailProvider":"zzzz"}
+        $(document).ready(function(){
+            $('#container').click(function(){ 
+            var json = 
+            [{
+                id: 1 
+            },{
+                nombre: {original: '',modificado: '',cambio: false}
+            },{
+                rut: {original: '',modificado: '',cambio: false}
+            },{
+                correo: {original: '',modificado: '',cambio: false}
+            },{
+                telefono: {original: 0,modificado: 0,cambio: false}
+            }]
+            alert()
             $.ajax({
-                url: 'a.php',
-                type: 'POST',
-                data: datos,
-                dataType: 'json',
-                success: function(arreglo) {
-                    console.log(JSON.stringify(arreglo.mensaje));
-                }
-            }).fail(function( jqXHR, textStatus, errorThrown ){
-            if (jqXHR.status === 0){
-                alert('No hay coneccion con el servidor');
-            } else if (jqXHR.status == 404) {
-                alert('La pagina solicitada no fue encontrada, error 404');
-            } else if (jqXHR.status == 500) {
-                alert('Error interno del servidor');
-            } else if (textStatus === 'parsererror') {
-                alert('Error en la respuesta, debes analizar la sintaxis JSOsssN');
-            } else if (textStatus === 'timeout') {
-                alert('Ya ha pasado mucho tiempo');
-            } else if (textStatus === 'abort') {
-                alert('La peticion fue abortada');
-            } else {
-                alert('Error desconocido');
-            }
+                    url : 'a.php',
+                    type: 'POST',
+                    data:{datos: json },
+                    success: function(arreglo) {   
+                        $('#response-container').html(arreglo);
+                    }
+            });
+            });
         });
-    });
-});
-
 	</script>
 </body>
 </html>

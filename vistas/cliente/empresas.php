@@ -254,7 +254,7 @@
                             <input type="text" name="idEditar" id="idEditar">
                         </form>
                         <div style="text-align: right;margin-top: 15px">
-                            <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                            <a href="#" class="ui button black cancelar""><i class="close icon"></i>Cancelar</a>
                             <a href="#" class="ui button green" id="btnEditarEmpresa"><i class="write icon"></i>Editar</a>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
@@ -295,28 +295,16 @@
                 $('#menu').click(function(){$('.ui.sidebar').sidebar('toggle');});
                 $('.ui.sidebar').sidebar({context: 'body'});
                 $('.ui.dropdown').dropdown();
-                /*$(window).load(function(){
-                    $('#loader').html('<i class="fa fa-cog fa-spin fa-5x fa-fw" style="color: #F5A214"></i>');
-                    $('#preloader').delay(100).fadeOut(1000);
-                    $('body').delay(3500).css({'overflow':'visible'});
-                });
-                $('div').on('click','.insertar', function(){
-                        /*$('#insertar').modal({
-                        closable  : false,
-                        onApprove : function() {
-                          alert('Este es el valor de okMail: '+okMail);
-                        }
-                        });
-                        //alert('asdasd');
-                        $('#insertar').modal('show');
-                });*/
                 $('.cancelar').click(function(){
-                    $('#formularioInsertarEmpresa').trigger("reset");
                     $('.ui.negative.message').remove();
                     $('.ui.warning.message').remove();
+                    $('.ui.icon.success.message').remove();
+                    $('#formularioInsertarEmpresa').trigger("reset");
+                    $('#formularioEditarEmpresa').trigger("reset");
                     $('.modalInsertarEmpresa').modal('hide');
                     $('.modalEditarEmpresa').modal('hide');
                     $('#formularioInsertarEmpresa').trigger("reset");
+                    $('#formularioEditarEmpresa').trigger("reset");
                 });
             });
         </script>
