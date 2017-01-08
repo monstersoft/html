@@ -17,7 +17,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="theme-color" content="#262626">
-        <link rel="stylesheet" type="text/css" class="ui" href="../../semantic/semantic.css">
+        <link rel="stylesheet" href="../../semantic/semantic.css">
         <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
         <link rel="stylesheet" href="../../cliente/css/panel.css">
     </head>
@@ -114,15 +114,15 @@
                 <?php
                     foreach ($empresas as $key => $value) { 
                         echo ' 
-                            <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
+                            <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column cantidad">
                                 <div class="ui fluid card">
                                     <div class="content">
                                         <div class="big compact ui top right basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
                                             <i class="plus icon"></i>
                                             <div class="menu">
-                                                <div class="item"><i class="file icon"></i>Proyecto</div>
-                                                <div class="item"><i class="map icon"></i>Zona</div>
-                                                <div class="item"><i class="user icon"></i>Supervisor</div>
+                                                <div class="insertarProyecto proyecto item" id="'.$value['idEmpresa'].'"><i class="file icon"></i>Proyecto</div>
+                                                <div class="insertarZona zona item" id="'.$value['idEmpresa'].'"><i class="map icon"></i>Zona</div>
+                                                <div class="insertarSupervisor supervisor item" id="'.$value['idEmpresa'].'"><i class="user icon"></i>Supervisor</div>
                                             </div>
                                         </div>
                                         <div class="header">'.$value['nombre'].'</div>
@@ -130,19 +130,19 @@
                                         <div class="description">
                                             <div class="ui four mini statistics">
                                                 <div class="statistic">
-                                                    <div class="value"><i class="file icon"></i>'.$value['proyectos'].'</div>
+                                                    <div class="value"><i class="file icon"></i><p class="cantidadProyectos">'.$value['proyectos'].'</p></div>
                                                     <div class="label">Proyectos</div>
                                                 </div>
                                                 <div class="statistic">
-                                                    <div class="value"><i class="map icon"></i>'.$value['zonas'].'</div>
+                                                    <div class="value"><i class="map icon"></i><p class="cantidadZonas">'.$value['zonas'].'</p></div>
                                                     <div class="label">Zonas</div>
                                                 </div>
                                                 <div class="statistic">
-                                                    <div class="value"><i class="setting icon"></i>'.$value['maquinas'].'</div>
+                                                    <div class="value"><i class="setting icon"></i><p class="cantidadMaquinas">'.$value['maquinas'].'</p></div>
                                                     <div class="label">Máquinas</div>
                                                 </div>
                                                 <div class="statistic">
-                                                    <div class="value"><i class="user icon"></i>'.$value['supervisores'].'</div>
+                                                    <div class="value"><i class="user icon"></i><p class="cantidadSupervisores">'.$value['supervisores'].'</p></div>
                                                     <div class="label">Supervisores</div>
                                                 </div>
                                             </div>
@@ -172,7 +172,7 @@
 
 
 <!--VENTANAS MODALES ..............................................................................-->
-<!--    INSERTAR .....................................................................................--> 
+<!--    INSERTAR EMPRESA.....................................................................................--> 
                 <div class="ui modal modalInsertarEmpresa">
                     <div class="header">
                       <i class="industry icon" style="float: right;"></i>
@@ -212,6 +212,127 @@
                         <div style="text-align: right;margin-top: 15px">
                             <a href="#" class="ui button black cancelar""><i class="close icon"></i>Cancelar</a>
                             <a href="#" class="ui button green" id="btnAñadirEmpresa"><i class="add icon"></i>Añadir</a>
+                        </div>
+                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                    </div>
+                </div>
+<!--    INSERTAR PROYECTO .....................................................................................--> 
+                <div class="ui modal modalInsertarProyecto">
+                    <div class="header">
+                      <i class="file icon" style="float: right;"></i>
+                      Agregar Proyecto
+                    </div>
+                    <div class="content">
+                        <form class="ui form" id="formularioInsertarProyecto">
+                            <div class="field">
+                                <label>Nombre</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="Nuevo Proyecto" name="nombreProyecto" id="nombreProyecto">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <input type="text" name="idEmpresaProyecto" id="idEmpresaProyecto">
+                        </form>
+                        <div style="text-align: right;margin-top: 15px">
+                            <a href="#" class="ui button black cancelar""><i class="close icon"></i>Cancelar</a>
+                            <a href="#" class="ui button green" id="btnAñadirProyecto"><i class="add icon"></i>Añadir</a>
+                        </div>
+                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                    </div>
+                </div>
+<!--    INSERTAR ZONA .....................................................................................--> 
+                <div class="ui modal modalInsertarZona">
+                    <div class="header">
+                      <i class="map icon" style="float: right;"></i>
+                      Agregar Zona
+                    </div>
+                    <div class="content">
+                        <form class="ui form" id="formularioInsertarZona">
+                            <div class="field">
+                                <label>Nombre</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="Nueva Zona" name="nombreZona" id="nombreZona">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Proyecto Asociado</label>
+                                <div class="ui fluid selection dropdown">
+                                    <input type="hidden" name="user">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">Seleccionar proyecto</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="jenny">
+                                        Los Acacios
+                                        </div>
+                                        <div class="item" data-value="jenny">
+                                        Los Pirineos
+                                        </div>
+                                        <div class="item" data-value="jenny">
+                                        Los Jeldres
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Latitud</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="Nueva Latitud" name="latitudZona" id="latitudZona">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Longitud</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="Nueva Longitud" name="longitudZona" id="longitudZona">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <input type="text" name="idEmpresaZona" id="idEmpresaZona">
+                        </form>
+                        <div style="text-align: right;margin-top: 15px">
+                            <a href="#" class="ui button black cancelar""><i class="close icon"></i>Cancelar</a>
+                            <a href="#" class="ui button green" id="btnAñadirZona"><i class="add icon"></i>Añadir</a>
+                        </div>
+                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                    </div>
+                </div>
+<!--    INSERTAR SUPERVISOR .....................................................................................--> 
+                <div class="ui modal modalInsertarSupervisor">
+                    <div class="header">
+                      <i class="user icon" style="float: right;"></i>
+                      Agregar Supervisor
+                    </div>
+                    <div class="content">
+                        <form class="ui form" id="formularioInsertarSupervisor">
+                            <div class="field">
+                                <label>Nombre</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="Nuevo Supervisor" name="nombreSupervisor" id="nombreSupervisor">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Zonas Asociadas</label>
+                                <select multiple="" class="ui fluid dropdown">
+                                    <option value="">Seleccionar zonas</option>
+                                    <option value="angular">Angular</option>
+                                    <option value="css">CSS</option>
+                                    <option value="design">Graphic Design</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>Correo</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="email" value="contacto@servisiosbiobio.cl">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <input type="text" name="idEditar" id="idEditar">
+                        </form>
+                        <div style="text-align: right;margin-top: 15px">
+                            <a href="#" class="ui button black cancelar""><i class="close icon"></i>Cancelar</a>
+                            <a href="#" class="ui button green" id="btnAñadirSupervisor"><i class="add icon"></i>Añadir</a>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
@@ -288,6 +409,9 @@
         <script src="../../semantic/semantic.js"></script>
         <script src="../../cliente/js/modalInsertarEmpresa.js"></script>
         <script src="../../cliente/js/modalEditarEmpresa.js"></script>
+        <script src="../../cliente/js/modalInsertarProyecto.js"></script>
+        <script src="../../cliente/js/modalInsertarZona.js"></script>
+        <script src="../../cliente/js/modalInsertarSupervisor.js"></script>
         <script src="../../js/jquery.rut.chileno.js"></script>
         <script src="../../cliente/js/compruebaInputs.js"></script>
         <script src="../../cliente/js/mensajes.js"></script>
@@ -296,17 +420,33 @@
             $(document).ready(function(){
                 $('#menu').click(function(){$('.ui.sidebar').sidebar('toggle');});
                 $('.ui.sidebar').sidebar({context: 'body'});
-                $('.ui.dropdown').dropdown();
+                $('.ui.dropdown').click(function(){
+                    $('.zona').removeClass('disabled');
+                    $('.supervisor').removeClass('disabled');
+                    var cantidadProyectos = $(this).parents('.content').find('.cantidadProyectos').text();
+                    var cantidadZonas = $(this).parents('.content').find('.cantidadZonas').text();
+                    if(cantidadProyectos == 0) {
+                        $('.zona').addClass('disabled');
+                        $('.supervisor').addClass('disabled');
+                    }
+                    if(cantidadZonas == 0) 
+                        $('.supervisor').addClass('disabled');
+                        
+                }).dropdown();
                 $('.cancelar').click(function(){
                     $('.ui.negative.message').remove();
                     $('.ui.warning.message').remove();
                     $('.ui.icon.success.message').remove();
                     $('#formularioInsertarEmpresa').trigger("reset");
                     $('#formularioEditarEmpresa').trigger("reset");
+                    $('#formularioInsertarProyecto').trigger("reset");
+                    $('#formularioInsertarZona').trigger("reset");
+                    $('#formularioInsertarSupervisor').trigger("reset");
                     $('.modalInsertarEmpresa').modal('hide');
                     $('.modalEditarEmpresa').modal('hide');
-                    $('#formularioInsertarEmpresa').trigger("reset");
-                    $('#formularioEditarEmpresa').trigger("reset");
+                    $('.modalInsertarProyecto').modal('hide');
+                    $('.modalInsertarZona').modal('hide');
+                    $('.modalInsertarSupervisor').modal('hide');
                 });
             });
         </script>

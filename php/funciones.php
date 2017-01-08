@@ -1,26 +1,28 @@
 <?php
 	include("conexion.php");
-	/*function verificaCampoEmpresa($id,$valor,$nombreCampo) {
+
+	function verificaFormularioProyecto($name,$id) {
 		$conexion = conectar();
 		$arreglo = array();
-		$consulta = "SELECT COUNT(*) AS campos FROM empresas WHERE ".$nombreCampo." = '$valor'";
+		$consulta = "SELECT COUNT(*) AS nombres FROM proyectos WHERE proyectos.idEmpresa = '$id' AND proyectos.nombre = '$name'";
 		if($resultado = mysqli_query($conexion,$consulta)) {
-			$campos = mysqli_fetch_assoc($resultado);
-			if($campos['campos'] >= 1) {
-				$mensaje = 'El '.$nombreCampo.' ingresado ya existe';
-			}
-			else {
-				$consulta = "UPDATE empresas SET ".$nombreCampo." = '$valor' WHERE idEmpresa = '$id'";
-				if(mysqli_query($conexion,$consulta)){
-					$mensaje = 'El '.$nombreCampo.' ha sido actualizado correctamente';
-				}
-				else
-					$mensaje = 'Error de consulta en: '.$nombreCampo;
+			$nombres = mysqli_fetch_assoc($resultado);
+			if($nombres['nombres'] >= 1) {
+				$arreglo['msg'] = 'El nombre ingresado ya está en uso';
+				$arreglo['exito'] = 0;
+			}	
+			if($nombres['nombres'] == 0) {
+				$consulta = "INSERT INTO proyectos (idEmpresa,nombre) VALUES ('$id','$name')";
+				if(mysqli_query($conexion,$consulta))
+					$arreglo['exito'] = 1;
+				else 
+					$arreglo['exito'] = 0;
 			}
 		}
-        mysqli_close($conexion);
-        return $mensaje;
-	}*/
+		mysqli_close($conexion);
+		return $arreglo;
+	}
+
 	function verifica($arreglo) {
 		$conexion = conectar();
 		$arreglo = array();

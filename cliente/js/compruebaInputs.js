@@ -67,3 +67,14 @@ function isRutEditar() {
     }
 }
 
+    function maxLength(value) {
+    if(value == '') 
+        return false;
+    else {
+      if(value.length >50) 
+        return true;
+      else
+        return false;
+    }
+}
+
