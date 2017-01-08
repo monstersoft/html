@@ -2,7 +2,7 @@
 	include '../php/conexion.php';
 	/*$arreglo = array();
 	$arreglo[0]['id'] = 1;
-	$arreglo[1]['nombre']['cambio'] = 0;
+	$arreglo[1]['nombre']['cambio'] = 1;
 	$arreglo[1]['nombre']['modificado'] = '45646';
 	$arreglo[2]['rut']['cambio'] = 1;
 	$arreglo[2]['rut']['modificado'] = '17286211-k';
@@ -15,6 +15,7 @@
 	$arreglo['exitos'] = 0;
 	$arreglo['errores'] = 0;
 	$conexion = conectar();
+    $id = $arreglo[0]['id'];
 	if($arreglo[1]['nombre']['cambio'] == 1){
 		$nombre = $arreglo[1]['nombre']['modificado'];
 		$consulta = "SELECT COUNT(*) AS nombres FROM empresas WHERE empresas.nombre = '$nombre'";
@@ -25,12 +26,20 @@
 				$arreglo['fracasos']++;
 			}
 			else {
-				$arreglo['msgExito'][] = 'Nombre editado correctamente';
-				$arreglo['exitos']++;
+                $consulta = "UPDATE empresas SET empresas.nombre = '$nombre' WHERE empresas.idEmpresa = '$id'";
+                if(mysqli_query($conexion,$consulta)) {
+                    $arreglo['msgExito'][] = 'Nombre editado correctamente';
+                    $arreglo['exitoNombre'] = 1;
+                    $arreglo['exitos']++;
+                    }
+                else {
+                    $arreglo['msgErrorCampo'][] = 'Error de consulta en el update nombre';
+                    $arreglo['errores']++;
+                }
 			}
 		}
 		else {
-			$arreglo['msgError'] = 'Error de consulta en nombre';
+			$arreglo['msgError'][] = 'Error de consulta en nombre';
 			$arreglo['errores']++;
 		}
 
@@ -45,12 +54,20 @@
 				$arreglo['fracasos']++;
 			}
 			else {
-				$arreglo['msgExito'][] = 'Rut editado correctamente';
-				$arreglo['exitos']++;
+                $consulta = "UPDATE empresas SET empresas.rut = '$rut' WHERE empresas.idEmpresa = '$id'";
+                if(mysqli_query($conexion,$consulta)) {
+				    $arreglo['msgExito'][] = 'Rut editado correctamente';
+                    $arreglo['exitoRut'] = 1;
+				    $arreglo['exitos']++;
+                    }
+                else {
+                    $arreglo['msgErrorCampo'][] = 'Error de consulta en el update rut';
+                    $arreglo['errores']++;
+                }
 			}
 		}
 		else {
-			$arreglo['msgError'] = 'Error de consulta en rut';
+			$arreglo['msgError'][] = 'Error de consulta en rut';
 			$arreglo['errores']++;
 		}
 
@@ -65,12 +82,20 @@
 				$arreglo['fracasos']++;
 			}
 			else {
-				$arreglo['msgExito'][] = 'Correo editado correctamente';
-				$arreglo['exitos']++;
+                $consulta = "UPDATE empresas SET empresas.correo = '$correo' WHERE empresas.idEmpresa = '$id'";
+                if(mysqli_query($conexion,$consulta)) {
+				    $arreglo['msgExito'][] = 'Correo editado correctamente';
+                    $arreglo['exitoCorreo'] = 1;
+				    $arreglo['exitos']++;
+                    }
+                else {
+                    $arreglo['msgErrorCampo'][] = 'Error de consulta en el update correo';
+                    $arreglo['errores']++;
+                }
 			}
 		}
 		else {
-			$arreglo['msgError'] = 'Error de consulta en correo';
+			$arreglo['msgError'][] = 'Error de consulta en correo';
 			$arreglo['errores']++;
 		}
 
@@ -85,12 +110,20 @@
 				$arreglo['fracasos']++;
 			}
 			else {
-				$arreglo['msgExito'][] = 'Teléfono editado correctamente';
-				$arreglo['exitos']++;
+                $consulta = "UPDATE empresas SET empresas.telefono = '$telefono' WHERE empresas.idEmpresa = '$id'";
+                if(mysqli_query($conexion,$consulta)) {
+				    $arreglo['msgExito'][] = 'Teléfono editado correctamente';
+                    $arreglo['exitoTelefono'] = 1;
+				    $arreglo['exitos']++;
+                    }
+                else {
+                    $arreglo['msgErrorCampo'][] = 'Error de consulta en el update telefono';
+                    $arreglo['errores']++;
+                }
 			}
 		}
 		else {
-			$arreglo['msgError'] = 'Error de consulta en telefono';
+			$arreglo['msgError'][] = 'Error de consulta en telefono';
 			$arreglo['errores']++;
 		}
 	}

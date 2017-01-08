@@ -60,9 +60,7 @@ $(document).ready(function(){
         });
     }
     $('.editarEmpresa').click(function(){
-        $('.ui.negative.message').remove();
-        $('.ui.warning.message').remove();
-        $('.ui.icon.success.message').remove();
+        borrarMensajes();
         $('.modalEditarEmpresa').modal('show');
         var url = devuelveUrl('html/cliente/datosEmpresa.php');
         //alert(url); ///////////////////////////////////////////////////////////////////////////////
@@ -77,6 +75,7 @@ $(document).ready(function(){
         });
     });
     $('.modalEditarEmpresa').on('click','#btnEditarEmpresa',function(){
+        borrarMensajes();
         var arreglo = new Array();
         data[1].nombre.modificado = $('#nombreEditar').val();
         data[2].rut.modificado = $('#rutEditar').val();
@@ -117,6 +116,7 @@ $(document).ready(function(){
                 data[4].telefono.cambio = 1;
                 flag = false;
             }
+            //console.log('DESPUES DE VER SI CAMBIO'+JSON.stringify(data));
             if(flag != true){
                 var url = devuelveUrl('html/cliente/editarEmpresa.php');
                 //alert(url); ///////////////////////////////////////////////////////////////////////////////
@@ -128,7 +128,6 @@ $(document).ready(function(){
                             var list = JSON.parse(arreglo);
                             var lisp = '';
                             var lispError = '';
-                            alert(JSON.stringify(list));
                             if(list.exitos >=1){
                                 list.msgExito.forEach(function(element){
                                     lisp += '<li>'+element+'</li>';
@@ -141,6 +140,22 @@ $(document).ready(function(){
                                 });
                                 $('.messageError').html('<div class="ui error message"><div class="content"><ul>'+lispError+'</ul></div>');
                             }
+                            if(list.exitoNombre == 1) {
+                                data[1].nombre.original = data[1].nombre.modificado;
+                                data[1].nombre.cambio = 0;
+                            }
+                            if(list.exitoRut == 1) {
+                                data[2].rut.original = data[2].rut.modificado;
+                                data[2].rut.cambio = 0;
+                            }
+                            if(list.exitoCorreo == 1) {
+                                data[3].correo.original = data[3].correo.modificado;
+                                data[3].correo.cambio = 0;
+                            }
+                            if(list.exitoTelefono == 1) {
+                                data[4].telefono.original = data[4].telefono.modificado;
+                                data[4].telefono.cambio = 0;
+                            }           
                     }
                 });
             }

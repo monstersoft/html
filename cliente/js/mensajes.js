@@ -1,3 +1,11 @@
+function borrarMensajes() {
+        $('.ui.negative.message').remove();
+        $('.ui.warning.message').remove();
+        $('.ui.error.message').remove();
+        $('.ui.success.message').remove();
+        $('.ui.icon.success.message').remove();
+        $('.ui.icon.info.message').remove();
+}
 function errorMessage(arrayErrors) {
     var list = '';
     arrayErrors.forEach(function(element){
