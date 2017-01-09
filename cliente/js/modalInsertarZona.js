@@ -10,7 +10,7 @@ $(document).ready(function() {
         $.ajax({
             url: url,
             type: 'POST',
-            data: id,
+            data: {id:id},
             dataType: 'json',
             beforeSend: function() {
               $('#cancelar').addClass('disabled');
@@ -18,7 +18,24 @@ $(document).ready(function() {
               //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
             },
             success: function(returnedData) {
-                alert(JSON.stringify(returnedData));
+                var list = '';
+                $.each(returnedData, function(i,item){
+                  list += '<div class="item" id="'+returnedData[i].idProyecto+'">'+returnedData[i].nombre+'</div>';
+                })
+                $('#listaProyectos').html(list);
+
+                    /*var list = '';
+    arrayWarnings.msg.forEach(function(element){
+        list += '<li>'+element+'</li>';
+    });
+    $('.message').html('<div class="ui warning message"><ul>'+list+'</ul></div>');
+
+
+        var list = '';
+    arrayErrors.forEach(function(element){
+        list += element;
+    });
+    $('.message').html('<div class="ui negative message"><ul>'+list+'</ul></div>');
                 /*if(returnedData.exito == 1) {
                     successMessage('Registro realizado con éxito','Serás redireccionado al panel de empresas');
                     location.reload();

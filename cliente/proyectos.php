@@ -1,9 +1,18 @@
 <?php
-	include '../php/funciones.php'; 
-	$name = $_POST['nombre'];
-	$rut = $_POST['rut'];
-	$email = $_POST['email'];
-	$phone = $_POST['telefono'];
-	$returnedData = verificaFormularioEmpresa($name,$rut,$email,$phone);
-	echo json_encode($returnedData);
+	include '../php/conexion.php';
+	$conexion = conectar();
+	$id = $_POST['id'];
+	$arreglo = array();
+	//$id = 2;
+	$consulta = "SELECT proyectos.idProyecto, proyectos.nombre FROM proyectos WHERE proyectos.idEmpresa = '$id'";
+	if($resultado = mysqli_query($conexion,$consulta)) {
+		$i = 0;
+		while($row = mysqli_fetch_assoc($resultado)) {
+	    	$arreglo[$i]['idProyecto'] = $row['idProyecto'];
+			$arreglo[$i]['nombre'] = $row['nombre'];
+			$i++;
+        }
+	}
+    //$arreglo = utf8Converter(datosEmpresa($id));
+	echo json_encode($arreglo);
 ?>

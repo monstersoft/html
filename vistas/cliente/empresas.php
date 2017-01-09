@@ -258,19 +258,10 @@
                             <div class="field">
                                 <label>Proyecto Asociado</label>
                                 <div class="ui fluid selection dropdown">
-                                    <input type="hidden" name="user">
+                                    <input value="asdasdasd" placeholder="asdasdasdasdasdasdasd">
                                     <i class="dropdown icon"></i>
                                     <div class="default text">Seleccionar proyecto</div>
-                                    <div class="menu">
-                                        <div class="item" data-value="jenny">
-                                        Los Acacios
-                                        </div>
-                                        <div class="item" data-value="jenny">
-                                        Los Pirineos
-                                        </div>
-                                        <div class="item" data-value="jenny">
-                                        Los Jeldres
-                                        </div>
+                                    <div class="menu" id="listaProyectos">
                                     </div>
                                 </div>
                             </div>
