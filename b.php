@@ -7,7 +7,7 @@
     <body>
 <form id="f"> 
 <select name="country[]" multiple class="ui fluid dropdown" id="idMultiple">
-  <option value="">Skills</option>
+<option value="">Skills</option>
 <option value="angular">Angular</option>
 <option value="css">CSS</option>
 <option value="design">Graphic Design</option>
