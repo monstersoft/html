@@ -106,6 +106,7 @@
                                         <div class="menu">
                                             <div class="insertarProyecto proyecto item"><i class="edit icon"></i>editar proyecto</div>
                                             <div class="insertarZona zona item"><i class="delete icon"></i>remover proyecto</div>
+                                            <div class="insertarZona zona item"><i class="map icon"></i>agregar zona</div>
                                         </div>
                                     </div>
                                     <div class="header">'.$value['nombreProyecto'].'</div>
