@@ -1,5 +1,8 @@
 $(document).ready(function() {
     $('.insertarProyecto').click(function(){
+        var id = $(this).attr('id');
+        alert(id);
+        $('#idEmpresaProyecto').val(id);
         $('.ui.negative.message').remove();
         $('.ui.warning.message').remove();
         $('.ui.icon.success.message').remove();
@@ -26,13 +29,13 @@ $(document).ready(function() {
                   $('#btnAñadir').addClass('disabled loading');
                   //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
                 },
-                success: function(arreglo) {
-                    if(arreglo.exito == 1) {
+                success: function(returnedData) {
+                    if(returnedData.exito == 1) {
                         successMessage('Registro realizado con éxito','Serás redireccionado al panel de empresas');
                         location.reload();
                     }
                     else {
-                        $('.message').html('<div class="ui warning message">'+arreglo.msg+'</div>');
+                        $('.message').html('<div class="ui warning message">'+returnedData.msg+'</div>');
                     }
                     $('#cancelar').removeClass('disabled');
                     $('#btnAñadir').removeClass('disabled loading');

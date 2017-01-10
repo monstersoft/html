@@ -1,5 +1,12 @@
-<?php
-	$datosJson = $_POST['datos'];
-	$arreglo['mensaje'] = $datosJson[1]['nombre']['original'];
-	echo json_encode($arreglo);
-?>
+<html>  
+<head>  
+<title>Lista de clientes.</title>  
+</head>  
+
+<body>  
+<!-- A través de la variable id enviamos el valor 324 --> 
+
+Javier Rodriguez -- <a href="b.php?id=324">Ver ficha del cliente</a> 
+
+</body> 
+</html> 

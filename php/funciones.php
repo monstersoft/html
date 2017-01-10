@@ -1,28 +1,85 @@
 <?php
 	include("conexion.php");
 
-	function verificaFormularioProyecto($name,$id) {
-		$conexion = conectar();
-		$arreglo = array();
-		$consulta = "SELECT COUNT(*) AS nombres FROM proyectos WHERE proyectos.idEmpresa = '$id' AND proyectos.nombre = '$name'";
-		if($resultado = mysqli_query($conexion,$consulta)) {
-			$nombres = mysqli_fetch_assoc($resultado);
-			if($nombres['nombres'] >= 1) {
-				$arreglo['msg'] = 'El nombre ingresado ya está en uso';
-				$arreglo['exito'] = 0;
-			}	
-			if($nombres['nombres'] == 0) {
-				$consulta = "INSERT INTO proyectos (idEmpresa,nombre) VALUES ('$id','$name')";
-				if(mysqli_query($conexion,$consulta))
-					$arreglo['exito'] = 1;
-				else 
-					$arreglo['exito'] = 0;
-			}
-		}
-		mysqli_close($conexion);
-		return $arreglo;
+	function maquinas($idZona) {
+        $conexion = conectar();
+        $arreglo = array();
+        $consulta = "SELECT * FROM maquinas WHERE maquinas.idZona = '$idZona'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+        	$i = 0;
+            while($row = mysqli_fetch_array($resultado)) {
+                $arreglo[$i]['idMaquina'] = $row['idMaquina'];
+                $arreglo[$i]['idZona'] = $row['idZona'];
+                $arreglo[$i]['patente'] = $row['patente'];
+                $arreglo[$i]['fechaRegistro'] = $row['fechaRegistro'];
+                $arreglo[$i]['velocidadMaxima'] = $row['velocidadMaxima'];
+                $arreglo[$i]['tara'] = $row['tara'];
+                $arreglo[$i]['cargaMaxima'] = $row['cargaMaxima'];
+                $i++;
+            }
+        }
+        mysqli_close($conexion);
+        return $arreglo;
 	}
 
+	function supervisores($idZona) {
+        $conexion = conectar();
+        $arreglo = array();
+        $consulta = "SELECT zonas.idZona, supervisores.idSupervisor, supervisores.nombreSupervisor, supervisores.correoSupervisor, supervisores.celular 
+        			 FROM zonas 
+        			 LEFT JOIN supervisoreszonas ON zonas.idZona = supervisoreszonas.idZona 
+        			 LEFT JOIN supervisores ON supervisoreszonas.idSupervisor = supervisores.idSupervisor 
+        			 WHERE zonas.idZona = '$idZona'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+        	$i = 0;
+            while($row = mysqli_fetch_array($resultado)) {
+                $arreglo[$i]['idZona']= $row['idZona'];
+                $arreglo[$i]['idSupervisor']= $row['idSupervisor'];
+                $arreglo[$i]['nombreSupervisor']= $row['nombreSupervisor'];
+                $arreglo[$i]['correoSupervisor']= $row['correoSupervisor'];
+                $arreglo[$i]['celular']= $row['celular'];
+                $i++;
+            }
+        }
+        mysqli_close($conexion);
+        return $arreglo;
+	}
+
+	function zonas($idProyecto) {
+        $conexion = conectar();
+        $arreglo = array();
+        $consulta = "SELECT zonas.idZona, zonas.nombre AS nombreZona
+        			 FROM zonas
+        			 WHERE zonas.idProyecto = '$idProyecto'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+        	$i = 0;
+            while($row = mysqli_fetch_array($resultado)) {
+                $arreglo[$i]['idZona']= $row['idZona'];
+                $arreglo[$i]['nombreZona']= $row['nombreZona'];
+                $i++;
+            }
+        }
+        mysqli_close($conexion);
+        return $arreglo;
+    }
+
+	function proyectos($idEmpresa) {
+        $conexion = conectar();
+        $arreglo = array();
+        $consulta = "SELECT proyectos.idProyecto, proyectos.nombre AS nombreProyecto
+        			 FROM proyectos
+        			 WHERE proyectos.idEmpresa = '$idEmpresa'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+        	$i = 0;
+            while($row = mysqli_fetch_array($resultado)) {
+                $arreglo[$i]['idProyecto']= $row['idProyecto'];
+                $arreglo[$i]['nombreProyecto']= $row['nombreProyecto'];
+                $i++;
+            }
+        }
+        mysqli_close($conexion);
+        return $arreglo;
+    }
 	function verifica($arreglo) {
 		$conexion = conectar();
 		$arreglo = array();

@@ -108,7 +108,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="ui bottom attached button insertarEmpresa" href="#"><i class="plus icon"></i></a>
+                        <a class="ui bottom attached button insertarEmpresa"><i class="plus icon"></i></a>
                     </div>
                 </div>
                 <?php
@@ -155,7 +155,10 @@
                                         <a class="ui button editarEmpresa" id="'.$value['idEmpresa'].'">
                                             <i class="write icon"></i>
                                         </a>
-                                        <a href="verEmpresas.php" class="ui button ver" id="'.$value['idEmpresa'].'">
+                                        <a href="verEmpresas.php?id='.$value['idEmpresa'].'" class="ui button ver" id="'.$value['idEmpresa'].'">
+                                            <i class="unhide icon"></i>
+                                        </a> 
+                                        <a href="verEmpresas.php?id=1" class="ui button ver" id="'.$value['idEmpresa'].'">
                                             <i class="unhide icon"></i>
                                         </a>
                                     </div>
@@ -172,7 +175,7 @@
 
 
 <!--VENTANAS MODALES ..............................................................................-->
-<!--    INSERTAR EMPRESA.....................................................................................--> 
+    <!--INSERTAR EMPRESA.....................................................................................--> 
                 <div class="ui modal modalInsertarEmpresa">
                     <div class="header">
                       <i class="industry icon" style="float: right;"></i>
@@ -210,13 +213,13 @@
                             </div>
                         </form>
                         <div style="text-align: right;margin-top: 15px">
-                            <a href="#" class="ui button black cancelar""><i class="close icon"></i>Cancelar</a>
-                            <a href="#" class="ui button green" id="btnAñadirEmpresa"><i class="add icon"></i>Añadir</a>
+                            <a  class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                            <a  class="ui button green" id="btnAñadirEmpresa"><i class="add icon"></i>Añadir</a>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
                 </div>
-<!--    INSERTAR PROYECTO .....................................................................................--> 
+    <!--INSERTAR PROYECTO .....................................................................................--> 
                 <div class="ui modal modalInsertarProyecto">
                     <div class="header">
                       <i class="file icon" style="float: right;"></i>
@@ -234,13 +237,13 @@
                             <input type="text" name="idEmpresaProyecto" id="idEmpresaProyecto">
                         </form>
                         <div style="text-align: right;margin-top: 15px">
-                            <a href="#" class="ui button black cancelar""><i class="close icon"></i>Cancelar</a>
-                            <a href="#" class="ui button green" id="btnAñadirProyecto"><i class="add icon"></i>Añadir</a>
+                            <a  class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                            <a  class="ui button green" id="btnAñadirProyecto"><i class="add icon"></i>Añadir</a>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
                 </div>
-<!--    INSERTAR ZONA .....................................................................................--> 
+    <!--INSERTAR ZONA .....................................................................................--> 
                 <div class="ui modal modalInsertarZona">
                     <div class="header">
                       <i class="map icon" style="float: right;"></i>
@@ -282,13 +285,13 @@
                             <input type="text" name="idEmpresaZona" id="idEmpresaZona">
                         </form>
                         <div style="text-align: right;margin-top: 15px">
-                            <a href="#" class="ui button black cancelar""><i class="close icon"></i>Cancelar</a>
-                            <a href="#" class="ui button green" id="btnAñadirZona"><i class="add icon"></i>Añadir</a>
+                            <a  class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                            <a  class="ui button green" id="btnAñadirZona"><i class="add icon"></i>Añadir</a>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
                 </div>
-<!--    INSERTAR SUPERVISOR .....................................................................................--> 
+    <!--INSERTAR SUPERVISOR .....................................................................................--> 
                 <div class="ui modal modalInsertarSupervisor">
                     <div class="header">
                       <i class="user icon" style="float: right;"></i>
@@ -322,8 +325,8 @@
                             <input type="text" name="idEditar" id="idEditar">
                         </form>
                         <div style="text-align: right;margin-top: 15px">
-                            <a href="#" class="ui button black cancelar""><i class="close icon"></i>Cancelar</a>
-                            <a href="#" class="ui button green" id="btnAñadirSupervisor"><i class="add icon"></i>Añadir</a>
+                            <a  class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                            <a  class="ui button green" id="btnAñadirSupervisor"><i class="add icon"></i>Añadir</a>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
@@ -367,8 +370,8 @@
                             <input type="text" name="idEditar" id="idEditar">
                         </form>
                         <div style="text-align: right;margin-top: 15px">
-                            <a href="#" class="ui button black cancelar""><i class="close icon"></i>Cancelar</a>
-                            <a href="#" class="ui button green" id="btnEditarEmpresa"><i class="write icon"></i>Editar</a>
+                            <a  class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                            <a  class="ui button green" id="btnEditarEmpresa"><i class="write icon"></i>Editar</a>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                         <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
