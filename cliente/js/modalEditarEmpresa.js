@@ -63,8 +63,7 @@ $(document).ready(function(){
         borrarMensajes();
         $('.modalEditarEmpresa').modal('show');
         var url = devuelveUrl('cliente/datosEmpresa.php');
-        alert('skajdhakjshdjskad');
-        alert(url); ////////////////////////////////////////////////////////////////////////////////
+ ////////////////////////////////////////////////////////////////////////////////
         var id = $(this).attr('id');
         var datos = retornaDatos(id,url);
         datos.success(function(respuesta){
@@ -119,7 +118,7 @@ $(document).ready(function(){
             }
             //console.log('DESPUES DE VER SI CAMBIO'+JSON.stringify(data));
             if(flag != true){
-                var url = devuelveUrl('html/cliente/editarEmpresa.php');
+                var url = devuelveUrl('cliente/editarEmpresa.php');
                 //alert(url); ///////////////////////////////////////////////////////////////////////////////
                 $.ajax({
                     url : url,
