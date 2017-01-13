@@ -63,7 +63,7 @@ $(document).ready(function(){
         borrarMensajes();
         $('.modalEditarEmpresa').modal('show');
         var url = devuelveUrl('cliente/datosEmpresa.php');
-        //alert(url); ///////////////////////////////////////////////////////////////////////////////
+        alert(url); ///////////////////////////////////////////////////////////////////////////////
         var id = $(this).attr('id');
         var datos = retornaDatos(id,url);
         datos.success(function(respuesta){
