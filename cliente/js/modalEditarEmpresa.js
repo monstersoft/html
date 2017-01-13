@@ -62,7 +62,7 @@ $(document).ready(function(){
     $('.editarEmpresa').click(function(){
         borrarMensajes();
         $('.modalEditarEmpresa').modal('show');
-        var url = devuelveUrl('html/cliente/datosEmpresa.php');
+        var url = devuelveUrl('cliente/datosEmpresa.php');
         //alert(url); ///////////////////////////////////////////////////////////////////////////////
         var id = $(this).attr('id');
         var datos = retornaDatos(id,url);
