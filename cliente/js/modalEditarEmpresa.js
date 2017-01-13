@@ -64,15 +64,16 @@ $(document).ready(function(){
         $('.modalEditarEmpresa').modal('show');
         var url = devuelveUrl('cliente/datosEmpresa.php');
  ////////////////////////////////////////////////////////////////////////////////
+        alert(url);
         var id = $(this).attr('id');
-        var datos = retornaDatos(id,url);
-        datos.success(function(respuesta){
+        //var datos = retornaDatos(id,url);
+        /*datos.success(function(respuesta){
             data[0].id = respuesta.idEmpresa;
             data[1].nombre.original = respuesta.nombre;
             data[2].rut.original = respuesta.rut;
             data[3].correo.original = respuesta.correo;
             data[4].telefono.original = respuesta.telefono;
-        });
+        });*/
     });
     $('.modalEditarEmpresa').on('click','#btnEditarEmpresa',function(){
         borrarMensajes();
