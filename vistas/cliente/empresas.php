@@ -342,32 +342,32 @@
                             <div class="field">
                                 <label>Nombre</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Empresa" name="nombreEditar" id="nombreEditar">
+                                    <input type="text" placeholder="Empresa" name="nombreEditar" id="nombreEditar1">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Rut</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder="17286211-K" name="rutEditar" id="rutEditar">
+                                    <input type="text" placeholder="17286211-K" name="rutEditar" id="rutEditar1">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Correo</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder=". . . . . @ . . . . . " name="emailEditar" id="emailEditar">
+                                    <input type="text" placeholder=". . . . . @ . . . . . " name="emailEditar" id="emailEditar1">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Teléfono</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder="995007812" name="telefonoEditar" id="telefonoEditar">
+                                    <input type="text" placeholder="995007812" name="telefonoEditar" id="telefonoEditar1">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
-                            <input type="text" name="idEditar" id="idEditar">
+                            <input type="text" name="idEditar" id="idEditar1">
                         </form>
                         <div style="text-align: right;margin-top: 15px">
                             <a  class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>

@@ -35,11 +35,11 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(arreglo){
                 $('#idEditar').val(arreglo.idEmpresa);
-                $('#nombreEditar').val(arreglo.nombre);
-                $('#rutEditar').val(arreglo.rut);
-                $('#emailEditar').val(arreglo.correo);
-                $('#telefonoEditar').val(arreglo.telefono);
-                $('#direccionEditar').val(arreglo.direccion);         
+                $('#nombreEditar1').val(arreglo.nombre);
+                $('#rutEditar1').val(arreglo.rut);
+                $('#emailEditar1').val(arreglo.correo);
+                $('#telefonoEditar1').val(arreglo.telefono);
+                $('#direccionEditar1').val(arreglo.direccion);         
             }
         }).fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){
@@ -63,7 +63,6 @@ $(document).ready(function(){
         borrarMensajes();
         $('.modalEditarEmpresa').modal('show');
         var url = devuelveUrl('html/cliente/datosEmpresa.php');
-        //alert(url); ///////////////////////////////////////////////////////////////////////////////
         var id = $(this).attr('id');
         var datos = retornaDatos(id,url);
         datos.success(function(respuesta){
