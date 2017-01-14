@@ -158,9 +158,6 @@
                                         <a href="verEmpresas.php?id='.$value['idEmpresa'].'" class="ui button ver" id="'.$value['idEmpresa'].'">
                                             <i class="unhide icon"></i>
                                         </a> 
-                                        <a href="verEmpresas.php?id=1" class="ui button ver" id="'.$value['idEmpresa'].'">
-                                            <i class="unhide icon"></i>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
