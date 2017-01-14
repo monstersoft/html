@@ -62,16 +62,22 @@ $(document).ready(function(){
     $('.editarEmpresa').click(function(){
         borrarMensajes();
         $('.modalEditarEmpresa').modal('show');
+<<<<<<< HEAD
         var url = devuelveUrl('html/cliente/datosEmpresa.php');
+=======
+        var url = devuelveUrl('cliente/datosEmpresa.php');
+ ////////////////////////////////////////////////////////////////////////////////
+        alert(url);
+>>>>>>> origin/master
         var id = $(this).attr('id');
-        var datos = retornaDatos(id,url);
-        datos.success(function(respuesta){
+        //var datos = retornaDatos(id,url);
+        /*datos.success(function(respuesta){
             data[0].id = respuesta.idEmpresa;
             data[1].nombre.original = respuesta.nombre;
             data[2].rut.original = respuesta.rut;
             data[3].correo.original = respuesta.correo;
             data[4].telefono.original = respuesta.telefono;
-        });
+        });*/
     });
     $('.modalEditarEmpresa').on('click','#btnEditarEmpresa',function(){
         borrarMensajes();
@@ -117,7 +123,7 @@ $(document).ready(function(){
             }
             //console.log('DESPUES DE VER SI CAMBIO'+JSON.stringify(data));
             if(flag != true){
-                var url = devuelveUrl('html/cliente/editarEmpresa.php');
+                var url = devuelveUrl('cliente/editarEmpresa.php');
                 //alert(url); ///////////////////////////////////////////////////////////////////////////////
                 $.ajax({
                     url : url,
