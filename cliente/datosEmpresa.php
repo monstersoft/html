@@ -5,14 +5,12 @@
 	$arreglo = array();
 	$consulta = "SELECT idEmpresa, rut, nombre, correo, telefono FROM empresas WHERE idEmpresa = '$id'";
 	if($resultado = mysqli_query($conexion,$consulta)) {
-		$i = 0;
 		while($row = mysqli_fetch_assoc($resultado)) {
-	    	$arreglo[$i]['idEmpresa'] = $row['idEmpresa'];
-			$arreglo[$i]['rut'] = $row['rut'];
-			$arreglo[$i]['nombre'] = $row['nombre'];
-			$arreglo[$i]['correo'] = $row['correo'];
-			$arreglo[$i]['telefono'] = $row['telefono'];
-			$i++;
+	    	$arreglo['idEmpresa'] = $row['idEmpresa'];
+			$arreglo['rut'] = $row['rut'];
+			$arreglo['nombre'] = $row['nombre'];
+			$arreglo['correo'] = $row['correo'];
+			$arreglo['telefono'] = $row['telefono'];
         }
 	}
     $arreglo = utf8Converter($arreglo);

@@ -328,7 +328,7 @@
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
                 </div>
-<!--    EDITAR .....................................................................................--> 
+<!--    EDITAR EMPRESA.....................................................................................--> 
                 <div class="ui modal modalEditarEmpresa">
                     <div class="header">
                       <i class="industry icon" style="float: right;"></i>
@@ -339,32 +339,32 @@
                             <div class="field">
                                 <label>Nombre</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Empresa" name="nombreEditar" id="nombreEditar1">
+                                    <input type="text" name="nombreEditar" id="nombreEditar">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Rut</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder="17286211-K" name="rutEditar" id="rutEditar1">
+                                    <input type="text" name="rutEditar" id="rutEditar">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Correo</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder=". . . . . @ . . . . . " name="emailEditar" id="emailEditar1">
+                                    <input type="text" name="emailEditar" id="emailEditar">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Teléfono</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder="995007812" name="telefonoEditar" id="telefonoEditar1">
+                                    <input type="text" name="telefonoEditar" id="telefonoEditar">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
-                            <input type="text" name="idEditar" id="idEditar1">
+                            <input type="text" name="idEditar" id="idEditar">
                         </form>
                         <div style="text-align: right;margin-top: 15px">
                             <a  class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>

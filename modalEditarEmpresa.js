@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var data = 
         [{
-            id: 1 
+            id: 0
         },{
             nombre: {original: '',modificado: '',cambio: 0}
         },{
@@ -33,13 +33,12 @@ $(document).ready(function(){
             type: 'POST',
             data: {idEmpresa: id},
             dataType: 'json',
-            success: function(arreglo){
+            success: function(arreglo){;
                 $('#idEditar').val(arreglo.idEmpresa);
-                $('#nombreEditar1').val(arreglo.nombre);
-                $('#rutEditar1').val(arreglo.rut);
-                $('#emailEditar1').val(arreglo.correo);
-                $('#telefonoEditar1').val(arreglo.telefono);
-                $('#direccionEditar1').val(arreglo.direccion);         
+                $('#nombreEditar').val(arreglo.nombre);
+                $('#rutEditar').val(arreglo.rut);
+                $('#emailEditar').val(arreglo.correo);
+                $('#telefonoEditar').val(arreglo.telefono);
             }
         }).fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){
@@ -62,7 +61,7 @@ $(document).ready(function(){
     $('.editarEmpresa').click(function(){
         borrarMensajes();
         $('.modalEditarEmpresa').modal('show');
-        var url = 'b.php';
+        var url = 'datosEmpresa.php';
         var id = $(this).attr('id');
         var datos = retornaDatos(id,url);
         datos.success(function(respuesta){
@@ -73,7 +72,7 @@ $(document).ready(function(){
             data[4].telefono.original = respuesta.telefono;
         });
     });
-    /*$('.modalEditarEmpresa').on('click','#btnEditarEmpresa',function(){
+    $('.modalEditarEmpresa').on('click','#btnEditarEmpresa',function(){
         borrarMensajes();
         var arreglo = new Array();
         data[1].nombre.modificado = $('#nombreEditar').val();
@@ -116,12 +115,12 @@ $(document).ready(function(){
                 flag = false;
             }
             if(flag != true){
-                var url = devuelveUrl('b.php');
+                var url = 'editarEmpresa.php';
                 $.ajax({
                     url : url,
                     type: 'POST',
                     data:{datos: data },
-                    success: /*function(arreglo) {
+                    success: function(arreglo) {
                             var list = JSON.parse(arreglo);
                             var lisp = '';
                             var lispError = '';
@@ -161,5 +160,6 @@ $(document).ready(function(){
             
         }
         else 
-            errorMessage(arreglo);*/
+            errorMessage(arreglo);
     });
+});

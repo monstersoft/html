@@ -78,13 +78,6 @@ INSERT INTO `empresas` (`idEmpresa`, `rut`, `nombre`, `correo`, `telefono`) VALU
 (92, '15331355-5', 'ALGO', 'contactso@servisiosbiobio.cl', '412424026');
 
 -- --------------------------------------------------------
-
---
--- Estructura Stand-in para la vista `empresascliente`
---
-CREATE TABLE `empresascliente` (
-);
-
 -- --------------------------------------------------------
 
 --
@@ -203,13 +196,6 @@ INSERT INTO `proyectos` (`idProyecto`, `idEmpresa`, `nombre`) VALUES
 (12, 1, 'Proyecto4');
 
 -- --------------------------------------------------------
-
---
--- Estructura Stand-in para la vista `pxe`
---
-CREATE TABLE `pxe` (
-);
-
 -- --------------------------------------------------------
 
 --
@@ -297,15 +283,6 @@ INSERT INTO `supervisoreszonas` (`id`, `idZona`, `idSupervisor`) VALUES
 (27, 11, 13);
 
 -- --------------------------------------------------------
-
---
--- Estructura Stand-in para la vista `sxe`
---
-CREATE TABLE `sxe` (
-`idEmpresa` int(11)
-,`supervisores` bigint(21)
-);
-
 -- --------------------------------------------------------
 
 --
@@ -338,51 +315,15 @@ INSERT INTO `zonas` (`idZona`, `idProyecto`, `nombre`, `latitud`, `longitud`) VA
 (11, 7, 'Los leones', -33.449383, -70.670280);
 
 -- --------------------------------------------------------
-
---
--- Estructura Stand-in para la vista `zxe`
---
-CREATE TABLE `zxe` (
-`idEmpresa` int(11)
-,`zonas` bigint(21)
-);
-
 -- --------------------------------------------------------
 
 --
 -- Estructura para la vista `empresascliente`
 --
 DROP TABLE IF EXISTS `empresascliente`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `empresascliente`  AS  select `pxe`.`idEmpresa` AS `idEmpresa`,`pxe`.`rut` AS `rut`,`pxe`.`nombre` AS `nombre`,`pxe`.`correo` AS `correo`,`pxe`.`giro` AS `giro`,`pxe`.`direccion` AS `direccion`,`pxe`.`telefono` AS `telefono`,`pxe`.`proyectos` AS `proyectos`,`zxe`.`zonas` AS `zonas`,`sxe`.`supervisores` AS `supervisores` from ((`pxe` join `zxe` on((`pxe`.`idEmpresa` = `zxe`.`idEmpresa`))) join `sxe` on((`zxe`.`idEmpresa` = `sxe`.`idEmpresa`))) ;
-
 -- --------------------------------------------------------
-
---
--- Estructura para la vista `pxe`
---
-DROP TABLE IF EXISTS `pxe`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pxe`  AS  select `empresas`.`idEmpresa` AS `idEmpresa`,`empresas`.`rut` AS `rut`,`empresas`.`nombre` AS `nombre`,`empresas`.`correo` AS `correo`,`empresas`.`giro` AS `giro`,`empresas`.`direccion` AS `direccion`,`empresas`.`telefono` AS `telefono`,count(`proyectos`.`idProyecto`) AS `proyectos` from (`empresas` join `proyectos` on((`empresas`.`idEmpresa` = `proyectos`.`idEmpresa`))) group by `empresas`.`idEmpresa` ;
-
 -- --------------------------------------------------------
-
---
--- Estructura para la vista `sxe`
---
-DROP TABLE IF EXISTS `sxe`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `sxe`  AS  select `empresas`.`idEmpresa` AS `idEmpresa`,count(`supervisores`.`idSupervisor`) AS `supervisores` from ((((`empresas` join `proyectos` on((`empresas`.`idEmpresa` = `proyectos`.`idEmpresa`))) join `zonas` on((`proyectos`.`idProyecto` = `zonas`.`idProyecto`))) join `supervisoreszonas` on((`zonas`.`idZona` = `supervisoreszonas`.`idZona`))) join `supervisores` on((`supervisoreszonas`.`idSupervisor` = `supervisores`.`idSupervisor`))) group by `empresas`.`idEmpresa` ;
-
 -- --------------------------------------------------------
-
---
--- Estructura para la vista `zxe`
---
-DROP TABLE IF EXISTS `zxe`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `zxe`  AS  select `empresas`.`idEmpresa` AS `idEmpresa`,count(`zonas`.`idZona`) AS `zonas` from ((`empresas` join `proyectos` on((`empresas`.`idEmpresa` = `proyectos`.`idEmpresa`))) join `zonas` on((`proyectos`.`idProyecto` = `zonas`.`idProyecto`))) group by `empresas`.`idEmpresa` ;
-
 --
 -- Índices para tablas volcadas
 --

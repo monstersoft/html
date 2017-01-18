@@ -8,7 +8,7 @@
         $idEmpresa = $_GET['id'];
         $email = $_SESSION['correo'];
         $perfil = datosPerfil($email);
-        $proyectos = proyectos($idEmpresa);
+        $proyectos = utf8Converter(proyectos($idEmpresa));
     }
 ?>
 <!DOCTYPE html>

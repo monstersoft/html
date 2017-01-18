@@ -1,5 +1,5 @@
 <?php
-	include '../php/conexion.php';
+	include 'php/conexion.php';
 	$arreglo = $_POST['datos'];
 	$arreglo['fracasos'] = 0;
 	$arreglo['exitos'] = 0;

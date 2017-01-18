@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var data = 
         [{
-            id: 1 
+            id: 0
         },{
             nombre: {original: '',modificado: '',cambio: 0}
         },{
@@ -33,13 +33,12 @@ $(document).ready(function(){
             type: 'POST',
             data: {idEmpresa: id},
             dataType: 'json',
-            success: function(arreglo){
+            success: function(arreglo){;
                 $('#idEditar').val(arreglo.idEmpresa);
-                $('#nombreEditar1').val(arreglo.nombre);
-                $('#rutEditar1').val(arreglo.rut);
-                $('#emailEditar1').val(arreglo.correo);
-                $('#telefonoEditar1').val(arreglo.telefono);
-                $('#direccionEditar1').val(arreglo.direccion);         
+                $('#nombreEditar').val(arreglo.nombre);
+                $('#rutEditar').val(arreglo.rut);
+                $('#emailEditar').val(arreglo.correo);
+                $('#telefonoEditar').val(arreglo.telefono);
             }
         }).fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){
@@ -62,22 +61,16 @@ $(document).ready(function(){
     $('.editarEmpresa').click(function(){
         borrarMensajes();
         $('.modalEditarEmpresa').modal('show');
-<<<<<<< HEAD
         var url = devuelveUrl('html/cliente/datosEmpresa.php');
-=======
-        var url = devuelveUrl('cliente/datosEmpresa.php');
- ////////////////////////////////////////////////////////////////////////////////
-        alert(url);
->>>>>>> origin/master
         var id = $(this).attr('id');
-        //var datos = retornaDatos(id,url);
-        /*datos.success(function(respuesta){
+        var datos = retornaDatos(id,url);
+        datos.success(function(respuesta){
             data[0].id = respuesta.idEmpresa;
             data[1].nombre.original = respuesta.nombre;
             data[2].rut.original = respuesta.rut;
             data[3].correo.original = respuesta.correo;
             data[4].telefono.original = respuesta.telefono;
-        });*/
+        });
     });
     $('.modalEditarEmpresa').on('click','#btnEditarEmpresa',function(){
         borrarMensajes();
@@ -121,10 +114,8 @@ $(document).ready(function(){
                 data[4].telefono.cambio = 1;
                 flag = false;
             }
-            //console.log('DESPUES DE VER SI CAMBIO'+JSON.stringify(data));
             if(flag != true){
-                var url = devuelveUrl('cliente/editarEmpresa.php');
-                //alert(url); ///////////////////////////////////////////////////////////////////////////////
+                var url = devuelveUrl('html/cliente/editarEmpresa.php');
                 $.ajax({
                     url : url,
                     type: 'POST',
@@ -172,3 +163,4 @@ $(document).ready(function(){
             errorMessage(arreglo);
     });
 });
+
