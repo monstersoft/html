@@ -48,17 +48,26 @@
 	function zonas($idProyecto) {
         $conexion = conectar();
         $arreglo = array();
-        $consulta = "SELECT zonas.idZona, zonas.nombre AS nombreZona
+        $consulta = "SELECT COUNT(zonas.idZona) 
+        			 AS cantidadZonas 
+        			 FROM zonas 
+        			 WHERE zonas.idProyecto = '$idProyecto'";
+        /*$consulta = "SELECT zonas.idZona, zonas.nombre AS nombreZona
         			 FROM zonas
-        			 WHERE zonas.idProyecto = '$idProyecto'"; 
+        			 WHERE zonas.idProyecto = '$idProyecto'"; */
         if($resultado = mysqli_query($conexion,$consulta)) {
-        	$i = 0;
-            while($row = mysqli_fetch_array($resultado)) {
-                $arreglo[$i]['idZona']= $row['idZona'];
-                $arreglo[$i]['nombreZona']= $row['nombreZona'];
-                $i++;
-            }
-        }
+        	$cantidadZonas = mysqli_fetch_assoc($resultado);
+        	if($cantidadZonas['cantidadZonas'] >= 1) {
+        		if($resultado = mysqli_query($conexion,$consulta)) {
+		        	$i = 0;
+		            while($row = mysqli_fetch_array($resultado)) {
+		                $arreglo[$i]['idZona']= $row['idZona'];
+		                $arreglo[$i]['nombreZona']= $row['nombreZona'];
+		                $i++;
+		            }
+		        }
+        	}
+	    }
         mysqli_close($conexion);
         return $arreglo;
     }
