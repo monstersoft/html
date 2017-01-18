@@ -86,7 +86,8 @@
 
 <!--CONTENIDO ..............................................................................-->
     <!--NUEVO PROYECTO ..............................................................................-->
-                <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
+                <!--<div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">-->
+                <div class="ui sixteen wide mobile column">
                     <div class="ui fluid card">
                         <div class="content">
                             <i class="file icon right floated"></i>
@@ -114,55 +115,74 @@
                                     </div>
                                     <div class="header">'.$value['nombreProyecto'].'</div>
                                     <div class="ui divider"></div>';
-                                    $zonas = zonas($value['idProyecto']);
-                                    foreach ($zonas as $key => $value) { echo '
-                                        <div class="description">
-                                            <i class="map icon large left floated"></i><div class="ui large header">Zona - '.$value['nombreZona'].'</div>
-                                            <table class="ui very basic unstackable table responsive">
-                                            <thead>
-                                                <tr>
-                                                    <th class="center aligned">Patente</th>
-                                                    <th class="center aligned">Fecha de registro</th>
-                                                    <th class="center aligned">Velocidad máxima [km/hr]</th>
-                                                    <th class="center aligned">Tara [kg]</th>
-                                                    <th class="center aligned">Carga máxima [kg]</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>'; 
-                                            $maquinas = maquinas($value['idZona']);
-                                            foreach ($maquinas as $key => $value) { echo '
-                                                    <tr>
-                                                        <td class="center aligned">'.$value['patente'].'</td>
-                                                        <td class="center aligned">'.$value['fechaRegistro'].'</td>
-                                                        <td class="center aligned">'.$value['velocidadMaxima'].'</td>
-                                                        <td class="center aligned">'.$value['tara'].'</td>
-                                                        <td class="center aligned">'.$value['cargaMaxima'].'</td>
-                                                    </tr>';
-                                            } echo '
-                                            </tbody>
-                                            </table>';
-                                            $supervisores = supervisores($value['idZona']);
-                                            foreach ($supervisores as $key => $value) { echo '
-                                                <div class="ui divider"></div>
-                                                <div class="ui relaxed divided list">
-                                                    <div class="item">
-                                                        <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
-                                                        <i class="large user middle aligned icon"></i>
-                                                        <div class="content">
-                                                            <a class="header">'.$value['nombreSupervisor'].'</a>
-                                                            <div class="description">'.$value['correoSupervisor'].'</div>
-                                                            <div class="description">Fono: '.$value['celular'].'</div>
-                                                            <div class="description">Fecha de registro: 25/11/16</div>
-                                                        </div>
-                                                    </div>
-                                                </div>';
-                                            } echo '
-                                        </div><br>';
-                                    ;} echo '
+                                    $cantidadZonas = cantidadZonas($value['idProyecto']);
+                                    if($cantidadZonas['cantidadZonas'] == 0) {
+                                        echo 'No hay zonas asociadas';
+                                    }
+                                    else {
+                                        $zonas = zonas($value['idProyecto']);
+                                        foreach ($zonas as $key => $value) { echo '
+                                            <div class="description">
+                                                <i class="map icon large left floated"></i>
+                                                <div class="ui large header">Zona - '.$value['nombreZona'].'</div>';
+                                                $cantidadSupervisores = cantidadSupervisores($value['idZona']);
+                                                if($cantidadSupervisores['cantidadSupervisores'] == 0) {
+                                                    echo 'No hay supervisores registrados para esta zona';
+                                                }
+                                                else {
+                                                    $cantidadMaquinas = cantidadMaquinas($value['idZona']);
+                                                    if($cantidadMaquinas['cantidadMaquinas'] >= 1) { 
+                                                        $maquinas = maquinas($value['idZona']); echo '
+                                                            <table class="ui very basic unstackable table responsive">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="center aligned">Patente</th>
+                                                                        <th class="center aligned">Fecha de registro</th>
+                                                                        <th class="center aligned">Velocidad máxima [km/hr]</th>
+                                                                        <th class="center aligned">Tara [kg]</th>
+                                                                        <th class="center aligned">Carga máxima [kg]</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>';
+                                                                foreach ($maquinas as $key => $value) { echo '
+                                                                    <tr>
+                                                                        <td class="center aligned">'.$value['patente'].'</td>
+                                                                        <td class="center aligned">'.$value['fechaRegistro'].'</td>
+                                                                        <td class="center aligned">'.$value['velocidadMaxima'].'</td>
+                                                                        <td class="center aligned">'.$value['tara'].'</td>
+                                                                        <td class="center aligned">'.$value['cargaMaxima'].'</td>
+                                                                    </tr>';
+                                                                } echo '
+                                                                </tbody>
+                                                            </table>';
+                                                        }
+                                                        else {
+                                                            echo 'No hay maquinas registradas';
+                                                        }
+                                                        $supervisores = supervisores($value['idZona']);
+                                                        foreach ($supervisores as $key => $value) { echo '
+                                                                <div class="ui divider"></div>
+                                                                <div class="ui relaxed divided list">
+                                                                    <div class="item">
+                                                                        <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
+                                                                        <i class="large user middle aligned icon"></i>
+                                                                        <div class="content">
+                                                                            <a class="header">'.$value['nombreSupervisor'].'</a>
+                                                                            <div class="description">'.$value['correoSupervisor'].'</div>
+                                                                            <div class="description">Fono: '.$value['celular'].'</div>
+                                                                            <div class="description">Fecha de registro: 25/11/16</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>'; 
+                                                        } 
+                                                    } echo '
+                                        </div><br>'; 
+                                        } 
+                                    } echo '
                                 </div>
                             </div>
-                        </div>'
-                    ;} 
+                        </div>';
+                    }
                 ?>
 <!--FIN CONTENIDO ..............................................................................-->
 

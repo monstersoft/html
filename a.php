@@ -1,6 +1,6 @@
 <?php
 
         include("php/funciones.php");
-        $empresas = empresas();
-    
+        $zonas = cantidadZonas(4);
+        echo $zonas['cantidadZonas']; 
 ?>

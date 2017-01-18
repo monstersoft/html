@@ -1,5 +1,50 @@
 <?php
 	include("conexion.php");
+	
+    function cantidadMaquinas($idZona) {
+        $conexion = conectar();
+        $arreglo = array();
+        $consulta = "SELECT 
+                     COUNT(maquinas.idMaquina) 
+                     AS cantidadMaquinas 
+                     FROM maquinas 
+                     WHERE maquinas.idZona = '$idZona'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+        	$arreglo = mysqli_fetch_assoc($resultado);
+        }
+        mysqli_close($conexion);
+        return $arreglo;
+	}
+
+	function cantidadSupervisores($idZona) {
+        $conexion = conectar();
+        $arreglo = array();
+        $consulta = "SELECT 
+                     COUNT(supervisoreszonas.idSupervisor) 
+                     AS cantidadSupervisores 
+                     FROM supervisoreszonas 
+                     WHERE supervisoreszonas.idZona = '$idZona'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+        	$arreglo = mysqli_fetch_assoc($resultado);
+        }
+        mysqli_close($conexion);
+        return $arreglo;
+	}
+
+	function cantidadZonas($idProyecto) {
+        $conexion = conectar();
+        $arreglo = array();
+        $consulta = "SELECT 
+                     COUNT(zonas.idZona) 
+                     AS cantidadZonas 
+                     FROM zonas 
+                     WHERE zonas.idProyecto = '$idProyecto'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+        	$arreglo = mysqli_fetch_assoc($resultado);
+        }
+        mysqli_close($conexion);
+        return $arreglo;
+	}
 
 	function maquinas($idZona) {
         $conexion = conectar();
@@ -48,25 +93,18 @@
 	function zonas($idProyecto) {
         $conexion = conectar();
         $arreglo = array();
-        $consulta = "SELECT COUNT(zonas.idZona) 
-        			 AS cantidadZonas 
-        			 FROM zonas 
-        			 WHERE zonas.idProyecto = '$idProyecto'";
-        /*$consulta = "SELECT zonas.idZona, zonas.nombre AS nombreZona
+        $consulta = "SELECT zonas.idZona, zonas.nombre AS nombreZona
         			 FROM zonas
-        			 WHERE zonas.idProyecto = '$idProyecto'"; */
+        			 WHERE zonas.idProyecto = '$idProyecto'";
         if($resultado = mysqli_query($conexion,$consulta)) {
-        	$cantidadZonas = mysqli_fetch_assoc($resultado);
-        	if($cantidadZonas['cantidadZonas'] >= 1) {
-        		if($resultado = mysqli_query($conexion,$consulta)) {
-		        	$i = 0;
-		            while($row = mysqli_fetch_array($resultado)) {
-		                $arreglo[$i]['idZona']= $row['idZona'];
-		                $arreglo[$i]['nombreZona']= $row['nombreZona'];
-		                $i++;
-		            }
-		        }
-        	}
+            if($resultado = mysqli_query($conexion,$consulta)) {
+                $i = 0;
+                while($row = mysqli_fetch_array($resultado)) {
+                    $arreglo[$i]['idZona']= $row['idZona'];
+                    $arreglo[$i]['nombreZona']= $row['nombreZona'];
+                    $i++;
+                }
+            }
 	    }
         mysqli_close($conexion);
         return $arreglo;

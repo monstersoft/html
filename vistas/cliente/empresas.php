@@ -81,87 +81,53 @@
             </div>
             <div class="ui grid">
 <!--CONTENIDO ..............................................................................-->
-                <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
+                <div class="ui sixteen wide mobile column">
                     <div class="ui fluid card">
                         <div class="content">
                             <i class="industry icon right floated"></i>
                             <div class="header">Nueva Empresa</div>
-                            <div class="ui divider"></div>
                             <div class="description">
-                                <div class="ui four mini statistics">
-                                    <div class="statistic">
-                                        <div class="value"><i class="file icon"></i>0</div>
-                                        <div class="label">Proyectos</div>
-                                    </div>
-                                    <div class="statistic">
-                                        <div class="value"><i class="map icon"></i>0</div>
-                                        <div class="label">Zonas</div>
-                                    </div>
-                                    <div class="statistic">
-                                        <div class="value"><i class="setting icon"></i>0</div>
-                                        <div class="label">Máquinas</div>
-                                    </div>
-                                    <div class="statistic">
-                                        <div class="value"><i class="user icon"></i>0</div>
-                                        <div class="label">Supervisores</div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <a class="ui bottom attached button insertarEmpresa"><i class="plus icon"></i></a>
                     </div>
                 </div>
                 <?php
-                    foreach ($empresas as $key => $value) { 
-                        echo ' 
-                            <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column cantidad">
-                                <div class="ui fluid card">
-                                    <div class="content">
-                                        <div class="big compact ui top right basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
-                                            <i class="plus icon"></i>
-                                            <div class="menu">
-                                                <div class="insertarProyecto proyecto item" id="'.$value['idEmpresa'].'"><i class="file icon"></i>Proyecto</div>
-                                                <div class="insertarZona zona item" id="'.$value['idEmpresa'].'"><i class="map icon"></i>Zona</div>
-                                                <div class="insertarSupervisor supervisor item" id="'.$value['idEmpresa'].'"><i class="user icon"></i>Supervisor</div>
+                    foreach ($empresas as $key => $value) { echo ' 
+                        <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column cantidad">
+                            <div class="ui fluid card">
+                                <div class="content">
+                                    <i class="industry icon right floated"></i>
+                                    <div class="header">'.$value['nombre'].'</div>
+                                    <div class="ui divider"></div>
+                                    <div class="description">
+                                        <div class="ui four mini statistics">
+                                            <div class="statistic">
+                                                <div class="value"><i class="file icon"></i><p class="cantidadProyectos">'.$value['proyectos'].'</p></div>
+                                                <div class="label">Proyectos</div>
+                                            </div>
+                                            <div class="statistic">
+                                                <div class="value"><i class="map icon"></i><p class="cantidadZonas">'.$value['zonas'].'</p></div>
+                                                <div class="label">Zonas</div>
+                                            </div>
+                                            <div class="statistic">
+                                                <div class="value"><i class="setting icon"></i><p class="cantidadMaquinas">'.$value['maquinas'].'</p></div>
+                                                <div class="label">Máquinas</div>
+                                            </div>
+                                            <div class="statistic">
+                                                <div class="value"><i class="user icon"></i><p class="cantidadSupervisores">'.$value['supervisores'].'</p></div>
+                                                <div class="label">Supervisores</div>
                                             </div>
                                         </div>
-                                        <div class="header">'.$value['nombre'].'</div>
-                                        <div class="ui divider"></div>
-                                        <div class="description">
-                                            <div class="ui four mini statistics">
-                                                <div class="statistic">
-                                                    <div class="value"><i class="file icon"></i><p class="cantidadProyectos">'.$value['proyectos'].'</p></div>
-                                                    <div class="label">Proyectos</div>
-                                                </div>
-                                                <div class="statistic">
-                                                    <div class="value"><i class="map icon"></i><p class="cantidadZonas">'.$value['zonas'].'</p></div>
-                                                    <div class="label">Zonas</div>
-                                                </div>
-                                                <div class="statistic">
-                                                    <div class="value"><i class="setting icon"></i><p class="cantidadMaquinas">'.$value['maquinas'].'</p></div>
-                                                    <div class="label">Máquinas</div>
-                                                </div>
-                                                <div class="statistic">
-                                                    <div class="value"><i class="user icon"></i><p class="cantidadSupervisores">'.$value['supervisores'].'</p></div>
-                                                    <div class="label">Supervisores</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ui three bottom attached buttons">
-                                        <a class="ui button eliminarEmpresa" id="'.$value['idEmpresa'].'">
-                                            <i class="trash icon"></i>
-                                        </a>
-                                        <a class="ui button editarEmpresa" id="'.$value['idEmpresa'].'">
-                                            <i class="write icon"></i>
-                                        </a>
-                                        <a href="verEmpresas.php?id='.$value['idEmpresa'].'" class="ui button ver" id="'.$value['idEmpresa'].'">
-                                            <i class="unhide icon"></i>
-                                        </a> 
                                     </div>
                                 </div>
+                                <div class="ui three bottom attached buttons">
+                                    <a class="ui button eliminarEmpresa" id="'.$value['idEmpresa'].'"><i class="trash icon"></i></a>
+                                    <a class="ui button editarEmpresa" id="'.$value['idEmpresa'].'"><i class="write icon"></i></a>
+                                    <a href="verEmpresas.php?id='.$value['idEmpresa'].'" class="ui button ver" id="'.$value['idEmpresa'].'"><i class="unhide icon"></i></a> 
+                                </div>
                             </div>
-                        ';
+                        </div>';
                     }
                 ?>
 <!--CONTENIDO ..............................................................................-->
