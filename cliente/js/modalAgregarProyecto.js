@@ -1,23 +1,21 @@
 $(document).ready(function() {
-    $('.insertarSupervisor').click(function(){
+    $('.agregarProyecto').click(function(){
         $('.ui.negative.message').remove();
         $('.ui.warning.message').remove();
         $('.ui.icon.success.message').remove();
-        $('.modalInsertarSupervisor').modal('show');
+        $('.modalAgregarProyecto').modal('show');
     });
-/*$('.menu').on('click','.insertarProyecto',function(){
-    alert('j0lala');
-});*/
-    /*$('#btnAñadirProyecto').click(function(){
+    $('#btnAñadirProyecto').click(function(){
         var arreglo = new Array();
         var nombre = $('#nombreProyecto').val();
         var numberErrors = 0;
-        if(isEmpty(nombre)) {
+        if(isEmpty(nombre))
             arreglo.push('<li>El campo nombre es obigatorio</li>');
-        }
+        if(maxLength(nombre))
+            arreglo.push('<li>El campo nombre debe tener máximo 50 caracteres</li>');
         if(arreglo.length == 0) {
             var data = $('#formularioInsertarProyecto').serialize();
-            var url = devuelveUrl('html/cliente/insertarEmpresa.php');
+            var url = devuelveUrl('html/cliente/insertarProyecto.php');
             $.ajax({
                 url: url,
                 type: 'POST',
@@ -28,13 +26,13 @@ $(document).ready(function() {
                   $('#btnAñadir').addClass('disabled loading');
                   //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
                 },
-                success: function(returnedData) {
-                    if(returnedData.exito == 1) {
+                success: function(arreglo) {
+                    if(arreglo.exito == 1) {
                         successMessage('Registro realizado con éxito','Serás redireccionado al panel de empresas');
                         location.reload();
                     }
                     else {
-                        warningMessage(returnedData);
+                        $('.message').html('<div class="ui warning message">'+arreglo.msg+'</div>');
                     }
                     $('#cancelar').removeClass('disabled');
                     $('#btnAñadir').removeClass('disabled loading');
@@ -60,5 +58,5 @@ $(document).ready(function() {
         else {
             errorMessage(arreglo);
         }
-    });*/
+    });
 });

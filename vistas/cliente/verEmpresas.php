@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
     </head>
     <body>
+        <!-- SIDEBAR -->
         <div class="ui sidebar inverted vertical menu">
             <div id="perfil" class="item" href="/introduction/getting-started.html">
                 <h5 class="ui icon header">
@@ -73,149 +74,146 @@
                 </div>
             </a>
         </div>
+        <!-- PUSHER  -->
         <div class="pusher">
+            <!-- MENU FIXED -->
             <div class="ui top fixed menu">
                 <a id="menu" class="launch icon item"><i class="content icon"></i></a>
                 <p id="letra" class="ui center aligned header">
                     Machine Monitors
                 </p>
             </div>
-            <div class="ui grid">
-
-
-
-<!--CONTENIDO ..............................................................................-->
-    <!--NUEVO PROYECTO ..............................................................................-->
-                <!--<div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">-->
+            <!-- GRID       -->
+            <div class="ui grid">      
+<!-- CONTENIDO .......................................................................-->
+                <!-- NUEVO PROYECTO -->
                 <div class="ui sixteen wide mobile column">
                     <div class="ui fluid card">
                         <div class="content">
                             <i class="file icon right floated"></i>
                             <div class="header">Añadir Proyecto: <?php echo $idEmpresa; ?></div>
                         </div>
-                        <a class="ui bottom attached button insertarProyecto"><i class="plus icon"></i></a>
+                        <a class="ui bottom attached button agregarProyecto"><i class="plus icon"></i></a>
                     </div>
                 </div>
-    <!--PROYECTO ..............................................................................-->
-                <?php 
+                <!-- PROYECTO       -->
+                <?php             
                     foreach ($proyectos as $key => $value) { echo '
-                        <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
-                            <div class="ui fluid card">
-                                <div class="content">
-                                    <div class="compact ui top right basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
-                                        <i class="ellipsis vertical icon"></i>
-                                        <div class="menu">
-                                            <div class="insertarProyecto proyecto item"><i class="edit icon"></i>editar proyecto</div>
-                                            <div class="insertarZona zona item"><i class="delete icon"></i>remover proyecto</div>
-                                            <div class="insertarZona zona item"><i class="map icon"></i>agregar zona</div>
-                                            <div class="insertarZona zona item"><i class="edit icon"></i>editar zona</div>
-                                            <div class="insertarZona zona item"><i class="delete icon"></i>remover zona</div>
-                                            <div class="insertarZona zona item"><i class="user icon"></i>agregar supervisor</div>
-                                        </div>
+                    <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
+                        <div class="ui fluid card">
+                            <div class="content">
+                                <div class="compact ui top right basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
+                                    <i class="ellipsis vertical icon"></i>
+                                    <div class="menu">
+                                        <div class="editarProyecto item"><i class="edit icon"></i>editar proyecto</div>
+                                        <div class="eliminarProyecto item"><i class="delete icon"></i>remover proyecto</div>
+                                        <div class="agregarZona item"><i class="map icon"></i>agregar zona</div>
+                                        <div class="editarZona item"><i class="edit icon"></i>editar zona</div>
+                                        <div class="eliminarZona item"><i class="delete icon"></i>remover zona</div>
+                                        <div class="agregarSupervisor item"><i class="user icon"></i>agregar supervisor</div>
                                     </div>
-                                    <div class="header">'.$value['nombreProyecto'].'</div>
-                                    <div class="ui divider"></div>';
-                                    $cantidadZonas = cantidadZonas($value['idProyecto']);
-                                    if($cantidadZonas['cantidadZonas'] == 0) {
-                                        echo 'No hay zonas asociadas';
+                                </div>
+                                <div class="header">'.$value['nombreProyecto'].'</div>
+                                <div class="ui divider"></div>';
+                                $cantidadZonas = cantidadZonas($value['idProyecto']);
+                                if($cantidadZonas['cantidadZonas'] == 0) {
+                                    echo 'No hay zonas asociadas';
+                                }
+                                else {
+                                    $zonas = zonas($value['idProyecto']);
+                                    foreach ($zonas as $key => $value) { echo '
+                                <div class="description">
+                                    <i class="map icon large left floated"></i>
+                                    <div class="ui large header">Zona - '.$value['nombreZona'].'</div>';
+                                    $cantidadSupervisores = cantidadSupervisores($value['idZona']);
+                                    if($cantidadSupervisores['cantidadSupervisores'] == 0) {
+                                        echo 'No hay supervisores registrados para esta zona';
                                     }
                                     else {
-                                        $zonas = zonas($value['idProyecto']);
-                                        foreach ($zonas as $key => $value) { echo '
-                                            <div class="description">
-                                                <i class="map icon large left floated"></i>
-                                                <div class="ui large header">Zona - '.$value['nombreZona'].'</div>';
-                                                $cantidadSupervisores = cantidadSupervisores($value['idZona']);
-                                                if($cantidadSupervisores['cantidadSupervisores'] == 0) {
-                                                    echo 'No hay supervisores registrados para esta zona';
-                                                }
-                                                else {
-                                                    $cantidadMaquinas = cantidadMaquinas($value['idZona']);
-                                                    if($cantidadMaquinas['cantidadMaquinas'] >= 1) { 
-                                                        $maquinas = maquinas($value['idZona']); echo '
-                                                            <table class="ui very basic unstackable table responsive">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th class="center aligned">Patente</th>
-                                                                        <th class="center aligned">Fecha de registro</th>
-                                                                        <th class="center aligned">Velocidad máxima [km/hr]</th>
-                                                                        <th class="center aligned">Tara [kg]</th>
-                                                                        <th class="center aligned">Carga máxima [kg]</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>';
-                                                                foreach ($maquinas as $key => $value) { echo '
-                                                                    <tr>
-                                                                        <td class="center aligned">'.$value['patente'].'</td>
-                                                                        <td class="center aligned">'.$value['fechaRegistro'].'</td>
-                                                                        <td class="center aligned">'.$value['velocidadMaxima'].'</td>
-                                                                        <td class="center aligned">'.$value['tara'].'</td>
-                                                                        <td class="center aligned">'.$value['cargaMaxima'].'</td>
-                                                                    </tr>';
-                                                                } echo '
-                                                                </tbody>
-                                                            </table>';
-                                                        }
-                                                        else {
-                                                            echo 'No hay maquinas registradas';
-                                                        }
-                                                        $supervisores = supervisores($value['idZona']);
-                                                        foreach ($supervisores as $key => $value) { echo '
-                                                                <div class="ui divider"></div>
-                                                                <div class="ui relaxed divided list">
-                                                                    <div class="item">
-                                                                        <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
-                                                                        <i class="large user middle aligned icon"></i>
-                                                                        <div class="content">
-                                                                            <a class="header">'.$value['nombreSupervisor'].'</a>
-                                                                            <div class="description">'.$value['correoSupervisor'].'</div>
-                                                                            <div class="description">Fono: '.$value['celular'].'</div>
-                                                                            <div class="description">Fecha de registro: 25/11/16</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>'; 
-                                                        } 
-                                                    } echo '
-                                        </div><br>'; 
-                                        } 
+                                        $cantidadMaquinas = cantidadMaquinas($value['idZona']);
+                                        if($cantidadMaquinas['cantidadMaquinas'] >= 1) { 
+                                            $maquinas = maquinas($value['idZona']); echo '
+                                    <table class="ui very basic unstackable table responsive">
+                                        <thead>
+                                            <tr>
+                                                <th class="center aligned">Patente</th>
+                                                <th class="center aligned">Fecha de registro</th>
+                                                <th class="center aligned">Velocidad máxima [km/hr]</th>
+                                                <th class="center aligned">Tara [kg]</th>
+                                                <th class="center aligned">Carga máxima [kg]</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>';
+                                        foreach ($maquinas as $key => $value) { echo '
+                                            <tr>
+                                                <td class="center aligned">'.$value['patente'].'</td>
+                                                <td class="center aligned">'.$value['fechaRegistro'].'</td>
+                                                <td class="center aligned">'.$value['velocidadMaxima'].'</td>
+                                                <td class="center aligned">'.$value['tara'].'</td>
+                                                <td class="center aligned">'.$value['cargaMaxima'].'</td>
+                                            </tr>';
+                                        } echo '
+                                        </tbody>
+                                    </table>';
+                                    }
+                                    else {
+                                        echo 'No hay maquinas registradas';
+                                    }
+                                    $supervisores = supervisores($value['idZona']);
+                                    foreach ($supervisores as $key => $value) { echo '
+                                    <div class="ui divider"></div>
+                                    <div class="ui relaxed divided list">
+                                        <div class="item">
+                                            <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
+                                            <i class="large user middle aligned icon"></i>
+                                            <div class="content">
+                                                <a class="header">'.$value['nombreSupervisor'].'</a>
+                                                <div class="description">'.$value['correoSupervisor'].'</div>
+                                                <div class="description">Fono: '.$value['celular'].'</div>
+                                                <div class="description">Fecha de registro: 25/11/16</div>
+                                            </div>
+                                        </div>
+                                    </div>'; 
+                                    } 
                                     } echo '
-                                </div>
+                                </div><br>'; 
+                                    } 
+                                    } echo '
                             </div>
-                        </div>';
-                    }
-                ?>
-<!--FIN CONTENIDO ..............................................................................-->
-
-
-
-
-<!--VENTANAS MODALES ..............................................................................-->
-<!--    INSERTAR PROYECTO .....................................................................................--> 
-                <div class="ui modal modalInsertarProyecto">
-                    <div class="header">
-                      <i class="file icon" style="float: right;"></i>
-                      Agregar Proyecto
-                    </div>
-                    <div class="content">
-                        <form class="ui form" id="formularioInsertarProyecto">
-                            <div class="field">
-                                <label>Nombre</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Nuevo Proyecto" name="nombreProyecto" id="nombreProyecto">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <?php echo '<input type="text" name="idEmpresa" value="'.$idEmpresa.'">'; ?>
-                        </form>
-                        <div style="text-align: right;margin-top: 15px">
-                            <a class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
-                            <a class="ui button green" id="btnAñadirProyecto"><i class="add icon"></i>Añadir</a>
                         </div>
-                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                    </div>';
+                    }
+                ?>            
+<!-- FIN CONTENIDO ...................................................................-->
+            </div>
+        </div>
+<!-- VENTANAS MODALES ..............................................................................-->
+    <!--    INSERTAR PROYECTO     --> 
+       <div class="ui modal modalAgregarProyecto">
+            <div class="header">
+              <i class="file icon" style="float: right;"></i>
+              Agregar Proyecto
+            </div>
+            <div class="content">
+                <form class="ui form" id="formularioInsertarProyecto">
+                    <div class="field">
+                        <label>Nombre</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="Nuevo Proyecto" name="nombreProyecto" id="nombreProyecto">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                        </div>
                     </div>
+                    <?php echo '<input type="text" name="idEmpresa" value="'.$idEmpresa.'">'; ?>
+                </form>
+                <div style="text-align: right;margin-top: 15px">
+                    <a class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                    <a class="ui button green" id="btnAñadirProyecto"><i class="add icon"></i>Añadir</a>
                 </div>
-<!--    INSERTAR ZONA .....................................................................................--> 
-                <div class="ui modal modalInsertarZona">
+                <div class="message" style="margin: 15px 0px 0px 0px"></div>
+            </div>
+        </div>
+    <!--    INSERTAR ZONA         --> 
+        <div class="ui modal modalAgregarZona">
                     <div class="header">
                       <i class="map icon" style="float: right;"></i>
                       Agregar Zona
@@ -262,8 +260,8 @@
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
                 </div>
-<!--    INSERTAR SUPERVISOR .....................................................................................--> 
-                <div class="ui modal modalInsertarSupervisor">
+    <!--    INSERTAR SUPERVISOR   --> 
+        <div class="ui modal modalAgregarSupervisor">
                     <div class="header">
                       <i class="user icon" style="float: right;"></i>
                       Agregar Supervisor
@@ -302,14 +300,142 @@
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
                 </div>
-<!--FIN VENTANAS MODALES ..............................................................................-->
+    <!--    EDITAR PROYECTO       --> 
+        <div class="ui modal modalEditarProyecto">
+                    <div class="header">
+                      <i class="user icon" style="float: right;"></i>
+                      Editar Proyecto
+                    </div>
+                    <div class="content">
+                        <form class="ui form" id="formularioEditarProyecto">
+                            <div class="field">
+                                <label>Nombre</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="Nuevo Supervisor" name="nombreSupervisor" id="nombreSupervisor">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <input type="text" name="idProyecto" id="idProyecto">
+                        </form>
+                        <div style="text-align: right;margin-top: 15px">
+                            <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                            <a href="#" class="ui button green" id="btnAñadirSupervisor"><i class="add icon"></i>Añadir</a>
+                        </div>
+                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                    </div>
+                </div>
+    <!--    EDITAR ZONA --> 
+        <div class="ui modal modalEditarZona">
+                    <div class="header">
+                      <i class="user icon" style="float: right;"></i>
+                      Editar Zona
+                    </div>
+                    <div class="content">
+                        <form class="ui form" id="formularioEditarZona">
+                            <div class="field">
+                                <label>Nombre</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="Nuevo Supervisor" name="nombreSupervisor" id="nombreSupervisor">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Latitud</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="Nueva Latitud" name="latitudZona" id="latitudZona">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Longitud</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="Nueva Longitud" name="longitudZona" id="longitudZona">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <input type="text" name="idZona" id="idZona">
+                        </form>
+                        <div style="text-align: right;margin-top: 15px">
+                            <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                            <a href="#" class="ui button green" id="btnAñadirSupervisor"><i class="add icon"></i>Añadir</a>
+                        </div>
+                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                    </div>
+                </div>
+    <!--    ELIMINAR PROYECTO     -->
+        <div class="ui basic test modal modalEliminarProyecto">
+            <div class="ui icon header">
+                <i class="archive icon"></i>
+                <div class="ui center aligned content">
+                    Eliminar Proyecto
+                </div>
+            </div>
+                <p style="text-align: center;">Estas seguro que quieres eliminar este proyecto de la base de datos ?</p>
+                <p id="idEmpresa" style="color: red"></p> 
+            <div class="actions">
+                <div class="ui red basic cancel inverted button">
+                    <i class="remove icon"></i>
+                    ¡ No !
+                </div>
+                <div class="ui green ok inverted button">
+                    <i class="checkmark icon"></i>
+                    Si , estoy seguro
+                </div>
             </div>
         </div>
+    <!--    ELIMINAR ZONA         -->
+        <div class="ui basic test modal modalEliminarZona">
+            <div class="ui icon header">
+                <i class="archive icon"></i>
+                <div class="ui center aligned content">
+                    Eliminar Zona
+                </div>
+            </div>
+                <p style="text-align: center;">Estas seguro que quieres eliminar esta zona de la base de datos ?</p>
+                <p id="idEmpresa" style="color: red"></p> 
+            <div class="actions">
+                <div class="ui red basic cancel inverted button">
+                    <i class="remove icon"></i>
+                    ¡ No !
+                </div>
+                <div class="ui green ok inverted button">
+                    <i class="checkmark icon"></i>
+                    Si , estoy seguro
+                </div>
+            </div>
+        </div>
+    <!--    ELIMINAR SUPERVISOR   -->
+        <div class="ui basic test modal modalEliminarSupervisor" >
+            <div class="ui icon header">
+                <i class="archive icon"></i>
+                <div class="ui center aligned content">
+                    Eliminar Supervisor
+                </div>
+            </div>
+                <p style="text-align: center;">Estas seguro que quieres eliminar esta Supervisor de la base de datos ?</p>
+                <p id="idEmpresa" style="color: red"></p> 
+            <div class="actions">
+                <div class="ui red basic cancel inverted button">
+                    <i class="remove icon"></i>
+                    ¡ No !
+                </div>
+                <div class="ui green ok inverted button">
+                    <i class="checkmark icon"></i>
+                    Si , estoy seguro
+                </div>
+            </div>
+        </div>              
+<!--FIN VENTANAS MODALES ..............................................................................-->
         <script src="../../js/jquery2.js"></script>
         <script src="../../semantic/semantic.js"></script>
-        <script src="../../cliente/js/modalInsertarProyecto.js"></script>
-        <script src="../../cliente/js/modalInsertarZona.js"></script>
-        <script src="../../cliente/js/modalInsertarSupervisor.js"></script>
+        <script src="../../cliente/js/modalAgregarProyecto.js"></script>
+        <script src="../../cliente/js/modalAgregarZona.js"></script>
+        <script src="../../cliente/js/modalAgregarSupervisor.js"></script>
+        <script src="../../cliente/js/modalEditarProyecto.js"></script>
+        <script src="../../cliente/js/modalEditarZona.js"></script>
+        <script src="../../cliente/js/modalEliminarProyecto.js"></script>
+        <script src="../../cliente/js/modalEliminarZona.js"></script>
+        <script src="../../cliente/js/modalEliminarSupervisor.js"></script>
         <script src="../../cliente/js/compruebaInputs.js"></script>
         <script src="../../cliente/js/mensajes.js"></script>
         <script src="../../cliente/js/devuelveUrl.js"></script>
@@ -337,9 +463,13 @@
                     $('#formularioInsertarProyecto').trigger("reset");
                     $('#formularioInsertarZona').trigger("reset");
                     $('#formularioInsertarSupervisor').trigger("reset");
-                    $('.modalInsertarProyecto').modal('hide');
-                    $('.modalInsertarZona').modal('hide');
-                    $('.modalInsertarSupervisor').modal('hide');
+                    $('.modalAgregarProyecto').modal('hide');
+                    $('.modalAgregarZona').modal('hide');
+                    $('.modalAgregarSupervisor').modal('hide');
+                    $('.modalEditarProyecto').modal('hide');
+                    $('.modalEditarZona').modal('hide');
+                    $('.modalRemoverProyecto').modal('hide');
+                    $('.modalRemoverZona').modal('hide');
                 });
             });
         </script>
