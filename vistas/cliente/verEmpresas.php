@@ -343,24 +343,12 @@
                             <div class="ui corner label"><i class="asterisk icon"></i></div>
                         </div>
                     </div>
-                    <div class="field">
-                        <label>Latitud</label>
-                        <div class="ui corner labeled input">
-                            <input type="text" name="latitudEditarZona" id="latitudEditarZona">
-                            <div class="ui corner label"><i class="asterisk icon"></i></div>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Longitud</label>
-                        <div class="ui corner labeled input">
-                            <input type="text" name="longitudEditarZona" id="longitudEditarZona">
-                            <div class="ui corner label"><i class="asterisk icon"></i></div>
-                        </div>
-                    </div>
                     <label for="idProyecto">idProyecto</label>
-                    <input type="text" name="idProyecto" id="idProyecto">
+                    <input type="text" name="idProyecto" id="idProyecto2">
                     <label for="idZona">idZona</label>
                     <input type="text" name="idZona" id="idZona">
+                    <label for="idZona">json devuelto</label>
+                    <input type="text" name="idZona" id="json">
                 </form>
                 <div style="text-align: right;margin-top: 15px">
                     <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>

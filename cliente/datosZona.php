@@ -2,19 +2,16 @@
 	include '../php/conexion.php';
 	$conexion = conectar();
 	$idZona = $_POST['idZona'];
-	/*$arreglo = array();
+	$arreglo = array();
 	$consulta = "SELECT * FROM zonas WHERE idZona = '$idZona'";
 	if($resultado = mysqli_query($conexion,$consulta)) {
 		while($row = mysqli_fetch_assoc($resultado)) {
             $arreglo['idZona'] = $row['idZona'];
 	    	$arreglo['idProyecto'] = $row['idProyecto'];
 			$arreglo['nombre'] = $row['nombre'];
-            $arreglo['latitud'] = $row['latitud'];
-            $arreglo['longitud'] = $row['longitud'];
         }
-	}*/
-    $arreglo['mensaje'] = 'esta es la id: '.$idZona;
-    //$arreglo = utf8Converter($arreglo);
+	}
+    $arreglo = utf8Converter($arreglo);
 	echo json_encode($arreglo);
 
 	function utf8Converter($array) {
@@ -25,4 +22,4 @@
 	    });
     return $array;
 	}
-?>>
+?>

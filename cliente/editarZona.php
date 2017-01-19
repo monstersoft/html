@@ -5,15 +5,15 @@
 	$arreglo['exitos'] = 0;
 	$arreglo['errores'] = 0;
 	$conexion = conectar();
-    $idEmpresa = $arreglo[0]['idEmpresa'];
-    $idProyecto = $arreglo[1]['idProyecto'];
+    $idProyecto= $arreglo[0]['idProyecto'];
+    $idZona= $arreglo[1]['idZona'];
 	if($arreglo[2]['nombre']['cambio'] == 1) {
 		$nombre = $arreglo[2]['nombre']['modificado'];
-		$consulta = "SELECT COUNT(proyectos.idProyecto) 
-                     AS nombres 
-                     FROM proyectos 
-                     WHERE proyectos.nombre = '$nombre' 
-                     AND proyectos.idEmpresa = '$idEmpresa'";
+		$consulta = "SELECT COUNT(zonas.idZona) 
+					 AS nombres 
+					 FROM zonas 
+					 WHERE zonas.nombre = '$nombre' 
+					 AND zonas.idProyecto = '$idProyecto'";
 		if($resultado = mysqli_query($conexion,$consulta)) {
 			$nombres = mysqli_fetch_assoc($resultado);
 			if($nombres['nombres'] >= 1) {
@@ -21,7 +21,7 @@
 				$arreglo['fracasos']++;
 			}
 			else {
-                $consulta = "UPDATE proyectos SET proyectos.nombre = '$nombre' WHERE proyectos.idProyecto = '$idProyecto'";
+                $consulta = "UPDATE zonas SET zonas.nombre = '$nombre' WHERE zonas.idZona = '$idZona'";
                 if(mysqli_query($conexion,$consulta)) {
                     $arreglo['msgExito'][] = 'Nombre editado correctamente';
                     $arreglo['exitoNombre'] = 1;
