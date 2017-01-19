@@ -1,17 +1,20 @@
 <?php
 	include '../php/conexion.php';
 	$conexion = conectar();
-	$idProyecto = $_POST['idProyecto'];
-	$arreglo = array();
-	$consulta = "SELECT idProyecto, idEmpresa, nombre FROM proyectos WHERE idProyecto = '$idProyecto'";
+	$idZona = $_POST['idZona'];
+	/*$arreglo = array();
+	$consulta = "SELECT * FROM zonas WHERE idZona = '$idZona'";
 	if($resultado = mysqli_query($conexion,$consulta)) {
 		while($row = mysqli_fetch_assoc($resultado)) {
-            $arreglo['idProyecto'] = $row['idProyecto'];
-	    	$arreglo['idEmpresa'] = $row['idEmpresa'];
+            $arreglo['idZona'] = $row['idZona'];
+	    	$arreglo['idProyecto'] = $row['idProyecto'];
 			$arreglo['nombre'] = $row['nombre'];
+            $arreglo['latitud'] = $row['latitud'];
+            $arreglo['longitud'] = $row['longitud'];
         }
-	}
-    $arreglo = utf8Converter($arreglo);
+	}*/
+    $arreglo['mensaje'] = 'esta es la id: '.$idZona;
+    //$arreglo = utf8Converter($arreglo);
 	echo json_encode($arreglo);
 
 	function utf8Converter($array) {
@@ -22,4 +25,4 @@
 	    });
     return $array;
 	}
-?>
+?>>

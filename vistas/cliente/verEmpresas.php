@@ -125,7 +125,7 @@
                                         <i class="mundo world outline icon huge"></i>
                                         <div class="tituloZona ui large header">Zona - '.$value['nombreZona'].'</div>
                                         <div class="botonesZona ui small basic icon buttons">
-                                            <button class="ui button editarZona"><i class="write icon"></i></button>
+                                            <button class="ui button editarZona" id="'.$value['idZona'].'"><i class="write icon"></i></button>
                                             <button class="ui button eliminarZona"><i class="remove icon"></i></button>
                                         </div>
                                     </div>';
