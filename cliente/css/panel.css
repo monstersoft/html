@@ -1,3 +1,16 @@
+.contenido {
+    padding: 15px;
+}
+.mundo {
+    display: inline;
+}
+.tituloZona {
+    display: inline;
+}
+.botonesZona {
+    display: inline;
+    float: right;
+}
 .iz {
     float: left;
     color: white;

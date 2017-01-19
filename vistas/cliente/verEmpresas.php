@@ -1,15 +1,15 @@
 <?php
-    session_start();
+    /*session_start();
     if(!isset($_SESSION['correo'])){
         header("Location:../../index.php");
     }
-    else {
+    else {*/
         include("../../php/funciones.php");
         $idEmpresa = $_GET['id'];
-        $email = $_SESSION['correo'];
-        $perfil = datosPerfil($email);
+        //$email = $_SESSION['correo'];
+        //$perfil = datosPerfil($email);
         $proyectos = utf8Converter(proyectos($idEmpresa));
-    }
+    //}
 ?>
 <!DOCTYPE html>
 <html>
@@ -97,7 +97,7 @@
                     </div>
                 </div>
                 <!-- PROYECTO       -->
-                <?php             
+                <?php
                     foreach ($proyectos as $key => $value) { echo '
                     <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
                         <div class="ui fluid card">
@@ -105,15 +105,13 @@
                                 <div class="compact ui top right basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
                                     <i class="ellipsis vertical icon"></i>
                                     <div class="menu">
-                                        <div class="editarProyecto item"><i class="edit icon"></i>editar proyecto</div>
-                                        <div class="eliminarProyecto item"><i class="delete icon"></i>remover proyecto</div>
-                                        <div class="agregarZona item"><i class="map icon"></i>agregar zona</div>
-                                        <div class="editarZona item"><i class="edit icon"></i>editar zona</div>
-                                        <div class="eliminarZona item"><i class="delete icon"></i>remover zona</div>
-                                        <div class="agregarSupervisor item"><i class="user icon"></i>agregar supervisor</div>
+                                        <div class="editarProyecto item" id="'.$value['idProyecto'].'"><i class="edit icon"></i>editar proyecto</div>
+                                        <div class="eliminarProyecto item" id="'.$value['idProyecto'].'"><i class="delete icon"></i>remover proyecto</div>
+                                        <div class="agregarZona item" id="'.$value['idProyecto'].'"><i class="map icon"></i>agregar zona</div>
+                                        <div class="agregarSupervisor item" id="'.$value['idProyecto'].'"><i class="user icon"></i>agregar supervisor</div>
                                     </div>
                                 </div>
-                                <div class="header">'.$value['nombreProyecto'].'</div>
+                                <div class="header">Proyecto '.$value['nombreProyecto'].'</div>
                                 <div class="ui divider"></div>';
                                 $cantidadZonas = cantidadZonas($value['idProyecto']);
                                 if($cantidadZonas['cantidadZonas'] == 0) {
@@ -123,8 +121,14 @@
                                     $zonas = zonas($value['idProyecto']);
                                     foreach ($zonas as $key => $value) { echo '
                                 <div class="description">
-                                    <i class="map icon large left floated"></i>
-                                    <div class="ui large header">Zona - '.$value['nombreZona'].'</div>';
+                                    <div class="contenido">
+                                        <i class="mundo world outline icon huge"></i>
+                                        <div class="tituloZona ui large header">Zona - '.$value['nombreZona'].'</div>
+                                        <div class="botonesZona ui small basic icon buttons">
+                                            <button class="ui button editarZona"><i class="write icon"></i></button>
+                                            <button class="ui button eliminarZona"><i class="remove icon"></i></button>
+                                        </div>
+                                    </div>';
                                     $cantidadSupervisores = cantidadSupervisores($value['idZona']);
                                     if($cantidadSupervisores['cantidadSupervisores'] == 0) {
                                         echo 'No hay supervisores registrados para esta zona';
@@ -188,7 +192,7 @@
             </div>
         </div>
 <!-- VENTANAS MODALES ..............................................................................-->
-    <!--    INSERTAR PROYECTO     --> 
+    <!--    AGREGAR PROYECTO     --> 
        <div class="ui modal modalAgregarProyecto">
             <div class="header">
               <i class="file icon" style="float: right;"></i>
@@ -212,7 +216,7 @@
                 <div class="message" style="margin: 15px 0px 0px 0px"></div>
             </div>
         </div>
-    <!--    INSERTAR ZONA         --> 
+    <!--    AGREGAR ZONA         --> 
         <div class="ui modal modalAgregarZona">
                     <div class="header">
                       <i class="map icon" style="float: right;"></i>
@@ -260,7 +264,7 @@
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
                 </div>
-    <!--    INSERTAR SUPERVISOR   --> 
+    <!--    AGREGAR SUPERVISOR   --> 
         <div class="ui modal modalAgregarSupervisor">
                     <div class="header">
                       <i class="user icon" style="float: right;"></i>
@@ -302,66 +306,70 @@
                 </div>
     <!--    EDITAR PROYECTO       --> 
         <div class="ui modal modalEditarProyecto">
-                    <div class="header">
-                      <i class="user icon" style="float: right;"></i>
-                      Editar Proyecto
-                    </div>
-                    <div class="content">
-                        <form class="ui form" id="formularioEditarProyecto">
-                            <div class="field">
-                                <label>Nombre</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Nuevo Supervisor" name="nombreSupervisor" id="nombreSupervisor">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <input type="text" name="idProyecto" id="idProyecto">
-                        </form>
-                        <div style="text-align: right;margin-top: 15px">
-                            <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
-                            <a href="#" class="ui button green" id="btnAñadirSupervisor"><i class="add icon"></i>Añadir</a>
+            <div class="header">
+                <i class="user icon" style="float: right;"></i>Editar Proyecto
+            </div>
+            <div class="content">
+                <form class="ui form" id="formularioEditarProyecto">
+                    <div class="field">
+                        <label>Nombre</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" name="nombreEditarProyecto" id="nombreEditarProyecto">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
                         </div>
-                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
+                    <input type="text" name="idEmpresa" id="idEmpresa2">
+                    <input type="text" name="idProyecto" id="idProyecto">
+                </form>
+                <div style="text-align: right;margin-top: 15px">
+                    <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                    <a href="#" class="ui button green" id="btnEditarProyecto"><i class="write icon"></i>Editar</a>
                 </div>
+                <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
+            </div>
+        </div>
     <!--    EDITAR ZONA --> 
         <div class="ui modal modalEditarZona">
-                    <div class="header">
-                      <i class="user icon" style="float: right;"></i>
-                      Editar Zona
-                    </div>
-                    <div class="content">
-                        <form class="ui form" id="formularioEditarZona">
-                            <div class="field">
-                                <label>Nombre</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Nuevo Supervisor" name="nombreSupervisor" id="nombreSupervisor">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Latitud</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Nueva Latitud" name="latitudZona" id="latitudZona">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Longitud</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Nueva Longitud" name="longitudZona" id="longitudZona">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <input type="text" name="idZona" id="idZona">
-                        </form>
-                        <div style="text-align: right;margin-top: 15px">
-                            <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
-                            <a href="#" class="ui button green" id="btnAñadirSupervisor"><i class="add icon"></i>Añadir</a>
+            <div class="header">
+                <i class="map icon" style="float: right;"></i>Editar Zona
+            </div>
+            <div class="content">
+                <form class="ui form" id="formularioEditarZona">
+                    <div class="field">
+                        <label>Nombre</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" name="nombreEditarZona" id="nombreEditarZona">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
                         </div>
-                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
+                    <div class="field">
+                        <label>Latitud</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" name="latitudEditarZona" id="latitudEditarZona">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Longitud</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" name="longitudEditarZona" id="longitudEditarZona">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                        </div>
+                    </div>
+                    <label for="idProyecto">idProyecto</label>
+                    <input type="text" name="idProyecto" id="idProyecto">
+                    <label for="idZona">idZona</label>
+                    <input type="text" name="idZona" id="idZona">
+                </form>
+                <div style="text-align: right;margin-top: 15px">
+                    <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                    <a href="#" class="ui button green" id="btnEditarZona"><i class="write icon"></i>Editar</a>
                 </div>
+                <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
+            </div>
+        </div>
     <!--    ELIMINAR PROYECTO     -->
         <div class="ui basic test modal modalEliminarProyecto">
             <div class="ui icon header">
@@ -405,7 +413,7 @@
             </div>
         </div>
     <!--    ELIMINAR SUPERVISOR   -->
-        <div class="ui basic test modal modalEliminarSupervisor" >
+        <div class="ui basic test modal modalEliminarSupervisor">
             <div class="ui icon header">
                 <i class="archive icon"></i>
                 <div class="ui center aligned content">
