@@ -122,7 +122,7 @@
                                     foreach ($zonas as $key => $value) { echo '
                                 <div class="description">
                                     <div class="contenido">
-                                        <i class="mundo world outline icon huge"></i>
+                                        <i class="mundo world outline icon huge" style="color: #F5A214"></i>
                                         <div class="tituloZona ui large header">Zona - '.$value['nombreZona'].'</div>
                                         <div class="botonesZona ui small basic icon buttons">
                                             <button class="ui button editarZona" id="'.$value['idZona'].'"><i class="write icon"></i></button>
@@ -137,7 +137,7 @@
                                         $cantidadMaquinas = cantidadMaquinas($value['idZona']);
                                         if($cantidadMaquinas['cantidadMaquinas'] >= 1) { 
                                             $maquinas = maquinas($value['idZona']); echo '
-                                    <table class="ui very basic unstackable table responsive">
+                                    <table class="ui very basic unstackable table responsive" style="border: 1px solid #F5A214; padding: 15px">
                                         <thead>
                                             <tr>
                                                 <th class="center aligned">Patente</th>
@@ -158,14 +158,13 @@
                                             </tr>';
                                         } echo '
                                         </tbody>
-                                    </table>';
+                                    </table><br>';
                                     }
                                     else {
                                         echo 'No hay maquinas registradas';
                                     }
                                     $supervisores = supervisores($value['idZona']);
                                     foreach ($supervisores as $key => $value) { echo '
-                                    <div class="ui divider"></div>
                                     <div class="ui relaxed divided list">
                                         <div class="item">
                                             <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
@@ -177,7 +176,7 @@
                                                 <div class="description">Fecha de registro: 25/11/16</div>
                                             </div>
                                         </div>
-                                    </div>'; 
+                                    </div><div class="ui divider"></div>'; 
                                     } 
                                     } echo '
                                 </div><br>'; 
@@ -192,7 +191,7 @@
             </div>
         </div>
 <!-- VENTANAS MODALES ..............................................................................-->
-    <!--    AGREGAR PROYECTO     --> 
+    <!--    AGREGAR PROYECTO      --> 
        <div class="ui modal modalAgregarProyecto">
             <div class="header">
               <i class="file icon" style="float: right;"></i>
@@ -216,55 +215,31 @@
                 <div class="message" style="margin: 15px 0px 0px 0px"></div>
             </div>
         </div>
-    <!--    AGREGAR ZONA         --> 
+    <!--    AGREGAR ZONA          --> 
         <div class="ui modal modalAgregarZona">
-                    <div class="header">
-                      <i class="map icon" style="float: right;"></i>
-                      Agregar Zona
-                    </div>
-                    <div class="content">
-                        <form class="ui form" id="formularioInsertarZona">
-                            <div class="field">
-                                <label>Nombre</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Nueva Zona" name="nombreZona" id="nombreZona">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Proyecto Asociado</label>
-                                <div class="ui fluid selection dropdown">
-                                    <input value="asdasdasd" placeholder="asdasdasdasdasdasdasd">
-                                    <i class="dropdown icon"></i>
-                                    <div class="default text">Seleccionar proyecto</div>
-                                    <div class="menu" id="listaProyectos">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Latitud</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Nueva Latitud" name="latitudZona" id="latitudZona">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Longitud</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Nueva Longitud" name="longitudZona" id="longitudZona">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <input type="text" name="idEmpresaZona" id="idEmpresaZona">
-                        </form>
-                        <div style="text-align: right;margin-top: 15px">
-                            <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
-                            <a href="#" class="ui button green" id="btnAñadirZona"><i class="add icon"></i>Añadir</a>
+            <div class="header">
+              <i class="map icon" style="float: right;"></i>
+              Agregar Zona2
+            </div>
+            <div class="content">
+                <form class="ui form" id="formularioAgregarZona">
+                    <div class="field">
+                        <label>Nombre</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="Nueva Zona" name="nombreZona" id="nombreZona">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
                         </div>
-                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
+                    <input type="text" name="idProyectoZona" id="idProyectoZona">
+                </form>
+                <div style="text-align: right;margin-top: 15px">
+                    <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                    <a href="#" class="ui button green" id="btnAñadirZona"><i class="add icon"></i>Añadir</a>
                 </div>
-    <!--    AGREGAR SUPERVISOR   --> 
+                <div class="message" style="margin: 15px 0px 0px 0px"></div>
+            </div>
+        </div>
+    <!--    AGREGAR SUPERVISOR    --> 
         <div class="ui modal modalAgregarSupervisor">
                     <div class="header">
                       <i class="user icon" style="float: right;"></i>
@@ -329,7 +304,7 @@
                 <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
             </div>
         </div>
-    <!--    EDITAR ZONA --> 
+    <!--    EDITAR ZONA           --> 
         <div class="ui modal modalEditarZona">
             <div class="header">
                 <i class="map icon" style="float: right;"></i>Editar Zona

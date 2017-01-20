@@ -16,7 +16,8 @@ $(document).ready(function() {
             arreglo.push('<li>El campo nombre debe tener máximo 50 caracteres</li>');
         if(arreglo.length == 0) {
             var data = $('#formularioAgregarZona').serialize();
-            var url = devuelveUrl('html/cliente/agregarZona.php');
+            var url = devuelveUrl('agregarZona.php');
+            alert(url);
             $.ajax({
                 url: url,
                 type: 'POST',
