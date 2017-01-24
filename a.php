@@ -15,62 +15,24 @@
         </style>
     </head>
     <body>
-            <div class="ui grid">      
-                    <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
-                        <div class="ui fluid card">
-                            <div class="content">
-                                <div class="compact ui top basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
-                                    <i class="ellipsis vertical icon"></i>
-                                </div>
-                                <div class="tu header">Proyecto Los Trapenses</div>
-                                <div class="ui divider"></div>
-                                <div class="description">
-                                    <div class="contenido" style="padding: 5px">
-                                        <i class="mundo world outline icon huge"></i>
-                                        <div class="tituloZona ui large header">Zona - UCSC</div>
-                                        <div class="botonesZona ui small basic icon buttons">
-                                            <button class="ui button"><i class="write icon"></i></button>
-                                            <button class="ui button"><i class="remove icon"></i></button>
-                                        </div>
-                                    </div>
-                                    <table class="ui very basic unstackable table responsive">
-                                        <thead>
-                                            <tr>
-                                                <th class="center aligned">Patente</th>
-                                                <th class="center aligned">Fecha de registro</th>
-                                                <th class="center aligned">Velocidad máxima [km/hr]</th>
-                                                <th class="center aligned">Tara [kg]</th>
-                                                <th class="center aligned">Carga máxima [kg]</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="center aligned">A2510122</td>
-                                                <td class="center aligned">12/12/12</td>
-                                                <td class="center aligned">100</td>
-                                                <td class="center aligned">80</td>
-                                                <td class="center aligned">60</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="ui divider"></div>
-                                    <div class="ui relaxed divided list">
-                                        <div class="item">
-                                            <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
-                                            <i class="large user middle aligned icon"></i>
-                                            <div class="content">
-                                                <a class="header">Juan Pérez Pérez</a>
-                                                <div class="description">pavillanueva@ing.ucsc.cl</div>
-                                                <div class="description">95007812</div>
-                                                <div class="description">Fecha de registro: 25/11/16</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><br>
+        <div class="ui grid">
+                        <form class="ui form" id="formularioAgregarSupervisor">
+                            <div class="field">
+                                <label>Zonas Asociadas</label>
+                                <select multiple="" class="ui dropdown" id="zonasAsociadas" name="zonasAsociadas[]">
+                                    <option value="">Seleccionar zonas</option>
+                                    <option value="angular">Angular</option>
+                                    <option value="css">CSS</option>
+                                    <option value="design">Graphic Design</option>
+                                </select>
                             </div>
+                            <input type="text" name="idAgregarSupervisor" id="idAgregarSupervisor">
+                            <div style="text-align: right;margin-top: 15px">
+                            <a href="#" class="ui button green" id="btnAñadirSupervisor"><i class="add icon"></i>Añadir</a>
                         </div>
-                    </div>           
-            </div>
+                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                        </form>
+        </div>
         <script src="js/jquery2.js"></script>
         <script src="semantic/semantic.js"></script>
         <script>
@@ -90,6 +52,12 @@
                         $('.supervisor').addClass('disabled');*/
                         
                 }).dropdown();
+                $('#btnAñadirSupervisor').click(function(){
+                    if($('#zonasAsociadas').val() == null)
+                        alert('Es vacío: '+$('#zonasAsociadas').val());
+                    else
+                        alert($('#zonasAsociadas').val());
+                });
             });
         </script>
     </body>

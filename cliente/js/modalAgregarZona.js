@@ -3,7 +3,7 @@ $(document).ready(function() {
         $('.ui.negative.message').remove();
         $('.ui.warning.message').remove();
         $('.ui.icon.success.message').remove();
-        $('#idProyectoZona').val($(this).attr('id'));
+        $('#idProyecto').val($(this).attr('id'));
         $('.modalAgregarZona').modal('show');
     });
     $('#btnAñadirZona').click(function(){

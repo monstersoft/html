@@ -246,31 +246,38 @@
                       Agregar Supervisor
                     </div>
                     <div class="content">
-                        <form class="ui form" id="formularioInsertarSupervisor">
+                        <form class="ui form" id="formularioAgregarSupervisor">
                             <div class="field">
                                 <label>Nombre</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Nuevo Supervisor" name="nombreSupervisor" id="nombreSupervisor">
+                                    <input type="text" placeholder="Nuevo Supervisor" name="nombreSupervisor" id="nombreSupervisor" value="Pato">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Correo</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder=". . . . . @ . . . . . " name="correoSupervisor" id="correoSupervisor" value="pavil@arauco.cl">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Celular</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="995007812" name="celularSupervisor" id="celularSupervisor" value="995007812">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Zonas Asociadas</label>
-                                <select multiple="" class="ui fluid dropdown">
+                                <select multiple="" class="ui fluid dropdown" id="zonasAsociadas" name="zonasAsociadas[]">
                                     <option value="">Seleccionar zonas</option>
-                                    <option value="angular">Angular</option>
-                                    <option value="css">CSS</option>
-                                    <option value="design">Graphic Design</option>
+                                    <option value="1">Seleccionar zonas</option>
+                                    <option value="2">Seleccionar zonas</option>
+                                    <!--<div id="iden"></div>-->
                                 </select>
                             </div>
-                            <div class="field">
-                                <label>Correo</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="email" value="contacto@servisiosbiobio.cl">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <input type="text" name="idEditar" id="idEditar">
+                            <input type="text" name="idZonaSupervisor" id="idZonaSupervisor">
                         </form>
                         <div style="text-align: right;margin-top: 15px">
                             <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>

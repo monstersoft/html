@@ -1,23 +1,41 @@
 $(document).ready(function() {
-    $('.agregarZona').click(function(){
+    $('.agregarSupervisor').click(function(){
         $('.ui.negative.message').remove();
         $('.ui.warning.message').remove();
         $('.ui.icon.success.message').remove();
-        $('#idProyectoZona').val($(this).attr('id'));
-        $('.modalAgregarZona').modal('show');
+        $('.modalAgregarSupervisor').modal('show');
     });
-    $('#btnAñadirZona').click(function(){
+    $('#btnAñadirSupervisor').click(function(){
         var arreglo = new Array();
-        var nombre = $('#nombreZona').val();
+        var nombre = $('#nombreSupervisor').val();
+        var email = $('#correoSupervisor').val();
+        var telefono = $('#celularSupervisor').val();
+        var zonas = $('#zonasAsociadas').val();
         var numberErrors = 0;
-        if(isEmpty(nombre))
+        if(isEmpty(nombre)) {
             arreglo.push('<li>El campo nombre es obigatorio</li>');
-        if(maxLength(nombre))
-            arreglo.push('<li>El campo nombre debe tener máximo 50 caracteres</li>');
+        }
+        if(isEmpty(email)) {
+            arreglo.push('<li>El campo correo es obigatorio</li>');
+        }
+        if(isEmpty(telefono)) {
+            arreglo.push('<li>El campo teléfono es obigatorio</li>');
+        }
+        if(isEmpty(zonas)) {
+            arreglo.push('<li>Tienes que seleccionar al menos una zona</li>');
+        }
+        if(isMail(email)) {
+            arreglo.push('<li>Formato erróneo de correo electrónico</li>');
+        }
+        if(isExactly(telefono)) {
+            arreglo.push('<li>El teléfono debe tener 9 dígitos</li>');
+        }
+        if(isNumber(telefono)) {
+            arreglo.push('<li>El teléfono no es un número o no está en un formato adecuado</li>');
+        }
         if(arreglo.length == 0) {
-            var data = $('#formularioAgregarZona').serialize();
-            var url = devuelveUrl('agregarZona.php');
-            alert(url);
+            var data = $('#formularioAgregarSupervisor').serialize();
+            var url = devuelveUrl('html/cliente/agregarSupervisor.php');
             $.ajax({
                 url: url,
                 type: 'POST',
@@ -28,13 +46,13 @@ $(document).ready(function() {
                   $('#btnAñadir').addClass('disabled loading');
                   //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
                 },
-                success: function(arreglo) {
-                    if(arreglo.exito == 1) {
-                        successMessage('Registro realizado con éxito','Serás redireccionado al panel de empresas');
+                success: function(returnedData) {
+                    if(returnedData.exito == 1) {
+                        successMessage('Registro realizado con éxito','Serás redireccionado al panel de proyectos');
                         location.reload();
                     }
                     else {
-                        $('.message').html('<div class="ui warning message">'+arreglo.msg+'</div>');
+                        warningMessage(returnedData);
                     }
                     $('#cancelar').removeClass('disabled');
                     $('#btnAñadir').removeClass('disabled loading');
