@@ -32,6 +32,7 @@
 		else {
 			$arreglo['exito'] = 0;
 		}*/
+		$arreglo['msg']= sizeof($zonas);
 	}
 	echo json_encode($arreglo);
 ?>

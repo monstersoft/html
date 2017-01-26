@@ -1,64 +1,77 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <meta name="theme-color" content="#262626">
         <link rel="stylesheet" href="semantic/semantic.css">
-        <link rel="stylesheet" href="cliente/css/panel.css">
-        <style>
-
-            .mapa {
-                display: inline;
-            }
-        </style>
     </head>
     <body>
         <div class="ui grid">
-                        <form class="ui form" id="formularioAgregarSupervisor">
-                            <div class="field">
-                                <label>Zonas Asociadas</label>
-                                <select multiple="" class="ui dropdown" id="zonasAsociadas" name="zonasAsociadas[]">
-                                    <option value="">Seleccionar zonas</option>
-                                    <option value="angular">Angular</option>
-                                    <option value="css">CSS</option>
-                                    <option value="design">Graphic Design</option>
-                                </select>
-                            </div>
-                            <input type="text" name="idAgregarSupervisor" id="idAgregarSupervisor">
-                            <div style="text-align: right;margin-top: 15px">
-                            <a href="#" class="ui button green" id="btnAñadirSupervisor"><i class="add icon"></i>Añadir</a>
-                        </div>
-                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
-                        </form>
+           <div class="ui modal modalAgregarSupervisor">
+                <div class="content">
+                    <form class="ui form" id="formularioAgregarSupervisor">
+                        <select class="ui dropdown" multiple="" name="zonasAsociadas[]">
+                            <option value="">Skills</option>
+                            <option value="angular">Angular</option>
+                            <option value="css">CSS</option>
+                            <option value="design">Graphic Design</option>
+                            <option value="ember">Ember</option>
+                            <option value="html">HTML</option>
+                            <option value="ia">Information Architecture</option>
+                            <option value="javascript">Javascript</option>
+                            <option value="mech">Mechanical Engineering</option>
+                            <option value="meteor">Meteor</option>
+                            <option value="node">NodeJS</option>
+                            <option value="plumbing">Plumbing</option>
+                            <option value="python">Python</option>
+                            <option value="rails">Rails</option>
+                            <option value="react">React</option>
+                            <option value="repair">Kitchen Repair</option>
+                            <option value="ruby">Ruby</option>
+                            <option value="ui">UI Design</option>
+                            <option value="ux">User Experience</option>
+                        </select>
+                    </form>
+                    <div style="text-align: right;margin-top: 15px">
+                        <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                        <a href="#" class="ui button green" id="btnAñadirSupervisor"><i class="add icon"></i>Añadir</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="js/jquery2.js"></script>
         <script src="semantic/semantic.js"></script>
-        <script>
-            $(document).ready(function(){
-                $('#menu').click(function(){$('.ui.sidebar').sidebar('toggle');});
-                $('.ui.sidebar').sidebar({context: 'body'});
-                $('.ui.dropdown').click(function(){
-                    $('.zona').removeClass('disabled');
-                    $('.supervisor').removeClass('disabled');
-                    /*var cantidadProyectos = $(this).parents('.content').find('.cantidadProyectos').text();
-                    var cantidadZonas = $(this).parents('.content').find('.cantidadZonas').text();
-                    if(cantidadProyectos == 0) {
-                        $('.zona').addClass('disabled');
-                        $('.supervisor').addClass('disabled');
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('.ui.modal').modal('show');
+            $('.ui.dropdown').dropdown();
+            $('#btnAñadirSupervisor').click(function() {
+                var data = $('#formularioAgregarSupervisor').serialize();
+                $.ajax({
+                    url: 'b.php',
+                    type: 'POST',
+                    data: data,
+                    dataType: 'json',
+                    success: function(returnedData) {
+                        alert(JSON.stringify(returnedData));
                     }
-                    if(cantidadZonas == 0) 
-                        $('.supervisor').addClass('disabled');*/
-                        
-                }).dropdown();
-                $('#btnAñadirSupervisor').click(function(){
-                    if($('#zonasAsociadas').val() == null)
-                        alert('Es vacío: '+$('#zonasAsociadas').val());
-                    else
-                        alert($('#zonasAsociadas').val());
+                }).fail(function( jqXHR, textStatus, errorThrown ){
+                    if (jqXHR.status === 0){
+                        alert('No hay coneccion con el servidor');
+                    } else if (jqXHR.status == 404) {
+                        alert('La pagina solicitada no fue encontrada, error 404');
+                    } else if (jqXHR.status == 500) {
+                        alert('Error interno del servidor');
+                    } else if (textStatus === 'parsererror') {
+                        alert('Error en la respuesta, debes analizar la sintaxis JSON');
+                    } else if (textStatus === 'timeout') {
+                        alert('Ya ha pasado mucho tiempo');
+                    } else if (textStatus === 'abort') {
+                        alert('La peticion fue abortada');
+                    } else {
+                        alert('Error desconocido');
+                    }
                 });
             });
+        });
         </script>
     </body>
 </html>

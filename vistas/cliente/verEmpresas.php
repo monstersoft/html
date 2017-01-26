@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
     </head>
     <body>
-        <!-- SIDEBAR -->
+        <!--    SIDEBAR      -->
         <div class="ui sidebar inverted vertical menu">
             <div id="perfil" class="item" href="/introduction/getting-started.html">
                 <h5 class="ui icon header">
@@ -270,11 +270,8 @@
                             </div>
                             <div class="field">
                                 <label>Zonas Asociadas</label>
-                                <select multiple="" class="ui fluid dropdown" id="zonasAsociadas" name="zonasAsociadas[]">
-                                    <option value="">Seleccionar zonas</option>
-                                    <option value="1">Seleccionar zonas</option>
-                                    <option value="2">Seleccionar zonas</option>
-                                    <!--<div id="iden"></div>-->
+                                <select class="ui fluid dropdown" multiple="" id="zonasAsociadas" name="zonasAsociadas[]">
+                                    <option value="">Seleccionar Zonas</option>
                                 </select>
                             </div>
                             <input type="text" name="idZonaSupervisor" id="idZonaSupervisor">

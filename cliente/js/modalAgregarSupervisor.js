@@ -2,6 +2,8 @@ $(document).ready(function() {
     $('.agregarSupervisor').click(function(){
         var id = $(this).attr('id');
         var url = devuelveUrl('html/cliente/zonas.php');
+        $("#zonasAsociadas").dropdown('clear');
+        $("#zonasAsociadas").find("option[class='dinamico']").remove();
         $.ajax({
                 url: url,
                 type: 'POST',
@@ -15,10 +17,9 @@ $(document).ready(function() {
                 success: function(returnedData) {
                     var option = '';
                     returnedData.forEach(function(element,index){
-                            option += '<option value='+returnedData[index].idZona+'>'+returnedData[index].nombre+'</option>';
+                            option += '<option class="dinamico" value='+returnedData[index].idZona+'>'+returnedData[index].nombre+'</option>';
                         });
-                    alert(option);
-                    $('#iden').add(option);
+                    $('#zonasAsociadas').append(option);
                 }
             }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){
@@ -40,8 +41,6 @@ $(document).ready(function() {
         $('.ui.negative.message').remove();
         $('.ui.warning.message').remove();
         $('.ui.icon.success.message').remove();
-        //$('#zonasAsociadas').dropdown('clear');
-        //$('#zonasAsociadas').dropdown('restore defaults');
         $('#idZonaSupervisor').val(id);
         $('.modalAgregarSupervisor').modal('show');
     });
@@ -69,11 +68,10 @@ $(document).ready(function() {
         if(isNumber(telefono)) {
             arreglo.push('<li>El teléfono no es un número o no está en un formato adecuado</li>');
         }
-        if($('#zonasAsociadas').val() == null) {
+        if($('#zonasAsociadas').val() == null || $('#zonasAsociadas').val() == "") {
             arreglo.push('<li>Tienes que seleccionar al menos una zona</li>');
         }
         if(arreglo.length == 0) {
-            alert($('#zonasAsociadas').val());
             var data = $('#formularioAgregarSupervisor').serialize();
             var url = devuelveUrl('html/cliente/agregarSupervisor.php');
             $.ajax({
@@ -89,6 +87,7 @@ $(document).ready(function() {
                 success: function(returnedData) {
                     if(returnedData.exito == 1) {
                         successMessage('Registro realizado con éxito','Serás redireccionado al panel');
+                        alert(returnedData.msg);
                         //location.reload();
                     }
                     else {
