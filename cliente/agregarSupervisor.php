@@ -1,8 +1,6 @@
 <?php
 	include '../php/funciones.php';
-	if(enviarMailRegistroSupervisor('Patricio Andrés Villanueva Fuentes','pavillanueva@ing.ucsc.cl','https://www.google.cl/search?q=mega&oq=mega&aqs=chrome..69i57j69i60l4.399j0j4&sourceid=chrome&ie=UTF-8#q=mega.co'))
-		echo 'Bien';
-	/*$nombre = $_POST['nombreSupervisor'];
+	$nombre = $_POST['nombreSupervisor'];
 	$email = $_POST['correoSupervisor'];
 	$zonas = $_POST['zonasAsociadas'];
 	$conexion = conectar();
@@ -21,8 +19,12 @@
 			$ultimoId = mysqli_insert_id($conexion);
 			foreach ($zonas as $value) {
 				$consulta = "INSERT INTO supervisoreszonas (idZona,idSupervisor) VALUES ('$value','$ultimoId')";
-				if(mysqli_query($conexion,$consulta))
-					$arreglo['exito'] = 1;
+				if(mysqli_query($conexion,$consulta)) {
+                     if(enviarMailRegistroSupervisor($nombre,$email,'http://localhost/html/b.php?id='.$ultimoId.'.php'))
+					   $arreglo['exito'] = 1;
+                     else
+                       $arreglo['exito'] = 0; 
+                    }
 				else
 					$arreglo['exito'] = 0;
 			}
@@ -31,5 +33,5 @@
 			$arreglo['exito'] = 0;
 		}
 	}
-	echo json_encode($arreglo);*/
+	echo json_encode($arreglo);
 ?>

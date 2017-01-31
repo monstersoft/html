@@ -1,4 +1,4 @@
 <?php  
-	$v1=$_GET['i'];
-	echo $v1;
+	$id=$_GET['id'];
+	echo 'La id es: '.$id;
 ?>

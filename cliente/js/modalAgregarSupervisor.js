@@ -77,7 +77,6 @@ $(document).ready(function() {
                 success: function(returnedData) {
                     if(returnedData.exito == 1) {
                         successMessage('Registro realizado con éxito','Serás redireccionado al panel');
-                        alert(returnedData.exito);
                         location.reload();
                     }
                     else {
