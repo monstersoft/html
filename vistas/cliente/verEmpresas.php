@@ -262,13 +262,6 @@
                                 </div>
                             </div>
                             <div class="field">
-                                <label>Celular</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="995007812" name="celularSupervisor" id="celularSupervisor" value="995007812">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
                                 <label>Zonas Asociadas</label>
                                 <select class="ui fluid dropdown" multiple="" id="zonasAsociadas" name="zonasAsociadas[]">
                                     <option value="">Seleccionar Zonas</option>
