@@ -25,6 +25,12 @@
 					$arreglo['insercionesCorrectas'][] = 1;
 				}
 				else {
+                     if(enviarMailRegistroSupervisor($nombre,$email,'http://localhost/html/b.php?id='.$ultimoId.'.php'))
+					   $arreglo['exito'] = 1;
+                     else
+                       $arreglo['exito'] = 0; 
+                    }
+				else
 					$arreglo['exito'] = 0;
 					$arreglo['insercionesCorrectas'][] = 0;
 				}
