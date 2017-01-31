@@ -366,9 +366,6 @@
         <script src="../../semantic/semantic.js"></script>
         <script src="../../cliente/js/modalInsertarEmpresa.js"></script>
         <script src="../../cliente/js/modalEditarEmpresa.js"></script>
-        <script src="../../cliente/js/modalInsertarProyecto.js"></script>
-        <script src="../../cliente/js/modalInsertarZona.js"></script>
-        <script src="../../cliente/js/modalInsertarSupervisor.js"></script>
         <script src="../../js/jquery.rut.chileno.js"></script>
         <script src="../../cliente/js/compruebaInputs.js"></script>
         <script src="../../cliente/js/mensajes.js"></script>

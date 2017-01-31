@@ -56,7 +56,7 @@
 						    		<div class="rectangulo">
 						                <p class="letra">Machine Monitors</p>
 						            </div>
-						    		<div class="cuadrado">Estimado '.$nombreSupervisor.', para finalizar el registro debes ingresar al siguiente enlance y completar el formulario<br><br><a href="#">'.$link.'</a><div>
+						    		<div class="cuadrado">Estimado '.$nombreSupervisor.', para finalizar el registro debes ingresar al siguiente enlance y completar el formulario<br><br><a href='.$link.'>'.$link.'</a><div>
 						        </div>
 						    </body>
 						</html>');
@@ -136,7 +136,7 @@
 	function supervisores($idZona) {
         $conexion = conectar();
         $arreglo = array();
-        $consulta = "SELECT zonas.idZona, supervisores.idSupervisor, supervisores.nombreSupervisor, supervisores.correoSupervisor, supervisores.celular 
+        $consulta = "SELECT zonas.idZona, supervisores.idSupervisor, supervisores.nombreSupervisor, supervisores.correoSupervisor, supervisores.celular, supervisores.status, supervisores.fechaRegistro 
         			 FROM zonas 
         			 LEFT JOIN supervisoreszonas ON zonas.idZona = supervisoreszonas.idZona 
         			 LEFT JOIN supervisores ON supervisoreszonas.idSupervisor = supervisores.idSupervisor 
@@ -149,6 +149,8 @@
                 $arreglo[$i]['nombreSupervisor']= $row['nombreSupervisor'];
                 $arreglo[$i]['correoSupervisor']= $row['correoSupervisor'];
                 $arreglo[$i]['celular']= $row['celular'];
+                $arreglo[$i]['status']= $row['status'];
+                $arreglo[$i]['fechaRegistro']= $row['fechaRegistro'];
                 $i++;
             }
         }

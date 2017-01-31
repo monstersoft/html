@@ -17,6 +17,16 @@ function isMail(value) {
         return false;
     }
 }
+function areEqual(value1,value2) {
+    if(value1 == '' || value2 == '') 
+        return false;
+    else {
+      if(value1 != value2) 
+        return true;
+      else
+        return false;
+    }
+}
 function isExactly(value) {
     if(value == '') 
         return false;
@@ -67,11 +77,21 @@ function isRutEditar() {
     }
 }
 
-    function maxLength(value) {
+function maxLength(value) {
     if(value == '') 
         return false;
     else {
-      if(value.length >50) 
+      if(value.length > 12) 
+        return true;
+      else
+        return false;
+    }
+}
+function minLength(value) {
+    if(value == '') 
+        return false;
+    else {
+      if(value.length < 6) 
         return true;
       else
         return false;

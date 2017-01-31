@@ -1,8 +1,6 @@
 <?php
 	include '../php/funciones.php';
-	if(enviarMailRegistroSupervisor('Patricio Andrés Villanueva Fuentes','pavillanueva@ing.ucsc.cl','https://www.google.cl/search?q=mega&oq=mega&aqs=chrome..69i57j69i60l4.399j0j4&sourceid=chrome&ie=UTF-8#q=mega.co'))
-		echo 'Bien';
-	/*$nombre = $_POST['nombreSupervisor'];
+	$nombre = $_POST['nombreSupervisor'];
 	$email = $_POST['correoSupervisor'];
 	$zonas = $_POST['zonasAsociadas'];
 	$conexion = conectar();
@@ -19,17 +17,26 @@
 		$consulta = "INSERT INTO supervisores (nombreSupervisor,correoSupervisor,password,celular,status) VALUES ('$nombre','$email',null,null,2)";
 		if(mysqli_query($conexion,$consulta)) {
 			$ultimoId = mysqli_insert_id($conexion);
+			$link = 'http://localhost/html/php/confirmarRegistro.php?id='.$ultimoId;
 			foreach ($zonas as $value) {
 				$consulta = "INSERT INTO supervisoreszonas (idZona,idSupervisor) VALUES ('$value','$ultimoId')";
-				if(mysqli_query($conexion,$consulta))
+				if(mysqli_query($conexion,$consulta)) {
 					$arreglo['exito'] = 1;
-				else
+					$arreglo['insercionesCorrectas'][] = 1;
+				}
+				else {
 					$arreglo['exito'] = 0;
+					$arreglo['insercionesCorrectas'][] = 0;
+				}
 			}
+			if(enviarMailRegistroSupervisor($nombre,$email,$link))
+				$arreglo['mailEnviado'] = 'Si';
+			else
+				$arreglo['mailEnviado'] = 'No';
 		}
 		else {
 			$arreglo['exito'] = 0;
 		}
 	}
-	echo json_encode($arreglo);*/
+	echo json_encode($arreglo);
 ?>

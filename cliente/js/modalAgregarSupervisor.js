@@ -9,11 +9,6 @@ $(document).ready(function() {
                 type: 'POST',
                 data: {idProyecto: id},
                 dataType: 'json',
-                beforeSend: function() {
-                  $('#cancelar').addClass('disabled');
-                  $('#btnAñadir').addClass('disabled loading');
-                  //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
-                },
                 success: function(returnedData) {
                     var option = '';
                     returnedData.forEach(function(element,index){
@@ -71,20 +66,19 @@ $(document).ready(function() {
                 dataType: 'json',
                 beforeSend: function() {
                   $('#cancelar').addClass('disabled');
-                  $('#btnAñadir').addClass('disabled loading');
+                  $('#btnAñadirSupervisor').addClass('disabled loading');
                   //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
                 },
                 success: function(returnedData) {
                     if(returnedData.exito == 1) {
                         successMessage('Registro realizado con éxito','Serás redireccionado al panel');
-                        alert(returnedData.exito);
                         location.reload();
                     }
                     else {
                         warningMessage(returnedData);
                     }
                     $('#cancelar').removeClass('disabled');
-                    $('#btnAñadir').removeClass('disabled loading');
+                    $('#btnAñadirSupervisor').removeClass('disabled loading');
                 }
             }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){

@@ -23,6 +23,11 @@
                 background: #F5A214;
                 color: white;
             }
+            .titulo {
+                color: white;
+                border-right: 3px solid #F5A214;
+                border-left: 3px solid #F5A214;
+            }
         </style>
     </head>
     <body>
@@ -35,6 +40,7 @@
                         <div class="sub header" style="color: white;">Plan de vigilancia de maquinaria pesada</div>
                     </div>
                 </h2>
+                <h2 class="titulo">Iniciar Sesión</h2>
                 <form class="ui form">
                     <div class="ui segment" >
                         <div class="field">

@@ -169,12 +169,21 @@
                                         <div class="item">
                                             <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
                                             <i class="large user middle aligned icon"></i>
-                                            <div class="content">
-                                                <a class="header">'.$value['nombreSupervisor'].'</a>
-                                                <div class="description">'.$value['correoSupervisor'].'</div>
-                                                <div class="description">Fono: '.$value['celular'].'</div>
-                                                <div class="description">Fecha de registro: 25/11/16</div>
-                                            </div>
+                                                <div class="content">';
+                                                    if($value['status'] == 'desabilitado'){
+                                                        echo ' 
+                                                            <a class="header">'.$value['nombreSupervisor'].'</a>
+                                                            <a class="description"><i class="warning circle icon"></i>Supervisor no ha confirmado registro</a>';
+                                                    }
+                                                    else { echo '
+                                                        <a class="header">'.$value['nombreSupervisor'].'</a>
+                                                        <div class="description">'.$value['correoSupervisor'].'</div>
+                                                        <div class="description">Fono: '.$value['celular'].'</div>
+                                                        <div class="description">Status: '.$value['status'].'</div>
+                                                        <div class="description">Fecha de registro: '.$value['fechaRegistro'].'</div>';
+                                                    }
+                                                '</div>
+
                                         </div>
                                     </div><div class="ui divider"></div>'; 
                                     } 
