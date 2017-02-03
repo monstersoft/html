@@ -6,7 +6,7 @@
     else {*/
         include("../../php/funciones.php");
         //$email = $_SESSION['correo'];
-        $email = 'pavillanueva@ing.ucsc.cl';
+        $email = 'mmartinez@jcb.cl';
         $perfil = datosPerfilSupervisor($email);
     //}
 ?>
