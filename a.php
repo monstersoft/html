@@ -25,7 +25,7 @@
 					</i>
 			  		<div class="content">Agregar Máquina</div>
 				</h2>
-				<div class="ui large form">
+				<div class="ui form">
 					<div class="sixteen wide field">
 						<label>Patente</label>
 						<input type="text" placeholder="First Name">
