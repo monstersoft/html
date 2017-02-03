@@ -244,9 +244,6 @@
 	function verificaFormularioEmpresa($name,$rut,$email,$phone) {
 		$conexion = conectar();
 		$arreglo = array();
-		//SI EL NOMBRE FUE CAMBIADO HAGO LA CONSULTA
-			//SI HAY REGISTROS IGUALES DEVUELVO MENSAJE Y EXITO 0
-			//SI NO 
 		$consulta = "SELECT COUNT(*) AS nombres FROM empresas WHERE empresas.nombre = '$name'";
 		if($resultado = mysqli_query($conexion,$consulta)) {
 			$nombres = mysqli_fetch_assoc($resultado);
@@ -292,6 +289,7 @@
 		mysqli_close($conexion);
 		return $arreglo;
 	}
+
 	function empresas() {
         $conexion = conectar();
         $arreglo = array();
@@ -322,6 +320,27 @@
 	function datosPerfil($correo) {
         $conexion = conectar();
         $consulta = "SELECT correo,empresa FROM clientes WHERE correo = '$correo'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+        	$arreglo = array();
+            while($row = mysqli_fetch_assoc($resultado)) {
+            	$arreglo['correo'] = $row['correo'];
+            	$arreglo['empresa'] = $row['empresa'];
+            }
+        }
+        mysqli_close($conexion);
+        return $arreglo;
+    }
+
+    function datosPerfilSupervisor($correo) {
+        $conexion = conectar();
+        $consulta = "SELECT supervisores.correoSupervisor AS correo, empresas.nombre AS empresa
+					FROM empresas 
+					LEFT JOIN proyectos ON empresas.idEmpresa = proyectos.idEmpresa
+					LEFT JOIN zonas ON zonas.idProyecto = proyectos.idProyecto
+					LEFT JOIN supervisoreszonas ON supervisoreszonas.idZona = zonas.idZona
+					LEFT JOIN supervisores ON supervisores.idSupervisor = supervisoreszonas.idSupervisor
+					WHERE supervisores.correoSupervisor = '$correo'
+					GROUP BY supervisores.correoSupervisor";
         if($resultado = mysqli_query($conexion,$consulta)) {
         	$arreglo = array();
             while($row = mysqli_fetch_assoc($resultado)) {
@@ -380,11 +399,11 @@
 		$conexion = conectar();
 		$arreglo = array();
 		$arreglo['error'] = true;
-		$consulta = "SELECT COUNT(*) AS cantidad FROM supervisores WHERE correo = '$correo'";
+		$consulta = "SELECT COUNT(*) AS cantidad FROM supervisores WHERE correoSupervisor = '$correo'";
 		if($resultado = mysqli_query($conexion,$consulta)) {
 			$numero = mysqli_fetch_assoc($resultado);
 			if($numero['cantidad'] == 1) {
-				$consulta = "SELECT COUNT(*) AS cantidad FROM supervisores WHERE correo = '$correo' AND password = '$password'";
+				$consulta = "SELECT COUNT(*) AS cantidad FROM supervisores WHERE correoSupervisor = '$correo' AND password = '$password'";
 				if($resultado = mysqli_query($conexion,$consulta)) {
 					$numero = mysqli_fetch_assoc($resultado);
 					if($numero['cantidad'] == 1) {

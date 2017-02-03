@@ -34,7 +34,7 @@ $(document).ready(function(){
                 }
             else {
                 var esSupervisor = $('#supervisor').prop('checked');
-                $.ajax({//INICIO PETICIÓN                     
+                $.ajax({                  
                 url: 'php/compruebaLogin.php',
                 data: {txtCorreo: correo, txtPassword: pass, txtSupervisor: esSupervisor},
                 type: "POST",
