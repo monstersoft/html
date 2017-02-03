@@ -1,13 +1,14 @@
 <?php
-    session_start();
+    /*session_start();
     if(!isset($_SESSION['correo'])){
         header("Location:../../index.php");
     }
-    else {
+    else {*/
         include("../../php/funciones.php");
-        $email = $_SESSION['correo'];
+        //$email = $_SESSION['correo'];
+        $email = 'pavillanueva@ing.ucsc.cl';
         $perfil = datosPerfilSupervisor($email);
-    }
+    //}
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,17 +81,47 @@
             </div>
             <div class="ui grid container">
 <!--CONTENIDO ..............................................................................-->
-            <h1>Agregar Máquinas.php</h1>
-            <div class="ui huge form">
-<div class="ui fluid icon input">
-  <input type="text" placeholder="Search a very wide input...">
-  <i class="search icon"></i>
-</div>
-<div class="ui fluid action input">
-  <input type="text" placeholder="Search...">
-  <div class="ui button">Search</div>
-</div>
-</div>
+                <div class="sixteen wide column">
+                    <h2 class="ui header">
+                        <i class="icons">
+                            <i class="setting icon"></i>
+                            <i class="large corner add icon"></i>
+                        </i>
+                        <div class="content">Agregar Máquina</div>
+                    </h2>
+                    <div class="ui form">
+                        <div class="sixteen wide field">
+                            <label>Patente</label>
+                            <input type="text" placeholder="First Name">
+                        </div>
+                        <div class="field">
+                            <label>Zonas Asociadas</label>
+                            <select class="ui dropdown">
+                                <option value="">State</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                            </select>
+                        </div>
+                        <div class="sixteen wide field">
+                            <label>Velocidad Máxima</label>
+                            <input type="text" placeholder="Last Name">
+                        </div>
+                        <div class="sixteen wide field">
+                            <label>Año</label>
+                            <input type="text" placeholder="Last Name">
+                        </div>
+                        <div class="sixteen wide field">
+                            <label>Tara</label>
+                            <input type="text" placeholder="Last Name">
+                        </div>
+                        <div class="sixteen wide field">
+                            <label>Carga Máxima</label>
+                            <input type="text" placeholder="Last Name">
+                        </div>
+                        <button class="ui right floated green inverted button">Agregar</button>
+                    </div>
+                </div>
 <!--CONTENIDO ..............................................................................-->
             </div>
         </div>
