@@ -4,11 +4,11 @@
         header("Location:../../index.php");
     }
     else {*/
-        include("../../php/funciones.php");
+        include("../../supervisor/funcionesSupervisor.php");
         //$email = $_SESSION['correo'];
         $email = 'pavillanueva@ing.ucsc.cl';
         $perfil = datosPerfilSupervisor($email);
-        $proyectos = utf8Converter(proyectos($idEmpresa));
+        $proyectos = utf8Converter(proyectosSupervisor($perfil['id']));
     //}
 ?>
 <!DOCTYPE html>
@@ -86,16 +86,6 @@
             <!-- GRID       -->
             <div class="ui grid">      
 <!-- CONTENIDO .......................................................................-->
-                <!-- NUEVO PROYECTO -->
-                <div class="ui sixteen wide mobile column">
-                    <div class="ui fluid card">
-                        <div class="content">
-                            <i class="file icon right floated"></i>
-                            <div class="header">Añadir Proyecto: <?php echo $idEmpresa; ?></div>
-                        </div>
-                        <a class="ui bottom attached button agregarProyecto"><i class="plus icon"></i></a>
-                    </div>
-                </div>
                 <!-- PROYECTO       -->
                 <?php
                     foreach ($proyectos as $key => $value) { echo '
@@ -103,13 +93,7 @@
                         <div class="ui fluid card">
                             <div class="content">
                                 <div class="compact ui top right basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
-                                    <i class="ellipsis vertical icon"></i>
-                                    <div class="menu">
-                                        <div class="editarProyecto item" id="'.$value['idProyecto'].'"><i class="edit icon"></i>editar proyecto</div>
-                                        <div class="eliminarProyecto item" id="'.$value['idProyecto'].'"><i class="delete icon"></i>remover proyecto</div>
-                                        <div class="agregarZona item" id="'.$value['idProyecto'].'"><i class="map icon"></i>agregar zona</div>
-                                        <div class="agregarSupervisor item" id="'.$value['idProyecto'].'"><i class="user icon"></i>agregar supervisor</div>
-                                    </div>
+                                    <i class="file vertical icon"></i>
                                 </div>
                                 <div class="header">Proyecto '.$value['nombreProyecto'].'</div>
                                 <div class="ui divider"></div>';

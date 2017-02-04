@@ -1,3 +1,17 @@
+<?php
+    /*session_start();
+    if(!isset($_SESSION['correo'])){
+        header("Location:../../index.php");
+    }
+    else {*/
+        include("../../php/funciones.php");
+        $idEmpresa = $_GET['id'];
+        //$email = $_SESSION['correo'];
+        //$perfil = datosPerfil($email);
+        $proyectos = utf8Converter(proyectos($idEmpresa));
+    //}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,47 +31,123 @@
         </div>
         <div class="ui grid container">
 <!--CONTENIDO ..............................................................................-->
-			<div class="sixteen wide column">
-				<h2 class="ui header">
-			  		<i class="icons">
-  						<i class="setting icon"></i>
-  						<i class="large corner add icon"></i>
-					</i>
-			  		<div class="content">Agregar Máquina</div>
-				</h2>
-				<div class="ui form">
-					<div class="sixteen wide field">
-						<label>Patente</label>
-						<input type="text" placeholder="First Name">
-					</div>
-					<div class="field">
-                        <label>Zonas Asociadas</label>
-  						<select class="ui dropdown">
-  							<option value="">State</option>
-  							<option value="AL">Alabama</option>
-  							<option value="AK">Alaska</option>
-  							<option value="AZ">Arizona</option>
-  						</select>
+
+
+
+			<!--PROYECTO1-->
+			<div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column">
+                <div class="ui fluid card">
+                    <div class="content">
+                        <div class="compact ui top right basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
+                            <i class="ellipsis vertical icon"></i>
+                            <div class="menu">
+                                <div class="editarProyecto item"><i class="edit icon"></i>editar proyecto</div>
+                                <div class="eliminarProyecto item"><i class="delete icon"></i>remover proyecto</div>
+                                <div class="agregarZona item"><i class="map icon"></i>agregar zona</div>
+                                <div class="agregarSupervisor item"><i class="user icon"></i>agregar supervisor</div>
+                            </div>
+                        </div>
+                        <div class="header">Proyecto Cipreses</div>
+                        <div class="ui divider"></div>
+                        <div class="description">
+			<!--PROYECTO1-->
+
+
+
+							<!--ZONA-->
+								<!--IF ZONAS == 0-->
+									<!--NO HAY ZONAS ASOCIADAS-->
+								<!--FIN IF-->
+								<!--ELSE-->
+                            <div class="contenido">
+                                <i class="mundo world outline icon huge" style="color: #F5A214"></i>
+                                <div class="tituloZona ui large header">Zona - Los Batros</div>
+                                <div class="botonesZona ui small basic icon buttons">
+                                    <button class="ui button editarZona"><i class="write icon"></i></button>
+                                    <button class="ui button eliminarZona"><i class="remove icon"></i></button>
+                                </div>
+                            </div>
+							<!--ZONA-->
+
+
+
+							<!--MAQUINAS-->							
+                            <table class="ui very basic unstackable table responsive" style="border: 1px solid #F5A214; padding: 15px">
+                                <thead>
+                                    <tr>
+                                        <th class="center aligned">Patente</th>
+                                        <th class="center aligned">Fecha de registro</th>
+                                        <th class="center aligned">Velocidad máxima [km/hr]</th>
+                                        <th class="center aligned">Tara [kg]</th>
+                                        <th class="center aligned">Carga máxima [kg]</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="center aligned">ABCDEFG</td>
+                                        <td class="center aligned">11/11/11</td>
+                                        <td class="center aligned">100</td>
+                                        <td class="center aligned">100</td>
+                                        <td class="center aligned">100</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="center aligned">ABCDEFG</td>
+                                        <td class="center aligned">11/11/11</td>
+                                        <td class="center aligned">100</td>
+                                        <td class="center aligned">100</td>
+                                        <td class="center aligned">100</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="center aligned">ABCDEFG</td>
+                                        <td class="center aligned">11/11/11</td>
+                                        <td class="center aligned">100</td>
+                                        <td class="center aligned">100</td>
+                                        <td class="center aligned">100</td>
+                                    </tr>
+                                </tbody>
+                            </table><br>
+
+
+
+                            <div class="ui relaxed divided list">
+                                <div class="item">
+                                    <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
+                                    <i class="large user middle aligned icon"></i>
+                                        <div class="content">
+                                                <a class="header">Patricio Andrés Villanueva Fuentes</a>
+                                                <div class="description">pavillanueva@ing.ucsc.cl</div>
+                                                <div class="description">Fono: 569 9 500 78 12</div>
+                                                <div class="description">Status: Activo</div>
+                                                <div class="description">Fecha de registro: 11/11/11</div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="ui divider"></div>
+                            <div class="ui relaxed divided list">
+                                <div class="item">
+                                    <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
+                                    <i class="large user middle aligned icon"></i>
+                                        <div class="content">
+                                                <a class="header">Patricio Andrés Villanueva Fuentes</a>
+                                                <div class="description">pavillanueva@ing.ucsc.cl</div>
+                                                <div class="description">Fono: 569 9 500 78 12</div>
+                                                <div class="description">Status: Activo</div>
+                                                <div class="description">Fecha de registro: 11/11/11</div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="ui divider"></div>
+
+
+
+
+			<!--PROYECTO2-->
+                        </div><br>
                     </div>
-					<div class="sixteen wide field">
-						<label>Velocidad Máxima</label>
-						<input type="text" placeholder="Last Name">
-					</div>
-					<div class="sixteen wide field">
-						<label>Año</label>
-						<input type="text" placeholder="Last Name">
-					</div>
-					<div class="sixteen wide field">
-						<label>Tara</label>
-						<input type="text" placeholder="Last Name">
-					</div>
-					<div class="sixteen wide field">
-						<label>Carga Máxima</label>
-						<input type="text" placeholder="Last Name">
-					</div>
-					<button class="ui right floated green inverted button">Agregar</button>
-				</div>
-			</div>
+                </div>
+            </div>
+			<!--PROYECTO2-->
+
 <!--CONTENIDO ..............................................................................-->
 		</div>
     </body>

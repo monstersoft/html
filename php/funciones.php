@@ -331,27 +331,6 @@
         return $arreglo;
     }
 
-    function datosPerfilSupervisor($correo) {
-        $conexion = conectar();
-        $consulta = "SELECT supervisores.correoSupervisor AS correo, empresas.nombre AS empresa
-					FROM empresas 
-					LEFT JOIN proyectos ON empresas.idEmpresa = proyectos.idEmpresa
-					LEFT JOIN zonas ON zonas.idProyecto = proyectos.idProyecto
-					LEFT JOIN supervisoreszonas ON supervisoreszonas.idZona = zonas.idZona
-					LEFT JOIN supervisores ON supervisores.idSupervisor = supervisoreszonas.idSupervisor
-					WHERE supervisores.correoSupervisor = '$correo'
-					GROUP BY supervisores.correoSupervisor";
-        if($resultado = mysqli_query($conexion,$consulta)) {
-        	$arreglo = array();
-            while($row = mysqli_fetch_assoc($resultado)) {
-            	$arreglo['correo'] = $row['correo'];
-            	$arreglo['empresa'] = $row['empresa'];
-            }
-        }
-        mysqli_close($conexion);
-        return $arreglo;
-    }
-
 	function iniciaSesionCliente ($correo,$password) {
 		$conexion = conectar();
 		$arreglo = array();

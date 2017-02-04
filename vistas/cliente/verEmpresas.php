@@ -112,7 +112,9 @@
                                     </div>
                                 </div>
                                 <div class="header">Proyecto '.$value['nombreProyecto'].'</div>
-                                <div class="ui divider"></div>';
+                                <div class="ui divider"></div>
+                                <div class="description">';
+                                // ZONAS
                                 $cantidadZonas = cantidadZonas($value['idProyecto']);
                                 if($cantidadZonas['cantidadZonas'] == 0) {
                                     echo 'No hay zonas asociadas';
@@ -120,7 +122,6 @@
                                 else {
                                     $zonas = zonas($value['idProyecto']);
                                     foreach ($zonas as $key => $value) { echo '
-                                <div class="description">
                                     <div class="contenido">
                                         <i class="mundo world outline icon huge" style="color: #F5A214"></i>
                                         <div class="tituloZona ui large header">Zona - '.$value['nombreZona'].'</div>
@@ -129,6 +130,8 @@
                                             <button class="ui button eliminarZona"><i class="remove icon"></i></button>
                                         </div>
                                     </div>';
+                                //ZONAS
+                                //MAQUINAS
                                     $cantidadSupervisores = cantidadSupervisores($value['idZona']);
                                     if($cantidadSupervisores['cantidadSupervisores'] == 0) {
                                         echo 'No hay supervisores registrados para esta zona';
@@ -163,6 +166,8 @@
                                     else {
                                         echo 'No hay maquinas registradas';
                                     }
+                                //MAQUINAS
+                                //SUPERVSORES
                                     $supervisores = supervisores($value['idZona']);
                                     foreach ($supervisores as $key => $value) { echo '
                                     <div class="ui relaxed divided list">
@@ -183,10 +188,10 @@
                                                         <div class="description">Fecha de registro: '.$value['fechaRegistro'].'</div>';
                                                     }
                                                 '</div>
-
                                         </div>
                                     </div><div class="ui divider"></div>'; 
-                                    } 
+                                    }
+                                //SUPERVISORES 
                                     } echo '
                                 </div><br>'; 
                                     } 
