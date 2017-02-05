@@ -25,24 +25,31 @@
 					$arreglo['insercionesCorrectas'][] = 1;
 				}
 				else {
-                     if(enviarMailRegistroSupervisor($nombre,$email,'http://localhost/html/b.php?id='.$ultimoId.'.php'))
-					   $arreglo['exito'] = 1;
-                     else
-                       $arreglo['exito'] = 0; 
-                    }
-				else
-					$arreglo['exito'] = 0;
 					$arreglo['insercionesCorrectas'][] = 0;
+                }
+			}
+			$bandera = 0;
+			foreach ($arreglo['insercionesCorrectas'] as $value) {
+				if($value == 1)
+					$bandera = 1;
+				else
+					$bandera = 0;
+			}
+			if($bandera == 1) {
+				if(enviarMailRegistroSupervisor($nombre,$email,$link)){
+					$arreglo['mailEnviado'] = 'Si';
+					$arreglo['exito'] = 1;
+				}
+				else {
+					$arreglo['mailEnviado'] = 'No';
+					$arreglo['exito'] = 0;
 				}
 			}
-			if(enviarMailRegistroSupervisor($nombre,$email,$link))
-				$arreglo['mailEnviado'] = 'Si';
-			else
-				$arreglo['mailEnviado'] = 'No';
 		}
 		else {
 			$arreglo['exito'] = 0;
 		}
+			
 	}
 	echo json_encode($arreglo);
 ?>

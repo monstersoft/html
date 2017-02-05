@@ -25,19 +25,19 @@
 
     function proyectosSupervisor($idSupervisor) {
         $conexion = conectar();
-        $consulta = "SELECT supervisores.correoSupervisor AS correo, empresas.nombre AS empresa
-                    FROM empresas 
-                    LEFT JOIN proyectos ON empresas.idEmpresa = proyectos.idEmpresa
-                    LEFT JOIN zonas ON zonas.idProyecto = proyectos.idProyecto
-                    LEFT JOIN supervisoreszonas ON supervisoreszonas.idZona = zonas.idZona
-                    LEFT JOIN supervisores ON supervisores.idSupervisor = supervisoreszonas.idSupervisor
-                    WHERE supervisores.idSupervisor = '$idSupervisor'
-                    GROUP BY supervisores.idSupervisor";
+        $consulta = "SELECT proyectos.idProyecto AS idProyecto, proyectos.nombre AS nombreProyecto
+                    FROM proyectos 
+                    INNER JOIN zonas ON zonas.idProyecto = proyectos.idProyecto 
+                    INNER JOIN supervisoreszonas ON supervisoreszonas.idZona = zonas.idZona 
+                    WHERE supervisoreszonas.idSupervisor = '$idSupervisor' 
+                    GROUP by supervisoreszonas.idSupervisor";
         if($resultado = mysqli_query($conexion,$consulta)) {
             $arreglo = array();
+            $i = 0;
             while($row = mysqli_fetch_assoc($resultado)) {
-                $arreglo['correo'] = $row['correo'];
-                $arreglo['empresa'] = $row['empresa'];
+                $arreglo[$i]['idProyecto']= $row['idProyecto'];
+                $arreglo[$i]['nombreProyecto']= $row['nombreProyecto'];
+            $i++;
             }
         }
         mysqli_close($conexion);
