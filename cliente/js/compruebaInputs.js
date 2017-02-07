@@ -77,11 +77,11 @@ function isRutEditar() {
     }
 }
 
-function maxLength(value) {
+function maxLength(value, max) {
     if(value == '') 
         return false;
     else {
-      if(value.length > 50) 
+      if(value.length > max) 
         return true;
       else
         return false;
@@ -92,6 +92,17 @@ function minLength(value) {
         return false;
     else {
       if(value.length < 6) 
+        return true;
+      else
+        return false;
+    }
+}
+
+function maxMinValue(value, max, min) {
+    if(value == '') 
+        return false;
+    else {
+      if(value < min || value > max) 
         return true;
       else
         return false;

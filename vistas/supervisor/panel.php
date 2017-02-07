@@ -87,7 +87,6 @@
             <div class="ui grid container">      
 <!-- CONTENIDO .......................................................................-->
                 <!-- PROYECTO       -->
-                <div class="ui grid">
                 <?php
                     foreach ($proyectos as $key => $value) { /*inicio each proyectos*/ echo '
                     <div class="ui sixteen wide column">
@@ -110,8 +109,8 @@
                                                 <i class="mundo world outline icon huge" style="color: #F5A214"></i>
                                                 <div class="tituloZona ui large header">Zona - '.$value['nombreZona'].'</div>
                                                 <div class="botonesZona ui small basic icon buttons">
-                                                    <button class="ui button editarZona" id="'.$value['idZona'].'"><i class="upload icon"></i></button>
-                                                    <button class="ui button editarZona" id="'.$value['idZona'].'"><i class="add icon"></i></button>
+                                                    <button class="ui button subirArchivo" id="'.$value['idZona'].'"><i class="upload icon"></i></button>
+                                                    <button class="ui button agregarMaquina" id="'.$value['idZona'].'"><i class="add icon"></i></button>
                                                 </div>
                                             </div>';
                                             $cantidadSupervisores = cantidadSupervisores($value['idZona']);
@@ -180,16 +179,108 @@
                     </div>';
                     } /*fin each proyectos*/
                 ?> 
-                </div>
 <!-- FIN CONTENIDO ...................................................................-->
-            <!--</div>-->
+            </div>
         </div>
-<!-- VENTANAS MODALES ..............................................................................-->             
+<!-- VENTANAS MODALES ..............................................................................-->
+    <!--    AGREGAR MAQUINA    --> 
+        <div class="ui modal modalAgregarMaquina">
+                    <div class="header">
+                      <i class="add icon" style="float: right;"></i>
+                      Agregar Maquina
+                    </div>
+                    <div class="content">
+                        <form class="ui form" id="formularioAgregarMaquina">
+                            <div class="field">
+                                <label>Identificador</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="Nuevo ID" name="identificadorMaquina" id="identificadorMaquina" value="1">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Patente</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="ABCD00" name="patenteMaquina" id="patenteMaquina">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Velocidad Máxima [km/hr]</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="100" name="velocidadMaquina" id="velocidadMaquina" value="100">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Tara Máxima [kg]</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="100" name="taraMaquina" id="taraMaquina" value="500">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Año</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" name="anhoMaquina" id="anhoMaquina" placeholder="2017">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Carga Máxima [kg]</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="100" name="cargaMaquina" id="cargaMaquina" value="500">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <label for="idZonaMaquina">ID Zona Máquina</label>
+                            <input type="text" name="idZonaMaquina" id="idZonaMaquina">
+                        </form>
+                        <div style="text-align: right;margin-top: 15px">
+                            <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                            <a href="#" class="ui button green" id="btnAñadirMaquina"><i class="add icon"></i>Añadir</a>
+                        </div>
+                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                    </div>
+                </div>
+    <!--    SUBIR ARCHIVO    --> 
+        <div class="ui modal modalSubirArchivo">
+                    <div class="header">
+                      <i class="upload icon" style="float: right;"></i>
+                      Subir Archivo
+                    </div>
+                    <div class="content">
+                        <form class="ui form" id="formularioSubirArchivo">
+                            <div class="field">
+                                <label>Fecha de Datos</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="01/01/01" name="fechaDatos" id="fechaDatos">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Adjuntar Archivo</label>
+                                <div class="ui corner labeled input">
+                                    <input type="text" placeholder="01/01/01" name="archivoZona" id="archivoZona">
+                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                </div>
+                            </div>
+                            <label for="idZonaArchivo">ID Zona Archivo</label>
+                            <input type="text" name="idZonaArchivo" id="idZonaArchivo">
+                        </form>
+                        <div style="text-align: right;margin-top: 15px">
+                            <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                            <a href="#" class="ui button green" id="btnSubirArchivo"><i class="upload icon"></i>Subir</a>
+                        </div>
+                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                    </div>
+                </div>           
 <!--FIN VENTANAS MODALES ..............................................................................-->
         <script src="../../js/jquery2.js"></script>
         <script src="../../semantic/semantic.js"></script>
         <script src="../../js/responsive-table.js"></script>
-        <script src="../../cliente/js/modalAgregarProyecto.js"></script>
+        <script src="../../supervisor/js/modalAgregarMaquina.js"></script>
+        <script src="../../supervisor/js/modalSubirArchivo.js"></script>
         <script src="../../cliente/js/compruebaInputs.js"></script>
         <script src="../../cliente/js/mensajes.js"></script>
         <script src="../../cliente/js/devuelveUrl.js"></script>
@@ -199,23 +290,16 @@
                 $('.ui.sidebar').sidebar({context: 'body'});
                 $('.ui.dropdown').click(function(){
                     $('.zona').removeClass('disabled');
-                    $('.supervisor').removeClass('disabled');
-                    /*var cantidadProyectos = $(this).parents('.content').find('.cantidadProyectos').text();
-                    var cantidadZonas = $(this).parents('.content').find('.cantidadZonas').text();
-                    if(cantidadProyectos == 0) {
-                        $('.zona').addClass('disabled');
-                        $('.supervisor').addClass('disabled');
-                    }
-                    if(cantidadZonas == 0) 
-                        $('.supervisor').addClass('disabled');*/
-                        
+                    $('.supervisor').removeClass('disabled');    
                 }).dropdown();
                 $('.cancelar').click(function(){
                     $('.ui.negative.message').remove();
                     $('.ui.warning.message').remove();
                     $('.ui.icon.success.message').remove();
-                    $('#formularioInsertarProyecto').trigger("reset");
-                    $('.modalAgregarProyecto').modal('hide');
+                    $('#formularioAgregarMaquina').trigger("reset");
+                    $('#formularioSubirArchivo').trigger("reset");
+                    $('.modalAgregarMaquina').modal('hide');
+                    $('.modalSubirArchivo').modal('hide');
                 });
             });
         </script>
