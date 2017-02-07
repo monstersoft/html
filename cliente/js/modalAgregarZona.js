@@ -3,7 +3,7 @@ $(document).ready(function() {
         $('.ui.negative.message').remove();
         $('.ui.warning.message').remove();
         $('.ui.icon.success.message').remove();
-        $('#idProyecto').val($(this).attr('id'));
+        $('#idProyectoZona').val($(this).attr('id'));
         $('.modalAgregarZona').modal('show');
     });
     $('#btnAñadirZona').click(function(){
@@ -33,6 +33,7 @@ $(document).ready(function() {
                         location.reload();
                     }
                     else {
+                        alert(JSON.stringify(arreglo));
                         $('.message').html('<div class="ui warning message">'+arreglo.msg+'</div>');
                     }
                     $('#cancelar').removeClass('disabled');

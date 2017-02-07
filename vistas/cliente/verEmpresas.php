@@ -230,7 +230,7 @@
         <div class="ui modal modalAgregarZona">
             <div class="header">
               <i class="map icon" style="float: right;"></i>
-              Agregar Zona2
+              Agregar Zona
             </div>
             <div class="content">
                 <form class="ui form" id="formularioAgregarZona">
@@ -425,16 +425,7 @@
                 $('.ui.sidebar').sidebar({context: 'body'});
                 $('.ui.dropdown').click(function(){
                     $('.zona').removeClass('disabled');
-                    $('.supervisor').removeClass('disabled');
-                    /*var cantidadProyectos = $(this).parents('.content').find('.cantidadProyectos').text();
-                    var cantidadZonas = $(this).parents('.content').find('.cantidadZonas').text();
-                    if(cantidadProyectos == 0) {
-                        $('.zona').addClass('disabled');
-                        $('.supervisor').addClass('disabled');
-                    }
-                    if(cantidadZonas == 0) 
-                        $('.supervisor').addClass('disabled');*/
-                        
+                    $('.supervisor').removeClass('disabled');             
                 }).dropdown();
                 $('.cancelar').click(function(){
                     $('.ui.negative.message').remove();
