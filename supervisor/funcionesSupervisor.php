@@ -58,7 +58,35 @@
         mysqli_close($conexion);
         return $arreglo;
     }
-
+        function cantidadMaquinas($idZona) {
+        $conexion = conectar();
+        $arreglo = array();
+        $consulta = "SELECT 
+                     COUNT(maquinas.idMaquina) 
+                     AS cantidadMaquinas 
+                     FROM maquinas 
+                     WHERE maquinas.idZona = '$idZona'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+            $arreglo = mysqli_fetch_assoc($resultado);
+        }
+        mysqli_close($conexion);
+        return $arreglo;
+    }
+    
+    function cantidadSupervisores($idZona) {
+        $conexion = conectar();
+        $arreglo = array();
+        $consulta = "SELECT 
+                     COUNT(supervisoreszonas.idSupervisor) 
+                     AS cantidadSupervisores 
+                     FROM supervisoreszonas 
+                     WHERE supervisoreszonas.idZona = '$idZona'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+            $arreglo = mysqli_fetch_assoc($resultado);
+        }
+        mysqli_close($conexion);
+        return $arreglo;
+    }
     function cantidadZonas($idProyecto) {
         $conexion = conectar();
         $arreglo = array();
