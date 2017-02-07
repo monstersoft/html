@@ -161,7 +161,7 @@
 	function zonas($idProyecto) {
         $conexion = conectar();
         $arreglo = array();
-        $consulta = "SELECT zonas.idZona, zonas.nombre AS nombreZona
+        $consulta = "SELECT zonas.idZona AS idZona, zonas.nombre AS nombreZona
         			 FROM zonas
         			 WHERE zonas.idProyecto = '$idProyecto'";
         if($resultado = mysqli_query($conexion,$consulta)) {

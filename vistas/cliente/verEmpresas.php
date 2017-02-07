@@ -1,15 +1,15 @@
 <?php
-    /*session_start();
+    session_start();
     if(!isset($_SESSION['correo'])){
         header("Location:../../index.php");
     }
-    else {*/
+    else {
         include("../../php/funciones.php");
         $idEmpresa = $_GET['id'];
-        //$email = $_SESSION['correo'];
-        //$perfil = datosPerfil($email);
+        $email = $_SESSION['correo'];
+        $perfil = datosPerfil($email);
         $proyectos = utf8Converter(proyectos($idEmpresa));
-    //}
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="../../semantic/semantic.css">
         <link rel="stylesheet" href="../../cliente/css/panel.css">
         <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../../css/responsive-tables.css">
     </head>
     <body>
         <!--    SIDEBAR      -->
@@ -97,8 +98,9 @@
                     </div>
                 </div>
                 <!-- PROYECTO       -->
+                <div class="ui grid container">
                 <?php
-                    foreach ($proyectos as $key => $value) { echo '
+                    foreach ($proyectos as $key => $value) { /*inicio each proyectos*/ echo '
                     <div class="ui sixteen wide column">
                         <div class="ui fluid card">
                             <div class="content">
@@ -116,11 +118,11 @@
                                 <div class="description">';
                                     $cantidadZonas = cantidadZonas($value['idProyecto']);
                                     if($cantidadZonas['cantidadZonas'] == 0) {
-                                        echo 'No hay zonas asociadas';
+                                        echo 'No hay zonas asociadas para este proyecto';
                                     }
                                     else {
                                         $zonas = zonas($value['idProyecto']);
-                                        foreach ($zonas as $value) { echo '
+                                        foreach ($zonas as $value) { /*inicio each zonas*/ echo '
                                             <div class="contenido">
                                                 <i class="mundo world outline icon huge" style="color: #F5A214"></i>
                                                 <div class="tituloZona ui large header">Zona - '.$value['nombreZona'].'</div>
@@ -135,70 +137,69 @@
                                                 }
                                                 else {
                                                     $cantidadMaquinas = cantidadMaquinas($value['idZona']);
-                                                    if($cantidadMaquinas['cantidadMaquinas'] >= 1) { 
-                                                    $maquinas = maquinas($value['idZona']); echo '
-                                                    <table class="ui very basic unstackable table responsive" style="border: 1px solid #F5A214; padding: 15px">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="center aligned">Patente</th>
-                                                                <th class="center aligned">Fecha de registro</th>
-                                                                <th class="center aligned">Velocidad máxima [km/hr]</th>
-                                                                <th class="center aligned">Tara [kg]</th>
-                                                                <th class="center aligned">Carga máxima [kg]</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>'; 
-                                                            foreach ($maquinas as $key => $value) { echo '
-                                                            <tr>
-                                                                <td class="center aligned">'.$value['patente'].'</td>
-                                                                <td class="center aligned">'.$value['fechaRegistro'].'</td>
-                                                                <td class="center aligned">'.$value['velocidadMaxima'].'</td>
-                                                                <td class="center aligned">'.$value['tara'].'</td>
-                                                                <td class="center aligned">'.$value['cargaMaxima'].'</td>
-                                                            </tr>'; 
-                                                            } echo '
-                                                        </tbody>
-                                                    </table>'; 
-                                                    }
-                                                    else {
+                                                    if($cantidadMaquinas['cantidadMaquinas'] == 0) {
                                                         echo 'No hay máquinas registradas';
                                                     }
-                                                }
-                                                $supervisores = supervisores($value['idZona']);
-                                                foreach ($supervisores as $key => $value) { echo '
-                                                    <div class="ui relaxed divided list">
+                                                    else {
+                                                        $maquinas = maquinas($value['idZona']); echo '
+                                                        <table class="ui very basic unstackable table responsive" style="border: 1px solid #F5A214; padding: 15px">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="center aligned">Patente</th>
+                                                                    <th class="center aligned">Fecha de registro</th>
+                                                                    <th class="center aligned">Velocidad máxima [km/hr]</th>
+                                                                    <th class="center aligned">Tara [kg]</th>
+                                                                    <th class="center aligned">Carga máxima [kg]</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>'; 
+                                                                foreach ($maquinas as $key => $value) { /*inicio each maquinas*/ echo '
+                                                                <tr>
+                                                                    <td class="center aligned">'.$value['patente'].'</td>
+                                                                    <td class="center aligned">'.$value['fechaRegistro'].'</td>
+                                                                    <td class="center aligned">'.$value['velocidadMaxima'].'</td>
+                                                                    <td class="center aligned">'.$value['tara'].'</td>
+                                                                    <td class="center aligned">'.$value['cargaMaxima'].'</td>
+                                                                </tr>'; 
+                                                                } /*fin each maquinas*/ echo '
+                                                            </tbody>
+                                                        </table>';
+                                                    }
+                                                    $supervisores = supervisores($value['idZona']);
+                                                    foreach ($supervisores as $value) { /*inicio each supervisores*/ echo '
+                                                        <div class="ui relaxed divided list">
                                                         <div class="item">
-                                                    <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
-                                                    <i class="large user middle aligned icon"></i>
-                                                            <div class="content">';
-                                                                if($value['status'] == 'desabilitado' or $value['status'] == null) {
-                                                                    echo ' <a class="header">'.$value['nombreSupervisor'].'</a>
-                                                                           <a class="description"><i class="warning circle icon"></i>Supervisor no ha confirmado registro</a>';
-                                                                }
-                                                                else { echo '
-                                                                    <a class="header">'.$value['nombreSupervisor'].'</a>
-                                                                    <a class="description"><i class="warning circle icon"></i>Supervisor no ha confirmado registro</a>
-                                                                    <a class="header">'.$value['nombreSupervisor'].'</a>
-                                                                    <div class="description">'.$value['correoSupervisor'].'</div>
-                                                                    <div class="description">Fono: '.$value['celular'].'</div>
-                                                                    <div class="description">Status: '.$value['status'].'</div>
-                                                                    <div class="description">Fecha de registro: '.$value['fechaRegistro'].'</div>';
-                                                                } echo '
+                                                            <button class="ui button basic icon right floated"><i class="trash icon"></i></button>
+                                                            <i class="large user middle aligned icon"></i>
+                                                        <div class="content">';
+                                                        if($value['status'] == 'desabilitado' or $value['status'] == null) { echo '
+                                                            <a class="header">'.$value['nombreSupervisor'].'</a>
+                                                            <a class="description"><i class="warning circle icon"></i>Supervisor no ha confirmado registro</a>';
+                                                        }
+                                                        else { echo '
+                                                            <a class="header">'.$value['nombreSupervisor'].'</a>
+                                                            <div class="description">'.$value['correoSupervisor'].'</div>
+                                                            <div class="description">Fono: '.$value['celular'].'</div>
+                                                            <div class="description">Status: '.$value['status'].'</div>
+                                                            <div class="description">Fecha de registro: '.$value['fechaRegistro'].'</div>';
+                                                        } echo '
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div><div class="ui divider"></div>
-                                                    ';
+                                                            </div><div class="ui divider"></div>
+                                                                    ';
+                                                    }// fin each supervisores                                               
                                                 }
-                                        }
+                                        } /*fin each zonas*/
                                     } echo '                                      
                                 </div>
                             </div>
                         </div>
                     </div>';
-                    }
-                ?>            
+                    } /*fin each proyectos*/
+                ?> 
+                </div>
 <!-- FIN CONTENIDO ...................................................................-->
-            </div>
+            <!--</div>-->
         </div>
 <!-- VENTANAS MODALES ..............................................................................-->
     <!--    AGREGAR PROYECTO      --> 
@@ -406,6 +407,7 @@
 <!--FIN VENTANAS MODALES ..............................................................................-->
         <script src="../../js/jquery2.js"></script>
         <script src="../../semantic/semantic.js"></script>
+        <script src="../../js/responsive-table.js"></script>
         <script src="../../cliente/js/modalAgregarProyecto.js"></script>
         <script src="../../cliente/js/modalAgregarZona.js"></script>
         <script src="../../cliente/js/modalAgregarSupervisor.js"></script>
