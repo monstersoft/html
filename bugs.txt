@@ -1,0 +1,5 @@
+1. No deberia agregar supervisores si no hay zonas
+2. Cuando me tira un mensaje en otra ventana modal que no sea agregar zona, apreto agregar zona y el mensaje queda (el anterior)
+3. asignar zona a supervisores de un mismo proyecto
+4. si esta desabilitado no deberia iniciar sesion el supervisor, este usuario aun no confirma su mail o no esta registrado
+5. 
