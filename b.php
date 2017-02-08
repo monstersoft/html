@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="theme-color" content="#262626">
         <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="semantic/calendar.css">
+        <!--<link rel="stylesheet" href="semantic/calendar.css">-->
         <link rel="stylesheet" href="cliente/css/panel.css">
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
         <link rel="stylesheet" href="css/responsive-tables.css">
@@ -194,7 +194,7 @@
 <!--FIN VENTANAS MODALES ..............................................................................-->
         <script src="js/jquery2.js"></script>
         <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
-        <script src="semantic/calendar.js"></script>
+        <!--<script src="semantic/calendar.js"></script>-->
         <script src="js/responsive-table.js"></script>
         <script src="modalAgregarMaquina.js"></script>
         <script src="modalSubirArchivo.js"></script>
