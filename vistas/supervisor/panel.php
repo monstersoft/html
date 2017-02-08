@@ -18,9 +18,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="theme-color" content="#262626">
         <link rel="stylesheet" href="../../semantic/semantic.css">
+        <link rel="stylesheet" href="../../semantic/calendar.css">
         <link rel="stylesheet" href="../../cliente/css/panel.css">
         <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
         <link rel="stylesheet" href="../../css/responsive-tables.css">
+        <link rel="stylesheet" href="../../pickadate/lib/themes/default.css">
+        <link rel="stylesheet" href="../../pickadate/lib/themes/default.date.css">
+        <link rel="stylesheet" href="../../pickadate/lib/themes/classic.time.css">
     </head>
     <body>
         <!--    SIDEBAR      -->
@@ -259,10 +263,27 @@
                                 </div>
                             </div>
                             <div class="field">
-                                <label>Adjuntar Archivo</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="01/01/01" name="archivoZona" id="archivoZona">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
+                                <label>Fecha de datos</label>
+                                <div class="ui left icon input">
+                                    <input class="datepicker" type="text">
+                                    <i class="calendar icon"></i>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Fecha de datos 2</label>
+                                <div class="ui calendar left icon input" id="example2">
+                                    <input type="text">
+                                    <i class="calendar icon"></i>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui fluid file input action">
+                                    <input type="text" readonly>
+                                    <input type="file" id="file1" name="files1" autocomplete="off" style="display: none">
+                                    <button| class="ui button">
+                                    <i class="attach icon"></i>
+                                        Adjuntar Archivo
+                                    </button>
                                 </div>
                             </div>
                             <label for="idZonaArchivo">ID Zona Archivo</label>
@@ -278,12 +299,23 @@
 <!--FIN VENTANAS MODALES ..............................................................................-->
         <script src="../../js/jquery2.js"></script>
         <script src="../../semantic/semantic.js"></script>
+        <script src="../../semantic/calendar.js"></script>
         <script src="../../js/responsive-table.js"></script>
         <script src="../../supervisor/js/modalAgregarMaquina.js"></script>
         <script src="../../supervisor/js/modalSubirArchivo.js"></script>
         <script src="../../cliente/js/compruebaInputs.js"></script>
         <script src="../../cliente/js/mensajes.js"></script>
         <script src="../../cliente/js/devuelveUrl.js"></script>
+        <script src="../../pickadate/lib/picker.js"></script>
+        <script src="../../pickadate/lib/picker.date.js"></script>
+        <script src="../../pickadate/lib/picker.time.js"></script>
+        <script>$( '.datepicker' ).pickadate()</script>
+        <script>
+            $('#example2').calendar({
+                type: 'date'
+            });
+        </script>
+</script>
         <script>
             $(document).ready(function(){
                 $('#menu').click(function(){$('.ui.sidebar').sidebar('toggle');});
@@ -302,6 +334,26 @@
                     $('.modalSubirArchivo').modal('hide');
                 });
             });
+$('.ui.file.input').find('input:text, .ui.button')
+  .on('click', function(e) {
+    $(e.target).parent().find('input:file').click();
+  })
+;
+
+$('input:file', '.ui.file.input')
+  .on('change', function(e) {
+    var file = $(e.target);
+    var name = '';
+
+    for (var i=0; i<e.target.files.length; i++) {
+      name += e.target.files[i].name + ', ';
+    }
+    // remove trailing ","
+    name = name.replace(/,\s*$/, '');
+
+        $('input:text', file.parent()).val(name);
+  })
+;
         </script>
     </body>
 </html>
