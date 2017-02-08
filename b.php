@@ -150,35 +150,26 @@
                     </div>
                     <div class="content">
                         <form class="ui form" id="formularioSubirArchivo">
-                            <div class="field">
-                                <label>Fecha de Datos</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="01/01/01" name="fechaDatos" id="fechaDatos">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
+                            <!--<div class="field">
                                 <label>Fecha de datos</label>
                                 <div class="ui left icon input">
                                     <input class="datepicker" type="text">
                                     <i class="calendar icon"></i>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="field">
-                                <label>Fecha de datos 2</label>
+                                <label>Fecha de datos</label>
                                 <div class="ui calendar left icon input" id="example2">
-                                    <input type="text">
+                                    <input type="text" placeholder="Febrebro 08, 2017">
                                     <i class="calendar icon"></i>
                                 </div>
                             </div>
                             <div class="field">
-                                <div class="ui fluid file input action">
-                                    <input type="text" readonly>
+                                <label>Adjuntar archivo</label>
+                                <div class="ui file input action">
+                                    <input type="text" readonly placeholder="Formato CVS">
                                     <input type="file" id="file1" name="files1" autocomplete="off" style="display: none">
-                                    <button| class="ui button">
-                                    <i class="attach icon"></i>
-                                        Adjuntar Archivo
-                                    </button>
+                                    <button| class="ui button">Buscar</button>
                                 </div>
                             </div>
                             <label for="idZonaArchivo">ID Zona Archivo</label>
