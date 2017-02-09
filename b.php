@@ -19,11 +19,27 @@
             <div class="content">
                 <form class="ui form" id="formularioSubirArchivo">
                     <div class="field">
-                        <label>Adjuntar archivo</label>
-                        <div class="ui file input action">
-                            <input name="fecha" class="datepicker" type="text">
+                        <label>Fecha de datos</label>
+                        <div class="ui calendar left icon input">
+                            <input class="datepicker" type="text" name="fechaDatos" id="fechaDatos">
+                            <i class="calendar icon"></i>
                         </div>
                     </div>
+                    <div class="field">
+                        <label>Adjuntar archivo</label>
+                        <div class="ui file input action">
+                            <input type="text" readonly placeholder="directorio.cvs">
+                            <input type="file" id="file1" name="files1" autocomplete="off" style="display: none">
+                            <button class="ui button">Buscar</button>
+                        </div>
+                    </div>
+                    <!--input type="text" name="idZonaArchivo" id="idZonaArchivo">-->
+                </form>
+                <div style="text-align: right;margin-top: 15px">
+                    <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                    <a href="#" class="ui button green" id="btnSubirArchivo"><i class="upload icon"></i>Subir</a>
+                </div>
+                <div class="message" style="margin: 15px 0px 0px 0px"></div>
                 </form>
             </div>
         </div>
