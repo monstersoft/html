@@ -1,14 +1,15 @@
 <?php
-    session_start();
+    /*session_start();
     if(!isset($_SESSION['correo'])){
         header("Location:../../index.php");
     }
-    else {
+    else {*/
         include("../../supervisor/funcionesSupervisor.php");
-        $email = $_SESSION['correo'];
+        //$email = $_SESSION['correo'];
+        $email = 'pavillanueva@ing.ucsc.cl';
         $perfil = datosPerfilSupervisor($email);
         $proyectos = utf8Converter(proyectosSupervisor($perfil['id']));
-    }
+   //}
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,12 +18,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="theme-color" content="#262626">
-        <link rel="stylesheet" href="../../semantic/semantic.css">
-        <link rel="stylesheet" href="../../semantic/calendar.css">
+        <link rel="stylesheet" href="../../semantic/semantic.min.css">
         <link rel="stylesheet" href="../../cliente/css/panel.css">
         <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
         <link rel="stylesheet" href="../../css/responsive-tables.css">
         <link rel="stylesheet" href="../../pickadate/lib/themes/default.css">
+        <link rel="stylesheet" href="../../pickadate/lib/themes/classic.css">
         <link rel="stylesheet" href="../../pickadate/lib/themes/default.date.css">
         <link rel="stylesheet" href="../../pickadate/lib/themes/classic.time.css">
     </head>
@@ -91,6 +92,13 @@
             <div class="ui grid container">      
 <!-- CONTENIDO .......................................................................-->
                 <!-- PROYECTO       -->
+                                    <div class="field">
+                        <label>Fecha de datos</label>
+                        <div class="ui left icon input">
+                            <input class="datepicker" type="text">
+                            <i class="calendar icon"></i>
+                        </div>
+                    </div>
                 <?php
                     foreach ($proyectos as $key => $value) { /*inicio each proyectos*/ echo '
                     <div class="ui sixteen wide column">
@@ -189,117 +197,97 @@
 <!-- VENTANAS MODALES ..............................................................................-->
     <!--    AGREGAR MAQUINA    --> 
         <div class="ui modal modalAgregarMaquina">
-                    <div class="header">
-                      <i class="add icon" style="float: right;"></i>
-                      Agregar Maquina
-                    </div>
-                    <div class="content">
-                        <form class="ui form" id="formularioAgregarMaquina">
-                            <div class="field">
-                                <label>Identificador</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Nuevo ID" name="identificadorMaquina" id="identificadorMaquina" value="1">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Patente</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="ABCD00" name="patenteMaquina" id="patenteMaquina">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Velocidad Máxima [km/hr]</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="100" name="velocidadMaquina" id="velocidadMaquina" value="100">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Tara Máxima [kg]</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="100" name="taraMaquina" id="taraMaquina" value="500">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Año</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" name="anhoMaquina" id="anhoMaquina" placeholder="2017">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Carga Máxima [kg]</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="100" name="cargaMaquina" id="cargaMaquina" value="500">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <label for="idZonaMaquina">ID Zona Máquina</label>
-                            <input type="text" name="idZonaMaquina" id="idZonaMaquina">
-                        </form>
-                        <div style="text-align: right;margin-top: 15px">
-                            <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
-                            <a href="#" class="ui button green" id="btnAñadirMaquina"><i class="add icon"></i>Añadir</a>
+            <div class="header">
+              <i class="add icon" style="float: right;"></i>
+              Agregar Maquina
+            </div>
+            <div class="content">
+                <form class="ui form" id="formularioAgregarMaquina">
+                    <div class="field">
+                        <label>Identificador</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="Nuevo ID" name="identificadorMaquina" id="identificadorMaquina" value="1">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
                         </div>
-                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
+                    <div class="field">
+                        <label>Patente</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="ABCD00" name="patenteMaquina" id="patenteMaquina">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Velocidad Máxima [km/hr]</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="100" name="velocidadMaquina" id="velocidadMaquina" value="100">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Tara Máxima [kg]</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="100" name="taraMaquina" id="taraMaquina" value="500">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Año</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" name="anhoMaquina" id="anhoMaquina" placeholder="2017">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Carga Máxima [kg]</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="100" name="cargaMaquina" id="cargaMaquina" value="500">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                        </div>
+                    </div>
+                    <label for="idZonaMaquina">ID Zona Máquina</label>
+                    <input type="text" name="idZonaMaquina" id="idZonaMaquina">
+                </form>
+                <div style="text-align: right;margin-top: 15px">
+                    <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                    <a href="#" class="ui button green" id="btnAñadirMaquina"><i class="add icon"></i>Añadir</a>
                 </div>
+                <div class="message" style="margin: 15px 0px 0px 0px"></div>
+            </div>
+        </div>
     <!--    SUBIR ARCHIVO    --> 
         <div class="ui modal modalSubirArchivo">
-                    <div class="header">
-                      <i class="upload icon" style="float: right;"></i>
-                      Subir Archivo
-                    </div>
-                    <div class="content">
-                        <form class="ui form" id="formularioSubirArchivo">
-                            <div class="field">
-                                <label>Fecha de Datos</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="01/01/01" name="fechaDatos" id="fechaDatos">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Fecha de datos</label>
-                                <div class="ui left icon input">
-                                    <input class="datepicker" type="text">
-                                    <i class="calendar icon"></i>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Fecha de datos 2</label>
-                                <div class="ui calendar left icon input" id="example2">
-                                    <input type="text">
-                                    <i class="calendar icon"></i>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <div class="ui fluid file input action">
-                                    <input type="text" readonly>
-                                    <input type="file" id="file1" name="files1" autocomplete="off" style="display: none">
-                                    <button| class="ui button">
-                                    <i class="attach icon"></i>
-                                        Adjuntar Archivo
-                                    </button>
-                                </div>
-                            </div>
-                            <label for="idZonaArchivo">ID Zona Archivo</label>
-                            <input type="text" name="idZonaArchivo" id="idZonaArchivo">
-                        </form>
-                        <div style="text-align: right;margin-top: 15px">
-                            <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
-                            <a href="#" class="ui button green" id="btnSubirArchivo"><i class="upload icon"></i>Subir</a>
+            <div class="header"><i class="upload icon" style="float: right;"></i>Subir Archivo</div>
+            <div class="content">
+                <form class="ui form" id="formularioSubirArchivo">
+                    <div class="field">
+                        <label>Fecha de datos</label>
+                        <div class="ui calendar left icon input" id="example2">
+                            <input type="text" placeholder="Febrebro 08, 2017">
+                            <i class="calendar icon"></i>
                         </div>
-                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
-                </div>           
+                    <div class="field">
+                        <label>Adjuntar archivo</label>
+                        <div class="ui file input action">
+                            <input type="text" readonly placeholder="Formato CVS">
+                            <input type="file" id="file1" name="files1" autocomplete="off" style="display: none">
+                            <button class="ui button">Buscar</button>
+                        </div>
+                    </div>
+                    <label for="idZonaArchivo">ID Zona Archivo</label>
+                    <input type="text" name="idZonaArchivo" id="idZonaArchivo">
+                </form>
+                <div style="text-align: right;margin-top: 15px">
+                    <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                    <a href="#" class="ui button green" id="btnSubirArchivo"><i class="upload icon"></i>Subir</a>
+                </div>
+                <div class="message" style="margin: 15px 0px 0px 0px"></div>
+            </div>
+        </div>           
 <!--FIN VENTANAS MODALES ..............................................................................-->
         <script src="../../js/jquery2.js"></script>
-        <script src="../../semantic/semantic.js"></script>
-        <script src="../../semantic/calendar.js"></script>
+        <script src="../../semantic/semantic.min.js"></script>
         <script src="../../js/responsive-table.js"></script>
         <script src="../../supervisor/js/modalAgregarMaquina.js"></script>
         <script src="../../supervisor/js/modalSubirArchivo.js"></script>
@@ -309,13 +297,13 @@
         <script src="../../pickadate/lib/picker.js"></script>
         <script src="../../pickadate/lib/picker.date.js"></script>
         <script src="../../pickadate/lib/picker.time.js"></script>
-        <script>$( '.datepicker' ).pickadate()</script>
         <script>
-            $('#example2').calendar({
-                type: 'date'
-            });
+            $( '.datepicker' ).pickadate({
+                weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'],
+                showMonthsShort: true
+            })
         </script>
-</script>
+        <script>$('#example2').calendar({type: 'date'});</script>
         <script>
             $(document).ready(function(){
                 $('#menu').click(function(){$('.ui.sidebar').sidebar('toggle');});
@@ -334,26 +322,19 @@
                     $('.modalSubirArchivo').modal('hide');
                 });
             });
-$('.ui.file.input').find('input:text, .ui.button')
-  .on('click', function(e) {
-    $(e.target).parent().find('input:file').click();
-  })
-;
-
-$('input:file', '.ui.file.input')
-  .on('change', function(e) {
-    var file = $(e.target);
-    var name = '';
-
-    for (var i=0; i<e.target.files.length; i++) {
-      name += e.target.files[i].name + ', ';
-    }
-    // remove trailing ","
-    name = name.replace(/,\s*$/, '');
-
-        $('input:text', file.parent()).val(name);
-  })
-;
+            $('.ui.file.input').find('input:text, .ui.button').on('click', function(e) {
+                $(e.target).parent().find('input:file').click();
+            });
+            $('input:file', '.ui.file.input').on('change', function(e) {
+                var file = $(e.target);
+                var name = '';
+                for (var i=0; i<e.target.files.length; i++) {
+                    name += e.target.files[i].name + ', ';
+                }
+                // remove trailing ","
+                name = name.replace(/,\s*$/, '');
+                $('input:text', file.parent()).val(name);
+            });
         </script>
     </body>
 </html>
