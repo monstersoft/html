@@ -7,13 +7,12 @@
         <link rel="stylesheet" href="semantic/semantic.css">
         <link rel="stylesheet" href="cliente/css/panel.css">
         <link rel="stylesheet" href="css/responsive-tables.css">
-        <!--<link rel="stylesheet" href="pickadate/lib/themes/default.css">
-        <link rel="stylesheet" href="pickadate/lib/themes/default.date.css">-->
         <link rel="stylesheet" href="pickadate/lib/themes/classic.time.css">
         <link rel="stylesheet" href="pickadate/lib/themes/classic.css">
         <link rel="stylesheet" href="pickadate/lib/themes/classic.date.css">
     </head>
     <body>
+        <a href="#" id="enlace">Enlace</a>
         <div class="ui modal modalSubirArchivo">
             <div class="header"><i class="upload icon" style="float: right;"></i>Subir Archivo</div>
             <div class="content">
@@ -45,14 +44,16 @@
         </div>
         <script src="js/jquery2.js"></script>
         <script src="semantic/semantic.js"></script>
+        <script src="supervisor/js/funciones.js"></script>
+        <script src="js/moment.js"></script>
         <script src="pickadate/lib/picker.js"></script>
         <script src="pickadate/lib/picker.date.js"></script>
         <script src="pickadate/lib/picker.time.js"></script>
         <script>
             $('.datepicker').pickadate({
-                monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
                 monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                weekdaysFull: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
                 weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
                 showMonthsShort: undefined,
                 showWeekdaysFull: undefined,
@@ -61,44 +62,56 @@
                 close: 'Cerrar',
                 min: new Date(2017,1,1),
                 max: new Date(2018,1,1),
+                format: 'dddd dd , mmmm yyyy',
                 formatSubmit: 'yyyy/mm/dd',
                 hiddenName : true,
-                firstDay: 'Monday',
+                firstDay: 'Monday'
             })
         </script>
         <script>
-$(document).ready(function(){
-    $('.modalSubirArchivo').modal('show');
-    $('#send').click(function(){
-          var data = $('#formulario').serialize();
-  
-          $.ajax({
-                      url: 'a.php',
-                      type: 'POST',
-                      data: data,
-                      dataType: 'json',
-                      success: function(arreglo){                  
-                          alert(arreglo.fetcha);
-                      }
-                  }).fail(function( jqXHR, textStatus, errorThrown ){
-                      if (jqXHR.status === 0){
-                          alert('No hay coneccion con el servidor');
-                      } else if (jqXHR.status == 404) {
-                          alert('La pagina solicitada no fue encontrada, error 404');
-                      } else if (jqXHR.status == 500) {
-                          alert('Error interno del servidor');
-                      } else if (textStatus === 'parsererror') {
-                          alert('Error en la respuesta, debes analizar la sintaxis JSON');
-                      } else if (textStatus === 'timeout') {
-                          alert('Ya ha pasado mucho tiempo');
-                      } else if (textStatus === 'abort') {
-                          alert('La peticion fue abortada');
-                      } else {
-                          alert('Error desconocido');
-                      }
-                  });
-    });
-});
+          $(document).ready(function(){
+              $('#enlace').click(function(){
+                  $('.modalSubirArchivo').modal({autofocus: false}).modal('show');
+                  fechaHoy();
+              });
+              $('#btnSubirArchivo').click(function(){
+                    var data = $('#formularioSubirArchivo').serialize();
+                    $.ajax({
+                            url: 'a.php',
+                            type: 'POST',
+                            data: data,
+                            dataType: 'json',
+                            success: function(arreglo){                  
+                                alert(arreglo.fetcha);
+                            }
+                            }).fail(function( jqXHR, textStatus, errorThrown ){
+                                if (jqXHR.status === 0){
+                                    alert('No hay coneccion con el servidor');
+                                } else if (jqXHR.status == 404) {
+                                    alert('La pagina solicitada no fue encontrada, error 404');
+                                } else if (jqXHR.status == 500) {
+                                    alert('Error interno del servidor');
+                                } else if (textStatus === 'parsererror') {
+                                    alert('Error en la respuesta, debes analizar la sintaxis JSON');
+                                } else if (textStatus === 'timeout') {
+                                    alert('Ya ha pasado mucho tiempo');
+                                } else if (textStatus === 'abort') {
+                                    alert('La peticion fue abortada');
+                                } else {
+                                    alert('Error desconocido');
+                                }
+                            });
+              });
+
+              $('.cancelar').click(function(){
+                  $('#formularioSubirArchivo').trigger("reset");
+                  $('#formularioAgregarMaquina').trigger("reset");
+                  $('.ui.negative.message').remove();
+                  $('.ui.warning.message').remove();
+                  $('.modalSubirArchivo').modal('hide');
+                  $('.modalAgregarMaquina').modal('hide');
+              });
+          });
 
         </script>
     </body>
