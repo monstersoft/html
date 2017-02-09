@@ -4,7 +4,8 @@ $(document).ready(function() {
         $('.ui.warning.message').remove();
         $('.ui.icon.success.message').remove();
         $('#idZonaArchivo').val($(this).attr('id'));
-        $('.modalSubirArchivo').modal('show');
+        $('.modalSubirArchivo').modal({autofocus: false}).modal('show');
+        fechaHoy();
     });
     $('#btnSubirArchivo').click(function(){
         alert('Subir Archivo');

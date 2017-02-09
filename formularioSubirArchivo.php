@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="pickadate/lib/themes/classic.date.css">
     </head>
     <body>
-        <a href="#" id="enlace">Enlace</a>
         <div class="ui modal modalSubirArchivo">
             <div class="header"><i class="upload icon" style="float: right;"></i>Subir Archivo</div>
             <div class="content">

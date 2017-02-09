@@ -22,10 +22,9 @@
         <link rel="stylesheet" href="../../cliente/css/panel.css">
         <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
         <link rel="stylesheet" href="../../css/responsive-tables.css">
-        <link rel="stylesheet" href="../../pickadate/lib/themes/default.css">
         <link rel="stylesheet" href="../../pickadate/lib/themes/classic.css">
-        <link rel="stylesheet" href="../../pickadate/lib/themes/default.date.css">
         <link rel="stylesheet" href="../../pickadate/lib/themes/classic.time.css">
+        <link rel="stylesheet" href="../../pickadate/lib/themes/classic.date.css">
     </head>
     <body>
         <!--    SIDEBAR      -->
@@ -92,13 +91,6 @@
             <div class="ui grid container">      
 <!-- CONTENIDO .......................................................................-->
                 <!-- PROYECTO       -->
-                                    <div class="field">
-                        <label>Fecha de datos</label>
-                        <div class="ui left icon input">
-                            <input class="datepicker" type="text">
-                            <i class="calendar icon"></i>
-                        </div>
-                    </div>
                 <?php
                     foreach ($proyectos as $key => $value) { /*inicio each proyectos*/ echo '
                     <div class="ui sixteen wide column">
@@ -262,17 +254,17 @@
                 <form class="ui form" id="formularioSubirArchivo">
                     <div class="field">
                         <label>Fecha de datos</label>
-                        <div class="ui calendar left icon input" id="example2">
-                            <input type="text" placeholder="Febrebro 08, 2017">
+                        <div class="ui calendar left icon input">
+                            <input class="datepicker" type="text" name="fechaDatos" id="fechaDatos">
                             <i class="calendar icon"></i>
                         </div>
                     </div>
                     <div class="field">
                         <label>Adjuntar archivo</label>
-                        <div class="ui file input action">
+                        <div class="ui file input">
                             <input type="text" readonly placeholder="Formato CVS">
                             <input type="file" id="file1" name="files1" autocomplete="off" style="display: none">
-                            <button class="ui button">Buscar</button>
+                            <button class="ui button" style="border-style: 1px solid red;">Buscar</button>
                         </div>
                     </div>
                     <label for="idZonaArchivo">ID Zona Archivo</label>
@@ -288,6 +280,8 @@
 <!--FIN VENTANAS MODALES ..............................................................................-->
         <script src="../../js/jquery2.js"></script>
         <script src="../../semantic/semantic.min.js"></script>
+        <script src="../../supervisor/js/funciones.js"></script>
+        <script src="../../js/moment.js"></script>
         <script src="../../js/responsive-table.js"></script>
         <script src="../../supervisor/js/modalAgregarMaquina.js"></script>
         <script src="../../supervisor/js/modalSubirArchivo.js"></script>
@@ -298,12 +292,24 @@
         <script src="../../pickadate/lib/picker.date.js"></script>
         <script src="../../pickadate/lib/picker.time.js"></script>
         <script>
-            $( '.datepicker' ).pickadate({
-                weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'],
-                showMonthsShort: true
+            $('.datepicker').pickadate({
+                monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+                monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                weekdaysFull: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+                weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+                showMonthsShort: undefined,
+                showWeekdaysFull: undefined,
+                today: 'Hoy',
+                clear: '',
+                close: 'Cerrar',
+                min: new Date(2017,1,1),
+                max: new Date(2018,1,1),
+                format: 'dddd dd , mmmm yyyy',
+                formatSubmit: 'yyyy/mm/dd',
+                hiddenName : true,
+                firstDay: 'Monday'
             })
         </script>
-        <script>$('#example2').calendar({type: 'date'});</script>
         <script>
             $(document).ready(function(){
                 $('#menu').click(function(){$('.ui.sidebar').sidebar('toggle');});
@@ -321,6 +327,14 @@
                     $('.modalAgregarMaquina').modal('hide');
                     $('.modalSubirArchivo').modal('hide');
                 });
+            });
+            $('.cancelar').click(function(){
+                $('#formularioSubirArchivo').trigger("reset");
+                $('#formularioAgregarMaquina').trigger("reset");
+                $('.ui.negative.message').remove();
+                $('.ui.warning.message').remove();
+                $('.modalSubirArchivo').modal('hide');
+                $('.modalAgregarMaquina').modal('hide');
             });
             $('.ui.file.input').find('input:text, .ui.button').on('click', function(e) {
                 $(e.target).parent().find('input:file').click();
