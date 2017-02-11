@@ -251,7 +251,7 @@
         <div class="ui modal modalSubirArchivo">
             <div class="header"><i class="upload icon" style="float: right;"></i>Subir Archivo</div>
             <div class="content">
-                <form class="ui form" id="formularioSubirArchivo">
+                <form class="ui form" id="formularioSubirArchivo" enctype="multipart/form-data">
                     <div class="field">
                         <label>Fecha de datos</label>
                         <div class="ui calendar left icon input">
@@ -261,10 +261,10 @@
                     </div>
                     <div class="field">
                         <label>Adjuntar archivo</label>
-                        <div class="ui file input">
-                            <input type="text" readonly placeholder="Formato CVS">
-                            <input type="file" id="file1" name="files1" autocomplete="off" style="display: none">
-                            <button class="ui button" style="border-style: 1px solid red;">Buscar</button>
+                        <div class="ui file input action">
+                            <input type="text" placeholder="Formato CVS">
+                            <input type="file" id="archivoZona" name="archivoZona" style="display: none">
+                            <a href="#" class="ui button">Buscar</a>
                         </div>
                     </div>
                     <label for="idZonaArchivo">ID Zona Archivo</label>
@@ -318,21 +318,13 @@
                     $('.zona').removeClass('disabled');
                     $('.supervisor').removeClass('disabled');    
                 }).dropdown();
-                $('.cancelar').click(function(){
-                    $('.ui.negative.message').remove();
-                    $('.ui.warning.message').remove();
-                    $('.ui.icon.success.message').remove();
-                    $('#formularioAgregarMaquina').trigger("reset");
-                    $('#formularioSubirArchivo').trigger("reset");
-                    $('.modalAgregarMaquina').modal('hide');
-                    $('.modalSubirArchivo').modal('hide');
-                });
             });
             $('.cancelar').click(function(){
                 $('#formularioSubirArchivo').trigger("reset");
                 $('#formularioAgregarMaquina').trigger("reset");
                 $('.ui.negative.message').remove();
                 $('.ui.warning.message').remove();
+                $('.ui.icon.success.message').remove();
                 $('.modalSubirArchivo').modal('hide');
                 $('.modalAgregarMaquina').modal('hide');
             });
