@@ -12,29 +12,9 @@
 </head>
 <body>
     <div class="ui grid">
-        <a href="#" id="modal">Modal</a><br>
-        <form class="ui form" id="formularioSubirArchivo" enctype="multipart/form-data">
-            <div class="field">
-                <label>Fecha de datos</label>
-                <div class="ui calendar left icon input">
-                    <input class="datepicker" type="text" name="fechaDatos" id="fechaDatos">
-                    <i class="calendar icon"></i>
-                </div>
-            </div>
-            <div class="field">
-                <label>Adjuntar archivo</label>
-                <div class="ui file input action">
-                    <input type="text" placeholder="Formato CVS" name="archivoZonaText" id="archivoZonaText">
-                    <input type="file" id="archivoZona" name="archivoZona" style="display: none">
-                    <a href="#" class="ui button">Buscar</a>
-                </div>
-            </div>
-            <label for="idZonaArchivo">ID Zona Archivo</label>
-            <input type="text" name="idZonaArchivo" id="idZonaArchivo">
-            <input type="submit" value="Subir">
-        </form>
+        <a href="#" class="subirArchivo">Modal</a><br>
     </div>
-        <div class="ui modal">
+        <div class="ui modal modalSubirArchivo">
             <div class="header"><i class="add icon" style="float: right;"></i>Agregar Maquina</div>
             <div class="content">
                 <form class="ui form" id="formularioSubirArchivo" enctype="multipart/form-data">
@@ -55,14 +35,18 @@
                     </div>
                     <label for="idZonaArchivo">ID Zona Archivo</label>
                     <input type="text" name="idZonaArchivo" id="idZonaArchivo">
-                    <input type="submit" value="Subir">
                 </form>
+                <div style="text-align: right;margin-top: 15px">
+                    <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                    <a href="#" class="ui button green" id="btnSubirArchivo"><i class="upload icon"></i>Subir</a>
+                </div>
+                <div class="message" style="margin: 15px 0px 0px 0px"></div>
             </div>
         </div>
     <script src="js/jquery2.js"></script>
     <script src="semantic/semantic.min.js"></script>
-    <script src="supervisor/js/funciones.js"></script>
     <script src="js/moment.js"></script>
+    <script src="supervisor/js/funciones.js"></script>
     <script src="js/responsive-table.js"></script>
     <script src="supervisor/js/modalAgregarMaquina.js"></script>
     <script src="supervisor/js/modalSubirArchivo.js"></script>
@@ -92,11 +76,6 @@
         })
     </script>
     <script>
-        $(document).ready(function(){
-            $('#modal').click(function(){
-                $('.ui.modal').modal({autofocus: false}).modal('show');
-            });
-        });
         $('.ui.file.input').find('input:text, .ui.button').on('click', function(e) {
             $(e.target).parent().find('input:file').click();
         });
@@ -109,26 +88,6 @@
             // remove trailing ","
             name = name.replace(/,\s*$/, '');
             $('input:text', file.parent()).val(name);
-        });
-    </script>
-    <script>
-        $(function(){
-            var callback = function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: 'subirArchivo.php',
-                    type: 'POST',
-                    data: new FormData(this),
-                    contentType: false,
-                    //cache: false,
-                    processData: false,
-                    dataType: 'json',
-                    success: function(response){
-                        alert(JSON.stringify(response));
-                    }
-                });
-            }
-             $('#formularioSubirArchivo').on('submit', callback);
         });
     </script>
 </body>
