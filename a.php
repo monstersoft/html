@@ -34,6 +34,31 @@
             <input type="submit" value="Subir">
         </form>
     </div>
+        <div class="ui modal">
+            <div class="header"><i class="add icon" style="float: right;"></i>Agregar Maquina</div>
+            <div class="content">
+                <form class="ui form" id="formularioSubirArchivo" enctype="multipart/form-data">
+                    <div class="field">
+                        <label>Fecha de datos</label>
+                        <div class="ui calendar left icon input">
+                            <input class="datepicker" type="text" name="fechaDatos" id="fechaDatos">
+                            <i class="calendar icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Adjuntar archivo</label>
+                        <div class="ui file input action">
+                            <input type="text" placeholder="Formato CVS" name="archivoZonaText" id="archivoZonaText">
+                            <input type="file" id="archivoZona" name="archivoZona" style="display: none">
+                            <a href="#" class="ui button">Buscar</a>
+                        </div>
+                    </div>
+                    <label for="idZonaArchivo">ID Zona Archivo</label>
+                    <input type="text" name="idZonaArchivo" id="idZonaArchivo">
+                    <input type="submit" value="Subir">
+                </form>
+            </div>
+        </div>
     <script src="js/jquery2.js"></script>
     <script src="semantic/semantic.min.js"></script>
     <script src="supervisor/js/funciones.js"></script>
@@ -69,23 +94,8 @@
     <script>
         $(document).ready(function(){
             $('#modal').click(function(){
-                $('.ui.negative.message').remove();
-                $('.ui.warning.message').remove();
-                $('.ui.icon.success.message').remove();
-                $('#formularioSubirArchivo').trigger("reset");
-                $('#idZonaArchivo').val($(this).attr('id'));
-                $('.modalSubirArchivo').modal({autofocus: false}).modal('show');
-                fechaHoy();
+                $('.ui.modal').modal({autofocus: false}).modal('show');
             });
-        });
-        $('.cancelar').click(function(){
-            $('#formularioSubirArchivo').trigger("reset");
-            $('#formularioAgregarMaquina').trigger("reset");
-            $('.ui.negative.message').remove();
-            $('.ui.warning.message').remove();
-            $('.ui.icon.success.message').remove();
-            $('.modalSubirArchivo').modal('hide');
-            $('.modalAgregarMaquina').modal('hide');
         });
         $('.ui.file.input').find('input:text, .ui.button').on('click', function(e) {
             $(e.target).parent().find('input:file').click();
@@ -110,7 +120,7 @@
                     type: 'POST',
                     data: new FormData(this),
                     contentType: false,
-                    cache: false,
+                    //cache: false,
                     processData: false,
                     dataType: 'json',
                     success: function(response){
