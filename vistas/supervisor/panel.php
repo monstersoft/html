@@ -251,7 +251,7 @@
         <div class="ui modal modalSubirArchivo">
             <div class="header"><i class="upload icon" style="float: right;"></i>Subir Archivo</div>
             <div class="content">
-                <form class="ui form" id="formularioSubirArchivo" enctype="multipart/form-data">
+                <form class="ui form" id="myForm" enctype="multipart/form-data">
                     <div class="field">
                         <label>Fecha de datos</label>
                         <div class="ui calendar left icon input">
@@ -262,7 +262,7 @@
                     <div class="field">
                         <label>Adjuntar archivo</label>
                         <div class="ui file input action">
-                            <input type="text" placeholder="Formato CVS">
+                            <input type="text" placeholder="Formato CVS" name="archivoZonaText" id="archivoZonaText">
                             <input type="file" id="archivoZona" name="archivoZona" style="display: none">
                             <a href="#" class="ui button">Buscar</a>
                         </div>
@@ -272,7 +272,8 @@
                 </form>
                 <div style="text-align: right;margin-top: 15px">
                     <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
-                    <a href="#" class="ui button green" id="btnSubirArchivo"><i class="upload icon"></i>Subir</a>
+                    <input type="submit" id="btnSubirArchivo" value="Subir">
+                    <!--<button type="submit" href="#" class="ui button green" id="btnSubirArchivo"><i class="upload icon"></i></button>-->
                 </div>
                 <div class="message" style="margin: 15px 0px 0px 0px"></div>
             </div>
@@ -342,5 +343,82 @@
                 $('input:text', file.parent()).val(name);
             });
         </script>
+        <script>
+            $(function(){
+                var callback = function(e) {
+                    e.preventDefault();
+                    /*var arreglo = new Array();
+                    var fecha = $('#fechaDatos').val();
+                    var archivo = $('#archivoZona').val();
+                    var idZona = $('#idZonaArchivo').val();
+                    var archivoText = $('#archivoZonaText').val();
+                    var numberErrors = 0;
+                    if(isEmpty(fecha))
+                        arreglo.push('<li>Fecha es obligatorio</li>');
+                    if(isEmpty(archivo))
+                        arreglo.push('<li>Archivo es obligatorio</li>');
+                    if(isEmpty(idZona))
+                        arreglo.push('<li>Id Zona es obligatorio</li>');
+                    if(isEmpty(archivoText))
+                        arreglo.push('<li>Archivo es obligatorio</li>');
+                    if(arreglo.length == 0) {*/
+                        var url = devuelveUrl('html/supervisor/subirArchivo.php');
+                        $.ajax({
+                            url: url,
+                            type: 'POST',
+                            data: new FormData(this),
+                            contentType: false,
+                            //cache: false,
+                            processData: false,
+                            dataType: 'json',
+                            success: function(response){
+                                alert(JSON.stringify(response));
+                            }
+                        }).fail(function( jqXHR, textStatus, errorThrown ){
+                            if (jqXHR.status === 0){
+                                alert('No hay coneccion con el servidor');
+                            } else if (jqXHR.status == 404) {
+                                alert('La pagina solicitada no fue encontrada, error 404');
+                            } else if (jqXHR.status == 500) {
+                                alert('Error interno del servidor');
+                            } else if (textStatus === 'parsererror') {
+                                alert('Error en la respuesta, debes analizar la sintaxis JSON');
+                            } else if (textStatus === 'timeout') {
+                                alert('Ya ha pasado mucho tiempo');
+                            } else if (textStatus === 'abort') {
+                                alert('La peticion fue abortada');
+                            } else {
+                                alert('Error desconocido');
+                            }
+                        });
+                    /*}
+                    else {
+                        errorMessage(arreglo);
+                    }*/
+                }
+                $('#formularioSubirArchivo').on('submit', callback);
+            });
+        </script>
+    <script>
+        $(function(){
+            var callback = function(e) {
+                e.preventDefault();
+                var url = devuelveUrl('html/supervisor/subirArchivo.php');
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    dataType: 'json',
+                    success: function(response){
+                        alert(JSON.stringify(response));
+                    }
+                });
+            }
+             $('#myForm').on('submit', callback);
+        });
+    </script>
     </body>
 </html>
