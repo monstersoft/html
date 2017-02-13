@@ -7,7 +7,7 @@ $inserciones = 0;
 /*if ($_FILES['csv']['size'] > 0) {
 
 	$csv = $_FILES['csv']['tmp_name'];*/
-
+set_time_limit(600);
 	$handle = fopen($csv,'r');
 
 	while ($data = fgetcsv($handle,1000,";")){
