@@ -1,33 +1,46 @@
 <?php
 include ('php/conexion.php');
 $conexion = conectar();
-$csv = 'Libro1.csv';
-$registros = 0;
-$inserciones = 0;
+$fechaDatos = $_POST['fechaDatos'];
+$archivoZonaText = $_POST['archivoZonaText'];
+$archivoZona = $_FILES['archivoZona'];
+$idZonaArchivo = $_POST['idZonaArchivo'];
+$arreglo = array();
+$arreglo['numeroRegistros'] = 0;
+$arreglo['numeroInserciones'] = 0;
+$arreglo['numeroInsercionesErradas'] = 0;
+$arreglo['tiempoValidacion'] = 0;
+$arreglo['tiempoInsercion'] = 0;
+$arreglo['peso'] = $_FILES['archivoZona']['size'];
+$arreglo['peso'] = $_FILES['archivoZona']['type'];
+$arreglo['fechaSubida'] = 0;
+$arreglo['fechaDatos'] = 0;
+$arreglo['horaSubida'] = 0;
+$arreglo['candtidadRegistros'] = 0;
+$arreglo['md5'] = 0;
 /*if ($_FILES['csv']['size'] > 0) {
 
-	$csv = $_FILES['csv']['tmp_name'];*/
+	//$csv = $_FILES['csv']['tmp_name'];
 set_time_limit(600);
 	$handle = fopen($csv,'r');
 
 	while ($data = fgetcsv($handle,1000,";")){
 
 		if ($data[0]) { 
-			$q = "INSERT INTO datos (idArchivo, patente, anguloPala, anguloInclinacion, alturaPala, velocidad, revoluciones, latitud, longitud, fechaDato, horaDato) VALUES (0,'$data[0]','$data[1]','$data[2]','$data[3]','$data[4]','$data[5]','$data[6]','$data[7]','$data[8]','$data[9]')";
-			if(mysqli_query($conexion,$q)){
+			$consulta = "INSERT INTO datos (idArchivo, patente, anguloPala, anguloInclinacion, alturaPala, velocidad, revoluciones, latitud, longitud, fechaDato, horaDato) VALUES (0,'$data[0]','$data[1]','$data[2]','$data[3]','$data[4]','$data[5]','$data[6]','$data[7]','$data[8]','$data[9]')";
+			if(mysqli_query($conexion,$consulta)){
 				$inserciones++;
 			}
-			else{
-				echo 'No insertó<br>';
+			else {
+				$errores
 			}
 		$registros++;
 		}
 
-	}
-echo 'Registros: '.$registros.'-'.'Inserciones: '.$inserciones;
-	/*echo 'OK';
+	}*/
+echo json_encode($arreglo);
 
-}*/
+
 
 function calcularMD5($archivo) {
 	echo 'Retorna true o false si lo calculó o no';

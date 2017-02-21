@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/materialize.min.css">
+    <link rel="stylesheet" href="css/materialize.min.css">
     <title>scvs</title>
 </head>
 <body>
@@ -30,8 +30,8 @@
     <label>Optgroups</label>
   </div>
    <div id="resultado"></div>
-    <script src="../js/jquery-3.1.0.js"></script>
-    <script src="../js/materialize.min.js"></script>
+    <script src="jquery2.js"></script>
+    <script src="js/materialize.min.js"></script>
     <script>
         $(document).ready(function(){
             $('.datepicker').pickadate({
@@ -56,7 +56,7 @@
             $("#download").click(function() {
                 var json = $.parseJSON(jsons);
                 var csv = JSON2CSV(json);
-                window.open("data:text/csv;charset=utf-8," + escape(csv));
+                window.open("data:text/csv;charset=utf-8,"+csv);
                 Materialize.toast('Descargando CVS...', 4000);
             });
         });
