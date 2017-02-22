@@ -37,23 +37,35 @@
             </div>
           </div>
         </div>            
-        <div class="sixteen wide mobile column">               
-          <div class="ui middle aligned divided list contenido">
-                <div class="item"><div class="right floated content"><div class="ui button" id="siguiente">Seguir<i class="arrow right icon"></i></div></div><div class="content"><a class="header"><i class="marker big icon"></i>Universidad Católica de la Santísima Concepción</a></div></div> 
-          </div>
+        <div class="sixteen wide mobile column">
+           <i class="notched circle loading massive icon"></i>
+            <div class="ui relaxed divided list contenidoZonas">
+            </div>
         </div>
     </div>
     <script src="jquery2.js"></script>
     <script src="semantic.js"></script>
+    <script src="funciones.js"></script>
     <script>
-        $(document).ready(main);
-        function main() {
-            $('#siguiente').click(siguiente);
-        }
-        function siguiente() {
-            $('.contenido').html('holalasldlasldlalsdlsdll');
-            $('.stepZonas').removeClass('active').addClass('disabled');
-        }
+        /*$(document).ready(main);
+            function main() {
+                $.ajax({
+                    url: 'infoZonas.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(arreglo) {
+                        $.each(arreglo, function(index) {
+                           $('.contenidoZonas').append('<div class="item"><div class="right floated content"><div class="ui button">Seguir<i class="arrow right icon"></i></div></div><i class="big marker middle aligned icon"></i><div class="content"><a class="header">'+arreglo[index].zona+'</a><div class="description">'+arreglo[index].empresa+'</div><div class="description">'+arreglo[index].proyecto+'</div><div class="description">'+arreglo[index].idZona+'</div></div></div>');
+                        }
+                        );
+                        
+                    }
+                });
+                $('#siguiente').click(siguiente);
+            }
+            function siguiente() {
+                $('.stepZonas').removeClass('active').addClass('disabled');
+            }*/
     </script>
 </body>
 </html>
