@@ -7,12 +7,11 @@
         $i = 0;
         while($row = mysqli_fetch_assoc($resultado)) {
             $arreglo[$i]['empresa'] = $row['empresa'];
+            $arreglo[$i]['proyecto'] = $row['proyecto'];
             $arreglo[$i]['zona'] = $row['zona']; 
             $arreglo[$i]['idZona'] = $row['idZona'];
-            $arreglo[$i]['zona'] = $row['zona'];
             $i++;
         }
-        $arreglo['exito'] = 1;
     }
     else 
         $arreglo['exito'] = 0;

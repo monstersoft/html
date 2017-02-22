@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="semantic.css">
 </head>
 <body>
-    <div class="ui grid container">
-        <div class="ui four top attached steps">
+    <div class="ui grid container" style="margin-top: 20px;">
+        <div class="ui four top steps">
           <div class="active step stepZonas">
             <i class="world icon"></i>
             <div class="content">
@@ -36,36 +36,30 @@
               <div class="description">Descargar archivo en formato CVS</div>
             </div>
           </div>
-        </div>            
-        <div class="sixteen wide mobile column">
-           <i class="notched circle loading massive icon"></i>
-            <div class="ui relaxed divided list contenidoZonas">
-            </div>
-        </div>
+        </div>           
+        <div class="sixteen wide mobile column"><div class="ui relaxed divided list contenidoZonas"></div></div>
+        <div class="one column centered row cargando"></div>
     </div>
     <script src="jquery2.js"></script>
     <script src="semantic.js"></script>
     <script src="funciones.js"></script>
     <script>
-        /*$(document).ready(main);
+        $(document).ready(main);
             function main() {
                 $.ajax({
                     url: 'infoZonas.php',
                     type: 'POST',
                     dataType: 'json',
-                    success: function(arreglo) {
-                        $.each(arreglo, function(index) {
-                           $('.contenidoZonas').append('<div class="item"><div class="right floated content"><div class="ui button">Seguir<i class="arrow right icon"></i></div></div><i class="big marker middle aligned icon"></i><div class="content"><a class="header">'+arreglo[index].zona+'</a><div class="description">'+arreglo[index].empresa+'</div><div class="description">'+arreglo[index].proyecto+'</div><div class="description">'+arreglo[index].idZona+'</div></div></div>');
-                        }
-                        );
-                        
-                    }
+                    beforeSend: iconoCargando,
+                    success: function(arreglo) {infoZonas(arreglo);},
+                    complete: eliminarCargando
                 });
-                $('#siguiente').click(siguiente);
+                $('.siguiente').click(siguiente);
             }
             function siguiente() {
                 $('.stepZonas').removeClass('active').addClass('disabled');
-            }*/
+                alert('akakak');
+            }
     </script>
 </body>
 </html>
