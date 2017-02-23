@@ -15,51 +15,46 @@
               <div class="description">Seleccionar una zona para simulación de datos</div>
             </div>
           </div>
-          <div class="disabled step stepMaquinas">
+          <div class="step stepMaquinas">
             <i class="setting icon"></i>
             <div class="content">
               <div class="title">Máquinas</div>
               <div class="description">¿Quieres agregar una máquina?</div>
             </div>
           </div>
-          <div class="disabled step stepDatos">
+          <div class="step stepDatos">
             <i class="file icon"></i>
             <div class="content">
               <div class="title">Datos</div>
               <div class="description">Ingresar límite de datos para cada máquina</div>
             </div>
           </div>
-          <div class="disabled step stepDescarga">
+          <div class=" step stepDescarga">
             <i class="download icon"></i>
             <div class="content">
               <div class="title">Descarga</div>
               <div class="description">Descargar archivo en formato CVS</div>
             </div>
           </div>
-        </div>           
-        <div class="sixteen wide mobile column"><div class="ui relaxed divided list contenidoZonas"></div></div>
+        </div>
+        <div class="sixteen wide mobile column contenido"><div class="ui relaxed divided list contenidoZonas"></div></div>
         <div class="one column centered row cargando"></div>
     </div>
     <script src="jquery2.js"></script>
     <script src="semantic.js"></script>
     <script src="funciones.js"></script>
     <script>
-        $(document).ready(main);
-            function main() {
-                $.ajax({
-                    url: 'infoZonas.php',
-                    type: 'POST',
-                    dataType: 'json',
-                    beforeSend: iconoCargando,
-                    success: function(arreglo) {infoZonas(arreglo);},
-                    complete: eliminarCargando
-                });
-                $('.siguiente').click(siguiente);
-            }
-            function siguiente() {
-                $('.stepZonas').removeClass('active').addClass('disabled');
-                alert('akakak');
-            }
+        $(document).ready(function(){
+              ajaxInfoZonas();
+              $('body').on('click','.siguiente',siguiente);
+              $('body').on('click','.siguienteMaquinas',configurarDatos);
+              $('body').on('click','.siguienteDatos',descargaArchivo);
+              $('body').on('click','.fin',function(){alert('Archivo Descargado');});
+              $('body').on('click','#btnAñadirMaquina',ajaxAgregarMaquina);
+              $('body').on('click','.limpiar',limpiarFormularioAgregarMaquina);
+              $('body').on('click','#btnAñadirOtraMaquina',agregarOtraMaquina);
+              $('body').on('click','#siguiente',ingresarLimites);
+            });
     </script>
 </body>
 </html>
