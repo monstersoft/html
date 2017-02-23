@@ -17,17 +17,6 @@
     <a id="generar" class="waves-effect waves-light btn blue-grey darken-4">Generar</a>
     <a id="download" class="waves-effect waves-light btn blue-grey darken-4">Descargar</a>
     <div class="input-field col s12">
-    <select multiple>
-      <optgroup label="team 1">
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-      </optgroup>
-      <optgroup label="team 2">
-        <option value="3">Option 3</option>
-        <option value="4">Option 4</option>
-      </optgroup>
-    </select>
-    <label>Optgroups</label>
   </div>
    <div id="resultado"></div>
     <script src="jquery2.js"></script>
