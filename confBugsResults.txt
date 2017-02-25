@@ -19,3 +19,25 @@ RESULTADOS:
 2. cantidad de subidas de datos en una fecha determinada
 3. cantidad de subidas de archivo con éxito de un supervisor v/s la cantidad que debería haber subido ej: 50dias/25archivos
 4. los dias que no ha subido un archivo
+
+
+CONFIGURACION MAQUINA VIRTUAL
+
+1. INSTALAR EN VIRTUAL BOX
+2. VER CON ifconfig
+3. CAMBIAR A ADAPTADOR PUENTE PARA ASIGNAR IP
+4. vi /boot/grub/grub.cfg
+5. /ubuntu
+6. PONER LO SIGUIENTE DESPUÉS DE RO EN LINUX /BOOT/VMLINUZ......... 3 quiet net.ifnames=0 CERRAR CON :wq!
+7. nano /etc/network/interfaces CAMBIAR TODO enp0s3 por eth0
+4. REINICIAR CON reboot now O ifdown enp0s3, LUEGO LEVANTAR CON ifup enp0s3
+5. IP ESTATICA: TODO COMENTADO Y PONER ESTO:
+
+auto eth0
+iface eth0 inet static
+	address 192.168.0.xx
+	netmask 255.255.255.0
+	network 192.168.0.0
+	broadcast 192.168.0.0
+	gateway 192.168.0.1
+6. Curso Monta un servidor web con Linux 16 Habilitar acceso root en Ubuntu 14 04

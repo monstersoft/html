@@ -19,6 +19,7 @@
     <script src="pickadate/lib/picker.js"></script>
     <script src="pickadate/lib/picker.date.js"></script>
     <script src="pickadate/lib/picker.time.js"></script>
+    <script src="simularDatos.js"></script>
         <script>
             $(document).ready(function(){
                                 var data = [
