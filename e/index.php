@@ -1,201 +1,407 @@
-<!--<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Ejemplo aprenderaprogramar.com</title>
-  <style type="text/css">
-  label{
-    display: block;
-    margin: 5px;
-  }
-  </style>
-  <script type="text/javascript">
-
-  var formularios;
-
-  window.onload = function(){
-    formularios = document.forms;
-    document.getElementById('ejemplo').addEventListener('click',comprobar);
-  }
-    
-  function comprobar(){
-    var msg = '';
-    for(var i=0;i<formularios.length;i++){
-      for(var j=0;j<formularios[i].elements.length;j++){
-        if(formularios[i].elements[j].type == 'text'){
-          formularios[i].elements[j].setAttribute('maxlength',8);
-          msg = msg+'El elemento con id: '+formularios[i].elements[j].id+' tiene atributo maxlength modificado en: '+formularios[i].elements[j].getAttribute('maxlength')+'\n\n';
-        }
-      }
-    }
-    alert(msg);
-  }
-
-  </script>
-</head>
-<body>
-  <div id="cabecera">
-    <h2>Cursos aprenderaprogramar.com</h2>
-    <h3>Ejemplos JavaScript</h3>
-  </div>
-  <div id="ejemplo" style="color: blue; margin: 20px;">Pulsa aquí</div>
-  <form action="accion1.html" method="get" name="formularioContacto">
-    <h2>Formulario de contacto</h2>
-    <label>Nombre:<input type="text" name="nombre" id="nombreFormContacto" maxlength="4"></label>
-    <label>Apellidos:<input type="text" name="apellidos" id="apellidosFormContacto"></label>
-    <label><input type="submit" value="Enviar" id="botonEnvio1"></label>
-  </form>
-  <form action="accion2.html" name="formularioReclamacion" method="get">
-    <h2>Formulario de reclamación</h2>
-    <label>Motivo reclamación:<input type="text" name="motivo" id="motivoFormReclama"></label>
-    <label>Fecha del hecho:<input type="text" name="fecha" id="fechaFormReclama"></label>
-    <label><input type="submit" value="Enviar" id="botonEnvio2"></label>
-  </form>
-</body>
-</html>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Simulador de datos</title>
     <link rel="stylesheet" href="semantic.css">
+    <style>
+        .fondo {
+            background: #F5F4F3;
+        }
+        .a {
+            color: #F5A214;
+        }
+        .b {
+            color: white;
+        }
+        .l {
+            color: #C48341;
+            border-style: 1px solid red;
+        }
+    </style>
 </head>
-<body>
+<body style="background-color: #F5F4F3;">
     <div class="ui grid container" style="margin-top: 20px;">
-        <!--<div class="ui four top steps">
+        <div class="ui four top steps" class="fondo">
           <div class="active step stepZonas">
-            <i class="world icon"></i>
+            <i class="world icon" style="color: #F5A214"></i>
             <div class="content">
               <div class="title">Zonas</div>
               <div class="description">Seleccionar una zona para simulación de datos</div>
             </div>
           </div>
           <div class="step stepMaquinas">
-            <i class="setting icon"></i>
+            <i class="setting icon" style="color: #F5A214"></i>
             <div class="content">
               <div class="title">Máquinas</div>
               <div class="description">¿Quieres agregar una máquina?</div>
             </div>
           </div>
           <div class="step stepDatos">
-            <i class="file icon"></i>
+            <i class="file icon" style="color: #F5A214"></i>
             <div class="content">
               <div class="title">Datos</div>
               <div class="description">Ingresar límite de datos para cada máquina</div>
             </div>
           </div>
-          <div class=" step stepDescarga">
-            <i class="download icon"></i>
+          <div class=" step stepDescarga" >
+            <i class="download icon" style="color: #F5A214"></i>
             <div class="content">
               <div class="title">Descarga</div>
               <div class="description">Descargar archivo en formato CVS</div>
             </div>
           </div>
         </div>
-        <div class="sixteen wide mobile column contenido"><div class="ui relaxed divided list contenidoZonas"></div></div>
-        <div class="one column centered row cargando"></div>-->
-        <a href="#" id="click">Clcik</a>
-        <form id="hola1" class="hoa0">
-          <h1>PATENTE 1</h1>
-          <input  class="a" type="text" value="patente1">
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="checkbox">
-          <input  class="a" type="checkbox">
-        </form>
-        <form id="hola2" class="hoa1">
-          <h1>PATENTE 2</h1>
-          <input  class="a" type="text" value="patente2">
-          <input  class="a" type="text" value=50>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=50>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=50>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=50>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=50>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=50>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=50>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="checkbox">
-          <input  class="a" type="checkbox">
-        </form>
-        <!--<form id="hola3">
-          <h1>PATENTE 3</h1>
-          <input  class="a" type="text" value="patente3">
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="checkbox">
-          <input  class="a" type="checkbox">
-        </form>
-        <form id="hola4">
-          <h1>PATENTE 4</h1>
-          <input  class="a" type="text" value="patente4">
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="checkbox">
-          <input  class="a" type="checkbox">
-        </form>
-        <form id="hola5">
-          <h1>PATENTE 5</h1>
-          <input  class="a" type="text" value="patente5">
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="text" value=0>
-          <input  class="a" type="text" value=100>
-          <input  class="a" type="checkbox">
-          <input  class="a" type="checkbox">
-        </form>-->
+        <div class="fondo three equal width row">
+            <div class="column">
+                <div class="ui form">
+                    <h2 class="ui header">
+                        <i class="a rocket icon"></i>
+                        <div class="a content">Máquina 1</div>
+                    </h2>
+                    <div class="field">
+                        <div class="sixteen wide field">
+                            <label>Patente</label>
+                            <input type="text" placeholder="qwerty" class="valor">
+                        </div>
+                    </div>
+                    <div class="fields">
+                        <div class="eight wide field">
+                            <label class="b">Ángulo Pala</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input type="text" placeholder="Min" class="valor">
+                                </div>
+                                <div class="field">
+                                    <input type="text" placeholder="Max" class="valor">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="eight wide field">
+                            <label>Ángulo De Inclinación</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input type="text" placeholder="Min" class="valor">
+                                </div>
+                                <div class="field">
+                                    <input type="text" placeholder="Max" class="valor">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fields">
+                        <div class="eight wide field">
+                            <label>Altura De Pala</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input type="text" placeholder="Min" class="valor">
+                                </div>
+                                <div class="field">
+                                    <input type="text" placeholder="Max" class="valor">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="eight wide field">
+                            <label>Velocidad</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input type="text" placeholder="Min" class="valor">
+                                </div>
+                                <div class="field">
+                                    <input type="text" placeholder="Max" class="valor">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide field">
+                        <label>Revoluciones</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <input type="text" placeholder="Valor mínimo" class="valor">
+                            </div>
+                            <div class="field">
+                                <input type="text" placeholder="Valor máximo" class="valor">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide field">
+                        <label>Latitud</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <input type="text" placeholder="Valor mínimo" class="valor">
+                            </div>
+                            <div class="field">
+                                <input type="text" placeholder="Valor máximo" class="valor">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide field">
+                        <label>Longitud</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <input type="text" placeholder="Valor mínimo" class="valor">
+                            </div>
+                            <div class="field">
+                                <input type="text" placeholder="Valor máximo" class="valor">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="three fields">
+                        <div class="field">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox">
+                                <label>Sólo Ceros</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox">
+                                <label>No Disponible</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox">
+                                <label>Default</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui form">
+                    <h2 class="ui header">
+                        <i class="a rocket icon"></i>
+                        <div class="a content">Máquina 1</div>
+                    </h2>
+                    <div class="field">
+                        <div class="sixteen wide field">
+                            <label>Patente</label>
+                            <input type="text" placeholder="qwerty" class="valor">
+                        </div>
+                    </div>
+                    <div class="fields">
+                        <div class="eight wide field">
+                            <label class="b">Ángulo Pala</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input type="text" placeholder="Min" class="valor">
+                                </div>
+                                <div class="field">
+                                    <input type="text" placeholder="Max" class="valor">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="eight wide field">
+                            <label>Ángulo De Inclinación</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input type="text" placeholder="Min" class="valor">
+                                </div>
+                                <div class="field">
+                                    <input type="text" placeholder="Max" class="valor">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fields">
+                        <div class="eight wide field">
+                            <label>Altura De Pala</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input type="text" placeholder="Min" class="valor">
+                                </div>
+                                <div class="field">
+                                    <input type="text" placeholder="Max" class="valor">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="eight wide field">
+                            <label>Velocidad</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input type="text" placeholder="Min" class="valor">
+                                </div>
+                                <div class="field">
+                                    <input type="text" placeholder="Max" class="valor">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide field">
+                        <label>Revoluciones</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <input type="text" placeholder="Valor mínimo" class="valor">
+                            </div>
+                            <div class="field">
+                                <input type="text" placeholder="Valor máximo" class="valor">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide field">
+                        <label>Latitud</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <input type="text" placeholder="Valor mínimo" class="valor">
+                            </div>
+                            <div class="field">
+                                <input type="text" placeholder="Valor máximo" class="valor">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide field">
+                        <label>Longitud</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <input type="text" placeholder="Valor mínimo" class="valor">
+                            </div>
+                            <div class="field">
+                                <input type="text" placeholder="Valor máximo" class="valor">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="three fields">
+                        <div class="field">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox">
+                                <label>Sólo Ceros</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox">
+                                <label>No Disponible</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox">
+                                <label>Default</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui form">
+                    <h2 class="ui header">
+                        <i class="a rocket icon"></i>
+                        <div class="a content">Máquina 1</div>
+                    </h2>
+                    <div class="field">
+                        <div class="sixteen wide field">
+                            <label>Patente</label>
+                            <input type="text" placeholder="qwerty" class="valor">
+                        </div>
+                    </div>
+                    <div class="fields">
+                        <div class="eight wide field">
+                            <label class="b">Ángulo Pala</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input type="text" placeholder="Min" class="valor">
+                                </div>
+                                <div class="field">
+                                    <input type="text" placeholder="Max" class="valor">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="eight wide field">
+                            <label>Ángulo De Inclinación</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input type="text" placeholder="Min" class="valor">
+                                </div>
+                                <div class="field">
+                                    <input type="text" placeholder="Max" class="valor">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fields">
+                        <div class="eight wide field">
+                            <label>Altura De Pala</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input type="text" placeholder="Min" class="valor">
+                                </div>
+                                <div class="field">
+                                    <input type="text" placeholder="Max" class="valor">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="eight wide field">
+                            <label>Velocidad</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input type="text" placeholder="Min" class="valor">
+                                </div>
+                                <div class="field">
+                                    <input type="text" placeholder="Max" class="valor">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide field">
+                        <label>Revoluciones</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <input type="text" placeholder="Valor mínimo" class="valor">
+                            </div>
+                            <div class="field">
+                                <input type="text" placeholder="Valor máximo" class="valor">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide field">
+                        <label>Latitud</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <input type="text" placeholder="Valor mínimo" class="valor">
+                            </div>
+                            <div class="field">
+                                <input type="text" placeholder="Valor máximo" class="valor">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide field">
+                        <label>Longitud</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <input type="text" placeholder="Valor mínimo" class="valor">
+                            </div>
+                            <div class="field">
+                                <input type="text" placeholder="Valor máximo" class="valor">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="three fields">
+                        <div class="field">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox">
+                                <label>Sólo Ceros</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox">
+                                <label>No Disponible</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox">
+                                <label>Default</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+        <!--<div class="sixteen wide mobile column contenido"><div class="ui relaxed divided list contenidoZonas"></div></div>
+        <div class="one column centered row cargando"></div>-->
     <script src="jquery2.js"></script>
     <script src="semantic.js"></script>
     <script src="funciones.js"></script>
