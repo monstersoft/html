@@ -1,10 +1,51 @@
-function ingresarLimites(){
-    var formularios = '<div class="sixteen wide mobile eight wide tablet eight wide computer column"> <form class="ui form"> <h2 class="ui header"> <i class="a rocket icon"></i> <div class="a content">Máquina 1</div></h2> <div class="field"> <div class="sixteen wide field"> <label>Patente</label> <input type="text" placeholder="qwerty" class="valor"> </div></div><div class="fields"> <div class="eight wide field"> <label class="b">Ángulo Pala</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div><div class="eight wide field"> <label>Ángulo De Inclinación</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div></div><div class="fields"> <div class="eight wide field"> <label>Altura De Pala</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div><div class="eight wide field"> <label>Velocidad</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div></div><div class="sixteen wide field"> <label>Revoluciones</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="sixteen wide field"> <label>Latitud</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="sixteen wide field"> <label>Longitud</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="three fields"> <div class="field"> <div class="ui toggle checkbox"> <input type="checkbox"> <label>Sólo Ceros</label> </div></div><div class="field"> <div class="ui toggle checkbox"> <input type="checkbox"> <label>No Disponible</label> </div></div><div class="field"> <div class="ui toggle checkbox"> <input type="checkbox"> <label>Default</label> </div></div></div></form> </div>';
-    $('.maquinas').html(formularios);
+function redireccionar() {
+    window.location="http://localhost/html/";
+}
+//setTimeout('redireccionar()', 5000);
+function ajaxLimiteDatos() {
+    $.ajax({
+        url: 'maquinas.php',
+        type: 'POST',
+        data: {idZona: $('#idZonaMaquina').val()},
+        dataType: 'json',
+        success: function(arreglo) {
+            if(arreglo.exito == 1) {
+                $('.stepMaquinas').removeClass('active').addClass('completed');
+                $('.stepDatos').addClass('active');
+                mostrarMaquinas(arreglo.datos);
+            }
+            else {
+                alert('Error');
+            }
+        }
+    }).fail(function( jqXHR, textStatus, errorThrown ){
+        if (jqXHR.status === 0){
+            alert('No hay coneccion con el servidor');
+        } else if (jqXHR.status == 404) {
+            alert('La pagina solicitada no fue encontrada, error 404');
+        } else if (jqXHR.status == 500) {
+            alert('Error interno del servidor');
+        } else if (textStatus === 'parsererror') {
+            alert('Error en la respuesta, debes analizar la sintaxis JSON');
+        } else if (textStatus === 'timeout') {
+            alert('Ya ha pasado mucho tiempo');
+        } else if (textStatus === 'abort') {
+            alert('La peticion fue abortada');
+        } else {
+            alert('Error desconocido');
+        }
+    });
+}
+function mostrarMaquinas(arreglo){
+    var contenido = '';
+    $.each(arreglo,function(index){
+        contenido+= '<div class="sixteen wide mobile eight wide tablet eight wide computer column"> <form class="ui form"> <h2 class="ui header"> <i class="a rocket icon"></i> <div class="a content">ID'+arreglo[index].identificador+' - MQ'+arreglo[index].idMaquina+' - '+arreglo[index].patente+'</div></h2> <div class="field"> <div class="sixteen wide field"> <label>Patente</label> <input type="text" placeholder="qwerty" class="valor ui disabled input" value="'+arreglo[index].patente+'"> </div></div><div class="fields"> <div class="eight wide field"> <label class="b">Ángulo Pala</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div><div class="eight wide field"> <label>Ángulo De Inclinación</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div></div><div class="fields"> <div class="eight wide field"> <label>Altura De Pala</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div><div class="eight wide field"> <label>Velocidad</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div></div><div class="sixteen wide field"> <label>Revoluciones</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="sixteen wide field"> <label>Latitud</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="sixteen wide field"> <label>Longitud</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="three fields"> <div class="field"> <div class="ui toggle checkbox"> <input type="checkbox"> <label>Sólo Ceros</label> </div></div><div class="field"> <div class="ui toggle checkbox"> <input type="checkbox"> <label>No Disponible</label> </div></div><div class="field"> <div class="ui toggle checkbox"> <input type="checkbox"> <label>Default</label> </div></div></div></form> </div>';
+    });
+    $('#pasos').after(contenido);
 }
 function agregarOtraMaquina(){
     $('.ui.button').remove();
-    $('.botones').html('<a class="ui button black limpiar"><i class="close icon"></i>Limpiar</a><a class="ui button green" id="btnAñadirMaquina"><i class="add icon"></i>Añadir</a>');
+    $('.botones').html('<a class="ui button black limpiar"><i class="close icon"></i>Limpiar</a><a class="ui button green" id="btnAñadirMaquina"><i class="add icon"></i>Añadir</a><a class="ui button olive btnSiguienteFormulario">Seguir<i class="arrow right icon"></i></a>');
     limpiarFormularioAgregarMaquina();
     $('.ui.negative.message').remove();
     $('.ui.warning.message').remove();
@@ -75,17 +116,16 @@ function ajaxAgregarMaquina(){
               $('#btnAñadirMaquina').addClass('disabled loading');
             },
             success: function(arreglo) {
-                alert(JSON.stringify(arreglo));
                 if(arreglo.exito == 1) {
 	                $('#cancelar').removeClass('disabled');
 	                $('#btnAñadirMaquina').removeClass('disabled loading');
-	                $('.stepMaquinas').removeClass('active').addClass('completed');
+	                $('.stepMaquinas').addClass('completed');
 	                successMessage('Registro realizado con éxito','Presiona siguiente para continuar al otro paso');
 	                $('.ui.button').remove();
-	               	$('.botones').html('<a class="ui button black" id="btnAñadirOtraMaquina"><i class="close icon"></i>Añadir Otra Máquina</a><a class="ui button green" id="siguiente">Seguir<i class="arrow right icon"></i></a>');
+	               	$('.botones').html('<a class="ui button black" id="btnAñadirOtraMaquina"><i class="close icon"></i>Añadir Otra Máquina</a><a class="ui button olive btnSiguienteFormulario">Seguir<i class="arrow right icon"></i></a>');
                 }
                 else {
-                    $('.message').html('<div class="ui warning message">'+arreglo.msg+'</div>');
+                    $('.message').html('<div class="ui negative message">'+arreglo.msg+'</div>');
                 }
             },
             complete: function(){
@@ -124,20 +164,22 @@ function ajaxInfoZonas(){
 	    complete: eliminarCargando
 	});
 }
-function siguiente() {
+function mostrarFormularioMaquina() {
 	var id = $(this).attr('id');
 	//<i class="map icon"></i><div class="content">Identificador Zona<div class="sub header">5</div></div>
     $('.stepZonas').removeClass('active').addClass('completed');
     agregarMaquinas();
     $('.stepMaquinas').addClass('active');
-    $('.contenido').load('formularioAgregarMaquina.php',id,function(){$('#idZonaMaquina').val(id);});
+    $('#contenido').load('formularioAgregarMaquina.php',id,function(){$('#idZonaMaquina').val(id);});
 }
 function agregarMaquinas(arreglo) {
     $('.stepMaquinas').removeClass('active');
 }
-function configurarDatos(arreglo) {
+function limiteDatos(arreglo) {
 	$('.stepMaquinas').removeClass('active').addClass('completed');
     $('.stepDatos').addClass('active');
+    ingresarLimites();
+    $('#formularioAgregarMaquina').remove();
 }
 function descargaArchivo(arreglo) {
 	   $('.stepDatos').removeClass('active').addClass('completed');
@@ -145,10 +187,13 @@ function descargaArchivo(arreglo) {
        $('.stepDatos').addClass('active');
 }
 function infoZonas(arreglo) {
-    $.each(arreglo, function(index) {
-       $('.contenidoZonas').append('<div class="item"><div class="right floated content"><div class="ui button siguiente" id="'+arreglo[index].idZona+'">Seguir<i class="arrow right icon"></i></div></div><i class="big marker middle aligned icon"></i><div class="content"><a class="header">'+arreglo[index].zona+'</a><div class="description">'+arreglo[index].empresa+'</div><div class="description">'+arreglo[index].proyecto+'</div><div class="description">'+arreglo[index].idZona+'</div></div></div>');
-    }
-);
+    var inicio = '<div class="ui relaxed divided list">'
+    var fin = '</div>';
+    var contenido = '';
+    $.each(arreglo,function(index) {
+       contenido+='<div class="item"><div class="right floated content"><div class="ui button btnSiguienteZonas" id="'+arreglo[index].idZona+'">Seguir<i class="arrow right icon"></i></div></div><i class="big marker middle aligned icon"></i><div class="content"><a class="header">'+arreglo[index].zona+'</a><div class="description">'+arreglo[index].empresa+'</div><div class="description">'+arreglo[index].proyecto+'</div><div class="description">'+arreglo[index].idZona+'</div></div></div>';
+    });
+    $('#contenido').html(inicio+contenido+fin);
 }
 function iconoCargando(){
     $('.cargando').html('<i class="refresh huge loading icon"></i>');
@@ -234,7 +279,6 @@ function isRutEditar() {
       }
     }
 }
-
 function maxLength(value, max) {
     if(value == '') 
         return false;
@@ -255,7 +299,6 @@ function minLength(value) {
         return false;
     }
 }
-
 function maxMinValue(value, max, min) {
     if(value == '') 
         return false;
