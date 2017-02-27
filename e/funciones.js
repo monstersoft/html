@@ -1,3 +1,6 @@
+function datosDefecto() {
+    
+}
 function redireccionar() {
     window.location="http://localhost/html/";
 }
@@ -6,10 +9,12 @@ function ajaxLimiteDatos() {
     $.ajax({
         url: 'maquinas.php',
         type: 'POST',
-        data: {idZona: $('#idZonaMaquina').val()},
+        //data: {idZona: $('#idZonaMaquina').val()},
+        data: {idZona: 11},
         dataType: 'json',
         success: function(arreglo) {
             if(arreglo.exito == 1) {
+                console.log(JSON.stringify(arreglo));
                 $('.stepMaquinas').removeClass('active').addClass('completed');
                 $('.stepDatos').addClass('active');
                 mostrarMaquinas(arreglo.datos);
@@ -17,6 +22,7 @@ function ajaxLimiteDatos() {
             else {
                 alert('Error');
             }
+            alert(JSON.stringify(arreglo));
         }
     }).fail(function( jqXHR, textStatus, errorThrown ){
         if (jqXHR.status === 0){
