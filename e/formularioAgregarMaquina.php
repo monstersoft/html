@@ -47,5 +47,6 @@
 <div style="text-align: right;margin-top: 15px" class="botones">
     <a class="ui button black limpiar"><i class="close icon"></i>Limpiar</a>
     <a class="ui button green" id="btnAñadirMaquina"><i class="add icon"></i>Añadir</a>
+    <a class="ui button olive" id="siguiente">Seguir<i class="arrow right icon"></i></a>
 </div>
 <div class="message" style="margin: 15px 0px 0px 0px"></div>
