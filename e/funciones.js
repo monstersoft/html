@@ -1,9 +1,9 @@
 function f(){
     console.time('Test');
     var limites = generarObjetoLimites();
-    //console.log(JSON.stringify(limites))
     var datos = generarObjetoDatos(limites);
-    //console.log(JSON.stringify(datos));
+    console.log(JSON.stringify(limites));
+    console.log(JSON.stringify(datos));
     console.timeEnd('Test');
 }
 function generarObjetoDatos(limites){
@@ -12,16 +12,8 @@ function generarObjetoDatos(limites){
     var hora = 8;
     var minuto = 0;
     $.each(limites,function(index) {
-        //while(hora<9) {
-            //while(minuto<10){
-                console.log(limites[index].lamin+'/'+limites[index].lamax);
-                var n = Math.random()*(limites[index].lamax-limites[index].lamin)+limites[index].lamin;
-                console.log(n);
-                console.log(parseFloat(n));
-                console.log(Math.pow(10,6));
-                console.log(n*Math.pow(10,6));
-                console.log(Math.round(n*Math.pow(10,6)));
-                console.log(Math.round(n*Math.pow(10,6))/Math.pow(10,6));
+        while(hora<9) {
+            while(minuto<10){
                 datos.push({
                     identificador:      0,
                     patente:            limites[index].patente,
@@ -35,31 +27,25 @@ function generarObjetoDatos(limites){
                     fechaDato:          '2016-01-01',
                     horaDato:           "0"+hora+":0"+minuto+":00"
                 });
-                //minuto++;
-            //}
-            //minuto = 0;
-            //hora++;
-        //}
-        //minuto = 0;
-        //hora = 8;
+                minuto++;
+            }
+            minuto = 0;
+            hora++;
+        }
+        minuto = 0;
+        hora = 8;
     });
     return datos;
-}
-function redondeo(numero, decimales)
-{
-var flotante = parseFloat(numero);
-var resultado = Math.round(flotante*Math.pow(10,decimales))/Math.pow(10,decimales);
-return resultado;
 }
 function r(l,h,d) {
     if($.isNumeric(l) && $.isNumeric(h)){
         if(l == 0 && h == 0)
             return 0;
-        else {
-            var numero = parseFloat(Math.random()*(h-l)+l);
-            var resultado = Math.round(numero*Math.pow(10,d))/Math.pow(10,d);
-            return resultado;
-        }
+        else {  
+                var min = parseFloat(l);
+                var max = parseFloat(h);
+                return (Math.random()*(max-min)+min).toFixed(2);
+            }
     }
     else
         return '';
@@ -239,7 +225,7 @@ function ajaxLimiteDatos() {
         url: 'maquinas.php',
         type: 'POST',
         //data: {idZona: $('#idZonaMaquina').val()},
-        data: {idZona: 10},
+        data: {idZona: 16},
         dataType: 'json',
         success: function(arreglo) {
             if(arreglo.exito == 1) {
