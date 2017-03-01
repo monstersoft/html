@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="theme-color" content="#262626">
     <title>Simulador de datos</title>
     <link rel="stylesheet" href="semantic.css">
     <link rel="stylesheet" href="pickadate/lib/themes/classic.css">
     <link rel="stylesheet" href="pickadate/lib/themes/classic.time.css">
     <link rel="stylesheet" href="pickadate/lib/themes/classic.date.css">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../cliente/css/panel.css">
     <style>
         .fondo {
             background: #F5F4F3;
@@ -29,14 +31,28 @@
         .mas {
             right: 0 !important;
             bottom: 20px !important;
+            cursor: pointer;
+        }
+        .mas i {
+            color: #4183C4;
+        }
+        .mas i:hover {
+            text-shadow: -1px -1px 1px #000, 1px -1px 1px #fff, -1px 1px 1px #fff, 1px 1px 1px #000;
         }
         .men {
             left: : 0 !important;
             bottom: 20px !important;
+            
         }
     </style>
 </head>
 <body style="background-color: #F5F4F3;">
+            <div class="ui top fixed menu">
+                <a id="menu" class="launch icon item"><i class="content icon"></i></a>
+                <p id="letra" class="ui center aligned header">
+                    Machine Monitors
+                </p>
+            </div>
     <div class="ui grid container" style="margin-top: 20px;">
         <div class="ui four top steps" id="pasos" class="fondo">
           <div class="active step stepZonas">
@@ -80,8 +96,8 @@
         </div>           
         <!--<div class="sixteen wide mobile column" id="contenido"></div>-->
         <div class="one column centered row cargando"></div>
-        <div class="ui sticky bottom fixed mas"><button class="ui circular icon button btnGenerar"><i id="cargando" class="fa fa-cog fa-2x fa-fw"></i></button>
-    </div>
+        <!--<div class="ui sticky bottom fixed mas"><button class="ui circular icon button btnGenerar"><i id="cargando" class="fa fa-cog fa-2x fa-fw"></i></button>-->
+        <div class="ui sticky bottom fixed mas"><i id="cargando" class="fa fa-cog fa-3x fa-fw"></i></div>
        <div class="sixteen wide mobile eight wide computer column">
         <canvas id="myBarChart"></canvas>
         </div>
@@ -107,21 +123,18 @@ var data2 = {
     labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
     datasets: [
         {
-            backgroundColor: "rgba(179,181,198,0.2)",
-            borderColor: "rgba(179,181,198,1)",
-            pointBackgroundColor: "rgba(179,181,198,1)",
+            borderColor: "#F5A214",
+            pointBackgroundColor: "#F5A214",
             pointBorderColor: "#fff",
             pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(179,181,198,1)",
             data: [65, 59, 90, 81, 56, 55, 40]
         },
         {
-            backgroundColor: "rgba(255,99,132,0.2)",
-            borderColor: "rgba(255,99,132,1)",
-            pointBackgroundColor: "rgba(255,99,132,1)",
+            borderColor: "#262626",
+            pointBackgroundColor: "#262626",
             pointBorderColor: "#fff",
             pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(255,99,132,1)",
+            pointHoverBorderColor: "#262626",
             data: [28, 48, 40, 19, 96, 27, 100]
         }
     ]
@@ -139,7 +152,25 @@ var mylineChart = new Chart(ctx2, {
         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
         datasets: [{
             data: data,
-            fill: false
+            label: "My First dataset",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "#F5A214",
+            borderColor: "#F5A214",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "#262626",
+            pointBackgroundColor: "#262626",
+            pointBorderWidth: 5,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            spanGaps: false,
         }]
     }
 });
@@ -149,6 +180,14 @@ var myBarChart = new Chart(ctx, {
         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
         datasets: [{
             data: data,
+            backgroundColor: [
+                '#F5A214',
+                '#F5A214',
+                '#F5A214',
+                '#F5A214',
+                '#F5A214',
+                '#F5A214',
+            ],
             borderWidth: 1
         }]
     }
