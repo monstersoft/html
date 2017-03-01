@@ -1,41 +1,196 @@
-function datosNoDisponible() {
+function f(){
+    console.time('Test');
+    var limites = generarObjetoLimites();
+    //console.log(JSON.stringify(limites))
+    var datos = generarObjetoDatos(limites);
+    //console.log(JSON.stringify(datos));
+    console.timeEnd('Test');
+}
+function generarObjetoDatos(limites){
+    var datos = []
+    var patentes = 0;
+    var hora = 8;
+    var minuto = 0;
+    $.each(limites,function(index) {
+        //while(hora<9) {
+            //while(minuto<10){
+                console.log(limites[index].lamin+'/'+limites[index].lamax);
+                var n = Math.random()*(limites[index].lamax-limites[index].lamin)+limites[index].lamin;
+                console.log(n);
+                console.log(parseFloat(n));
+                console.log(Math.pow(10,6));
+                console.log(n*Math.pow(10,6));
+                console.log(Math.round(n*Math.pow(10,6)));
+                console.log(Math.round(n*Math.pow(10,6))/Math.pow(10,6));
+                datos.push({
+                    identificador:      0,
+                    patente:            limites[index].patente,
+                    anguloPala:         r(limites[index].apmin,limites[index].apmax,2),
+                    anguloInclinacion:  r(limites[index].aimin,limites[index].aimax,2),
+                    alturaPala:         r(limites[index].almin,limites[index].almax,2),
+                    velocidad:          r(limites[index].vmin,limites[index].vmax,2),
+                    revoluciones:       r(limites[index].rmin,limites[index].rmax,2),
+                    latitud:            r(limites[index].lamin,limites[index].lamax,6),
+                    longitud:           r(limites[index].lomin,limites[index].lomax,6),
+                    fechaDato:          '2016-01-01',
+                    horaDato:           "0"+hora+":0"+minuto+":00"
+                });
+                //minuto++;
+            //}
+            //minuto = 0;
+            //hora++;
+        //}
+        //minuto = 0;
+        //hora = 8;
+    });
+    return datos;
+}
+function redondeo(numero, decimales)
+{
+var flotante = parseFloat(numero);
+var resultado = Math.round(flotante*Math.pow(10,decimales))/Math.pow(10,decimales);
+return resultado;
+}
+function r(l,h,d) {
+    if($.isNumeric(l) && $.isNumeric(h)){
+        if(l == 0 && h == 0)
+            return 0;
+        else {
+            var numero = parseFloat(Math.random()*(h-l)+l);
+            var resultado = Math.round(numero*Math.pow(10,d))/Math.pow(10,d);
+            return resultado;
+        }
+    }
+    else
+        return '';
+}
+function generarObjetoLimites() {
+    var formularios = document.forms;
+    var limites = generarObjetos(formularios.length);
+    for(var i=0;i<formularios.length;i++){
+        for(var j=0;j<formularios[i].elements.length;j++){
+            if(formularios[i].elements[j].classList.contains('valor')) {
+                if(j == 0)
+                    limites[i].patente = formularios[i].elements[j].value;
+                if(j == 1)
+                    limites[i].apmin = formularios[i].elements[j].value;
+                if(j == 2)
+                    limites[i].apmax = formularios[i].elements[j].value;
+                if(j == 3)
+                    limites[i].aimin = formularios[i].elements[j].value;
+                if(j == 4)
+                    limites[i].aimax = formularios[i].elements[j].value;
+                if(j == 5)
+                    limites[i].almin = formularios[i].elements[j].value;
+                if(j == 6)
+                    limites[i].almax = formularios[i].elements[j].value;
+                if(j == 7)
+                    limites[i].vmin = formularios[i].elements[j].value;
+                if(j == 8)
+                    limites[i].vmax = formularios[i].elements[j].value;
+                if(j == 9)
+                    limites[i].rmin = formularios[i].elements[j].value;
+                if(j == 10)
+                    limites[i].rmax = formularios[i].elements[j].value;
+                if(j == 11)
+                    limites[i].lamin = formularios[i].elements[j].value;
+                if(j == 12)
+                    limites[i].lamax = formularios[i].elements[j].value;
+                if(j == 13)
+                    limites[i].lomin = formularios[i].elements[j].value;
+                if(j == 14)
+                    limites[i].lomax = formularios[i].elements[j].value;
+                if(j == 15)
+                    limites[i].ceros = formularios[i].elements[j].checked;
+                if(j == 16)
+                    limites[i].noDisponible = formularios[i].elements[j].checked;
+                if(j == 17)
+                    limites[i].defecto = formularios[i].elements[j].checked;
+                if(j == 18)
+                    limites[i].vacios = formularios[i].elements[j].checked;
+            }
+        }
+    }
+    return limites;
+}
+function generarObjetos(cantidadFormularios) {
+    var aux = 0;
+    var arreglo = []
+    while(aux < cantidadFormularios) {
+        arreglo.push({patente: '',apmin:0,apmax:0,aimin:0,aimax:0,almin:0,almax:0,vmin:0,vmax:0,rmin:0,rmax:0,lamin:0,lamax:0,lomin:0,lomax:0,ceros: false,noDisponible: false,defecto: false,vacios:false});
+        aux++;
+    }
+    return arreglo;
+    }
+function datosNoDisponibles() {
     var numeroFormulario  = $(this).attr('id');
-    var boton  = $(this).attr('name');
     var formularios = document.forms;
     for(var j=0;j<formularios[numeroFormulario].elements.length;j++){
-        if(formularios[numeroFormulario].elements[j].getAttribute('class') == 'valor') {
-            formularios[numeroFormulario].elements[j].className = 'ui disabled input';
+        if(formularios[numeroFormulario].elements[j].classList.contains('valor')){
+            if(j>=1 && j<15)
+                formularios[numeroFormulario].elements[j].classList.add('disabled','field');
             if(j == 15)
                 formularios[numeroFormulario].elements[j].checked = false; // CEROS
             if(j == 16)
-                formularios[numeroFormulario].elements[j].checked = true; // NO DISPONIBLE
+                formularios[numeroFormulario].elements[j].checked = true // NO DISPONIBLE
             if(j == 17)
                 formularios[numeroFormulario].elements[j].checked = false// DEFAULT
+            if(j == 18)
+                formularios[numeroFormulario].elements[j].checked = false// VACÍOS
+        }
+    }
+}
+function datosVacios() {
+    var numeroFormulario  = $(this).attr('id');
+    var formularios = document.forms;
+    for(var j=0;j<formularios[numeroFormulario].elements.length;j++){
+        if(formularios[numeroFormulario].elements[j].classList.contains('valor')) {
+            if(j>=1 && j<15) {
+                if(formularios[numeroFormulario].elements[j].classList.contains('disabled','field'))
+                formularios[numeroFormulario].elements[j].classList.remove('disabled','field');
+            formularios[numeroFormulario].elements[j].value = "";
+            }
+            if(j == 15)
+                formularios[numeroFormulario].elements[j].checked = false; // CEROS
+            if(j == 16)
+                formularios[numeroFormulario].elements[j].checked = false // NO DISPONIBLE
+            if(j == 17)
+                formularios[numeroFormulario].elements[j].checked = false// DEFAULT
+            if(j == 18)
+                formularios[numeroFormulario].elements[j].checked = true// VACÍOS
         }
     }
 }
 function datosCeros() {
     var numeroFormulario  = $(this).attr('id');
-    var boton  = $(this).attr('name');
     var formularios = document.forms;
     for(var j=0;j<formularios[numeroFormulario].elements.length;j++){
-        if(formularios[numeroFormulario].elements[j].getAttribute('class') == 'valor') {
-            formularios[numeroFormulario].elements[j].value = 0;
+        if(formularios[numeroFormulario].elements[j].classList.contains('valor')){
+            if(j>=1 && j<15) {
+                if(formularios[numeroFormulario].elements[j].classList.contains('disabled','field'))
+                    formularios[numeroFormulario].elements[j].classList.remove('disabled','field');
+                formularios[numeroFormulario].elements[j].value = 0;
+            }
             if(j == 15)
                 formularios[numeroFormulario].elements[j].checked = true; // CEROS
             if(j == 16)
                 formularios[numeroFormulario].elements[j].checked = false // NO DISPONIBLE
             if(j == 17)
                 formularios[numeroFormulario].elements[j].checked = false// DEFAULT
+            if(j == 18)
+                formularios[numeroFormulario].elements[j].checked = false// VACÍOS
         }
     }
 }
-function datosDefecto() {
+function datosDefectos() {
     var numeroFormulario  = $(this).attr('id');
-    var boton  = $(this).attr('name');
     var formularios = document.forms;
     for(var j=0;j<formularios[numeroFormulario].elements.length;j++){
-        if(formularios[numeroFormulario].elements[j].getAttribute('class') == 'valor') {
+        if(formularios[numeroFormulario].elements[j].classList.contains('valor')){
+            if(j>=1 && j<15) {
+                if(formularios[numeroFormulario].elements[j].classList.contains('disabled','field'))
+                    formularios[numeroFormulario].elements[j].classList.remove('disabled','field');
+            }
             if(j == 1)
                 formularios[numeroFormulario].elements[j].value = 0; //ANGULO DE PALA MINIMO
             if(j == 2)
@@ -57,19 +212,21 @@ function datosDefecto() {
             if(j == 10)
                 formularios[numeroFormulario].elements[j].value = 500// REVOLUCION MAXIMA
             if(j == 11)
-                formularios[numeroFormulario].elements[j].value = -30 // LATITUD MINIMA 
+                formularios[numeroFormulario].elements[j].value = -31 // LATITUD MINIMA 
             if(j == 12)
-                formularios[numeroFormulario].elements[j].value = -31// LATITUD MAXIMA
+                formularios[numeroFormulario].elements[j].value = -30// LATITUD MAXIMA
             if(j == 13)
-                formularios[numeroFormulario].elements[j].value  = -70 // LATITUD MINIMA  
+                formularios[numeroFormulario].elements[j].value  = -71 // LATITUD MINIMA  
             if(j == 14)
-                formularios[numeroFormulario].elements[j].value = -71 // LATITUD MAXIMA
+                formularios[numeroFormulario].elements[j].value = -70 // LATITUD MAXIMA
             if(j == 15)
                 formularios[numeroFormulario].elements[j].checked = false; // CEROS
             if(j == 16)
                 formularios[numeroFormulario].elements[j].checked = false // NO DISPONIBLE
             if(j == 17)
                 formularios[numeroFormulario].elements[j].checked = true// DEFAULT
+            if(j == 18)
+                formularios[numeroFormulario].elements[j].checked = false// VACÍOS
         }
     }
 }
@@ -81,17 +238,17 @@ function ajaxLimiteDatos() {
     $.ajax({
         url: 'maquinas.php',
         type: 'POST',
-        data: {idZona: $('#idZonaMaquina').val()},
+        //data: {idZona: $('#idZonaMaquina').val()},
+        data: {idZona: 10},
         dataType: 'json',
         success: function(arreglo) {
-            console.log(JSON.stringify(arreglo));
             if(arreglo.exito == 1) {
                 $('.stepMaquinas').removeClass('active').addClass('completed');
                 $('.stepDatos').addClass('active');
                 var contenido = '';
                 var numeroFormulario = 0;
                 $.each(arreglo.datos,function(index){
-                    contenido+= '<div class="sixteen wide mobile eight wide tablet eight wide computer column"> <form class="ui form"> <h2 class="ui header"> <i class="a rocket icon"></i> <div class="a content">ID'+arreglo.datos[index].identificador+' - MQ'+arreglo.datos[index].idMaquina+' - '+arreglo.datos[index].patente+'</div></h2> <div class="field"> <div class="sixteen wide field"> <label>Patente</label> <input type="text" placeholder="qwerty" class="valor ui disabled input" value="'+arreglo.datos[index].patente+'"> </div></div><div class="fields"> <div class="eight wide field"> <label class="b">Ángulo Pala</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div><div class="eight wide field"> <label>Ángulo De Inclinación</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div></div><div class="fields"> <div class="eight wide field"> <label>Altura De Pala</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div><div class="eight wide field"> <label>Velocidad</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div></div><div class="sixteen wide field"> <label>Revoluciones</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="sixteen wide field"> <label>Latitud</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="sixteen wide field"> <label>Longitud</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="three fields"> <div class="field"> <div class="ui toggle checkbox"> <input type="checkbox" name="ceros" class="valor btnCeros" id="'+numeroFormulario+'"> <label>Sólo Ceros</label> </div></div><div class="field"> <div class="ui toggle checkbox"> <input type="checkbox" name="noDisponible" class="valor btnNoDisponible" id="'+numeroFormulario+'"> <label>No Disponible</label> </div></div><div class="field"> <div class="ui toggle checkbox"> <input type="checkbox" name="defecto" class="valor btnDefecto" id="'+numeroFormulario+'"> <label>Default</label> </div></div></div></form> </div>';
+                    contenido+= ' <div class="sixteen wide mobile eight wide tablet eight wide computer column"> <form class="ui form"> <h2 class="ui header"> <i class="a rocket icon"></i> <div class="a content">ID'+arreglo.datos[index].identificador+' - MQ'+arreglo.datos[index].idMaquina+' - '+arreglo.datos[index].patente+'</div></h2> <div class="field"> <div class="sixteen wide field"> <label>Patente</label> <input type="text" placeholder="qwerty" class="valor ui disabled input" value="'+arreglo.datos[index].patente+'"> </div></div><div class="fields"> <div class="eight wide field"> <label class="b">Ángulo Pala</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div><div class="eight wide field"> <label>Ángulo De Inclinación</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div></div><div class="fields"> <div class="eight wide field"> <label>Altura De Pala</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div><div class="eight wide field"> <label>Velocidad</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div></div><div class="sixteen wide field"> <label>Revoluciones</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="sixteen wide field"> <label>Latitud</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="sixteen wide field"> <label>Longitud</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="four fields"> <div class="field"> <div class="ui radio checkbox"> <input type="radio" name="valores" class="valor btnCeros" id="'+numeroFormulario+'"> <label>Sólo ceros</label> </div></div><div class="field"> <div class="ui radio checkbox"> <input type="radio" name="valores" class="valor btnNoDisponibles" id="'+numeroFormulario+'"> <label>Máquina no disponible</label> </div></div><div class="field"> <div class="ui radio checkbox"> <input type="radio" name="valores" class="valor btnDefectos" id="'+numeroFormulario+'"> <label>Valores por defecto</label> </div></div><div class="ui radio checkbox"> <input type="radio" name="valores" checked="" class="valor btnVacios" id="'+numeroFormulario+'"> <label>Valores vacíos</label> </div></div></form> </div>';
                     numeroFormulario++;
                 });
                 $('#formularioAgregarMaquina').remove();
@@ -431,3 +588,10 @@ function errorMessage2(arrayErrors) {
     });
     $('.message').html('<div class="ui negative message"><ul>'+list+'</ul></div>');
 }
+function fechaHoy() {
+    var hoyE = moment().locale('es').format('dddd DD , MMMM YYYY');
+    var hoyF = moment().format('YYYY/MM/DD');
+    $('#fechaDatos').val(hoyE);
+    $('input[name=fechaDatos]').val(hoyF);
+}
+
