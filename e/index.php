@@ -67,23 +67,33 @@
             </div>
           </div>
         </div>
-        <div class="field">
+        <!--<div class="field">
             <label>Fecha de datos</label>
             <div class="ui calendar left icon input">
                 <input class="datepicker" type="text" name="fechaDatos" id="fechaDatos">
                 <i class="calendar icon"></i>
             </div>
-        </div>    
-        <!--<div class="one column centered row">
+        </div>-->    
+        <div class="one column centered row">
             <h2 class="ui icon header" style="border-style: 1px solid red;"><i class="setting icon loading" style="color: #F5A214;"></i><div class="content" style="color: #4183C4;">Machine Monitors<div class="sub header">Plan de vigilancia de maquinaria pesada</div></div></h2>
         </div>           
-        <div class="sixteen wide mobile column" id="contenido"></div>
-        <div class="one column centered row cargando"></div>-->
-        <div class="ui sticky bottom fixed mas"><button class="ui circular icon button btnGenerar"><i id="cargando" class="fa fa-cog fa-fw"></i></button>
+        <!--<div class="sixteen wide mobile column" id="contenido"></div>-->
+        <div class="one column centered row cargando"></div>
+        <div class="ui sticky bottom fixed mas"><button class="ui circular icon button btnGenerar"><i id="cargando" class="fa fa-cog fa-2x fa-fw"></i></button>
     </div>
+       <div class="sixteen wide mobile eight wide computer column">
+        <canvas id="myBarChart"></canvas>
+        </div>
+        <div class="sixteen wide mobile eight wide computer column">
+    <canvas id="myLineChart"></canvas>
     </div>
+    <div class="sixteen wide mobile eight wide computer column">
+    <canvas id="myRadarChart"></canvas>
+    </div>
+</div>
     <script src="jquery2.js"></script>
     <script src="semantic.js"></script>
+    <script src="chart.min.js"></script>
     <script src="funciones.js"></script>
     <script src="simularDatos.js"></script>
     <script src="pickadate/lib/picker.js"></script>
@@ -91,8 +101,62 @@
     <script src="pickadate/lib/picker.time.js"></script>
     <script src="moment.js"></script>
     <script>
+        var data = [12, 19, 3, 5, 2, 3];
+var data2 = {
+    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+    datasets: [
+        {
+            backgroundColor: "rgba(179,181,198,0.2)",
+            borderColor: "rgba(179,181,198,1)",
+            pointBackgroundColor: "rgba(179,181,198,1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(179,181,198,1)",
+            data: [65, 59, 90, 81, 56, 55, 40]
+        },
+        {
+            backgroundColor: "rgba(255,99,132,0.2)",
+            borderColor: "rgba(255,99,132,1)",
+            pointBackgroundColor: "rgba(255,99,132,1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(255,99,132,1)",
+            data: [28, 48, 40, 19, 96, 27, 100]
+        }
+    ]
+}
+var ctx = document.getElementById("myBarChart");
+var ctx2 = document.getElementById("myLineChart");
+var ctx3 = document.getElementById("myRadarChart");
+var myRadarChart = new Chart(ctx3, {
+    type: 'radar',
+    data: data2,
+});
+var mylineChart = new Chart(ctx2, {
+    type: 'line',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            data: data,
+            fill: false
+        }]
+    }
+});
+var myBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            data: data,
+            borderWidth: 1
+        }]
+    }
+});
+
+</script>
+    <script>
         $(document).ready(function(){
-            ajaxLimiteDatos();
+            /*ajaxLimiteDatos();
             $('body').on('click','.btnGenerar',f);
             $('body').on('click','.btnCeros',datosCeros);
             $('body').on('click','.btnNoDisponibles',datosNoDisponibles);
