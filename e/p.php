@@ -15,6 +15,12 @@
         .borde {
             border: 1px solid #262626;
         }
+        .padding0 {
+            padding: 0px !important;
+        }
+        .marginTop {
+            margin-top: 50px !important;
+        }
     </style>
 </head>
 <body>
@@ -23,10 +29,10 @@
             Machine Monitors
         </p>
     </div>
-    <div class="borde ui grid container">
-        <div class="borde row">
-            <div class="borde sixteen wide mobile column eight wide computer column">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias harum consectetur explicabo eum, tenetur, consequuntur eos asperiores? Nemo dolor, tenetur eius, autem, quasi quaerat deleniti impedit voluptates laboriosam, nostrum iste!lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem atque, corporis quasi. Eligendi saepe, quisquam itaque officiis, autem voluptatum fuga iste dolores sit voluptas commodi quis modi ipsam exercitationem consectetur.</div>
-            <div class="borde sixteen wide mobile column eight wide computer column">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum provident quis et ad doloribus laboriosam quos veniam voluptas hic ullam voluptate autem qui error facilis iste, rerum suscipit, accusantium! Sed. <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla facilis nobis nihil, deserunt, blanditiis error quas reprehenderit omnis repudiandae necessitatibus sapiente delectus rem dolores dignissimos. Ducimus sunt ut nisi, autem!</div>
+    <div class="ui grid container padding0 marginTop">
+        <div class="row padding0">
+            <div class="sixteen wide mobile column eight wide computer column">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias harum consectetur explicabo eum, tenetur, consequuntur eos asperiores? Nemo dolor, tenetur eius, autem, quasi quaerat deleniti impedit voluptates laboriosam, nostrum iste!lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem atque, corporis quasi. Eligendi saepe, quisquam itaque officiis, autem voluptatum fuga iste dolores sit voluptas commodi quis modi ipsam exercitationem consectetur.</div>
+            <div class="sixteen wide mobile column eight wide computer column">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum provident quis et ad doloribus laboriosam quos veniam voluptas hic ullam voluptate autem qui error facilis iste, rerum suscipit, accusantium! Sed. <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla facilis nobis nihil, deserunt, blanditiis error quas reprehenderit omnis repudiandae necessitatibus sapiente delectus rem dolores dignissimos. Ducimus sunt ut nisi, autem!</div>
             <div>Quo eveniet eaque, reprehenderit repellat cum modi quam necessitatibus quas sapiente, consequatur totam minus ab sint incidunt, alias. Assumenda doloremque aperiam mollitia animi fugiat voluptates distinctio repellat incidunt sapiente cupiditate.</div>
             <div>Consequuntur in ex officia facilis veritatis amet dolore sint eos accusamus tenetur fugiat quasi quaerat suscipit vel nihil necessitatibus iusto corporis, repudiandae, perspiciatis dolor facere magni, rem placeat? Ad, aspernatur.</div></div>
         </div>
