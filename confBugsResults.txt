@@ -10,6 +10,7 @@
 10. encriptar URLs
 11. que el enlace no sirva al ya estar confirmado
 12. refrescar formularios al apretar afuera de la ventana modal
+13. agregar identificador de maquina al simulador
 
 
 

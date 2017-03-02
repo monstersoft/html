@@ -1,49 +1,178 @@
-function f(){
-    console.time('Test');
-    var limites = generarObjetoLimites();
-    var datos = generarObjetoDatos(limites);
-    console.log(JSON.stringify(limites));
-    console.log(JSON.stringify(datos));
-    console.timeEnd('Test');
-    //0 BORRAR LOS QUE ESTAN BLOQUEADOS GENERAR OBJETO LIMITES BORRARLO, PONER
-    // FECHA DE DATOS Y POR MINUTO
+var idZona;
+function generarObjetoResultados(){
+    var comienzo = new Date();
+    var inicio = comienzo.getMilliseconds();
+    var fechaDatos = $('input[name=fechaDatos]').val();
+    var fechaHoy = moment().format('YYYY-MM-DD');
+    var objLimites = generarObjetoLimites();
+    var objDatos = generarObjetoDatos(objLimites.objLDisponibles,fechaDatos);
+    var resultados = {}
+    var informacionNoDisponibles = []
+    resultados.nombreZona = 'Los Acacios';
+    resultados.nombreArchivo = 'Z05_S01S02S03_P03_E03-'+fechaDatos;
+    resultados.informacionDisponibles = objDatos.objInfoDisponibles;
+    resultados.informacionNoDisponibles = informacionNoDisponibles;
+    if(objLimites.objLNoDisponibles.length == 0) {
+        resultados.informacionNoDisponibles.push({existen : false});  
+    }
+    else {
+        $.each(objLimites.objLNoDisponibles,function(index){
+            resultados.informacionNoDisponibles.push({patente: objLimites.objLNoDisponibles[index].patente});
+        });
+    }
+    resultados.totalGenerados = objDatos.objRegistros.length;
+    var termino = new Date();
+    var fin = comienzo.getMilliseconds();
+    resultados.tiempoGeneracion = fin - inicio;
+    var datosMaquinas = retornaDatos(idZona);
+    datosMaquinas.success(function(respuesta){
+        console.log(JSON.stringify(respuesta));
+    });
     //1 MENSAJE DE EXITO CON: TIEMPO DE GENERACION, CANTIDAD GENERADOS,
-    //  RESUMEN DE LIMITES POR PATENTE, SI NO ESTA DISPONIBLE O CON CEROS ETC
     //2 DESCARGAR ARCHIVO
+
     //3 SUBIR ARCHIVO: INTEGRAR EL FRONT Y HACER EL BACK, VALIDADO
     //4 HACER SET DE PRUEBAS DEFINITIVAS DESDE EL COMIENZO
     //5 HACER BOSQUEJO DE RESULTADOS DEFINITIVOS
 }
-function generarObjetoDatos(limites){
-    var datos = []
-    var patentes = 0;
+function retornaDatos(id) {
+    return $.ajax({
+        url: 'infoMaquinas.php',
+        type: 'POST',
+        data: {idZona: id},
+        dataType: 'json',
+        success: function(arreglo){;
+        }
+    }).fail(function( jqXHR, textStatus, errorThrown ){
+        if (jqXHR.status === 0){
+            alert('No hay coneccion con el servidor');
+        } else if (jqXHR.status == 404) {
+            alert('La pagina solicitada no fue encontrada, error 404');
+        } else if (jqXHR.status == 500) {
+            alert('Error interno del servidor');
+        } else if (textStatus === 'parsererror') {
+            alert('Error en la respuesta, debes analizar la sintaxis JSON');
+        } else if (textStatus === 'timeout') {
+            alert('Ya ha pasado mucho tiempo');
+        } else if (textStatus === 'abort') {
+            alert('La peticion fue abortada');
+        } else {
+            alert('Error desconocido');
+        }
+    });
+}
+function generarObjetoDatos(objLDisponibles,fechaDatos){
+    var objDatos = {}
+    var objRegistros = []
+    var objInfoDisponibles = [] 
     var hora = 8;
     var minuto = 0;
-    $.each(limites,function(index) {
-        while(hora<9) {
-            while(minuto<10){
-                datos.push({
+    var cantidadRegistros = 0;
+    $.each(objLDisponibles,function(index) {
+        var comienzo = new Date();
+        var inicio = comienzo.getMilliseconds();
+        var hora = 8;
+        while(hora<19) { //HASTA LAS 18:59
+            while(minuto<60){ //HASTA EL MINUTO 59
+                objRegistros.push({
                     identificador:      0,
-                    patente:            limites[index].patente,
-                    anguloPala:         r(limites[index].apmin,limites[index].apmax,2),
-                    anguloInclinacion:  r(limites[index].aimin,limites[index].aimax,2),
-                    alturaPala:         r(limites[index].almin,limites[index].almax,2),
-                    velocidad:          r(limites[index].vmin,limites[index].vmax,2),
-                    revoluciones:       r(limites[index].rmin,limites[index].rmax,2),
-                    latitud:            r(limites[index].lamin,limites[index].lamax,6),
-                    longitud:           r(limites[index].lomin,limites[index].lomax,6),
-                    fechaDato:          '2016-01-01',
-                    horaDato:           "0"+hora+":0"+minuto+":00"
+                    patente:            objLDisponibles[index].patente,
+                    anguloPala:         r(objLDisponibles[index].apmin,objLDisponibles[index].apmax,2),
+                    anguloInclinacion:  r(objLDisponibles[index].aimin,objLDisponibles[index].aimax,2),
+                    alturaPala:         r(objLDisponibles[index].almin,objLDisponibles[index].almax,2),
+                    velocidad:          r(objLDisponibles[index].vmin,objLDisponibles[index].vmax,2),
+                    revoluciones:       r(objLDisponibles[index].rmin,objLDisponibles[index].rmax,2),
+                    latitud:            r(objLDisponibles[index].lamin,objLDisponibles[index].lamax,6),
+                    longitud:           r(objLDisponibles[index].lomin,objLDisponibles[index].lomax,6),
+                    fechaDato:          fechaDatos,
+                    horaDato:           hora+":0"+minuto+":00"
                 });
                 minuto++;
+                cantidadRegistros++;
             }
             minuto = 0;
             hora++;
         }
+        var termino = new Date();
+        var fin = termino.getMilliseconds();
+        objInfoDisponibles.push({identificador: 0,patente: objLDisponibles[index].patente,cantidad: cantidadRegistros,seleccion: seleccion(objLDisponibles[index].ceros,objLDisponibles[index].noDisponible,objLDisponibles[index].defecto,objLDisponibles[index].vacios),tiempo: fin-inicio+' ms'});
+        cantidadRegistros = 0;
         minuto = 0;
         hora = 8;
     });
-    return datos;
+    objDatos.objInfoDisponibles = objInfoDisponibles;
+    objDatos.objRegistros = objRegistros;
+    return objDatos;
+}
+function seleccion(c,no,d,v) {
+    if(c == true)
+        return 'Sólo ceros';
+    if(no == true)
+        return 'Máquina no disponible';
+    if(d == true)
+        return 'Valores por defecto';
+    if(v == true)
+        return 'Valores vacíos';
+}
+function generarObjetoLimites() {
+    var formularios = document.forms;
+    var objAux = generarObjetos(formularios.length);
+    var objLDisponibles = []
+    var objLNoDisponibles = []
+    var objLimites = {}
+    for(var i=0;i<formularios.length;i++){
+        for(var j=0;j<formularios[i].elements.length;j++){
+            if(formularios[i].elements[j].classList.contains('valor')) {
+                if(j == 0)
+                    objAux[i].patente = formularios[i].elements[j].value;
+                if(j == 1)
+                    objAux[i].apmin = formularios[i].elements[j].value;
+                if(j == 2)
+                    objAux[i].apmax = formularios[i].elements[j].value;
+                if(j == 3)
+                    objAux[i].aimin = formularios[i].elements[j].value;
+                if(j == 4)
+                    objAux[i].aimax = formularios[i].elements[j].value;
+                if(j == 5)
+                    objAux[i].almin = formularios[i].elements[j].value;
+                if(j == 6)
+                    objAux[i].almax = formularios[i].elements[j].value;
+                if(j == 7)
+                    objAux[i].vmin = formularios[i].elements[j].value;
+                if(j == 8)
+                    objAux[i].vmax = formularios[i].elements[j].value;
+                if(j == 9)
+                    objAux[i].rmin = formularios[i].elements[j].value;
+                if(j == 10)
+                    objAux[i].rmax = formularios[i].elements[j].value;
+                if(j == 11)
+                    objAux[i].lamin = formularios[i].elements[j].value;
+                if(j == 12)
+                    objAux[i].lamax = formularios[i].elements[j].value;
+                if(j == 13)
+                    objAux[i].lomin = formularios[i].elements[j].value;
+                if(j == 14)
+                    objAux[i].lomax = formularios[i].elements[j].value;
+                if(j == 15)
+                    objAux[i].ceros = formularios[i].elements[j].checked;
+                if(j == 16)
+                    objAux[i].noDisponible = formularios[i].elements[j].checked;
+                if(j == 17)
+                    objAux[i].defecto = formularios[i].elements[j].checked;
+                if(j == 18)
+                    objAux[i].vacios = formularios[i].elements[j].checked;
+            }
+        }
+    }
+    $.each(objAux,function(index){
+        if(objAux[index].noDisponible == true)
+            objLNoDisponibles.push(objAux[index]);
+        else
+            objLDisponibles.push(objAux[index]);
+    });
+    objLimites.objLNoDisponibles = objLNoDisponibles;
+    objLimites.objLDisponibles = objLDisponibles;
+    return objLimites;
 }
 function r(l,h,d) {
     if($.isNumeric(l) && $.isNumeric(h)){
@@ -57,55 +186,6 @@ function r(l,h,d) {
     }
     else
         return '';
-}
-function generarObjetoLimites() {
-    var formularios = document.forms;
-    var limites = generarObjetos(formularios.length);
-    for(var i=0;i<formularios.length;i++){
-        for(var j=0;j<formularios[i].elements.length;j++){
-            if(formularios[i].elements[j].classList.contains('valor')) {
-                if(j == 0)
-                    limites[i].patente = formularios[i].elements[j].value;
-                if(j == 1)
-                    limites[i].apmin = formularios[i].elements[j].value;
-                if(j == 2)
-                    limites[i].apmax = formularios[i].elements[j].value;
-                if(j == 3)
-                    limites[i].aimin = formularios[i].elements[j].value;
-                if(j == 4)
-                    limites[i].aimax = formularios[i].elements[j].value;
-                if(j == 5)
-                    limites[i].almin = formularios[i].elements[j].value;
-                if(j == 6)
-                    limites[i].almax = formularios[i].elements[j].value;
-                if(j == 7)
-                    limites[i].vmin = formularios[i].elements[j].value;
-                if(j == 8)
-                    limites[i].vmax = formularios[i].elements[j].value;
-                if(j == 9)
-                    limites[i].rmin = formularios[i].elements[j].value;
-                if(j == 10)
-                    limites[i].rmax = formularios[i].elements[j].value;
-                if(j == 11)
-                    limites[i].lamin = formularios[i].elements[j].value;
-                if(j == 12)
-                    limites[i].lamax = formularios[i].elements[j].value;
-                if(j == 13)
-                    limites[i].lomin = formularios[i].elements[j].value;
-                if(j == 14)
-                    limites[i].lomax = formularios[i].elements[j].value;
-                if(j == 15)
-                    limites[i].ceros = formularios[i].elements[j].checked;
-                if(j == 16)
-                    limites[i].noDisponible = formularios[i].elements[j].checked;
-                if(j == 17)
-                    limites[i].defecto = formularios[i].elements[j].checked;
-                if(j == 18)
-                    limites[i].vacios = formularios[i].elements[j].checked;
-            }
-        }
-    }
-    return limites;
 }
 function generarObjetos(cantidadFormularios) {
     var aux = 0;
@@ -229,11 +309,12 @@ function redireccionar() {
 }
 //setTimeout('redireccionar()', 5000);
 function ajaxLimiteDatos() {
+    var id = $('#idZonaMaquina').val();
     $.ajax({
         url: 'maquinas.php',
         type: 'POST',
-        //data: {idZona: $('#idZonaMaquina').val()},
-        data: {idZona: 16},
+        data: {idZona: id},
+        //data: {idZona: 9},
         dataType: 'json',
         success: function(arreglo) {
             if(arreglo.exito == 1) {
@@ -246,7 +327,7 @@ function ajaxLimiteDatos() {
                     numeroFormulario++;
                 });
                 $('#formularioAgregarMaquina').remove();
-                $('#pasos').after(contenido);
+                $('#pasos2').after(contenido);
             }
             else {
                 alert('Error ajax: '+arreglo.exito);
@@ -269,6 +350,7 @@ function ajaxLimiteDatos() {
             alert('Error desconocido');
         }
     });
+    idZona = id;
 }
 function agregarOtraMaquina(){
     $('.ui.button').remove();
@@ -584,7 +666,7 @@ function errorMessage2(arrayErrors) {
 }
 function fechaHoy() {
     var hoyE = moment().locale('es').format('dddd DD , MMMM YYYY');
-    var hoyF = moment().format('YYYY/MM/DD');
+    var hoyF = moment().format('YYYY-MM-DD');
     $('#fechaDatos').val(hoyE);
     $('input[name=fechaDatos]').val(hoyF);
 }
