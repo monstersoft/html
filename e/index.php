@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="pickadate/lib/themes/default.date.css">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="../cliente/css/panel.css">
+<!-- Estilos -->
     <style>
         .fondo {
             background: #F5F4F3;
@@ -86,6 +87,7 @@
             float: left;
         }
     </style>
+<!-- Estilos -->
 </head>
 <body>
 <!-- BARRA  -->
@@ -168,7 +170,55 @@
 
 
 <!-- CONTENIDO -->
+          <div class="three column">
+  <div class="row">
+    <div class="column">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi corporis, quod repellat placeat! Id, iste cum iure, ex, facere cumque repudiandae architecto dolorum, quia reiciendis corrupti hic consectetur nihil explicabo.</p>
     </div>
+    <div class="column">
+      <p></p>
+    </div>
+    <div class="column">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt ad alias labore ratione, distinctio non iure, quos beatae quasi harum tenetur fugiat hic provident aliquid minus autem libero quia soluta.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas doloribus esse ullam fugiat, illo earum omnis ducimus. Aliquam provident cum alias quam possimus inventore, ipsum earum consequuntur vel magni, neque!</p>
+    </div>
+    <div class="column">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi illum neque non molestiae ipsam consequuntur porro harum dicta, eum cumque aut quo illo provident suscipit ducimus consectetur ex eveniet sed.</p>
+    </div>
+    <div class="column">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, maxime. Tempora velit recusandae totam? Quia itaque, eligendi debitis voluptas a minima cupiditate! Delectus voluptate asperiores quod sunt nam, vel, dolore?</p>
+    </div>
+  </div>
+</div>
+    </div>
+       <div class="ui three column divided grid container">
+  <div class="row">
+    <div class="column">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi corporis, quod repellat placeat! Id, iste cum iure, ex, facere cumque repudiandae architecto dolorum, quia reiciendis corrupti hic consectetur nihil explicabo.</p>
+    </div>
+    <div class="column">
+      <p></p>
+    </div>
+    <div class="column">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt ad alias labore ratione, distinctio non iure, quos beatae quasi harum tenetur fugiat hic provident aliquid minus autem libero quia soluta.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas doloribus esse ullam fugiat, illo earum omnis ducimus. Aliquam provident cum alias quam possimus inventore, ipsum earum consequuntur vel magni, neque!</p>
+    </div>
+    <div class="column">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi illum neque non molestiae ipsam consequuntur porro harum dicta, eum cumque aut quo illo provident suscipit ducimus consectetur ex eveniet sed.</p>
+    </div>
+    <div class="column">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, maxime. Tempora velit recusandae totam? Quia itaque, eligendi debitis voluptas a minima cupiditate! Delectus voluptate asperiores quod sunt nam, vel, dolore?</p>
+    </div>
+  </div>
+</div>
     <script src="jquery2.js"></script>
     <script src="semantic.js"></script>
     <script src="chart.min.js"></script>
