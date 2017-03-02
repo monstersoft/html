@@ -44,9 +44,50 @@
             bottom: 20px !important;
             
         }
+        .amarillo {
+            color: #F5A214 !important;
+        }
+        .grisClaro {
+            color: #F5F4F3;
+        }
+        .grisOscuro {
+            color: #262626;
+        }
+        .celeste {
+            color: #4183C4;
+        }
+        body {
+            background: #fff !important;
+        }
+        .ui.grid {
+            margin-top: 20px;
+            background: #fff !important;
+        }
+        .ui.header {
+            color: #262626;
+        }
+        .borde {
+            border: 1px solid red !important;
+        }
+        /*@media only screen and (max-width : 700px) {
+            body {
+                background-color: lightblue;
+            #F5F4F3
+            }
+        }*/
+        .centrar {
+            text-align: center;
+        }
+        .a {
+            float: left;
+            vertical-align: bottom;
+        }
+        .b {
+            float: left;
+        }
     </style>
 </head>
-<body style="background-color: #F5F4F3;">
+<body>
 <!-- BARRA  -->
     <div class="ui top fixed menu">
         <p id="letra" class="ui center aligned header">
@@ -54,11 +95,18 @@
         </p>
     </div>
 <!-- BARRA  -->
-    <div class="ui grid " style="margin-top: 20px;">
+    <div class="ui grid container">
 <!-- CONTENIDO  -->
+<h1 class="ui center aligned header">
+  <i class="amarillo massive checkmark box icon"></i>
+  <div class="content">
+    Simulacion Completa
+  </div>
+</h1>
 
 
-<!-- STEPS id="pasos"  -->
+
+<!-- STEPS id="pasos"  
         <div class="ui four top steps" id="pasos" class="fondo">
           <div class="active step stepZonas">
             <i class="world icon" style="color: #F5A214"></i>
@@ -90,7 +138,7 @@
           </div>
         </div>
 <!-- STEPS -->
-<!-- SEGMENTS id="pasos2" -->
+<!-- SEGMENTS id="pasos2" 
         <div class="sixteen wide mobile column" id="pasos2">
             <div class="ui horizontal segments">
                 <div class="ui segment">
@@ -109,14 +157,14 @@
             </div>
         </div>
 <!-- SEGMENTS id="pasos2" -->
-<!-- LOADING LOGO -->
+<!-- LOADING LOGO 
         <div class="one column centered row">
             <h2 class="ui icon header" style="border-style: 1px solid red;"><i class="setting icon loading" style="color: #F5A214;"></i><div class="content" style="color: #4183C4;">Machine Monitors<div class="sub header">Plan de vigilancia de maquinaria pesada</div></div></h2>
         </div>
 <!-- LOADING LOGO -->
-        <div class="sixteen wide mobile column" id="contenido"></div>
+        <!--<div class="sixteen wide mobile column" id="contenido"></div>
         <div class="one column centered row cargando"></div>
-        <div class="ui sticky bottom fixed mas btnGenerar"><i class="fa fa-cog fa-3x fa-fw"></i></div>
+        <div class="ui sticky bottom fixed mas btnGenerar"><i class="fa fa-cog fa-3x fa-fw"></i></div>-->
 
 
 <!-- CONTENIDO -->
