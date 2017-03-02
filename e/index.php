@@ -47,18 +47,18 @@
     </style>
 </head>
 <body style="background-color: #F5F4F3;">
-<!-- BARRA ..................................................................................... -->
+<!-- BARRA  -->
     <div class="ui top fixed menu">
         <p id="letra" class="ui center aligned header">
             Machine Monitors
         </p>
     </div>
-<!-- BARRA ..................................................................................... -->
-    <div class="ui grid container" style="margin-top: 20px;">
-<!-- CONTENIDO ......................................................................... -->
+<!-- BARRA  -->
+    <div class="ui grid " style="margin-top: 20px;">
+<!-- CONTENIDO  -->
 
 
-<!-- STEPS id="pasos" .......................................................................... -->
+<!-- STEPS id="pasos"  -->
         <div class="ui four top steps" id="pasos" class="fondo">
           <div class="active step stepZonas">
             <i class="world icon" style="color: #F5A214"></i>
@@ -89,8 +89,8 @@
             </div>
           </div>
         </div>
-<!-- STEPS ..................................................................................... -->
-<!-- SEGMENTS id="pasos2" ...................................................................... -->
+<!-- STEPS -->
+<!-- SEGMENTS id="pasos2" -->
         <div class="sixteen wide mobile column" id="pasos2">
             <div class="ui horizontal segments">
                 <div class="ui segment">
@@ -108,18 +108,18 @@
                 </div>
             </div>
         </div>
-<!-- SEGMENTS id="pasos2" ...................................................................... -->
-<!-- LOADING LOGO .............................................................................. -->
+<!-- SEGMENTS id="pasos2" -->
+<!-- LOADING LOGO -->
         <div class="one column centered row">
             <h2 class="ui icon header" style="border-style: 1px solid red;"><i class="setting icon loading" style="color: #F5A214;"></i><div class="content" style="color: #4183C4;">Machine Monitors<div class="sub header">Plan de vigilancia de maquinaria pesada</div></div></h2>
         </div>
-<!-- LOADING LOGO .............................................................................. -->
+<!-- LOADING LOGO -->
         <div class="sixteen wide mobile column" id="contenido"></div>
         <div class="one column centered row cargando"></div>
         <div class="ui sticky bottom fixed mas btnGenerar"><i class="fa fa-cog fa-3x fa-fw"></i></div>
 
 
-<!-- CONTENIDO ......................................................................... -->
+<!-- CONTENIDO -->
     </div>
     <script src="jquery2.js"></script>
     <script src="semantic.js"></script>
