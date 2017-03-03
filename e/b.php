@@ -21,19 +21,30 @@
 <body>
 
     <div class="ui grid b">
-        <div class="eight wide mobile column b">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi autem aut quae, facilis soluta consequuntur ut perspiciatis? Architecto nam veniam rem quisquam, autem velit, hic unde facere cupiditate, delectus veritatis.>
+        <div class="eight wide mobile column">
+            <h2 class="ui icon header"><i class="map icon"></i><div class="content">LOS ACACIOS<div class="sub header">ZONA</div></div></h2>
         </div>
-        <div class="eight wide mobile column b">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi autem aut quae, facilis soluta consequuntur ut perspiciatis? Architecto nam veniam rem quisquam, autem velit, hic unde facere cupiditate, delectus veritatis.>
+        <div class="eight wide mobile column">
+            <h6 class="ui icon header"><i class="users icon"></i><div class="content">LOS ACACIOS<div class="sub header">ZONA</div></div></h6>
         </div>
     </div>
-    <div class="ui two column grid b">
+    <div class="ui two column grid">
+      <div class="column">
+            <h5 class="ui icon header"><i class="map icon"></i><div class="content">LOS ACACIOS<div class="sub header">ZONA</div></div></h5>
+      </div>
+      <div class="column">
+            <h4 class="ui icon header"><i class="map icon"></i><div class="content">LOS ACACIOS<div class="sub header">ZONA</div></div></h4>
+      </div>
+    </div>
+    <div class="ui equal width column grid">
       <div class="column b">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate atque, similique accusamus. Eaque, amet, ducimus. Repudiandae, nam aperiam deleniti magnam iure, non! Unde rem explicabo perferendis quisquam! At, aspernatur, mollitia.</p>
+            <h5 class="ui icon header"><i class="map icon"></i><div class="content">LOS ACACIOS<div class="sub header">ZONA</div></div></h5>
       </div>
       <div class="column b">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum iusto ad necessitatibus ipsa repellat incidunt, nulla nisi sapiente quasi, temporibus excepturi saepe ab atque distinctio quae tempore fugit! Sunt, explicabo!</p>
+            <h4 class="ui icon header"><i class="map icon"></i><div class="content">LOS ACACIOS<div class="sub header">ZONA</div></div></h4>
+      </div>
+      <div class="column b">
+            <h4 class="ui icon header"><i class="map icon"></i><div class="content">LOS ACACIOS<div class="sub header">ZONA</div></div></h4>
       </div>
     </div>
     <script src="jquery2.js"></script>
