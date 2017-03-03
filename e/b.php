@@ -79,10 +79,10 @@
             <h6 class="ui icon header"><i class="attach icon"></i><div class="content">3600<div class="sub header">ARCHIVO</div></div></h6>
       </div>
       <div class="column">
-            <h6 class="ui icon header"><i class="map outline icon"></i><div class="content">LOS ALERCES<div class="sub header">ZONA</div></div></h6>
+            <h6 class="ui icon header"><i class="map icon"></i><div class="content">LOS ALERCES<div class="sub header">ZONA</div></div></h6>
       </div>
       <div class="column">
-            <h6 class="ui icon header"><i class="file text outline icon"></i><div class="content">LOS ACACIOS<div class="sub header">PROYECTO</div></div></h6>
+            <h6 class="ui icon header"><i class="file text icon"></i><div class="content">LOS ACACIOS<div class="sub header">PROYECTO</div></div></h6>
       </div>
       <div class="column">
             <h6 class="ui icon header"><i class="industry icon"></i><div class="content">SERVICIOS BIO BIO<div class="sub header">EMPRESA</div></div></h6>
@@ -90,16 +90,30 @@
     </div>
     <div class="ui equal width column grid">
       <div class="column">
-            <h6 class="ui icon header"><i class="attach icon a"></i><div class="content">ARCHIVO<div class="sub header">3600</div></div></h6>
+            <h6 class="ui icon header"><i class="archive icon"></i><div class="content">ARCHIVO<div class="sub header">3600</div></div></h6>
       </div>
       <div class="column">
-            <h6 class="ui icon header"><i class="map outline icon a"></i><div class="content">ZONA<div class="sub header">LOS ALERCES</div></div></h6>
+            <h6 class="ui icon header"><i class="map icon"></i><div class="content">ZONA<div class="sub header">LOS ALERCES</div></div></h6>
       </div>
       <div class="column">
-            <h6 class="ui icon header"><i class="file text outline icon a"></i><div class="content">PROYECTO<div class="sub header">LOS ACACIOS</div></div></h6>
+            <h6 class="ui icon header"><i class="file text icon"></i><div class="content">PROYECTO<div class="sub header">LOS ACACIOS</div></div></h6>
       </div>
       <div class="column">
-            <h6 class="ui icon header"><i class="industry icon a"></i><div class="content">EMPRESA<div class="sub header">SERVICIOS BIO BIO</div></div></h6>
+            <h6 class="ui icon header"><i class="industry icon"></i><div class="content">EMPRESA<div class="sub header">SERVICIOS BIO BIO</div></div></h6>
+      </div>
+    </div>
+    <div class="ui equal width column grid">
+      <div class="column">
+            <h6 class="ui icon header"><i class="file icon"></i><div class="content">ARCHIVO<div class="sub header">3600</div></div></h6>
+      </div>
+      <div class="column">
+            <h6 class="ui icon header"><i class="map icon"></i><div class="content">ZONA<div class="sub header">LOS ALERCES</div></div></h6>
+      </div>
+      <div class="column">
+            <h6 class="ui icon header"><i class="file text icon"></i><div class="content">PROYECTO<div class="sub header">LOS ACACIOS</div></div></h6>
+      </div>
+      <div class="column">
+            <h6 class="ui icon header"><i class="industry icon"></i><div class="content">EMPRESA<div class="sub header">SERVICIOS BIO BIO</div></div></h6>
       </div>
     </div>
     <script src="jquery2.js"></script>
