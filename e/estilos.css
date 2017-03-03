@@ -47,3 +47,6 @@
     margin-left: 0px !important;
     margin-right: 0px !important;
 }
+.ui.top.attached.header {
+    border-radius: 0px;
+}
