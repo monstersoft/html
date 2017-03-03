@@ -1,4 +1,6 @@
-
+.ui.grid {
+    margin-top: 1px;
+}
 .borde {
     border-style: 1px solid red;
 }
@@ -14,5 +16,27 @@
 .c {
     color: #4183C4 !important;
 }
-
-
+#menu:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+#letra {
+	margin: 5px auto;
+	color: #fff;
+	font-size: 22px;
+	font-weight: 100;
+}
+.ui.top.fixed.menu {
+	background: #262626;
+	box-shadow: none;
+	border-bottom: 5px solid #F5A214;
+}
+.ui.vertical.left.sidebar.menu {
+	background-color: #262626;
+}
+#menu {
+	background: #F5A214;
+	color: #FFF;
+}
+#menu:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
