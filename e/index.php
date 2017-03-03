@@ -25,16 +25,72 @@
                 <i class="industry icon a"></i>
                 <div class="content">Servicios Bío Bío<div class="sub header">Proyecto Los Acacios</div></div>
             </h4>
-            <div class="ui attached segment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque fugiat enim hic doloremque dolorem, dolorum, laboriosam fuga possimus nisi quae nihil eveniet a temporibus quidem odio corporis quibusdam et numquam?</div>
+            <div class="ui attached segment">
+                <div class="ui relaxed divided list">
+                    <div class="item">
+                        <div class="right floated content">
+                            <div class="ui button">Ver</div>
+                        </div>
+                        <i class="large world middle aligned icon"></i>
+                        <div class="content">
+                            <a class="header">Los Jeldres</a>
+                            <div class="description">ID: 5</div>
+                            <div class="description">Juan Andrés Pérez Pérez</div>
+                            <div class="description">Patricio Andrés Villanueva Fuentes</div>
+                            <div class="description">Miguel Orlando Villanuev Fuentes</div>
+                            <div class="description">Cecilia Alejandra Villanueva Fuentes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="ui grid container">
         <div class="sixteen wide mobile column">
             <h4 class="ui top attached header">
                 <i class="industry icon a"></i>
-                <div class="content">Besalco Maquinarias<div class="sub header">Proyecto Los Jeldres</div></div>
+                <div class="content">Servicios Bío Bío<div class="sub header">Proyecto Los Acacios</div></div>
             </h4>
-            <div class="ui attached segment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque fugiat enim hic doloremque dolorem, dolorum, laboriosam fuga possimus nisi quae nihil eveniet a temporibus quidem odio corporis quibusdam et numquam?</div>
+            <div class="ui attached segment">
+                <div class="ui relaxed divided list">
+                    <div class="item">
+                        <div class="right floated content">
+                            <div class="ui button">Ver</div>
+                        </div>
+                        <i class="large world middle aligned icon"></i>
+                        <div class="content">
+                            <a class="header">Los Jeldres</a>
+                            <div class="description">ID: 5</div>
+                            <div class="description">Juan Andrés Pérez Pérez</div>
+                            <div class="description">Patricio Andrés Villanueva Fuentes</div>
+                            <div class="description">Miguel Orlando Villanuev Fuentes</div>
+                            <div class="description">Cecilia Alejandra Villanueva Fuentes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sixteen wide mobile column">
+            <h4 class="ui top attached header">
+                <i class="industry icon a"></i>
+                <div class="content">Servicios Bío Bío<div class="sub header">Proyecto Los Acacios</div></div>
+            </h4>
+            <div class="ui attached segment">
+                <div class="ui relaxed divided list">
+                    <div class="item">
+                        <div class="right floated content">
+                            <div class="ui button">Ver</div>
+                        </div>
+                        <i class="large world middle aligned icon"></i>
+                        <div class="content">
+                            <a class="header">Los Jeldres</a>
+                            <div class="description">ID: 5</div>
+                            <div class="description">Juan Andrés Pérez Pérez</div>
+                            <div class="description">Patricio Andrés Villanueva Fuentes</div>
+                            <div class="description">Miguel Orlando Villanuev Fuentes</div>
+                            <div class="description">Cecilia Alejandra Villanueva Fuentes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 <!-- CONTENIDO  -->
