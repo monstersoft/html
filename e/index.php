@@ -13,21 +13,12 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div class="ui grid container">
-        <div class="sixteen wide mobile column">
-            <h6 class="ui top attached header">
-                <i class="industry icon a"></i>
-                <div class="content">Servicios Bío Bío<div class="sub header">Proyecto Los Acacios</div></div>
-            </h6>
-            <div class="ui attached segment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque fugiat enim hic doloremque dolorem, dolorum, laboriosam fuga possimus nisi quae nihil eveniet a temporibus quidem odio corporis quibusdam et numquam?</div>
-        </div>
-    </div>
     <div class="ui grid">
         <div class="sixteen wide mobile column">
-            <h6 class="ui top attached header">
+            <h4 class="ui top attached header">
                 <i class="industry icon a"></i>
                 <div class="content">Servicios Bío Bío<div class="sub header">Proyecto Los Acacios</div></div>
-            </h6>
+            </h4>
             <div class="ui attached segment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque fugiat enim hic doloremque dolorem, dolorum, laboriosam fuga possimus nisi quae nihil eveniet a temporibus quidem odio corporis quibusdam et numquam?</div>
         </div>
     </div>
