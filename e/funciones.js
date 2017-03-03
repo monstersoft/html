@@ -482,6 +482,7 @@ function ajaxInfoZonas(){
             else {
                 alert('Error ajax: '+arreglo.exito);
             }
+            console.log(JSON.stringify(arreglo));
         },
 	    complete: eliminarCargando
 	});
