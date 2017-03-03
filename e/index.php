@@ -19,7 +19,7 @@
             Machine Monitors
         </p>
     </div>
-    <div class="ui grid">
+    <div class="ui grid container">
         <div class="sixteen wide mobile column">
             <h4 class="ui top attached header">
                 <i class="industry icon a"></i>
@@ -28,7 +28,7 @@
             <div class="ui attached segment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque fugiat enim hic doloremque dolorem, dolorum, laboriosam fuga possimus nisi quae nihil eveniet a temporibus quidem odio corporis quibusdam et numquam?</div>
         </div>
     </div>
-    <div class="ui grid">
+    <div class="ui grid container">
         <div class="sixteen wide mobile column">
             <h4 class="ui top attached header">
                 <i class="industry icon a"></i>
