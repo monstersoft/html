@@ -39,7 +39,8 @@ function retornaDatos(id) {
     return $.ajax({
         url: 'infoMaquinas.php',
         type: 'POST',
-        data: {idZona: id},
+        //data: {idZona: id},
+        data: {idZona: 9},
         dataType: 'json',
         success: function(arreglo){;
         }
@@ -314,7 +315,6 @@ function ajaxLimiteDatos() {
         url: 'maquinas.php',
         type: 'POST',
         data: {idZona: id},
-        //data: {idZona: 9},
         dataType: 'json',
         success: function(arreglo) {
             if(arreglo.exito == 1) {
