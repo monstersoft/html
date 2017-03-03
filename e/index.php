@@ -22,6 +22,15 @@
             <div class="ui attached segment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque fugiat enim hic doloremque dolorem, dolorum, laboriosam fuga possimus nisi quae nihil eveniet a temporibus quidem odio corporis quibusdam et numquam?</div>
         </div>
     </div>
+    <div class="ui grid">
+        <div class="sixteen wide mobile column">
+            <h2 class="ui top attached header">
+                <i class="industry icon a"></i>
+                <div class="content">Servicios Bío Bío<div class="sub header">Proyecto Los Acacios</div></div>
+            </h2>
+            <div class="ui attached segment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque fugiat enim hic doloremque dolorem, dolorum, laboriosam fuga possimus nisi quae nihil eveniet a temporibus quidem odio corporis quibusdam et numquam?</div>
+        </div>
+    </div>
 <!-- CONTENIDO  -->
 <!-- SEGMENTS id="pasos2" 
         <div class="sixteen wide mobile column" id="pasos2">
