@@ -62,16 +62,16 @@
     </div>
     <div class="ui equal width column grid">
       <div class="column">
-            <h6 class="ui icon header"><i class="file icon"></i><div class="content">ARCHIVO<div class="sub header">3600</div></div></h6>
+            <h6 class="ui icon header"><i class="file icon a"></i><div class="content">ARCHIVO<div class="sub header">3600</div></div></h6>
       </div>
       <div class="column">
-            <h6 class="ui icon header"><i class="map icon"></i><div class="content">ZONA<div class="sub header">LOS ALERCES</div></div></h6>
+            <h6 class="ui icon header"><i class="map icon a"></i><div class="content">ZONA<div class="sub header">LOS ALERCES</div></div></h6>
       </div>
       <div class="column">
-            <h6 class="ui icon header"><i class="file icon"></i><div class="content">PROYECTO<div class="sub header">LOS ACACIOS</div></div></h6>
+            <h6 class="ui icon header"><i class="file icon a"></i><div class="content">PROYECTO<div class="sub header">LOS ACACIOS</div></div></h6>
       </div>
       <div class="column">
-            <h6 class="ui icon header"><i class="industry icon"></i><div class="content">EMPRESA<div class="sub header">SERVICIOS BIO BIO</div></div></h6>
+            <h6 class="ui icon header"><i class="industry icon a"></i><div class="content">EMPRESA<div class="sub header">SERVICIOS BIO BIO</div></div></h6>
       </div>
     </div>
     <div class="ui four column grid">
