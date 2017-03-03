@@ -46,7 +46,7 @@
             Machine Monitors
         </p>
     </div>
-    <div class="ui four column grid container">
+    <div class="ui four column grid">
       <div class="column">
             <h6 class="ui icon header"><i class="file icon a"></i><div class="content">3600<div class="sub header">ARCHIVO</div></div></h6>
       </div>
@@ -60,7 +60,7 @@
             <h6 class="ui icon header"><i class="industry icon a"></i><div class="content">SERVICIOS BIO BIO<div class="sub header">EMPRESA</div></div></h6>
       </div>
     </div>
-    <div class="ui equal width column grid container">
+    <div class="ui equal width column grid">
       <div class="column">
             <h6 class="ui icon header"><i class="file icon a"></i><div class="content">ARCHIVO<div class="sub header">3600</div></div></h6>
       </div>
@@ -74,7 +74,7 @@
             <h6 class="ui icon header"><i class="industry icon a"></i><div class="content">EMPRESA<div class="sub header">SERVICIOS BIO BIO</div></div></h6>
       </div>
     </div>
-    <div class="ui four column grid container">
+    <div class="ui four column grid">
       <div class="column">
             <h6 class="ui icon header"><i class="attach icon"></i><div class="content">3600<div class="sub header">ARCHIVO</div></div></h6>
       </div>
@@ -88,7 +88,7 @@
             <h6 class="ui icon header"><i class="industry icon"></i><div class="content">SERVICIOS BIO BIO<div class="sub header">EMPRESA</div></div></h6>
       </div>
     </div>
-    <div class="ui equal width column grid container">
+    <div class="ui equal width column grid">
       <div class="column">
             <h6 class="ui icon header"><i class="archive icon"></i><div class="content">ARCHIVO<div class="sub header">3600</div></div></h6>
       </div>
@@ -102,7 +102,7 @@
             <h6 class="ui icon header"><i class="industry icon"></i><div class="content">EMPRESA<div class="sub header">SERVICIOS BIO BIO</div></div></h6>
       </div>
     </div>
-    <div class="ui equal width column grid container">
+    <div class="ui equal width column grid">
       <div class="column">
             <h6 class="ui icon header"><i class="file icon"></i><div class="content">ARCHIVO<div class="sub header">3600</div></div></h6>
       </div>
