@@ -24,24 +24,24 @@
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi autem aut quae, facilis soluta consequuntur ut perspiciatis? Architecto nam veniam rem quisquam, autem velit, hic unde facere cupiditate, delectus veritatis.>
         </div>
     </div>
-    <div class="ui grid container b">
+    <div class="ui grid b">
         <div class="sixteen wide mobile column b">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi autem aut quae, facilis soluta consequuntur ut perspiciatis? Architecto nam veniam rem quisquam, autem velit, hic unde facere cupiditate, delectus veritatis.>
         </div>
     </div>
     <div class="ui two column grid container b">
-      <div class="column">
+      <div class="column b">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate atque, similique accusamus. Eaque, amet, ducimus. Repudiandae, nam aperiam deleniti magnam iure, non! Unde rem explicabo perferendis quisquam! At, aspernatur, mollitia.</p>
       </div>
-      <div class="column">
+      <div class="column b">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum iusto ad necessitatibus ipsa repellat incidunt, nulla nisi sapiente quasi, temporibus excepturi saepe ab atque distinctio quae tempore fugit! Sunt, explicabo!</p>
       </div>
     </div>
-    <div class="ui two column padded grid container b">
-      <div class="column">
+    <div class="ui two column grid container b">
+      <div class="column b">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate atque, similique accusamus. Eaque, amet, ducimus. Repudiandae, nam aperiam deleniti magnam iure, non! Unde rem explicabo perferendis quisquam! At, aspernatur, mollitia.</p>
       </div>
-      <div class="column">
+      <div class="column b">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum iusto ad necessitatibus ipsa repellat incidunt, nulla nisi sapiente quasi, temporibus excepturi saepe ab atque distinctio quae tempore fugit! Sunt, explicabo!</p>
       </div>
     </div>
