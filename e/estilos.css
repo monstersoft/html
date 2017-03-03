@@ -40,3 +40,10 @@
 #menu:hover {
 	background: rgba(255, 255, 255, 0.1);
 }
+.ui.grid + .grid {
+    margin-top: 0px;
+}
+.ui.container {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
