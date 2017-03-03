@@ -42,6 +42,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="ui relaxed divided list">
+                    <div class="item">
+                        <div class="right floated content">
+                            <div class="ui button">Ver</div>
+                        </div>
+                        <i class="large world middle aligned icon"></i>
+                        <div class="content">
+                            <a class="header">Los Jeldres</a>
+                            <div class="description">ID: 5</div>
+                            <div class="description">Juan Andrés Pérez Pérez</div>
+                            <div class="description">Patricio Andrés Villanueva Fuentes</div>
+                            <div class="description">Miguel Orlando Villanuev Fuentes</div>
+                            <div class="description">Cecilia Alejandra Villanueva Fuentes</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="sixteen wide mobile column">
