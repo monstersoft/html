@@ -1,30 +1,11 @@
--- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 03-03-2017 a las 23:39:12
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 5.6.24
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Base de datos: `html`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `archivos`
---
 
 CREATE TABLE `archivos` (
   `idArchivo` int(11) NOT NULL,
@@ -37,19 +18,6 @@ CREATE TABLE `archivos` (
   `md5` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `archivos`
---
-
-INSERT INTO `archivos` (`idArchivo`, `idSupervisor`, `fechaSubida`, `horaSubida`, `fechaArchivo`, `peso`, `cantidadRegistros`, `md5`) VALUES
-(0, 70, '2017-02-01', '03:00:00', '2017-02-08', 0, 0, '');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `clientes`
---
-
 CREATE TABLE `clientes` (
   `idCliente` int(11) NOT NULL,
   `correo` varchar(45) NOT NULL,
@@ -57,29 +25,13 @@ CREATE TABLE `clientes` (
   `empresa` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `clientes`
---
-
 INSERT INTO `clientes` (`idCliente`, `correo`, `password`, `empresa`) VALUES
-(2, 'agonzalez@arauco.cl', 'agonzalez', 'Arauco');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `clientes_empresas`
---
+(1, 'pavillanueva@ing.ucsc.cl', '123456', 'mi empresa');
 
 CREATE TABLE `clientes_empresas` (
   `idEmpresa` int(11) NOT NULL,
   `idCliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `datos`
---
 
 CREATE TABLE `datos` (
   `idDato` int(11) NOT NULL,
@@ -97,7 +49,6 @@ CREATE TABLE `datos` (
   `horaDato` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
 CREATE TABLE `empresas` (
   `idEmpresa` int(11) NOT NULL,
   `rut` varchar(10) DEFAULT NULL,
@@ -107,21 +58,16 @@ CREATE TABLE `empresas` (
   `estado` enum('activado','desactivado','otro') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `empresas`
---
-
 INSERT INTO `empresas` (`idEmpresa`, `rut`, `nombre`, `correo`, `telefono`, `estado`) VALUES
-(1, '76245418-1', 'Valko', 'contacto@serviciosbiobio.cl', '123456781', 'activado'),
-(2, '76297828-8', 'JCB', 'contacto@jcb.cl', '683214464', 'activado'),
-(3, '8272362-5', 'Isola Maquinarias', 'ASDSD@SKJDHDJKASD.CL', '995007811', 'activado'),
-(4, '76749540-4', 'Besalco Maquinarias', 'contacto@besalco.cl', '254074000', 'activado');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `maquinas`
---
+(1, '96838800-2', 'Maquinarias ConcepciÃ³n', 'info@maquinariasconcepcion.cl', '978544761', 'activado'),
+(2, '99581960-0', 'Intraser', 'msalazar@intraser.cl', '977905604', 'activado'),
+(3, '70016330-K', 'JCB', 'jcb@contacto.cl', '960078610', 'activado'),
+(4, '76045622-5', 'Chacay', 'mparis@chacay.cl', '943172708', 'activado'),
+(5, '81675600-6', 'Isermaq', 'isermaq@contacto.cl', '987197628', 'activado'),
+(6, '96955280-9', 'Maquinarias AraucanÃ­a', 'maraucania@contacto.cl', '942234301', 'activado'),
+(7, '96947020-9', 'Maquiterra', 'administracion@maquiterra.com', '950207039', 'activado'),
+(8, '96706320-7', 'Himce', 'empresas@himce.cl', '942277888', 'activado'),
+(9, '79699520-3', 'Gam Rentals', 'gam@contacto.cl', '902733190', 'activado');
 
 CREATE TABLE `maquinas` (
   `idMaquina` int(11) NOT NULL,
@@ -135,37 +81,8 @@ CREATE TABLE `maquinas` (
   `cargaMaxima` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `maquinas`
---
-
 INSERT INTO `maquinas` (`idMaquina`, `idZona`, `identificador`, `patente`, `year`, `fechaRegistro`, `velocidadMaxima`, `tara`, `cargaMaxima`) VALUES
-(75, 5, 123, '75ZO05', 1989, '2017-02-07', 100, 500, 500),
-(76, 5, 1, '76ZO05', 1989, '2017-02-07', 100, 500, 500),
-(77, 5, 2, '77ZO05', 2017, '2017-02-07', 100, 500, 500),
-(78, 5, 1, '71ZO05', 1989, '2017-02-07', 100, 500, 500),
-(79, 5, 1, '79ZO05', 1989, '2017-02-07', 100, 500, 500),
-(80, 5, 1, '80ZO05', 1989, '2017-02-11', 100, 500, 500),
-(81, 5, 1, '81ZO03', 1989, '2017-02-11', 100, 500, 500),
-(82, 10, 1, '82ZO10', 1989, '2017-02-23', 100, 500, 500),
-(83, 10, 5, '83ZO05', 1989, '2017-02-23', 100, 500, 500),
-(84, 3, 1, '84ZO03', 1989, '2017-02-23', 100, 500, 500),
-(85, 5, 1, '85ZO03', 1989, '2017-02-23', 100, 500, 500),
-(86, 5, 1, '86ZO05', 1989, '2017-02-23', 100, 500, 500),
-(87, 9, 1, '87ZO09', 1989, '2017-02-23', 100, 500, 500),
-(88, 9, 1, '88ZO09', 1989, '2017-02-23', 100, 500, 500),
-(89, 3, 1, '89ZO03', 1989, '2017-02-23', 100, 500, 500),
-(90, 3, 1, '90ZO03', 1988, '2017-02-23', 100, 500, 500),
-(91, 4, 1, '91ZO04', 1989, '2017-02-23', 100, 500, 500),
-(92, 9, 1, 'asdfgh', 1989, '2017-02-23', 100, 500, 500),
-(93, 9, 1, 'INCAPA', 1989, '2017-02-28', 100, 500, 500),
-(94, 9, 1, 'qweewq', 1989, '2017-02-28', 100, 500, 500);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `proyectos`
---
+(1, 1, 1, 'ABCASD', 0000, '2017-03-05', 100, 500, 500);
 
 CREATE TABLE `proyectos` (
   `idProyecto` int(11) NOT NULL,
@@ -173,23 +90,12 @@ CREATE TABLE `proyectos` (
   `nombre` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `proyectos`
---
-
 INSERT INTO `proyectos` (`idProyecto`, `idEmpresa`, `nombre`) VALUES
-(1, 1, 'Proyecto 1'),
-(2, 1, 'Proyecto 2'),
-(3, 3, 'Proyecto 3'),
-(4, 2, 'Proyecto 4'),
-(5, 2, 'Proyecto 5'),
-(7, 4, 'Proyecto 7');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `supervisores`
---
+(1, 5, 'Santiago'),
+(2, 1, 'ConcepciÃ³n'),
+(3, 5, 'Talca'),
+(4, 2, 'Antofagasta'),
+(5, 2, 'Temuco');
 
 CREATE TABLE `supervisores` (
   `idSupervisor` int(11) NOT NULL,
@@ -201,21 +107,9 @@ CREATE TABLE `supervisores` (
   `fechaRegistro` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `supervisores`
---
-
 INSERT INTO `supervisores` (`idSupervisor`, `nombreSupervisor`, `correoSupervisor`, `password`, `celular`, `status`, `fechaRegistro`) VALUES
-(69, 'Patricio AndrÃ©s Villanueva Fuentes', 'pavillanueva@ing.ucsc.cl', '123456', 995007812, 'habilitado', '2017-02-01'),
-(70, 'AndrÃ©s PÃ¡tricio Fuentes Villanueva', 'villafu89@gmail.com', '123456', 995007812, 'desabilitado', '2017-02-06'),
-(71, 'ASD', 'ASD', 'ASD', 123456, 'desabilitado', '2017-03-01'),
-(72, 'QWE', 'QWE', 'QWE', 123456, 'habilitado', '2017-03-01');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `supervisoreszonas`
---
+(1, 'Patricio AndrÃ©s Villanueva Fuentes', 'pavillanueva@ing.ucsc.cl', '123456', 995007812, 'habilitado', '2017-03-05'),
+(2, 'Miguel Orlando Villanueva Fuentes', 'miguel3498@hotmail.com', NULL, NULL, 'desabilitado', NULL);
 
 CREATE TABLE `supervisoreszonas` (
   `id` int(11) NOT NULL,
@@ -223,23 +117,10 @@ CREATE TABLE `supervisoreszonas` (
   `idSupervisor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `supervisoreszonas`
---
-
 INSERT INTO `supervisoreszonas` (`id`, `idZona`, `idSupervisor`) VALUES
-(100, 5, 69),
-(101, 6, 69),
-(102, 5, 70),
-(103, 6, 70),
-(104, 10, 71),
-(105, 10, 72);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `zonas`
---
+(1, 1, 1),
+(2, 1, 2),
+(3, 3, 2);
 
 CREATE TABLE `zonas` (
   `idZona` int(11) NOT NULL,
@@ -249,194 +130,107 @@ CREATE TABLE `zonas` (
   `longitud` float(10,6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `zonas`
---
-
 INSERT INTO `zonas` (`idZona`, `idProyecto`, `nombre`, `latitud`, `longitud`) VALUES
-(1, 1, 'Universidad CatÃ³lica de la SantÃ­sima', -70.586708, -73.036369),
-(2, 2, 'Ucsc', -36.798553, -73.058105),
-(3, 3, 'Usach', -33.449383, -70.688316),
-(4, 3, 'Universidad de Santiago', -33.490192, -70.619392),
-(5, 4, 'Uch', -33.443810, -70.652580),
-(6, 4, 'Puc', -33.441128, -70.642982),
-(7, 5, 'Uft', -33.437099, -70.610138),
-(9, 7, 'Inacap', -70.642982, -70.586708),
-(10, 7, 'Duoc', -33.489365, -70.586708),
-(11, 7, 'Los leones', -33.449383, -70.670280);
+(1, 1, 'Quinta Normal', NULL, NULL),
+(2, 1, 'Providencia', NULL, NULL),
+(3, 1, 'MaipÃº', NULL, NULL),
+(4, 2, 'San Pedro de la Paz', NULL, NULL),
+(5, 2, 'Chiguayante', NULL, NULL),
+(6, 2, 'Hualqui', NULL, NULL),
+(7, 2, 'TomÃ©', NULL, NULL),
+(8, 2, 'Penco', NULL, NULL),
+(9, 3, 'San Clemente', NULL, NULL),
+(10, 3, 'Maule', NULL, NULL),
+(11, 3, 'Curepto', NULL, NULL);
 
---
--- Índices para tablas volcadas
---
 
---
--- Indices de la tabla `archivos`
---
 ALTER TABLE `archivos`
   ADD PRIMARY KEY (`idArchivo`),
   ADD KEY `idSupervisor` (`idSupervisor`);
 
---
--- Indices de la tabla `clientes`
---
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`idCliente`),
   ADD UNIQUE KEY `idCliente_UNIQUE` (`idCliente`),
   ADD UNIQUE KEY `correo_UNIQUE` (`correo`);
 
---
--- Indices de la tabla `clientes_empresas`
---
 ALTER TABLE `clientes_empresas`
   ADD PRIMARY KEY (`idEmpresa`),
   ADD KEY `fk_clientes_empresas_Clientes1_idx` (`idCliente`);
 
---
--- Indices de la tabla `datos`
---
 ALTER TABLE `datos`
   ADD PRIMARY KEY (`idDato`),
   ADD KEY `idArchivo` (`idArchivo`);
 
---
--- Indices de la tabla `empresas`
---
 ALTER TABLE `empresas`
   ADD PRIMARY KEY (`idEmpresa`),
   ADD UNIQUE KEY `idEmpresa_UNIQUE` (`idEmpresa`),
   ADD UNIQUE KEY `rutEmpresa_UNIQUE` (`rut`),
   ADD UNIQUE KEY `nombreEmpresa_UNIQUE` (`nombre`);
 
---
--- Indices de la tabla `maquinas`
---
 ALTER TABLE `maquinas`
   ADD PRIMARY KEY (`idMaquina`),
   ADD UNIQUE KEY `idMaquina_UNIQUE` (`idMaquina`),
   ADD KEY `fk_Maquinas_Zonas1_idx` (`idZona`);
 
---
--- Indices de la tabla `proyectos`
---
 ALTER TABLE `proyectos`
   ADD PRIMARY KEY (`idProyecto`),
   ADD UNIQUE KEY `idProyecto_UNIQUE` (`idProyecto`),
   ADD KEY `fk_Proyectos_Empresas_idx` (`idEmpresa`);
 
---
--- Indices de la tabla `supervisores`
---
 ALTER TABLE `supervisores`
   ADD PRIMARY KEY (`idSupervisor`),
   ADD UNIQUE KEY `correoSupervisor_UNIQUE` (`correoSupervisor`),
   ADD UNIQUE KEY `idSupervisor_UNIQUE` (`idSupervisor`);
 
---
--- Indices de la tabla `supervisoreszonas`
---
 ALTER TABLE `supervisoreszonas`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id_UNIQUE` (`id`),
   ADD KEY `fk_SupervisoresZonas_Zonas1_idx` (`idZona`),
   ADD KEY `fk_SupervisoresZonas_Supervisores1_idx` (`idSupervisor`);
 
---
--- Indices de la tabla `zonas`
---
 ALTER TABLE `zonas`
   ADD PRIMARY KEY (`idZona`),
   ADD UNIQUE KEY `idZona_UNIQUE` (`idZona`),
   ADD KEY `fk_Zonas_Proyectos1_idx` (`idProyecto`);
 
---
--- AUTO_INCREMENT de las tablas volcadas
---
 
---
--- AUTO_INCREMENT de la tabla `clientes`
---
 ALTER TABLE `clientes`
-  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT de la tabla `datos`
---
+  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 ALTER TABLE `datos`
-  MODIFY `idDato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13289;
---
--- AUTO_INCREMENT de la tabla `empresas`
---
+  MODIFY `idDato` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `empresas`
-  MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de la tabla `maquinas`
---
+  MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 ALTER TABLE `maquinas`
-  MODIFY `idMaquina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
---
--- AUTO_INCREMENT de la tabla `proyectos`
---
+  MODIFY `idMaquina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 ALTER TABLE `proyectos`
-  MODIFY `idProyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT de la tabla `supervisores`
---
+  MODIFY `idProyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 ALTER TABLE `supervisores`
-  MODIFY `idSupervisor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
---
--- AUTO_INCREMENT de la tabla `supervisoreszonas`
---
+  MODIFY `idSupervisor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 ALTER TABLE `supervisoreszonas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
---
--- AUTO_INCREMENT de la tabla `zonas`
---
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 ALTER TABLE `zonas`
   MODIFY `idZona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
---
--- Restricciones para tablas volcadas
---
 
---
--- Filtros para la tabla `archivos`
---
 ALTER TABLE `archivos`
   ADD CONSTRAINT `archivos_ibfk_1` FOREIGN KEY (`idSupervisor`) REFERENCES `supervisores` (`idSupervisor`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Filtros para la tabla `clientes_empresas`
---
 ALTER TABLE `clientes_empresas`
   ADD CONSTRAINT `fk_clientes_empresas_Clientes1` FOREIGN KEY (`idCliente`) REFERENCES `clientes` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_clientes_empresas_Empresas1` FOREIGN KEY (`idEmpresa`) REFERENCES `empresas` (`idEmpresa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Filtros para la tabla `datos`
---
 ALTER TABLE `datos`
   ADD CONSTRAINT `datos_ibfk_1` FOREIGN KEY (`idArchivo`) REFERENCES `archivos` (`idArchivo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Filtros para la tabla `maquinas`
---
 ALTER TABLE `maquinas`
   ADD CONSTRAINT `fk_Maquinas_Zonas1` FOREIGN KEY (`idZona`) REFERENCES `zonas` (`idZona`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Filtros para la tabla `proyectos`
---
 ALTER TABLE `proyectos`
   ADD CONSTRAINT `fk_Proyectos_Empresas` FOREIGN KEY (`idEmpresa`) REFERENCES `empresas` (`idEmpresa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Filtros para la tabla `supervisoreszonas`
---
 ALTER TABLE `supervisoreszonas`
   ADD CONSTRAINT `fk_SupervisoresZonas_Supervisores1` FOREIGN KEY (`idSupervisor`) REFERENCES `supervisores` (`idSupervisor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_SupervisoresZonas_Zonas1` FOREIGN KEY (`idZona`) REFERENCES `zonas` (`idZona`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Filtros para la tabla `zonas`
---
 ALTER TABLE `zonas`
   ADD CONSTRAINT `fk_Zonas_Proyectos1` FOREIGN KEY (`idProyecto`) REFERENCES `proyectos` (`idProyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
