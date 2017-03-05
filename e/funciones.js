@@ -314,20 +314,25 @@ function ajaxLimiteDatos() {
     $.ajax({
         url: 'maquinas.php',
         type: 'POST',
-        data: {idZona: id},
+        //data: {idZona: id},
+        data: {idZona: 1},
         dataType: 'json',
         success: function(arreglo) {
             if(arreglo.exito == 1) {
                 $('.stepMaquinas').removeClass('active').addClass('completed');
                 $('.stepDatos').addClass('active');
                 var contenido = '';
+                var grid = '';
+                var iContenido = '<div class="ui grid container">';
+                var fContenido = '</div>';
                 var numeroFormulario = 0;
                 $.each(arreglo.datos,function(index){
                     contenido+= ' <div class="sixteen wide mobile eight wide tablet eight wide computer column"> <form class="ui form"> <h2 class="ui header"> <i class="a rocket icon"></i> <div class="a content">ID'+arreglo.datos[index].identificador+' - MQ'+arreglo.datos[index].idMaquina+' - '+arreglo.datos[index].patente+'</div></h2> <div class="field"> <div class="sixteen wide field"> <label>Patente</label> <input type="text" placeholder="qwerty" class="valor ui disabled input" value="'+arreglo.datos[index].patente+'"> </div></div><div class="fields"> <div class="eight wide field"> <label class="b">Ángulo Pala</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div><div class="eight wide field"> <label>Ángulo De Inclinación</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div></div><div class="fields"> <div class="eight wide field"> <label>Altura De Pala</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div><div class="eight wide field"> <label>Velocidad</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Min" class="valor"> </div><div class="field"> <input type="text" placeholder="Max" class="valor"> </div></div></div></div><div class="sixteen wide field"> <label>Revoluciones</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="sixteen wide field"> <label>Latitud</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="sixteen wide field"> <label>Longitud</label> <div class="two fields"> <div class="field"> <input type="text" placeholder="Valor mínimo" class="valor"> </div><div class="field"> <input type="text" placeholder="Valor máximo" class="valor"> </div></div></div><div class="four fields"> <div class="field"> <div class="ui radio checkbox"> <input type="radio" name="valores" class="valor btnCeros" id="'+numeroFormulario+'"> <label>Sólo ceros</label> </div></div><div class="field"> <div class="ui radio checkbox"> <input type="radio" name="valores" class="valor btnNoDisponibles" id="'+numeroFormulario+'"> <label>Máquina no disponible</label> </div></div><div class="field"> <div class="ui radio checkbox"> <input type="radio" name="valores" class="valor btnDefectos" id="'+numeroFormulario+'"> <label>Valores por defecto</label> </div></div><div class="ui radio checkbox"> <input type="radio" name="valores" checked="" class="valor btnVacios" id="'+numeroFormulario+'"> <label>Valores vacíos</label> </div></div></form> </div>';
                     numeroFormulario++;
                 });
-                $('#formularioAgregarMaquina').remove();
-                $('#pasos2').after(contenido);
+                grid = iContenido+calendario+contenido+fContenido;
+                $('.formularioAgregarMaquina').remove();
+                $('#contenido').html(grid);
             }
             else {
                 alert('Error ajax: '+arreglo.exito);
@@ -474,33 +479,29 @@ function ajaxInfoZonas(){
             var grid = '';
             $.each(x,function(i){
                 items = '';
-                var iContenido =  '<div class="ui grid container"> <div class="sixteen wide mobile eight wide computer column"> <h4 class="ui top attached header"> <i class="file text icon a"></i> <div class="content">'+x[i].empresa+'<div class="sub header">'+x[i].proyecto+'</div></div></h4> <div class="ui attached segment"> <div class="ui relaxed divided list">';
+                var iContenido =  '<div class="ui grid container infoZonas"> <div class="sixteen wide mobile eight wide computer column"> <h4 class="ui top attached header"> <i class="file text icon a"></i> <div class="content">'+x[i].empresa+'<div class="sub header">'+x[i].proyecto+'</div></div></h4> <div class="ui attached segment"> <div class="ui relaxed divided list">';
                 var fContenido =  '</div></div></div></div>';
                 var y = x[i].zonas;
                 $.each(y,function(i){
-                            items+=  '<div class="item"> <div class="right floated content"> <div class="ui button" id="'+y[i].idZona+'">Ver</div></div><i class="large world middle aligned icon"></i> <div class="content"> <a class="header">'+y[i].zona+'</a> <div class="description">ID: '+y[i].idZona+'</div></div></div>';
+                            items+=  '<div class="item"> <div class="right floated content btnSiguienteZonas" id="'+y[i].idZona+'"> <div class="ui button">Ver</div></div><i class="large world middle aligned icon"></i> <div class="content"> <a class="header">'+y[i].zona+'</a> <div class="description">ID: '+y[i].idZona+'</div></div></div>';
                 });
                 grid+= iContenido+items+fContenido;
             });
-            $('#contenido').after(grid);
+            $('#calendario').after(grid);
         },
 	    complete: eliminarCargando
 	});
 }
 function mostrarFormularioMaquina() {
 	var id = $(this).attr('id');
-	//<i class="map icon"></i><div class="content">Identificador Zona<div class="sub header">5</div></div>
-    $('.stepZonas').removeClass('active').addClass('completed');
+    $('.infoZonas').remove();
     agregarMaquinas();
-    $('.stepMaquinas').addClass('active');
     $('#contenido').load('formularioAgregarMaquina.php',id,function(){$('#idZonaMaquina').val(id);});
 }
 function agregarMaquinas(arreglo) {
     $('.stepMaquinas').removeClass('active');
 }
 function limiteDatos(arreglo) {
-	$('.stepMaquinas').removeClass('active').addClass('completed');
-    $('.stepDatos').addClass('active');
     ingresarLimites();
     $('#formularioAgregarMaquina').remove();
 }
@@ -666,9 +667,13 @@ function errorMessage2(arrayErrors) {
     $('.message').html('<div class="ui negative message"><ul>'+list+'</ul></div>');
 }
 function fechaHoy() {
+    moment.locale('es');
+    console.log(moment.locale('es'));
     var hoyE = moment().locale('es').format('dddd DD , MMMM YYYY');
+    console.log(hoyE);
     var hoyF = moment().format('YYYY-MM-DD');
+    console.log(hoyF);
     $('#fechaDatos').val(hoyE);
     $('input[name=fechaDatos]').val(hoyF);
+    $('#diaActual').html(moment().format('LL')+'sadasdas');
 }
-

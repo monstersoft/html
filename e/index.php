@@ -13,41 +13,26 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div class="ui top fixed menu" id="contenido">
+    <div class="ui top fixed menu">
         <a id="menu" class="launch icon item"><i class="content icon"></i></a>
-        <p id="letra" class="ui center aligned header">
-            Machine Monitors
-        </p>
-    </div>   
-<!-- CONTENIDO
-SEGMENTS id="pasos2"
-        <div class="sixteen wide mobile column" id="pasos2">
-            <div class="ui horizontal segments">
-                <div class="ui segment">
-                    <h3 class="ui header"  style="color: #4183C4;"><i class="calendar icon" style="color: #F5A214"></i>Hoy</h3>
+        <p id="letra" class="ui center aligned header">Machine Monitors</p>
+    </div>
+    <div class="ui grid container" id="calendario">
+        <div class="sixteen wide mobile column"> 
+            <div class="ui horizontal segments"> 
+                <div class="ui segment"> 
+                    <h3 class="ui header" style="color: #4183C4;"><i class="calendar icon" style="color: #F5A214"></i>Hoy</h3> 
                     <div class="content"><h4 id="diaActual"></h4></div>
                 </div>
-                <div class="ui segment">
-                    <h3 class="ui header">
-                      <i class="calendar icon" style="color: #F5A214"></i>
-                      <div class="content" style="color: #4183C4;">Fecha de Datos</div>
-                    </h3>
-                    <div class="ui fluid left icon input">
-                        <input type="text" class="datepicker" name="fechaDatos" id="fechaDatos"><i class="add to calendar icon"></i>
-                    </div>
+                <div class="ui segment"> 
+                    <h3 class="ui header"><i class="calendar icon" style="color: #F5A214"></i><div class="content" style="color: #4183C4;">Fecha de Datos</div></h3> 
+                    <div class="ui fluid left icon input"><input type="text" class="datepicker" name="fechaDatos" id="fechaDatos"><i class="add to calendar icon"></i></div>
                 </div>
             </div>
         </div>
-SEGMENTS id="pasos2"
-CONTENIDO id="contenido"
-        <div class="sixteen wide mobile column" id="contenido"></div>
-CONTENIDO id="contenido"
-BOTON STICKY
-        <div class="ui sticky bottom fixed mas btnGenerar">
-            <i class="fa fa-cog fa-3x fa-fw"></i>
-        </div>
-BOTON STICKY  
-CONTENIDO -->
+    </div>
+    <div id="contenido"></div>
+    <div class="ui sticky bottom fixed mas btnGenerar"><i class="fa fa-cog fa-3x fa-fw"></i></div>
     <script src="jquery2.js"></script>
     <script src="semantic.js"></script>
     <script src="chart.min.js"></script>
@@ -60,20 +45,19 @@ CONTENIDO -->
     <script>
         $(document).ready(function(){
             ajaxInfoZonas();
-            /*$('body').on('click','.btnSiguienteZonas',mostrarFormularioMaquina);
+            $('body').on('click','.btnSiguienteZonas',mostrarFormularioMaquina);
+            $('body').on('click','.limpiar',limpiarFormularioAgregarMaquina);
+            $('body').on('click','#btnAñadirMaquina',ajaxAgregarMaquina);
+            $('body').on('click','#btnAñadirOtraMaquina',agregarOtraMaquina);
             $('body').on('click','.btnSiguienteFormulario',ajaxLimiteDatos);
-            moment.locale('es');
-            $('#diaActual').html(moment().format('LL'));
-            $('body').on('click','.btnGenerar',generarObjetoResultados);
             $('body').on('click','.btnCeros',datosCeros);
             $('body').on('click','.btnNoDisponibles',datosNoDisponibles);
             $('body').on('click','.btnDefectos',datosDefectos);
             $('body').on('click','.btnVacios',datosVacios)
+            $('body').on('click','.btnGenerar',generarObjetoResultados);
+            $('#calendario').css('display','block');
             fechaHoy();
-            $('body').on('click','#btnAñadirMaquina',ajaxAgregarMaquina); 
-            $('body').on('click','.limpiar',limpiarFormularioAgregarMaquina);
-            $('body').on('click','#btnAñadirOtraMaquina',agregarOtraMaquina);
-            $('.ui.radio.checkbox').checkbox();*/
+            $('.ui.radio.checkbox').checkbox();
           });
     </script>
     <script src="pickadate/lib/picker.js"></script>
