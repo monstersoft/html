@@ -469,8 +469,20 @@ function ajaxInfoZonas(){
 	    type: 'POST',
 	    dataType: 'json',
 	    beforeSend: iconoCargando,
-	    success: function(arreglo) {
-            console.log(JSON.stringify(arreglo));
+	    success: function(x) {
+            var items = '';
+            var grid = '';
+            $.each(x,function(i){
+                items = '';
+                var iContenido =  '<div class="ui grid container"> <div class="sixteen wide mobile eight wide computer column"> <h4 class="ui top attached header"> <i class="file text icon a"></i> <div class="content">'+x[i].empresa+'<div class="sub header">'+x[i].proyecto+'</div></div></h4> <div class="ui attached segment"> <div class="ui relaxed divided list">';
+                var fContenido =  '</div></div></div></div>';
+                var y = x[i].zonas;
+                $.each(y,function(i){
+                            items+=  '<div class="item"> <div class="right floated content"> <div class="ui button" id="'+y[i].idZona+'">Ver</div></div><i class="large world middle aligned icon"></i> <div class="content"> <a class="header">'+y[i].zona+'</a> <div class="description">ID: '+y[i].idZona+'</div></div></div>';
+                });
+                grid+= iContenido+items+fContenido;
+            });
+            $('#contenido').after(grid);
         },
 	    complete: eliminarCargando
 	});

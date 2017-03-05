@@ -13,60 +13,12 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div class="ui top fixed menu">
+    <div class="ui top fixed menu" id="contenido">
         <a id="menu" class="launch icon item"><i class="content icon"></i></a>
         <p id="letra" class="ui center aligned header">
             Machine Monitors
         </p>
-    </div>
-    <div class="ui grid container">
-        <div class="sixteen wide mobile column">
-            <h1 class="ui header">
-                <i class="industry icon a"></i>
-                <div class="content">EMPRESA</div>
-            </h1>
-        </div>
-        <div class="eight wide mobile column">
-            <h4 class="ui top attached header">
-                <i class="file text icon a"></i>
-                <div class="content">PROYECTO X</div>
-            </h4>
-            <div class="ui attached segment">
-                <div class="ui relaxed divided list">
-                    <div class="item">
-                        <div class="right floated content">
-                            <div class="ui button yellow inverted" id="#">Ver</div>
-                        </div>
-                        <i class="large world middle aligned icon"></i>
-                        <div class="content">
-                            <a class="header">ZONA X</a>
-                            <div class="description">ID: 5</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="eight wide mobile column">
-            <h4 class="ui top attached header">
-                <i class="file text icon a"></i>
-                <div class="content">PROYECTO Y</div>
-            </h4>
-            <div class="ui attached segment">
-                <div class="ui relaxed divided list">
-                    <div class="item">
-                        <div class="right floated content">
-                            <div class="ui button" id="#">Ver</div>
-                        </div>
-                        <i class="large world middle aligned icon"></i>
-                        <div class="content">
-                            <a class="header">ZONA Y</a>
-                            <div class="description">ID: 5</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </div>   
 <!-- CONTENIDO
 SEGMENTS id="pasos2"
         <div class="sixteen wide mobile column" id="pasos2">
