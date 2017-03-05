@@ -32,7 +32,7 @@
         </div>
     </div>
     <div id="contenido"></div>
-    <div class="ui sticky bottom fixed mas btnGenerar"><i class="fa fa-cog fa-3x fa-fw"></i></div>
+    <div class="ui sticky bottom fixed mas btnGenerar" id="btnGenerar"><i class="fa fa-cog fa-3x fa-fw"></i></div>
     <script src="jquery2.js"></script>
     <script src="semantic.js"></script>
     <script src="chart.min.js"></script>
@@ -42,6 +42,7 @@
     <script src="pickadate/lib/picker.date.js"></script>
     <script src="pickadate/lib/picker.time.js"></script>
     <script src="moment.js"></script>
+    <script src="Export.js"></script>
     <script>
         $(document).ready(function(){
             ajaxInfoZonas();
@@ -55,7 +56,6 @@
             $('body').on('click','.btnDefectos',datosDefectos);
             $('body').on('click','.btnVacios',datosVacios)
             $('body').on('click','.btnGenerar',generarObjetoResultados);
-            $('#calendario').css('display','block');
             fechaHoy();
             $('.ui.radio.checkbox').checkbox();
           });

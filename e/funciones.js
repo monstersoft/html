@@ -26,14 +26,9 @@ function generarObjetoResultados(){
     resultados.tiempoGeneracion = fin - inicio;
     var datosMaquinas = retornaDatos(idZona);
     datosMaquinas.success(function(respuesta){
-        console.log(JSON.stringify(respuesta));
+        //console.log(JSON.stringify(respuesta));
     });
-    //1 MENSAJE DE EXITO CON: TIEMPO DE GENERACION, CANTIDAD GENERADOS,
-    //2 DESCARGAR ARCHIVO
-
-    //3 SUBIR ARCHIVO: INTEGRAR EL FRONT Y HACER EL BACK, VALIDADO
-    //4 HACER SET DE PRUEBAS DEFINITIVAS DESDE EL COMIENZO
-    //5 HACER BOSQUEJO DE RESULTADOS DEFINITIVOS
+    downloadCsv(objDatos);
 }
 function retornaDatos(id) {
     return $.ajax({
@@ -86,7 +81,7 @@ function generarObjetoDatos(objLDisponibles,fechaDatos){
                     latitud:            r(objLDisponibles[index].lamin,objLDisponibles[index].lamax,6),
                     longitud:           r(objLDisponibles[index].lomin,objLDisponibles[index].lomax,6),
                     fechaDato:          fechaDatos,
-                    horaDato:           hora+":0"+minuto+":00"
+                    horaDato:           hora+":"+minuto+":00"
                 });
                 minuto++;
                 cantidadRegistros++;
@@ -676,4 +671,14 @@ function fechaHoy() {
     $('#fechaDatos').val(hoyE);
     $('input[name=fechaDatos]').val(hoyF);
     $('#diaActual').html(moment().format('LL')+'sadasdas');
+}
+function descargarCSV(data){
+    var csvData = new Array();
+    data.forEach(function(item, index, array) {
+        csvData.push(item.title+';'+item.author);
+    });
+    var buffer = csvData.join("\r\n");
+    var blob = new Blob([buffer], {"type": "text/csv;charset=utf8;"});
+    document.getElementById('btnGenerar').setAttribute('href',window.URL.createObjectURL(blob));
+    document.getElementById('btnGenerar').setAttribute('download','datos.csv');
 }
