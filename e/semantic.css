@@ -4098,8 +4098,8 @@ input::selection {
 .ui.inverted.yellow.buttons .button,
 .ui.inverted.yellow.button {
   background-color: transparent;
-  box-shadow: 0px 0px 0px 2px #FFE21F inset !important;
-  color: #FFE21F;
+  box-shadow: 0px 0px 0px 2px #F5A214 inset !important;
+  color: #F5A214;
 }
 
 .ui.inverted.yellow.buttons .button:hover,
@@ -4148,28 +4148,28 @@ input::selection {
 .ui.inverted.yellow.buttons .basic.button:hover,
 .ui.inverted.yellow.basic.button:hover {
   box-shadow: 0px 0px 0px 2px #ffdf05 inset !important;
-  color: #FFE21F !important;
+  color: #F5A214 !important;
 }
 
 .ui.inverted.yellow.basic.buttons .button:focus,
 .ui.inverted.yellow.basic.buttons .button:focus,
 .ui.inverted.yellow.basic.button:focus {
   box-shadow: 0px 0px 0px 2px #f5d500 inset !important;
-  color: #FFE21F !important;
+  color: #F5A214 !important;
 }
 
 .ui.inverted.yellow.basic.buttons .active.button,
 .ui.inverted.yellow.buttons .basic.active.button,
 .ui.inverted.yellow.basic.active.button {
   box-shadow: 0px 0px 0px 2px #ffdf05 inset !important;
-  color: #FFE21F !important;
+  color: #F5A214 !important;
 }
 
 .ui.inverted.yellow.basic.buttons .button:active,
 .ui.inverted.yellow.buttons .basic.button:active,
 .ui.inverted.yellow.basic.button:active {
   box-shadow: 0px 0px 0px 2px #ebcd00 inset !important;
-  color: #FFE21F !important;
+  color: #F5A214 !important;
 }
 
 /*-------------------
@@ -6771,7 +6771,7 @@ a.ui.yellow.header:hover {
 /* Inverted */
 
 .ui.inverted.yellow.header {
-  color: #FFE21F !important;
+  color: #F5A214 !important;
 }
 
 a.ui.inverted.yellow.header:hover {
@@ -7411,7 +7411,7 @@ i.yellow.icon {
 }
 
 i.inverted.yellow.icon {
-  color: #FFE21F !important;
+  color: #F5A214 !important;
 }
 
 i.inverted.bordered.yellow.icon,
@@ -27655,7 +27655,7 @@ a.ui.card:hover,
 .ui.inverted.yellow.statistics .statistic > .value,
 .ui.statistics .inverted.yellow.statistic > .value,
 .ui.inverted.yellow.statistic > .value {
-  color: #FFE21F;
+  color: #F5A214;
 }
 
 .ui.inverted.olive.statistics .statistic > .value,
@@ -32632,7 +32632,7 @@ a.ui.nag {
 }
 
 .ui.yellow.inverted.progress .bar {
-  background-color: #FFE21F;
+  background-color: #F5A214;
 }
 
 /* Olive */

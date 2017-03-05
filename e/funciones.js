@@ -470,18 +470,6 @@ function ajaxInfoZonas(){
 	    dataType: 'json',
 	    beforeSend: iconoCargando,
 	    success: function(arreglo) {
-            if(arreglo.exito) {
-                var inicio = '<div class="ui relaxed divided list">'
-                var fin = '</div>';
-                var contenido = '';
-                $.each(arreglo.datos,function(index) {
-                   contenido+='<div class="item"><div class="right floated content"><div class="ui button btnSiguienteZonas" id="'+arreglo.datos[index].idZona+'">Seguir<i class="arrow right icon"></i></div></div><i class="big marker middle aligned icon"></i><div class="content"><a class="header">'+arreglo.datos[index].zona+'</a><div class="description">'+arreglo.datos[index].empresa+'</div><div class="description">'+arreglo.datos[index].proyecto+'</div><div class="description">'+arreglo.datos[index].idZona+'</div></div></div>';
-                });
-                $('#contenido').html(inicio+contenido+fin);
-            }
-            else {
-                alert('Error ajax: '+arreglo.exito);
-            }
             console.log(JSON.stringify(arreglo));
         },
 	    complete: eliminarCargando

@@ -21,32 +21,54 @@
     </div>
     <div class="ui grid container">
         <div class="sixteen wide mobile column">
-            <h4 class="ui top attached header">
+            <h1 class="ui header">
                 <i class="industry icon a"></i>
-                <div class="content">Servicios Bío Bío<div class="sub header">Proyecto Los Acacios</div></div>
+                <div class="content">EMPRESA</div>
+            </h1>
+        </div>
+        <div class="eight wide mobile column">
+            <h4 class="ui top attached header">
+                <i class="file text icon a"></i>
+                <div class="content">PROYECTO X</div>
             </h4>
             <div class="ui attached segment">
                 <div class="ui relaxed divided list">
                     <div class="item">
                         <div class="right floated content">
-                            <div class="ui button">Ver</div>
+                            <div class="ui button yellow inverted" id="#">Ver</div>
                         </div>
                         <i class="large world middle aligned icon"></i>
                         <div class="content">
-                            <a class="header">Los Jeldres</a>
+                            <a class="header">ZONA X</a>
                             <div class="description">ID: 5</div>
-                            <div class="description">Juan Andrés Pérez Pérez</div>
-                            <div class="description">Patricio Andrés Villanueva Fuentes</div>
-                            <div class="description">Miguel Orlando Villanuev Fuentes</div>
-                            <div class="description">Cecilia Alejandra Villanueva Fuentes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="eight wide mobile column">
+            <h4 class="ui top attached header">
+                <i class="file text icon a"></i>
+                <div class="content">PROYECTO Y</div>
+            </h4>
+            <div class="ui attached segment">
+                <div class="ui relaxed divided list">
+                    <div class="item">
+                        <div class="right floated content">
+                            <div class="ui button" id="#">Ver</div>
+                        </div>
+                        <i class="large world middle aligned icon"></i>
+                        <div class="content">
+                            <a class="header">ZONA Y</a>
+                            <div class="description">ID: 5</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<!-- CONTENIDO  -->
-<!-- SEGMENTS id="pasos2" 
+<!-- CONTENIDO
+SEGMENTS id="pasos2"
         <div class="sixteen wide mobile column" id="pasos2">
             <div class="ui horizontal segments">
                 <div class="ui segment">
@@ -64,16 +86,16 @@
                 </div>
             </div>
         </div>
-<!-- SEGMENTS id="pasos2" -->
-<!-- CONTENIDO id="contenido"
+SEGMENTS id="pasos2"
+CONTENIDO id="contenido"
         <div class="sixteen wide mobile column" id="contenido"></div>
-<!-- CONTENIDO id="contenido" -->
-<!-- BOTON STICKY
+CONTENIDO id="contenido"
+BOTON STICKY
         <div class="ui sticky bottom fixed mas btnGenerar">
             <i class="fa fa-cog fa-3x fa-fw"></i>
         </div>
-<!-- BOTON STICKY -->
-<!-- CONTENIDO -->
+BOTON STICKY  
+CONTENIDO -->
     <script src="jquery2.js"></script>
     <script src="semantic.js"></script>
     <script src="chart.min.js"></script>

@@ -133,10 +133,6 @@
 <!--CONTENIDO ..............................................................................-->
             </div>
         </div>
-
-
-
-
 <!--VENTANAS MODALES ..............................................................................-->
     <!--INSERTAR EMPRESA.....................................................................................--> 
                 <div class="ui modal modalInsertarEmpresa">
@@ -149,28 +145,28 @@
                             <div class="field">
                                 <label>Nombre</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Empresa" name="nombre" id="nombre" value="Servicios bio biof">
+                                    <input type="text" placeholder="Empresa" name="nombre" id="nombre">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Rut</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder="17286211-K" name="rut" id="rut" value="17286211-k">
+                                    <input type="text" placeholder="17286211-K" name="rut" id="rut">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Correo</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="email" value="contacto@servisiosbiobio.cl">
+                                    <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="email">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Teléfono</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder="995007812" name="telefono" id="telefono" value="412424026">
+                                    <input type="text" placeholder="995007812" name="telefono" id="telefono">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>

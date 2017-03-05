@@ -5,31 +5,31 @@ $(document).ready(function(){
         var pass = $('#password').val();
         if(correo == '' || pass == '') {
             if(correo == '' && pass == '')
-                msg({mensaje: 'Correo y contrasena son obligatorios para iniciar sesion',titulo: 'Campos Vacios',accion: 'warning'});
+                msg({mensaje: 'Correo y contraseña son obligatorios para iniciar sesión',titulo: 'Campos Vacíos',accion: 'warning'});
             else {
                 if(correo == '')
-                    msg({mensaje: 'El correo es obligatorio para iniciar sesion',titulo: 'Campo Vacio',accion: 'negative'});
+                    msg({mensaje: 'El correo es obligatorio para iniciar sesión',titulo: 'Campo Vacío',accion: 'negative'});
                 else {
                     if(!expresion.test(correo)) 
-                        msg({mensaje: 'El correo no esta en un formato adecuado',titulo: 'Error de formato'});
+                        msg({mensaje: 'El correo no está en un formato adecuado',titulo: 'Error de formato'});
                 }
                 if(pass == '')
-                    msg({mensaje: 'La contrasena es obligatoria para iniciar sesion',titulo: 'Campo Vacio',accion: 'warning'});
+                    msg({mensaje: 'La contraseña es obligatoria para iniciar sesión',titulo: 'Campo Vacío',accion: 'warning'});
                 else {
                     if(pass.length < 6 || pass.length >12)
-                    msg({mensaje: 'La contrasena debe tener entre 6 y 12 caracteres',titulo: 'Error de formato',accion: 'warning'});
+                    msg({mensaje: 'La contraseña debe tener entre 6 y 12 caracteres',titulo: 'Error de formato',accion: 'warning'});
                 }
             }
         }
         else {
             if(!expresion.test(correo) || (pass.length < 6 || pass.length >12)) {
                 if(!expresion.test(correo) && (pass.length < 6 || pass.length >12))
-                    msg({mensaje: 'El correo no esta en un formato adecuado<br>La contrasena debe tener entre 6 y 12 caracteres',titulo: 'Errores de formato',accion: 'warning'});
+                    msg({mensaje: 'El correo no está en un formato adecuado<br>La contraseña debe tener entre 6 y 12 caracteres',titulo: 'Errores de formato',accion: 'warning'});
                 else {
                     if(!expresion.test(correo))  
-                        msg({mensaje: 'El correo no esta en un formato adecuado',titulo: 'Error de formato',accion: 'warning'});
+                        msg({mensaje: 'El correo no está en un formato adecuado',titulo: 'Error de formato',accion: 'warning'});
                     if(pass.length < 6 || pass.length >12)
-                        msg({mensaje: 'La contrasena debe tener entre 6 y 12 caracteres',titulo: 'Error de formato',accion: 'warning'});
+                        msg({mensaje: 'La contraseña debe tener entre 6 y 12 caracteres',titulo: 'Error de formato',accion: 'warning'});
                 }
                 }
             else {
