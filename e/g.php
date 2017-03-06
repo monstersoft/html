@@ -15,85 +15,43 @@
 </head>
 <body>
     <div class="ui grid container">
-<!-- CONTENIDO  -->
-<!-- SEGMENTS id="pasos2" --> 
-        <div class="sixteen wide mobile column" id="pasos2">
-            <div class="ui horizontal segments">
-                <div class="ui segment">
-                    <h3 class="ui header"  style="color: #4183C4;"><i class="calendar icon" style="color: #F5A214"></i>Hoy</h3>
-                    <div class="content"><h4 id="diaActual"></h4></div>
-                </div>
-                <div class="ui segment">
-                    <h3 class="ui header">
-                      <i class="calendar icon" style="color: #F5A214"></i>
-                      <div class="content" style="color: #4183C4;">Fecha de Datos</div>
-                    </h3>
-                    <div class="ui fluid left icon input">
-                        <input type="text" class="datepicker" name="fechaDatos" id="fechaDatos"><i class="add to calendar icon"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-<!-- SEGMENTS id="pasos2" -->
-<!-- LOADING LOGO -->
-        <div class="one column centered row">
-            <h2 class="ui icon header" style="border-style: 1px solid red;"><i class="setting icon loading" style="color: #F5A214;"></i><div class="content" style="color: #4183C4;">Machine Monitors<div class="sub header">Plan de vigilancia de maquinaria pesada</div></div></h2>
-        </div>
-<!-- LOADING LOGO -->
-        <div class="sixteen wide mobile column" id="contenido"></div>
-        <div class="one column centered row cargando"></div>
-        <div class="ui sticky bottom fixed mas btnGenerar"><i class="fa fa-cog fa-3x fa-fw"></i></div>
-<!-- CONTENIDO -->
+    <a class="button" id="apretar">asldkasd</a>
     </div>
     <script src="jquery2.js"></script>
     <script src="semantic.js"></script>
-    <script src="chart.min.js"></script>
-    <script src="funciones.js"></script>
-    <script src="simularDatos.js"></script>
-    <script src="pickadate/lib/picker.js"></script>
-    <script src="pickadate/lib/picker.date.js"></script>
-    <script src="pickadate/lib/picker.time.js"></script>
-    <script src="moment.js"></script>
+    <script src="papaparse/papaparse.js"></script>
     <script>
-        $(document).ready(function(){
-            ajaxInfoZonas();
-            $('body').on('click','.btnSiguienteZonas',mostrarFormularioMaquina);
-            $('body').on('click','.btnSiguienteFormulario',ajaxLimiteDatos);
-            moment.locale('es');
-            $('#diaActual').html(moment().format('LL'));
-            $('body').on('click','.btnGenerar',generarObjetoResultados);
-            $('body').on('click','.btnCeros',datosCeros);
-            $('body').on('click','.btnNoDisponibles',datosNoDisponibles);
-            $('body').on('click','.btnDefectos',datosDefectos);
-            $('body').on('click','.btnVacios',datosVacios)
-            fechaHoy();
-            $('body').on('click','#btnAñadirMaquina',ajaxAgregarMaquina); 
-            $('body').on('click','.limpiar',limpiarFormularioAgregarMaquina);
-            $('body').on('click','#btnAñadirOtraMaquina',agregarOtraMaquina);
-            $('.ui.radio.checkbox').checkbox();
-          });
-    </script>
-    <script src="pickadate/lib/picker.js"></script>
-    <script src="pickadate/lib/picker.date.js"></script>
-    <script src="pickadate/lib/picker.time.js"></script>
-    <script>
-        $('.datepicker').pickadate({
-            monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
-            monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-            weekdaysFull: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
-            weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
-            showMonthsShort: undefined,
-            showWeekdaysFull: undefined,
-            today: 'Hoy',
-            clear: '',
-            close: 'Cerrar',
-            min: new Date(2017,1,1),
-            max: new Date(2018,1,1),
-            format: 'dddd dd , mmmm yyyy',
-            formatSubmit: 'yyyy-mm-dd',
-            hiddenName : true,
-            firstDay: 'Monday'
-        })
+            $(document).ready(function(){
+                                var data = [
+                {
+                    "title": "Book title 1",
+                    "author": "Name1 Surname1"
+                },
+                {
+                    "title": "Book title 2",
+                    "author": "Name2 Surname2"
+                },
+                {
+                    "title": "Book title 3",
+                    "author": "Name3 Surname3"
+                },
+                {
+                    "title": "Book title 4",
+                    "author": "Name4 Surname4"
+                }
+            ]
+            $('body').on('click','#apretar',descargar('2017-03-05'));
+            function descargar(nombreArchivo){
+                var csvData = new Array();
+                data.forEach(function(item, index, array) {
+                    csvData.push(item.title+';'+item.author);
+                });
+                var buffer = csvData.join("\r\n");
+                var blob = new Blob([buffer], {"type": "text/csv;charset=utf8;"});
+                document.getElementById('apretar').setAttribute('href',window.URL.createObjectURL(blob));
+                document.getElementById('apretar').setAttribute('download',nombreArchivo+'.csv');
+            }
+            });
     </script>
 </body>
 </html>

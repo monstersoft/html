@@ -1,4 +1,5 @@
 var idZona;
+var data;
 function generarObjetoResultados(){
     var comienzo = new Date();
     var inicio = comienzo.getMilliseconds();
@@ -26,9 +27,10 @@ function generarObjetoResultados(){
     resultados.tiempoGeneracion = fin - inicio;
     var datosMaquinas = retornaDatos(idZona);
     datosMaquinas.success(function(respuesta){
-        //console.log(JSON.stringify(respuesta));
+        $('#limiteDatos').remove();
+        $('#contenido').html('<a class="ui button" id="descargar">Descargar</a>');
     });
-    downloadCsv(objDatos);
+    data = objDatos;
 }
 function retornaDatos(id) {
     return $.ajax({
@@ -318,7 +320,7 @@ function ajaxLimiteDatos() {
                 $('.stepDatos').addClass('active');
                 var contenido = '';
                 var grid = '';
-                var iContenido = '<div class="ui grid container">';
+                var iContenido = '<div class="ui grid container" id="limiteDatos">';
                 var fContenido = '</div>';
                 var numeroFormulario = 0;
                 $.each(arreglo.datos,function(index){
@@ -663,22 +665,9 @@ function errorMessage2(arrayErrors) {
 }
 function fechaHoy() {
     moment.locale('es');
-    console.log(moment.locale('es'));
     var hoyE = moment().locale('es').format('dddd DD , MMMM YYYY');
-    console.log(hoyE);
     var hoyF = moment().format('YYYY-MM-DD');
-    console.log(hoyF);
     $('#fechaDatos').val(hoyE);
     $('input[name=fechaDatos]').val(hoyF);
     $('#diaActual').html(moment().format('LL')+'sadasdas');
-}
-function descargarCSV(data){
-    var csvData = new Array();
-    data.forEach(function(item, index, array) {
-        csvData.push(item.title+';'+item.author);
-    });
-    var buffer = csvData.join("\r\n");
-    var blob = new Blob([buffer], {"type": "text/csv;charset=utf8;"});
-    document.getElementById('btnGenerar').setAttribute('href',window.URL.createObjectURL(blob));
-    document.getElementById('btnGenerar').setAttribute('download','datos.csv');
 }

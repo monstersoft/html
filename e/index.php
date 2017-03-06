@@ -56,6 +56,17 @@
             $('body').on('click','.btnDefectos',datosDefectos);
             $('body').on('click','.btnVacios',datosVacios)
             $('body').on('click','.btnGenerar',generarObjetoResultados);
+            $('body').on('click','#descargar',function(){
+                console.log(JSON.stringify(data));
+                var csvData = new Array();
+                $.each(data,function(item, index, array) {
+                    csvData.push(item.patente+';'+item.velocidad);
+                });
+                var buffer = csvData.join("\r\n");
+                var blob = new Blob([buffer], {"type": "text/csv;charset=utf8;"});
+                document.getElementById('descargar').setAttribute('href',window.URL.createObjectURL(blob));
+                document.getElementById('descargar').setAttribute('download','aaaaa.csv');
+            });
             fechaHoy();
             $('.ui.radio.checkbox').checkbox();
           });
