@@ -36,10 +36,10 @@ $(document).ready(function() {
         if(isRut(rut)) {
             arreglo.push('<li>Formato no adecuado de rut o no es válido</li>');
         }
-        //alert(arreglo.length);
         if(arreglo.length == 0) {
             var data = $('#formularioInsertarEmpresa').serialize();
             var url = devuelveUrl('html/cliente/insertarEmpresa.php');
+            alert(url);
             $.ajax({
                 url: url,
                 type: 'POST',
