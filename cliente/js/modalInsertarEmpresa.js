@@ -4,6 +4,9 @@ $(document).ready(function() {
         $('.ui.warning.message').remove();
         $('.ui.icon.success.message').remove();
         $('.modalInsertarEmpresa').modal('show');
+    var host = window.location.host;
+    var protocolo = window.location.protocol;
+        alert(protocolo+'/'+host);
     });
     $('#btnAñadirEmpresa').click(function(){
         var arreglo = new Array();
@@ -39,7 +42,6 @@ $(document).ready(function() {
         if(arreglo.length == 0) {
             var data = $('#formularioInsertarEmpresa').serialize();
             var url = devuelveUrl('html/cliente/insertarEmpresa.php');
-            alert(url);
             $.ajax({
                 url: url,
                 type: 'POST',
