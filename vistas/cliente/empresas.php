@@ -24,7 +24,7 @@
     <style>
     </style>
     <body>
-        <div class="ui sticky fixed" style="bottom: 10px;right: 10px;"><button class="ui icon button"><i class="add icon"></i></div></button>
+        <div class="ui sticky fixed" style="bottom: 10px;right: 10px;"><button class="ui icon button insertarEmpresa"><i class="add icon"></i></div></button>
         <div class="ui sidebar inverted vertical menu">
             <div id="perfil" class="item" href="/introduction/getting-started.html">
                 <h5 class="ui icon header">
@@ -84,24 +84,13 @@
             </div>
             <div class="ui grid">
 <!--CONTENIDO ..............................................................................-->
-                <!--<div class="ui sixteen wide mobile column">
-                    <div class="ui fluid card">
-                        <div class="content">
-                            <i class="industry icon right floated"></i>
-                            <div class="header">Nueva Empresa</div>
-                            <div class="description">
-                            </div>
-                        </div>
-                        <a class="ui bottom attached button insertarEmpresa"><i class="plus icon"></i></a>
-                    </div>
-                </div>-->
     <div class="ui sixteen wide  mobile column" style="padding-top: 25%">
-        <h2 class="ui icon header aligned center">
+        <h1 class="ui icon header aligned center">
             <i class="circular warning icon"></i>
             <div class="content">No hay empresas registradas
                 <div class="sub header">Debes presionar el botón más para agregar una empresa</div>
             </div>
-        </h2>
+        </h1>
     </div>
                 <?php
                     foreach ($empresas as $key => $value) { echo ' 
