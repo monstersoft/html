@@ -28,9 +28,15 @@
                 border-right: 3px solid #F5A214;
                 border-left: 3px solid #F5A214;
             }
+            #btnGenerar {
+                bottom: 0;
+                right: 0;
+                color: #fff;
+            }
         </style>
     </head>
     <body>
+    <div class="ui sticky bottom fixed mas btnGenerar" id="btnGenerar"><p id="url"></p></div>
         <div class="ui aligned center aligned grid">
             <div class="margen column">
                 <h2 class="ui icon header">
