@@ -98,7 +98,7 @@
                         <i class="warning icon"></i>
                         <div class="content">
                             <div class="header">No hay empresas registradas</div>
-                            <p>Debes presionar el botón&nbsp;&nbsp;&nbsp;<button class="ui icon button"><i class="add icon"></i></button>&nbsp;&nbsp;para agregar una empresa</p>
+                            <p>Debes presionar el botón&nbsp;&nbsp;&nbsp;<button class="ui icon mini button"><i class="add icon"></i></button>&nbsp;&nbsp;para agregar una empresa</p>
                         </div>
                     </div>
                 </div>
