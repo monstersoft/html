@@ -94,25 +94,8 @@
                     </div>
                 </div>-->
                 <div class="ui sixteen wide mobile column">
-                    <div class="ui icon message" style="padding: 20px;">
-                        <i class="warning icon"></i>
-                        <div class="content">
-                            <div class="header">No hay empresas registradas</div>
-                            <p>Debes presionar el botón&nbsp;&nbsp;&nbsp;<button class="ui icon mini button"><i class="add icon"></i></button>&nbsp;&nbsp;para agregar una empresa</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui sixteen wide mobile column">
-                    <div class="ui message" style="padding: 20px;">
-                        <div class="content">
-                            <div class="header">No hay empresas registradas</div>
-                            <p>Debes presionar el botón&nbsp;&nbsp;&nbsp;<button class="ui icon mini button"><i class="add icon"></i></button>&nbsp;&nbsp;para agregar una empresa</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui sixteen wide mobile column">
                     <h2 class="ui icon header">
-                        <i class="circular warning icon"></i>
+                        <i class="circular warning icon a"></i>
                         <div class="content">No hay empresas registradas
                             <div class="sub header">Debes presionar el botón más para agregar una empresa</div>
                         </div>
