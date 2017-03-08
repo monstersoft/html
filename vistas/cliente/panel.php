@@ -1,14 +1,15 @@
 <?php
-    session_start();
-    if(!isset($_SESSION['correo'])){
+    //session_start();
+    /*if(!isset($_SESSION['correo'])){
         header("Location:../../index.php");
     }
-    else {
+    else {*/
         include("../../php/funciones.php");
-        $email = $_SESSION['correo'];
+        //$email = $_SESSION['correo'];
+        $email = 'pavillanueva@ing.ucsc.cl';
         $perfil = datosPerfil($email);
         $empresas = empresas();
-    }
+    //}
 ?>
 <!DOCTYPE html>
 <html>
@@ -245,6 +246,8 @@
                     $('.modalEditarEmpresa').modal('hide');
                     $('#formularioInsertarEmpresa').trigger("reset");
                 });
+                devuelveUrl('jsjsjs');
+                    //$('body').after('<div class="ui sticky fixed" style="bottom: 0;left: 0;">sadklasdlkasjd</div>');
             });
         </script>
     </body>

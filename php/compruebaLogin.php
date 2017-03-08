@@ -1,5 +1,5 @@
 <?php
-    include("funciones.php");
+    include("conexion.php");
     $arreglo = array();
     if(!(isset($_POST['txtCorreo']) or isset($_POST['txtPassword']) or isset($_POST['txtSupervisor']))) {
         $arreglo['mensaje'] = 'No existen las variables';

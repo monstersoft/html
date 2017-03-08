@@ -36,7 +36,6 @@
         </style>
     </head>
     <body>
-    <div class="ui sticky bottom fixed mas btnGenerar" id="btnGenerar"><p id="url"></p></div>
         <div class="ui aligned center aligned grid">
             <div class="margen column">
                 <h2 class="ui icon header">
@@ -83,6 +82,5 @@
         <script src="js/hammer.min.js"></script>
         <script src="js/validaLogin.js"></script>
         <script src="js/msg.js"></script>
-        <script src="js/devuelveUrl.js"></script>
     </body>
 </html>
