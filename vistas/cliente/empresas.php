@@ -102,6 +102,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="ui sixteen wide mobile column">
+                    <div class="ui message" style="padding: 20px;">
+                        <div class="content">
+                            <div class="header">No hay empresas registradas</div>
+                            <p>Debes presionar el botón&nbsp;&nbsp;&nbsp;<button class="ui icon mini button"><i class="add icon"></i></button>&nbsp;&nbsp;para agregar una empresa</p>
+                        </div>
+                    </div>
+                </div>
                 <?php
                     foreach ($empresas as $key => $value) { echo ' 
                         <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column cantidad">
