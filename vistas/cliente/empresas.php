@@ -95,7 +95,7 @@
                         <a class="ui bottom attached button insertarEmpresa"><i class="plus icon"></i></a>
                     </div>
                 </div>-->
-    <div class="ui sixteen wide  mobile column" style="padding-top: 20%">
+    <div class="ui sixteen wide  mobile column" style="padding-top: 25%">
         <h2 class="ui icon header aligned center">
             <i class="circular warning icon"></i>
             <div class="content">No hay empresas registradas
