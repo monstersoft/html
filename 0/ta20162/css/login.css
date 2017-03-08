@@ -1,0 +1,41 @@
+.login {
+    padding: 30px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.btn-submit {
+    margin: 500px;
+}
+
+.marca {
+    margin-bottom: 20px;
+}
+.contenedor {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.input-field label {
+     color: #263238;
+}
+
+.input-field input[type=text]:focus + label {
+     color: #009688;
+}
+
+.input-field input[type=text]:focus {
+     border-bottom: 1px solid #009688;
+     box-shadow: 0 1px 0 0 #009688;
+}
+
+#msgCorreo {
+    color: red;
+    font-size: 10px;
+}
+
+#msgPassword {
+    color: red;
+    font-size: 10px;
+}
+       

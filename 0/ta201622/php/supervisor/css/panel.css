@@ -1,0 +1,9 @@
+.iz {
+	float: left;
+}
+.ce {
+	text-align: center;
+}
+.ui.vertical.menu .item:before {
+	width: 0%;
+}
