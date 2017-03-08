@@ -361,7 +361,7 @@
         <script src="../../js/jquery.rut.chileno.js"></script>
         <script src="../../cliente/js/compruebaInputs.js"></script>
         <script src="../../cliente/js/mensajes.js"></script>
-        <script src="../../cliente/js/devuelveUrl.js"></script>
+        <script src="../../js/devuelveUrl.js"></script>
         <script>
             $(document).ready(function(){
                 $('#menu').click(function(){$('.ui.sidebar').sidebar('toggle');});

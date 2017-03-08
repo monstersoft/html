@@ -39,7 +39,7 @@ $(document).ready(function() {
         if(arreglo.length == 0) {
             var data = $('#formularioInsertarEmpresa').serialize();
             //devuelveUrl(pathSinCarpetaRaiz);
-            var url = devuelveUrl('/cliente/insertarEmpresa.php');
+            var url = devuelveUrl('cliente/insertarEmpresa.php');
             alert(url);
             $.ajax({
                 url: url,
