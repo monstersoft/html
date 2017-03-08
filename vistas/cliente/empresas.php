@@ -22,6 +22,8 @@
         <link rel="stylesheet" href="../../cliente/css/panel.css">
     </head>
     <body>
+           $('body').after('<div class="ui sticky fixed" style="bottom: 0;right: 0;padding: 20px;"><i class="big icons"><i class="industry icon a"></i><i class="corner add icon go"></i></i></div>');
+           $('body').after('<div class="ui sticky fixed" style="bottom: 0;right: 0;padding: 50px;"><i class="large icons"><i class="industry icon go"></i><i class="corner add icon a"></i></i></div>');
         <div class="ui sidebar inverted vertical menu">
             <div id="perfil" class="item" href="/introduction/getting-started.html">
                 <h5 class="ui icon header">
