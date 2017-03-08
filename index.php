@@ -51,13 +51,13 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
-                                <input type="text" id="email" placeholder="Correo electrónico">
+                                <input type="text" id="email" placeholder="Correo electrónico" value="pavillanueva@ing.ucsc.cl">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
-                                <input type="password" id="password" placeholder="Contraseña">
+                                <input type="password" id="password" placeholder="Contraseña" value="123456">
                             </div>
                         </div>
                         <div class="ui segment">

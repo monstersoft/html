@@ -442,6 +442,7 @@
                     $('.modalRemoverProyecto').modal('hide');
                     $('.modalRemoverZona').modal('hide');
                 });
+                devuelveUrl('jsjsjs');
             });
         </script>
     </body>

@@ -398,6 +398,7 @@
                     $('.modalInsertarZona').modal('hide');
                     $('.modalInsertarSupervisor').modal('hide');
                 });
+            devuelveUrl('jsjsjs');
             });
         </script>
     </body>
