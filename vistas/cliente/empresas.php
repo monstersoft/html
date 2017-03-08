@@ -21,6 +21,8 @@
         <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
         <link rel="stylesheet" href="../../cliente/css/panel.css">
     </head>
+    <style>
+    </style>
     <body>
         <div class="ui sticky fixed" style="bottom: 10px;right: 10px;"><button class="ui icon button"><i class="add icon"></i></div></button>
         <div class="ui sidebar inverted vertical menu">
@@ -93,14 +95,14 @@
                         <a class="ui bottom attached button insertarEmpresa"><i class="plus icon"></i></a>
                     </div>
                 </div>-->
-                <div class="ui sixteen wide mobile column">
-                    <h2 class="ui icon header">
-                        <i class="circular warning icon"></i>
-                        <div class="content">No hay empresas registradas
-                            <div class="sub header">Debes presionar el botón más para agregar una empresa</div>
-                        </div>
-                    </h2>
-                </div>
+    <div class="ui sixteen wide  mobile column" style="padding-top: 20%">
+        <h2 class="ui icon header aligned center">
+            <i class="circular warning icon"></i>
+            <div class="content">No hay empresas registradas
+                <div class="sub header">Debes presionar el botón más para agregar una empresa</div>
+            </div>
+        </h2>
+    </div>
                 <?php
                     foreach ($empresas as $key => $value) { echo ' 
                         <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column cantidad">
