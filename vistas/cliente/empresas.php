@@ -95,7 +95,7 @@
                 </div>-->
                 <div class="ui sixteen wide mobile column">
                     <h2 class="ui icon header">
-                        <i class="circular warning icon a"></i>
+                        <i class="circular warning icon"></i>
                         <div class="content">No hay empresas registradas
                             <div class="sub header">Debes presionar el botón más para agregar una empresa</div>
                         </div>
