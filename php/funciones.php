@@ -1,5 +1,35 @@
 <?php
 	include("conexion.php");
+
+	function empresas() {
+        $conexion = conectar();
+        $arreglo = array();
+        $consulta = 'SELECT COUNT(empresas.idEmpresa) AS cantidadEmpresas FROM empresas';
+        if($resultado = mysqli_query($conexion,$consulta)) {
+            $r= mysqli_fetch_assoc($resultado);
+            $arreglo['cantidadEmpresas'] = $r['cantidadEmpresas'];
+            if($arreglo['cantidadEmpresas'] != 0) {
+                $consulta = 'SELECT empresas.idEmpresa, empresas.nombre, COUNT(DISTINCT proyectos.idProyecto) AS proyectos, COUNT(DISTINCT zonas.idZona) AS zonas, COUNT(DISTINCT maquinas.idMaquina) AS maquinas, COUNT(DISTINCT supervisores.idSupervisor) AS supervisores
+                             FROM empresas
+                             LEFT JOIN proyectos ON empresas.idEmpresa = proyectos.idEmpresa
+                             LEFT JOIN zonas ON zonas.idProyecto = proyectos.idProyecto
+                             LEFT JOIN maquinas ON maquinas.idZona = zonas.idZona
+                             LEFT JOIN supervisoreszonas ON supervisoreszonas.idZona = zonas.idZona
+                             LEFT JOIN supervisores ON supervisores.idSupervisor = supervisoreszonas.idSupervisor
+                             GROUP BY empresas.idEmpresa';
+                if($resultado = mysqli_query($conexion,$consulta)) {
+                    $arreglo['empresas'] = array();
+                    while($r = mysqli_fetch_array($resultado)) {
+                        array_push($arreglo['empresas'],array('idEmpresa' => $r['idEmpresa'],'nombre' => $r['nombre'], 'proyectos' => $r['proyectos'], 'zonas' => $r['zonas'], 'maquinas' => $r['maquinas'], 'supervisores' => $r['supervisores']));
+                    }
+                
+                }
+            }
+            mysqli_close($conexion);
+            return $arreglo;
+        }
+    }
+
     function cantidadMaquinas($idZona) {
         $conexion = conectar();
         $arreglo = array();
@@ -222,33 +252,6 @@
 		mysqli_close($conexion);
 		return $arreglo;
 	}
-
-	function empresas() {
-        $conexion = conectar();
-        $arreglo = array();
-        $consulta = 'SELECT empresas.idEmpresa, empresas.nombre, COUNT(DISTINCT proyectos.idProyecto) AS proyectos, COUNT(DISTINCT zonas.idZona) AS zonas, COUNT(DISTINCT maquinas.idMaquina) AS maquinas, COUNT(DISTINCT supervisores.idSupervisor) AS supervisores
-					 FROM empresas
-					 LEFT JOIN proyectos ON empresas.idEmpresa = proyectos.idEmpresa
-					 LEFT JOIN zonas ON zonas.idProyecto = proyectos.idProyecto
-					 LEFT JOIN maquinas ON maquinas.idZona = zonas.idZona
-					 LEFT JOIN supervisoreszonas ON supervisoreszonas.idZona = zonas.idZona
-					 LEFT JOIN supervisores ON supervisores.idSupervisor = supervisoreszonas.idSupervisor
-					 GROUP BY empresas.idEmpresa'; 
-        if($resultado = mysqli_query($conexion,$consulta)) {
-        	$i = 0;
-            while($row = mysqli_fetch_array($resultado)) {
-                $arreglo[$i]['idEmpresa']= $row['idEmpresa'];
-                $arreglo[$i]['nombre']= $row['nombre'];
-                $arreglo[$i]['proyectos']= $row['proyectos'];
-                $arreglo[$i]['zonas']    = $row['zonas'];
-                $arreglo[$i]['maquinas'] = $row['maquinas'];
-                $arreglo[$i]['supervisores']= $row['supervisores'];
-                $i++;
-            }
-        }
-        mysqli_close($conexion);
-        return $arreglo;
-    }
 
 	function datosPerfil($correo) {
         $conexion = conectar();

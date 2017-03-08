@@ -84,50 +84,46 @@
             </div>
             <div class="ui grid">
 <!--CONTENIDO ..............................................................................-->
-    <div class="ui sixteen wide  mobile column" style="padding-top: 25%">
-        <h1 class="ui icon header aligned center">
-            <i class="circular warning icon"></i>
-            <div class="content">No hay empresas registradas
-                <div class="sub header">Debes presionar el botón más para agregar una empresa</div>
-            </div>
-        </h1>
-    </div>
                 <?php
-                    foreach ($empresas as $key => $value) { echo ' 
-                        <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column cantidad">
-                            <div class="ui fluid card">
-                                <div class="content">
-                                    <i class="industry icon right floated"></i>
-                                    <div class="header">'.$value['nombre'].'</div>
-                                    <div class="ui divider"></div>
-                                    <div class="description">
-                                        <div class="ui four mini statistics">
-                                            <div class="statistic">
-                                                <div class="value"><i class="file icon"></i><p class="cantidadProyectos">'.$value['proyectos'].'</p></div>
-                                                <div class="label">Proyectos</div>
-                                            </div>
-                                            <div class="statistic">
-                                                <div class="value"><i class="map icon"></i><p class="cantidadZonas">'.$value['zonas'].'</p></div>
-                                                <div class="label">Zonas</div>
-                                            </div>
-                                            <div class="statistic">
-                                                <div class="value"><i class="setting icon"></i><p class="cantidadMaquinas">'.$value['maquinas'].'</p></div>
-                                                <div class="label">Máquinas</div>
-                                            </div>
-                                            <div class="statistic">
-                                                <div class="value"><i class="user icon"></i><p class="cantidadSupervisores">'.$value['supervisores'].'</p></div>
-                                                <div class="label">Supervisores</div>
+                    if($empresas['cantidadEmpresas'] == 0)
+                        echo '<div class="ui sixteen wide mobile column" style="padding-top: 25%"><h1 class="ui icon header aligned center"><i class="circular warning icon"></i><div class="content">No hay empresas registradas<div class="sub header">Debes presionar el botón más para agregar una empresa</div></div></h1></div';    
+                    else {
+                        foreach ($empresas['empresas'] as $key => $value) { echo ' 
+                            <div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column cantidad">
+                                <div class="ui fluid card">
+                                    <div class="content">
+                                        <i class="industry icon right floated"></i>
+                                        <div class="header">'.$value['nombre'].'</div>
+                                        <div class="ui divider"></div>
+                                        <div class="description">
+                                            <div class="ui four mini statistics">
+                                                <div class="statistic">
+                                                    <div class="value"><i class="file icon"></i><p class="cantidadProyectos">'.$value['proyectos'].'</p></div>
+                                                    <div class="label">Proyectos</div>
+                                                </div>
+                                                <div class="statistic">
+                                                    <div class="value"><i class="map icon"></i><p class="cantidadZonas">'.$value['zonas'].'</p></div>
+                                                    <div class="label">Zonas</div>
+                                                </div>
+                                                <div class="statistic">
+                                                    <div class="value"><i class="setting icon"></i><p class="cantidadMaquinas">'.$value['maquinas'].'</p></div>
+                                                    <div class="label">Máquinas</div>
+                                                </div>
+                                                <div class="statistic">
+                                                    <div class="value"><i class="user icon"></i><p class="cantidadSupervisores">'.$value['supervisores'].'</p></div>
+                                                    <div class="label">Supervisores</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="ui three bottom attached buttons">
+                                        <a class="ui button eliminarEmpresa" id="'.$value['idEmpresa'].'"><i class="trash icon"></i></a>
+                                        <a class="ui button editarEmpresa" id="'.$value['idEmpresa'].'"><i class="write icon"></i></a>
+                                        <a href="verEmpresas.php?id='.$value['idEmpresa'].'" class="ui button ver" id="'.$value['idEmpresa'].'"><i class="unhide icon"></i></a> 
+                                    </div>
                                 </div>
-                                <div class="ui three bottom attached buttons">
-                                    <a class="ui button eliminarEmpresa" id="'.$value['idEmpresa'].'"><i class="trash icon"></i></a>
-                                    <a class="ui button editarEmpresa" id="'.$value['idEmpresa'].'"><i class="write icon"></i></a>
-                                    <a href="verEmpresas.php?id='.$value['idEmpresa'].'" class="ui button ver" id="'.$value['idEmpresa'].'"><i class="unhide icon"></i></a> 
-                                </div>
-                            </div>
-                        </div>';
+                            </div>';
+                        }
                     }
                 ?>
 <!--CONTENIDO ..............................................................................-->
@@ -145,28 +141,28 @@
                             <div class="field">
                                 <label>Nombre</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Empresa" name="nombre" id="nombre">
+                                    <input type="text" placeholder="Empresa" name="nombre" id="nombre" value="pato">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Rut</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder="17286211-K" name="rut" id="rut">
+                                    <input type="text" placeholder="17286211-K" name="rut" id="rut" value="17286211-k">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Correo</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="email">
+                                    <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="email" value="aaa@aa.cl">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Teléfono</label>
                                 <div class="ui corner labeled input">
-                                    <input type="text" placeholder="995007812" name="telefono" id="telefono">
+                                    <input type="text" placeholder="995007812" name="telefono" id="telefono" value="995007812">
                                     <div class="ui corner label"><i class="asterisk icon"></i></div>
                                 </div>
                             </div>
