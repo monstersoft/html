@@ -22,8 +22,8 @@
         <link rel="stylesheet" href="../../cliente/css/panel.css">
     </head>
     <body>
-           $('body').after('<div class="ui sticky fixed" style="bottom: 0;right: 0;padding: 20px;"><i class="big icons"><i class="industry icon a"></i><i class="corner add icon go"></i></i></div>');
-           $('body').after('<div class="ui sticky fixed" style="bottom: 0;right: 0;padding: 50px;"><i class="large icons"><i class="industry icon go"></i><i class="corner add icon a"></i></i></div>');
+           <!--$('body').after('<div class="ui sticky fixed" style="bottom: 0;right: 0;padding: 20px;"><i class="big icons"><i class="industry icon a"></i><i class="corner add icon go"></i></i></div>');-->
+           $('body').after('<div class="ui sticky fixed" style="bottom: 10px;right: 10px;"><button class="ui icon button"><i class="add icon"></i></div></button>');
         <div class="ui sidebar inverted vertical menu">
             <div id="perfil" class="item" href="/introduction/getting-started.html">
                 <h5 class="ui icon header">
@@ -108,7 +108,7 @@
                         <i class="warning icon"></i>
                         <div class="content">
                             <div class="header">No hay empresas registradas</div>
-                            <p>Debes presionar el botón&nbsp;&nbsp;&nbsp;<i class="large icons"><i class="industry icon go"></i><i class="corner add icon a"></i></i>&nbsp;&nbsp;para agregar una empresa</p>
+                            <p>Debes presionar el botón&nbsp;&nbsp;&nbsp;<button class="ui icon button"><i class="add icon"></i></button>&nbsp;&nbsp;para agregar una empresa</p>
                         </div>
                     </div>
                 </div>
