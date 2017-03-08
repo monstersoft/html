@@ -75,5 +75,20 @@
 .ui.message {
 	padding: 0.01px;
 }
+.borde {
+    border: 1px solid red;
+}
+.a {
+    color: #F5A214 !important;
+}
+.gc {
+    color: #F5F4F3 !important;
+}
+.go {
+    color: #262626 !important;
+}
+.c {
+    color: #4183C4 !important;
+}
 
 
