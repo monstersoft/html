@@ -38,6 +38,7 @@ $(document).ready(function(){;
                 url: 'php/compruebaLogin.php',
                 data: {txtCorreo: correo, txtPassword: pass, txtSupervisor: esSupervisor},
                 type: "POST",
+                cache: false,
                 dataType: "json",
                 beforeSend: function() {
                     $('#btnLogin').addClass('disabled');
@@ -45,13 +46,12 @@ $(document).ready(function(){;
                 },
                 success: function(arreglo) {
                     if(arreglo.error == true){
-                        msg({mensaje: arreglo.mensaje,titulo: arreglo.titulo,accion: 'errorAjax'});
+                        msg(arreglo.titulo,arreglo.mensaje,'remove user icon','error');
                     }
                     else {
-                        msg({mensaje: arreglo.mensaje,titulo: 'Inicio de sesión',accion: 'success'});
+                        msg(arreglo.titulo,arreglo.mensaje,'fa fa-check-circle fa-3x','success');
                     	$(window).attr('location', arreglo.url);
                     }
-
             }
             }).complete(function(){
                     $('#btnLogin').removeClass('disabled');

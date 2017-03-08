@@ -33,7 +33,7 @@
 						$arreglo['error'] = false;
 						$arreglo['titulo'] = 'Inicio de sesión';
 						$arreglo['mensaje'] = 'Bienvenidos '.$correo;
-						$arreglo['url'] = 'vistas/cliente/panel.php';
+						$arreglo['url'] = 'public/cliente/dashboard.php';
 					}
 					else {
 						$arreglo['titulo'] = 'Error de sesión';
@@ -75,7 +75,7 @@
 						$arreglo['error'] = false;
 						$arreglo['titulo'] = 'Inicio de sesión';
 						$arreglo['mensaje'] = 'Bienvenidos '.$correo;
-						$arreglo['url'] = 'vistas/supervisor/panel.php';
+						$arreglo['url'] = 'public/supervisor/dashboard.php';
 					}
 					else {
 						$arreglo['titulo'] = 'Error de sesión';
@@ -89,7 +89,7 @@
 			}
 			else {
 				$arreglo['titulo'] = 'Error de registro';
-				$arreglo['mensaje'] = 'No estas registrado en el sistema';
+				$arreglo['mensaje'] = 'No estás registrado en el sistema';
 			}
 		}
 		else {

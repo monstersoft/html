@@ -8,32 +8,8 @@
         <title>Machine Monitors</title>
         <link rel="stylesheet" href="semantic/semantic.css">
         <link rel="stylesheet" href="css/toast.css">
-        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-        <style type="text/css">
-            body {
-                background-color: #262626;
-            }
-            .column {
-                max-width: 500px;
-            }
-            .margen {
-                margin-top: 50px;
-            }
-            #btnLogin {
-                background: #F5A214;
-                color: white;
-            }
-            .titulo {
-                color: white;
-                border-right: 3px solid #F5A214;
-                border-left: 3px solid #F5A214;
-            }
-            #btnGenerar {
-                bottom: 0;
-                left: : 0;
-                color: #fff;
-            }
-        </style>
+        <link rel="stylesheet" href="css/awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
         <div class="ui aligned center aligned grid">
@@ -76,11 +52,12 @@
                 </div>
             </div>
         </div>  
-        <script src="js/jquery2.js"></script>
+        <script src="js/jquery/jquery2.js"></script>
         <script src="semantic/semantic.js"></script>
-        <script src="js/toast.js"></script>
-        <script src="js/hammer.min.js"></script>
+        <script src="js/toast/toast.js"></script>
+        <script src="js/hammer/hammer.min.js"></script>
         <script src="js/validaLogin.js"></script>
-        <script src="js/msg.js"></script>
+        <script src="js/mensajes.js"></script>
+        <script src="js/devuelveUrl.js"></script>
     </body>
 </html>
