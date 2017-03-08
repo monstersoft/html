@@ -81,7 +81,7 @@
             </div>
             <div class="ui grid">
 <!--CONTENIDO ..............................................................................-->
-                <div class="ui sixteen wide mobile column">
+                <!--<div class="ui sixteen wide mobile column">
                     <div class="ui fluid card">
                         <div class="content">
                             <i class="industry icon right floated"></i>
@@ -91,7 +91,7 @@
                         </div>
                         <a class="ui bottom attached button insertarEmpresa"><i class="plus icon"></i></a>
                     </div>
-                </div>
+                </div>-->
                 <div class="ui sixteen wide mobile column">
                     <div class="ui icon message" style="padding: 20px;">
                         <i class="warning icon"></i>
