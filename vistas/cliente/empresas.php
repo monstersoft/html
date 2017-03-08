@@ -93,7 +93,34 @@
                     </div>
                 </div>
                 <div class="ui sixteen wide mobile column">
-                    <div class="ui warning icon message" style="padding: 20px;">
+                    <div class="ui icon message" style="padding: 20px;">
+                        <i class="warning icon"></i>
+                        <div class="content">
+                            <div class="header">No hay empresas registradas</div>
+                            <p>Debes presionar el botón&nbsp;&nbsp;&nbsp;<i class="large icons"><i class="industry icon"></i><i class="corner add icon"></i></i>&nbsp;&nbsp;para agregar una empresa</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui sixteen wide mobile column">
+                    <div class="ui positive icon message" style="padding: 20px;">
+                        <i class="warning icon"></i>
+                        <div class="content">
+                            <div class="header">No hay empresas registradas</div>
+                            <p>Debes presionar el botón&nbsp;&nbsp;&nbsp;<i class="large icons"><i class="industry icon"></i><i class="corner add icon"></i></i>&nbsp;&nbsp;para agregar una empresa</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui sixteen wide mobile column">
+                    <div class="ui negative icon message" style="padding: 20px;">
+                        <i class="warning icon"></i>
+                        <div class="content">
+                            <div class="header">No hay empresas registradas</div>
+                            <p>Debes presionar el botón&nbsp;&nbsp;&nbsp;<i class="large icons"><i class="industry icon"></i><i class="corner add icon"></i></i>&nbsp;&nbsp;para agregar una empresa</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui sixteen wide mobile column">
+                    <div class="ui info icon message" style="padding: 20px;">
                         <i class="warning icon"></i>
                         <div class="content">
                             <div class="header">No hay empresas registradas</div>
