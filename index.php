@@ -77,5 +77,6 @@
         <script src="js/hammer.min.js"></script>
         <script src="js/validaLogin.js"></script>
         <script src="js/msg.js"></script>
+        <script src="js/devuelveUrl.js"></script>
     </body>
 </html>
