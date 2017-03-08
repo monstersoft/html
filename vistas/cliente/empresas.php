@@ -114,7 +114,7 @@
                     <h2 class="ui icon header">
                         <i class="circular warning icon"></i>
                         <div class="content">No hay empresas registradas
-                            <div class="sub header">Debes presionar el botón tanto para agregar una empresa</div>
+                            <div class="sub header">Debes presionar el botón más para agregar una empresa</div>
                         </div>
                     </h2>
                 </div>
