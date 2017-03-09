@@ -9,10 +9,9 @@
             $r= mysqli_fetch_assoc($resultado);
             $arreglo['cantidadEmpresas'] = $r['cantidadEmpresas'];
             if($arreglo['cantidadEmpresas'] != 0) {
-                $consulta = 'SELECT empresas.idEmpresa, empresas.nombre, COUNT(DISTINCT proyectos.idProyecto) AS proyectos, COUNT(DISTINCT zonas.idZona) AS zonas, COUNT(DISTINCT maquinas.idMaquina) AS maquinas, COUNT(DISTINCT supervisores.idSupervisor) AS supervisores
+                $consulta = 'SELECT empresas.idEmpresa, empresas.nombre, COUNT(DISTINCT zonas.idZona) AS zonas, COUNT(DISTINCT maquinas.idMaquina) AS maquinas, COUNT(DISTINCT supervisores.idSupervisor) AS supervisores
                              FROM empresas
-                             LEFT JOIN proyectos ON empresas.idEmpresa = proyectos.idEmpresa
-                             LEFT JOIN zonas ON zonas.idProyecto = proyectos.idProyecto
+                             LEFT JOIN zonas ON zonas.idEmpresa = empresas.idEmpresa
                              LEFT JOIN maquinas ON maquinas.idZona = zonas.idZona
                              LEFT JOIN supervisoreszonas ON supervisoreszonas.idZona = zonas.idZona
                              LEFT JOIN supervisores ON supervisores.idSupervisor = supervisoreszonas.idSupervisor
@@ -20,7 +19,7 @@
                 if($resultado = mysqli_query($conexion,$consulta)) {
                     $arreglo['empresas'] = array();
                     while($r = mysqli_fetch_array($resultado)) {
-                        array_push($arreglo['empresas'],array('idEmpresa' => $r['idEmpresa'],'nombre' => $r['nombre'], 'proyectos' => $r['proyectos'], 'zonas' => $r['zonas'], 'maquinas' => $r['maquinas'], 'supervisores' => $r['supervisores']));
+                        array_push($arreglo['empresas'],array('idEmpresa' => $r['idEmpresa'],'nombre' => $r['nombre'], 'zonas' => $r['zonas'], 'maquinas' => $r['maquinas'], 'supervisores' => $r['supervisores']));
                     }
                 
                 }
@@ -203,55 +202,6 @@
         mysqli_close($conexion);
         return $arreglo;
     }
-
-	function verificaFormularioEmpresa($name,$rut,$email,$phone) {
-		$conexion = conectar();
-		$arreglo = array();
-		$consulta = "SELECT COUNT(*) AS nombres FROM empresas WHERE empresas.nombre = '$name'";
-		if($resultado = mysqli_query($conexion,$consulta)) {
-			$nombres = mysqli_fetch_assoc($resultado);
-			if($nombres['nombres'] == 1) {
-				$arreglo['msg'][]= 'El nombre ingresado ya está en uso';
-				$arreglo['exito'] = 0;
-			}
-		}
-
-		$consulta = "SELECT COUNT(*) AS ruts FROM empresas WHERE empresas.rut = '$rut'";
-		if($resultado = mysqli_query($conexion,$consulta)) {
-			$ruts = mysqli_fetch_assoc($resultado);
-			if($ruts['ruts'] == 1) {
-				$arreglo['msg'][] = 'El rut ingresado ya está en uso';
-				$arreglo['exito'] = 0;
-			}
-		}
-		$consulta = "SELECT COUNT(*) AS correos FROM empresas WHERE empresas.correo = '$email'";
-		if($resultado = mysqli_query($conexion,$consulta)) {
-			$correos = mysqli_fetch_assoc($resultado);
-			if($correos['correos'] == 1) {
-				$arreglo['msg'][] = 'El correo ingresado ya está en uso';
-				$arreglo['exito'] = 0;
-			}
-		}
-		$consulta = "SELECT COUNT(*) AS telefonos FROM empresas WHERE empresas.telefono = '$phone'";
-		if($resultado = mysqli_query($conexion,$consulta)) {
-			$telefonos = mysqli_fetch_assoc($resultado);
-			if($telefonos['telefonos'] == 1) {
-				$arreglo['msg'][] = 'El teléfono ingresado ya está en uso';
-				$arreglo['exito'] = 0;
-			}
-		}
-		if($nombres['nombres'] == "0" && $ruts['ruts'] == "0" && $correos['correos'] == "0" && $telefonos['telefonos'] == "0") {
-			$consulta = "INSERT INTO empresas (rut,nombre,correo,telefono) VALUES ('$rut','$name','$email','$phone')";
-			if(mysqli_query($conexion,$consulta)) {
-				$arreglo['exito'] = 1;
-			}
-			else {
-				$arreglo['exito'] = 0;
-			}
-		}
-		mysqli_close($conexion);
-		return $arreglo;
-	}
 
 	function datosPerfil($correo) {
         $conexion = conectar();

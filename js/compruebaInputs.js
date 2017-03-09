@@ -48,8 +48,8 @@ function isNumber(value) {
         return false;
     }
 }
-function isRut() {
-    var rut = $('#rut').val();
+function isRut(rut) {
+    //var rut = $('#rutEmpresa').val();
     var error = $.rut.validar(rut);
     if(rut == '')
         return false;

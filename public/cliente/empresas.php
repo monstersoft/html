@@ -97,11 +97,7 @@
                                         <div class="header">'.$value['nombre'].'</div>
                                         <div class="ui divider"></div>
                                         <div class="description">
-                                            <div class="ui four mini statistics">
-                                                <div class="statistic">
-                                                    <div class="value"><i class="file icon"></i><p class="cantidadProyectos">'.$value['proyectos'].'</p></div>
-                                                    <div class="label">Proyectos</div>
-                                                </div>
+                                            <div class="ui three mini statistics">
                                                 <div class="statistic">
                                                     <div class="value"><i class="map icon"></i><p class="cantidadZonas">'.$value['zonas'].'</p></div>
                                                     <div class="label">Zonas</div>
@@ -118,7 +114,7 @@
                                         </div>
                                     </div>
                                     <div class="ui three bottom attached buttons">
-                                        <a class="ui button eliminarEmpresa" id="'.$value['idEmpresa'].'"><i class="trash icon"></i></a>
+                                        <a class="ui button eliminarEmpresa disabled" id="'.$value['idEmpresa'].'"><i class="trash icon"></i></a>
                                         <a class="ui button editarEmpresa" id="'.$value['idEmpresa'].'"><i class="write icon"></i></a>
                                         <a href="verEmpresas.php?id='.$value['idEmpresa'].'" class="ui button ver" id="'.$value['idEmpresa'].'"><i class="unhide icon"></i></a> 
                                     </div>
@@ -131,75 +127,51 @@
             </div>
         </div>
 <!--VENTANAS MODALES ..............................................................................-->
-    <!--INSERTAR EMPRESA.....................................................................................--> 
-                <div class="ui modal modalInsertarEmpresa">
-                    <div class="header">
-                      <i class="industry icon" style="float: right;"></i>
-                      Agregar Empresa
-                    </div>
-                    <div class="content">
-                        <form class="ui form" id="formularioInsertarEmpresa">
-                            <div class="field">
-                                <label>Nombre</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Empresa" name="nombre" id="nombre" value="pato">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Rut</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="17286211-K" name="rut" id="rut" value="17286211-k">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Correo</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="email" value="aaa@aa.cl">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label>Teléfono</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="995007812" name="telefono" id="telefono" value="995007812">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                        </form>
-                        <div style="text-align: right;margin-top: 15px">
-                            <a  class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
-                            <a  class="ui button green" id="btnAñadirEmpresa"><i class="add icon"></i>Añadir</a>
+<!--INSERTAR EMPRESA.....................................................................................--> 
+        <div class="ui modal modalInsertarEmpresa">
+            <div class="header">
+              <i class="industry icon" style="float: right;"></i>
+              Agregar Empresa
+            </div>
+            <div class="content">
+                <form class="ui form" id="formularioAgregarEmpresa">
+                    <div class="field">
+                        <label>Nombre</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="Empresa" name="nombre" id="nombreAgregarEmpresa" value="pato">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
                         </div>
-                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
-                </div>
-    <!--INSERTAR PROYECTO .....................................................................................--> 
-                <div class="ui modal modalInsertarProyecto">
-                    <div class="header">
-                      <i class="file icon" style="float: right;"></i>
-                      Agregar Proyecto
-                    </div>
-                    <div class="content">
-                        <form class="ui form" id="formularioInsertarProyecto">
-                            <div class="field">
-                                <label>Nombre</label>
-                                <div class="ui corner labeled input">
-                                    <input type="text" placeholder="Nuevo Proyecto" name="nombreProyecto" id="nombreProyecto">
-                                    <div class="ui corner label"><i class="asterisk icon"></i></div>
-                                </div>
-                            </div>
-                            <input type="text" name="idEmpresaProyecto" id="idEmpresaProyecto">
-                        </form>
-                        <div style="text-align: right;margin-top: 15px">
-                            <a  class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
-                            <a  class="ui button green" id="btnAñadirProyecto"><i class="add icon"></i>Añadir</a>
+                    <div class="field">
+                        <label>Rut</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="17286211-K" name="rut" id="rutAgregarEmpresa" value="17286211-k">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
                         </div>
-                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
+                    <div class="field">
+                        <label>Correo</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="emailAgregarEmpresa" value="aaa@aa.cl">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Celular</label>
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="995007812" name="celular" id="celularAgregarEmpresa" value="995007812">
+                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                        </div>
+                    </div>
+                </form>
+                <div style="text-align: right;margin-top: 15px">
+                    <a  class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                    <a  class="ui button green" id="btnAñadirEmpresa"><i class="add icon"></i>Añadir</a>
                 </div>
-    <!--INSERTAR ZONA .....................................................................................--> 
+                <div class="message" style="margin: 15px 0px 0px 0px"></div>
+            </div>
+        </div>
+<!--INSERTAR ZONA .....................................................................................--> 
                 <div class="ui modal modalInsertarZona">
                     <div class="header">
                       <i class="map icon" style="float: right;"></i>
@@ -247,7 +219,7 @@
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
                 </div>
-    <!--INSERTAR SUPERVISOR .....................................................................................--> 
+<!--INSERTAR SUPERVISOR .....................................................................................--> 
                 <div class="ui modal modalInsertarSupervisor">
                     <div class="header">
                       <i class="user icon" style="float: right;"></i>
@@ -287,7 +259,7 @@
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
                 </div>
-<!--    EDITAR EMPRESA.....................................................................................--> 
+<!--EDITAR EMPRESA.....................................................................................--> 
                 <div class="ui modal modalEditarEmpresa">
                     <div class="header">
                       <i class="industry icon" style="float: right;"></i>
@@ -333,7 +305,7 @@
                         <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
                     </div>
                 </div>
-<!--    ELIMINAR .....................................................................................-->           
+<!--ELIMINAR .....................................................................................-->           
                 <div class="ui basic test modal" id="modalEliminar">
                     <div class="ui icon header">
                         <i class="archive icon"></i>

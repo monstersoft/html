@@ -7,45 +7,40 @@ $(document).ready(function() {
     });
     $('#btnAñadirEmpresa').click(function(){
         var arreglo = new Array();
-        var nombre = $('#nombre').val();
-        var rut = $('#rut').val();
-        var email = $('#email').val();
-        var telefono = $('#telefono').val();
+        var nombre = $('#nombreAgregarEmpresa').val();
+        var rut = $('#rutAgregarEmpresa').val();
+        var email = $('#emailAgregarEmpresa').val();
+        var celular = $('#celularAgregarEmpresa').val();
         var numberErrors = 0;
-        if(isEmpty(nombre)) {
-            arreglo.push('<li>El campo nombre es obigatorio</li>');
-        }
-        if(isEmpty(rut)) {
-            arreglo.push('<li>El campo rut es obigatorio</li>');
-        }
-        if(isEmpty(email)) {
-            arreglo.push('<li>El campo correo es obigatorio</li>');
-        }
-        if(isEmpty(telefono)) {
-            arreglo.push('<li>El campo teléfono es obigatorio</li>');
-        }
-        if(isMail(email)) {
+        if(isEmpty(nombre))
+            arreglo.push('<li>Nombre es obigatorio</li>');
+        if(isEmpty(rut))
+            arreglo.push('<li>Rut es obigatorio</li>');
+        if(isEmpty(email))
+            arreglo.push('<li>Correo es obigatorio</li>');
+        if(isEmpty(celular))
+            arreglo.push('<li>Celular es obigatorio</li>');
+        if(isMail(email))
             arreglo.push('<li>Formato erróneo de correo electrónico</li>');
-        }
-        if(isExactly(telefono)) {
-            arreglo.push('<li>El teléfono debe tener 9 dígitos</li>');
-        }
-        if(isNumber(telefono)) {
-            arreglo.push('<li>El teléfono no es un número o no está en un formato adecuado</li>');
-        }
-        if(isRut(rut)) {
-            arreglo.push('<li>Formato no adecuado de rut o no es válido</li>');
-        }
+        if(isExactly(celular))
+            arreglo.push('<li>Celular debe tener 9 dígitos</li>');
+        if(isNumber(celular))
+            arreglo.push('<li>Celular no es un número o no está en un formato adecuado</li>');
+        if(isRut(rut))
+            arreglo.push('<li>Formato no adecuado de rut o no es válido, debe ir con guíon y sin puntos</li>');
+        if(maxLength(nombre, 30))
+            arreglo.push('<li>Nombre no debe superar los 30 caracteres</li>');
         if(arreglo.length == 0) {
-            var data = $('#formularioInsertarEmpresa').serialize();
+            var data = $('#formularioAgregarEmpresa').serialize();
             //devuelveUrl(pathSinCarpetaRaiz);
-            var url = devuelveUrl('cliente/insertarEmpresa.php');
-            alert(url);
+            var url = devuelveUrl('cliente/ajax/agregarEmpresa.php');
+            console.log(url);
             $.ajax({
                 url: url,
                 type: 'POST',
                 data: data,
                 dataType: 'json',
+                cache: false,
                 beforeSend: function() {
                   $('#cancelar').addClass('disabled');
                   $('#btnAñadir').addClass('disabled loading');
