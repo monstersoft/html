@@ -36,7 +36,7 @@ function warningMessage(arrayWarnings) {
     $('.message').html('<div class="ui warning message"><ul>'+list+'</ul></div>');
 }
 function successMessage(titulo,parrafo) {
-    $('.message').html('<div class="ui icon success message"><i class=" icon checkmark"></i><div class="content"><div class="header">'+titulo+'</div><p>'+parrafo+'</p></div></div>');
+    $('.message').html('<div class="ui icon success message" style="padding: 10px;"><i class="refresh loading icon"></i><div class="content"><div class="header">'+titulo+'</div><p>'+parrafo+'</p></div></div>');
 }
 function infoMessage(titulo,parrafo) {
     $('.message').html('<div class="ui icon info message"><i class=" icon info"></i><div class="content"><div class="header">'+titulo+'</div><p>'+parrafo+'</p></div></div>');

@@ -32,7 +32,6 @@ $(document).ready(function() {
             var data = $('#formularioAgregarEmpresa').serialize();
             //devuelveUrl(pathSinCarpetaRaiz);
             var url = devuelveUrl('cliente/ajax/agregarEmpresa.php');
-            console.log(url);
             $.ajax({
                 url: url,
                 type: 'POST',
@@ -45,8 +44,10 @@ $(document).ready(function() {
                 },
                 success: function(returnedData) {
                     if(returnedData.exito == 1) {
-                        successMessage('Registro realizado con éxito','Serás redireccionado al panel de empresas');
-                        location.reload();
+                        successMessage('Registro realizado con éxito','Redireccionado al panel de empresas');
+                        $('.cancelar').remove();
+                        $('#btnAñadirEmpresa').remove();
+                        setTimeout(function(){location.reload()}, 5000);
                     }
                     else {
                         warningMessage(returnedData);

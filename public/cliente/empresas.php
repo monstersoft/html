@@ -138,28 +138,28 @@
                     <div class="field">
                         <label>Nombre</label>
                         <div class="ui corner labeled input">
-                            <input type="text" placeholder="Empresa" name="nombre" id="nombreAgregarEmpresa">
+                            <input type="text" placeholder="Empresa" name="nombre" id="nombreAgregarEmpresa" value="a">
                             <div class="ui corner label"><i class="asterisk icon"></i></div>
                         </div>
                     </div>
                     <div class="field">
                         <label>Rut</label>
                         <div class="ui corner labeled input">
-                            <input type="text" placeholder="17286211-K" name="rut" id="rutAgregarEmpresa">
+                            <input type="text" placeholder="17286211-K" name="rut" id="rutAgregarEmpresa" value="17286211-k">
                             <div class="ui corner label"><i class="asterisk icon"></i></div>
                         </div>
                     </div>
                     <div class="field">
                         <label>Correo</label>
                         <div class="ui corner labeled input">
-                            <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="emailAgregarEmpresa">
+                            <input type="text" placeholder=". . . . . @ . . . . . " name="email" id="emailAgregarEmpresa" value="a@s.cl">
                             <div class="ui corner label"><i class="asterisk icon"></i></div>
                         </div>
                     </div>
                     <div class="field">
                         <label>Celular</label>
                         <div class="ui corner labeled input">
-                            <input type="text" placeholder="995007812" name="celular" id="celularAgregarEmpresa">
+                            <input type="text" placeholder="995007812" name="celular" id="celularAgregarEmpresa" value="995007812">
                             <div class="ui corner label"><i class="asterisk icon"></i></div>
                         </div>
                     </div>
