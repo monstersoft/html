@@ -41,8 +41,7 @@ $(document).ready(function() {
                 cache: false,
                 beforeSend: function() {
                   $('#cancelar').addClass('disabled');
-                  $('#btnAñadir').addClass('disabled loading');
-                  //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
+                  $('#btnAñadirEmpresa').addClass('disabled loading');
                 },
                 success: function(returnedData) {
                     if(returnedData.exito == 1) {
@@ -52,8 +51,10 @@ $(document).ready(function() {
                     else {
                         warningMessage(returnedData);
                     }
+                },
+                complete: function() {
                     $('#cancelar').removeClass('disabled');
-                    $('#btnAñadir').removeClass('disabled loading');
+                    $('#btnAñadirEmpresa').removeClass('disabled loading');
                 }
             }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){
