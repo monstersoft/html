@@ -421,7 +421,7 @@
         <script src="../../cliente/js/modalEliminarSupervisor.js"></script>
         <script src="../../js/compruebaInputs.js"></script>
         <script src="../../js/mensajes.js"></script>
-        <script src="../../js/devuelveUrl.js"></script>
+        <script src="../../js/funciones.js"></script>
         <script>
             $(document).ready(function(){
                 $('#menu').click(function(){$('.ui.sidebar').sidebar('toggle');});

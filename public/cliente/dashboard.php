@@ -86,10 +86,6 @@
 <!--CONTENIDO ..............................................................................-->
             </div>
         </div>
-
-
-
-
 <!--VENTANAS MODALES ..............................................................................-->
 <!--    INSERTAR .....................................................................................--> 
                 <div class="ui modal modalInsertarEmpresa">
@@ -215,7 +211,7 @@
         <script src="../../js/rut/jquery.rut.chileno.js"></script>
         <script src="../../js/compruebaInputs.js"></script>
         <script src="../../js/mensajes.js"></script>
-        <script src="../../js/devuelveUrl.js"></script>
+        <script src="../../js/funciones.js"></script>
         <script>
             $(document).ready(function(){
                 $('#menu').click(function(){$('.ui.sidebar').sidebar('toggle');});

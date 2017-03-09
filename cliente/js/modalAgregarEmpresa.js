@@ -1,9 +1,7 @@
 $(document).ready(function() {
-    $('.insertarEmpresa').click(function(){
-        $('.ui.negative.message').remove();
-        $('.ui.warning.message').remove();
-        $('.ui.icon.success.message').remove();
-        $('.modalInsertarEmpresa').modal('show');
+    $('.agregarEmpresa').click(function(){
+        borraMensajes();
+        $('.modalAgregarEmpresa').modal('show');
     });
     $('#btnAñadirEmpresa').click(function(){
         var arreglo = new Array();

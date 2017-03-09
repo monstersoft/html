@@ -25,7 +25,7 @@
     <style>
     </style>
     <body>
-        <div class="ui sticky fixed" style="bottom: 10px;right: 10px;"><button class="ui icon button insertarEmpresa"><i class="add icon"></i></div></button>
+        <div class="ui sticky fixed" style="bottom: 10px;right: 10px;"><button class="ui icon button agregarEmpresa"><i class="add icon"></i></div></button>
         <div class="ui sidebar inverted vertical menu">
             <div id="perfil" class="item" href="/introduction/getting-started.html">
                 <h5 class="ui icon header">
@@ -128,7 +128,7 @@
         </div>
 <!--VENTANAS MODALES ..............................................................................-->
 <!--INSERTAR EMPRESA.....................................................................................--> 
-        <div class="ui modal modalInsertarEmpresa">
+        <div class="ui modal modalAgregarEmpresa">
             <div class="header">
               <i class="industry icon" style="float: right;"></i>
               Agregar Empresa
@@ -165,7 +165,7 @@
                     </div>
                 </form>
                 <div style="text-align: right;margin-top: 15px">
-                    <a  class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                    <a  class="ui button black cancelar"><i class="close icon"></i>Cerrar</a>
                     <a  class="ui button green" id="btnAñadirEmpresa"><i class="add icon"></i>Añadir</a>
                 </div>
                 <div class="message" style="margin: 15px 0px 0px 0px"></div>
@@ -334,7 +334,7 @@
         <script src="../../js/rut/jquery.rut.chileno.js"></script>
         <script src="../../js/compruebaInputs.js"></script>
         <script src="../../js/mensajes.js"></script>
-        <script src="../../js/devuelveUrl.js"></script>
+        <script src="../../js/funciones.js"></script>
         <script>
             $(document).ready(function(){
                 $('#menu').click(function(){$('.ui.sidebar').sidebar('toggle');});
@@ -353,21 +353,11 @@
                         
                 }).dropdown();
                 $('.cancelar').click(function(){
-                    $('.ui.negative.message').remove();
-                    $('.ui.warning.message').remove();
-                    $('.ui.icon.success.message').remove();
-                    $('#formularioInsertarEmpresa').trigger("reset");
-                    $('#formularioEditarEmpresa').trigger("reset");
-                    $('#formularioInsertarProyecto').trigger("reset");
-                    $('#formularioInsertarZona').trigger("reset");
-                    $('#formularioInsertarSupervisor').trigger("reset");
-                    $('.modalInsertarEmpresa').modal('hide');
-                    $('.modalEditarEmpresa').modal('hide');
-                    $('.modalInsertarProyecto').modal('hide');
-                    $('.modalInsertarZona').modal('hide');
-                    $('.modalInsertarSupervisor').modal('hide');
+                    borraMensajes();
+                    reseteaFormularios();
+                    cierraModales();
                 });
-            devuelveUrl('jsjsjs');
+                configuracionModales();
             });
         </script>
     </body>
