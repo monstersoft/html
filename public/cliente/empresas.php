@@ -85,6 +85,39 @@
             </div>
             <div class="ui grid">
 <!--CONTENIDO ..............................................................................-->
+<div class="sixteen wide mobile eight wide computer column">
+<div class="ui segment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque debitis ut eaque magnam odio laboriosam officiis perferendis reiciendis est? Repellendus culpa, consectetur dolorem consequatur iusto esse sint deleniti necessitatibus nostrum.
+<div class="ui four column grid">
+<div class="column">
+<h6 class="ui icon header"><i class="file icon a"></i><div class="content">3600<div class="sub header">ARCHIVO</div></div></h6>
+</div>
+<div class="column">
+<h6 class="ui icon header"><i class="map icon a"></i><div class="content">LOS ALERCES<div class="sub header">ZONA</div></div></h6>
+</div>
+<div class="column">
+<h6 class="ui icon header"><i class="file text icon a"></i><div class="content">LOS ACACIOS<div class="sub header">PROYECTO</div></div></h6>
+</div>
+<div class="column">
+<h6 class="ui icon header"><i class="industry icon a"></i><div class="content">SERVICIOS BIO BIO<div class="sub header">EMPRESA</div></div></h6>
+</div>
+</div>
+
+<div class="ui equal width column grid">
+<div class="column">
+<h6 class="ui icon header"><i class="archive icon"></i><div class="content">ARCHIVO<div class="sub header">3600</div></div></h6>
+</div>
+<div class="column">
+<h6 class="ui icon header"><i class="map icon"></i><div class="content">ZONA<div class="sub header">LOS ALERCES</div></div></h6>
+</div>
+<div class="column">
+<h6 class="ui icon header"><i class="file text icon"></i><div class="content">PROYECTO<div class="sub header">LOS ACACIOS</div></div></h6>
+</div>
+<div class="column">
+<h6 class="ui icon header"><i class="industry icon"></i><div class="content">EMPRESA<div class="sub header">SERVICIOS BIO BIO</div></div></h6>
+</div>
+</div>
+</div>
+</div>
                 <?php
                     if($empresas['cantidadEmpresas'] == 0)
                         echo '<div class="ui sixteen wide mobile column" style="padding-top: 25%"><h1 class="ui icon header aligned center"><i class="circular warning icon"></i><div class="content">No hay empresas registradas<div class="sub header">Debes presionar el botón más para agregar una empresa</div></div></h1></div';    
@@ -123,50 +156,8 @@
                         }
                     }
                 ?>
-<!--CONTENIDO ..............................................................................-->
-           
-           <div class="sixteen wide mobile eight wide computer column">
-            <div class="ui segment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque debitis ut eaque magnam odio laboriosam officiis perferendis reiciendis est? Repellendus culpa, consectetur dolorem consequatur iusto esse sint deleniti necessitatibus nostrum.
-    <div class="ui four column grid">
-      <div class="column">
-            <h6 class="ui icon header"><i class="file icon a"></i><div class="content">3600<div class="sub header">ARCHIVO</div></div></h6>
-      </div>
-      <div class="column">
-            <h6 class="ui icon header"><i class="map icon a"></i><div class="content">LOS ALERCES<div class="sub header">ZONA</div></div></h6>
-      </div>
-      <div class="column">
-            <h6 class="ui icon header"><i class="file text icon a"></i><div class="content">LOS ACACIOS<div class="sub header">PROYECTO</div></div></h6>
-      </div>
-      <div class="column">
-            <h6 class="ui icon header"><i class="industry icon a"></i><div class="content">SERVICIOS BIO BIO<div class="sub header">EMPRESA</div></div></h6>
-      </div>
-    </div>
-      
-             <div class="ui equal width column grid">
-      <div class="column">
-            <h6 class="ui icon header"><i class="archive icon"></i><div class="content">ARCHIVO<div class="sub header">3600</div></div></h6>
-      </div>
-      <div class="column">
-            <h6 class="ui icon header"><i class="map icon"></i><div class="content">ZONA<div class="sub header">LOS ALERCES</div></div></h6>
-      </div>
-      <div class="column">
-            <h6 class="ui icon header"><i class="file text icon"></i><div class="content">PROYECTO<div class="sub header">LOS ACACIOS</div></div></h6>
-      </div>
-      <div class="column">
-            <h6 class="ui icon header"><i class="industry icon"></i><div class="content">EMPRESA<div class="sub header">SERVICIOS BIO BIO</div></div></h6>
-      </div>
-    </div>
-          
-          
-           
-           
-           </div>
+<!--CONTENIDO ..............................................................................-->    
             </div>
-            
-            
-            </div>
-
-
         </div>
 <!--VENTANAS MODALES ..............................................................................-->
 <!--INSERTAR EMPRESA.....................................................................................--> 
