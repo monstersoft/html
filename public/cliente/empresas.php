@@ -89,16 +89,16 @@
     <div class="ui segment"><h6 class="ui icon header"><i class="industry icon"></i><div class="content">LOS ACACIOS</div></h6>
         <div class="ui equal width column grid">
             <div class="column">
-                <h5 class="ui icon header"><i class="map icon a"></i><div class="content">ZONAS<div class="sub header">5</div></div></h5>
+                <h6 class="ui icon header"><i class="map icon a"></i><div class="content">ZONAS<div class="sub header">5</div></div></h6>
             </div>
             <div class="column">
-                <h5 class="ui icon header"><i class="setting icon a"></i><div class="content">MÁQUNAS<div class="sub header">20</div></div></h5>
+                <h6 class="ui icon header"><i class="setting icon a"></i><div class="content">MÁQUNAS<div class="sub header">20</div></div></h6>
             </div>
             <div class="column">
-                <h5 class="ui icon header"><i class="users icon a"></i><div class="content">SUPERVISORES<div class="sub header">15</div></div></h5>
+                <h6 class="ui icon header"><i class="users icon a"></i><div class="content">SUPERVISORES<div class="sub header">15</div></div></h6>
             </div>
             <div class="column">
-                <h5 class="ui icon header"><div class="content"><button class="ui circular button">Ver</button><div class="sub header"></div></div></h5>
+                <h6 class="ui icon header"><div class="content"><button class="ui circular button">Ver</button><div class="sub header"></div></div></h6>
             </div>
         </div>
     </div>
