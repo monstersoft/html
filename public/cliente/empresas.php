@@ -95,7 +95,7 @@
                     <div class="removerEmpresa item" id="'.$value['idEmpresa'].'"><i class="delete icon"></i>remover empresa</div>
                 </div>
             </div>
-            <h4 class="ui header left floated"><i class="industry icon a"></i><div class="content" style="vertical-align: bottom;">Servicios Bío Bío</div></h4>
+            <h4 class="ui header left floated"><i class="industry icon a"></i><div class="content c" style="vertical-align: bottom;">Servicios Bío Bío</div></h4>
             <div class="ui divider" style="margin-bottom: 0px;margin-top: 30px;"></div>
             <div class="description">
                 <div class="ui equal width column grid" style="padding: 0px;margin: 0px;">
