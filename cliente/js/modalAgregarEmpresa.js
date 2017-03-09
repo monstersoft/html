@@ -40,7 +40,7 @@ $(document).ready(function() {
                 dataType: 'json',
                 cache: false,
                 beforeSend: function() {
-                  $('#cancelar').addClass('disabled');
+                  $('.cancelar').addClass('disabled');
                   $('#btnAñadirEmpresa').addClass('disabled loading');
                 },
                 success: function(returnedData) {
@@ -53,7 +53,7 @@ $(document).ready(function() {
                     }
                 },
                 complete: function() {
-                    $('#cancelar').removeClass('disabled');
+                    $('.cancelar').removeClass('disabled');
                     $('#btnAñadirEmpresa').removeClass('disabled loading');
                 }
             }).fail(function( jqXHR, textStatus, errorThrown ){
