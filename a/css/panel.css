@@ -1,26 +1,58 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina|Montserrat|Roboto|Rubik');
 
-.baloo {
-    font-family: 'Baloo Bhaina';
-}
-.mont {
+.cbarra {
+    
+    background-color: #262626;
+    height: 40px;
+    border-bottom: 10px solid #F5A214;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: white;
     font-family: 'Montserrat';
+    
 }
 
-.roboto {
-    font-family: 'Roboto';
-}
+    /*background-color: #262626;background-color: #262626;*/
+    
 
-.rubik {
-    font-family: 'Rubik';
-}
 
-#sidebar-wrapper {
-    background-color: #262626;
-}
-.navbar {
-    background-color: #262626;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .iz {
     float: left;
     color: white;
