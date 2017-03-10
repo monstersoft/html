@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina|Montserrat|Roboto|Rubik');
+@import url('https://fonts.googleapis.com/css?family=Lato');
 
 .a {
     color: #F5A214 !important;
@@ -22,11 +22,11 @@
     box-sizing: border-box;
     position: fixed;
     top: 0;
-    font-family: 'Montserrat';
+    font-family: 'Lato';
     color: white;
     text-align: center;
     border-bottom: 5px solid #F5A214;
-    font-size: 25px;
+	font-size: 22px;
 }
 #wrapper {
     margin-top: 40px;
