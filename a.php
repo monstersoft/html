@@ -13,22 +13,27 @@
                 margin: 0 !important;
                 box-sizing: border-box !important;
             }
-            .ui.grid {
-                margin: 0;
+            .b {
+                border: 1px solid gray;
             }
-            .borde {
-                border: 1px solid #F5A214;
+            .bb {
+                border-bottom: 1px solid #F5A214
             }
         </style>
     </head>
     <body>
-    <div class="ui grid">
-<div class="ui eight wide mobile column">
-  <div class="sixteen wide mobile column borde">Empresa <i class="industry icon right floated"></i></div>
+    <div class="ui grid container">
+<div class="ui sixteen wide mobile column b">
+<div class="sixteen wide mobile column" style="padding: 10px !important;">
+<h2 class="ui header">
+  <i class="industry icon"></i>
+  <div class="content">Servicios Bio Bio</div>
+</h2>
+</div>
      
      <div class="ui grid">
-      <div class="equal width row">
-        <div class="column borde">
+      <div class="equal width row" style="padding: 10px !important;">
+        <div class="column">
             <h6 class="ui center aligned icon header">
                 <i class="map icon"></i>
                 <div class="content">ZONAS
@@ -36,7 +41,7 @@
                 </div>
             </h6>
         </div>
-        <div class="column borde">
+        <div class="column">
             <h6 class="ui center aligned icon header">
                 <i class="setting icon"></i>
                 <div class="content">MAQUINAS
@@ -44,13 +49,16 @@
                 </div>
             </h6>
         </div>
-        <div class="column borde">
+        <div class="column">
             <h6 class="ui center aligned icon header">
                 <i class="users icon"></i>
                 <div class="content">SUPERVISORES
                     <div class="sub header">10</div>
                 </div>
             </h6>
+        </div>
+        <div class="column">
+            <button class="ui circular button">Ver</button>
         </div>
       </div>
       </div>
