@@ -1,3 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina|Montserrat|Roboto|Rubik');
+
+.baloo {
+    font-family: 'Baloo Bhaina';
+}
+.mont {
+    font-family: 'Montserrat';
+}
+
+.roboto {
+    font-family: 'Roboto';
+}
+
+.rubik {
+    font-family: 'Rubik';
+}
+
 #sidebar-wrapper {
     background-color: #262626;
 }
