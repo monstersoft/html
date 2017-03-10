@@ -95,18 +95,18 @@
                     <div class="removerEmpresa item" id="'.$value['idEmpresa'].'"><i class="delete icon"></i>remover empresa</div>
                 </div>
             </div>
-            <h4 class="ui header left floated"><i class="industry icon orange"></i><div class="content" style="vertical-align: bottom;">Servicios Bío Bío</div></h4>
+            <h4 class="ui header left floated"><i class="industry icon a"></i><div class="content" style="vertical-align: bottom;">Servicios Bío Bío</div></h4>
             <div class="ui divider" style="margin-bottom: 0px;margin-top: 35px;"></div>
             <div class="description">
                 <div class="ui equal width column grid" style="padding: 0px;margin: 0px;">
                     <div class="column">
-                        <h6 class="ui icon header"><i class="map icon go orange"></i><div class="content">ZONAS<div class="sub header">5</div></div></h6>
+                        <h6 class="ui icon header"><i class="map icon go"></i><div class="content">ZONAS<div class="sub header">5</div></div></h6>
                     </div>
                     <div class="column">
-                        <h6 class="ui icon header"><i class="setting icon go orange"></i><div class="content">MÁQUNAS<div class="sub header">20</div></div></h6>
+                        <h6 class="ui icon header"><i class="setting icon go"></i><div class="content">MÁQUNAS<div class="sub header">20</div></div></h6>
                     </div>
                     <div class="column">
-                        <h6 class="ui icon header"><i class="users icon go orange"></i><div class="content">SUPERVISORES<div class="sub header">15</div></div></h6>
+                        <h6 class="ui icon header"><i class="users icon go"></i><div class="content">SUPERVISORES<div class="sub header">15</div></div></h6>
                     </div>
                 </div>
             </div>
@@ -126,49 +126,18 @@
                     <div class="removerEmpresa item" id="'.$value['idEmpresa'].'"><i class="delete icon"></i>remover empresa</div>
                 </div>
             </div>
-            <h4 class="ui header left floated"><i class="industry icon teal"></i><div class="content" style="vertical-align: bottom;">Servicios Bío Bío</div></h4>
+            <h4 class="ui header left floated"><i class="industry icon a"></i><div class="content" style="vertical-align: bottom;">Servicios Bío Bío</div></h4>
             <div class="ui divider" style="margin-bottom: 0px;margin-top: 35px;"></div>
             <div class="description">
                 <div class="ui equal width column grid" style="padding: 0px;margin: 0px;">
                     <div class="column">
-                        <h6 class="ui icon header"><i class="map icon go teal"></i><div class="content">ZONAS<div class="sub header">5</div></div></h6>
+                        <h6 class="ui icon header"><i class="map icon grey"></i><div class="content">ZONAS<div class="sub header">5</div></div></h6>
                     </div>
                     <div class="column">
-                        <h6 class="ui icon header"><i class="setting icon go teal"></i><div class="content">MÁQUNAS<div class="sub header">20</div></div></h6>
+                        <h6 class="ui icon header"><i class="setting icon grey"></i><div class="content">MÁQUNAS<div class="sub header">20</div></div></h6>
                     </div>
                     <div class="column">
-                        <h6 class="ui icon header"><i class="users icon go teal"></i><div class="content">SUPERVISORES<div class="sub header">15</div></div></h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ui one bottom attached buttons">
-            <a href="verEmpresas.php?id='.$value['idEmpresa'].'" class="ui button ver" id="'.$value['idEmpresa'].'">Ver</a> 
-        </div>
-    </div>
-</div>
-<div class="ui sixteen wide mobile sixteen wide tablet  eight wide computer column cantidad">
-    <div class="ui fluid card">
-        <div class="content">
-            <div class="compact ui top right basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
-                <i class="ellipsis vertical icon"></i>
-                <div class="menu">
-                    <div class="editarEmpresa item" id="'.$value['idEmpresa'].'"><i class="edit icon"></i>editar empresa</div>
-                    <div class="removerEmpresa item" id="'.$value['idEmpresa'].'"><i class="delete icon"></i>remover empresa</div>
-                </div>
-            </div>
-            <h4 class="ui header left floated"><i class="industry icon go"></i><div class="content" style="vertical-align: bottom;">Servicios Bío Bío</div></h4>
-            <div class="ui divider" style="margin-bottom: 0px;margin-top: 35px;"></div>
-            <div class="description">
-                <div class="ui equal width column grid" style="padding: 0px;margin: 0px;">
-                    <div class="column">
-                        <h6 class="ui icon header"><i class="map icon go grey"></i><div class="content">ZONAS<div class="sub header">5</div></div></h6>
-                    </div>
-                    <div class="column">
-                        <h6 class="ui icon header"><i class="setting icon go grey"></i><div class="content">MÁQUNAS<div class="sub header">20</div></div></h6>
-                    </div>
-                    <div class="column">
-                        <h6 class="ui icon header"><i class="users icon go grey"></i><div class="content">SUPERVISORES<div class="sub header">15</div></div></h6>
+                        <h6 class="ui icon header"><i class="users icon grey"></i><div class="content">SUPERVISORES<div class="sub header">15</div></div></h6>
                     </div>
                 </div>
             </div>
