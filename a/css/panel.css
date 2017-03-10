@@ -1,60 +1,26 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-* {
-    box-sizing: border-box !important;
-}
-.barra {
+#sidebar-wrapper {
     background-color: #262626;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.contenido {
-    padding: 15px;
+.navbar {
+    background-color: #262626;
 }
-
+.iz {
+    float: left;
+    color: white;
+}
+.ce {
+    text-align: center;
+    color: white;
+}
+.ui.vertical.menu .item:before {
+    width: 0%;
+}
+/*GRILLA*/
+.ui.grid {
+	margin-top: 10px;
+	background: #fff;
+	padding: 10px;
+}
 /*BARRA*/
 .ui.top.fixed.menu {
 	background: #262626;
@@ -96,6 +62,12 @@
 #hola:hover {
 	background: rgba(255, 255, 255, 0.1);
 }
+.ui.basic.modal {
+	color: white;
+}
+.ui.message {
+	padding: 0.01px;
+}
 .borde {
     border: 1px solid red;
 }
@@ -111,5 +83,3 @@
 .c {
     color: #4183C4 !important;
 }
-
-
