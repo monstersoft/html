@@ -28,6 +28,17 @@
     border-bottom: 5px solid #F5A214;
 	font-size: 22px;
 }
+
+#bar > a {
+    float: left;
+    background: #F5A214;
+    height: 45px;
+    width: 50px;
+    color: white;
+}
+#bar > a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
 #wrapper {
     margin-top: 50px;
     text-align: justify;
