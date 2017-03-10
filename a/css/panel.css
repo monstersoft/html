@@ -22,12 +22,15 @@
     box-sizing: border-box;
     position: fixed;
     top: 0;
+    font-family: 'Montserrat';
+    color: white;
+    text-align: center;
+    border-bottom: 5px solid #F5A214;
+    font-size: 25px;
 }
 #wrapper {
     margin-top: 40px;
     text-align: justify;
-    background: grey;
-    color: white;
     font-size: 10px;
 }
 
