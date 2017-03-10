@@ -1,125 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina|Montserrat|Roboto|Rubik');
 
-.cbarra {
-    
-    background-color: red;
-    height: 40px;
-    border-bottom: 10px solid #F5A214;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    color: white;
-    font-family: 'Montserrat';
-    
-}
-
-    /*background-color: #262626;background-color: #262626;*/
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.iz {
-    float: left;
-    color: white;
-}
-.ce {
-    text-align: center;
-    color: white;
-}
-.ui.vertical.menu .item:before {
-    width: 0%;
-}
-/*GRILLA*/
-.ui.grid {
-	margin-top: 10px;
-	background: #fff;
-	padding: 10px;
-}
-/*BARRA*/
-.ui.top.fixed.menu {
-	background: #262626;
-	box-shadow: none;
-	border-bottom: 5px solid #F5A214;
-}
-/*MACHINE MONITORS*/
-#letra {
-	margin: 5px auto;
-	color: #fff;
-	font-size: 22px;
-	font-weight: 100;
-}
-/*LATERAL*/
-.ui.vertical.left.sidebar.menu {
-	background-color: #262626;
-}
-.ui.menu {
-	border: none;
-}
-/*PERFIL*/
-#perfil {
-	padding: 50px;
-	width: 260px;
-	background: #F5A214;
-}
-
-.ui.icon.header {
-	display: inline;
-}
-
-#menu {
-	background: #F5A214;
-	color: #FFF;
-}
-#menu:hover {
-	background: rgba(255, 255, 255, 0.1);
-}
-#hola:hover {
-	background: rgba(255, 255, 255, 0.1);
-}
-.ui.basic.modal {
-	color: white;
-}
-.ui.message {
-	padding: 0.01px;
-}
-.borde {
-    border: 1px solid red;
-}
 .a {
     color: #F5A214 !important;
 }
@@ -132,3 +12,22 @@
 .c {
     color: #4183C4 !important;
 }
+
+#bar {
+    background: #262626;
+    width: 100%;
+    height: 40px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+}
+#wrapper {
+    margin-top: 40px;
+    text-align: justify;
+    background: grey;
+    color: white;
+    font-size: 10px;
+}
+
