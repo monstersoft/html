@@ -69,12 +69,14 @@ nav ul {
 }
 nav ul li {
     display: block;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 #profile {
     color: white;
     text-align: center;
     background: #F5A214;
     padding: 50px 0px 50px 0px;
+    border: none;
 }
 #iconProfile {
     margin: 0 auto;
