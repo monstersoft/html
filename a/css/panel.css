@@ -165,7 +165,6 @@ nav  ul  li a:hover .icons {
 /* BORDER CARD */
 .shadow {
     box-shadow: 0px 1px 3px 0px #D4D4D5, 0px 0px 0px 1px #D4D4D5;
-    border-radius: 5px;
 }
 .card {
     padding: 5px;
