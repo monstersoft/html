@@ -27,6 +27,8 @@
 .cB {
     color: #FFF;
 }
+
+
 .borde {
     border: 1px solid red;
 }
@@ -38,7 +40,7 @@ body {
 #bar {
     background: #262626;
     width: 100%;
-    height: 50px;
+    height: 45px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -55,8 +57,8 @@ body {
 #bar > a {
     float: left;
     background: #F5A214;
-    height: 46px;
-    width: 50px;
+    height: 45px;
+    width: 44px;
     color: white;
 }
 #bar > a:hover {
@@ -64,15 +66,15 @@ body {
     cursor: pointer;
 }
 #bar > a > i {
-    margin-top: 12px;
-    font-size: 20px;
+    margin-top: 13px;
+    font-size: 14px;
 }
 #bar > p {
-    margin-top: 10px;
-    font-size: 25px;
+    margin-top: 5px;
+    font-size: 22px;
 }
 #wrapper {
-    margin-top: 50px;
+    margin-top: 45px;
 }
 /* NAVIGATION BAR */
 .displayNav {
@@ -159,6 +161,14 @@ nav  ul  li a:hover .icons {
 #stickyButton:hover {
     background: #262626;
     cursor: pointer;
+}
+/* BORDER CARD */
+.shadow {
+    box-shadow: 0px 1px 3px 0px #D4D4D5, 0px 0px 0px 1px #D4D4D5;
+    border-radius: 5px;
+}
+.card {
+    padding: 5px;
 }
 
 

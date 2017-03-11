@@ -1,11 +1,11 @@
+
 .tCenter {
     text-align: center;
     padding: 10px;
-    color: #fff;
+    color: #262626;
 }
 .tCenter span {
-    font-size: 20px;
-    font-weight: 200;
+    font-family: 'Lato';
 }
 .fLeft {
     float: left;
@@ -14,12 +14,14 @@
     float: right;
 }
 .titleIndustry {
-    padding: 10px;
-    color: #fff;
+    border-bottom: 3px solid #F5A214;
+    padding-top: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 .titleIndustry span {
-    color: #fff;
-    font-size: 26px;
+    color: #262626;
+    font-size: 22px;
     margin-left: 20px;
 }
 .titleIndustry .divHover {
@@ -27,7 +29,7 @@
     border-radius: 3px 3px 3px 3px;
 }
 .titleIndustry a i {
-    margin-right: 5px;
+    opacity: 0.45 !important;
 }
 .titleIndustry .divHover:hover {
     background: rgba(0,0,0,0.1);
@@ -36,6 +38,14 @@
 .titleIndustry a {
     cursor: pointer;
 }
-.padding {
+.dropdown-menu {
+    padding: 0px;
+    border-radius: 0px;
+}
+.dropdown-menu li a {
     padding: 5px;
+}
+.dropdown-menu li i {
+    margin-right: 20px;
+    margin-left: 20px;
 }
