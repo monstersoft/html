@@ -69,7 +69,7 @@ nav {
     overflow-y: auto;
 }
 nav ul {
-    overflow: hidden;
+    /*overflow: hidden;*/
     list-style: none;
     padding: 0 !important;
     margin: 0 !important;
