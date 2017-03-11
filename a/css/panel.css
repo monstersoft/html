@@ -1,16 +1,38 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 .a {
-    color: #F5A214 !important;
+    background-color: #F5A214;
 }
 .gc {
-    color: #F5F4F3 !important;
+    background-color: #F5F4F3;
 }
 .go {
-    color: #262626 !important;
+    background-color: #262626;
 }
 .c {
-    color: #4183C4 !important;
+    background-color: #4183C4;
+}
+.cA {
+    color: #F5A214;
+}
+.cGc {
+    color: #F5F4F3;
+}
+.cGo {
+    color: #262626;
+}
+.cC {
+    color: #4183C4;
+}
+.cB {
+    color: #FFF;
+}
+.borde {
+    border: 1px solid red;
+}
+body {
+    overflow-x: hidden;
+    font-family: 'Lato';
 }
 /* STICKY BAR */
 #bar {
@@ -122,6 +144,21 @@ nav  ul  li a:hover .icons {
 }
 .unLeftContent {
     margin-left: 0px;
+}
+/* STICKY BUTTON */
+#stickyButton {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 15px 10px 15px;
+    background: #F5A214;
+    z-index: 1000;
+    color: white;
+    border-radius: 5px;
+}
+#stickyButton:hover {
+    background: #262626;
+    cursor: pointer;
 }
 
 

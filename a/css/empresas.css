@@ -1,0 +1,41 @@
+.tCenter {
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+}
+.tCenter span {
+    font-size: 20px;
+    font-weight: 200;
+}
+.fLeft {
+    float: left;
+}
+.fRight {
+    float: right;
+}
+.titleIndustry {
+    padding: 10px;
+    color: #fff;
+}
+.titleIndustry span {
+    color: #fff;
+    font-size: 26px;
+    margin-left: 20px;
+}
+.titleIndustry .divHover {
+    padding: 0px 3px 0px 20px;
+    border-radius: 3px 3px 3px 3px;
+}
+.titleIndustry a i {
+    margin-right: 5px;
+}
+.titleIndustry .divHover:hover {
+    background: rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+.titleIndustry a {
+    cursor: pointer;
+}
+.padding {
+    padding: 5px;
+}
