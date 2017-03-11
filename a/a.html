@@ -3,288 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" href="a.css">
 </head>
-<style>
-@import 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
-@import 'http://fonts.googleapis.com/css?family=Roboto:700,400';
-/*
-*  Basic Reset
-*/
- 
-*,
-*:after,
-*:before {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-/**
- * Basics Styles
- */
-html {
-	font-size: 62.5%;
-}
-body {
-	background-color: #eee;
-	font-family: Roboto;
-	font-weight: 400;
-	font-size: 1.6em;
-	line-height: 1.6;
-	color: #666;
-}
-
-a {
-	text-decoration: none;
-	color: #3498db;
-}
-	a:hover {
-		color: #2980b9;
-	}
-
-h2 {
-	line-height: 1.2;
-	margin-bottom: 1.6rem;
-}
-
-.wrapper {
-	max-width: 400px;
-	margin: 50px auto;
-	padding-left: 1em;
-	padding-right: 1em;
-}
-
-/**
- * Helpers
- */
-.border-tlr-radius { 
-	border-top-left-radius: 2px;
-	border-top-right-radius: 2px; 
-}
-
-.text-center { text-align: center; }
-
-.radius { border-radius: 2px; }
-
-.padding-tb { padding-top: 1.6rem; padding-bottom: 1.6rem;}
-
-.shadowDepth0 { box-shadow: 0 1px 3px rgba(0,0,0, 0.12); }
-
-.shadowDepth1 {
-   box-shadow: 
-  		0 1px 3px rgba(0,0,0, 0.12),
-    	0 1px 2px rgba(0,0,0, 0.24);      
-}
-
-
-/**
- * Card Styles
- */
-
-.card {
-	background-color: #fff;
-	margin-bottom: 1.6rem;
-}
-
-.card__padding {
-	padding: 1.6rem;
-}
- 
-.card__image {
-	min-height: 100px;
-	background-color: #eee;
-}
-	.card__image img {
-		width: 100%;
-		max-width: 100%;
-		display: block;
-	}
-
-.card__content {
-	position: relative;
-}
-
-/* card meta */
-.card__meta time {
-	font-size: 1.5rem;
-	color: #bbb;
-	margin-left: 0.8rem;
-}
-
-/* card article */
-.card__article a {
-	text-decoration: none;
-	color: #444;
-	transition: all 0.5s ease;
-}
-	.card__article a:hover {
-		color: #2980b9;
-	}
-
-/* card action */
-.card__action {
-	overflow: hidden;
-	padding-right: 1.6rem;
-	padding-left: 1.6rem;
-	padding-bottom: 1.6rem;
-}
-	 
-.card__author {}
-
-	.card__author img,
-	.card__author-content {
-		display: inline-block;
-		vertical-align: middle;
-	}
-
-	.card__author img{
-		border-radius: 50%;
-		margin-right: 0.6em;
-	}
-
-.card__share {
-	float: right;
-	position: relative;
-	margin-top: -42px;
-}
-
-.card__social {
-	position: absolute;
-	top: 0;
-	right: 0;
-	visibility: hidden;
-	width: 160px;
-	transform: translateZ(0);
-  	transform: translateX(0px);
-  	transition: transform 0.35s ease;
-}
-	.card__social--active {
-		visibility: visible;
-		/*z-index: 3;*/
-		transform: translateZ(0);
- 		transform: translateX(-48px);
-  		transition: transform 0.35s ease;
-	}
-
-.share-toggle {
-	z-index: 2;
-}
-.share-toggle:before {
-	content: "\f1e0";
-	font-family: 'FontAwesome';
-	color: #3498db;
-}
-	.share-toggle.share-expanded:before {
-		content: "\f00d";
-	}
-
-.share-icon {
-	display: inline-block;
-	width: 48px;
-	height: 48px;
-	line-height: 48px;
-	text-align: center;
-	border-radius: 50%;
-	background-color: #fff;
-	transition: all 0.3s ease;
-	outline: 0;
-
-	box-shadow: 
-	  		0 2px 4px rgba(0,0,0, 0.12),
-	    	0 2px 4px rgba(0,0,0, 0.24);
-}
-	.share-icon:hover,
-	.share-icon:focus {
-		box-shadow: 
-	  		0 3px 6px rgba(0,0,0, 0.12),
-	    	0 3px 6px rgba(0,0,0, 0.24);
-
-	    -webkit-transform: scale(1.2);
-	    -moz-transform: scale(1.2);
-	    -ms-transform: scale(1.2);
-	    -o-transform: scale(1.2);
-	    transform: scale(1.2);
-	}
-
-.facebook {
-	background-color: #3b5998; 
-}
-.twitter {
-	background-color: #00abe3; 
-}
-.googleplus {
-	background-color: #d3492c;
-}
-
-.facebook,
-.twitter,
-.googleplus {
-	color: #fff;
-}
-
-	.facebook:hover,
-	.twitter:hover,
-	.googleplus:hover {
-		color: #eee;
-	}
-    
-</style>
 <body>
-   <div class="wrapper">
-    		
-    		<div class="card radius shadowDepth1">
-    			<div class="card__image border-tlr-radius">
-    				<img src="http://lorempixel.com/400/200/sports/" alt="image" class="border-tlr-radius">
-                </div>
+<div class="chicago">
+  <div class="container">
+    <div class="city-title">Chicago</div>
+    <hr />
+    <div class="city-weather-temperature"  id="city-weather-temperature">-1° C</div>
+    <div class="city-weather-description" id="city-weather-description">
+      sunny
+    </div>
+    
+    <img src="http://openweathermap.org/img/w/01d.png" alt="weather-icon" class="city-weather-icon" id="city-weather-icon" />
 
-    			<div class="card__content card__padding">
-                    <div class="card__share">
-                        <div class="card__social">  
-                            <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
-                            <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
-                            <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
-                        </div>
+    
+    <div class="content">
+    
+      <nav>
+        <ul>
+          <li><a href="#">Hotels</a></li>
+          <li><a href="#">Places</a></li>
+          <li><a href="#">Restaurants</a></li>
+          <li class="selected"><a href="#">Offices</a></li>
+        </ul>
+      </nav>
 
-                        <a id="share" class="share-toggle share-icon" href="#"></a>
-                    </div>
+      <div class="nav-info clearfix" id="offices">
+        <div class="one-half">
+          <div class="info" id="offices">
+            <div class="company-name">Mintel Group Ltd</div>
+            <div class="address">333 W. Wacker Drive, Suite 1100, Chicago</div>
+            <div class="phone">+1 123 654 987 36</div>
+          </div> <!-- end info -->
+        </div> <!-- end one-half -->
 
-    				<div class="card__meta">
-    					<a href="#">Web Design</a>
-                        <time>17th March</time>
-    				</div>
+        <div class="one-half">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office1.png" alt="office 1" />
 
-    				<article class="card__article">
-	    				<h2><a href="#">Material Design Card - For Blog Post Article</a></h2>
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office2.png" alt="office 2" />
 
-	    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
-	    			</article>
-    			</div>
+        </div> <!-- end one-half -->
 
-    			<div class="card__action">
-    				
-    				<div class="card__author">
-    					<img src="http://lorempixel.com/40/40/sports/" alt="user">
-    					<div class="card__author-content">
-    						By <a href="#">John Doe</a>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
+      </div> <!-- end nav-info #offices-->
+      
+      <div class="nav-info clearfix hide" id="restaurants">
+        <div class="one-half">
+          <div class="info" id="offices">
+            <div class="company-name">Restaurant Ltd</div>
+            <div class="address">123 E. Licoln Dr., Suite 9874, Chicago</div>
+            <div class="phone">+1 564 232 4853 </div>
+          </div> <!-- end info -->
+        </div> <!-- end one-half -->
 
-            <p class="text-center">Created By <a href="https://twitter.com/mithicher">Mithicher Baro</a></p>
-    	</div>
+        <div class="one-half">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office1.png" alt="office 1" />
+
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office2.png" alt="office 2" />
+
+        </div> <!-- end one-half -->
+
+      </div> <!-- end nav-info #restaurants-->
+      
+      <div class="nav-info clearfix hide" id="places">
+        <div class="one-half">
+          <div class="info" id="offices">
+            <div class="company-name">Places</div>
+            <div class="address">874 North Street, Suite 2200, Chicago</div>
+            <div class="phone">+1 905 265 9876 </div>
+          </div> <!-- end info -->
+        </div> <!-- end one-half -->
+
+        <div class="one-half">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office1.png" alt="office 1" />
+
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office2.png" alt="office 2" />
+
+        </div> <!-- end one-half -->
+
+      </div> <!-- end nav-info #places-->
+      
+      <div class="nav-info clearfix hide" id="hotels">
+        <div class="one-half">
+          <div class="info" id="offices">
+            <div class="company-name">Hotels Ltd</div>
+            <div class="address">890 Marina Blvd, Suite 9412, Chicago</div>
+            <div class="phone">+1 416 874 9874 </div>
+          </div> <!-- end info -->
+        </div> <!-- end one-half -->
+
+        <div class="one-half">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office1.png" alt="office 1" />
+
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office2.png" alt="office 2" />
+
+        </div> <!-- end one-half -->
+
+      </div> <!-- end nav-info #hotels-->
+      
+      <div class="nav-info-behind clearfix">
+        
+      </div> <!-- end nav-info-behind-->
+      
+    </div> <!-- end content -->
+    
+  </div> <!-- end container -->
+  
+</div> <!-- end chicago -->
     <script src="js/jquery.js"></script>
     <script>
-$(document).ready(function($) {
-
-	$('.card__share > a').on('click', function(e){ 
-		e.preventDefault() // prevent default action - hash doesn't appear in url
-   		$(this).parent().find( 'div' ).toggleClass( 'card__social--active' );
-		$(this).toggleClass('share-expanded');
-    });
+// weather api
+$(document).ready(function() {
   
+  $.ajax({
+    
+    url: "http://api.openweathermap.org/data/2.5/weather?q=chicago,usa&APPID=4573c189d467ca1814c1c10000060792",
+    dataType : "json",
+    type: "GET", 
+
+    success: function(json) {
+      var temp = Math.round(json.main.temp - 273.15);
+      $('#city-weather-temperature').html(temp + '° C');
+      $('#city-weather-description').html(json.weather[0].description);
+      $('img#city-weather-icon').attr('src', 'http://openweathermap.org/img/w/' + json.weather[0].icon + '.png');
+    },
+    error: function(xhr, status, errorThrown) {
+      //do something if there was an error. Right now it will just show the default values in the html
+    }
+  });
+  
+  // Nav toggle content
+  $("nav ul li a").on("click", function() {
+    
+    var $this = $(this);
+    var target = $this.text().toLowerCase();
+    
+    //update nav selected
+    $this.parent().addClass('selected').siblings().removeClass('selected');
+    
+    
+    //show and hide appropriate content based on selection    
+    $('#' + target).fadeIn('slow').removeClass('hide').siblings().not('nav').not('.nav-info-behind').hide();
+    
+    
+    return false;
+  });
 });
- 
     </script>
 </body>
 </html>
