@@ -39,6 +39,7 @@
 }
 #bar > a:hover {
     background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
 }
 #bar > a > i {
     margin-top: 12px;
@@ -52,10 +53,16 @@
     margin-top: 50px;
 }
 /* NAVIGATION BAR */
+.displayNav {
+    left: 0px;
+}
+.unDisplayNav {
+    left: -250px;
+}
 nav {
     background-color: #262626;
     width: 250px;
-    height: 100%;
+    height: calc(100% - 50px);
     margin: 0;
     position: fixed;
     font-family: 'Lato';
@@ -105,14 +112,17 @@ nav  ul  li a:hover {
     background: rgba(255, 255, 255, 0.1);
     color: white;
     text-decoration: none;
-    
 }
 nav  ul  li a:hover .icons {
     color: #F5A214;    
 }
-
-
-
+/* CONTENT */
+.leftContent {
+    margin-left: 250px;
+}
+.unLeftContent {
+    margin-left: 0px;
+}
 
 
 
