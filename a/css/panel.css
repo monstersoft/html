@@ -62,14 +62,14 @@
 nav {
     background-color: #262626;
     width: 250px;
-    height: calc(100% - 50px);
+    height: 100%;
     margin: 0;
     position: fixed;
     font-family: 'Lato';
     overflow-y: auto;
 }
 nav ul {
-    /*overflow: hidden;*/
+    overflow: hidden;
     list-style: none;
     padding: 0 !important;
     margin: 0 !important;
