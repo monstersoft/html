@@ -1,154 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="a.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
 <body>
-<div class="chicago">
-  <div class="container">
-    <div class="city-title">Chicago</div>
-    <hr />
-    <div class="city-weather-temperature"  id="city-weather-temperature">-1° C</div>
-    <div class="city-weather-description" id="city-weather-description">
-      sunny
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title">Servicios Bío Bío</h3>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Editar</a>
+      </div>
     </div>
-    
-    <img src="http://openweathermap.org/img/w/01d.png" alt="weather-icon" class="city-weather-icon" id="city-weather-icon" />
-
-    
-    <div class="content">
-    
-      <nav>
-        <ul>
-          <li><a href="#">Hotels</a></li>
-          <li><a href="#">Places</a></li>
-          <li><a href="#">Restaurants</a></li>
-          <li class="selected"><a href="#">Offices</a></li>
-        </ul>
-      </nav>
-
-      <div class="nav-info clearfix" id="offices">
-        <div class="one-half">
-          <div class="info" id="offices">
-            <div class="company-name">Mintel Group Ltd</div>
-            <div class="address">333 W. Wacker Drive, Suite 1100, Chicago</div>
-            <div class="phone">+1 123 654 987 36</div>
-          </div> <!-- end info -->
-        </div> <!-- end one-half -->
-
-        <div class="one-half">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office1.png" alt="office 1" />
-
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office2.png" alt="office 2" />
-
-        </div> <!-- end one-half -->
-
-      </div> <!-- end nav-info #offices-->
-      
-      <div class="nav-info clearfix hide" id="restaurants">
-        <div class="one-half">
-          <div class="info" id="offices">
-            <div class="company-name">Restaurant Ltd</div>
-            <div class="address">123 E. Licoln Dr., Suite 9874, Chicago</div>
-            <div class="phone">+1 564 232 4853 </div>
-          </div> <!-- end info -->
-        </div> <!-- end one-half -->
-
-        <div class="one-half">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office1.png" alt="office 1" />
-
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office2.png" alt="office 2" />
-
-        </div> <!-- end one-half -->
-
-      </div> <!-- end nav-info #restaurants-->
-      
-      <div class="nav-info clearfix hide" id="places">
-        <div class="one-half">
-          <div class="info" id="offices">
-            <div class="company-name">Places</div>
-            <div class="address">874 North Street, Suite 2200, Chicago</div>
-            <div class="phone">+1 905 265 9876 </div>
-          </div> <!-- end info -->
-        </div> <!-- end one-half -->
-
-        <div class="one-half">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office1.png" alt="office 1" />
-
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office2.png" alt="office 2" />
-
-        </div> <!-- end one-half -->
-
-      </div> <!-- end nav-info #places-->
-      
-      <div class="nav-info clearfix hide" id="hotels">
-        <div class="one-half">
-          <div class="info" id="offices">
-            <div class="company-name">Hotels Ltd</div>
-            <div class="address">890 Marina Blvd, Suite 9412, Chicago</div>
-            <div class="phone">+1 416 874 9874 </div>
-          </div> <!-- end info -->
-        </div> <!-- end one-half -->
-
-        <div class="one-half">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office1.png" alt="office 1" />
-
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/office2.png" alt="office 2" />
-
-        </div> <!-- end one-half -->
-
-      </div> <!-- end nav-info #hotels-->
-      
-      <div class="nav-info-behind clearfix">
-        
-      </div> <!-- end nav-info-behind-->
-      
-    </div> <!-- end content -->
-    
-  </div> <!-- end container -->
-  
-</div> <!-- end chicago -->
-    <script src="js/jquery.js"></script>
-    <script>
-// weather api
-$(document).ready(function() {
-  
-  $.ajax({
-    
-    url: "http://api.openweathermap.org/data/2.5/weather?q=chicago,usa&APPID=4573c189d467ca1814c1c10000060792",
-    dataType : "json",
-    type: "GET", 
-
-    success: function(json) {
-      var temp = Math.round(json.main.temp - 273.15);
-      $('#city-weather-temperature').html(temp + '° C');
-      $('#city-weather-description').html(json.weather[0].description);
-      $('img#city-weather-icon').attr('src', 'http://openweathermap.org/img/w/' + json.weather[0].icon + '.png');
-    },
-    error: function(xhr, status, errorThrown) {
-      //do something if there was an error. Right now it will just show the default values in the html
-    }
-  });
-  
-  // Nav toggle content
-  $("nav ul li a").on("click", function() {
-    
-    var $this = $(this);
-    var target = $this.text().toLowerCase();
-    
-    //update nav selected
-    $this.parent().addClass('selected').siblings().removeClass('selected');
-    
-    
-    //show and hide appropriate content based on selection    
-    $('#' + target).fadeIn('slow').removeClass('hide').siblings().not('nav').not('.nav-info-behind').hide();
-    
-    
-    return false;
-  });
-});
-    </script>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title">Special title treatment</h3>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </body>
 </html>
