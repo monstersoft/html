@@ -14,16 +14,22 @@
     background: red;
     z-index: 1;
     overflow-y: auto;
+    left: -250px;
 }
 .content {
     position: absolute;
     width: 100%;
     top: 45px;
-    left: 250px;
+    left: 0px;
 }
 
 /*
-
+.side {
+    left: -250px;
+}
+.content {
+    left: 0px;
+}
 
 */
 
