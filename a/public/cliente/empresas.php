@@ -37,9 +37,7 @@
                 <li><a href="#"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
             </ul>
         </nav>
-        <div id="content">
-          <?php 
-                foreach ($empresas['empresas'] as $key => $value) { echo ' 
+        <div id="content"> 
                 <div class="col-xs-12 col-sm-6 card">
                     <div class="col-xs-12 shadow">
                         <div class="col-xs-12 titleIndustry">
@@ -57,8 +55,61 @@
                         <div class="col-xs-4 tCenter"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div>
                         <div class="col-xs-4 tCenter"><i class="fa fa-users  fa-2x"></i><br><span>SUPERVISORES</span><br>'.$value['supervisores'].'</div>
                     </div>
-                </div>'; }
-            ?>
+                </div>
+                <div class="col-xs-12 col-sm-6 card">
+                    <div class="col-xs-12 shadow">
+                        <div class="col-xs-12 titleIndustry">
+                            <i class="fa fa-industry fa-2x fLeft cA"></i>
+                            <div class="dropdown fRight">
+                                <div class="divHover" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a><i class="fa fa-pencil" id="'.$value['idEmpresa'].'"></i>editar</a></li>
+                                    <li><a><i class="fa fa-remove" id="'.$value['zonas'].'"></i>remover</a></li>
+                                </ul>
+                            </div>
+                            <span>'.$value['nombre'].'</span>
+                        </div>
+                        <div class="col-xs-4 tCenter"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div>
+                        <div class="col-xs-4 tCenter"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div>
+                        <div class="col-xs-4 tCenter"><i class="fa fa-users  fa-2x"></i><br><span>SUPERVISORES</span><br>'.$value['supervisores'].'</div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 card">
+                    <div class="col-xs-12 shadow">
+                        <div class="col-xs-12 titleIndustry">
+                            <i class="fa fa-industry fa-2x fLeft cA"></i>
+                            <div class="dropdown fRight">
+                                <div class="divHover" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a><i class="fa fa-pencil" id="'.$value['idEmpresa'].'"></i>editar</a></li>
+                                    <li><a><i class="fa fa-remove" id="'.$value['zonas'].'"></i>remover</a></li>
+                                </ul>
+                            </div>
+                            <span>'.$value['nombre'].'</span>
+                        </div>
+                        <div class="col-xs-4 tCenter"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div>
+                        <div class="col-xs-4 tCenter"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div>
+                        <div class="col-xs-4 tCenter"><i class="fa fa-users  fa-2x"></i><br><span>SUPERVISORES</span><br>'.$value['supervisores'].'</div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 card">
+                    <div class="col-xs-12 shadow">
+                        <div class="col-xs-12 titleIndustry">
+                            <i class="fa fa-industry fa-2x fLeft cA"></i>
+                            <div class="dropdown fRight">
+                                <div class="divHover" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a><i class="fa fa-pencil" id="'.$value['idEmpresa'].'"></i>editar</a></li>
+                                    <li><a><i class="fa fa-remove" id="'.$value['zonas'].'"></i>remover</a></li>
+                                </ul>
+                            </div>
+                            <span>'.$value['nombre'].'</span>
+                        </div>
+                        <div class="col-xs-4 tCenter"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div>
+                        <div class="col-xs-4 tCenter"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div>
+                        <div class="col-xs-4 tCenter"><i class="fa fa-users  fa-2x"></i><br><span>SUPERVISORES</span><br>'.$value['supervisores'].'</div>
+                    </div>
+                </div>
         </div>
     </div>
     <div id="stickyButton"><i class="fa fa-plus"></i></div>

@@ -33,8 +33,7 @@
     border: 1px solid red;
 }
 body {
-    overflow-x: hidden;
-    font-family: 'Lato';
+
 }
 /* STICKY BAR */
 #bar {
