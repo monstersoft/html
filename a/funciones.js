@@ -1,5 +1,5 @@
 function main() {
-    $('body').on('click','.dos',function(){
-        alert('sjsjsjsfgdfgfg');
+    $('.dos').click(function(){
+        alert('sjsjsjdsfsdfdffgssssssssssssssss');
     });
 }
