@@ -24,19 +24,22 @@
     font-size: 22px;
     margin-left: 20px;
 }
-.titleIndustry .divHover {
+.titleIndustry .btn {
     padding: 0px 3px 0px 20px;
     border-radius: 3px 3px 3px 3px;
 }
 .titleIndustry a i {
     opacity: 0.45 !important;
 }
-.titleIndustry .divHover:hover {
-    background: rgba(0,0,0,0.1);
+.titleIndustry .btn:hover {
+    background: rgba(0,0,0,0.1) !important;
     cursor: pointer;
 }
 .titleIndustry a {
     cursor: pointer;
+}
+.dropdown {
+    background: white;
 }
 .dropdown-menu {
     padding: 0px;
