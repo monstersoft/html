@@ -27,6 +27,9 @@
 .cB {
     color: #FFF;
 }
+body {
+    overflow-x: hidden;
+}
 .borde {
     border: 1px solid red;
 }
