@@ -116,6 +116,7 @@
     <script>
         $(document).ready(main);
             function main () {
+                var shadow = false;
                 //WHEN THE PAGE STARTS
                 if($(window).width() > 992) {
                     if($('nav').hasClass('unDisplayNav'))
@@ -172,7 +173,8 @@
                             $('nav').addClass('displayNav');
                             $('#content').addClass('leftContent');
                             $('#content').css('width','100%');
-                            $('body').after('<div id="shadowContent"></div>')
+                            $('body').after('<div id="shadowContent"></div>');
+                            shadow = true;
                         }
                         else {
                             $('nav').removeClass('displayNav');
