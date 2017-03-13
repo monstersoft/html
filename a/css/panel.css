@@ -83,7 +83,7 @@ nav {
     width: 250px;
     height: calc(100% - 45px);
     background-color: #262626;
-    z-index: 1000;
+    z-index: 1;
     overflow-y: auto;
     font-family: 'Lato';
     -webkit-transition: all 0.1s ease;
@@ -148,7 +148,6 @@ nav  ul  li a:hover .icons {
     -moz-transition: all 0.1s ease;
     -o-transition: all 0.1s ease;
     transition: all 0.1s ease;
-    z-index: 0;
 }
 .leftContent {
     left: 250px;
@@ -178,7 +177,7 @@ nav  ul  li a:hover .icons {
     height: 100%;
     top: 0;
     left: 0;
-    z-index: 500;
+    z-index: 1;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.7);
 }
