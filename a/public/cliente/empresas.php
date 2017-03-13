@@ -26,7 +26,7 @@
 </head>
 <body>
     <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p>Machine Monitors</p></div>
-    <nav class="unDisplayNav animated slideInLeft">
+    <nav class="unDisplayNav">
         <ul>
             <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile"><?php  echo $perfil['empresa'] ?></span><br><span id="nameProfile"><?php echo $perfil['correo']; ?></span></li>
             <li><a href="#"><i class="fa fa-tachometer icons"></i>Dashboard</a></li>
@@ -37,7 +37,7 @@
             <li><a href="#"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
         </ul>
     </nav>
-    <div id="content" class="unLeftContent animated slideInLeft"> 
+    <div id="content" class="unLeftContent"> 
         <div class="col-xs-12 col-sm-6 card">
             <div class="col-xs-12 shadow">
                 <div class="col-xs-12 titleIndustry">

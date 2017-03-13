@@ -83,6 +83,10 @@ nav {
     z-index: 3;
     overflow-y: auto;
     font-family: 'Lato';
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 nav ul {
     overflow: hidden;
@@ -137,6 +141,10 @@ nav  ul  li a:hover .icons {
 #content {
     position: absolute;
     top: 45px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 .leftContent {
     left: 250px;
@@ -170,6 +178,10 @@ nav  ul  li a:hover .icons {
     z-index: 2;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.7);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 /* BORDER CARD */
 .shadow {
