@@ -113,83 +113,8 @@
     <div id="stickyButton"><i class="fa fa-plus"></i></div>
     <script src="../../js/jquery.js"></script>
     <script src="../../js/bootstrap.js"></script>
-    <script>
-        $(document).ready(main);
-            function main () {
-                var shadow = false;
-                //WHEN THE PAGE STARTS
-                if($(window).width() > 992) {
-                    if($('nav').hasClass('unDisplayNav'))
-                        $('nav').removeClass('unDisplayNav');
-                    if($('#content').hasClass('unLeftContent'))
-                        $('#content').removeClass('unLeftContent');
-                    $('nav').addClass('displayNav')
-                    $('#content').addClass('leftContent');
-                    $('#content').css('width','calc(100% - 250px)');
-                }
-                //WHEN DOES THE RESIZE
-                $(window).resize(function(){
-                    if($(window).width() > 992) {
-                        if($('nav').hasClass('unDisplayNav'))
-                            $('nav').removeClass('unDisplayNav');
-                        if($('#content').hasClass('unLeftContent'))
-                            $('#content').removeClass('unLeftContent');
-                        $('nav').addClass('displayNav');
-                        $('#content').addClass('leftContent');
-                        $('#content').css('width','calc(100% - 250px)');
-                    }
-                    if($(window).width() <= 992) {
-                        if($('nav').hasClass('displayNav'))
-                            $('nav').removeClass('displayNav');
-                        if($('#content').hasClass('leftContent'))
-                            $('#content').removeClass('leftContent');
-                        $('nav').addClass('unDisplayNav');
-                        $('#content').addClass('unLeftContent');
-                        $('#content').css('width','100%');
-                    }   
-                });
-                //WHEN CLICK
-                $('#clickMenu').click(function(){
-                    if($(window).width() > 992) {
-                        if($('nav').hasClass('displayNav') && $('#content').hasClass('leftContent')) {
-                            $('nav').removeClass('displayNav');
-                            $('#content').removeClass('leftContent');
-                            $('nav').addClass('unDisplayNav');
-                            $('#content').addClass('unLeftContent');
-                            $('#content').css('width','100%');
-                        }
-                        else {
-                            $('nav').removeClass('unDisplayNav');
-                            $('#content').removeClass('unLeftContent');
-                            $('nav').addClass('displayNav');
-                            $('#content').addClass('leftContent');
-                            $('#content').css('width','calc(100% - 250px)');
-                        }
-                    }    
-                    if($(window).width() <= 992) {
-                        if($('nav').hasClass('unDisplayNav') && $('#content').hasClass('unLeftContent')) {
-                            $('nav').removeClass('unDisplayNav');
-                            $('#content').removeClass('unLeftContent');
-                            $('nav').addClass('displayNav');
-                            $('#content').addClass('leftContent');
-                            $('#content').css('width','100%');
-                            $('body').after('<div id="shadowContent"></div>');
-                            shadow = true;
-                        }
-                        else {
-                            $('nav').removeClass('displayNav');
-                            $('#content').removeClass('leftContent');
-                            $('nav').addClass('unDisplayNav');
-                            $('#content').addClass('unLeftContent');
-                            $('#content').css('width','100%');
-                        }
-                    }
-                });
-                
-            }
-    </script>
-    <script>
-    $('.dropdown-toggle').dropdown()
-    </script>
+    <script src="../../js/funciones.js"></script>
+    <script>$(document).ready(main);</script>
+    <script>$('.dropdown-toggle').dropdown()</script>
 </body>
 </html>

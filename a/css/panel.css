@@ -160,7 +160,7 @@ nav  ul  li a:hover .icons {
     cursor: pointer;
 }
 /* BACKGROUND OPACITY MENU*/
-#shadowContent {
+.shadowDisplay {
     position: fixed;
     width: 100%;
     height: 100%;
