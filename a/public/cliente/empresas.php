@@ -44,7 +44,7 @@
                 <div class="col-xs-12 titleIndustry">
                     <i class="fa fa-industry fa-2x fLeft cA"></i>
                     <div class="dropdown fRight">
-                        <div class="divHover" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
+                        <div class="dropdown-toogle divHover" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li><a><i class="fa fa-pencil" id="'.$value['idEmpresa'].'"></i>editar</a></li>
                             <li><a><i class="fa fa-remove" id="'.$value['zonas'].'"></i>remover</a></li>
@@ -157,7 +157,6 @@
     <script src="../../js/bootstrap.js"></script>
     <script src="../../js/funciones.js"></script>
     <script>$(document).ready(main);</script>
-    <script>$('.dropdown-toggle').dropdown()</script>
     <script>$('#modal')</script>
 </body>
 </html>
