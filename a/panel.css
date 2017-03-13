@@ -6,7 +6,7 @@
     background-color: #262626;
     z-index: 1;
 }
-.side {
+nav {
     position: fixed;
     top: 45px;
     width: 250px;
