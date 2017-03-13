@@ -45,7 +45,7 @@
     color: white;
     text-align: center;
     border-bottom: 5px solid #F5A214;
-    z-index: 1;
+    z-index: 3;
     /*box-shadow: 0px 3px 3px rgba(0,0,0,0.5);*/
 }
 #bar > a {
@@ -80,7 +80,7 @@ nav {
     width: 250px;
     height: calc(100% - 45px);
     background-color: #262626;
-    z-index: 1;
+    z-index: 3;
     overflow-y: auto;
     font-family: 'Lato';
 }
@@ -151,13 +151,25 @@ nav  ul  li a:hover .icons {
     right: 10px;
     padding: 10px 15px 10px 15px;
     background: #F5A214;
-    z-index: 1000;
+    z-index: 1;
     color: white;
     border-radius: 5px;
 }
 #stickyButton:hover {
     background: #262626;
     cursor: pointer;
+}
+/* BACKGROUND OPACITY MENU*/
+#shadowContent {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
 }
 /* BORDER CARD */
 .shadow {

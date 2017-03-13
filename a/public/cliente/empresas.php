@@ -172,6 +172,7 @@
                             $('nav').addClass('displayNav');
                             $('#content').addClass('leftContent');
                             $('#content').css('width','100%');
+                            $('body').after('<div id="shadowContent"></div>')
                         }
                         else {
                             $('nav').removeClass('displayNav');
