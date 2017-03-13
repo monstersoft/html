@@ -27,19 +27,15 @@
 .cB {
     color: #FFF;
 }
-
-
 .borde {
     border: 1px solid red;
 }
-body {
-
-}
 /* STICKY BAR */
 #bar {
-    background: #262626;
-    width: 100%;
+    position: fixed;
     height: 45px;
+    width: 100%;
+    background: #262626;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -49,10 +45,9 @@ body {
     color: white;
     text-align: center;
     border-bottom: 5px solid #F5A214;
-    z-index: 1000;
+    z-index: 1;
     /*box-shadow: 0px 3px 3px rgba(0,0,0,0.5);*/
 }
-/* LINK MENU */
 #bar > a {
     float: left;
     background: #F5A214;
@@ -72,9 +67,6 @@ body {
     margin-top: 5px;
     font-size: 22px;
 }
-#wrapper {
-    margin-top: 45px;
-}
 /* NAVIGATION BAR */
 .displayNav {
     left: 0px;
@@ -83,13 +75,14 @@ body {
     left: -250px;
 }
 nav {
-    background-color: #262626;
-    width: 250px;
-    height: 100%;
-    margin: 0;
     position: fixed;
-    font-family: 'Lato';
+    top: 45px;
+    width: 250px;
+    height: calc(100% - 45px);
+    background-color: #262626;
+    z-index: 1;
     overflow-y: auto;
+    font-family: 'Lato';
 }
 nav ul {
     overflow: hidden;
@@ -139,12 +132,17 @@ nav  ul  li a:hover {
 nav  ul  li a:hover .icons {
     color: #F5A214;    
 }
+
 /* CONTENT */
+#content {
+    position: absolute;
+    top: 45px;
+}
 .leftContent {
-    margin-left: 250px;
+    left: 250px;
 }
 .unLeftContent {
-    margin-left: 0px;
+    left: 0px;
 }
 /* STICKY BUTTON */
 #stickyButton {

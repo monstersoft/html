@@ -1,9 +1,9 @@
 
-.bar {
+#bar {
     position: fixed;
     width: 100%;
     height: 45px;
-    background: grey;
+    background-color: #262626;
     z-index: 1;
 }
 .side {
@@ -14,13 +14,13 @@
     background: red;
     z-index: 1;
     overflow-y: auto;
-    left: -250px;
-}
-.content {
-    position: absolute;
-    width: 100%;
-    top: 45px;
     left: 0px;
+}
+#content {
+    position: absolute;
+    width: calc(100% - 250px);
+    top: 45px;
+    left: 250px;
 }
 
 /*
@@ -30,6 +30,4 @@
 .content {
     left: 0px;
 }
-
-*/
 
