@@ -4,105 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="panel.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <style>
-div {
-    width: 500px;
-    height: 500px;
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.2); /* Black w/ opacity */
-}
-    </style>
 </head>
 <body>
-    <div id="bar">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam provident repellendus nihil, numquam quaerat deserunt consectetur doloremque itaque. Facere ab, ullam nisi facilis iste minus error adipisci laudantium molestias vitae.</div>
-    <nav class="unDisplayNav animated slideInLeft">
-        <ul>
-            <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile"><?php  echo $perfil['empresa'] ?></span><br><span id="nameProfile"><?php echo $perfil['correo']; ?></span></li>
-            <li><a href="#"><i class="fa fa-tachometer icons"></i>Dashboard</a></li>
-            <li><a href="#"><i class="fa fa-industry icons"></i>Empresas</a></li>
-            <li><a href="#"><i class="fa fa-bar-chart icons"></i>Históricos</a></li>
-            <li><a href="#"><i class="fa fa-send icons"></i>Contácto</a></li>
-            <li><a href="#"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-            <li><a href="#"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
-        </ul>
-    </nav>
-    <div id="content" class="unLeftContent"> 
-        <div class="col-xs-12 col-sm-6 card">
-            <div class="col-xs-12 shadow">
-                <div class="col-xs-12 titleIndustry">
-                    <i class="fa fa-industry fa-2x fLeft cA"></i>
-                    <div class="dropdown fRight">
-                        <div class="divHover" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a><i class="fa fa-pencil" id="'.$value['idEmpresa'].'"></i>editar</a></li>
-                            <li><a><i class="fa fa-remove" id="'.$value['zonas'].'"></i>remover</a></li>
-                        </ul>
-                    </div>
-                    <span>'.$value['nombre'].'</span>
-                </div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-users  fa-2x"></i><br><span>SUPERVISORES</span><br>Juan Pérez</div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 card">
-            <div class="col-xs-12 shadow">
-                <div class="col-xs-12 titleIndustry">
-                    <i class="fa fa-industry fa-2x fLeft cA"></i>
-                    <div class="dropdown fRight">
-                        <div class="divHover" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a><i class="fa fa-pencil" id="'.$value['idEmpresa'].'"></i>editar</a></li>
-                            <li><a><i class="fa fa-remove" id="'.$value['zonas'].'"></i>remover</a></li>
-                        </ul>
-                    </div>
-                    <span>'.$value['nombre'].'</span>
-                </div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-users  fa-2x"></i><br><span>SUPERVISORES</span><br>Juan Pérez</div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 card">
-            <div class="col-xs-12 shadow">
-                <div class="col-xs-12 titleIndustry">
-                    <i class="fa fa-industry fa-2x fLeft cA"></i>
-                    <div class="dropdown fRight">
-                        <div class="divHover" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a><i class="fa fa-pencil" id="'.$value['idEmpresa'].'"></i>editar</a></li>
-                            <li><a><i class="fa fa-remove" id="'.$value['zonas'].'"></i>remover</a></li>
-                        </ul>
-                    </div>
-                    <span>'.$value['nombre'].'</span>
-                </div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-users  fa-2x"></i><br><span>SUPERVISORES</span><br>Juan Pérez</div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 card">
-            <div class="col-xs-12 shadow">
-                <div class="col-xs-12 titleIndustry">
-                    <i class="fa fa-industry fa-2x fLeft cA"></i>
-                    <div class="dropdown fRight">
-                        <div class="divHover" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a><i class="fa fa-pencil" id="'.$value['idEmpresa'].'"></i>editar</a></li>
-                            <li><a><i class="fa fa-remove" id="'.$value['zonas'].'"></i>remover</a></li>
-                        </ul>
-                    </div>
-                    <span>'.$value['nombre'].'</span>
-                </div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-users  fa-2x"></i><br><span>SUPERVISORES</span><br>Juan Pérez</div>
-            </div>
-        </div>
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">HTML</a></li>
+        <li><a href="#">CSS</a></li>
+        <li><a href="#">JavaScript</a></li>
+      </ul>
     </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
 </body>
 </html>
