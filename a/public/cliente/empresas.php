@@ -64,8 +64,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <i class="fa fa-pencil-square-o"></i>
-                    <h3>editar empresa</h3>
+                    <i class="fa fa-industry"></i>
+                    Editar Empresa
                 </div>
                 <div class="modal-body">
                     <form>
@@ -87,7 +87,7 @@
                         </div>
                     </form>
                     <div class="clearfix">
-                        <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-pencil"></i>Añadir</button>
+                        <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-pencil"></i>Editar</button>
                         <button type="button" class="btn btn-inverse pull-right" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                 </div>
