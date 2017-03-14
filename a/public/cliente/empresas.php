@@ -90,6 +90,9 @@
                         <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-pencil"></i>Editar</button>
                         <button type="button" class="btn btn-inverse pull-right" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
+<div class="alert alert-success">
+  <strong>Success!</strong> Indicates a successful or positive action.
+</div>
                 </div>
             </div>
         </div>
