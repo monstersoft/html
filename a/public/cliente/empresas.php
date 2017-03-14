@@ -65,7 +65,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <i class="fa fa-industry"></i>
-                    <h3>Editar Empresa</h3>
+                    <h3>editar empresa</h3>
                 </div>
                 <div class="modal-body">
                     <div class="row">

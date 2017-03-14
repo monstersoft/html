@@ -54,13 +54,11 @@
     margin-left: 20px;
 }
 /* MODALS */
-.modal-content {
-    border-radius: 0px;
-}
 .modal-header {
     position: relative;
-    padding: 10px 25px 10px 25px;
+    padding: 10px 25px 5px 25px;
     background: #262626;
+    border-bottom: 5px solid #f5a214;
 }
 .modal-header > i {
     color: white;
@@ -68,9 +66,9 @@
 }
 .modal-header > h3 {
     color: white;
-    font-family: 'Lato';
+    font-family: 'Roboto';
     display: block;
     margin: 0px;
-    font-size: 15px;
+    font-size: 18px;
 }
 
