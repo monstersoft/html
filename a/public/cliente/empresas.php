@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="../../css/awesome/css/font-awesome.css">
     <link rel="stylesheet" href="../../css/panel.css">
     <link rel="stylesheet" href="../../css/empresas.css">
-    <link rel="stylesheet" href="../../css/animate.css">
 </head>
 <body>
     <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p>Machine Monitors</p></div>
@@ -57,10 +56,46 @@
             </div>
         </div>
     </div>
-    <div id="stickyButton"><i class="fa fa-plus"></i></div>
-<!-- MODALS -->
+    <div id="stickyButton" class="agregarEmpresa"><i class="fa fa-plus"></i></div>
+<!-- VENTANAS MODALES -->
+    <!-- MODAL AGREGAR EMPRESA -->
+    <div class="modalAgregarEmpresa modal fade" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa fa-industry"></i>
+                    Agregar Empresa
+                </div>
+                <div class="modal-body">
+                    <form id="formularioAgregarEmpresa">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" placeholder="Empresa" class="form-control" name="nombre" id="nombreAgregarEmpresa" value="a">
+                        </div>
+                        <div class="form-group">
+                            <label for="rut">Rut</label>
+                            <input type="text" placeholder="17286211-K" class="form-control" name="rut" id="rutAgregarEmpresa" value="17286211-k">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo</label>
+                            <input type="text" placeholder=". . . . . @ . . . . . " class="form-control" name="email" id="emailAgregarEmpresa" value="a@s.cl">
+                        </div>
+                        <div class="form-group">
+                            <label for="celular">Celular</label>
+                            <input type="text" placeholder="995007812" class="form-control" name="celular" id="celularAgregarEmpresa" value="995007812">
+                        </div>
+                    </form>
+                    <div class="clearfix">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnAñadirEmpresa"><i class="cargar fa fa-pencil"></i>Agregar</button>
+                        <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                    </div>
+                    <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- MODAL EDIT BUSINESS -->
-    <div id="modalEditBusiness" class="modal fade" data-backdrop="static" data-keyboard="false">
+    <div id="modalEditarEmpresa" class="modal fade" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -68,10 +103,10 @@
                     Editar Empresa
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="formularioEditarEmpresa">
                         <div class="form-group">
-                        <label for="email">Nombre</label>
-                            <input type="email" class="form-control" id="nameEditBusiness">
+                        <label>Nombre</label>
+                            <input type="text" name="email" id="" class="form-control" id="nameEditBusiness">
                         </div>
                         <div class="form-group">
                         <label for="pwd">Rut</label>
@@ -90,15 +125,15 @@
                         <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-pencil"></i>Editar</button>
                         <button type="button" class="btn btn-inverse pull-right" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
-<div class="alert alert-success">
-  <strong>Success!</strong> Indicates a successful or positive action.
-</div>
+                    <div class="alert alert-success">
+                      <strong>Success!</strong> Indicates a successful or positive action.
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- MODAL REMOVE BUSINESS -->
-    <div id="modalRemoveBusiness" class="modal fade" aria-labelledby="gridSystemModalLabel">
+    <div id="modalEliminarBusiness" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -142,11 +177,20 @@
     <script src="../../js/jquery.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script src="../../js/funciones.js"></script>
+    <script src="../../js/rut/jquery.rut.chileno.js"></script>
+    <script src="../../js/compruebaInputs.js"></script>
+    <script src="../../js/mensajes.js"></script>
+    <script src="../../cliente/js/modalAgregarEmpresa.js"></script>
     <script>
         $(document).ready(function(){
-          	$('#modalEditBusiness').modal();
             main();
-            modals();
+            $('.cancelar').click(function(){
+                $('.alert').remove();
+                if($('#formularioAgregarEmpresa').reset())
+                    alert('RESETEO');
+                else
+                    alert('No reseteo');
+            });
         });
     </script>
 </body>

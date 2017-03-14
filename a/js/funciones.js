@@ -1,3 +1,46 @@
+var carpetaRaiz = 'html';
+function activarLoaderBotones(iconoEstatico,iconoDinamico) {
+	$('.btn').addClass('disabled');
+	$('.cargar').removeClass(iconoEstatico).addClass(iconoDinamico+' fa fa-spin');
+}
+function desactivarLoaderBotones(iconoEstatico,iconoDinamico) {
+	$('.btn').removeClass('disabled');
+	$('.cargar').removeClass(iconoDinamico+' fa-spin').addClass(iconoEstatico);
+}
+function devuelveUrl(pathSinCarpetaRaiz) {
+    var url;
+    var host = window.location.host;
+    var protocolo = window.location.protocol;
+    if(host == 'www.mmonitors.com')
+            url = protocolo+'//'+host+'/'+pathSinCarpetaRaiz;
+    else
+        url = protocolo+'//'+host+'/'+carpetaRaiz+'/'+pathSinCarpetaRaiz;
+    return url;
+}
+function fechaHoy() {
+	var hoyE = moment().locale('es').format('dddd DD , MMMM YYYY');
+    var hoyF = moment().format('YYYY/MM/DD');
+    $('#fechaDatos').val(hoyE);
+    $('input[name=fechaDatos]').val(hoyF);
+}
+function borraMensajes() {
+    $('.alert.alert-success').remove();
+    $('.alert.alert-danger').remove();
+    $('.alert.warning').remove();
+}
+function reseteaFormularios() {
+    $('#formularioEditarEmpresa').reset();
+    $('#formularioAgregarEmpresa').reset();
+    $('#formularioAgregarZona').reset();
+    $('#formularioAgregarSupervisor').reset();
+}
+function cierraModales(){
+    $('.modalAgregarEmpresa').modal('hide');
+    $('.modalAgregarZona').modal('hide');
+    $('.modalAgregarSupervisor').modal('hide');
+    $('.modalEditarEmpresa').modal('hide');
+}
+
 function main () {
 		var shadow = false;
 		//WHEN THE PAGE STARTS
@@ -97,11 +140,4 @@ function main () {
 				shadow = false;
 		});
 }
-function modals () {
-		$('.btnEditBusiness').click(function(){
-				$('#modalEditBusiness').modal();
-		});
-		$('.btnRemoveBusiness').click(function(){
-				$('#modalRemoveBusiness').modal();
-		});
-}
+
