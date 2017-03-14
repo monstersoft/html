@@ -1,8 +1,9 @@
-
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
 .tCenter {
     text-align: center;
     padding: 10px;
-    color: #262626;
+    color: #262626 !important;
 }
 .tCenter span {
     font-family: 'Lato';
@@ -52,3 +53,24 @@
     margin-right: 20px;
     margin-left: 20px;
 }
+/* MODALS */
+.modal-content {
+    border-radius: 0px;
+}
+.modal-header {
+    position: relative;
+    padding: 10px 25px 10px 25px;
+    background: #262626;
+    font-size: 22px;
+}
+.modal-header > i {
+    color: white;
+    float: right;
+}
+.modal-header > h3 {
+    color: white;
+    font-family: 'Lato';
+    display: block;
+    margin: 0px;
+}
+

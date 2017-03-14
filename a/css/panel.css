@@ -44,14 +44,13 @@ body {
     box-sizing: border-box;
     position: fixed;
     top: 0;
-    font-family: 'Lato';
     color: white;
     text-align: center;
     border-bottom: 5px solid #F5A214;
     z-index: 2;
     /*box-shadow: 0px 3px 3px rgba(0,0,0,0.5);*/
 }
-#bar > a {
+#bar a {
     float: left;
     background: #F5A214;
     height: 45px;
@@ -69,6 +68,7 @@ body {
 #bar > p {
     margin-top: 5px;
     font-size: 22px;
+    font-family: 'Lato';
 }
 /* NAVIGATION BAR */
 .displayNav {
@@ -129,7 +129,6 @@ nav  ul  li a {
     padding: 10px;
     font-family: 'Lato';
     text-align: center;
-    text-decoration: none;
 }
 nav  ul  li a:hover {
     background: rgba(255, 255, 255, 0.1);
@@ -137,7 +136,7 @@ nav  ul  li a:hover {
     text-decoration: none;
 }
 nav  ul  li a:hover .icons {
-    color: #F5A214;    
+    color: #F5A214;
 }
 
 /* CONTENT */
