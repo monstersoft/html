@@ -88,6 +88,9 @@
                     <div class="clearfix">
                         <button type="submit" class="btn btn-primary pull-right" id="btnAñadirEmpresa"><i class="cargar fa fa-pencil"></i>Agregar</button>
                         <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Single toggle
+</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
                 </div>
