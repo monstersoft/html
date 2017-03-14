@@ -26,7 +26,6 @@
 </head>
 <body>
     <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p>Machine Monitors</p></div>
-    <div id="modal">Modal</div>
     <nav class="unDisplayNav">
         <ul>
             <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile"><?php  echo $perfil['empresa'] ?></span><br><span id="nameProfile"><?php echo $perfil['correo']; ?></span></li>
@@ -38,7 +37,7 @@
             <li><a href="#"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
         </ul>
     </nav>
-    <div id="content" class="unLeftContent"> 
+    <div id="content" class="unLeftContent">
         <div class="col-xs-12 col-sm-6 card">
             <div class="col-xs-12 shadow">
                 <div class="col-xs-12 titleIndustry">
@@ -113,7 +112,7 @@
         </div>
     </div>
     <div id="stickyButton"><i class="fa fa-plus"></i></div>
-<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+<!--<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -150,9 +149,9 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+  </div
+</div>-->
     <script src="../../js/jquery.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script src="../../js/funciones.js"></script>

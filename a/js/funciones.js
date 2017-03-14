@@ -87,8 +87,7 @@ function main () {
             }
         }
     });
-    $('#shadowDisplay').click(function(){
-        alert(shadow);
+    $('body').on('click','#shadowDisplay',function(){
         $(this).remove();
         $('nav').removeClass('displayNav');
         $('#content').removeClass('leftContent');
