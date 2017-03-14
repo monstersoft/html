@@ -71,4 +71,14 @@
     margin: 0px;
     font-size: 18px;
 }
+.modal-body {
+    font-family: 'Lato';
+}
+.clearfix .btn-inverse {
+    margin-right: 20px;
+}
+.clearfix button i {
+    margin-right: 10px;
+}
+
 

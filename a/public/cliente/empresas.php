@@ -64,38 +64,32 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <i class="fa fa-industry"></i>
+                    <i class="fa fa-pencil-square-o"></i>
                     <h3>editar empresa</h3>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-4">.col-md-4</div>
-                        <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
-                        <div class="col-md-2 col-md-offset-4">.col-md-2 .col-md-offset-4</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-9">
-                            Level 1: .col-sm-9
-                            <div class="row">
-                                <div class="col-xs-8 col-sm-6">
-                                    Level 2: .col-xs-8 .col-sm-6
-                                </div>
-                                <div class="col-xs-4 col-sm-6">
-                                    Level 2: .col-xs-4 .col-sm-6
-                                </div>
-                            </div>
+                    <form>
+                        <div class="form-group">
+                        <label for="email">Nombre</label>
+                            <input type="email" class="form-control" id="nameEditBusiness">
                         </div>
+                        <div class="form-group">
+                        <label for="pwd">Rut</label>
+                            <input type="password" class="form-control" id="rutEditBusiness">
+                        </div>
+                        <div class="form-group">
+                        <label for="pwd">Correo</label>
+                            <input type="password" class="form-control" id="emailEditBusiness">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Celular</label>
+                            <input type="password" class="form-control" id="movilEditBusiness">
+                        </div>
+                    </form>
+                    <div class="clearfix">
+                        <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-pencil"></i>Añadir</button>
+                        <button type="button" class="btn btn-inverse pull-right" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
