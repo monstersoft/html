@@ -28,7 +28,7 @@
     color: #FFF;
 }
 body {
-    overflow-x: hidden;
+    overflow: hidden;
 }
 .borde {
     border: 1px solid red;
