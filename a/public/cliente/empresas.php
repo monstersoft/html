@@ -36,46 +36,7 @@
             <li><a><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
         </ul>
     </nav>
-    <div id="content" class="unLeftContent">
-        <div class="col-xs-12 col-sm-6 card">
-            <div class="col-xs-12 shadow">
-                <div class="col-xs-12 titleIndustry">
-                    <i class="fa fa-industry fa-2x fLeft cA"></i>
-                    <div class="dropdown fRight">
-                        <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a id="40" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
-                            <li><a id="40" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
-                        </ul>
-                    </div>
-                    <span>SERVICIOS BÍO BÍO</span>
-                </div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>100</div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>100</div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-users  fa-2x"></i><br><span>SUPERVISORES</span><br>100</div>
-            </div>
-            <a href="#" class="boton">Ver</a>
-        </div>
-        <div class="col-xs-12 col-sm-6 card">
-            <div class="col-xs-12 shadow">
-                <div class="col-xs-12 titleIndustry">
-                    <i class="fa fa-industry fa-2x fLeft cA"></i>
-                    <div class="dropdown fRight">
-                        <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a id="40" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
-                            <li><a id="40" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
-                        </ul>
-                    </div>
-                    <span>SERVICIOS BÍO BÍO</span>
-                </div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>100</div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>100</div>
-                <div class="col-xs-4 tCenter"><i class="fa fa-users  fa-2x"></i><br><span>SUPERVISORES</span><br>100</div>
-            </div>
-            <a href="#" class="boton">Ver</a>
-        </div>
-    </div>
+    <div id="content" class="unLeftContent"></div>
     <div id="stickyButton" class="agregarEmpresa"><i class="fa fa-plus"></i></div>
     <i id="loader" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
 <!-- VENTANAS MODALES -->

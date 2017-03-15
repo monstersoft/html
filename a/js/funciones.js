@@ -33,24 +33,6 @@ function fechaHoy() {
     $('#fechaDatos').val(hoyE);
     $('input[name=fechaDatos]').val(hoyF);
 }
-function borraMensajes() {
-    $('.alert.alert-success').remove();
-    $('.alert.alert-danger').remove();
-    $('.alert.warning').remove();
-}
-function reseteaFormularios() {
-    $('#formularioEditarEmpresa').reset();
-    $('#formularioAgregarEmpresa').reset();
-    $('#formularioAgregarZona').reset();
-    $('#formularioAgregarSupervisor').reset();
-}
-function cierraModales(){
-    $('.modalAgregarEmpresa').modal('hide');
-    $('.modalAgregarZona').modal('hide');
-    $('.modalAgregarSupervisor').modal('hide');
-    $('.modalEditarEmpresa').modal('hide');
-}
-
 function main () {
 		var shadow = false;
 		//WHEN THE PAGE STARTS
