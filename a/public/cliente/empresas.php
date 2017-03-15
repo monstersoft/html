@@ -22,33 +22,34 @@
     <link rel="stylesheet" href="../../css/awesome/css/font-awesome.css">
     <link rel="stylesheet" href="../../css/panel.css">
     <link rel="stylesheet" href="../../css/empresas.css">
+    <link rel="stylesheet" href="../../css/animate.css">
     <style type="text/css">
 body {
     overflow: hidden;
 }
 
-/* Preloader */
+/* Preloader 
 #preloader {
     position: fixed;
     top:0;
     left:0;
     right:0;
     bottom:0;
-    background-color:#fff; /* change if the mask should have another color then white */
-    z-index:99; /* makes sure it stays on top */
+    background-color:#fff; /* change if the mask should have another color then white 
+    z-index:99; /* makes sure it stays on top 
 }
 
 #status {
     width:200px;
     height:200px;
     position:absolute;
-    left:50%; /* centers the loading animation horizontally one the screen */
-    top:50%; /* centers the loading animation vertically one the screen */
-    background-image:url(status.gif); /* path to your loading animation */
+    left:50%; /* centers the loading animation horizontally one the screen 
+    top:50%; /* centers the loading animation vertically one the screen 
+    background-image:url(status.gif); /* path to your loading animation 
     background-repeat:no-repeat;
     background-position:center;
-    margin:-100px 0 0 -100px; /* is width and height divided by two */
-}
+    margin:-100px 0 0 -100px; /* is width and height divided by two 
+}*/
     </style>
 </head>
 <body>
@@ -64,7 +65,7 @@ body {
             <li><a><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
         </ul>
     </nav>
-    <div id="content" class="unLeftContent">
+    <div id="content" class="animated fadeInUp unLeftContent">
         <?php 
             if($empresas['cantidadEmpresas'] == 0)
                 echo 'No existen empresas, para agregar debes presionar el boton mas';
@@ -78,7 +79,7 @@ body {
         ?>
     </div>
     <div id="stickyButton" class="agregarEmpresa"><i class="fa fa-plus"></i></div>
-    <!--<i id="loader" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>-->
+    <i id="loader" class="loaderDisplayNav fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
 <!-- VENTANAS MODALES -->
     <!-- MODAL AGREGAR EMPRESA -->
     <div class="modalAgregarEmpresa modal fade" data-backdrop="static" data-keyboard="false">
@@ -167,14 +168,19 @@ body {
     <script src="../../cliente/js/modalEditarEmpresa.js"></script>
     <script>
         $(document).ready(function(){
-            setTimeout(function(){main();}, 5000);
+function explode(){
+  $('#loader').css('display','none');
+  $('#content').fadeIn().css('display','block');
+}
+setTimeout(explode, 1000);
+            main()
             $('.cancelar').click(function(){$('.alert').remove();});
             $('.modal').on('hidden.bs.modal', function(){
                 $(this).find('form')[0].reset();
             });
         });
     </script>
-<script type="text/javascript">
+<!--<script type="text/javascript">
     //<![CDATA[
         $(window).on('load', function() { // makes sure the whole site is loaded 
             $('#status').fadeOut(); // will first fade out the loading animation 
@@ -182,9 +188,9 @@ body {
             $('body').delay(350).css({'overflow':'visible'});
           })
     //]]>
-</script>
+</script>-->
 </body>
-<div id="preloader">
+<!--<div id="preloader">
     <div id="status">&nbsp;</div>
-</div>
+</div>-->
 </html>

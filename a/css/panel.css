@@ -143,11 +143,8 @@ nav  ul  li a:hover .icons {
 #content {
     position: absolute;
     top: 45px;
-    -webkit-transition: all 0.1s ease;
-    -moz-transition: all 0.1s ease;
-    -o-transition: all 0.1s ease;
-    transition: all 0.1s ease;
     overflow-y: auto;
+    display: none;
 }
 .leftContent {
     left: 250px;
@@ -187,14 +184,14 @@ nav  ul  li a:hover .icons {
     z-index: 10000;
     color: #F5A214;
     top: calc(50% - 21px);
-    left: calc(50% - 27px);
+    left: calc(50% - 27px + 125px);
 }
 .loaderUnDisplayNav {
     position: fixed;
     z-index: 10000;
-    color: #262626;
+    color: #F5A214;
     top: calc(50% - 21px);
-    left: calc(50% - 27px + 125px);
+    left: calc(50% - 27px);
 }
 
 
