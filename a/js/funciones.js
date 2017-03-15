@@ -1,4 +1,14 @@
 var carpetaRaiz = 'html';
+function lowerCase(value) {
+    var cadena = new String(value);
+    cadena = cadena.toLowerCase();
+    return cadena;
+}
+function upperCase(value) {
+    var cadena = new String(value);
+    cadena = cadena.toUpperCase();
+    return cadena;
+}
 function activarLoaderBotones(iconoEstatico,iconoDinamico) {
 	$('.btn').addClass('disabled');
 	$('.cargar').removeClass(iconoEstatico).addClass(iconoDinamico+' fa fa-spin');

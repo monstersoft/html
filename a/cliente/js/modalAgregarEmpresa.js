@@ -5,10 +5,11 @@ $(document).ready(function() {
     $('#btnAñadirEmpresa').click(function(){
         var arreglo = new Array();
         var nombre = $('#nombreAgregarEmpresa').val();
-        var rut = $('#rutAgregarEmpresa').val();
+        var rut =  $('#rutAgregarEmpresa').val();
         var email = $('#emailAgregarEmpresa').val();
         var celular = $('#celularAgregarEmpresa').val();
         var numberErrors = 0;
+        console.log(nombre);
         if(isEmpty(nombre))
             arreglo.push('<li>Nombre es obigatorio</li>');
         if(isEmpty(rut))

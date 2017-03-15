@@ -33,12 +33,13 @@ $(document).ready(function(){
             type: 'POST',
             data: {idEmpresa: id},
             dataType: 'json',
+            cache: false,
             success: function(arreglo){;
-                $('#idEditar').val(arreglo.idEmpresa);
-                $('#nombreEditar').val(arreglo.nombre);
-                $('#rutEditar').val(arreglo.rut);
-                $('#emailEditar').val(arreglo.correo);
-                $('#telefonoEditar').val(arreglo.telefono);
+                $('#idEditarEmpresa').val(arreglo.idEmpresa);
+                $('#nombreEditarEmpresa').val(arreglo.nombre);
+                $('#rutEditarEmpresa').val(arreglo.rut);
+                $('#emailEditarEmpresa').val(arreglo.correo);
+                $('#celularEditarEmpresa').val(arreglo.telefono);
             }
         }).fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){
@@ -59,9 +60,8 @@ $(document).ready(function(){
         });
     }
     $('.editarEmpresa').click(function(){
-        borrarMensajes();
-        $('.modalEditarEmpresa').modal('show');
-        var url = devuelveUrl('html/cliente/datosEmpresa.php');
+        $('.modalEditarEmpresa').modal();
+        var url = devuelveUrl('a/cliente/ajax/datosEmpresa.php');
         var id = $(this).attr('id');
         var datos = retornaDatos(id,url);
         datos.success(function(respuesta){
@@ -73,12 +73,12 @@ $(document).ready(function(){
         });
     });
     $('.modalEditarEmpresa').on('click','#btnEditarEmpresa',function(){
-        borrarMensajes();
+        $('.alert').remove();
         var arreglo = new Array();
-        data[1].nombre.modificado = $('#nombreEditar').val();
-        data[2].rut.modificado = $('#rutEditar').val();
-        data[3].correo.modificado = $('#emailEditar').val();
-        data[4].telefono.modificado =  $('#telefonoEditar').val();
+        data[1].nombre.modificado = upperCase($('#nombreEditarEmpresa').val());
+        data[2].rut.modificado = upperCase($('#rutEditarEmpresa').val());
+        data[3].correo.modificado = lowerCase($('#emailEditarEmpresa').val());
+        data[4].telefono.modificado =  $('#celularEditarEmpresa').val();
         var numberErrors = 0;
         if(isEmpty(data[1].nombre.modificado))
             arreglo.push('<li>El campo nombre es obigatorio</li>');
@@ -94,8 +94,10 @@ $(document).ready(function(){
             arreglo.push('<li>El teléfono debe tener 9 dígitos</li>');
         if(isNumber(data[4].telefono.modificado))
             arreglo.push('<li>El teléfono no es un número o no está en un formato adecuado</li>');
-        if(isRutEditar())
-            arreglo.push('<li>Formato no adecuado de rut o no es válido</li>');
+        if(maxLength(data[1].nombre.modificado, 30))
+            arreglo.push('<li>Nombre no debe superar los 30 caracteres</li>');
+        if(isRut(data[2].rut.modificado))
+            arreglo.push('<li>Formato no adecuado de rut o no es válido, debe ir con guíon y sin puntos</li>')
         if(arreglo.length == 0) {
             var flag = true;
             if(data[1].nombre.original != data[1].nombre.modificado){
@@ -115,7 +117,7 @@ $(document).ready(function(){
                 flag = false;
             }
             if(flag != true){
-                var url = devuelveUrl('html/cliente/editarEmpresa.php');
+                var url = devuelveUrl('a/cliente/ajax/editarEmpresa.php');
                 $.ajax({
                     url : url,
                     type: 'POST',
@@ -128,13 +130,13 @@ $(document).ready(function(){
                                 list.msgExito.forEach(function(element){
                                     lisp += '<li>'+element+'</li>';
                                 });
-                                $('.message').html('<div class="ui success message"><div class="content"><ul>'+lisp+'</ul></div>');
+                                $('.message').html('<div class="alert alert-success"><div class="content"><ul>'+lisp+'</ul></div>');
                             }
                             if(list.fracasos >=1){
                                 list.msgFracaso.forEach(function(element){
                                     lispError += '<li>'+element+'</li>';
                                 });
-                                $('.messageError').html('<div class="ui error message"><div class="content"><ul>'+lispError+'</ul></div>');
+                                $('.messageError').html('<div class="alert alert-warning"><div class="content"><ul>'+lispError+'</ul></div>');
                             }
                             if(list.exitoNombre == 1) {
                                 data[1].nombre.original = data[1].nombre.modificado;

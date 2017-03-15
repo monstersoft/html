@@ -27,9 +27,7 @@
 .cB {
     color: #FFF;
 }
-body {
-    overflow: hidden;
-}
+
 .borde {
     border: 1px solid red;
 }
@@ -129,6 +127,8 @@ nav  ul  li a {
     padding: 10px;
     font-family: 'Lato';
     text-align: center;
+    cursor: pointer;
+    text-decoration: none;
 }
 nav  ul  li a:hover {
     background: rgba(255, 255, 255, 0.1);
@@ -147,6 +147,7 @@ nav  ul  li a:hover .icons {
     -moz-transition: all 0.1s ease;
     -o-transition: all 0.1s ease;
     transition: all 0.1s ease;
+    overflow-y: auto;
 }
 .leftContent {
     left: 250px;
@@ -180,16 +181,21 @@ nav  ul  li a:hover .icons {
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.7);
 }
-/* BORDER CARD */
-.shadow {
-    box-shadow: 0px 1px 3px 0px #D4D4D5, 0px 0px 0px 1px #D4D4D5;
+/* LOADER */
+.loaderDisplayNav {
+    position: fixed;
+    z-index: 10000;
+    color: #F5A214;
+    top: calc(50% - 21px);
+    left: calc(50% - 27px);
 }
-.card {
-    padding: 5px;
+.loaderUnDisplayNav {
+    position: fixed;
+    z-index: 10000;
+    color: #262626;
+    top: calc(50% - 21px);
+    left: calc(50% - 27px + 125px);
 }
-
-
-
 
 
 

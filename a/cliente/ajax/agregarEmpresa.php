@@ -1,8 +1,8 @@
 <?php
 	include '../../php/conexion.php'; 
-	$name = $_POST['nombre'];
-	$rut = $_POST['rut'];
-	$email = $_POST['email'];
+	$name = strtoupper(utf8_decode($_POST['nombre']));
+	$rut = strtoupper($_POST['rut']);
+	$email = strtolower($_POST['email']);
 	$celular = $_POST['celular'];
 	$returnedData = verificaFormularioEmpresa($name,$rut,$email,$celular);
 	echo json_encode($returnedData);

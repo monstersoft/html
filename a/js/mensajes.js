@@ -28,7 +28,7 @@ function successMessage(titulo,parrafo) {
     $('.message').html('<div class="alert alert-success" style="padding: 10px;"><strong>'+titulo+'</strong>'+parrafo+'</div>');
 }
 function infoMessage(titulo,parrafo) {
-    $('.message').html('<div class="ui icon info message"><i class=" icon info"></i><div class="content"><div class="header">'+titulo+'</div><p>'+parrafo+'</p></div></div>');
+    $('.message').html('<div class="alert alert-info"><strong>'+titulo+' </strong>'+parrafo+'</div>');
 }
 function errorMessage2(arrayErrors) {
     var list = '';

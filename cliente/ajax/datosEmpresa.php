@@ -1,7 +1,8 @@
 <?php
-	include '../php/conexion.php';
+	include '../../php/conexion.php';
 	$conexion = conectar();
-	$id = $_POST['idEmpresa'];
+	//$id = $_POST['idEmpresa'];
+	$id = 30;
 	$arreglo = array();
 	$consulta = "SELECT idEmpresa, rut, nombre, correo, telefono FROM empresas WHERE idEmpresa = '$id'";
 	if($resultado = mysqli_query($conexion,$consulta)) {

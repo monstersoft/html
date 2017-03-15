@@ -2,11 +2,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
 .tCenter {
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     color: #262626 !important;
+    font-size: 1.5rem;
 }
 .tCenter span {
-    font-family: 'Lato';
+    font-family: 'Montserrat';
 }
 .fLeft {
     float: left;
@@ -15,15 +16,17 @@
     float: right;
 }
 .titleIndustry {
-    border-bottom: 3px solid #F5A214;
+    border-bottom: 1px solid #D4D4D5;
     padding-top: 20px;
     padding-left: 0px;
     padding-right: 0px;
+    padding-bottom: 15px;
 }
 .titleIndustry span {
     color: #262626;
     font-size: 22px;
     margin-left: 20px;
+    font-family: 'Montserrat';
 }
 .titleIndustry .btn {
     padding: 0px 3px 0px 20px;
@@ -74,6 +77,41 @@
 }
 .clearfix button i {
     margin-right: 10px;
+}
+/* BORDER CARD */
+.shadow {
+    border-top: 1px solid #D4D4D5;
+    border-left: 1px solid #D4D4D5;
+    border-right: 1px solid #D4D4D5;
+    border-radius: 10px 10px 0px 0px;
+}
+.card {
+    padding: 5px;
+}
+/* BOTON VER */
+.boton {
+    background: rgb(224, 225, 226);
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    font-family: 'Lato';
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    outline-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+    user-select: none;
+
+}
+.boton:hover {
+    text-decoration: none;
+    background-color: rgba(0,0,0,0.2);
+    color: rgba(0, 0, 0, 0.87);
 }
 
 
