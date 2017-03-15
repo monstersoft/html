@@ -172,7 +172,7 @@ function explode(){
   $('#loader').css('display','none');
   $('#content').fadeIn().css('display','block');
 }
-setTimeout(explode, 1000);
+setTimeout(explode, 5000);
             main()
             $('.cancelar').click(function(){$('.alert').remove();});
             $('.modal').on('hidden.bs.modal', function(){
