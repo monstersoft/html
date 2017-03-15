@@ -79,7 +79,7 @@ body {
         ?>
     </div>
     <div id="stickyButton" class="agregarEmpresa"><i class="fa fa-plus"></i></div>
-    <i id="loader" class="loaderDisplayNav fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+    <i id="loader" class="loaderUnDisplayNav fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
 <!-- VENTANAS MODALES -->
     <!-- MODAL AGREGAR EMPRESA -->
     <div class="modalAgregarEmpresa modal fade" data-backdrop="static" data-keyboard="false">
