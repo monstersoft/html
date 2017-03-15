@@ -4,7 +4,7 @@
     text-align: center;
     padding: 20px;
     color: #262626 !important;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
 }
 .tCenter span {
     font-family: 'Montserrat';
@@ -17,15 +17,15 @@
 }
 .titleIndustry {
     border-bottom: 1px solid #D4D4D5;
-    padding-top: 20px;
+    padding-top: 15px;
     padding-left: 0px;
     padding-right: 0px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
 }
 .titleIndustry span {
     color: #262626;
-    font-size: 22px;
-    margin-left: 20px;
+    font-size: 15px;
+    margin-left: 30px;
     font-family: 'Montserrat';
 }
 .titleIndustry .btn {
