@@ -1,5 +1,5 @@
 <?php
-    $id = $_GET['id'];
+    //$id = $_GET['id'];
     /*session_start();
     if(!isset($_SESSION['correo'])){
         header("Location:../../index.php");
@@ -40,9 +40,9 @@
         </ul>
     </nav>
     <div id="content" class="animated fadeInUp unLeftContent">
-        <div class="col-xs-12 col-sm-6 card">
+        <div class="col-xs-12 col-sm-6 card borde">
             <div class="col-xs-12 shadow">
-                <div class="col-xs-12 titleZone"> 
+                <div class="col-xs-12 titleCard"> 
                     <i class="fa fa-globe fa-2x fLeft cA"></i>
                     <div class="dropdown fRight">
                         <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
