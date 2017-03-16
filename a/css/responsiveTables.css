@@ -1,0 +1,53 @@
+table td, table th { 
+	padding: 9px 10px; text-align: left; 
+}
+
+@media only screen and (max-width: 767px) {
+	
+	table.responsiva { 
+		margin-bottom: 0; 
+	}
+	
+	.pinned { 
+		position: absolute; 
+		left: 0; top: 0; 
+		background: #fff; 
+		width: 20%; 
+		overflow: hidden; 
+		overflow-x: scroll;
+	}
+	.pinned table {  
+		width: 100%; 
+	}
+	.pinned table th, .pinned table td { 
+		white-space: nowrap; 
+	}
+	.pinned td:last-child { 
+		border-bottom: 0; 
+	}
+	
+	div.table-wrapper { 
+		position: relative; 
+		overflow: hidden;
+	}
+	div.table-wrapper div.scrollable table { 
+		margin-left: 20%; 
+	}
+	div.table-wrapper div.scrollable { 
+		overflow: scroll; 
+		overflow-y: hidden; 
+	}	
+	
+	table.responsiva td, table.responsiva th { 
+		position: relative; 
+		white-space: nowrap; 
+		overflow: hidden; 
+	}
+	table.responsiva th:first-child, table.responsiva td:first-child, table.responsiva td:first-child, table.responsiva.pinned td { 
+		display: none; 
+	}
+	
+}
+
+
+

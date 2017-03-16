@@ -65,7 +65,7 @@
 #bar > p {
     margin-top: 5px;
     font-size: 22px;
-    font-family: 'Lato';
+    font-family: 'Montserrat';
 }
 /* NAVIGATION BAR */
 .displayNav {
@@ -83,10 +83,6 @@ nav {
     z-index: 2;
     overflow-y: auto;
     font-family: 'Lato';
-    -webkit-transition: all 0.1s ease;
-    -moz-transition: all 0.1s ease;
-    -o-transition: all 0.1s ease;
-    transition: all 0.1s ease;
 }
 nav ul {
     overflow: hidden;
@@ -128,6 +124,9 @@ nav  ul  li a {
     text-align: center;
     cursor: pointer;
     text-decoration: none;
+}
+.selected {
+    border-right: 5px solid #F5A214;
 }
 nav  ul  li a:hover {
     background: rgba(255, 255, 255, 0.1);
