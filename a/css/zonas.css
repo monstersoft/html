@@ -1,19 +1,52 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
 .titleZone {
+    border-bottom: 1px solid #D4D4D5;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    
+}
+.titleZone p {
+    color: #262626;
+    font-size: 15px;
+    margin-left: 10px;
+    display: inline;
+    font-family: 'Montserrat';
+    margin-bottom: 0px;
+    position: absolute;
+    padding-top: 5px;
+}
+table {
+    width: 100%;
+}
+.tableConfig {
 	padding: 0px;
 }
 .tCenter {
     text-align: center;
     font-size: 12px;
 }
+.borde {
+	border: 1px solid red !important;
+}
 table th {
 	background: rgba(0, 0, 0, 0.1);
+}
+.shadow {
+	padding: 0px;
 }
 .tSticky {
 	background: rgba(0, 0, 0, 0.1);
 	font-weight: bold;
 }
+
+
+
+
+
+
 
 .fLeft {
     float: left;
