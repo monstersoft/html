@@ -1,5 +1,107 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
+/* AUX */
+.borde {
+    border: 1px solid red;
+}
+.montserrat {
+    font-family: 'Montserrat';
+}
 
+/* CARD */
+.card {
+    padding: 5px;
+}
+.titleCard {
+    border-bottom: 1px solid #D4D4D5;
+    padding: 10px 10px 0px 10px;
+    
+}
+.titleCard p {
+    color: #262626;
+    font-size: 15px;
+    margin-left: 10px;
+    display: inline;
+    margin-bottom: 0px;
+    position: absolute;
+    padding-top: 5px;
+    font-weight: bold;
+    font-family: 'Montserrat';
+}
+.cardContent {
+	padding: 0px;
+}
+.shadow {
+    border-top: 1px solid #D4D4D5;
+    border-left: 1px solid #D4D4D5;
+    border-right: 1px solid #D4D4D5;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #D4D4D5;
+}
+.shadowButtonDown {
+    border-top: 1px solid #D4D4D5;
+    border-left: 1px solid #D4D4D5;
+    border-right: 1px solid #D4D4D5;
+    background-color: #FFFFFF;
+}
+/* DROPDOWN */
+.dropdown {
+    background: white;
+}
+.dropdown-menu {
+    padding: 0px;
+    border-radius: 0px;
+}
+.dropdown-menu li a {
+    padding: 5px;
+}
+.dropdown-menu li i {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+/* BUTTON LONG DOWN CARD */
+.boton {
+    background: rgb(224, 225, 226);
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    outline-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+    font-family: 'Montserrat';
+}
+.boton:hover {
+    text-decoration: none;
+    background-color: rgba(0,0,0,0.2);
+    color: rgba(0, 0, 0, 0.87);
+}
+/* MODALS */
+.modal-header {
+    position: relative;
+    padding: 20px 20px 10px 20px;
+}
+.modal-header > i {
+    float: right;
+}
+.modal-header {
+    display: block;
+    margin: 0px;
+    font-size: 20px;
+}
+.modal-body {
+    font-family: 'Lato';
+}
+.clearfix .btn-inverse {
+    margin-right: 20px;
+}
+.clearfix button i {
+    margin-right: 10px;
+}
 .a {
     background-color: #F5A214;
 }
@@ -27,9 +129,7 @@
 .cB {
     color: #FFF;
 }
-.borde {
-    border: 1px solid red;
-}
+
 /* STICKY BAR */
 #bar {
     position: fixed;
@@ -82,7 +182,6 @@ nav {
     background-color: #262626;
     z-index: 2;
     overflow-y: auto;
-    font-family: 'Lato';
 }
 nav ul {
     overflow: hidden;
@@ -100,6 +199,7 @@ nav ul li {
     background: #F5A214;
     padding: 50px 0px 50px 0px;
     border: none;
+    font-family: 'Montserrat';
 }
 #iconProfile {
     margin: 0 auto;
@@ -124,6 +224,7 @@ nav  ul  li a {
     text-align: center;
     cursor: pointer;
     text-decoration: none;
+    font-family: 'Montserrat';
 }
 .selected {
     border-right: 5px solid #F5A214;
@@ -190,53 +291,10 @@ nav  ul  li a:hover .icons {
     top: calc(50% - 21px);
     left: calc(50% - 27px);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.mBottom15 {
+    margin-bottom: 15px;
+}
+.mTop15 {
+    margin-top: 15px;
+}
 

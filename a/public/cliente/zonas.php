@@ -21,7 +21,7 @@
     <link rel="stylesheet" rel="stylesheet">
     <link rel="stylesheet" href="../../css/bootstrap.css">
     <link rel="stylesheet" href="../../css/awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="../../css/panel.css">
+    <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/animate.css">
     <link rel="stylesheet" href="../../css/zonas.css">
     <link rel="stylesheet" href="../../css/responsiveTables.css">
@@ -40,52 +40,11 @@
         </ul>
     </nav>
     <div id="content" class="animated fadeInUp unLeftContent">
-        <div class="col-xs-12 col-sm-6 card borde">
-            <div class="col-xs-12 shadow">
-                <div class="col-xs-12 titleCard"> 
-                    <i class="fa fa-globe fa-2x fLeft cA"></i>
-                    <div class="dropdown fRight">
-                        <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
-                            <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
-                        </ul>
-                    </div>
-                    <p>LOS ALERCES</p>
-                </div>
-                <div class="col-xs-12 tableConfig">
-                    <table class="responsiva">
-                        <thead>
-                            <tr>        
-                                <th class="tCenter">ID</th>
-                                <th class="tCenter">Fecha de Registro</th>
-                                <th class="tCenter">Tara [kg]</th>
-                                <th class="tCenter">Carga Máxima [kg]</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="tCenter tSticky">100</td>
-                                <td class="tCenter">100</td>
-                                <td class="tCenter">100</td>
-                                <td class="tCenter">100</td>
-                            </tr>
-                            <tr>
-                                <td class="tCenter tSticky">100</td>
-                                <td class="tCenter">100</td>
-                                <td class="tCenter">100</td>
-                                <td class="tCenter">100</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
         <div class="col-xs-12 col-sm-6 card">
-            <div class="col-xs-12 shadow">
-                <div class="col-xs-12 titleZone"> 
-                    <i class="fa fa-globe fa-2x fLeft cA"></i>
-                    <div class="dropdown fRight">
+            <div class="col-xs-12 shadow cardContent">
+                <div class="col-xs-12 titleCard"> 
+                    <i class="fa fa-globe fa-2x pull-left cA"></i>
+                    <div class="dropdown pull-right">
                         <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
@@ -94,28 +53,28 @@
                     </div>
                     <p>LOS ALERCES</p>
                 </div>
-                <div class="col-xs-12 tableConfig">
-                    <table class="responsiva">
+                <div class="col-xs-12 cardContent">
+                    <table class="responsiva montserrat">
                         <thead>
                             <tr>        
-                                <th class="tCenter">ID</th>
-                                <th class="tCenter">Fecha de Registro</th>
-                                <th class="tCenter">Tara [kg]</th>
-                                <th class="tCenter">Carga Máxima [kg]</th>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Fecha de Registro</th>
+                                <th class="text-center">Tara [kg]</th>
+                                <th class="text-center">Carga Máxima [kg]</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="tCenter tSticky">100</td>
-                                <td class="tCenter">100</td>
-                                <td class="tCenter">100</td>
-                                <td class="tCenter">100</td>
+                                <td class="text-center tSticky">100</td>
+                                <td class="text-center">100</td>
+                                <td class="text-center">100</td>
+                                <td class="text-center">100</td>
                             </tr>
                             <tr>
-                                <td class="tCenter tSticky">100</td>
-                                <td class="tCenter">100</td>
-                                <td class="tCenter">100</td>
-                                <td class="tCenter">100</td>
+                                <td class="text-center tSticky">100</td>
+                                <td class="text-center">100</td>
+                                <td class="text-center">100</td>
+                                <td class="text-center">100</td>
                             </tr>
                         </tbody>
                     </table>
