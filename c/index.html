@@ -1,122 +1,68 @@
-<!--
- * CoreUI - Open Source Bootstrap Admin Template
- * @version v1.0.0-alpha.4
- * @link http://coreui.io
- * Copyright (c) 2017 creativeLabs Łukasz Holeczek
- * @license MIT
- -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
-    <meta name="author" content="Łukasz Holeczek">
-    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,jQuery,CSS,HTML,RWD,Dashboard">
-    <link rel="shortcut icon" href="img/favicon.png">
-
-    <title>CoreUI - Open Source Bootstrap Admin Template</title>
-
-    <!-- Icons -->
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/simple-line-icons.css" rel="stylesheet">
-
-    <!-- Main styles for this application -->
-    <link href="css/style.css" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="select2.css">
+    <link rel="stylesheet" href="select2-bootstrap.css">
 </head>
-
-<!-- BODY options, add following classes to body to change options
-
-// Header options
-1. '.header-fixed'					- Fixed Header
-
-// Sidebar options
-1. '.sidebar-fixed'					- Fixed Sidebar
-2. '.sidebar-hidden'				- Hidden Sidebar
-3. '.sidebar-off-canvas'		- Off Canvas Sidebar
-4. '.sidebar-compact'				- Compact Sidebar Navigation (Only icons)
-
-// Aside options
-1. '.aside-menu-fixed'			- Fixed Aside Menu
-2. '.aside-menu-hidden'			- Hidden Aside Menu
-3. '.aside-menu-off-canvas'	- Off Canvas Aside Menu
-
-// Footer options
-1. '.footer-fixed'						- Fixed footer
-
--->
-
-<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
-    <header class="app-header navbar">
-        <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up" type="button">☰</button>
-        <a class="navbar-brand" href="#"></a>
-        <ul class="nav navbar-nav hidden-md-down">
-            <li class="nav-item">
-                <a class="nav-link navbar-toggler sidebar-toggler" href="#">☰</a>
-            </li>
-
-        </ul>
-    </header>
-
-    <div class="app-body">
-        <div class="sidebar">
-            <nav class="sidebar-nav">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">NEW</span></a>
-                    </li>
-
-                </ul>
-            </nav>
-        </div>
-
-        <!-- Main content -->
-        <main class="main">
-
-
-            <div class="container-fluid">
-
-
-
-
+<body>
+        <div class="modalAgregarSupervisor modal fade" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header"><i class="fa fa-industry"></i>Agregar Supervisor</div>
+                    <div class="modal-body">
+                        <select class="hola" id="hola" multiple="multiple" style="width: 100%;">
+                            <option value="AL">Alabama</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <!-- /.conainer-fluid -->
-        </main>
-
-
-    </div>
-
-    <footer class="app-footer">
-        <a href="http://coreui.io">CoreUI</a> © 2017 creativeLabs.
-        <span class="float-right">Powered by <a href="http://coreui.io">CoreUI</a>
-        </span>
-    </footer>
-
-    <!-- Bootstrap and necessary plugins -->
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/tether/dist/js/tether.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/pace/pace.min.js"></script>
-
-
-
-    <!-- GenesisUI main scripts -->
-
-    <script src="js/app.js"></script>
-
-
-
-
-
-    <!-- Plugins and scripts required by this views -->
-
-    <!-- Custom scripts required by this view -->
-    <script src="js/views/main.js"></script>
-
+        </div>
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="select2.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".hola").select2({
+                    placeholder: "Seleccionar Zona",
+                    minimumResultsForSearch: Infinity,
+                    theme: "bootstrap"
+                });
+                $('.modalAgregarSupervisor').modal();
+                $.ajax({
+                        url: '../html/a/cliente/ajax/datosZonas.php',
+                        type: 'POST',
+                        data: {id: 40},
+                        dataType: 'json',
+                        success: function(arreglo) {
+                            console.log(JSON.stringify(arreglo));
+                            var opciones = '';
+                            $.each(arreglo,function(index) {
+                                opciones += '<option value='+arreglo[index].idZona+'>'+arreglo[index].nombre+'</option>';
+                            });
+                            $('#hola').append(opciones);
+                        }
+                    }).fail(function( jqXHR, textStatus, errorThrown ){
+                        if (jqXHR.status === 0){
+                            alert('No hay coneccion con el servidor');
+                        } else if (jqXHR.status == 404) {
+                            alert('La pagina solicitada no fue encontrada, error 404');
+                        } else if (jqXHR.status == 500) {
+                            alert('Error interno del servidor');
+                        } else if (textStatus === 'parsererror') {
+                            alert('Error en la respuesta, debes analizar la sintaxis JSON');
+                        } else if (textStatus === 'timeout') {
+                            alert('Ya ha pasado mucho tiempo');
+                        } else if (textStatus === 'abort') {
+                            alert('La peticion fue abortada');
+                        } else {
+                            alert('Error desconocido');
+                        }
+                    });
+            });
+        </script>
 </body>
-
 </html>

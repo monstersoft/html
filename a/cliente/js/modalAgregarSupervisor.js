@@ -1,20 +1,22 @@
 $(document).ready(function() {
     $('.agregarSupervisor').click(function(){
-        /*var id = $(this).attr('id');
-        var url = devuelveUrl('a/cliente/zonas.php');
-        $("#zonasAsociadas").dropdown('clear');
-        $("#zonasAsociadas").find("option[class='dinamico']").remove();
+        //$('#idEmpresaAgregarZona').val($(this).attr('id'));
+        //$("#zonasAsociadas").dropdown('clear');
+        //$("#zonasAsociadas").find("option[class='dinamico']").remove();
+        var id = $('#hola').val();
+        var url = devuelveUrl('a/cliente/ajax/datosZonas.php');
         $.ajax({
                 url: url,
                 type: 'POST',
-                data: {idProyecto: id},
+                data: {id: id},
                 dataType: 'json',
-                success: function(returnedData) {
-                    var option = '';
-                    returnedData.forEach(function(element,index){
-                            option += '<option class="dinamico" value='+returnedData[index].idZona+'>'+returnedData[index].nombre+'</option>';
-                        });
-                    $('#zonasAsociadas').append(option);
+                success: function(arreglo) {
+                    console.log(JSON.stringify(arreglo));
+                    var opciones = '';
+                    $.each(arreglo,function(index) {
+                        opciones += '<option style=""class="dinamico" value='+arreglo[index].idZona+'>'+arreglo[index].nombre+'</option>';
+                    });
+                    $('#zonasAsociadas').append(opciones);
                 }
             }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){
@@ -32,7 +34,7 @@ $(document).ready(function() {
                 } else {
                     alert('Error desconocido');
                 }
-            });*/
+            });
         $('.modalAgregarSupervisor').modal();
     });
     $('#btnAñadirSupervisor').click(function(){
