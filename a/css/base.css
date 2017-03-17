@@ -81,6 +81,9 @@
     color: rgba(0, 0, 0, 0.87);
 }
 /* MODALS */
+.modal {
+    font-family: 'Montserrat';
+}
 .modal-header {
     position: relative;
     padding: 20px 20px 10px 20px;
@@ -251,7 +254,7 @@ nav  ul  li a:hover .icons {
     left: 0px;
 }
 /* STICKY BUTTON */
-#stickyButton {
+.stickyButton {
     position: fixed;
     bottom: 10px;
     right: 10px;
@@ -261,7 +264,7 @@ nav  ul  li a:hover .icons {
     color: white;
     border-radius: 5px;
 }
-#stickyButton:hover {
+.stickyButton:hover {
     background: #262626;
     cursor: pointer;
 }

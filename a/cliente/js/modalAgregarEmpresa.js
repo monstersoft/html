@@ -3,6 +3,7 @@ $(document).ready(function() {
         $('.modalAgregarEmpresa').modal();
     });
     $('#btnAñadirEmpresa').click(function(){
+        $('.alert').remove();
         var arreglo = new Array();
         var nombre = $('#nombreAgregarEmpresa').val();
         var rut =  $('#rutAgregarEmpresa').val();

@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('.agregarSupervisor').click(function(){
-        var id = $(this).attr('id');
-        var url = devuelveUrl('html/cliente/zonas.php');
+        /*var id = $(this).attr('id');
+        var url = devuelveUrl('a/cliente/zonas.php');
         $("#zonasAsociadas").dropdown('clear');
         $("#zonasAsociadas").find("option[class='dinamico']").remove();
         $.ajax({
@@ -32,12 +32,8 @@ $(document).ready(function() {
                 } else {
                     alert('Error desconocido');
                 }
-            });
-        $('.ui.negative.message').remove();
-        $('.ui.warning.message').remove();
-        $('.ui.icon.success.message').remove();
-        $('#idZonaSupervisor').val(id);
-        $('.modalAgregarSupervisor').modal('show');
+            });*/
+        $('.modalAgregarSupervisor').modal();
     });
     $('#btnAñadirSupervisor').click(function(){
         var arreglo = new Array();
