@@ -130,12 +130,8 @@
                             <input type="text" placeholder=". . . . . . . . @ . . . . . . . ." class="form-control" name="correo" id="correoAgregarSupervisor">
                         </div>
                         <div class="form-group">
-                            <label for="multiple" class="control-label">Zonas Asociadas</label>
-                            <select id="multiple" class="form-control select2-multiple" multiple>
-                                <option value="CA">California</option>
-                                <option value="NV">Nevada</option>
-                                <option value="OR">Oregon</option>
-                                <option value="WA">Washington</option>
+                            <label for="zonas" class="control-label">Zonas Asociadas</label>
+                            <select id="zonasAsociadas" name="zonas" class="form-control select2-multiple" multiple>
                             </select>
                         </div>
                     </form>

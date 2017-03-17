@@ -14,7 +14,7 @@ $(document).ready(function() {
                     console.log(JSON.stringify(arreglo));
                     var opciones = '';
                     $.each(arreglo,function(index) {
-                        opciones += '<option style=""class="dinamico" value='+arreglo[index].idZona+'>'+arreglo[index].nombre+'</option>';
+                        opciones += '<option class="dinamico" value='+arreglo[index].idZona+'>'+arreglo[index].nombre+'</option>';
                     });
                     $('#zonasAsociadas').append(opciones);
                 }

@@ -17,12 +17,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/bootstrap.css">
-    <link rel="stylesheet" href="../../css/awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../recursos/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../css/base.css">
-    <!--<link rel="stylesheet" href="../../css/empresas.css">-->
-    <link rel="stylesheet" href="../../css/animate.css">
 </head>
 <body>
     <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p>Machine Monitors</p></div>
@@ -37,17 +35,27 @@
             <li><a><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
         </ul>
     </nav>
-            <?php 
-            if($empresas['cantidadEmpresas'] == 0)
-                echo 'No existen empresas, para agregar debes presionar el boton mas';
-            else {
-                foreach ($empresas['empresas'] as $key => $value) {
-                    echo '
-                        <div class="col-xs-12 col-sm-6 card"> <div class="col-xs-12 shadow"> <div class="col-xs-12 titleIndustry"> <i class="fa fa-industry fa-2x fLeft cA"></i> <div class="dropdown fRight"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li><li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li></ul> </div> <p>'.$value['nombre'].'</p> </div><div class="col-xs-4 tCenter"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div><div class="col-xs-4 tCenter"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div><div class="col-xs-4 tCenter"><i class="fa fa-users fa-2x"></i><br><span>SUPERVISORES</span><br>'.$value['supervisores'].'</div></div><a href="zonas.php?id=40"'.$value['idEmpresa'].'" class="boton">Ver</a> </div>
-                    ';
-                }
-            }
-        ?>
+    <div id="content">
+        <div class="col-xs-12 col-sm-6 card"> 
+            <div class="col-xs-12 shadowButtonDown cardContent"> 
+                <div class="col-xs-12 titleCard"> 
+                    <i class="fa fa-industry fa-2x pull-left cA"></i> 
+                    <div class="dropdown pull-right"> 
+                        <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
+                        <ul class="dropdown-menu dropdown-menu-right"> 
+                            <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
+                            <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
+                        </ul> 
+                    </div> 
+                    <p>'.$value['nombre'].'</p> 
+                </div>
+                <div class="col-xs-4 cardContent text-center"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div>
+                <div class="col-xs-4 cardContent text-center"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div>
+                <div class="col-xs-4 cardContent text-center"><i class="fa fa-users fa-2x"></i><br><span>SUPERVISORES</span><br>'.$value['supervisores'].'</div>
+            </div>
+            <a href="zonas.php?id=40" class="boton">Ver</a>
+        </div>
+    </div>
     <div class="stickyButton agregarEmpresa"><i class="fa fa-plus"></i></div>
     <i id="loader" class="loaderUnDisplayNav fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
 <!-- VENTANAS MODALES -->
@@ -128,14 +136,14 @@
         </div>
     </div>
 <!-- MODALS -->
-    <script src="../../js/jquery.js"></script>
-    <script src="../../js/bootstrap.js"></script>
-    <script src="../../js/funciones.js"></script>
-    <script src="../../js/rut/jquery.rut.chileno.js"></script>
-    <script src="../../js/compruebaInputs.js"></script>
-    <script src="../../js/mensajes.js"></script>
+    <script src="../../recursos/jquery/jquery.min.js"></script>
+    <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../recursos/rut/jquery.rut.chileno.js"></script>
     <script src="../../cliente/js/modalAgregarEmpresa.js"></script>
     <script src="../../cliente/js/modalEditarEmpresa.js"></script>
+    <script src="../../js/funciones.js"></script>
+    <script src="../../js/compruebaInputs.js"></script>
+    <script src="../../js/mensajes.js"></script>
     <script>
         $(document).ready(function(){
             /*function explode(){
@@ -143,7 +151,7 @@
               $('#content').fadeIn().css('display','block');
             }
             setTimeout(explode, 5000);*/
-            main()
+            main();
             $('.cancelar').click(function(){$('.alert').remove();});
             $('.modal').on('hidden.bs.modal', function(){
                 $(this).find('form')[0].reset();
