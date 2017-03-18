@@ -28,6 +28,11 @@
     font-weight: bold;
     font-family: 'Montserrat';
 }
+.titleCard > i {
+    color: #F5A214;
+    font-size: 20px;
+
+}
 .cardContent {
 	padding: 0px;
 }
@@ -44,9 +49,10 @@
     border-right: 1px solid #D4D4D5;
     background-color: #FFFFFF;
 }
-/* DROPDOWN */
+ /*DROPDOWN */
 .dropdown {
     background: white;
+    padding: 0px !important;
 }
 .dropdown-menu {
     padding: 0px;

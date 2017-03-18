@@ -1,14 +1,14 @@
 $(document).ready(function(){
     var data = 
         [{
-            idProyecto: 0
+            idEmpresa: 0
         },{
             idZona: 0
         },{
             nombre: {original: '',modificado: '',cambio: 0}
         }]
     function resetData(data) {
-            data[0].idProyecto = 0;
+            data[0].idEmpresa = 0;
             data[1].idZona = 0;
             data[2].nombre.original = '';
             data[2].nombre.modificado = '';
@@ -19,11 +19,12 @@ $(document).ready(function(){
         return $.ajax({
             url: url,
             type: 'POST',
-            data: {idZona: id},
+            data: {id: id},
             dataType: 'json',
-            success: function(arreglo){                  
-                $('#idProyecto2').val(arreglo.idProyecto);
-                $('#idZona').val(arreglo.idZona);
+            cache: false,
+            success: function(arreglo) {
+                $('#idZonaEditarZona').val(arreglo.idZona);                  
+                $('#idEmpresaEditarZona').val(arreglo.idEmpresa);
                 $('#nombreEditarZona').val(arreglo.nombre);
             }
         }).fail(function( jqXHR, textStatus, errorThrown ){
@@ -45,25 +46,26 @@ $(document).ready(function(){
         });
     }
     $('.editarZona').click(function(){
-        resetData(data);
-        borrarMensajes();
-        $('.modalEditarZona').modal('show');
-        var url = devuelveUrl('html/cliente/datosZona.php');
-        var id = $(this).attr('id');
-        var datos = retornaDatos(id,url);
+        $('.modalEditarZona').modal();
+        var url = devuelveUrl('a/cliente/ajax/datosZona.php');
+        //var id = $(this).attr('id');
+        //var id = $('#hola').val();
+        var datos = retornaDatos(19,url);
         datos.success(function(respuesta){
-            data[0].idProyecto = respuesta.idProyecto;
+            data[0].idEmpresa = respuesta.idEmpresa;
             data[1].idZona = respuesta.idZona;
             data[2].nombre.original = respuesta.nombre;
         });
     });
     $('.modalEditarZona').on('click','#btnEditarZona',function(){
-        borrarMensajes();
+        $('.alert').remove();
         var arreglo = new Array();
-        data[2].nombre.modificado = $('#nombreEditarZona').val();
+        data[2].nombre.modificado = upperCase($('#nombreEditarZona').val());
         var numberErrors = 0;
         if(isEmpty(data[2].nombre.modificado))
             arreglo.push('<li>El campo nombre es obigatorio</li>');
+        if(maxLength(data[2].nombre.modificado, 30))
+            arreglo.push('<li>Nombre no debe superar los 30 caracteres</li>');
         if(arreglo.length == 0) {
             var flag = true;
             if(data[2].nombre.original != data[2].nombre.modificado){
@@ -71,12 +73,13 @@ $(document).ready(function(){
                 flag = false;
             }
             if(flag != true){
-                var url = devuelveUrl('html/cliente/editarZona.php');
+                var url = devuelveUrl('a/cliente/ajax/editarZona.php');
                 $.ajax({
                     url : url,
                     type: 'POST',
                     data:{datos: data },
                     success: function(arreglo) {
+                            console.log(JSON.stringify(arreglo));
                             var list = JSON.parse(arreglo);
                             var lisp = '';
                             var lispError = '';
@@ -84,13 +87,13 @@ $(document).ready(function(){
                                 list.msgExito.forEach(function(element){
                                     lisp += '<li>'+element+'</li>';
                                 });
-                                $('.message').html('<div class="ui success message"><div class="content"><ul>'+lisp+'</ul></div>');
+                                $('.message').html('<div class="alert alert-success"><div class="content"><ul>'+lisp+'</ul></div>');
                             }
                             if(list.fracasos >=1){
                                 list.msgFracaso.forEach(function(element){
                                     lispError += '<li>'+element+'</li>';
                                 });
-                                $('.messageError').html('<div class="ui error message"><div class="content"><ul>'+lispError+'</ul></div>');
+                                $('.messageError').html('<div class="alert alert-error"><div class="content"><ul>'+lispError+'</ul></div>');
                             }
                             if(list.exitoNombre == 1) {
                                 data[2].nombre.original = data[2].nombre.modificado;

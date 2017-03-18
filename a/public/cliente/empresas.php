@@ -20,13 +20,15 @@
     <link rel="stylesheet" href="../../recursos/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
+    <link rel="stylesheet" href="../../recursos/select2/select2.min.css">
+    <link rel="stylesheet" href="../../recursos/select2/select2-bootstrap.css">
     <link rel="stylesheet" href="../../css/base.css">
 </head>
 <body>
     <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p>Machine Monitors</p></div>
     <nav class="unDisplayNav">
         <ul>
-            <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile"><?php  echo $perfil['empresa'] ?></span><br><span id="nameProfile"><?php echo $perfil['correo']; ?></span></li>
+            <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile"><?php echo $perfil['empresa'] ?></span><br><span id="nameProfile"><?php echo $perfil['correo'] ?></span></li>
             <li><a class="selected"><i class="fa fa-tachometer icons"></i>Dashboard</a></li>
             <li><a><i class="fa fa-industry icons"></i>Empresas</a></li>
             <li><a><i class="fa fa-bar-chart icons"></i>Históricos</a></li>
@@ -35,31 +37,20 @@
             <li><a><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
         </ul>
     </nav>
-    <div id="content">
-        <div class="col-xs-12 col-sm-6 card"> 
-            <div class="col-xs-12 shadowButtonDown cardContent"> 
-                <div class="col-xs-12 titleCard"> 
-                    <i class="fa fa-industry fa-2x pull-left cA"></i> 
-                    <div class="dropdown pull-right"> 
-                        <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                        <ul class="dropdown-menu dropdown-menu-right"> 
-                            <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
-                            <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
-                        </ul> 
-                    </div> 
-                    <p>'.$value['nombre'].'</p> 
-                </div>
-                <div class="col-xs-4 cardContent text-center"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div>
-                <div class="col-xs-4 cardContent text-center"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div>
-                <div class="col-xs-4 cardContent text-center"><i class="fa fa-users fa-2x"></i><br><span>SUPERVISORES</span><br>'.$value['supervisores'].'</div>
-            </div>
-            <a href="zonas.php?id=40" class="boton">Ver</a>
-        </div>
+    <div id="content" class="animated fadeInUp unLeftContent">
+        <?php
+            if($empresas['cantidadEmpresas'] == 0)
+                    echo 'No hay empresas';
+            foreach ($empresas['empresas'] as $key => $value) {
+                echo '
+                    <div class="col-xs-12 col-sm-6 card"> <div class="col-xs-12 shadowButtonDown cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li><li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li></ul> </div><p>LOS ACACIOS</p></div><div class="col-xs-4 cardContent text-center"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div><div class="col-xs-4 cardContent text-center"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div><div class="col-xs-4 cardContent text-center"><i class="fa fa-users fa-2x"></i><br><span>SUPERVISORES</span><br>'.$value['supervisores'].'</div></div><a href="zonas.php?id=40" class="boton">Ver</a> </div>
+                 ';
+            }
+        ?>
     </div>
     <div class="stickyButton agregarEmpresa"><i class="fa fa-plus"></i></div>
-    <i id="loader" class="loaderUnDisplayNav fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
 <!-- VENTANAS MODALES -->
-    <!-- MODAL AGREGAR EMPRESA -->
+    <!-- MODAL AGREGAR EMPRESA --> 
     <div class="modalAgregarEmpresa modal fade" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -135,9 +126,10 @@
             </div>
         </div>
     </div>
-<!-- MODALS -->
+<!-- VENTANAS MODALES -->
     <script src="../../recursos/jquery/jquery.min.js"></script>
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../recursos/select2/select2.full.js"></script>
     <script src="../../recursos/rut/jquery.rut.chileno.js"></script>
     <script src="../../cliente/js/modalAgregarEmpresa.js"></script>
     <script src="../../cliente/js/modalEditarEmpresa.js"></script>
@@ -146,11 +138,11 @@
     <script src="../../js/mensajes.js"></script>
     <script>
         $(document).ready(function(){
-            /*function explode(){
+            function explode(){
               $('#loader').css('display','none');
               $('#content').fadeIn().css('display','block');
             }
-            setTimeout(explode, 5000);*/
+            setTimeout(explode, 5000);
             main();
             $('.cancelar').click(function(){$('.alert').remove();});
             $('.modal').on('hidden.bs.modal', function(){

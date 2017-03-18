@@ -1,5 +1,5 @@
 <?php
-    $id = $_GET['id'];
+    //$id = $_GET['id'];
     /*session_start();
     if(!isset($_SESSION['correo'])){
         header("Location:../../index.php");
@@ -28,10 +28,10 @@
     <link rel="stylesheet" href="../../css/zonas.css">
 </head>
 <body>
-    <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p>Machine Monitors</p></div>
+    <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p class="editarZona">Machine Monitors</p></div>
     <nav class="unDisplayNav">
         <ul>
-            <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile"><?php  echo $perfil['empresa'] ?></span><br><span id="nameProfile"><?php echo $perfil['correo']; ?></span></li>
+            <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile"><?php echo $perfil['empresa'] ?></span><br><span id="nameProfile"><?php echo $perfil['correo'] ?></span></li>
             <li><a class="selected"><i class="fa fa-tachometer icons"></i>Dashboard</a></li>
             <li><a><i class="fa fa-industry icons"></i>Empresas</a></li>
             <li><a><i class="fa fa-bar-chart icons"></i>Históricos</a></li>
@@ -44,7 +44,7 @@
         <div class="col-xs-12 col-sm-6 card">
             <div class="col-xs-12 shadow cardContent">
                 <div class="col-xs-12 titleCard"> 
-                    <i class="fa fa-globe fa-2x pull-left cA"></i>
+                    <i class="fa fa-globe pull-left"></i>
                     <div class="dropdown pull-right">
                         <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
                         <ul class="dropdown-menu dropdown-menu-right">
@@ -52,10 +52,9 @@
                             <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
                         </ul>
                     </div>
-                    <p class="agregarZona">LOS ACACIOS</p>
+                    <p>LOS ACACIOS</p>
                 </div>
                 <div class="col-xs-12 cardContent">
-                    <?php echo '<input type="text" id="hola" value="'.$id.'">'; ?>
                     <table class="responsiva montserrat">
                         <thead>
                             <tr>        
@@ -85,7 +84,7 @@
         </div>
     </div>
     <div class="stickyButton agregarSupervisor"><i class="fa fa-plus"></i></div>
-<!-- VENTANAS MODALES -->
+ <!-- VENTANAS MODALES --> 
     <!-- MODAL AGREGAR ZONA -->
     <div class="modalAgregarZona modal fade" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
@@ -101,7 +100,7 @@
                             <input type="text" placeholder="Nueva Zona" class="form-control" name="nombre" id="nombreAgregarZona">
                         </div>
                         <div class="form-group">
-                            <label>ID EMPRESA</label>
+                            <label>idEmpresaAgregarZona</label>
                             <input type="text" class="form-control" name="id" id="idEmpresaAgregarZona">
                         </div>
                     </form>
@@ -114,6 +113,36 @@
             </div>
         </div>
     </div>
+    <!-- MODAL EDITAR ZONA -->
+    <div class="modalEditarZona modal fade" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header"><i class="fa fa-globe"></i>Agregar Supervisor</div>
+                    <div class="modal-body">
+                        <form id="formularioEditarZona">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" placeholder="Nuevo Supervisor" class="form-control" name="nombre" id="nombreEditarZona">
+                            </div>
+                            <div class="form-group">
+                                <label>idEmpresaEditarZona</label>
+                                <input type="text" class="form-control" name="id" id="idEmpresaEditarZona">
+                            </div>
+                            <div class="form-group">
+                                <label>idZonaEditarZona</label>
+                                <input type="text" class="form-control" name="id" id="idZonaEditarZona">
+                            </div>
+                        </form>
+                        <div class="clearfix">
+                            <button type="submit" class="btn btn-primary pull-right montserrat" id="btnEditarZona"><i class="cargar fa fa-pencil"></i>Editar</button>
+                            <button type="button" class="btn btn-inverse pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                        </div>
+                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                        <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     <!-- MODAL AGREGAR SUPERVISOR -->
     <div class="modalAgregarSupervisor modal fade" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
@@ -131,7 +160,7 @@
                         </div>
                         <div class="form-group">
                             <label for="zonas" class="control-label">Zonas Asociadas</label>
-                            <select id="zonasAsociadas" name="zonas" class="form-control select2-multiple" multiple>
+                            <select id="zonasAsociadas" name="zonasAsociadas[]" class="form-control select2-multiple" multiple>
                             </select>
                         </div>
                     </form>
@@ -144,23 +173,26 @@
             </div>
         </div>
     </div>
+    <!-- MODAL EDITAR ZONA -->
+<!-- VENTANAS MODALES -->
     <script src="../../recursos/jquery/jquery.min.js"></script>
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../recursos/select2/select2.full.js"></script>
     <script src="../../recursos/rut/jquery.rut.chileno.js"></script>
     <script src="../../recursos/responsiveTables/responsiveTables.js"></script>
     <script src="../../cliente/js/modalAgregarZona.js"></script>
+    <script src="../../cliente/js/modalEditarZona.js"></script>
     <script src="../../cliente/js/modalAgregarSupervisor.js"></script>
     <script src="../../js/funciones.js"></script>
     <script src="../../js/compruebaInputs.js"></script>
     <script src="../../js/mensajes.js"></script>
     <script>
         $(document).ready(function(){
-            /*function explode(){
+            function explode(){
               $('#loader').css('display','none');
               $('#content').fadeIn().css('display','block');
             }
-            setTimeout(explode, 5000);*/
+            setTimeout(explode, 5000);
                 $(".hola").select2({
                     placeholder: "Seleccionar Zona",
                     theme: "bootstrap",
@@ -174,6 +206,7 @@
             $('.cancelar').click(function(){$('.alert').remove();});
             $('.modal').on('hidden.bs.modal', function(){
                 $(this).find('form')[0].reset();
+                $("#zonasAsociadas").find("option[class='dinamico']").remove();
             });
         });
     </script>

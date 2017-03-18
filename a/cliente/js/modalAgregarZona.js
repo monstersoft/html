@@ -24,7 +24,7 @@ $(document).ready(function() {
                 dataType: 'json',
                 cache: false,
                 beforeSend: function() {
-                  activarLoaderBotones('fa-plus','fa-refresh')
+                  activarLoaderBotones('fa-plus','fa-refresh');
                 },
                 success: function(arreglo) {
                     console.log(JSON.stringify(arreglo));
