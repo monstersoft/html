@@ -112,7 +112,7 @@
     margin-right: 10px;
 }
 .a {
-    background-color: #F5A214;
+    background: rgba(0, 0, 0, 0.1);
 }
 .gc {
     background-color: #F5F4F3;
@@ -306,4 +306,5 @@ nav  ul  li a:hover .icons {
 .mTop15 {
     margin-top: 15px;
 }
+
 

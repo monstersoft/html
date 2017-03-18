@@ -80,6 +80,17 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="col-xs-12 col-sm-6 cardContent a">
+                    <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><p class="text-center montserrat">Patricio Andrés Villanueva Fuentes</p></div>
+                    <div class="col-xs-12">
+                        <ul>
+                            <li>pavillanueva@ing.ucsc.cl</li>
+                            <li>+56995007812</li>
+                            <li>No ha confirmado email</li>
+                        </ul>
+                    <a href="#">Asignar nueva zona</a><a href="#">Eliminar</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
