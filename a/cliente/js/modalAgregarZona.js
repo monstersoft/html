@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $('.agregarZona').click(function(){
-        //$('#idEmpresaAgregarZona').val($(this).attr('id'));
-        $('#idEmpresaAgregarZona').val($('#hola').val());
+        $('#idEmpresaAgregarZona').val($(this).attr('id'));
         $('.modalAgregarZona').modal();
     });
     $('#btnAñadirZona').click(function(){

@@ -5,3 +5,6 @@
 5. Cuando se abre en una resolución X a el tamaño del contenido no ocupa el 100%
 6. Poner mensaje en supervisor cuando no ha completado el registro
 7. Texto se sale de caja
+8. Patente sale con gris de fondo
+9. Cuando no hay máquinas el dropdown no se ve completo
+10. No puede agregar supervisores su no hay zonas

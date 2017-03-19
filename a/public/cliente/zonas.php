@@ -9,7 +9,9 @@
         //$email = $_SESSION['correo'];
         $email = 'pavillanueva@ing.ucsc.cl';
         $perfil = datosPerfil($email);
-        echo '<div class="stickyButton desplegar"><i class="fa fa-plus"></i></div>';
+        echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div>
+        <div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div>
+        <div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>';
     //}
 ?>
 <!DOCTYPE html>
@@ -28,8 +30,8 @@
     <link rel="stylesheet" href="../../css/zonas.css">
 </head>
 <body>
-    <div class="stickyButtonOne animated fadeInRight agregarSupervisor"><i class="fa fa-user"></i></div>
-    <div class="stickyButtonTwo animated fadeInRight agregarSupervisor"><i class="fa fa-globe"></i></div>
+    <div class="stickyButtonOne displayNone animated agregarSupervisor"><i class="fa fa-user"></i></div>
+    <div class="stickyButtonTwo displayNone animated agregarSupervisor"><i class="fa fa-globe"></i></div>
     <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p class="editarZona">Machine Monitors</p></div>
     <nav class="unDisplayNav">
         <ul>
@@ -78,8 +80,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <i class="fa fa-industry"></i>
-                    Agregar Empresa
+                    <i class="fa fa-globe"></i>
+                    Agregar Zona
                 </div>
                 <div class="modal-body">
                     <form id="formularioAgregarZona">
@@ -192,17 +194,9 @@
                     
                 });*/
             main();
-            $('.desplegar').click(function() {
-                if(desplegar == 0) {
-                    $('.stickyButtonOne').css('display','block');
-                    $('.stickyButtonTwo').css('display','block');
-                    desplegar = 1;
-                }
-                else {
-                    $('.stickyButtonOne').css('display','none');
-                    $('.stickyButtonTwo').css('display','none');
-                    desplegar= 0;
-                }
+            $('.agregar').click(function(){
+                $('.sOne').toggleClass('displaySticky');
+                $('.sTwo').toggleClass('displaySticky');
             });
             $('.cancelar').click(function(){$('.alert').remove();});
             $('.modal').on('hidden.bs.modal', function(){

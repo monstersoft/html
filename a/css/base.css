@@ -260,40 +260,48 @@ nav  ul  li a:hover .icons {
     left: 0px;
 }
 /* STICKY BUTTON */
-.stickyButton {
+.sButton {
     position: fixed;
+    width: 30px;
+    height: 30px;
+    /*border-radius: 5px;*/
+    color: white;
+    background: #F5A214;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.sButton:hover {
+    cursor: pointer;
+    background: #262626;
+    -moz-transition: .4s linear;
+    -webkit-transition: .4s ease-out;
+    transition: .4s linear;
+}
+.sPlus {
     bottom: 10px;
     right: 10px;
-    padding: 10px 15px 10px 15px;
-    background: #F5A214;
-    z-index: 0;
-    color: white;
-    border-radius: 5px;
 }
-.stickyButton:hover {
-    background: #262626;
-    cursor: pointer;
+.sOne {
+    bottom: 45px;
+    right: -30px;
+    transition: all 0.5s;
 }
-.stickyButtonOne {
-    position: fixed;
-    bottom: 50px;
+.sTwo {
+    bottom: 80px;
+    right: -30px;
+    transition: all 0.6s;
+}
+.displaySticky {
     right: 10px;
-    padding: 10px 15px 10px 15px;
-    background: #F5A214;
-    z-index: 0;
-    color: white;
-    border-radius: 5px;
-    display: none;
 }
-.stickyButtonTwo {
-    position: fixed;
-    bottom: 90px;
-    right: 10px;
-    padding: 10px 15px 10px 15px;
-    background: #F5A214;
-    z-index: 0;
-    color: white;
-    border-radius: 5px;
+.displayBlock {
+    display: block;
+}
+.displayNone {
     display: none;
 }
 /* BACKGROUND OPACITY MENU*/
