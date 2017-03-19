@@ -274,6 +274,9 @@ nav  ul  li a:hover .icons {
     justify-content: center;
     align-items: center;
 }
+.sButton i {
+    font-size: 20px;
+}
 .sButton:hover {
     cursor: pointer;
     background: #262626;
