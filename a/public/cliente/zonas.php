@@ -9,9 +9,9 @@
         //$email = $_SESSION['correo'];
         $email = 'pavillanueva@ing.ucsc.cl';
         $perfil = datosPerfil($email);
-        echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div>
-        <div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div>
-        <div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>';
+        echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus fa-2x"></i></div></div>
+        <div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe fa-2x"></i></div></div>
+        <div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user fa-2x"></i></div></div>';
     //}
 ?>
 <!DOCTYPE html>
