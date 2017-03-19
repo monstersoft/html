@@ -273,6 +273,7 @@ nav  ul  li a:hover .icons {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    box-shadow: 2px 3px 6px #666; 
 }
 .sButton i {
     font-size: 20px;
