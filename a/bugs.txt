@@ -1,0 +1,7 @@
+1. Arreglar mensajes, poner loader
+2. Al editar ver como actualizar la página
+3. Falta agregar la información de la empresa
+4. Cuando pongo algo sin acento y quiero editarlo para ponerle el acento , me dice que está en uso la palabra
+5. Cuando se abre en una resolución X a el tamaño del contenido no ocupa el 100%
+6. Poner mensaje en supervisor cuando no ha completado el registro
+7. Texto se sale de caja

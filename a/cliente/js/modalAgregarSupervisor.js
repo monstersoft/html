@@ -1,10 +1,9 @@
 $(document).ready(function() {
     $('.agregarSupervisor').click(function(){
-        var url = devuelveUrl('a/cliente/ajax/datosZonas.php');
         $.ajax({
-                url: url,
+                url: devuelveUrl('a/cliente/ajax/datosZonas.php'),
                 type: 'POST',
-                data: {id: 40},
+                data: {id: $(this).attr('id')},
                 dataType: 'json',
                 success: function(arreglo) {
                     var opciones = '';
@@ -48,12 +47,10 @@ $(document).ready(function() {
         if($('#zonasAsociadas').val() == null || $('#zonasAsociadas').val() == "")
             arreglo.push('<li>Tienes que seleccionar al menos una zona</li>');
         if(arreglo.length == 0) {
-            var data = $('#formularioAgregarSupervisor').serialize();
-            var url = devuelveUrl('a/cliente/ajax/agregarSupervisor.php');
             $.ajax({
-                url: url,
+                url: devuelveUrl('a/cliente/ajax/agregarSupervisor.php'),
                 type: 'POST',
-                data: data,
+                data: $('#formularioAgregarSupervisor').serialize(),
                 dataType: 'json',
                 beforeSend: function() {
                   activarLoaderBotones('fa-plus','fa-refresh');

@@ -41,10 +41,12 @@
         <?php
             if($empresas['cantidadEmpresas'] == 0)
                     echo 'No hay empresas';
-            foreach ($empresas['empresas'] as $key => $value) {
-                echo '
-                    <div class="col-xs-12 col-sm-6 card"> <div class="col-xs-12 shadowButtonDown cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li><li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li></ul> </div><p>LOS ACACIOS</p></div><div class="col-xs-4 cardContent text-center"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div><div class="col-xs-4 cardContent text-center"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div><div class="col-xs-4 cardContent text-center"><i class="fa fa-users fa-2x"></i><br><span>SUPERVISORES</span><br>'.$value['supervisores'].'</div></div><a href="zonas.php?id=40" class="boton">Ver</a> </div>
-                 ';
+            else {
+                foreach ($empresas['empresas'] as $key => $value) {
+                    echo '
+                        <div class="col-xs-12 col-sm-6 card"> <div class="col-xs-12 shadowButtonDown cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li><li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li></ul> </div><p>'.$value['nombre'].'</p></div><div class="col-xs-4 cardContent text-center"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div><div class="col-xs-4 cardContent text-center"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div><div class="col-xs-4 cardContent text-center"><i class="fa fa-users fa-2x"></i><br><span>SUPERVISORES</span><br>'.$value['supervisores'].'</div></div><a href="zonas.php?id='.$value['idEmpresa'].'" class="boton">Ver</a> </div>
+                     ';
+                }
             }
         ?>
     </div>
@@ -62,19 +64,19 @@
                     <form id="formularioAgregarEmpresa">
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" placeholder="Empresa" class="form-control" name="nombre" id="nombreAgregarEmpresa" value="a">
+                            <input type="text" placeholder="Empresa" class="form-control" name="nombre" id="nombreAgregarEmpresa">
                         </div>
                         <div class="form-group">
                             <label for="rut">Rut</label>
-                            <input type="text" placeholder="17286211-K" class="form-control" name="rut" id="rutAgregarEmpresa" value="17286211-k">
+                            <input type="text" placeholder="17286211-K" class="form-control" name="rut" id="rutAgregarEmpresa">
                         </div>
                         <div class="form-group">
                             <label for="email">Correo</label>
-                            <input type="text" placeholder=". . . . . @ . . . . . " class="form-control" name="email" id="emailAgregarEmpresa" value="a@s.cl">
+                            <input type="text" placeholder=". . . . . @ . . . . . " class="form-control" name="email" id="emailAgregarEmpresa">
                         </div>
                         <div class="form-group">
                             <label for="celular">Celular</label>
-                            <input type="text" placeholder="995007812" class="form-control" name="celular" id="celularAgregarEmpresa" value="995007812">
+                            <input type="text" placeholder="995007812" class="form-control" name="celular" id="celularAgregarEmpresa">
                         </div>
                     </form>
                     <div class="clearfix">
