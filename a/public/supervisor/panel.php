@@ -46,62 +46,56 @@
 <!-- ............................................................................................................................ -->
         <?php
             foreach(zonas($email) as $value) {
-                echo '<div class="col-xs-12 col-sm-6 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="subirArc"><i class="fa fa-upload"></i>subir archivo</a></li><li><a id="'.$value['idZona'].'" class="agregarMaquina"><i class="fa fa-cog"></i>agregar máquina</a></li></ul> </div><p>'.$value['nombre'].'</p></div>';
+                $idZona = $value['idZona'];
+                echo '<div class="col-xs-12 col-sm-6 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="subirArchivo"><i class="fa fa-upload"></i>subir archivo</a></li><li><a id="'.$value['idZona'].'" class="agregarMaquina"><i class="fa fa-cog"></i>agregar máquina</a></li></ul> </div><p>'.$value['nombre'].'</p></div>';
+                    if(cantidadMaquinas($idZona) == 0)
+                        echo '<div class="col-xs-12 emptyMessage"><i class="fa fa-exclamation-circle fa-2x pull-left"></i>No hay máquinas asociadas a esta zona</div>';
+                    else {
+                        echo '<div class="col-xs-12 cardContent"> <div class="table-responsive"> <table class="responsive" style="width: 100%;"> <thead> <tr> <th>ID</th> <th>Patente</th> <th>Fecha de Registro</th> <th>Tara [kg]</th> <th>Carga Máxima [kg]</th> </tr></thead> <tbody>';
+                        foreach(maquinas($idZona) as $value) {
+                            echo '<tr> <td class="firstColumn">'.$value['identificador'].'</td><td>'.$value['patente'].'</td><td>'.$value['fechaRegistro'].'</td><td>'.$value['tara'].'</td><td>'.$value['cargaMaxima'].'</td></tr>';
+                        }
+                        echo '</tbody> </table> </div></div>';
+                    }
+                    foreach(supervisores($idZona) as $value) {
+                       echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><p class="text-center montserrat">'.$value['nombreSupervisor'].'</p></div><div class="col-xs-12"> <ul> <li>'.$value['correoSupervisor'].'</li><li>'.$value['celular'].'</li><li>'.$value['status'].'</li></ul> <a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div></div>';
+                    }
                 echo '</div></div>';
             }
         ?>
-        <!--<div class="col-xs-12 cardContent">
-            <div class="table-responsive">
-                <table class="responsive" style="width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Patente</th>
-                            <th>Fecha de Registro</th>
-                            <th>Tara [kg]</th>
-                            <th>Carga Máxima [kg]</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="firstColumn">1000</td>
-                            <td>ABCDEFGHIJK</td>
-                            <td>2017-03-03</td>
-                            <td>105000</td>
-                            <td>105000</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>-->
-        <!--<div class="col-xs-12 col-sm-6 cardContent a"> 
-            <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><p class="text-center montserrat">'.$value['nombreSupervisor'].'</p></div>
-            <div class="col-xs-12"> <ul> <li>'.$value['correoSupervisor'].'</li><li>'.$value['celular'].'</li><li>'.$value['status'].'</li></ul> <a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div>
-        </div>-->
 <!-- ............................................................................................................................ -->
     </div>
  <!-- VENTANAS MODALES --> 
-    <!-- MODAL AGREGAR ZONA -->
-    <div class="modalAgregarZona modal fade" data-backdrop="static" data-keyboard="false">
+    <!-- MODAL AGREGAR MÁQUINA -->
+    <div class="modalAgregarMaquina modal fade" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <i class="fa fa-globe"></i>
-                    Agregar Zona
-                </div>
+                <div class="modal-header"><i class="fa fa-cog"></i>Agregar Máquina</div>
                 <div class="modal-body">
-                    <form id="formularioAgregarZona">
+                    <form id="formularioAgregarMaquina">
                         <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" placeholder="Nueva Zona" class="form-control" name="nombre" id="nombreAgregarZona">
+                            <label>Identificador</label>
+                            <input type="text" placeholder="1" class="form-control" name="identificador" id="identificadorAgregarMaquina">
                         </div>
                         <div class="form-group">
-                            <label>idEmpresaAgregarZona</label>
-                            <input type="text" class="form-control" name="id" id="idEmpresaAgregarZona">
+                            <label>Patente</label>
+                            <input type="text" placeholder="ABCDEF" class="form-control" name="patente" id="patenteAgregarMaquina">
+                        </div>
+                        <div class="form-group">
+                            <label>Tara [kg]</label>
+                            <input type="text" placeholder="1000" class="form-control" name="tara" id="taraAgregarMaquina">
+                        </div>
+                        <div class="form-group">
+                            <label>Carga Máxima [kg]</label>
+                            <input type="text" placeholder="1000" class="form-control" name="carga" id="cargaAgregarMaquina">
+                        </div>
+                        <div class="form-group">
+                            <label>idZonaAgregarMaquina</label>
+                            <input type="text" class="form-control" name="id" id="idZonaAgregarMaquina">
                         </div>
                     </form>
                     <div class="clearfix">
-                        <button type="submit" class="btn btn-primary pull-right montserrat" id="btnAñadirZona"><i class="cargar fa fa-plus"></i>Agregar</button>
+                        <button type="submit" class="btn btn-primary pull-right montserrat" id="btnAñadirMaquina"><i class="cargar fa fa-plus"></i>Agregar</button>
                         <button type="button" class="btn btn-inverse pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
@@ -109,55 +103,24 @@
             </div>
         </div>
     </div>
-    <!-- MODAL EDITAR ZONA -->
-    <div class="modalEditarZona modal fade" data-backdrop="static" data-keyboard="false">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header"><i class="fa fa-globe"></i>Editar Zona</div>
-                    <div class="modal-body">
-                        <form id="formularioEditarZona">
-                            <div class="form-group">
-                                <label>Nombre</label>
-                                <input type="text" placeholder="Nuevo Supervisor" class="form-control" name="nombre" id="nombreEditarZona">
-                            </div>
-                            <div class="form-group">
-                                <label>idEmpresaEditarZona</label>
-                                <input type="text" class="form-control" name="id" id="idEmpresaEditarZona">
-                            </div>
-                            <div class="form-group">
-                                <label>idZonaEditarZona</label>
-                                <input type="text" class="form-control" name="id" id="idZonaEditarZona">
-                            </div>
-                        </form>
-                        <div class="clearfix">
-                            <button type="submit" class="btn btn-primary pull-right montserrat" id="btnEditarZona"><i class="cargar fa fa-pencil"></i>Editar</button>
-                            <button type="button" class="btn btn-inverse pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
-                        </div>
-                        <div class="message" style="margin: 15px 0px 0px 0px"></div>
-                        <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <!-- MODAL AGREGAR SUPERVISOR -->
-    <div class="modalAgregarSupervisor modal fade" data-backdrop="static" data-keyboard="false">
+    <!-- MODAL SUBIR ARCHIVO -->
+    <div class="modalSubirArchivo modal fade" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header"><i class="fa fa-user"></i>Agregar Supervisor</div>
+                <div class="modal-header"><i class="fa fa-upload"></i>Subir Archivo</div>
                 <div class="modal-body">
                     <form id="formularioAgregarSupervisor">
                         <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" placeholder="Nuevo Supervisor" class="form-control" name="nombre" id="nombreAgregarSupervisor">
+                            <label>Fecha de datos</label>
+                            <input type="text" placeholder="2017-03-03" class="form-control" name="fechaDatos" id="fechaSubirArchivo">
                         </div>
                         <div class="form-group">
-                            <label>Correo</label>
-                            <input type="text" placeholder=". . . . . . . . @ . . . . . . . ." class="form-control" name="correo" id="correoAgregarSupervisor">
+                            <label>Directorio</label>
+                            <input type="file" placeholder=". . . . . . . . @ . . . . . . . ." class="form-control" name="correo" id="correoAgregarSupervisor">
                         </div>
                         <div class="form-group">
-                            <label for="zonas" class="control-label">Zonas Asociadas</label>
-                            <select id="zonasAsociadas" name="zonasAsociadas[]" class="form-control select2-multiple" multiple>
-                            </select>
+                            <label>idZonaSubirArchivo</label>
+                            <input type="text" class="form-control" name="id" id="idZonaSubirArchivo">
                         </div>
                     </form>
                     <div class="clearfix">
@@ -176,9 +139,8 @@
     <script src="../../recursos/select2/select2.full.js"></script>
     <script src="../../recursos/rut/jquery.rut.chileno.js"></script>
     <script src="../../recursos/responsiveTables/responsiveTables.js"></script>
-    <script src="../../cliente/js/modalAgregarZona.js"></script>
-    <script src="../../cliente/js/modalEditarZona.js"></script>
-    <script src="../../cliente/js/modalAgregarSupervisor.js"></script>
+    <script src="../../supervisor/js/modalAgregarMaquina.js"></script>
+    <script src="../../supervisor/js/modalSubirArchivo.js"></script>
     <script src="../../js/funciones.js"></script>
     <script src="../../js/compruebaInputs.js"></script>
     <script src="../../js/mensajes.js"></script>

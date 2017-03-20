@@ -340,5 +340,10 @@ nav  ul  li a:hover .icons {
 .mTop15 {
     margin-top: 15px;
 }
+.emptyMessage {
+    font-family: 'Montserrat';
+    padding: 20px;
+    text-align: center;
+}
 
 
