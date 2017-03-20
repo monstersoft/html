@@ -36,7 +36,7 @@ function fechaHoy() {
 function main () {
 		var shadow = false;
 		//WHEN THE PAGE STARTS
-		if($(window).width() > 992) {
+		if($(window).width() > 767) {
 				if($('nav').hasClass('unDisplayNav'))
 						$('nav').removeClass('unDisplayNav');
 				if($('#content').hasClass('unLeftContent'))
@@ -47,7 +47,7 @@ function main () {
 		}
 		//WHEN DOES THE RESIZE
 		$(window).resize(function(){
-				if($(window).width() > 992) {
+				if($(window).width() > 767) {
 						if(shadow == true) {
 								$('#shadowDisplay').remove();
 								shadow = false;
@@ -60,7 +60,7 @@ function main () {
 						$('#content').addClass('leftContent');
 						$('#content').css('width','calc(100% - 250px)');
 				}
-				if($(window).width() <= 992) {
+				if($(window).width() <= 767) {
 						if(shadow == true) {
 								$('#shadowDisplay').remove();
 								shadow = false;
@@ -76,7 +76,7 @@ function main () {
 		});
 		//WHEN CLICK
 		$('#clickMenu').click(function(){
-				if($(window).width() > 992) {
+				if($(window).width() > 767) {
 						if($('nav').hasClass('displayNav') && $('#content').hasClass('leftContent')) {
 								$('nav').removeClass('displayNav');
 								$('#content').removeClass('leftContent');
@@ -92,7 +92,7 @@ function main () {
 								$('#content').css('width','calc(100% - 250px)');
 						}
 				}
-				if($(window).width() <= 992) {
+				if($(window).width() <= 767) {
 						if(shadow == true) {
 								$('nav').removeClass('displayNav');
 								$('#content').removeClass('leftContent');

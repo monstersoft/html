@@ -48,9 +48,8 @@ $(document).ready(function(){
     $('.editarZona').click(function(){
         $('.modalEditarZona').modal();
         var url = devuelveUrl('a/cliente/ajax/datosZona.php');
-        //var id = $(this).attr('id');
-        //var id = $('#hola').val();
-        var datos = retornaDatos(19,url);
+        var id = $(this).attr('id');
+        var datos = retornaDatos(id,url);
         datos.success(function(respuesta){
             data[0].idEmpresa = respuesta.idEmpresa;
             data[1].idZona = respuesta.idZona;

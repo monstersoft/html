@@ -1,18 +1,18 @@
 <?php
-    $idEmpresa = $_GET['id'];
+    /*$idEmpresa = $_GET['id'];
     /*session_start();
     if(!isset($_SESSION['correo'])){
         header("Location:../../index.php");
     }
     else {*/
-        include("../../php/funciones.php");
+        include("../../php/funcionesSupervisor.php");
         //$email = $_SESSION['correo'];
-        $email = 'pavillanueva@ing.ucsc.cl';
-        $perfil = datosPerfil($email);
-        echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div>
+        $email = 'pato@contacto.cl';
+        $profile = datosPerfil($email);
+        /*echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div>
         <div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div>
-        <div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>';
-    //}
+        <div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>';*/
+    //}*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,14 +30,14 @@
     <link rel="stylesheet" href="../../css/zonas.css">
 </head>
 <body>
-    <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p class="editarZona">Machine Monitors</p></div>
+    <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p>Machine Monitors</p></div>
     <nav class="unDisplayNav">
         <ul>
-            <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile"><?php echo $perfil['empresa'] ?></span><br><span id="nameProfile"><?php echo $perfil['correo'] ?></span></li>
+            <li id="profile"><i class="fa fa-user fa-4x" id="iconProfile"></i><br><span id="titleProfile"><?php echo $profile['empresa'] ?></span><br><span id="nameProfile"><?php echo $profile['correo'] ?></span></li>
             <li><a class="selected"><i class="fa fa-tachometer icons"></i>Dashboard</a></li>
-            <li><a><i class="fa fa-industry icons"></i>Empresas</a></li>
-            <li><a><i class="fa fa-bar-chart icons"></i>Históricos</a></li>
-            <li><a><i class="fa fa-send icons"></i>Contácto</a></li>
+            <li><a><i class="fa fa-globe icons"></i>Zonas</a></li>
+            <li><a><i class="fa fa-file-text icons"></i>Archivos</a></li>
+            <li><a><i class="fa fa-send icons"></i>Contacto</a></li>
             <li><a><i class="fa fa-unlock icons"></i>Contraseña</a></li>
             <li><a><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
         </ul>
@@ -45,31 +45,39 @@
     <div id="content" class="animated fadeInUp unLeftContent">
 <!-- ............................................................................................................................ -->
         <?php
-            if(cantidadZonas($idEmpresa) == 0)
-                echo '<div class="col-xs-12">No hay zonas asociadas a esta empresa</div>';
-            else {
-                foreach (zonas($idEmpresa) as $value) { 
-                    echo '<div class="col-xs-12 col-sm-6 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="editarZona"><i class="fa fa-pencil"></i>editar</a></li><li><a id="'.$value['idZona'].'" class="eliminarZona"><i class="fa fa-remove"></i>remover</a></li></ul> </div><p>'.$value['nombreZona'].'</p></div>';
-                    if(cantidadMaquinas($value['idZona']) == 0)
-                        echo '<div class="col-xs-12 cardContent">No hay máquinas asosciadas a esta zona</div>';
-                    else {
-                        echo '<div class="col-xs-12 cardContent"> <table class="responsiva montserrat"> <thead> <tr> <th class="text-center">ID</th> <th class="text-center">Patente</th> <th class="text-center">Fecha de Registro</th> <th class="text-center">Tara [kg]</th> <th class="text-center">Carga Máxima [kg]</th> </tr></thead> <tbody>';
-                            foreach(maquinas($value['idZona']) as $value) {
-                                echo '<tr> <td class="text-center tSticky">'.$value['identificador'].'</td><td class="text-center tSticky">'.$value['patente'].'</td><td class="text-center">'.$value['fechaRegistro'].'</td><td class="text-center">'.$value['tara'].'</td><td class="text-center">'.$value['cargaMaxima'].'</td></tr>';
-                            }
-                        echo '</tbody></table></div>';
-                    }
-                    if(cantidadSupervisores($value['idZona']) == 0)
-                        echo '<div class="col-xs-12 cardContent">No existen supervisores asociados a esta zona</div>';
-                    else {
-                        foreach(supervisores($value['idZona']) as $value) {
-                            echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><p class="text-center montserrat">'.$value['nombreSupervisor'].'</p></div><div class="col-xs-12"> <ul> <li>'.$value['correoSupervisor'].'</li><li>'.$value['celular'].'</li><li>'.$value['status'].'</li></ul> <a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div></div>';
-                        }
-                    }
-                    echo '</div></div>'; 
-                }   
+            foreach(zonas($email) as $value) {
+                echo '<div class="col-xs-12 col-sm-6 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="subirArc"><i class="fa fa-upload"></i>subir archivo</a></li><li><a id="'.$value['idZona'].'" class="agregarMaquina"><i class="fa fa-cog"></i>agregar máquina</a></li></ul> </div><p>'.$value['nombre'].'</p></div>';
+                echo '</div></div>';
             }
         ?>
+        <!--<div class="col-xs-12 cardContent">
+            <div class="table-responsive">
+                <table class="responsive" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Patente</th>
+                            <th>Fecha de Registro</th>
+                            <th>Tara [kg]</th>
+                            <th>Carga Máxima [kg]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="firstColumn">1000</td>
+                            <td>ABCDEFGHIJK</td>
+                            <td>2017-03-03</td>
+                            <td>105000</td>
+                            <td>105000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>-->
+        <!--<div class="col-xs-12 col-sm-6 cardContent a"> 
+            <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><p class="text-center montserrat">'.$value['nombreSupervisor'].'</p></div>
+            <div class="col-xs-12"> <ul> <li>'.$value['correoSupervisor'].'</li><li>'.$value['celular'].'</li><li>'.$value['status'].'</li></ul> <a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div>
+        </div>-->
 <!-- ............................................................................................................................ -->
     </div>
  <!-- VENTANAS MODALES --> 

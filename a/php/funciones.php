@@ -4,9 +4,10 @@
 	function empresas() {
         $conexion = conectar();
         $arreglo = array();
+        $arreglo['empresas'] = array();
         $consulta = 'SELECT COUNT(empresas.idEmpresa) AS cantidadEmpresas FROM empresas';
         if($resultado = mysqli_query($conexion,$consulta)) {
-            $r= mysqli_fetch_assoc($resultado);
+            $r = mysqli_fetch_assoc($resultado);
             $arreglo['cantidadEmpresas'] = $r['cantidadEmpresas'];
             if($arreglo['cantidadEmpresas'] != 0) {
                 $consulta = 'SELECT empresas.idEmpresa, empresas.nombre, COUNT(DISTINCT zonas.idZona) AS zonas, COUNT(DISTINCT maquinas.idMaquina) AS maquinas, COUNT(DISTINCT supervisores.idSupervisor) AS supervisores
@@ -17,7 +18,6 @@
                              LEFT JOIN supervisores ON supervisores.idSupervisor = supervisoreszonas.idSupervisor
                              GROUP BY empresas.idEmpresa';
                 if($resultado = mysqli_query($conexion,$consulta)) {
-                    $arreglo['empresas'] = array();
                     while($r = mysqli_fetch_array($resultado)) {
                         array_push($arreglo['empresas'],array('idEmpresa' => $r['idEmpresa'],'nombre' => utf8_encode($r['nombre']), 'zonas' => $r['zonas'], 'maquinas' => $r['maquinas'], 'supervisores' => $r['supervisores']));
                     }

@@ -8,3 +8,21 @@
 8. Patente sale con gris de fondo
 9. Cuando no hay máquinas el dropdown no se ve completo
 10. No puede agregar supervisores su no hay zonas
+11. Arreglar dropdowns
+
+
+sacar el fade in del content, mal efecto al volver atrás
+que pasa cuando edita al, se recarga ?
+empresas.php
+1. mucho tiempo de redireccion
+2. colocar el loader
+3. mensaje de no hay empresas hay que arreglarlo
+4. tamaño de estadisticas
+zonas.php
+1. no debería poder agregar supervisores si no tiene zonas
+2. mucho tiempo de carga
+3. colocar el loader
+4. el dropdown no alcanza si no tiene datos la zona
+5. mensaje de no hay maquinas arreglarlo
+6. editar zona revisarlo bien
+7. cuando hace click en el dropdown agregar contenido a la derecha, sale el scroll, empresas no sale, creo que es porque no alcanza a salir 

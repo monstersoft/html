@@ -3,9 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" href="recursos/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="recursos/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="responsiveTables.css">
+    <link rel="stylesheet" href="css/zonas.css">
+    <style>
+    /*ó en un archivo de CSS externo */
+    .tabla{
+        width:100%;
+    }
+        .borde {
+            border: 1px solid green;
+        }
+</style>
     
 </head>
 <body>
-    
+<div class="col-xs-12 col-sm-6 card">
+    <div class="col-xs-12 shadow cardContent">
+        <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="editarZona"><i class="fa fa-pencil"></i>editar</a></li><li><a id="'.$value['idZona'].'" class="eliminarZona"><i class="fa fa-remove"></i>remover</a></li></ul> </div><p>'.$value['nombreZona'].'</p></div>
+        <div class="col-xs-12 cardContent">
+            <div class="table-responsive">
+                <table class="responsive" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Patente</th>
+                            <th>Fecha de Registro</th>
+                            <th>Tara [kg]</th>
+                            <th>Carga Máxima [kg]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="firstColumn">1000</td>
+                            <td>ABCDEFGHIJK</td>
+                            <td>2017-03-03</td>
+                            <td>105000</td>
+                            <td>105000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="recursos/jquery/jquery.min.js"></script>
+    <script src="recursos/bootstrap/js/bootstrap.min.js"></script>
+    <script src="responsiveTables.js"></script>
 </body>
 </html>

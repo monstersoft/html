@@ -1,50 +1,39 @@
 <?php 
     include('/../php/conexion.php');
-
-    function datosPerfilSupervisor($correo) {
+    function datosPerfil($correo) {
+        $arreglo = array();
         $conexion = conectar();
         $consulta = "SELECT supervisores.idSupervisor AS id, supervisores.correoSupervisor AS correo, empresas.nombre AS empresa
-                    FROM empresas 
-                    LEFT JOIN proyectos ON empresas.idEmpresa = proyectos.idEmpresa
-                    LEFT JOIN zonas ON zonas.idProyecto = proyectos.idProyecto
-                    LEFT JOIN supervisoreszonas ON supervisoreszonas.idZona = zonas.idZona
-                    LEFT JOIN supervisores ON supervisores.idSupervisor = supervisoreszonas.idSupervisor
-                    WHERE supervisores.correoSupervisor = '$correo'
-                    GROUP BY supervisores.correoSupervisor";
+                        FROM empresas
+                        LEFT JOIN zonas ON empresas.idEmpresa = zonas.idEmpresa
+                        LEFT JOIN supervisoreszonas ON zonas.idZona = supervisoreszonas.idZona
+                        LEFT join supervisores ON supervisoreszonas.idSupervisor = supervisores.idSupervisor
+                        WHERE supervisores.correoSupervisor = '$correo'
+                        GROUP BY supervisores.idSupervisor";
         if($resultado = mysqli_query($conexion,$consulta)) {
-            $arreglo = array();
-            while($row = mysqli_fetch_assoc($resultado)) {
-                $arreglo['id'] = $row['id'];
-                $arreglo['correo'] = $row['correo'];
-                $arreglo['empresa'] = $row['empresa'];
-            }
+            $row = mysqli_fetch_assoc($resultado);
+            $arreglo = array('id' => $row['id'], 'correo' => $row['correo'], 'empresa' => utf8_encode($row['empresa']));
         }
         mysqli_close($conexion);
         return $arreglo;
     }
-
-    function proyectosSupervisor($idSupervisor) {
+    function zonas($correo) {
         $conexion = conectar();
-        $consulta = "SELECT proyectos.idProyecto AS idProyecto, proyectos.nombre AS nombreProyecto
-                    FROM proyectos 
-                    INNER JOIN zonas ON zonas.idProyecto = proyectos.idProyecto 
-                    INNER JOIN supervisoreszonas ON supervisoreszonas.idZona = zonas.idZona 
-                    WHERE supervisoreszonas.idSupervisor = '$idSupervisor' 
-                    GROUP by supervisoreszonas.idSupervisor";
+        $arreglo = array();
+        $consulta = "SELECT zonas.idZona, zonas.nombre
+                    FROM zonas
+                    LEFT JOIN supervisoreszonas ON zonas.idZona = supervisoreszonas.idZona
+                    LEFT JOIN supervisores ON supervisoreszonas.idSupervisor = supervisores.idSupervisor
+                    WHERE supervisores.correoSupervisor = '$correo'";
         if($resultado = mysqli_query($conexion,$consulta)) {
-            $arreglo = array();
-            $i = 0;
-            while($row = mysqli_fetch_assoc($resultado)) {
-                $arreglo[$i]['idProyecto']= $row['idProyecto'];
-                $arreglo[$i]['nombreProyecto']= $row['nombreProyecto'];
-            $i++;
+            while($r = mysqli_fetch_array($resultado)) {
+                array_push($arreglo,array('idZona' => $r['idZona'], 'nombre' => $r['nombre']));
             }
         }
         mysqli_close($conexion);
         return $arreglo;
     }
-
-    function cantidadProyectosSupervisor($idSupervisor) {
+    function cantidadZonas($idProyecto) {
         $conexion = conectar();
         $arreglo = array();
         $consulta = "SELECT 
@@ -58,7 +47,7 @@
         mysqli_close($conexion);
         return $arreglo;
     }
-        function cantidadMaquinas($idZona) {
+    function cantidadMaquinas($idZona) {
         $conexion = conectar();
         $arreglo = array();
         $consulta = "SELECT 
@@ -81,20 +70,6 @@
                      AS cantidadSupervisores 
                      FROM supervisoreszonas 
                      WHERE supervisoreszonas.idZona = '$idZona'"; 
-        if($resultado = mysqli_query($conexion,$consulta)) {
-            $arreglo = mysqli_fetch_assoc($resultado);
-        }
-        mysqli_close($conexion);
-        return $arreglo;
-    }
-    function cantidadZonas($idProyecto) {
-        $conexion = conectar();
-        $arreglo = array();
-        $consulta = "SELECT 
-                     COUNT(zonas.idZona) 
-                     AS cantidadZonas 
-                     FROM zonas 
-                     WHERE zonas.idProyecto = '$idProyecto'"; 
         if($resultado = mysqli_query($conexion,$consulta)) {
             $arreglo = mysqli_fetch_assoc($resultado);
         }
@@ -172,26 +147,6 @@
                 $arreglo[$i]['status']= $row['status'];
                 $arreglo[$i]['fechaRegistro']= $row['fechaRegistro'];
                 $i++;
-            }
-        }
-        mysqli_close($conexion);
-        return $arreglo;
-    }
-
-    function zonas($idProyecto) {
-        $conexion = conectar();
-        $arreglo = array();
-        $consulta = "SELECT zonas.idZona, zonas.nombre AS nombreZona
-                     FROM zonas
-                     WHERE zonas.idProyecto = '$idProyecto'";
-        if($resultado = mysqli_query($conexion,$consulta)) {
-            if($resultado = mysqli_query($conexion,$consulta)) {
-                $i = 0;
-                while($row = mysqli_fetch_array($resultado)) {
-                    $arreglo[$i]['idZona']= $row['idZona'];
-                    $arreglo[$i]['nombreZona']= $row['nombreZona'];
-                    $i++;
-                }
             }
         }
         mysqli_close($conexion);

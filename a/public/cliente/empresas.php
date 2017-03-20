@@ -9,6 +9,7 @@
         $email = 'pavillanueva@ing.ucsc.cl';
         $perfil = datosPerfil($email);
         $empresas = empresas();
+        echo '<div class="sButton sPlus agregarEmpresa"><div><i class="fa fa-plus"></i></div></div>';
     //}
 ?>
 <!DOCTYPE html>
