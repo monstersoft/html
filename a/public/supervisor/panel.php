@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="../../recursos/select2/select2.min.css">
     <link rel="stylesheet" href="../../recursos/select2/select2-bootstrap.css">
     <link rel="stylesheet" href="../../recursos/responsiveTables/responsiveTables.css">
+    <link rel="stylesheet" href="../../recursos/bootstrapFileInput/fileinput.min.css">
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/zonas.css">
 </head>
@@ -109,22 +110,26 @@
             <div class="modal-content">
                 <div class="modal-header"><i class="fa fa-upload"></i>Subir Archivo</div>
                 <div class="modal-body">
-                    <form id="formularioAgregarSupervisor">
+                    <form id="formularioSubirArchivo">
                         <div class="form-group">
                             <label>Fecha de datos</label>
-                            <input type="text" placeholder="2017-03-03" class="form-control" name="fechaDatos" id="fechaSubirArchivo">
+                            <input type="text" placeholder="2017-03-03" class="form-control" name="fecha" id="fechaDatosSubirArchivo">
                         </div>
                         <div class="form-group">
-                            <label>Directorio</label>
-                            <input type="file" placeholder=". . . . . . . . @ . . . . . . . ." class="form-control" name="correo" id="correoAgregarSupervisor">
+                            <label class="control-label">Seleccionar Archivo</label>
+                            <input type="file" class="file" name="archivo" id="archivoSubirArchivo" data-show-preview="false" data-show-upload="false" data-show-remove="false">
                         </div>
                         <div class="form-group">
                             <label>idZonaSubirArchivo</label>
                             <input type="text" class="form-control" name="id" id="idZonaSubirArchivo">
                         </div>
+                        <div class="form-group">
+                            <label>idSupervisorSubirArchivo</label>
+                            <input type="text" class="form-control" name="idSupervsior" id="idSupervisorSubirArchivo">
+                        </div>
                     </form>
                     <div class="clearfix">
-                        <button type="submit" class="btn btn-primary pull-right montserrat" id="btnAñadirSupervisor"><i class="cargar fa fa-plus"></i>Agregar</button>
+                        <button type="submit" class="btn btn-primary pull-right montserrat" id="btnSubirArchivo"><i class="cargar fa fa-upload"></i>Agregar</button>
                         <button type="button" class="btn btn-inverse pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
@@ -132,6 +137,37 @@
             </div>
         </div>
     </div>
+            <!-- 
+<div class="ui modal modalSubirArchivo">
+            <div class="header"><i class="add icon" style="float: right;"></i>Agregar Maquina</div>
+            <div class="content">
+                <form class="ui form" id="formularioSubirArchivo" enctype="multipart/form-data">
+                    <div class="field">
+                        <label>Fecha de datos</label>
+                        <div class="ui calendar left icon input">
+                            <input class="datepicker" type="text" name="fechaDatos" id="fechaDatos">
+                            <i class="calendar icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Adjuntar archivo</label>
+                        <div class="ui file input action">
+                            <input type="text" placeholder="Formato CVS" name="archivoZonaText" id="archivoZonaText">
+                            <input type="file" id="archivoZona" name="archivoZona" style="display: none">
+                            <a href="#" class="ui button">Buscar</a>
+                        </div>
+                    </div>
+                    <label for="idZonaArchivo">ID Zona Archivo</label>
+                    <input type="text" name="idZonaArchivo" id="idZonaArchivo">
+                </form>
+                <div style="text-align: right;margin-top: 15px">
+                    <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
+                    <a href="#" class="ui button green" id="btnSubirArchivo"><i class="upload icon"></i>Subir</a>
+                </div>
+                <div class="message" style="margin: 15px 0px 0px 0px"></div>
+            </div>
+        </div>
+            -->
     <!-- MODAL EDITAR ZONA -->
 <!-- VENTANAS MODALES -->
     <script src="../../recursos/jquery/jquery.min.js"></script>
@@ -139,6 +175,7 @@
     <script src="../../recursos/select2/select2.full.js"></script>
     <script src="../../recursos/rut/jquery.rut.chileno.js"></script>
     <script src="../../recursos/responsiveTables/responsiveTables.js"></script>
+    <script src="../../recursos/bootstrapFileInput/fileinput.min.js"></script>
     <script src="../../supervisor/js/modalAgregarMaquina.js"></script>
     <script src="../../supervisor/js/modalSubirArchivo.js"></script>
     <script src="../../js/funciones.js"></script>
@@ -190,6 +227,25 @@
                 }
             }
         });
+    </script>
+    <script>
+        /*$('.datepicker').pickadate({
+            monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+            monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            weekdaysFull: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+            weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+            showMonthsShort: undefined,
+            showWeekdaysFull: undefined,
+            today: 'Hoy',
+            clear: '',
+            close: 'Cerrar',
+            min: new Date(2017,1,1),
+            max: new Date(2018,1,1),
+            format: 'dddd dd , mmmm yyyy',
+            formatSubmit: 'yyyy/mm/dd',
+            hiddenName : true,
+            firstDay: 'Monday'
+        })*/
     </script>
 </body>
 </html>

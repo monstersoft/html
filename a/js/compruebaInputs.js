@@ -108,4 +108,13 @@ function maxMinValue(value, max, min) {
         return false;
     }
 }
+function extensions(value) {
+    var extensions = value.substring(value.lastIndexOf("."));
+    var string = new String(extensions);
+    string = string.toLocaleLowerCase();
+    if(string != ".csv")
+        return true;
+    else
+        return false;
+}
 

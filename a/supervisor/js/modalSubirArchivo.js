@@ -1,17 +1,20 @@
 $(document).ready(function() {
     $('.subirArchivo').click(function(){
-        //$('#idZonaArchivo').val($(this).attr('id'));
-        $('.modalSubirArchivo').modal({autofocus: false}).modal('show');
-        fechaHoy();
+        $('#idZonaSubirArchivo').val($(this).attr('id'));
+        $('.modalSubirArchivo').modal();
+        //fechaHoy();
     });
     $('#btnSubirArchivo').click(function(){
         var arreglo = new Array();
-        var fecha = $('#fechaDatos').val();
-        var archivo = $('#archivoZonaText').val();
-        var idZona = $('#idZonaArchivo').val();
+        var fecha = $('#fechaDatosSubirArchivo').val();
+        var archivo = $('#archivoSubirArchivo').val();
+        var idZona = $('#idZonaSubirArchivo').val();
         var numberErrors = 0;
         if(isEmpty(fecha)) {
             arreglo.push('<li>Fecha es obigatorio</li>');
+        }
+        if(extensions(archivo)) {
+            arreglo.push('<li>Formato incorrecto de archivo</li>');
         }
         if(isEmpty(archivo)) {
             arreglo.push('<li>Archivo es obligatorio</li>');
@@ -21,9 +24,8 @@ $(document).ready(function() {
         }
         if(arreglo.length == 0) {
             var data = new FormData(document.getElementById('formularioSubirArchivo'));
-            var url = devuelveUrl('html/supervisor/subirArchivo.php');
             $.ajax({
-                url: 'subirArchivo.php',
+                url: devuelveUrl('a/supervisor/ajax/subirArchivo.php'),
                 type: 'POST',
                 dataType: 'json',
                 data: data,
@@ -31,14 +33,22 @@ $(document).ready(function() {
                 contentType: false,
                 processData: false,
                 beforeSend: function() {
-                  $('#cancelar').addClass('disabled');
-                  $('#btnSubirArchivo').addClass('disabled loading');
-                  //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
+                  activarLoaderBotones('fa-pencil','fa-refresh');
                 },
                 success: function(arreglo) {
-                    alert(JSON.stringify(arreglo));
-                    $('#cancelar').removeClass('disabled');
-                    $('#btnSubirArchivo').removeClass('disabled loading');
+                    console.log(JSON.stringify(arreglo));
+                    /*if(arreglo.exito == 1) {
+                        successMessage('Registro realizado con éxito','Serás redireccionado al panel de zonas');
+                        $('.cancelar').remove();
+                        $('#btnAñadirEmpresa').remove();
+                        setTimeout(function(){location.reload()}, 3000);
+                    }
+                    else {
+                        warningMessage(arreglo.msg);
+                    }*/
+                },
+                complete: function() {
+                    desactivarLoaderBotones('fa-pencil','fa-refresh');
                 }
             }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){

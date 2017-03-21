@@ -31,10 +31,8 @@ $(document).ready(function() {
             arreglo.push('<li>Carga mínima 500 kg y máxima 10000 kg</li>');
         if(arreglo.length == 0) {
             var data = $('#formularioAgregarMaquina').serialize();
-            //devuelveUrl(pathSinCarpetaRaiz);
-            var url = devuelveUrl('a/supervisor/ajax/agregarMaquina.php');
             $.ajax({
-                url: url,
+                url: devuelveUrl('a/supervisor/ajax/agregarMaquina.php'),
                 type: 'POST',
                 data: data,
                 dataType: 'json',
