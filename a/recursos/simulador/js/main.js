@@ -18,38 +18,3 @@ $('.datepicker').pickadate({
     hiddenName : true,
     firstDay: 'Monday'
 })
-
-/*function generarObjetoResultados(){
-    var comienzo = new Date();
-    var inicio = comienzo.getMilliseconds();
-    var fechaDatos = $('input[name=fechaDatos]').val();
-    var fechaHoy = moment().format('YYYY-MM-DD');
-    var objLimites = generarObjetoLimites();
-    var objDatos = generarObjetoDatos(objLimites.objLDisponibles,fechaDatos);
-    var resultados = {}
-    var informacionNoDisponibles = []
-    resultados.nombreZona = 'Los Acacios';
-    resultados.nombreArchivo = 'Z05_S01S02S03_P03_E03-'+fechaDatos;
-    resultados.informacionDisponibles = objDatos.objInfoDisponibles;
-    resultados.informacionNoDisponibles = informacionNoDisponibles;
-    if(objLimites.objLNoDisponibles.length == 0) {
-        resultados.informacionNoDisponibles.push({existen : false});  
-    }
-    else {
-        $.each(objLimites.objLNoDisponibles,function(index){
-            resultados.informacionNoDisponibles.push({patente: objLimites.objLNoDisponibles[index].patente});
-        });
-    }
-    resultados.totalGenerados = objDatos.objRegistros.length;
-    var termino = new Date();
-    var fin = comienzo.getMilliseconds();
-    resultados.tiempoGeneracion = fin - inicio;
-    var datosMaquinas = retornaDatos(idZona);
-    datosMaquinas.success(function(respuesta){
-        $('#limiteDatos').remove();
-        $('#contenido').html('<a class="ui button" id="descargar">Descargar</a>');
-    });
-    data = objDatos;
-}
-
-*/

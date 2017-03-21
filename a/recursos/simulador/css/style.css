@@ -11,6 +11,7 @@
 section {
     overflow: hidden;
     width: 100%;
+    margin-bottom: 55px;
 }
 form {
     width: 50%;
@@ -41,4 +42,56 @@ input[type=text] {
 }
 input:focus {
     outline: 0px;
+}
+.sButton {
+    position: fixed;
+    width: 35px;
+    height: 35px;
+    color: white;
+    background: #F5A214;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 2px 2px #666;
+}
+.sButton i {
+    font-size: 20px;
+}
+.sButton:hover {
+    cursor: pointer;
+    background: #262626;
+    -moz-transition: .4s linear;
+    -webkit-transition: .4s ease-out;
+    transition: .4s linear;
+}
+.sPlus {
+    bottom: 10px;
+    right: 10px;
+}
+.sOne {
+    bottom: 60px;
+    right: -45px;
+    transition: all 0.5s;
+}
+.sTwo {
+    bottom: 110px;
+    right: -45px;
+    transition: all 0.6s;
+}
+.displaySticky {
+    right: 10px;
+}
+footer {
+    width: 100%;
+    padding: 10px 60px 10px 5px;
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+}
+.borde {
+    border: 1px solid red;
 }
