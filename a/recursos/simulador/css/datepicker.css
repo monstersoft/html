@@ -2,15 +2,5 @@
     width: 100%;
 }
 .picker__box {
-    background: transparent !important;
-}
-.picker--opened .picker__holder {
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
-    background: transparent;
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#1E000000,endColorstr=#1E000000)";
-    zoom: 1;
-    background: rgba(0, 0, 0, 0.32);
-    transition: background 0.15s ease-out;
+    background: #fff;
 }
