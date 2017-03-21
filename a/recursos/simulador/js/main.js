@@ -1,0 +1,20 @@
+$('.datepicker').pickadate({
+    monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+    monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+    weekdaysFull: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+    weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+    showMonthsShort: undefined,
+    showWeekdaysFull: undefined,
+    today: 'Hoy',
+    clear: '',
+    close: 'Cerrar',
+    //min: new Date(2017,1,1),
+    //max: new Date(2018,1,1),
+    min: [2017,0,1],
+    max: [2017,2,21],
+    disable: [new Date(2017,2,20)],
+    format: 'dddd dd , mmmm yyyy',
+    formatSubmit: 'yyyy/mm/dd',
+    hiddenName : true,
+    firstDay: 'Monday'
+})

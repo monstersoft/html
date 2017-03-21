@@ -42,3 +42,6 @@ input[type=text] {
 input:focus {
     outline: 0px;
 }
+.datepicker {
+    width: 100%;
+}
