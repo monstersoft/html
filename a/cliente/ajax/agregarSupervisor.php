@@ -1,7 +1,7 @@
 <?php
 	include '../../php/funciones.php';
 	include '../../recursos/mailer/class.phpmailer.php';
-	$nombre = $_POST['nombre'];
+	$nombre = strtoupper(utf8_decode($_POST['nombre']));
 	$email = $_POST['correo'];
 	$zonas = $_POST['zonasAsociadas'];
 	$fecha = date('Y-m-d');
@@ -38,7 +38,6 @@
 							$arreglo['mailEnviado'] = 1;
 							$arreglo['mailHora'] = $hora;
 							$arreglo['mailFecha'] = $fecha;
-							$arreglo['msg'][] = utf8_encode('Registro exitoso, se enviará un correo para que el supervisor confirme su regstro. Redireccionando al panel de zonas');
 							$arreglo['exito'] = 1;
 						}
 						else {

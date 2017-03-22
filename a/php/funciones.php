@@ -38,7 +38,7 @@
         if($resultado = mysqli_query($conexion,$consulta)) {
             if($resultado = mysqli_query($conexion,$consulta)) {
                 while($row = mysqli_fetch_array($resultado)) {
-                    array_push($arreglo,array('idZona' => $row['idZona'], 'nombreZona' => $row['nombreZona']));
+                    array_push($arreglo,array('idZona' => $row['idZona'], 'nombreZona' => utf8_encode($row['nombreZona'])));
                 }
             }
         }
