@@ -1,15 +1,16 @@
+var carpetaRaiz = 'html';
 function descargar(data,nombreArchivo){
     console.log(JSON.stringify(data));
     var csvData = new Array();
     $.each(data,function(index) {
-        csvData.push(data[index].identificador+';'+data[index].latitud+';'+data[index].longitud+';'+data[index].revoluciones+';'+data[index].gradosFrontal+';'+data[index].gradosTrasera+';'+data[index].alturaFrontal+';'+data[index].alturaTrasera+';'+data[index].cambio+';'+data[index].motor+';'+data[index].fechaDato+';'+data[index].horaDato);
+        csvData.push(data[index].identificador+';'+data[index].latitud+';'+data[index].longitud+';'+data[index].revoluciones+';'+data[index].gradosFrontal+';'+data[index].gradosTrasera+';'+data[index].alturaFrontal+';'+data[index].alturaTrasera+';'+data[index].cambio+';'+data[index].motor+';'+data[index].horaDato);
     });
     var buffer = csvData.join("\r\n");
     var blob = new Blob([buffer], {"type": "text/csv;charset=utf8;"});
     document.getElementById('descargar').setAttribute('href',window.URL.createObjectURL(blob));
     document.getElementById('descargar').setAttribute('download',nombreArchivo+'.csv');
 }
-function generarObjetoDatos(o,fechaDatos){
+function generarObjetoDatos(o){
     var objRegistros = [] 
     var hora = 8;
     var minuto = 0;
@@ -29,7 +30,6 @@ function generarObjetoDatos(o,fechaDatos){
                     alturaTrasera:      r(o[index].atmin,o[index].atmax,2),
                     cambio:             r(o[index].cmin,o[index].cmax,2),
                     motor:              o[index].mf,
-                    fechaDato:          fechaDatos,
                     horaDato:           hora+":"+minuto+":00"
                 });
                 minuto++;
@@ -99,7 +99,7 @@ function r(l,h,d) {
         else {  
                 var min = parseFloat(l);
                 var max = parseFloat(h);
-                return (Math.random()*(max-min)+min).toFixed(2);
+                return (Math.random()*(max-min)+min).toFixed(d);
             }
     }
     else
@@ -133,11 +133,13 @@ function generarObjetos(cantidadFormularios) {
     }
     return arreglo;
     }
-function fechaHoy() {
-    moment.locale('es');
-    var hoyE = moment().locale('es').format('dddd DD , MMMM YYYY');
-    var hoyF = moment().format('YYYY-MM-DD');
-    $('#fechaDatos').val(hoyE);
-    $('input[name=fechaDatos]').val(hoyF);
-    $('#diaActual').html(moment().format('LL')+'sadasdas');
+function devuelveUrl(pathSinCarpetaRaiz) {
+    var url;
+    var host = window.location.host;
+    var protocolo = window.location.protocol;
+    if(host == 'www.mmonitors.com')
+            url = protocolo+'//'+host+'/'+pathSinCarpetaRaiz;
+    else
+        url = protocolo+'//'+host+'/'+carpetaRaiz+'/'+pathSinCarpetaRaiz;
+    return url;
 }

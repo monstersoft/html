@@ -35,3 +35,11 @@ function configSelect2(){
         }
     });
 }
+function fechaHoy() {
+    moment.locale('es');
+    var hoyE = moment().locale('es').format('dddd DD , MMMM YYYY');
+    //var hoyF = moment().format('YYYY-MM-DD');
+    var hoyF = moment().format('DDMMYYYY');
+    $('#fechaDatos').val(hoyE);
+    $('input[name=fechaDatos]').val(hoyF);
+}

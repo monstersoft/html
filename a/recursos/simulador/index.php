@@ -7,21 +7,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Simulador</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../select2/select2.min.css">
     <link rel="stylesheet" href="../select2/select2-bootstrap.css">
+    <link rel="stylesheet" href="../pickadate/default.css">
+    <link rel="stylesheet" href="../pickadate/default.date.css">
+    <link rel="stylesheet" href="../pickadate/default.time.css">
     <link rel="stylesheet" href="css/datepicker.css">
-    <link rel="stylesheet" href="pickadate.js-3.5.6/default.css">
-    <link rel="stylesheet" href="pickadate.js-3.5.6/default.date.css">
-    <link rel="stylesheet" href="pickadate.js-3.5.6/default.time.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <section>
         <h1>Fecha de datos</h1>
-        <input type="date" class="datepicker">
+        <input type="date" id="fechaDatos" name="fechaDatos" class="datepicker">
         <form>
         <h1>patente/id</h1>
         <label for="id">Identificador</label><br>
@@ -285,18 +285,20 @@
     <script src="../jquery/jquery.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../select2/select2.full.js"></script>
-    <script src="pickadate.js-3.5.6/picker.js"></script>
-    <script src="pickadate.js-3.5.6/picker.date.js"></script>
-    <script src="pickadate.js-3.5.6/picker.time.js"></script>
+    <script src="../pickadate/picker.js"></script>
+    <script src="../pickadate/picker.date.js"></script>
+    <script src="../pickadate/picker.time.js"></script>
+    <script src="../moment/moment.js"></script>
     <script src="js/main.js"></script>
     <script src="js/functions.js"></script>
     <script>
        $(document).ready(function(){
-            configSelect2();
+           fechaHoy(); 
+           configSelect2();
             $('.descargar').click(function(){
-                alert('sdasd');
-                var a = generarObjetoLimites();
-                descargar(generarObjetoDatos(a,'2017'),'asdsad');
+                var nombreArchivo = $('input[name=fechaDatos]').val();
+                var limites = generarObjetoLimites();
+                descargar(generarObjetoDatos(limites),nombreArchivo);
             });
        });
     </script>
