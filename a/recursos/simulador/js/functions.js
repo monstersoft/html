@@ -1,14 +1,15 @@
-            function h(data){
-                console.log(JSON.stringify(data));
-                var csvData = new Array();
-                $.each(data,function(index) {
-                    csvData.push(data[index].identificador+';'+data[index].latitud+';'+data[index].longitud+';'+data[index].revoluciones+';'+data[index].gradosFrontal+';'+data[index].gradosTrasera+';'+data[index].alturaFrontal+';'+data[index].alturaTrasera+';'+data[index].cambio+';'+data[index].motor+';'+data[index].fechaDato+';'+data[index].horaDato);
-                });
-                var buffer = csvData.join("\r\n");
-                var blob = new Blob([buffer], {"type": "text/csv;charset=utf8;"});
-                document.getElementById('descargar').setAttribute('href',window.URL.createObjectURL(blob));
-                document.getElementById('descargar').setAttribute('download','aaaaa.csv');
-            }
+function descargar(data){
+    var nombreArchivo;
+    console.log(JSON.stringify(data));
+    var csvData = new Array();
+    $.each(data,function(index) {
+        csvData.push(data[index].identificador+';'+data[index].latitud+';'+data[index].longitud+';'+data[index].revoluciones+';'+data[index].gradosFrontal+';'+data[index].gradosTrasera+';'+data[index].alturaFrontal+';'+data[index].alturaTrasera+';'+data[index].cambio+';'+data[index].motor+';'+data[index].fechaDato+';'+data[index].horaDato);
+    });
+    var buffer = csvData.join("\r\n");
+    var blob = new Blob([buffer], {"type": "text/csv;charset=utf8;"});
+    document.getElementById('descargar').setAttribute('href',window.URL.createObjectURL(blob));
+    document.getElementById('descargar').setAttribute('download',nombreArchivo+'.csv');
+}
 function generarObjetoDatos(o,fechaDatos){
     var objRegistros = [] 
     var hora = 8;
@@ -23,12 +24,12 @@ function generarObjetoDatos(o,fechaDatos){
                     latitud:            r(o[index].lamin,o[index].lamax,6),
                     longitud:           r(o[index].lomin,o[index].lomax,6),
                     revoluciones:       r(o[index].rmin,o[index].rmax,2),
-                    gradosFrontal:         r(o[index].gfmin,o[index].gfmax,2),
-                    gradosTrasera:         r(o[index].gtmin,o[index].gtmax,2),
-                    alturaFrontal:         r(o[index].afmin,o[index].afmax,2),
-                    alturaTrasera:          r(o[index].atmin,o[index].atmax,2),
-                    cambio:r(o[index].cmin,o[index].cmax,2),
-                    motor:o[index].mf,
+                    gradosFrontal:      r(o[index].gfmin,o[index].gfmax,2),
+                    gradosTrasera:      r(o[index].gtmin,o[index].gtmax,2),
+                    alturaFrontal:      r(o[index].afmin,o[index].afmax,2),
+                    alturaTrasera:      r(o[index].atmin,o[index].atmax,2),
+                    cambio:             r(o[index].cmin,o[index].cmax,2),
+                    motor:              o[index].mf,
                     fechaDato:          fechaDatos,
                     horaDato:           hora+":"+minuto+":00"
                 });
@@ -133,7 +134,6 @@ function generarObjetos(cantidadFormularios) {
     }
     return arreglo;
     }
-
 function fechaHoy() {
     moment.locale('es');
     var hoyE = moment().locale('es').format('dddd DD , MMMM YYYY');

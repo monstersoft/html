@@ -1,5 +1,5 @@
 <?php 
-    echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div><div id="$idEmpresa" class="sButton sOne"><div><i class="fa fa-globe"></i></div></div><div id="$idEmpresa" class="sButton sTwo"><div><i class="fa fa-user"></i></div></div>';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,20 +8,20 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Simulador</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="select2/select2.min.css">
-    <link rel="stylesheet" href="select2/select2-bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../select2/select2.min.css">
+    <link rel="stylesheet" href="../select2/select2-bootstrap.css">
     <link rel="stylesheet" href="css/datepicker.css">
     <link rel="stylesheet" href="pickadate.js-3.5.6/default.css">
     <link rel="stylesheet" href="pickadate.js-3.5.6/default.date.css">
     <link rel="stylesheet" href="pickadate.js-3.5.6/default.time.css">
-    <link rel="stylesheet" href="awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <a id="descargar">asdasd</a>
-    <h1>Fecha de datos</h1>
-    <input type="date" class="datepicker">
     <section>
+        <h1>Fecha de datos</h1>
+        <input type="date" class="datepicker">
         <form>
         <h1>patente/id</h1>
         <label for="id">Identificador</label><br>
@@ -271,47 +271,33 @@
         <input class="valor" id="mf" type="text" placeholder="boolean" value="1">
     </form>
     </section>
-    <footer>
-        <select id="zonas" class="form-control select2-single">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+<footer>
+    <div class="select">
+        <select id="zonas" name="zonas" class="form-control select2-single" style="width: 100%;">
+            <option value="0">a</option>
+            <option value="1">b</option>
+            <option value="2">c</option>
         </select>
-    </footer>
-    <script src="jquery/jquery-3.2.0.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    </div>
+    <div class="button"><a href="#" id="descargar" class="descargar"><i class="fa fa-arrow-up"></i></a></div>
+</footer>
+</div>
+    <script src="../jquery/jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../select2/select2.full.js"></script>
     <script src="pickadate.js-3.5.6/picker.js"></script>
     <script src="pickadate.js-3.5.6/picker.date.js"></script>
     <script src="pickadate.js-3.5.6/picker.time.js"></script>
-    <script src="select2/dist/js/select2.full.js"></script>
     <script src="js/main.js"></script>
     <script src="js/functions.js"></script>
     <script>
        $(document).ready(function(){
-           $.fn.select2.defaults.set( "theme", "bootstrap" );
-        $( ".zonas" ).select2( {
-            placeholder: "Seleccionar",
-            width: null,
-            containerCssClass: ':all:'
-        } );
-           $( ".zonas" ).on( "select2:open", function() {
-            if ( $( this ).parents( "[class*='has-']" ).length ) {
-                var classNames = $( this ).parents( "[class*='has-']" )[ 0 ].className.split( /\s+/ );
-                for ( var i = 0; i < classNames.length; ++i ) {
-                    if ( classNames[ i ].match( "has-" ) ) {
-                        $( "body > .select2-container" ).addClass( classNames[ i ] );
-                    }
-                }
-            }
-        });
-            $('.agregar').click(function(){
-                $('.sOne').toggleClass('displaySticky');
-                $('.sTwo').toggleClass('displaySticky');
+            configSelect2();
+            $('.descargar').click(function(){
+                alert('sdasd');
+                var a = generarObjetoLimites();
+                h(generarObjetoDatos(a,'2017'));
             });
-           var a = generarObjetoLimites();
-           h(generarObjetoDatos(a,'2017'));
        });
     </script>
 </body>
