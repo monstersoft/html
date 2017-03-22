@@ -296,7 +296,7 @@
             $('.descargar').click(function(){
                 alert('sdasd');
                 var a = generarObjetoLimites();
-                h(generarObjetoDatos(a,'2017'));
+                descargar(generarObjetoDatos(a,'2017'),'asdsad');
             });
        });
     </script>

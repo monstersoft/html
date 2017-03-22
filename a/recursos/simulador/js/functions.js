@@ -1,5 +1,4 @@
-function descargar(data){
-    var nombreArchivo;
+function descargar(data,nombreArchivo){
     console.log(JSON.stringify(data));
     var csvData = new Array();
     $.each(data,function(index) {
