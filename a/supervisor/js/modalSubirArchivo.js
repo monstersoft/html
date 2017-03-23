@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    $('.subirArchivo').click(function(){
+    /*$('.subirArchivo').click(function(){
         $('#idZonaSubirArchivo').val($(this).attr('id'));
         $('.modalSubirArchivo').modal();
         //fechaHoy();
-    });
+    });*/
     $('#btnSubirArchivo').click(function(){
         var arreglo = new Array();
         var fecha = $('#fechaDatosSubirArchivo').val();
