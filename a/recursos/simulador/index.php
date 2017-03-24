@@ -23,264 +23,44 @@
         <h1>Fecha de datos</h1>
         <input type="date" id="fechaDatos" name="fechaDatos" class="datepicker">
         <form>
-        <h1>patente/id</h1>
-        <label for="id">Identificador</label><br>
-        <input class="valor" id="id" type="text" value="0">
-        <label for="la">Latitud (la)</label><br>
-        <input class="valor" id="lamin" type="text" placeholder="mínima" value="-31">
-        <input class="valor" id="lamax" type="text" placeholder="máxima" value="-30">
-        <label for="lo">Longitud (lo)</label><br>
-        <input class="valor" id="lomin" type="text" placeholder="mínima" value="-71">
-        <input class="valor" id="lomax" type="text" placeholder="máxima" value="-70">
-        <label for="r">Rpm (r)</label><br>
-        <input class="valor" id="rmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="rmax" type="text" placeholder="máxima" value="1000">
-        <label for="gf">Grados pala frontal (gf)</label><br>
-        <input class="valor" id="gfmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gfmax" type="text" placeholder="máxima" value="360">
-        <label for="gt">Grados pala trasera (gt)</label><br>
-        <input class="valor" id="gtmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gtmax" type="text" placeholder="máxima" value="360">
-        <label for="af">Altura pala frontal (af)</label><br>
-        <input class="valor" id="afmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="afmax" type="text" placeholder="máxima" value="10">
-        <label for="at">Altura pala trasera (at)</label><br>
-        <input class="valor" id="atmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="atmax" type="text" placeholder="máxima" value="10">
-        <label for="c">Cambio (c)</label><br>
-        <input class="valor" id="cmin" type="text" placeholder="mínima" value="1">
-        <input class="valor" id="cmax" type="text" placeholder="máxima" value="3">
-        <label for="mf">Motor funcionando (mf)</label><br>
-        <input class="valor" id="mf" type="text" placeholder="boolean" value="1">
-    </form>
-        <form>
-        <h1>patente/id</h1>
-        <label for="id">Identificador</label><br>
-        <input class="valor" id="id" type="text" value="1">
-        <label for="la">Latitud (la)</label><br>
-        <input class="valor" id="lamin" type="text" placeholder="mínima" value="-31">
-        <input class="valor" id="lamax" type="text" placeholder="máxima" value="-30">
-        <label for="lo">Longitud (lo)</label><br>
-        <input class="valor" id="lomin" type="text" placeholder="mínima" value="-71">
-        <input class="valor" id="lomax" type="text" placeholder="máxima" value="-70">
-        <label for="r">Rpm (r)</label><br>
-        <input class="valor" id="rmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="rmax" type="text" placeholder="máxima" value="1000">
-        <label for="gf">Grados pala frontal (gf)</label><br>
-        <input class="valor" id="gfmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gfmax" type="text" placeholder="máxima" value="360">
-        <label for="gt">Grados pala trasera (gt)</label><br>
-        <input class="valor" id="gtmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gtmax" type="text" placeholder="máxima" value="360">
-        <label for="af">Altura pala frontal (af)</label><br>
-        <input class="valor" id="afmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="afmax" type="text" placeholder="máxima" value="10">
-        <label for="at">Altura pala trasera (at)</label><br>
-        <input class="valor" id="atmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="atmax" type="text" placeholder="máxima" value="10">
-        <label for="c">Cambio (c)</label><br>
-        <input class="valor" id="cmin" type="text" placeholder="mínima" value="1">
-        <input class="valor" id="cmax" type="text" placeholder="máxima" value="3">
-        <label for="mf">Motor funcionando (mf)</label><br>
-        <input class="valor" id="mf" type="text" placeholder="boolean" value="1">
-    </form>
-        <form>
-        <h1>patente/id</h1>
-        <label for="id">Identificador</label><br>
-        <input class="valor" id="id" type="text" value="1">
-        <label for="la">Latitud (la)</label><br>
-        <input class="valor" id="lamin" type="text" placeholder="mínima" value="-31">
-        <input class="valor" id="lamax" type="text" placeholder="máxima" value="-30">
-        <label for="lo">Longitud (lo)</label><br>
-        <input class="valor" id="lomin" type="text" placeholder="mínima" value="-71">
-        <input class="valor" id="lomax" type="text" placeholder="máxima" value="-70">
-        <label for="r">Rpm (r)</label><br>
-        <input class="valor" id="rmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="rmax" type="text" placeholder="máxima" value="1000">
-        <label for="gf">Grados pala frontal (gf)</label><br>
-        <input class="valor" id="gfmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gfmax" type="text" placeholder="máxima" value="360">
-        <label for="gt">Grados pala trasera (gt)</label><br>
-        <input class="valor" id="gtmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gtmax" type="text" placeholder="máxima" value="360">
-        <label for="af">Altura pala frontal (af)</label><br>
-        <input class="valor" id="afmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="afmax" type="text" placeholder="máxima" value="10">
-        <label for="at">Altura pala trasera (at)</label><br>
-        <input class="valor" id="atmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="atmax" type="text" placeholder="máxima" value="10">
-        <label for="c">Cambio (c)</label><br>
-        <input class="valor" id="cmin" type="text" placeholder="mínima" value="1">
-        <input class="valor" id="cmax" type="text" placeholder="máxima" value="3">
-        <label for="mf">Motor funcionando (mf)</label><br>
-        <input class="valor" id="mf" type="text" placeholder="boolean" value="1">
-    </form>
-        <form>
-        <h1>patente/id</h1>
-        <label for="id">Identificador</label><br>
-        <input class="valor" id="id" type="text" value="1">
-        <label for="la">Latitud (la)</label><br>
-        <input class="valor" id="lamin" type="text" placeholder="mínima" value="-31">
-        <input class="valor" id="lamax" type="text" placeholder="máxima" value="-30">
-        <label for="lo">Longitud (lo)</label><br>
-        <input class="valor" id="lomin" type="text" placeholder="mínima" value="-71">
-        <input class="valor" id="lomax" type="text" placeholder="máxima" value="-70">
-        <label for="r">Rpm (r)</label><br>
-        <input class="valor" id="rmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="rmax" type="text" placeholder="máxima" value="1000">
-        <label for="gf">Grados pala frontal (gf)</label><br>
-        <input class="valor" id="gfmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gfmax" type="text" placeholder="máxima" value="360">
-        <label for="gt">Grados pala trasera (gt)</label><br>
-        <input class="valor" id="gtmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gtmax" type="text" placeholder="máxima" value="360">
-        <label for="af">Altura pala frontal (af)</label><br>
-        <input class="valor" id="afmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="afmax" type="text" placeholder="máxima" value="10">
-        <label for="at">Altura pala trasera (at)</label><br>
-        <input class="valor" id="atmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="atmax" type="text" placeholder="máxima" value="10">
-        <label for="c">Cambio (c)</label><br>
-        <input class="valor" id="cmin" type="text" placeholder="mínima" value="1">
-        <input class="valor" id="cmax" type="text" placeholder="máxima" value="3">
-        <label for="mf">Motor funcionando (mf)</label><br>
-        <input class="valor" id="mf" type="text" placeholder="boolean" value="1">
-    </form>
-        <form>
-        <h1>patente/id</h1>
-        <label for="id">Identificador</label><br>
-        <input class="valor" id="id" type="text" value="1">
-        <label for="la">Latitud (la)</label><br>
-        <input class="valor" id="lamin" type="text" placeholder="mínima" value="-31">
-        <input class="valor" id="lamax" type="text" placeholder="máxima" value="-30">
-        <label for="lo">Longitud (lo)</label><br>
-        <input class="valor" id="lomin" type="text" placeholder="mínima" value="-71">
-        <input class="valor" id="lomax" type="text" placeholder="máxima" value="-70">
-        <label for="r">Rpm (r)</label><br>
-        <input class="valor" id="rmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="rmax" type="text" placeholder="máxima" value="1000">
-        <label for="gf">Grados pala frontal (gf)</label><br>
-        <input class="valor" id="gfmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gfmax" type="text" placeholder="máxima" value="360">
-        <label for="gt">Grados pala trasera (gt)</label><br>
-        <input class="valor" id="gtmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gtmax" type="text" placeholder="máxima" value="360">
-        <label for="af">Altura pala frontal (af)</label><br>
-        <input class="valor" id="afmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="afmax" type="text" placeholder="máxima" value="10">
-        <label for="at">Altura pala trasera (at)</label><br>
-        <input class="valor" id="atmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="atmax" type="text" placeholder="máxima" value="10">
-        <label for="c">Cambio (c)</label><br>
-        <input class="valor" id="cmin" type="text" placeholder="mínima" value="1">
-        <input class="valor" id="cmax" type="text" placeholder="máxima" value="3">
-        <label for="mf">Motor funcionando (mf)</label><br>
-        <input class="valor" id="mf" type="text" placeholder="boolean" value="1">
-    </form>
-        <form>
-        <h1>patente/id</h1>
-        <label for="id">Identificador</label><br>
-        <input class="valor" id="id" type="text" value="1">
-        <label for="la">Latitud (la)</label><br>
-        <input class="valor" id="lamin" type="text" placeholder="mínima" value="-31">
-        <input class="valor" id="lamax" type="text" placeholder="máxima" value="-30">
-        <label for="lo">Longitud (lo)</label><br>
-        <input class="valor" id="lomin" type="text" placeholder="mínima" value="-71">
-        <input class="valor" id="lomax" type="text" placeholder="máxima" value="-70">
-        <label for="r">Rpm (r)</label><br>
-        <input class="valor" id="rmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="rmax" type="text" placeholder="máxima" value="1000">
-        <label for="gf">Grados pala frontal (gf)</label><br>
-        <input class="valor" id="gfmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gfmax" type="text" placeholder="máxima" value="360">
-        <label for="gt">Grados pala trasera (gt)</label><br>
-        <input class="valor" id="gtmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gtmax" type="text" placeholder="máxima" value="360">
-        <label for="af">Altura pala frontal (af)</label><br>
-        <input class="valor" id="afmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="afmax" type="text" placeholder="máxima" value="10">
-        <label for="at">Altura pala trasera (at)</label><br>
-        <input class="valor" id="atmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="atmax" type="text" placeholder="máxima" value="10">
-        <label for="c">Cambio (c)</label><br>
-        <input class="valor" id="cmin" type="text" placeholder="mínima" value="1">
-        <input class="valor" id="cmax" type="text" placeholder="máxima" value="3">
-        <label for="mf">Motor funcionando (mf)</label><br>
-        <input class="valor" id="mf" type="text" placeholder="boolean" value="1">
-    </form>
-        <form>
-        <h1>patente/id</h1>
-        <label for="id">Identificador</label><br>
-        <input class="valor" id="id" type="text" value="1">
-        <label for="la">Latitud (la)</label><br>
-        <input class="valor" id="lamin" type="text" placeholder="mínima" value="-31">
-        <input class="valor" id="lamax" type="text" placeholder="máxima" value="-30">
-        <label for="lo">Longitud (lo)</label><br>
-        <input class="valor" id="lomin" type="text" placeholder="mínima" value="-71">
-        <input class="valor" id="lomax" type="text" placeholder="máxima" value="-70">
-        <label for="r">Rpm (r)</label><br>
-        <input class="valor" id="rmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="rmax" type="text" placeholder="máxima" value="1000">
-        <label for="gf">Grados pala frontal (gf)</label><br>
-        <input class="valor" id="gfmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gfmax" type="text" placeholder="máxima" value="360">
-        <label for="gt">Grados pala trasera (gt)</label><br>
-        <input class="valor" id="gtmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gtmax" type="text" placeholder="máxima" value="360">
-        <label for="af">Altura pala frontal (af)</label><br>
-        <input class="valor" id="afmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="afmax" type="text" placeholder="máxima" value="10">
-        <label for="at">Altura pala trasera (at)</label><br>
-        <input class="valor" id="atmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="atmax" type="text" placeholder="máxima" value="10">
-        <label for="c">Cambio (c)</label><br>
-        <input class="valor" id="cmin" type="text" placeholder="mínima" value="1">
-        <input class="valor" id="cmax" type="text" placeholder="máxima" value="3">
-        <label for="mf">Motor funcionando (mf)</label><br>
-        <input class="valor" id="mf" type="text" placeholder="boolean" value="1">
-    </form>
-        <form>
-        <h1>patente/id</h1>
-        <label for="id">Identificador</label><br>
-        <input class="valor" id="id" type="text" value="1">
-        <label for="la">Latitud (la)</label><br>
-        <input class="valor" id="lamin" type="text" placeholder="mínima" value="-31">
-        <input class="valor" id="lamax" type="text" placeholder="máxima" value="-30">
-        <label for="lo">Longitud (lo)</label><br>
-        <input class="valor" id="lomin" type="text" placeholder="mínima" value="-71">
-        <input class="valor" id="lomax" type="text" placeholder="máxima" value="-70">
-        <label for="r">Rpm (r)</label><br>
-        <input class="valor" id="rmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="rmax" type="text" placeholder="máxima" value="1000">
-        <label for="gf">Grados pala frontal (gf)</label><br>
-        <input class="valor" id="gfmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gfmax" type="text" placeholder="máxima" value="360">
-        <label for="gt">Grados pala trasera (gt)</label><br>
-        <input class="valor" id="gtmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="gtmax" type="text" placeholder="máxima" value="360">
-        <label for="af">Altura pala frontal (af)</label><br>
-        <input class="valor" id="afmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="afmax" type="text" placeholder="máxima" value="10">
-        <label for="at">Altura pala trasera (at)</label><br>
-        <input class="valor" id="atmin" type="text" placeholder="mínima" value="0">
-        <input class="valor" id="atmax" type="text" placeholder="máxima" value="10">
-        <label for="c">Cambio (c)</label><br>
-        <input class="valor" id="cmin" type="text" placeholder="mínima" value="1">
-        <input class="valor" id="cmax" type="text" placeholder="máxima" value="3">
-        <label for="mf">Motor funcionando (mf)</label><br>
-        <input class="valor" id="mf" type="text" placeholder="boolean" value="1">
-    </form>
+            <h1>patente/id</h1>
+            <label for="id">Identificador</label><br>
+            <input class="valor" id="id" type="text" value="1">
+            <label for="la">Latitud (la)</label><br>
+            <input class="valor" id="lamin" type="text" placeholder="mínima" value="-31">
+            <input class="valor" id="lamax" type="text" placeholder="máxima" value="-30">
+            <label for="lo">Longitud (lo)</label><br>
+            <input class="valor" id="lomin" type="text" placeholder="mínima" value="-71">
+            <input class="valor" id="lomax" type="text" placeholder="máxima" value="-70">
+            <label for="r">Rpm (r)</label><br>
+            <input class="valor" id="rmin" type="text" placeholder="mínima" value="0">
+            <input class="valor" id="rmax" type="text" placeholder="máxima" value="1000">
+            <label for="gf">Grados pala frontal (gf)</label><br>
+            <input class="valor" id="gfmin" type="text" placeholder="mínima" value="0">
+            <input class="valor" id="gfmax" type="text" placeholder="máxima" value="360">
+            <label for="gt">Grados pala trasera (gt)</label><br>
+            <input class="valor" id="gtmin" type="text" placeholder="mínima" value="0">
+            <input class="valor" id="gtmax" type="text" placeholder="máxima" value="360">
+            <label for="af">Altura pala frontal (af)</label><br>
+            <input class="valor" id="afmin" type="text" placeholder="mínima" value="0">
+            <input class="valor" id="afmax" type="text" placeholder="máxima" value="10">
+            <label for="at">Altura pala trasera (at)</label><br>
+            <input class="valor" id="atmin" type="text" placeholder="mínima" value="0">
+            <input class="valor" id="atmax" type="text" placeholder="máxima" value="10">
+            <label for="c">Cambio (c)</label><br>
+            <input class="valor" id="cmin" type="text" placeholder="mínima" value="1">
+            <input class="valor" id="cmax" type="text" placeholder="máxima" value="3">
+            <label for="mf">Motor funcionando (mf)</label><br>
+            <input class="valor" id="mf" type="text" placeholder="boolean" value="1">
+        </form>
     </section>
-<footer>
-    <div class="select">
-        <select id="zonas" name="zonas" class="form-control select2-single" style="width: 100%;">
-            <option value="0">a</option>
-            <option value="1">b</option>
-            <option value="2">c</option>
-        </select>
-    </div>
-    <div class="button"><a href="#" id="descargar" class="descargar"><i class="fa fa-arrow-up"></i></a></div>
-</footer>
+    <footer>
+        <div class="select">
+            <select id="zonas" name="zonas" class="form-control select2-single" style="width: 100%;">
+            </select>
+        </div>
+        <div class="button"><a href="#" id="descargar" class="descargar"><i class="fa fa-arrow-up"></i></a></div>
+    </footer>
 </div>
     <script src="../jquery/jquery.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>

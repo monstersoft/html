@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label>idZonaSubirArchivo</label>
-                        <input type="text" class="form-control" name="id" id="idZonaSubirArchivo">
+                        <input type="text" class="form-control" name="idZona" id="idZonaSubirArchivo">
                     </div>
                     <div class="form-group">
                         <label>idSupervisorSubirArchivo</label>
@@ -93,7 +93,7 @@
             min: new Date(2017,1,1),
             max: new Date(2018,1,1),
             format: 'dddd dd , mmmm yyyy',
-            formatSubmit: 'yyyy/mm/dd',
+            formatSubmit: 'yyyy-mm-dd',
             hiddenName : true,
             firstDay: 'Monday',
             container: 'body'

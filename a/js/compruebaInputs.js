@@ -109,12 +109,36 @@ function maxMinValue(value, max, min) {
     }
 }
 function extensions(value) {
+  if(value == '') 
+      return false;
+  else {
     var extensions = value.substring(value.lastIndexOf("."));
     var string = new String(extensions);
     string = string.toLocaleLowerCase();
     if(string != ".csv")
-        return true;
+      return true;
     else
-        return false;
+      return false;
+  }
+}
+function nameMatchSplit(path, date) {
+  var data = {emptyNoPath: false, path: path, pathSplit: '',fileName: '', fileName8: '', date: date, dateSplit: '',  dateFormat: '', match: false, msg: 'No definido'}
+  if(path != '') {
+    data.emptyNoPath = true;
+    data.pathSplit = path.split('\\');
+    data.fileName = data.pathSplit[data.pathSplit.length - 1];
+    data.fileName8 = data.fileName.substring(0,8);
+    data.dateSplit = date.split('-');
+    data.dateFormat = data.dateSplit[2]+data.dateSplit[1]+data.dateSplit[0];
+    if(data.dateFormat == data.fileName8) {
+        data.match = false;
+        data.msg = '<li>Son iguales</li>';
+    }
+    else {
+        data.match = true;
+        data.msg = '<li>Nombre de archivo no coincide con fecha de datos</li>';
+    }
+  }
+  return data;
 }
 

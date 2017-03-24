@@ -6,26 +6,30 @@ $(document).ready(function() {
     });*/
     $('#btnSubirArchivo').click(function(){
         var arreglo = new Array();
-        var fecha = $('#fechaDatosSubirArchivo').val();
+        var fecha = $('input[name=fechaDatos]').val();
         var archivo = $('#archivoSubirArchivo').val();
         var idZona = $('#idZonaSubirArchivo').val();
+        var idSupervisor = $('#idSupervisorSubirArchivo').val();
         var numberErrors = 0;
-        if(isEmpty(fecha)) {
+        if(isEmpty(fecha))
             arreglo.push('<li>Fecha es obigatorio</li>');
-        }
-        if(extensions(archivo)) {
+        if(extensions(archivo))
             arreglo.push('<li>Formato incorrecto de archivo</li>');
-        }
-        if(isEmpty(archivo)) {
+        if(isEmpty(archivo))
             arreglo.push('<li>Archivo es obligatorio</li>');
-        }
-        if(isEmpty(idZona)) {
+        if(isEmpty(idZona))
             arreglo.push('<li>Id zona es obligatorio</li>');
-        }
+        if(isEmpty(idSupervisor))
+            arreglo.push('<li>Id supervisor es obligatorio</li>');
+        if(nameMatchSplit(archivo,fecha).match == true)
+           arreglo.push(nameMatchSplit(archivo,fecha).msg);
+       console.log(nameMatchSplit(archivo,fecha).match);
+        console.log(JSON.stringify(nameMatchSplit(archivo,fecha)));
         if(arreglo.length == 0) {
-            var data = new FormData(document.getElementById('formularioSubirArchivo'));
-            $.ajax({
-                url: devuelveUrl('a/supervisor/ajax/subirArchivo.php'),
+            console.log('asdasd');
+            /*$.ajax({
+                //url: devuelveUrl('a/supervisor/ajax/subirArchivo.php'),
+                url: 'subirArchivo.php',
                 type: 'POST',
                 dataType: 'json',
                 data: data,
@@ -37,15 +41,6 @@ $(document).ready(function() {
                 },
                 success: function(arreglo) {
                     console.log(JSON.stringify(arreglo));
-                    /*if(arreglo.exito == 1) {
-                        successMessage('Registro realizado con éxito','Serás redireccionado al panel de zonas');
-                        $('.cancelar').remove();
-                        $('#btnAñadirEmpresa').remove();
-                        setTimeout(function(){location.reload()}, 3000);
-                    }
-                    else {
-                        warningMessage(arreglo.msg);
-                    }*/
                 },
                 complete: function() {
                     desactivarLoaderBotones('fa-pencil','fa-refresh');
@@ -66,11 +61,11 @@ $(document).ready(function() {
                 } else {
                     alert('Error desconocido');
                 }
-            });
+            });*/
         }
-        else {
-            errorMessage(arreglo);
-        }
+    else {
+        errorMessage(arreglo);
+    }
     });
     
 });
