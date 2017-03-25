@@ -27,7 +27,7 @@
                     WHERE supervisores.correoSupervisor = '$correo'";
         if($resultado = mysqli_query($conexion,$consulta)) {
             while($r = mysqli_fetch_array($resultado)) {
-                array_push($arreglo,array('idZona' => $r['idZona'], 'nombre' => $r['nombre']));
+                array_push($arreglo,array('idZona' => $r['idZona'], 'nombre' => utf8_encode($r['nombre'])));
             }
         }
         mysqli_close($conexion);
@@ -70,7 +70,7 @@
                      WHERE zonas.idZona = '$idZona'"; 
         if($res = mysqli_query($con,$qry)) {
             while($r = mysqli_fetch_array($res)) {
-                array_push($arr,array('idZona' => $r['idZona'], 'idSupervisor' => $r['idSupervisor'], 'nombreSupervisor' => $r['nombreSupervisor'], 'correoSupervisor' => $r['correoSupervisor'], 'celular' => $r['celular'], 'status' => $r['status'], 'fechaMailEnviado' => $r['fechaMailEnviado']));
+                array_push($arr,array('idZona' => $r['idZona'], 'idSupervisor' => $r['idSupervisor'], 'nombreSupervisor' => utf8_encode($r['nombreSupervisor']), 'correoSupervisor' => $r['correoSupervisor'], 'celular' => $r['celular'], 'status' => $r['status'], 'fechaMailEnviado' => $r['fechaMailEnviado']));
             }
         }
         mysqli_close($con);

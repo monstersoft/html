@@ -7,7 +7,7 @@
     else {*/
         include("../../php/funcionesSupervisor.php");
         //$email = $_SESSION['correo'];
-        $email = 'pato@contacto.cl';
+        $email = 'juan@metropolitana.cl';
         $profile = datosPerfil($email);
         /*echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div>
         <div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div>

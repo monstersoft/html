@@ -1,5 +1,7 @@
 <?php
-
+    include 'php/funciones.php';
+    $zonas = zonas();
+    print_r($zonas);
 ?>
 <!DOCTYPE html>
 <html>
