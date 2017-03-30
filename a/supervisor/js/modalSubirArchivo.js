@@ -23,49 +23,25 @@ $(document).ready(function() {
             arreglo.push('<li>Id supervisor es obligatorio</li>');
         if(nameMatchSplit(archivo,fecha).match == true)
            arreglo.push(nameMatchSplit(archivo,fecha).msg);
-       console.log(nameMatchSplit(archivo,fecha).match);
-        console.log(JSON.stringify(nameMatchSplit(archivo,fecha)));
         if(arreglo.length == 0) {
-            console.log('asdasd');
-            /*$.ajax({
-                //url: devuelveUrl('a/supervisor/ajax/subirArchivo.php'),
-                url: 'subirArchivo.php',
+            var data  = new FormData(document.getElementById('formularioSubirArchivo'));
+            $.ajax({
+                url: devuelveUrl('a/supervisor/ajax/subirArchivo.php'),
                 type: 'POST',
                 dataType: 'json',
                 data: data,
                 cache: false,
                 contentType: false,
                 processData: false,
-                beforeSend: function() {
-                  activarLoaderBotones('fa-pencil','fa-refresh');
-                },
+                beforeSend: function() {activarLoaderBotones('fa-pencil','fa-refresh');},
                 success: function(arreglo) {
                     console.log(JSON.stringify(arreglo));
                 },
-                complete: function() {
-                    desactivarLoaderBotones('fa-pencil','fa-refresh');
-                }
-            }).fail(function( jqXHR, textStatus, errorThrown ){
-                if (jqXHR.status === 0){
-                    alert('No hay coneccion con el servidor');
-                } else if (jqXHR.status == 404) {
-                    alert('La pagina solicitada no fue encontrada, error 404');
-                } else if (jqXHR.status == 500) {
-                    alert('Error interno del servidor');
-                } else if (textStatus === 'parsererror') {
-                    alert('Error en la respuesta, debes analizar la sintaxis JSON');
-                } else if (textStatus === 'timeout') {
-                    alert('Ya ha pasado mucho tiempo');
-                } else if (textStatus === 'abort') {
-                    alert('La peticion fue abortada');
-                } else {
-                    alert('Error desconocido');
-                }
-            });*/
+                complete: function() {desactivarLoaderBotones('fa-pencil','fa-refresh');}
+            }).fail(function( jqXHR, textStatus, errorThrown ){alert(textStatus);});
         }
-    else {
-        errorMessage(arreglo);
-    }
-    });
-    
+        else {
+            errorMessage(arreglo);
+        }
+    });  
 });

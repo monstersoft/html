@@ -1,58 +1,78 @@
 <?php
-include ('../../php/conexion.php');
-$conexion = conectar();
-$fechaDatos = $_POST['fecha'];
-//$archivoZonaText = $_POST['archivoZonaText'];
-$archivo = $_FILES['archivo'];
-$idZona = $_POST['id'];
-$arreglo = array('fecha de datos: ' => $fechaDatos, 'archivo' => $archivo, 'ID ZONA: ' => $idZona);
-/*$arreglo['numeroRegistros'] = 0;
-$arreglo['numeroInserciones'] = 0;
-$arreglo['numeroInsercionesErradas'] = 0;
-$arreglo['tiempoValidacion'] = 0;
-$arreglo['tiempoInsercion'] = 0;
-$arreglo['peso'] = $_FILES['archivoZona']['size'];
-$arreglo['peso'] = $_FILES['archivoZona']['type'];
-$arreglo['fechaSubida'] = 0;
-$arreglo['fechaDatos'] = 0;
-$arreglo['horaSubida'] = 0;
-$arreglo['candtidadRegistros'] = 0;
-$arreglo['md5'] = 0;
-if ($_FILES['csv']['size'] > 0) {
+	include ('../../php/conexion.php');
+	$con = conectar();
+	/*$fechaDatos = $_POST['fechaDatos'];
+	$idZona = $_POST['idZona'];
+	$archivo = $_FILES['archivo'];
+	$idSupervisor= $_POST['idSupervisor'];*/
 
-	//$csv = $_FILES['csv']['tmp_name'];
-set_time_limit(600);
-	$handle = fopen($csv,'r');
+	//$fechaDatos = '29-03-2017';
+	$idZona = 50;
+	//$archivo = fopen('29032017.csv','r');
+	//$idSupervisor = 22;
+		//$csv = $_FILES['csv']['tmp_name'];
+		set_time_limit(600);
+	/*$arreglo['nameDateMatch'] = nameDateMatch($archivo['name'],$fechaDatos);
+	$arreglo['isCsv'] = isCsv($archivo['type']);
+	$arreglo['itAlreadyExists'] = itAlreadyExists($idZona,$fechaDatos,$con);
+	$arreglo['md5'] = calculateMD5(file_get_contents($archivo['name']));*/
 
-	while ($data = fgetcsv($handle,1000,";")){
+	//$arreglo['infoFile'] = $archivo;machineZone($idZona,$con);
+	echo json_encode(machineZone($idZona,$con));
 
-		if ($data[0]) { 
-			$consulta = "INSERT INTO datos (idArchivo, patente, anguloPala, anguloInclinacion, alturaPala, velocidad, revoluciones, latitud, longitud, fechaDato, horaDato) VALUES (0,'$data[0]','$data[1]','$data[2]','$data[3]','$data[4]','$data[5]','$data[6]','$data[7]','$data[8]','$data[9]')";
-			if(mysqli_query($conexion,$consulta)){
-				$inserciones++;
-			}
-			else {
-				$errores
-			}
-		$registros++;
+
+
+function nameDateMatch($fileName,$dateData) {
+	list($day,$month,$year) = explode('-',$dateData);
+	$aux = $year.$month.$day;
+	list($name,$format) = explode('.',$fileName);
+	if($name == $aux)
+		return true;
+	else 
+		return false;
+}
+function isCsv($fileType) {
+	if($fileType == 'application/vnd.ms-excel')
+		return true;
+	else
+		return false;
+}
+function itAlreadyExists($idZone,$dateData,$con) {
+	$qry = "SELECT COUNT(archivos.idArchivo) AS quantityFile
+			FROM archivos
+			WHERE archivos.idZona = '$idZone' AND archivos.fechaDatos = '$dateData'";
+	if($res = mysqli_query($con,$qry)) {
+		$quantityFile = mysqli_fetch_assoc($res);
+		if($quantityFile['quantityFile'] == 0)
+			return false;
+		else
+			return true;	
+	}
+}
+function calculateMD5($contentFile) {
+	$md5 = md5($contentFile);
+	return $md5;
+}
+function machineZone($idZone,$con) {
+	$qry = "SELECT idMaquina,identificador, patente
+			FROM maquinas
+			WHERE maquinas.idZona = '$idZone'";
+	$arr = array();
+	if($res = mysqli_query($con,$qry)){
+		while($row = mysqli_fetch_assoc($res)){
+			array_push($arr,array('idMaquina' => $row['idMaquina'], 'identificador' => $row['identificador'], 'patente' => $row['patente'], 'registrosEncontrados' => 0));
 		}
-
-	}*/
-echo json_encode($arreglo);
-
-
-
-function calcularMD5($archivo) {
-	echo 'Retorna true o false si lo calculó o no';
+		$file = fopen('30032017.csv','r');
+		while ($data = fgetcsv($file,150,";")){
+			if($data[0]){
+				foreach ($arr as $key => $value) {
+					if($value['identificador'] == $data[0]){
+						$arr[$key]['registrosEncontrados']++;
+					}
+				}
+			}
+		}
+	}
+	return $arr;
 }
-function verificarMD5($md5Archivo){
-	echo'Retorna si el md5 está o no en la base de datos, en el caso que ya se haya subido el archivo';
-}
-function verificarFechaDatos($fechaInput,$fechaDatos) {
-	echo 'Retorna true o false si la fecha no corresponde a la ingresada desde input, comparada con la del archivo';
-}
-//Cantidad de registros leídos
-//Cantidad de máquinas que están en el archivo VS máquinas que están registradas, mostrar cuáles no están registradas
-//Calcular el md5 del archivo, con comas y todo
-
 ?>

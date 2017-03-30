@@ -3,7 +3,18 @@ function descargar(data,nombreArchivo){
     console.log(JSON.stringify(data));
     var csvData = new Array();
     $.each(data,function(index) {
-        csvData.push(data[index].identificador+';'+data[index].latitud+';'+data[index].longitud+';'+data[index].revoluciones+';'+data[index].gradosFrontal+';'+data[index].gradosTrasera+';'+data[index].alturaFrontal+';'+data[index].alturaTrasera+';'+data[index].cambio+';'+data[index].motor+';'+data[index].horaDato);
+        csvData.push(
+            data[index].identificador+';'+
+            data[index].horaDato+';'+
+            data[index].latitud+';'+
+            data[index].longitud+';'+
+            data[index].motor+';'+
+            data[index].revoluciones+';'+
+            data[index].gradosFrontal+';'+
+            data[index].gradosTrasera+';'+
+            data[index].cambio+';'+
+            data[index].alturaFrontal+';'+
+            data[index].alturaTrasera);
     });
     var buffer = csvData.join("\r\n");
     var blob = new Blob([buffer], {"type": "text/csv;charset=utf8;"});
