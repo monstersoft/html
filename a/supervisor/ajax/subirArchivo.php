@@ -16,9 +16,10 @@
 	$arreglo['isCsv'] = isCsv($archivo['type']);
 	$arreglo['itAlreadyExists'] = itAlreadyExists($idZona,$fechaDatos,$con);
 	$arreglo['md5'] = calculateMD5(file_get_contents($archivo['name']));*/
-
 	//$arreglo['infoFile'] = $archivo;machineZone($idZona,$con);
-	echo json_encode(machineZone($idZona,$con));
+$arr = array();
+$arr['js'] = getDistanceFromLatLonInKm(48.8666667,2.3333333,19.4341667,-99.1386111);
+	echo json_encode($arr);
 
 
 
@@ -75,4 +76,31 @@ function machineZone($idZone,$con) {
 	}
 	return $arr;
 }
+function distanceCalculation($point1_lat, $point1_long, $point2_lat, $point2_long, $unit = 'km', $decimals = 2) {
+	// Cálculo de la distancia en grados
+	$degrees = rad2deg(acos((sin(deg2rad($point1_lat))*sin(deg2rad($point2_lat))) + (cos(deg2rad($point1_lat))*cos(deg2rad($point2_lat))*cos(deg2rad($point1_long-$point2_long)))));
+ 
+	// Conversión de la distancia en grados a la unidad escogida (kilómetros, millas o millas naúticas)
+	switch($unit) {
+		case 'km':
+			$distance = $degrees * 111.13384; // 1 grado = 111.13384 km, basándose en el diametro promedio de la Tierra (12.735 km)
+			break;
+		case 'mi':
+			$distance = $degrees * 69.05482; // 1 grado = 69.05482 millas, basándose en el diametro promedio de la Tierra (7.913,1 millas)
+			break;
+		case 'nmi':
+			$distance =  $degrees * 59.97662; // 1 grado = 59.97662 millas naúticas, basándose en el diametro promedio de la Tierra (6,876.3 millas naúticas)
+	}
+	return round($distance, $decimals);
+}
+function getDistanceFromLatLonInKm($lat1,$lon1,$lat2,$lon2) {
+    $R = 6371;
+    $dLat = deg2rad($lat2-$lat1);
+    $dLon = deg2rad($lon2-$lon1); 
+    $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * sin($dLon/2) * sin($dLon/2); 
+    $c = 2 * atan2(sqrt($a), sqrt(1-$a)); 
+    $d = $R * $c;
+    return $d;
+}
+
 ?>
