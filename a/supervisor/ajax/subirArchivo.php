@@ -1,6 +1,7 @@
 <?php
 	include ('../../php/conexion.php');
 	$con = conectar();
+set_time_limit(600);
 	/*$fechaDatos = $_POST['fechaDatos'];
 	$idZona = $_POST['idZona'];
 	$archivo = $_FILES['archivo'];
@@ -8,18 +9,19 @@
 
 	//$fechaDatos = '29-03-2017';
 	$idZona = 50;
-	//$archivo = fopen('29032017.csv','r');
-	//$idSupervisor = 22;
+	$idSupervisor = 22;
+	$uploadDate = date("Y-m-d");
+	$dataDate = '29-03-2017';
+	$uploadTime = date("H-i-s");
+	$fileSize = 100;
+	echo insertDataFile($idZona,$idSupervisor,$uploadDate,$dataDate,$uploadTime,$fileSize,$con);
 		//$csv = $_FILES['csv']['tmp_name'];
-		set_time_limit(600);
 	/*$arreglo['nameDateMatch'] = nameDateMatch($archivo['name'],$fechaDatos);
 	$arreglo['isCsv'] = isCsv($archivo['type']);
 	$arreglo['itAlreadyExists'] = itAlreadyExists($idZona,$fechaDatos,$con);
 	$arreglo['md5'] = calculateMD5(file_get_contents($archivo['name']));*/
 	//$arreglo['infoFile'] = $archivo;machineZone($idZona,$con);
-$arr = array();
-$arr['js'] = getDistanceFromLatLonInKm(48.8666667,2.3333333,19.4341667,-99.1386111);
-	echo json_encode($arr);
+	//echo json_encode($arr);
 
 
 
@@ -59,6 +61,7 @@ function machineZone($idZone,$con) {
 			FROM maquinas
 			WHERE maquinas.idZona = '$idZone'";
 	$arr = array();
+	$count = 0;
 	if($res = mysqli_query($con,$qry)){
 		while($row = mysqli_fetch_assoc($res)){
 			array_push($arr,array('idMaquina' => $row['idMaquina'], 'identificador' => $row['identificador'], 'patente' => $row['patente'], 'registrosEncontrados' => 0));
@@ -67,31 +70,16 @@ function machineZone($idZone,$con) {
 		while ($data = fgetcsv($file,150,";")){
 			if($data[0]){
 				foreach ($arr as $key => $value) {
-					if($value['identificador'] == $data[0]){
+					if($value['identificador'] == $data[0])
 						$arr[$key]['registrosEncontrados']++;
-					}
+					$count++;
 				}
 			}
 		}
 	}
-	return $arr;
-}
-function distanceCalculation($point1_lat, $point1_long, $point2_lat, $point2_long, $unit = 'km', $decimals = 2) {
-	// Cálculo de la distancia en grados
-	$degrees = rad2deg(acos((sin(deg2rad($point1_lat))*sin(deg2rad($point2_lat))) + (cos(deg2rad($point1_lat))*cos(deg2rad($point2_lat))*cos(deg2rad($point1_long-$point2_long)))));
- 
-	// Conversión de la distancia en grados a la unidad escogida (kilómetros, millas o millas naúticas)
-	switch($unit) {
-		case 'km':
-			$distance = $degrees * 111.13384; // 1 grado = 111.13384 km, basándose en el diametro promedio de la Tierra (12.735 km)
-			break;
-		case 'mi':
-			$distance = $degrees * 69.05482; // 1 grado = 69.05482 millas, basándose en el diametro promedio de la Tierra (7.913,1 millas)
-			break;
-		case 'nmi':
-			$distance =  $degrees * 59.97662; // 1 grado = 59.97662 millas naúticas, basándose en el diametro promedio de la Tierra (6,876.3 millas naúticas)
-	}
-	return round($distance, $decimals);
+	$data['infoMaquinas'] = $arr;
+	$data['cantidadRegistros'] = $count;
+	return $data;
 }
 function getDistanceFromLatLonInKm($lat1,$lon1,$lat2,$lon2) {
     $R = 6371;
@@ -102,5 +90,21 @@ function getDistanceFromLatLonInKm($lat1,$lon1,$lat2,$lon2) {
     $d = $R * $c;
     return $d;
 }
-
+function insertDataFile($idZone,$idManager,$uploadDate,$dataDate,$uploadTime,$fileSize,$con) {
+	$qry = "INSERT INTO archivos (idZona,idSupervisor,fechaSubida,fechaDatos,horaSubida,peso,cantidadRegistros,md5)
+			VALUES ('$idZone','$idManager','$uploadDate','$dataDate','$uploadTime','$fileSize',100,'asd')";
+	$countSuccess = 0;
+	if(mysqli_query($con,$qry)) {
+		$lastIdFile = mysqli_insert_id($con);
+		$file = fopen('30032017.csv','r');
+		while ($data = fgetcsv($file,150,";")){
+			if($data[0]){
+				$qry = "INSERT INTO datos (idArchivo,identificador,hora,latitud,longitud,motorFuncionando,rpm,gradosPalaFrontal,gradosPalaTrasera,cambio,alturaPalaFrontal,alturaPalaTrasera)
+						VALUES ('$lastIdFile','$data[0]','$data[1]','$data[2]','$data[3]','$data[4]','$data[5]','$data[6]','$data[7]','$data[8]','$data[9]','$data[10]')";
+					if(mysqli_query($con,$qry)) $countSuccess++;
+			}
+		}
+	}
+	return $countSuccess;
+}
 ?>
