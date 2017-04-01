@@ -111,7 +111,7 @@
                         autoSkip: false,
                         maxRotation: 0,
                         minRotation: 90,
-                        fontSize: 10,
+                        fontSize: 7,
                         beginAtZero: true,
                         padding: 0
                         }
