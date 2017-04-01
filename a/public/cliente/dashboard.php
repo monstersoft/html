@@ -40,7 +40,7 @@
             </div>
             <p>GRADOS PALA</p>
         </div>
-        <div class="col-xs-12 cardContent" style="padding: 20px;">
+        <div class="col-xs-12 cardContent" style="padding: 10px;">
         <div style="width: 100%;">
             <div id="parent">
                 <canvas style="height: 250px;" id="myChart"></canvas>
@@ -108,12 +108,12 @@
                             display: false
                         },
                         ticks: {
-                        autoSkip: false,
+                        autoSkip: true,
                         maxRotation: 0,
                         minRotation: 90,
-                        fontSize: 7,
+                        fontSize: 9,
                         beginAtZero: true,
-                        padding: 0
+                        maxTicksLimit: 30
                         }
                     }],
                     yAxes:[{
