@@ -105,20 +105,20 @@
                 scales: {
                     xAxes: [{
                         gridLines: {
-                            display: false
+                            display: true
                         },
                         ticks: {
                         autoSkip: true,
                         maxRotation: 0,
                         minRotation: 90,
-                        fontSize: 9,
+                        fontSize: 10,
                         beginAtZero: true,
                         maxTicksLimit: 20
                         }
                     }],
                     yAxes:[{
                         gridLines: {
-                            display: false
+                            display: true
                         },
                         ticks: {
                             beginAtZero: true
@@ -137,13 +137,26 @@
                 datasets: [
                 {
                     label: 'FRONTAL',
+                    fill: false,
+                    lineTension: 0.5,
+                    backgroundColor: "#F5A214",
+                    borderColor: "#F5A214",
+                    pointRadius: 0,
                     data: [1, 2, 3, 4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
                     21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,
                     43,44,45,46,47,48,49,50,51,54,53,55,55,56,57,58,59,60]
                 },
                 {
                     label: 'TRASERA',
-                    data: [3, 2, 5, 10, 23, 21]
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#262626",
+                    borderColor: "#262626",
+                    borderWidth: 4,
+                    pointRadius: 0,
+                    data: [2, 3, 4, 5,6,7,8,9,10,11,12,13,14,16,15,16,17,18,19,20,
+                    21,22,23,24,25,26,27,2,3,30,31,32,33,34,35,36,37,38,39,40,41,42,
+                    43,44,45,46,47,48,49,50,50,51,52,53,54,55,56,57,3,100]
                 }
                 ]
             }
