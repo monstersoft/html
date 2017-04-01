@@ -43,7 +43,7 @@
         <div class="col-xs-12 cardContent" style="padding: 20px;">
         <div style="width: 100%;">
             <div id="parent">
-                <canvas style="height: 300px;" id="myChart"></canvas>
+                <canvas style="height: 250px;" id="myChart"></canvas>
             </div>
         </div>
         </div>
@@ -103,26 +103,28 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                xAxes: [{
-                    gridLines: {
-                        display: false
-                    },
-                    ticks: {
-                    autoSkip: false,
-                    minRotation: 90,
-                    fontSize: 10,
-                    beginAtZero: true,
-                    padding: 0
-                    }
-                }],
-                yAxes:[{
-                    gridLines: {
-                        display: false
-                    },
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                        autoSkip: false,
+                        maxRotation: 0,
+                        minRotation: 90,
+                        fontSize: 10,
+                        beginAtZero: true,
+                        padding: 0
+                        }
+                    }],
+                    yAxes:[{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        stacked: false
+                    }]
                 }
             },
             data: {
