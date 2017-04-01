@@ -113,7 +113,7 @@
                         minRotation: 90,
                         fontSize: 9,
                         beginAtZero: true,
-                        maxTicksLimit: 30
+                        maxTicksLimit: 20
                         }
                     }],
                     yAxes:[{
