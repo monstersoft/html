@@ -33,7 +33,7 @@ var chart = new Chart(ctx, {
                autoSkip: true,
           maxRotation: 0,
           minRotation: 90,
-        fontSize: 10
+        fontSize: 6
                 }
             }]
         }
