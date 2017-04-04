@@ -17,7 +17,22 @@
             $arr[$i]['promedioGTraseraPorHora'] = $arr[$i]['promedioGTraseraPorHora'] + $value['gpt'];
             $arr[$i]['promedioAFrontalPorHora'] = $arr[$i]['promedioAFrontalPorHora'] + $value['apf'];
             $arr[$i]['promedioATraseraPorHora'] = $arr[$i]['promedioATraseraPorHora'] + $value['apt'];
+            if($value['mFun'] == true) $arr[$i]['frecuenciaMFuncionandoPorHora']++;
+            if($value['cam'] == 1) $arr[$i]['frecuenciaCambio']['primera']++;
+            if($value['cam'] == 2) $arr[$i]['frecuenciaCambio']['segunda']++;
+            if($value['cam'] == 3) $arr[$i]['frecuenciaCambio']['tercera']++;
+            if($value['cam'] == 4) $arr[$i]['frecuenciaCambio']['cuarta']++;
+            if($value['cam'] == 5) $arr[$i]['frecuenciaCambio']['quinta']++;
+            if($value['cam'] == 6) $arr[$i]['frecuenciaCambio']['sexta']++;
+            if($value['cam'] == 7) $arr[$i]['frecuenciaCambio']['septima']++;
+            if($value['cam'] == 8) $arr[$i]['frecuenciaCambio']['octava']++;
+            if($value['cam'] == 9) $arr[$i]['frecuenciaCambio']['novena']++;
+            if($value['cam'] == 10) $arr[$i]['frecuenciaCambio']['decima']++; 
+            if($value['cam'] > 10) $arr[$i]['frecuenciaCambio']['otro']++;    
             $arr[$i]['registrosPorHora']++;
+            if($arr[$i]['registrosPorHora'] < 60)
+                $arr[$i]['recorridoPorHora'] = $arr[$i]['recorridoPorHora'] + getDistanceFromLatLonInKm($arr[$i]['datos'][$index]['lat'],$arr[$i]['datos'][$index]['lon'],$arr[$i]['datos'][$index+1]['lat'],$arr[$i]['datos'][$index+1]['lon']);
+            
         }
         $arr[$i]['promedioLatPorHora'] = $arr[$i]['promedioLatPorHora']/$arr[$i]['registrosPorHora'];
         $arr[$i]['promedioLonPorHora'] = $arr[$i]['promedioLonPorHora']/$arr[$i]['registrosPorHora'];
@@ -27,7 +42,7 @@
         $arr[$i]['promedioAFrontalPorHora'] = $arr[$i]['promedioAFrontalPorHora']/$arr[$i]['registrosPorHora'];
         $arr[$i]['promedioATraseraPorHora'] = $arr[$i]['promedioATraseraPorHora']/$arr[$i]['registrosPorHora'];
     }
-    //echo json_encode($arr);
+    echo json_encode($arr);
     function generaArray() {
         $cam = array('primera' => 0,
                      'segunda' => 0,
@@ -38,21 +53,22 @@
                      'septima' => 0,
                      'octava'  => 0,
                      'novena'  => 0,
-                     'decima'  => 0
+                     'decima'  => 0,
+                     'otro'    => 0
                     );
         $est = array(
-                        'promedioLatPorHora'       => 0,
-                        'promedioLonPorHora'       => 0,
-                        'promedioRpmPorHora'       => 0,
-                        'promedioGFrontalPorHora'  => 0,
-                        'promedioGTraseraPorHora'  => 0,
-                        'promedioAFrontalPorHora'  => 0,
-                        'promedioATraseraPorHora'  => 0,
-                        'MFuncioandoPorHora'       => 0,
-                        'frecuenciaCambio'         => $cam,
-                        'recorridoPorHora'         => 0,
-                        'registrosPorHora'         => 0,
-                        'datos'                    => array()         
+                        'promedioLatPorHora'                  => 0,
+                        'promedioLonPorHora'                  => 0,
+                        'promedioRpmPorHora'                  => 0,
+                        'promedioGFrontalPorHora'             => 0,
+                        'promedioGTraseraPorHora'             => 0,
+                        'promedioAFrontalPorHora'             => 0,
+                        'promedioATraseraPorHora'             => 0,
+                        'frecuenciaMFuncionandoPorHora'       => 0,
+                        'frecuenciaCambio'                    => $cam,
+                        'recorridoPorHora'                    => 0,
+                        'registrosPorHora'                    => 0,
+                        'datos'                               => array()         
                     );
         $arr = array(0  => $est,
                      1  => $est,

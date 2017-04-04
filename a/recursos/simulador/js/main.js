@@ -11,10 +11,10 @@ $('.datepicker').pickadate({
     //min: new Date(2017,1,1),
     //max: new Date(2018,1,1),
     min: [2017,0,1],
-    max: [2017,2,21],
+    max: [2017,11,1],
     disable: [new Date(2017,2,20)],
     format: 'dddd dd , mmmm yyyy',
-    formatSubmit: 'yyyy/mm/dd',
+    formatSubmit: 'yyyymmdd',
     hiddenName : true,
     firstDay: 'Monday'
 })

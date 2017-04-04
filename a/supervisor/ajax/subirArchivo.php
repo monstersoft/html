@@ -88,7 +88,7 @@ function insertDataFile($idZone,$idManager,$uploadDate,$dataDate,$uploadTime,$fi
 	$countSuccess = 0;
 	if(mysqli_query($con,$qry)) {
 		$lastIdFile = mysqli_insert_id($con);
-		$file = fopen('30032017.csv','r');
+		$file = fopen('03042017.csv','r');
 		while ($data = fgetcsv($file,150,";")){
 			if($data[0]){
 				$qry = "INSERT INTO datos (idArchivo,identificador,hora,latitud,longitud,motorFuncionando,rpm,gradosPalaFrontal,gradosPalaTrasera,cambio,alturaPalaFrontal,alturaPalaTrasera)

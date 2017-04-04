@@ -39,8 +39,8 @@ function generarObjetoDatos(o){
                     gradosTrasera:      r(o[index].gtmin,o[index].gtmax,2),
                     alturaFrontal:      r(o[index].afmin,o[index].afmax,2),
                     alturaTrasera:      r(o[index].atmin,o[index].atmax,2),
-                    cambio:             r(o[index].cmin,o[index].cmax,2),
-                    motor:              o[index].mf,
+                    cambio:             r(1,10,0),
+                    motor:              r(0,1,0),
                     horaDato:           hora+":"+minuto+":00"
                 });
                 minuto++;
