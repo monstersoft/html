@@ -8,10 +8,6 @@
 	$fechaDatos = '0000-00-00';
 	$con = conectar();
     $arr = separaDatosPorHora($con,generaArray());
-    $h1 = date_format(date_create('08:00:00'),'H:i:s');
-    $h2 = date_format(date_create('08:30:00'),'H:i:s');
-    $h3 = date('H:i:s', $h2 - $h1);
-    echo $h3;
     foreach($arr as $i => $v) {
         foreach($arr[$i]['datos'] as $index => $value) {
             $arr[$i]['promedioLatPorHora'] = $arr[$i]['promedioLatPorHora'] + $value['lat'];
@@ -33,21 +29,30 @@
     }
     //echo json_encode($arr);
     function generaArray() {
+        $cam = array('primera' => 0,
+                     'segunda' => 0,
+                     'tercera' => 0,
+                     'cuarta'  => 0,
+                     'quinta'  => 0,
+                     'sexta'   => 0,
+                     'septima' => 0,
+                     'octava'  => 0,
+                     'novena'  => 0,
+                     'decima'  => 0
+                    );
         $est = array(
                         'promedioLatPorHora'       => 0,
                         'promedioLonPorHora'       => 0,
                         'promedioRpmPorHora'       => 0,
                         'promedioGFrontalPorHora'  => 0,
-                        'promedioGTraseraPorHora' => 0,
+                        'promedioGTraseraPorHora'  => 0,
                         'promedioAFrontalPorHora'  => 0,
                         'promedioATraseraPorHora'  => 0,
-                        'tiempoMFuncioandoPorHora' => 0,
-                        'tiempoPorCambio'          => 0,
-                        'tiempoTotalPorHora'       => 0,
+                        'MFuncioandoPorHora'       => 0,
+                        'frecuenciaCambio'         => $cam,
                         'recorridoPorHora'         => 0,
                         'registrosPorHora'         => 0,
-                        'datos'                    => array()
-                        
+                        'datos'                    => array()         
                     );
         $arr = array(0  => $est,
                      1  => $est,
@@ -95,5 +100,14 @@
             }
         }
         return $arr;
+    }
+    function getDistanceFromLatLonInKm($lat1,$lon1,$lat2,$lon2) {
+        $R = 6371;
+        $dLat = deg2rad($lat2-$lat1);
+        $dLon = deg2rad($lon2-$lon1); 
+        $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * sin($dLon/2) * sin($dLon/2); 
+        $c = 2 * atan2(sqrt($a), sqrt(1-$a)); 
+        $d = $R * $c;
+        return $d;
     }
 ?>
