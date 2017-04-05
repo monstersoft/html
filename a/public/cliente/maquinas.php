@@ -16,7 +16,7 @@
     <nav class="unDisplayNav">
         <ul>
             <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile">Pato</span><br><span id="nameProfile">Arauco</span></li>
-            <li><a href="zonas.php" class="selected"><i class="fa fa-globe icons"></i>Zonas</a></li>
+            <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
             <li><a href="registro.php"><i class="fa fa-file-text icons"></i>Registro</a></li>
             <li><a href="historicos.php"><i class="fa fa-bar-chart icons"></i>Históricos</a></li>
             <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
@@ -26,8 +26,8 @@
     </nav>
     <div id="content" class="animated fadeInUp unLeftContent">
 <!-- ............................................................................................................................ -->
-<p class="montserrat">EMPRESAS CON SUS ZONAS, SE SELECCIONA UNA FECHA PARA BUSCAR RESULTADOS</p>
-<a href="maquinas.php">IR A MÁQUINAS</a>
+<p class="montserrat">LAS MÁQUINAS SEGÚN LA FECHA Y LA ZONA CORRESPONDIENTE, DIRÁ QUE MÁQUINAS ESTARÁN DISPONIBLES</p>
+<a href="dashboard.php">IR A RESULTADOS</a>
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>

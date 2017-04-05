@@ -29,13 +29,13 @@
     <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p>Machine Monitors</p></div>
     <nav class="unDisplayNav">
         <ul>
-            <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile"><?php echo $perfil['empresa'] ?></span><br><span id="nameProfile"><?php echo $perfil['correo'] ?></span></li>
-            <li><a class="selected"><i class="fa fa-tachometer icons"></i>Dashboard</a></li>
-            <li><a><i class="fa fa-industry icons"></i>Empresas</a></li>
-            <li><a><i class="fa fa-bar-chart icons"></i>Históricos</a></li>
-            <li><a><i class="fa fa-send icons"></i>Contácto</a></li>
-            <li><a><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-            <li><a><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
+            <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile">Pato</span><br><span id="nameProfile">Arauco</span></li>
+            <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
+            <li><a href="registro.php" class="selected"><i class="fa fa-file-text icons"></i>Registro</a></li>
+            <li><a href="historicos.php"><i class="fa fa-bar-chart icons"></i>Históricos</a></li>
+            <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
+            <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+            <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
         </ul>
     </nav>
     <div id="content" class="animated fadeInUp unLeftContent">
@@ -45,7 +45,7 @@
             else {
                 foreach ($empresas['empresas'] as $key => $value) {
                     echo '
-                        <div class="col-xs-12 col-sm-6 card"> <div class="col-xs-12 shadowButtonDown cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li><li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li></ul> </div><p>'.$value['nombre'].'</p></div><div class="col-xs-4 cardContent text-center"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div><div class="col-xs-4 cardContent text-center"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div><div class="col-xs-4 cardContent text-center"><i class="fa fa-users fa-2x"></i><br><span>SUPERVISORES</span><br>'.$value['supervisores'].'</div></div><a href="zonas.php?id='.$value['idEmpresa'].'" class="boton">Ver</a> </div>
+                        <div class="col-xs-12 col-sm-6 card"> <div class="col-xs-12 shadowButtonDown cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li><li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li></ul> </div><p>'.$value['nombre'].'</p></div><div class="col-xs-4 cardContent text-center"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div><div class="col-xs-4 cardContent text-center"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div><div class="col-xs-4 cardContent text-center"><i class="fa fa-users fa-2x"></i><br><span>SUPERVISORES</span><br>'.$value['supervisores'].'</div></div><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Ver</a> </div>
                      ';
                 }
             }
