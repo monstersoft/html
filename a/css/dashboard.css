@@ -1,0 +1,16 @@
+.unTitleCard span {
+    color: #262626;
+    font-family: 'Montserrat';
+}
+.unTitleCard p {
+    color: #262626;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Montserrat';
+}
+.unTitleCard > i {
+    color: #262626;
+}
+.statistic {
+    font-family: 'Montserrat',
+}

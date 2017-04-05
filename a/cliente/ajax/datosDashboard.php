@@ -8,6 +8,7 @@
 	$fechaDatos = '0000-00-00';
 	$con = conectar();
     $arr = separaDatosPorHora($con,generaArray());
+    $
     foreach($arr as $i => $v) {
         foreach($arr[$i]['datos'] as $index => $value) {
             $arr[$i]['promedioLatPorHora'] = $arr[$i]['promedioLatPorHora'] + $value['lat'];
