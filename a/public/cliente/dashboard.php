@@ -46,7 +46,7 @@
 
 
 
-<div class="col-xs-6 card">
+<div class="col-xs-12 col-md-6 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-calculator pull-left"></i>
             <div class="dropdown pull-right">

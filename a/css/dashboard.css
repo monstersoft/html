@@ -12,5 +12,6 @@
     color: #262626;
 }
 .statistic {
-    font-family: 'Montserrat',
+    font-family: 'Montserrat';
+    padding: 25px 0px 20px 0px;
 }
