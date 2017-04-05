@@ -35,7 +35,7 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
     <script src="recursos/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
     <script>
         var ctx = document.getElementById("myChart").getContext("2d");
 
@@ -70,9 +70,10 @@
                 ]
             }
 
-        new Chart(ctx).Line(data, {
+        var chart = new Chart(ctx,{
+            type: 'line',
             options: {
-                responsive: true,
+                responsive: false,
                 maintainAspectRatio: false,
                 scales: {
                     xAxes: [{
@@ -99,6 +100,7 @@
                     }]
                 }
             },
+            data: data,
             onAnimationComplete: function () {
                 var sourceCanvas = this.chart.ctx.canvas;
                 var copyWidth = this.scale.xScalePaddingLeft - 5;
