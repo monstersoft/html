@@ -63,7 +63,7 @@
                         echo '<div class="col-xs-12 cardContent">No existen supervisores asociados a esta zona</div>';
                     else {
                         foreach(supervisores($value['idZona']) as $value) {
-                            echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><p class="text-center montserrat">'.$value['nombreSupervisor'].'</p></div><div class="col-xs-12"> <ul> <li>'.$value['correoSupervisor'].'</li><li>'.$value['celular'].'</li><li>'.$value['status'].'</li></ul> <a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div></div>';
+                            echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><a href="supervisor.php" class="text-center montserrat">'.$value['nombreSupervisor'].'</a></div><div class="col-xs-12"> <ul> <li>'.$value['correoSupervisor'].'</li><li>'.$value['celular'].'</li><li>'.$value['status'].'</li></ul> <a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div></div>';
                         }
                     }
                     echo '</div></div>'; 

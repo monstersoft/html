@@ -26,9 +26,7 @@
     </nav>
     <div id="content" class="animated fadeInUp unLeftContent">
 <!-- ............................................................................................................................ -->
-<p class="montserrat">LAS MÁQUINAS SEGÚN LA FECHA Y LA ZONA CORRESPONDIENTE, DIRÁ QUE MÁQUINAS ESTARÁN DISPONIBLES</p>
-<a href="dashboard.php">IR A RESULTADOS</a><br>
-<a href="supervisor.php">IR A SUPERVISOR</a>
+<p class="montserrat">SE SELECCIONÓ UN SUPERVISOR DESDE EL NOMBRE EN ALGUNA PÁGINA PHP, AQUÍ SE MOSTRARÁ UN HISTORIAL DE LOS ARCHIVOS QUE HA SUBIDO Y LOS QUE NO</p>
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
