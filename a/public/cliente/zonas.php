@@ -1,3 +1,14 @@
+<?php
+	include '../../php/conexion.php';
+	$conexion = conectar();
+	$arreglo = array();
+	$consulta = "SELECT zonas.idZona, zonas.nombre FROM zonas";
+	if($resultado = mysqli_query($conexion,$consulta)) {
+		while($row = mysqli_fetch_assoc($resultado)) {
+			array_push($arreglo,array('idZona' => $row['idZona'], 'nombre' => utf8_encode($row['nombre'])));
+        }
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,6 +16,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="../../recursos/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../recursos/select2/select2.min.css">
+    <link rel="stylesheet" href="../../recursos/select2/select2-bootstrap.css">
+    <link rel="stylesheet" href="../../recursos/pickadate/default.css">
+    <link rel="stylesheet" href="../../recursos/pickadate/default.date.css">
+    <link rel="stylesheet" href="../../recursos/pickadate/default.time.css">
     <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../recursos/responsiveTables/responsiveTables.css">
@@ -26,14 +42,38 @@
     </nav>
     <div id="content" class="animated fadeInUp unLeftContent">
 <!-- ............................................................................................................................ -->
-<p class="montserrat">EMPRESAS CON SUS ZONAS, SE SELECCIONA UNA FECHA PARA BUSCAR RESULTADOS</p>
-<a href="maquinas.php">IR A MÁQUINAS</a>
+<div class="col-xs-12">
+    <form method='POST' action='maquinas.php'>
+        <div class="form-group">
+            <label for="zonas" class="control-label">Zonas Asociadas</label>
+            <select style="width: 100%;" id="zonas" name="zona" class="form-control select2-single">
+                <?php foreach($arreglo as $value) { echo '<option value="'.$value['idZona'].'">'.$value['nombre'].'</option>';}?>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="zonas" class="control-label">Fecha Datos</label>
+            <input type="date" id="fechaDatos" name="fechaDatos" class="form-control datepicker">
+        </div>
+        <div class="clearfix">
+            <input type="submit" value="submit">
+        </div>
+    </form>
+</div>
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../recursos/select2/select2.full.js"></script>
+    <script src="../../recursos/pickadate/picker.js"></script>
+    <script src="../../recursos/pickadate/picker.date.js"></script>
+    <script src="../../recursos/pickadate/picker.time.js"></script>
     <script src="../../recursos/moment/moment.js"></script>
-    <script src="../../js/funciones.js"></script>    
+    <script src="../../js/funciones.js"></script>
+    <script src="../../js/config.js"></script>
     <script>main();</script>
+    <script>
+       fechaHoy(); 
+       configSelect2();
+    </script>
 </body>
 </html>

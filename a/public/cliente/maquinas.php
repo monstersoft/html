@@ -1,3 +1,23 @@
+<?php
+    include '../../php/conexion.php';
+    $fechaDatos = $_POST['fechaDatos'];
+    $zona = $_POST['zona'];
+	$conexion = conectar();
+	$arreglo = array();
+    $arreglo2 = array();
+	$con1 = "SELECT * FROM maquinas WHERE maquinas.idZona = '$zona'";
+	if($res1 = mysqli_query($conexion,$con1)) {
+		while($row = mysqli_fetch_assoc($res1)) {
+			array_push($arreglo,array('idMaquina' => $row['idMaquina'], 'idZona' => $row['idZona'], 'identificador' => $row['identificador'], 'patente' => $row['patente'], 'fechaRegistro' => $row['fechaRegistro'], 'tara' => $row['tara'], 'cargaMaxima' => $row['cargaMaxima']));
+        }
+	}
+    $consulta = "SELECT datos.identificador  FROM archivos LEFT JOIN datos ON archivos.idArchivo = datos.idArchivo WHERE archivos.idZona = '$zona' GROUP BY datos.identificador";
+	if($resultado = mysqli_query($conexion,$consulta)) {
+		while($row = mysqli_fetch_assoc($resultado)) {
+			array_push($arreglo2,array('identificador' => $row['identificador']));
+        }
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,9 +46,55 @@
     </nav>
     <div id="content" class="animated fadeInUp unLeftContent">
 <!-- ............................................................................................................................ -->
-<p class="montserrat">LAS MÁQUINAS SEGÚN LA FECHA Y LA ZONA CORRESPONDIENTE, DIRÁ QUE MÁQUINAS ESTARÁN DISPONIBLES</p>
-<a href="dashboard.php">IR A RESULTADOS</a><br>
-<a href="supervisor.php">IR A SUPERVISOR</a>
+        <div class="col-xs-12">
+            <h1>Máquinas registradas</h1>
+            <table style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>idMaquina</th>
+                        <th>idZona</th>
+                        <th>identificador</th>
+                        <th>patente</th>
+                        <th>fechaRegistro</th>
+                        <th>tara</th>
+                        <th>cargaMaxima</th>
+                    </tr>
+                </thead>
+                <tbody><?php $registrados = array(); foreach($arreglo as $value) { echo '<tr><td>'.$value['idMaquina'].'</td><td>'.$value['idZona'].'</td><td>'.$value['identificador'].'<a href="dashboard.php?i='.$value['identificador'].'&z='.$value['idZona'].'">Ver Resultados</a></td><td>'.$value['patente'].'</td><td>'.$value['fechaRegistro'].'</td><td>'.$value['tara'].'</td><td>'.$value['cargaMaxima'].'</td></tr>'; array_push($registrados,$value['identificador']);}?></tbody>
+            </table>
+        </div>
+        <div class="col-xs-12">
+            <h1>Máquinas en archivos</h1>
+            <table style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>identificador</th>
+                    </tr>
+                </thead>
+                <tbody><?php $enArchivos = array(); foreach($arreglo2 as $value) { echo '<tr><td>'.$value['identificador'].'<a href="dashboard.php?i='.$value['identificador'].'">Ver Resultados</a></td></tr>'; array_push($enArchivos,$value['identificador']);}?></tbody>
+            </table>
+        </div>
+        <div class="col-xs-12">
+            <h1>Máquinas registradas que no están en archivos</h1>
+            <?php
+                $resultado = array_diff($registrados,$enArchivos);
+                print_r($resultado);
+            ?>
+        </div>
+        <div class="col-xs-12">
+            <h1>Máquinas que están en archivos y  que no están registradas</h1>
+            <?php
+                $resultado = array_diff($enArchivos,$registrados);
+                print_r($resultado);
+            ?>
+        </div>
+        <div class="col-xs-12">
+            <h1>Máquinas que no están disponibles</h1>
+            <?php
+                $resultado = array_diff($enArchivos,$registrados);
+                print_r($resultado);
+            ?>
+        </div>
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
