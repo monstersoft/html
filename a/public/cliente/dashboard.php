@@ -82,7 +82,13 @@
             <p>GRADOS PALA</p>
         </div>
         <div class="col-xs-12 cardContent" style="padding: 10px;">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente accusantium aliquam qui quod numquam officia veniam repellat eligendi labore amet vitae, necessitatibus modi minima adipisci, ipsa tempora libero! Explicabo, hic.
+        <div class="col-xs-12 cardContent" style="padding: 10px;">
+            <div style="width: 100%;">
+                <div id="parent2">
+                    <canvas style="height: 250px;" id="myChart2"></canvas>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </div>
@@ -167,7 +173,39 @@
         var parent2 = document.getElementById('parent2');
         canvas2.width = parent2.offsetWidth;
         canvas2.height = parent2.offsetHeight;
+    
+var canvas4 = document.getElementById("myChart4");
 
+var data4 = {
+    labels: [
+        "Red",
+        "Blue",
+        "Yellow"
+    ],
+    datasets: [
+        {
+            data: [300, 50, 100],
+            backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+            ],
+            hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+            ]
+        }]
+};
+var myPieChart = new Chart(canvas4,{
+    type: 'pie',
+    data: data4,
+    options: {
+        animation:{
+            animateScale:true
+        }
+    }
+});
         var chart = new Chart(ctx, {
             type: 'line',
             options: {
