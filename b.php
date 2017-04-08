@@ -1,46 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <meta name="theme-color" content="#DADADA" />
-        <title>Machine Monitors</title>
-        <link rel="stylesheet" href="semantic/semantic.css">
-    </head>
-    <body>
+<head>
+</head>
 <body>
-  <div class="ui sidebar inverted vertical menu">
-    <a class="item">
-      Pato
-    </a>
-    <a class="item">
-      Javier
-    </a>
-    <a class="item">
-      Cecilia
-    </a>
-    <a class="item">
-      Pato
-    </a>
-    <a class="item">
-      Javier
-    </a>
-    <a class="item">
-      Cecilia
-    </a>
-  </div>
-  <div class="pusher">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil voluptatum odit dolorum obcaecati nostrum quaerat, fugiat repellat debitis? Amet non eum vel officiis. Repellat magni excepturi soluta sint, tempore, fugiat!
-  </div>
+
+<img id="scream" src="Pixel-Ruler_1.jpg"><br>
+<canvas id="myCanvas" width="600" height="700"></canvas>
+
+<script>
+document.getElementById("scream").onload = function() {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("scream");
+    ctx.drawImage(img,30,30,60,60,0,0);
+    //var imgData = ctx.getImageData(0, 0, c.width, c.height);
+    //ctx.putImageData(imgData, 10, 10);
+};
+</script>
 </body>
-       </div>
-        <script src="js/jquery/jquery2.js"></script>
-        <script src="semantic/semantic.js"></script>
-        <script>
-        $('.ui.sidebar')
-  .sidebar('toggle')
-;
-        </script>
-    </body>
-</html>
+</html
