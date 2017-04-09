@@ -32,29 +32,18 @@
     </style>
 </head>
 <body>
-<img id="scream" src="robot.jpg" alt="The Scream">
-<canvas id="myCanvas" height="549" width="300"></canvas>
+<div class="col">
+    <div class="c0"></div>
+    <div class="c1">
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora porro praesentium, odit illum, eum ullam consequatur alias facere inventore pariatur aspernatur vero in, a quisquam cupiditate expedita accusantium. Ipsum, accusamus</div>
+        <div>Aut illum doloremque minima ipsa sunt, expedita officiis fuga facere similique modi autem repudiandae nam unde, architecto ab quod non reiciendis et saepe quas. Eaque nemo ea, rerum obcaecati id.</div>
+        <div>Modi voluptate mollitia cupiditate fuga, nihil iste, sed incidunt facere dolorem natus quia similique. Minus cupiditate excepturi, veritatis modi magnam error deserunt sapiente incidunt ipsam voluptates quo dolorum, dolorem nesciunt.</div>
+        <div>Ad nisi obcaecati odio, labore cumque dolor. Velit quibusdam, repudiandae placeat! Eius velit qui quas. Incidunt sit omnis, adipisci excepturi deserunt assumenda aut, vero ut voluptatem, ex a soluta reiciendis!</div>
+        <div>Magnam sit sequi neque cumque incidunt id, saepe accusantium magni aliquam a minus, doloribus consequatur nisi ab quam, obcaecati dicta hic eos. Repellendus aliquid, libero modi officiis quisquam, in cupiditate.</div>
+    </div>
+</div>
 
-<script>
-window.onload = function() {
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    var img = document.getElementById("scream");
-    
-    /*drawImage(
-        Specifies the image canvas or video element to use, 
-        The x coordinate where to start clipping, 
-        The y coordinate where to start clipping,
-        The width of the clipped image,
-        The height of the clipped image,
-        The x coordinate where to place the image on the canvas,
-        The y coordinate where to place the image on the canvas,
-        The width of the image to use,
-        The height of the image to use)*/
-    
-    ctx.drawImage(img,0,0,300,549,0,0,300,549);
-};
-</script>
+
 
 </body>
 </html
