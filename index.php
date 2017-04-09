@@ -33,11 +33,37 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 2000px;
+    /*width: 2000px;
     /*width: 100%;*/
     height: 250px;
     z-index: 1000;
 }
+        
+        
+.example {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    /*width: 100%;*/
+    z-index: 1000;
+}
+.fixed {
+    position: sticky;
+    top: 0;
+    left: 0px;
+    /*width: 100%;*/
+    z-index: 1;
+}
+.white {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: 100%;
+    height: 250px;
+    z-index: 3;
+    background: white;   
+}
+        
 
     </style>
 </head>
@@ -46,6 +72,12 @@
             <div class="chartLineContainer">
                <div class="lineChart"><canvas style="height: 250px;" id="lineChart"></canvas></div>
                 <div class="copyChart"><canvas style="height: 250px;" id="copyChart"></canvas><div class="whiteBackground"></div></div>
+            </div>
+        </div>
+        <div class="col-xs-12" style="padding: 10px;">
+            <div class="chartLineContainer">
+                <div class="example"><canvas width="2000" height="250" id="example"></canvas></div>
+                <div class="fixed"><canvas width="2000" height="250" id="fixed"></canvas><div class="white"></div></div>
             </div>
         </div>
         <script src="a/recursos/jquery/jquery.min.js"></script>

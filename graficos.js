@@ -1,7 +1,10 @@
 var copyChart = document.getElementById("copyChart");
 var lineChart = document.getElementById("lineChart");
+var example = document.getElementById("example");
 config(copyChart,false,false,false,true);
 config(lineChart,false,false,false,false);
+config(fixed,false,false,false,true);
+config(example,false,false,false,false);
 
 function config(ctx,responsive,maintainAspectRatio,legend,axisY) {
 var myChart = new Chart(ctx, {
