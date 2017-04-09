@@ -249,7 +249,7 @@
         $('#btn').click(function(){
             var copy = document.getElementById("copy");
             var ctx2 = copy.getContext("2d");
-            ctx2.drawImage(canvas,0,0,33,canvas.height,0,0,33,canvas.height);
+            ctx2.drawImage(canvas,0,0,10,canvas.height,0,0,10,canvas.height);
         });
 
 
