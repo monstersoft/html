@@ -15,6 +15,7 @@
     position: absolute;
     top: 0;
     left: 20px;
+    width: 2000px;
     z-index: 1000;
 }
 .fixed {
@@ -27,7 +28,7 @@
     position: absolute;
     top: 0;
     left: 15px;
-    width: 100%;
+    width: 2000px;
     height: 250px;
     z-index: 3;
     background: white;  
