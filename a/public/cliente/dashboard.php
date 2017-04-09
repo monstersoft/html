@@ -26,7 +26,7 @@
     </nav>
     <div id="content" class="animated fadeInUp unLeftContent">
 <!-- ............................................................................................................................ -->
-<!--
+
 <div class="col-xs-12 col-sm-4 col-md-2 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="unTitleCard text-center" style="padding: 20px 20px 20px 20px;"><i class="fa fa-road fa-3x"></i><p>1000 km</p><span>RECORRIDOS</span></div>
@@ -64,88 +64,7 @@
         </div>
     </div>
 </div>
-<div class="col-xs-12 col-sm-12 col-md-6 card">
-    <div class="col-xs-12 shadow cardContent">
-        <div class="col-xs-12 titleCard"> <i class="fa fa-area-chart pull-left"></i>
-            <div class="dropdown pull-right">
-                <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
-                    <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
-                </ul>
-            </div>
-            <p>GRADOS PALA</p>
-        </div>
-        <div class="col-xs-12 cardContent" style="padding: 10px;">
-        <div class="col-xs-12 cardContent" style="padding: 10px;">
-            <div style="width: 100%;">
-                <div id="parent2">
-                    <canvas style="height: 250px;" id="myChart2"></canvas>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-6 card">
-    <div class="col-xs-12 shadow cardContent">
-        <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
-            <div class="dropdown pull-right">
-                <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
-                    <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
-                </ul>
-            </div>
-            <p>GRADOS PALA</p>
-        </div>
-        <div class="col-xs-12 cardContent" style="padding: 10px;">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique natus eligendi quibusdam delectus atque id excepturi quae enim! Temporibus in deleniti perspiciatis excepturi tempore maxime provident vel veniam libero modi.
-        </div>
-    </div>
-</div>
-<div class="col-xs-12 card">
-    <div class="col-xs-12 shadow cardContent">
-        <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
-            <div class="dropdown pull-right">
-                <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
-                    <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
-                </ul>
-            </div>
-            <p>GRADOS PALA</p>
-        </div>
-        <div class="col-xs-12 cardContent" style="padding: 10px;">
-        <div style="width: 100%;">
-            <div id="parent2">
-                <canvas style="height: 250px;" id="myChart2"></canvas>
-            </div>
-        </div>
-        </div>
-    </div>
-</div>
-<div class="col-xs-12 card">
-    <div class="col-xs-12 shadow cardContent">
-        <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
-            <div class="dropdown pull-right">
-                <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
-                    <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
-                </ul>
-            </div>
-            <p>ALTURA PALA</p>
-        </div>
-        <div class="col-xs-12 cardContent" style="padding: 10px;">
-        <div style="width: 100%;">
-            <div id="parent">
-                <canvas style="height: 250px;" id="myChart"></canvas>
-            </div>
-        </div>
-        </div>
-    </div>
-</div>-->
+
 <div class="col-xs-12 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
