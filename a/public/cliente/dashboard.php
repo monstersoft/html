@@ -38,7 +38,7 @@
             </div>
             <p>PROBANDOsdasdsffffff</p>
         </div>
-        <div class="col-xs-12 cardContent" style="padding: 50px;">
+        <div class="col-xs-12 cardContent" style="padding: 10px;">
             <div class="chartLineContainer">
                <div class="lineChart"><canvas style="height: 250px;" id="myChart2"></canvas></div>
                 <div class="copyChart"><canvas style="height: 250px;" id="myChart"></canvas><div class="whiteBackground"></div></div>
