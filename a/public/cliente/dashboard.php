@@ -75,7 +75,7 @@
                     <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
                 </ul>
             </div>
-            <p>PROBANDOsdasds</p>
+            <p>PROBANDOsdasdsffffff</p>
         </div>
         <div class="col-xs-12 cardContent" style="padding: 10px;">
             <div class="chartLineContainer">
