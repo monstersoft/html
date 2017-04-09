@@ -10,7 +10,7 @@
             type: 'line',
             options: {
                 legend: {
-                    display: false,
+                    display: true,
                 },
                 responsive: true,
                 maintainAspectRatio: false,
@@ -80,7 +80,7 @@
             type: 'line',
             options: {
                 legend: {
-                    display: false
+                    display: true
                 },
                 responsive: true,
                 maintainAspectRatio: false,
