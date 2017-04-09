@@ -1,8 +1,6 @@
-var copyChart = document.getElementById("copyChart");
-var lineChart = document.getElementById("lineChart");
+
 var example = document.getElementById("example");
-config(copyChart,false,false,false,true);
-config(lineChart,false,false,false,false);
+var fixed = document.getElementById("fixed");
 config(fixed,false,false,false,true);
 config(example,false,false,false,false);
 

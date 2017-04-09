@@ -11,47 +11,16 @@
     overflow: auto;
     position: relative;
 }
-.copyChart {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 250px;
-    z-index: 0;
-}
-.whiteBackground {
-    position: absolute;
-    top: 0;
-    left: 15px;
-    width: 100%;
-    height: 250px;
-    z-index: 1;
-    background: white;
-}
-
-.lineChart {
-    position: absolute;
-    top: 0;
-    left: 0;
-    /*width: 2000px;
-    /*width: 100%;*/
-    height: 250px;
-    z-index: 1000;
-}
-        
-        
 .example {
     position: absolute;
     top: 0;
     left: 20px;
-    /*width: 100%;*/
     z-index: 1000;
 }
 .fixed {
     position: sticky;
     top: 0;
     left: 0px;
-    /*width: 100%;*/
     z-index: 1;
 }
 .white {
@@ -61,19 +30,13 @@
     width: 100%;
     height: 250px;
     z-index: 3;
-    background: white;   
+    background: white;  
 }
         
 
     </style>
 </head>
     <body>
-        <div class="col-xs-12" style="padding: 10px;">
-            <div class="chartLineContainer">
-               <div class="lineChart"><canvas style="height: 250px;" id="lineChart"></canvas></div>
-                <div class="copyChart"><canvas style="height: 250px;" id="copyChart"></canvas><div class="whiteBackground"></div></div>
-            </div>
-        </div>
         <div class="col-xs-12" style="padding: 10px;">
             <div class="chartLineContainer">
                 <div class="example"><canvas width="2000" height="250" id="example"></canvas></div>
