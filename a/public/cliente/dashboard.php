@@ -252,7 +252,7 @@
                     borderColor: "#F5A214",
                     borderWidth: 1,
                     pointRadius: 3,
-                    pointBorderWidth: 10,
+                    pointBorderWidth: 3,
                     data: get(0,5000)
                 },
                 {
