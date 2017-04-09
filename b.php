@@ -35,7 +35,7 @@
 <div class="col">
     <div class="c0"></div>
     <div class="c1"><div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam a veritatis delectus perferendis consectetur ipsa vitae, earum odit quibusdam impedit soluta voluptas quis voluptatibus quia eius quisquam, esse at tempora!</div>
-    <div>Id, veniam? Unde voluptatum reiciendis nisi, libero quas accusantium omnis rerum atque nam deserunt error fugit voluptatibus ipsum, ipsam architecto deleniti inventore doloribus neque mollitia dolores ex recusandae sapiente saepe.</div>
+    <div>Id, veniam? Unde voluptatum reciciendis nisi, libero quas accusantium omnis rerum atque nam deserunt error fugit voluptatibus ipsum, ipsam architecto deleniti inventore doloribus neque mollitia dolores ex recusandae sapiente saepe.</div>
     <div>Atque repellat ab animi doloremque ad, molestiae quaerat iusto ea aspernatur consequatur deleniti necessitatibus aperiam voluptatum ipsum totam pariatur dolorem ratione dicta vel labore dolorum, modi similique ullam maiores. Quia!</div>
     <div>Officiis iusto repellat, sapiente iste voluptatum est odio, tenetur! Itaque provident fuga, dolor maiores fugit consequatur inventore delectus eos assumenda, quo est ipsa dolorem eligendi voluptas porro quas labore aut.</div>
     <div>Porro ipsa, placeat eligendi, incidunt labore harum eum doloribus explicabo, numquam obcaecati voluptate enim ullam blanditiis! At minus blanditiis consectetur, quam amet. Maiores nam ducimus porro. Repudiandae pariatur, eligendi sapiente?</div>
