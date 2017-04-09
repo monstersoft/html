@@ -6,22 +6,46 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="a/recursos/bootstrap/css/bootstrap.min.css">
     <style>
-        .grafico {
-            overflow: auto;
-            position: relative;
-        }
+.chartLineContainer {
+    height: 267px;
+    overflow: auto;
+    position: relative;
+}
+.copyChart {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    z-index: 0;
+}
+.whiteBackground {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: 100%;
+    height: 250px;
+    z-index: 1;
+    background: white;
+}
+
+.lineChart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2000px;
+    /*width: 100%;*/
+    height: 250px;
+    z-index: 1000;
+}
 
     </style>
 </head>
     <body>
-        <div class="col-xs-12 well">
-            <div class="grafico">
-                <canvas id="myChart3" width="2000" height="250"></canvas>
-            </div>
-        </div>
-        <div class="col-xs-12 well">
-            <div class="grafico">
-                <canvas id="myChart4" width="1000" height="250"></canvas>
+        <div class="col-xs-12" style="padding: 10px;">
+            <div class="chartLineContainer">
+               <div class="lineChart"><canvas style="height: 250px;" id="lineChart"></canvas></div>
+                <div class="copyChart"><canvas style="height: 250px;" id="copyChart"></canvas><div class="whiteBackground"></div></div>
             </div>
         </div>
         <script src="a/recursos/jquery/jquery.min.js"></script>

@@ -1,12 +1,9 @@
-var ctx1 = document.getElementById("myChart1");
-var ctx2 = document.getElementById("myChart2");
-var ctx3 = document.getElementById("myChart3");
-var ctx4 = document.getElementById("myChart4");
+var copyChart = document.getElementById("copyChart");
+var lineChart = document.getElementById("lineChart");
+config(copyChart,false,false,false,true);
+config(lineChart,false,false,false,false);
 
-config(ctx3,false,true);
-config(ctx4,false,false);
-
-function config(ctx,responsive,maintainAspectRatio) {
+function config(ctx,responsive,maintainAspectRatio,legend,axisY) {
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -34,12 +31,16 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
+        legend: {
+            display: legend
+        },
         responsive: responsive,
         maintainAspectRatio: maintainAspectRatio,
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true
+                    beginAtZero:true,
+                    display: axisY
                 }
             }]
         }
