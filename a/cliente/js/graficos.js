@@ -5,7 +5,7 @@
         var canvas2 = document.getElementById("myChart2");
         var ctx2 = canvas2.getContext("2d");
 
-
+        var y = get(0,60);
         var chart2 = new Chart(ctx2, {
             type: 'line',
             options: {
@@ -57,7 +57,7 @@
                     borderWidth: 1,
                     pointRadius: 3,
                     pointBorderWidth: 3,
-                    data: get(0,5000)
+                    data: y
                 },
                 {
                     label: 'TRASERA',
@@ -67,7 +67,7 @@
                     borderColor: "#262626",
                     borderWidth: 1,
                     pointRadius: 1,
-                    data: get(0,5000)
+                    data: y
                 }
                 ]
             }
@@ -137,7 +137,7 @@
                     borderColor: "#262626",
                     borderWidth: 1,
                     pointRadius: 1,
-                    data: get(0,5000)
+                    data: y
                 }
                 ]
             }
