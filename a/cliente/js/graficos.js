@@ -9,6 +9,9 @@
         var chart2 = new Chart(ctx2, {
             type: 'line',
             options: {
+                legend: {
+                    display: false,
+                },
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
@@ -76,6 +79,9 @@
         var chart = new Chart(ctx, {
             type: 'line',
             options: {
+                legend: {
+                    display: false
+                },
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
