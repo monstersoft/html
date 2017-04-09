@@ -219,7 +219,7 @@
                         autoSkip: true,
                         maxRotation: 0,
                         minRotation: 90,
-                        fontSize: 14,
+                        fontSize: 12,
                         beginAtZero: true,
                         maxTicksLimit: 20
                         }
@@ -229,7 +229,8 @@
                             display: true
                         },
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            display: false
                         },
                         stacked: false
                     }]
