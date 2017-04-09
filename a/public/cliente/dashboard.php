@@ -40,8 +40,8 @@
         </div>
         <div class="col-xs-12 cardContent" style="padding: 10px;">
             <div class="chartLineContainer">
-               <div class="lineChart"><canvas style="height: 250px;" id="myChart2"></canvas></div>
-                <div class="copyChart"><canvas style="height: 250px;" id="myChart"></canvas><div class="whiteBackground"></div></div>
+               <div class="lineChart"><canvas width="2000" style="height: 250px;" id="myChart2"></canvas></div>
+                <div class="copyChart"><canvas width="2000"style="height: 250px;" id="myChart"></canvas><div class="whiteBackground"></div></div>
             </div>
         </div>
     </div>
