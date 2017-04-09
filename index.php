@@ -16,7 +16,7 @@
     <body>
         <div class="col-xs-12 well">
             <div class="grafico">
-                <canvas id="myChart3" width="1000" height="250"></canvas>
+                <canvas id="myChart3" width="2000" height="250"></canvas>
             </div>
         </div>
         <div class="col-xs-12 well">
