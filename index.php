@@ -8,6 +8,7 @@
     <style>
 .chartLineContainer {
     height: 267px;
+    width: 100%;
     overflow: auto;
     position: relative;
 }
