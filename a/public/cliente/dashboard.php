@@ -221,7 +221,7 @@
                         minRotation: 90,
                         fontSize: 12,
                         beginAtZero: true,
-                        maxTicksLimit: 20
+                        /*maxTicksLimit: 20*/
                         }
                     }],
                     yAxes:[{
@@ -230,7 +230,7 @@
                         },
                         ticks: {
                             beginAtZero: true,
-                            display: false
+                            /*display: false*/
                         },
                         stacked: false
                     }]
@@ -251,7 +251,8 @@
                     backgroundColor: "#F5A214",
                     borderColor: "#F5A214",
                     borderWidth: 1,
-                    pointRadius: 1,
+                    pointRadius: 3,
+                    pointBorderWidth: 10,
                     data: get(0,5000)
                 },
                 {
