@@ -54,7 +54,7 @@
         .white {
             position: absolute;
             top: 0;
-            left: 50px;
+            left: 40px;
             width: 2000px;
             height: 250px;
             z-index: 2;
@@ -73,12 +73,22 @@
     <body>
       <div class="a">
         <div class="b"><div class="ct-chart"></div><div class="white"></div></div>
-        <div class="c"><div class="ct-chart2"></div></div>
+        <div class="c"><div class="ct-chart2"></div>
+        
+        
+        
+        </div>
        </div>
         <script src="a/recursos/jquery/jquery.min.js"></script>
         <script src="a/recursos/bootstrap/js/bootstrap.min.js"></script>
         <script src="a/recursos/chartist/chartist.min.js"></script>
         <script src="a/recursos/chartist/chartist-plugin-tooltip.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                
+            });
+        </script>
 <script>
 var data = {
     labels: ['08:00','08:01','08:02','08:03','08:04','08:05','08:06','08:07','08:08','08:09',
@@ -99,7 +109,17 @@ var options = {
         Chartist.plugins.tooltip()
     ]
 }
-new Chartist.Line('.ct-chart2', data, options);
+var options2 = {
+    width: 2000,
+    height: 250,
+    axisY: {
+      showLabel: false,
+    },
+    plugins: [
+        Chartist.plugins.tooltip()
+    ]
+}
+new Chartist.Line('.ct-chart2', data, options2);
 new Chartist.Line('.ct-chart', data, options);
 function get(min, max) {
   var a = [];
