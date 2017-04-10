@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="a/recursos/chartist/chartist.min.css" />
     <link rel="stylesheet" href="a/recursos/chartist/chartist-plugin-tooltip.css">
     <style>
+        /*.ct-labels foreignObject span {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }*/
         .ct-series-a .ct-line {
             stroke : #F5A214;
             stroke-width: 1px;
@@ -30,12 +36,45 @@
             /*stroke-dasharray: none;*/
             stroke: grey;
         }
+        .a {
+            position: relative;
+            top: 0;
+            left: 0;
+            overflow: auto;
+            width: 100%;
+            height: 300px;
+            z-index: 0;
+        }
+        .b {
+            position: sticky;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .white {
+            position: absolute;
+            top: 0;
+            left: 50px;
+            width: 2000px;
+            height: 250px;
+            z-index: 2;
+            background: white;
+        }
+        .c {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
         .ct-label.ct-vertical { font-size: 12px; color: #262626;}
         .ct-label.ct-horizontal { font-size: 12px; position: relative; transform: rotate(90deg); transform-origin: left top; color: #262626;}
     </style>
 </head>
     <body>
-<div class="ct-chart"></div>
+      <div class="a">
+        <div class="b"><div class="ct-chart"></div><div class="white"></div></div>
+        <div class="c"><div class="ct-chart2"></div></div>
+       </div>
         <script src="a/recursos/jquery/jquery.min.js"></script>
         <script src="a/recursos/bootstrap/js/bootstrap.min.js"></script>
         <script src="a/recursos/chartist/chartist.min.js"></script>
@@ -60,7 +99,7 @@ var options = {
         Chartist.plugins.tooltip()
     ]
 }
-
+new Chartist.Line('.ct-chart2', data, options);
 new Chartist.Line('.ct-chart', data, options);
 function get(min, max) {
   var a = [];
