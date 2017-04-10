@@ -18,12 +18,12 @@
         }
         .ct-series-a .ct-point {
             stroke: #F5A214;
-            stroke-width: 7px;
+            stroke-width: 12px;
             stroke-linecap: square;
         }
         .ct-series-b .ct-point {
             stroke: #262626;
-            stroke-width: 7px;
+            stroke-width: 12px;
             stroke-linecap: circle;
         }
         .ct-chart .ct-grid {
