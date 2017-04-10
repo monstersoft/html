@@ -1,15 +1,21 @@
 var stickyChartLine = document.getElementById("stickyChartLine");
 var ctxSticky = stickyChartLine.getContext("2d");
-
-
 var chartLine = document.getElementById("chartLine");
 var ctxChartLine = chartLine.getContext("2d");
+
+var stickyChartLine2 = document.getElementById("stickyChartLine2");
+var ctxSticky2 = stickyChartLine2.getContext("2d");
+var chartLine2 = document.getElementById("chartLine2");
+var ctxChartLine2 = chartLine2.getContext("2d");
 
 var frontValues = get(0,60);
 var backValues  = get(0,60);
 
 config(ctxSticky   , true ,frontValues,backValues);
 config(ctxChartLine, false,frontValues,backValues);
+
+config(ctxSticky2   , true ,frontValues,backValues);
+config(ctxChartLine2, false,frontValues,backValues);
 
     
 
@@ -19,7 +25,7 @@ function config(ctx,yDisplayValues,yDataAxisFront,yDataAxisBack) {
             type: 'line',
             options: {
                 legend: {
-                    display: true
+                    display: false
                 },
                 responsive: true,
                 maintainAspectRatio: false,
