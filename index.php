@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="a/css/dashboard.css">
 </head>
     <body>
-        <div class="col-xs-12 well" style="background: rgba(0,0,0,0.2);">
+        <div class="col-xs-12 well" style="background: rgba(0,0,0,0.1);">
             <div class="chartLineContainer">
                 <div class="chartLineSticky"><div id="chartLineSticky"></div><div class="chartLineBackground"></div></div>
                 <div class="chartLine"><div id="chartLine"></div></div>
