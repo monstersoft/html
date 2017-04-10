@@ -28,8 +28,8 @@
         .whiteBackground {
             position: absolute;
             top: 0;
-            left: 32px;
-            width: 200px;
+            left: 15px;
+            width: 100%;
             height: 250px;
             z-index: 1;
             background: white;
@@ -48,7 +48,7 @@
             <div class="chartLineContainer">
                <div class="stickyChartLine">
                    <canvas id="stickyChartLine"></canvas>
-                   <!--<div class="whiteBackground"></div>-->
+                   <div class="whiteBackground"></div>
                </div>
             </div>
         </div>
