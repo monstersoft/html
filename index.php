@@ -28,7 +28,7 @@
             <div class="col-xs-12 col-sm-3 cardContent" style="padding: 10px; background: grey;">
                 asdasd
             </div>
-            <div class="col-xs-12 col-sm-9 cardContent" style="padding: 10px;">
+            <div class="col-xs-12 col-sm-9 cardContent">
                 <div id="example"></div>
             </div>
         </div>
