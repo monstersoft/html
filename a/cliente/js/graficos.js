@@ -20,20 +20,16 @@ function graphedChartDonut(idChart){
 
     var options = {
       donut: true,
-      donutWidth: 50,
-      labelDirection: 'explode',
+      donutWidth: 20,
+      labelDirection: 'neutral',
       labelInterpolationFnc: function(value) {return Math.round(value/data.series.reduce(sum)*100)+'%';}
     };
 
     var responsiveOptions = [
-      ['screen and (max-width: 640px)', {
-        chartPadding: 0,
-        labelOffset: 0,
+      ['screen and (max-width: 720px)', {
+        chartPadding: 60,
+        labelOffset: 45,
         labelInterpolationFnc: function(value) {return Math.round(value/data.series.reduce(sum)*100)+'%';}
-      }],
-      ['screen and (max-width: 1024px)', {
-        labelOffset: 40,
-        chartPadding: 50,
       }]
     ];
 
