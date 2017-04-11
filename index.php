@@ -46,7 +46,7 @@
                 <p>Cambios</p>
             </div>
             <div class="col-xs-12 cardContent">
-                <div id="example"></div>
+                <div id="example2"></div>
             </div>
         </div>
 
