@@ -9,23 +9,28 @@ var data = {
 graphedChartLine('#chartLineSticky', true, data);
 graphedChartLine('#chartLine', false, data);
 
+graphedChartLine('#chartLineSticky2', true, data);
+graphedChartLine('#chartLine2', false, data)
+
 graphedChartDonut('#example');
 graphedChartBar('#example2');
+
 function graphedChartBar(idChart) {
     var data = {
       labels: ['1ra', '2da', '3ra', '4ta','5ta','6ta','7ma','8va','9na','10ma'],
-      series: [
-        [5, 4, 3, 7,10,12,7,8,9,10]
-      ]
+      series: [get(0,100,10)]
     }
     var options = {
       stackBars: true,
       axisX: {
-        offset: 50,
+        offset: 40,
       },
       axisY: {
-        offset: 20
-      }
+          labelInterpolationFnc: function(value) {return value+'%';}
+      },
+        plugins: [
+            Chartist.plugins.tooltip()
+        ]
     }
     new Chartist.Bar(idChart,data,options);
 }
@@ -41,7 +46,7 @@ function graphedChartDonut(idChart){
       labelDirection: 'neutral',
       chartPadding: 60,
       labelOffset: 45,
-      labelInterpolationFnc: function(value) {return Math.round(value/data.series.reduce(sum)*100)+'%';}
+      labelInterpolationFnc: function(value) {return Math.round(value/data.series.reduce(sum)*100)+'%';},
     };
 
     /*var responsiveOptions = [
@@ -64,7 +69,7 @@ function graphedChartLine(idChart, axisShowY, data) {
           labelInterpolationFnc: function(value){return value+"'"}
         },
         plugins: [
-            Chartist.plugins.tooltip()
+            Chartist.plugins.tooltip(),
         ]
     }
     new Chartist.Line(idChart, data, options);

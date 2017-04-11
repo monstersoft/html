@@ -47,9 +47,9 @@
     color: #262626;
     font-family: 'Montserrat';
 }
-
-
-
+.chartist-tooltip {
+    font-family: 'Montserrat';
+}
 /*.donutContainer {
     display: flex;
     flex-direction: row;
@@ -57,11 +57,18 @@
     justify-content: center;
     align-items: center;
 }*/
+/*BARRAS*/
 #example2 {
     height: 250px;
     width: 100%;
     padding: 10px;
 }
+#example2 .ct-series-a line {
+    stroke : #F5A214;
+    stroke-width: 20px;
+    color: yellow;
+}
+/*DONUT*/
 #example {
     height: 250px;
     width: 100%;
@@ -77,10 +84,6 @@
 #example .ct-series-b .ct-slice-donut {
     stroke: #262626;
 }
-
-
-
-
 .chartLineContainer {
     position: relative;
     top: 0;
@@ -131,5 +134,11 @@
     }
     .chartLineBackground {
         width: calc(100% - 40px);
+    }
+}
+@media (max-width: 500px) {
+    #example2 .ct-series-a line {
+        stroke : #F5A214;
+        stroke-width: 10px;
     }
 }

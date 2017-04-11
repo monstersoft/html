@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="a/recursos/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="a/recursos/chartist/chartist.min.css" />
     <link rel="stylesheet" href="a/recursos/chartist/chartist-plugin-tooltip.css">
+    <link rel="stylesheet" href="a/recursos/chartist/chartist-plugin-threshold.css">
     <link rel="stylesheet" href="a/recursos/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="a/css/base.css">
     <link rel="stylesheet" href="a/css/dashboard.css">
@@ -32,8 +33,8 @@
                 <div id="example"></div>
             </div>
         </div>
-        
-        
+              
+
         <div class="col-xs-12 col-sm-6 shadow cardContent">
             <div class="col-xs-12 titleCard"> <i class="fa fa-bar-chart pull-left"></i>
                 <div class="dropdown pull-right">
@@ -75,6 +76,8 @@
         <script src="a/recursos/bootstrap/js/bootstrap.min.js"></script>
         <script src="a/recursos/chartist/chartist.min.js"></script>
         <script src="a/recursos/chartist/chartist-plugin-tooltip.js"></script>
+        <script src="a/recursos/chartist/chartist-plugin-pointlabels.js"></script>
+        <script src="a/recursos/chartist/chartist-plugin-threshold.min.js"></script>
         <script src="a/cliente/js/graficos.js"></script>
     </body>
 </html>
