@@ -20,7 +20,7 @@ function graphedChartDonut(idChart){
 
     var options = {
       donut: true,
-      donutWidth: 20,
+      donutWidth: 50,
       labelDirection: 'explode',
       labelInterpolationFnc: function(value) {return Math.round(value/data.series.reduce(sum)*100)+'%';}
     };
