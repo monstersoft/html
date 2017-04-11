@@ -15,25 +15,25 @@ graphedChartDonut('#example');
 function graphedChartDonut(idChart){
     var sum = function(a,b) { return a+b; }
     var data = {
-      series: [100,300]
+      series: [300,300]
     };
 
     var options = {
       donut: true,
       donutWidth: 20,
       labelDirection: 'neutral',
+      chartPadding: 60,
+      labelOffset: 45,
       labelInterpolationFnc: function(value) {return Math.round(value/data.series.reduce(sum)*100)+'%';}
     };
 
-    var responsiveOptions = [
+    /*var responsiveOptions = [
       ['screen and (max-width: 720px)', {
-        chartPadding: 60,
-        labelOffset: 45,
         labelInterpolationFnc: function(value) {return Math.round(value/data.series.reduce(sum)*100)+'%';}
       }]
-    ];
+    ];*/
 
-    new Chartist.Pie(idChart, data, options, responsiveOptions);
+    new Chartist.Pie(idChart, data, options/*,responsiveOptions*/);
 }
 
 function graphedChartLine(idChart, axisShowY, data) {

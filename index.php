@@ -15,6 +15,26 @@
 
         
         <div class="col-xs-12 col-sm-6 shadow cardContent">
+            <div class="col-xs-12 titleCard"> <i class="fa fa-pie-chart pull-left"></i>
+                <div class="dropdown pull-right">
+                    <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
+                        <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
+                    </ul>
+                </div>
+                <p>Motor</p>
+            </div>
+            <div class="col-xs-4 cardContent" style="padding: 10px; background: grey;">
+                asdasd
+            </div>
+            <div class="col-xs-8 cardContent">
+                <div id="example"></div>
+            </div>
+        </div>
+        
+        
+        <div class="col-xs-12 col-sm-6 shadow cardContent">
             <div class="col-xs-12 titleCard"> <i class="fa fa-bar-chart pull-left"></i>
                 <div class="dropdown pull-right">
                     <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
@@ -23,12 +43,9 @@
                         <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
                     </ul>
                 </div>
-                <p>Frecuencia de Cambios</p>
+                <p>Cambios</p>
             </div>
-            <div class="col-xs-3 cardContent" style="padding: 10px; background: grey;">
-                asdasd
-            </div>
-            <div class="col-xs-9 cardContent">
+            <div class="col-xs-12 cardContent">
                 <div id="example"></div>
             </div>
         </div>
