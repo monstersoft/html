@@ -47,8 +47,24 @@
     color: #262626;
     font-family: 'Montserrat';
 }
+
+
+
+/*.donutContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}*/
+#example {
+    border: 1px solid red;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+}
 #example text {
-    font-size: 30px;
+    font-size: 20px;
     font-family: 'Montserrat';
 }
 #example .ct-series-a .ct-slice-donut {
@@ -57,6 +73,10 @@
 #example .ct-series-b .ct-slice-donut {
     stroke: #262626;
 }
+
+
+
+
 .chartLineContainer {
     position: relative;
     top: 0;
