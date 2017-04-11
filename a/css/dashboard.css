@@ -34,7 +34,10 @@
     stroke-linecap: circle;
 }
 .ct-label.ct-vertical { 
-    font-size: 12px; color: #262626;
+    font-size: 12px; 
+    color: #262626;
+    font-family: 'Montserrat';
+    
 }
 .ct-label.ct-horizontal { 
     font-size: 10px; 
@@ -42,9 +45,11 @@
     transform: rotate(45deg); 
     transform-origin: left top; 
     color: #262626;
+    font-family: 'Montserrat';
 }
-#example .ct-label {
-    font-size: 15px;
+#example text {
+    font-size: 30px;
+    font-family: 'Montserrat';
 }
 .chartLineContainer {
     position: relative;

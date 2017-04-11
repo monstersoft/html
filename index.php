@@ -12,11 +12,10 @@
     <link rel="stylesheet" href="a/css/dashboard.css">
 </head>
     <body>
-       
-       
-       
+
+        
         <div class="col-xs-12 col-sm-6 shadow cardContent">
-            <div class="col-xs-12 titleCard"> <i class="fa fa-pie-chart pull-left"></i>
+            <div class="col-xs-12 titleCard"> <i class="fa fa-bar-chart pull-left"></i>
                 <div class="dropdown pull-right">
                     <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
                     <ul class="dropdown-menu dropdown-menu-right">
@@ -24,14 +23,12 @@
                         <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
                     </ul>
                 </div>
-                <p>Estado de Motor</p>
+                <p>Frecuencia de Cambios</p>
             </div>
             <div class="col-xs-12 cardContent" style="padding: 10px;">
-                <div id="example2" style="height: 200px;"></div>
+                <div id="example"></div>
             </div>
         </div>
-        
-        
         
         <div class="col-xs-12 col-sm-6 shadow cardContent">
             <div class="col-xs-12 titleCard"> <i class="fa fa-pie-chart pull-left"></i>
@@ -45,7 +42,7 @@
                 <p>Frecuencia de Cambios</p>
             </div>
             <div class="col-xs-12 cardContent" style="padding: 10px;">
-                <div id="example3" style="height: 200px;"></div>
+                <div id="example2"></div>
             </div>
         </div>
         

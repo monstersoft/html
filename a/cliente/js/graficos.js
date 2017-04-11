@@ -9,60 +9,37 @@ var data = {
 graphedChartLine('#chartLineSticky', true, data);
 graphedChartLine('#chartLine', false, data);
 
-var data = {
-  labels: ['Bananas', 'Apples', 'Grapes'],
-  series: [20, 15, 40]
-};
-
-var options = {
-  labelInterpolationFnc: function(value) {
-    return value[0]
-  }
-};
-
-var responsiveOptions = [
-  ['screen and (min-width: 640px)', {
-    chartPadding: 5,
-    labelOffset: 10,
-    labelDirection: 'explode',
-    labelInterpolationFnc: function(value) {
-      return value;
-    }
-  }],
-  ['screen and (min-width: 1024px)', {
-    labelOffset: 100,
-    chartPadding: 0
-  }]
-];
-
-new Chartist.Pie('#example', data, options, responsiveOptions);
+graphedChartDonut('#example');
 
 
+function graphedChartDonut(idChart){
+    var sum = function(a,b) { return a+b; }
+    var data = {
+      series: [70,50]
+    };
 
-var data = {
-  series: [5, 3, 4]
-};
+    var options = {
+      donut: true,
+      donutWidth: 40,
+      showLabels: false,
+      labelInterpolationFnc: function(value) {return Math.round(value/data.series.reduce(sum)*100)+'%';}
+    };
 
-var sum = function(a, b) { return a + b };
+    var responsiveOptions = [
+      ['screen and (min-width: 640px)', {
+        chartPadding: 5,
+        labelOffset: 30,
+        labelDirection: 'explode',
+        labelInterpolationFnc: function(value) {return Math.round(value/data.series.reduce(sum)*100)+'%';}
+      }],
+      ['screen and (min-width: 1024px)', {
+        labelOffset: 40,
+        chartPadding: 0
+      }]
+    ];
 
-new Chartist.Pie('#example2', data, {
-  labelInterpolationFnc: function(value) {
-    return Math.round(value / data.series.reduce(sum) * 100) + '%';
-  }
-});
-
-new Chartist.Pie('#example3', {
-  series: [20, 10, 30, 40]
-}, {
-  donut: true,
-  donutWidth: 60,
-  startAngle: 270,
-  total: 200,
-  showLabel: false
-});
-
-
-
+    new Chartist.Pie(idChart, data, options, responsiveOptions);
+}
 
 function graphedChartLine(idChart, axisShowY, data) {
     var options = {    
@@ -80,17 +57,6 @@ function graphedChartLine(idChart, axisShowY, data) {
         ]
     }
     new Chartist.Line(idChart, data, options);
-}
-function graphedChartDonut(idChart){
-    new Chartist.Pie(idChart, {
-  series: get(1,10,10)
-}, {
-  donut: true,
-  donutWidth: 60,
-  startAngle: 270,
-  total: 10,
-  showLabel: false
-});
 }
 function get(min, max, cantidad) {
   var a = [];
