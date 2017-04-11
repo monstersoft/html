@@ -51,6 +51,12 @@
     font-size: 30px;
     font-family: 'Montserrat';
 }
+#example .ct-series-a .ct-slice-donut {
+    stroke: #F5A214;
+}
+#example .ct-series-b .ct-slice-donut {
+    stroke: #262626;
+}
 .chartLineContainer {
     position: relative;
     top: 0;

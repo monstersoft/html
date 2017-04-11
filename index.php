@@ -25,7 +25,11 @@
                 </div>
                 <p>Frecuencia de Cambios</p>
             </div>
-            <div class="col-xs-12 cardContent" style="padding: 10px;">
+            <div class="col-xs-12 col-sm-3 cardContent" style="padding: 10px; background: grey;">
+                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius magni voluptatem commodi sint facilis, ipsam et quam. Officia temporibus esse blanditiis debitis, nulla fuga alias dignissimos ipsam saepe neque explicabo.</div>
+                <div>Rerum voluptatem aperiam atque reprehenderit iste, voluptatum mollitia eveniet. Aliquid itaque assumenda sapiente earum consequuntur soluta odit, porro, velit facere dolorum illum nulla ullam, quaerat delectus, nobis illo natus ipsa.</div>
+            </div>
+            <div class="col-xs-12 col-sm-9 cardContent" style="padding: 10px;">
                 <div id="example"></div>
             </div>
         </div>
