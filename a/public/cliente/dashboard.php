@@ -113,19 +113,19 @@
         <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
             <p>Grados Pala</p>
         </div>
-        <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
+        <div class="col-xs-6 cardContent" style="padding: 30px 20px 0px 20px;">
             <div class="motorLegend">
                 <div class="legendColor backYellow"></div>
                 <div class="motorLegend">FRONTAL</div>
             </div>
         </div>
-        <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
+        <div class="col-xs-6 cardContent" style="padding: 30px 20px 0px 20px;">
             <div class="motorLegend">
                 <div class="legendColor backGrey"></div>
                 <div class="motorLegend">TRASERA</div>
             </div>
         </div>
-        <div class="col-xs-12 cardContent" style="padding: 10px;">
+        <div class="col-xs-12 cardContent" style="padding: 20px;">
             <div class="chartLineContainer">
                 <div class="chartLineSticky"><div id="chartLineSticky"></div><div class="chartLineBackground"></div></div>
                 <div class="chartLine"><div id="chartLine"></div></div>
@@ -138,23 +138,23 @@
         <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
             <p>Altura Pala</p>
         </div>
-        <div class="col-xs-12 cardContent" style="padding: 10px;">
-            <div class="chartLineContainer">
-                <div class="chartLineSticky"><div id="chartLineSticky2"></div><div class="chartLineBackground"></div></div>
-                <div class="chartLine"><div id="chartLine2"></div></div>
-            </div>
-            <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
+        <div class="col-xs-6 cardContent" style="padding: 30px 20px 0px 20px;">
             <div class="motorLegend">
                 <div class="legendColor backYellow"></div>
                 <div class="motorLegend">FRONTAL</div>
             </div>
         </div>
-        <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
+        <div class="col-xs-6 cardContent" style="padding: 30px 20px 0px 20px;">
             <div class="motorLegend">
                 <div class="legendColor backGrey"></div>
                 <div class="motorLegend">TRASERA</div>
             </div>
         </div>
+        <div class="col-xs-12 cardContent" style="padding: 20px;">
+            <div class="chartLineContainer">
+                <div class="chartLineSticky"><div id="chartLineSticky2"></div><div class="chartLineBackground"></div></div>
+                <div class="chartLine"><div id="chartLine2"></div></div>
+            </div>
         </div>
      </div>
 </div>
