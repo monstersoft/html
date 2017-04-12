@@ -15,6 +15,7 @@
 .titleCard {
     border-bottom: 1px solid #D4D4D5;
     padding: 10px 10px 0px 10px;
+    height: 45px;
     
 }
 .titleCard p {

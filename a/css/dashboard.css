@@ -24,7 +24,11 @@
     font-size: 12px;
     padding: 0;
 }
-
+/* AVERAGE */
+.average {
+    height: 55px;
+    font-family: 'Montserrat';
+}
 
 
 

@@ -38,36 +38,34 @@
 </div>
 <div class="col-xs-12 col-sm-4 col-md-2 card">
     <div class="col-xs-12 shadow cardContent">
-        <div class="unTitleCard text-center"><i class="fa fa-file-text fa-3x"></i><p>1000</p><span>MEDICIONES</span></div>
+        <div class="statistic">
+            <i class="fa fa-file-text fa-3x"></i>
+            <div class="legend"><div class="number">1000</div><div class="subLegend">MEDICIONES</div></div>
+        </div>
     </div>
 </div>
 <div class="col-xs-12 col-sm-4 col-md-2 card">
     <div class="col-xs-12 shadow cardContent">
-        <div class="unTitleCard text-center"><i class="fa fa-tachometer fa-3x"></i><p>1000 rpm</p><span>PROMEDIO</span></div>
+        <div class="statistic">
+            <i class="fa fa-tachometer fa-3x"></i>
+            <div class="legend"><div class="number">1000 rpm</div><div class="subLegend">PROMEDIO</div></div>
+        </div>
     </div>
 </div>
 <div class="col-xs-12 col-md-6 card">
     <div class="col-xs-12 shadow cardContent">
-        <div class="col-xs-12 titleCard"> <i class="fa fa-calculator pull-left"></i>
-            <div class="dropdown pull-right">
-                <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a id="'.$value['idZona'].'" class="editarZona"><i class="fa fa-pencil"></i>editar</a></li>
-                    <li><a id="'.$value['idZona'].'" class="eliminarZona"><i class="fa fa-remove"></i>remover</a></li>
-                </ul>
-            </div>
-            <p>Estadístico Promedio</p>
+        <div class="col-xs-12 titleCard"><i class="fa fa-calculator pull-left"></i><p>Promedio</p></div>
+        <div class="col-xs-4 text-center average">Grados Pala Frontal<br>Grados Pala Trasera
         </div>
-        <div class="col-xs-3 cardContent text-center statistic">Grados Pala Frontal<p>100</p>
+        <div class="col-xs-2 text-center average">100<br>100
         </div>
-        <div class="col-xs-3 cardContent text-center statistic">Grados Pala Trasera<p>100</p>
+        <div class="col-xs-4 text-center average">Altura Pala Frontal<br>Altura Pala Trasera
         </div>
-        <div class="col-xs-3 cardContent text-center statistic">Altura Pala Frontal<p>100</p>
-        </div>
-        <div class="col-xs-3 cardContent text-center statistic">Altura Pala Trasera<p>100</p>
+        <div class="col-xs-2 text-center average">100<br>100
         </div>
     </div>
-</div><!--
+</div>
+<!--
 <div class="col-xs-12 col-sm-6 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-pie-chart pull-left"></i>
