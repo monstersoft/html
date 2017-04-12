@@ -15,7 +15,7 @@
 </head>
 <body>
     <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p class="editarZona">Machine Monitors</p></div>
-    <nav class="unDisplayNav">
+    <!--<nav class="unDisplayNav">
         <ul>
             <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile">Pato</span><br><span id="nameProfile">Arauco</span></li>
             <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
@@ -25,22 +25,25 @@
             <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
             <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
         </ul>
-    </nav>
-    <div id="content" class="animated fadeInUp unLeftContent">
+    </nav>-->
+    <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
 <div class="col-xs-12 col-sm-4 col-md-2 card">
     <div class="col-xs-12 shadow cardContent">
-        <div class="unTitleCard text-center" style="padding: 20px 20px 20px 20px;"><i class="fa fa-road fa-3x"></i><p>1000 km</p><span>RECORRIDOS</span></div>
+        <div class="statistic">
+            <i class="fa fa-road fa-3x"></i>
+            <div class="legend"><div class="number">1000 km</div><div class="subLegend">RECORRIDOS</div></div>
+        </div>
     </div>
 </div>
 <div class="col-xs-12 col-sm-4 col-md-2 card">
     <div class="col-xs-12 shadow cardContent">
-        <div class="unTitleCard text-center" style="padding: 20px 20px 20px 20px;"><i class="fa fa-file-text fa-3x"></i><p>1000</p><span>MEDICIONES</span></div>
+        <div class="unTitleCard text-center"><i class="fa fa-file-text fa-3x"></i><p>1000</p><span>MEDICIONES</span></div>
     </div>
 </div>
 <div class="col-xs-12 col-sm-4 col-md-2 card">
     <div class="col-xs-12 shadow cardContent">
-        <div class="unTitleCard text-center" style="padding: 20px 20px 20px 20px;"><i class="fa fa-tachometer fa-3x"></i><p>1000 rpm</p><span>PROMEDIO</span></div>
+        <div class="unTitleCard text-center"><i class="fa fa-tachometer fa-3x"></i><p>1000 rpm</p><span>PROMEDIO</span></div>
     </div>
 </div>
 <div class="col-xs-12 col-md-6 card">
@@ -64,7 +67,7 @@
         <div class="col-xs-3 cardContent text-center statistic">Altura Pala Trasera<p>100</p>
         </div>
     </div>
-</div>
+</div><!--
 <div class="col-xs-12 col-sm-6 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-pie-chart pull-left"></i>
@@ -141,7 +144,7 @@
             </div>
         </div>
      </div>
-</div>
+</div>-->
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
@@ -152,6 +155,6 @@
     <script src="../../recursos/responsiveTables/responsiveTables.js"></script>
     <script src="../../js/funciones.js"></script>
     <script src="../../cliente/js/graficos.js"></script>
-    <script>main();</script>
+    <!--<script>main();</script>-->
 </body>
 </html>

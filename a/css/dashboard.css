@@ -1,20 +1,35 @@
-.unTitleCard span {
-    color: #262626;
-    font-family: 'Montserrat';
-}
-.unTitleCard p {
-    color: #262626;
-    font-weight: bold;
-    font-size: 20px;
-    font-family: 'Montserrat';
-}
-.unTitleCard > i {
-    color: #262626;
-}
+/* STATISTIC */
 .statistic {
+    height: 100px;
     font-family: 'Montserrat';
-    padding: 25px 0px 20px 0px;
+    color: #262626;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
+.statistic > i {
+    color: #262626;
+}
+.legend {
+    display: inline-block;
+    margin-left: 20px;
+}
+.legend .number {
+    font-size: 20px;
+    font-weight: bold;
+}
+.legend .subLegend {
+    font-size: 12px;
+    padding: 0;
+}
+
+
+
+
+
+
 .ct-series-a .ct-line {
     stroke : #F5A214;
     stroke-width: 1px;
