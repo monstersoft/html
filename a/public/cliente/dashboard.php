@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="theme-color" content="#262626" />
+    <meta name="theme-color" content="#F5A214"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="../../recursos/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
@@ -113,6 +113,18 @@
         <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
             <p>Grados Pala</p>
         </div>
+        <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
+            <div class="motorLegend">
+                <div class="legendColor backYellow"></div>
+                <div class="motorLegend">FRONTAL</div>
+            </div>
+        </div>
+        <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
+            <div class="motorLegend">
+                <div class="legendColor backGrey"></div>
+                <div class="motorLegend">TRASERA</div>
+            </div>
+        </div>
         <div class="col-xs-12 cardContent" style="padding: 10px;">
             <div class="chartLineContainer">
                 <div class="chartLineSticky"><div id="chartLineSticky"></div><div class="chartLineBackground"></div></div>
@@ -131,6 +143,18 @@
                 <div class="chartLineSticky"><div id="chartLineSticky2"></div><div class="chartLineBackground"></div></div>
                 <div class="chartLine"><div id="chartLine2"></div></div>
             </div>
+            <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
+            <div class="motorLegend">
+                <div class="legendColor backYellow"></div>
+                <div class="motorLegend">FRONTAL</div>
+            </div>
+        </div>
+        <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
+            <div class="motorLegend">
+                <div class="legendColor backGrey"></div>
+                <div class="motorLegend">TRASERA</div>
+            </div>
+        </div>
         </div>
      </div>
 </div>
