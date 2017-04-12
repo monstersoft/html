@@ -50,7 +50,7 @@ function graphedChartBar(idChart) {
 function graphedChartDonut(idChart){
     var sum = function(a,b) { return a+b; }
     var data = {
-      series: [0,300]
+      series: [200,300]
       
     };
 

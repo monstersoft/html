@@ -120,19 +120,9 @@
         </div>
      </div>
 </div>
-
-
-<!--
 <div class="col-xs-12 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
-            <div class="dropdown pull-right">
-                <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
-                    <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
-                </ul>
-            </div>
             <p>Altura Pala</p>
         </div>
         <div class="col-xs-12 cardContent" style="padding: 10px;">
@@ -142,7 +132,7 @@
             </div>
         </div>
      </div>
-</div>-->
+</div>
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>

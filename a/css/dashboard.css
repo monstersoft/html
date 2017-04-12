@@ -168,6 +168,10 @@ table td {
     width: 2000px;
     height: 250px;
 }
+#chartLine2 {
+    width: 2000px;
+    height: 250px;
+}
 .chartLineSticky {
     position: sticky;
     top: 0;
@@ -176,6 +180,10 @@ table td {
     z-index: 1;
 }
 #chartLineSticky {
+    width: 2000px;
+    height: 250px;
+}
+#chartLineSticky2 {
     width: 2000px;
     height: 250px;
 }
@@ -194,7 +202,13 @@ table td {
     #chartLine {
         width: 100%;
     }
+    #chartLine2 {
+        width: 100%;
+    }
     #chartLineSticky {
+        width: 100%;
+    }
+    #chartLineSticky2 {
         width: 100%;
     }
     .chartLineBackground {
