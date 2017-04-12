@@ -72,7 +72,8 @@ function graphedChartDonut(idChart){
     new Chartist.Pie(idChart, data, options/*,responsiveOptions*/);
 }
 function graphedChartLine(idChart, axisShowY, data) {
-    var options = {    
+    var options = {
+        lineSmooth: Chartist.Interpolation.cardinal({tension: 0.2}),
         axisY: {
           showLabel: axisShowY,
           labelInterpolationFnc: function(value) {
