@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../recursos/chartist/chartist.min.css">
     <link rel="stylesheet" href="../../recursos/chartist/chartist-plugin-tooltip.css">
-    <link rel="stylesheet" href="../../recursos/responsiveTables/responsiveTables.css">
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/dashboard.css">
 </head>
@@ -55,13 +54,25 @@
 <div class="col-xs-12 col-md-6 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"><i class="fa fa-calculator pull-left"></i><p>Promedio</p></div>
-        <div class="col-xs-4 text-center average">Grados Pala Frontal<br>Grados Pala Trasera
-        </div>
-        <div class="col-xs-2 text-center average">100<br>100
-        </div>
-        <div class="col-xs-4 text-center average">Altura Pala Frontal<br>Altura Pala Trasera
-        </div>
-        <div class="col-xs-2 text-center average">100<br>100
+        <div class="tableContainer">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Grados Pala Frontal</th>
+                        <th>Grados Pala Trasera</th>
+                        <th>Altura Pala Frontal</th>
+                        <th>Altura Pala Trasera</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>100 °</td>
+                        <td>100 °</td>
+                        <td>100 m</td>
+                        <td>100 m</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
@@ -150,7 +161,6 @@
     <script src="../../recursos/chartist/chartist.min.js"></script>
     <script src="../../recursos/chartist/chartist-plugin-tooltip.js"></script>
     <script src="../../recursos/moment/moment.js"></script>
-    <script src="../../recursos/responsiveTables/responsiveTables.js"></script>
     <script src="../../js/funciones.js"></script>
     <script src="../../cliente/js/graficos.js"></script>
     <!--<script>main();</script>-->
