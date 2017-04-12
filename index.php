@@ -15,69 +15,48 @@
     <body>
 
         
-        <div class="col-xs-12 col-sm-6 shadow cardContent">
+        <div class="col-xs-12 shadow cardContent">
             <div class="col-xs-12 titleCard"> <i class="fa fa-pie-chart pull-left"></i>
-                <div class="dropdown pull-right">
-                    <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
-                        <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
-                    </ul>
-                </div>
                 <p>Motor</p>
             </div>
-            <div class="col-xs-4 cardContent" style="padding: 10px; background: grey;">
-                asdasd
-            </div>
-            <div class="col-xs-8 cardContent">
-                <div id="example"></div>
-            </div>
+            <div id="example2"></div>
+            
         </div>
-              
-
-        <div class="col-xs-12 col-sm-6 shadow cardContent">
-            <div class="col-xs-12 titleCard"> <i class="fa fa-bar-chart pull-left"></i>
-                <div class="dropdown pull-right">
-                    <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
-                        <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
-                    </ul>
-                </div>
-                <p>Cambios</p>
-            </div>
-            <div class="col-xs-12 cardContent">
-                <div id="example2"></div>
-            </div>
-        </div>
-
-        
-        
-        
-        <div class="col-xs-12 shadow cardContent">
-            <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
-                <div class="dropdown pull-right">
-                    <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
-                        <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
-                    </ul>
-                </div>
-                <p>Grados Pala</p>
-            </div>
-            <div class="col-xs-12 cardContent" style="padding: 10px;">
-                <div class="chartLineContainer">
-                    <div class="chartLineSticky"><div id="chartLineSticky"></div><div class="chartLineBackground"></div></div>
-                    <div class="chartLine"><div id="chartLine"></div></div>
-                </div>
-            </div>
-         </div>
         <script src="a/recursos/jquery/jquery.min.js"></script>
         <script src="a/recursos/bootstrap/js/bootstrap.min.js"></script>
         <script src="a/recursos/chartist/chartist.min.js"></script>
         <script src="a/recursos/chartist/chartist-plugin-tooltip.js"></script>
         <script src="a/recursos/chartist/chartist-plugin-pointlabels.js"></script>
         <script src="a/recursos/chartist/chartist-plugin-threshold.min.js"></script>
-        <script src="a/cliente/js/graficos.js"></script>
+        <script>
+            graphedChartBar('#example2');
+
+            function graphedChartBar(idChart) {
+var data = {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  series: [
+    [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
+    [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
+  ]
+};
+
+var options = {
+  seriesBarDistance: 10
+};
+
+var responsiveOptions = [
+  ['screen and (max-width: 640px)', {
+    seriesBarDistance: 5,
+    axisX: {
+      labelInterpolationFnc: function (value) {
+        return value[0];
+      }
+    }
+  }]
+];
+
+                new Chartist.Bar(idChart,data,options, responsiveOptions);
+            }
+        </script>
     </body>
 </html>
