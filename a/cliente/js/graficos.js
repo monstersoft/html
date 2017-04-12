@@ -21,9 +21,9 @@ function graphedChartBar(idChart) {
       series: [get(0,100,10)]
     }
     var options = {
-      /*chartPadding: 0,
+      //chartPadding: 0,
       stackBars: true,
-      axisX: {
+      /*axisX: {
         offset: 60,
       },*/
       axisY: {
@@ -34,7 +34,18 @@ function graphedChartBar(idChart) {
             Chartist.plugins.tooltip()
         ]
     }
-    new Chartist.Bar(idChart,data,options);
+    var responsiveOptions = [
+      ['screen and (min-width: 970px)', {
+        axisX: {
+            offset: 50,
+        }
+      }],      
+      ['screen and (min-width: 1920px)', {
+            offset: 100
+        }]
+        
+    ];
+    new Chartist.Bar(idChart,data,options, responsiveOptions);
 }
 function graphedChartDonut(idChart){
     var sum = function(a,b) { return a+b; }
