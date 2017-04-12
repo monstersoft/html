@@ -111,7 +111,7 @@ table td {
 #example2 {
     height: 252px;
     width: 100%;
-    padding: 10px;
+    padding: 20px;
 }
 #example2 .ct-series-a line {
     stroke : #F5A214;
