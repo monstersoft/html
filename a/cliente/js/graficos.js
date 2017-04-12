@@ -21,7 +21,7 @@ function graphedChartBar(idChart) {
       series: [get(0,100,10)]
     }
     var options = {
-      chartPadding: 10,
+      chartPadding: 0,
       stackBars: true,
       axisX: {
         offset: 50,
