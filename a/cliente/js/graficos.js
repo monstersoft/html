@@ -37,7 +37,7 @@ function graphedChartBar(idChart) {
 function graphedChartDonut(idChart){
     var sum = function(a,b) { return a+b; }
     var data = {
-      series: [300,300]
+      series: [0,300]
     };
 
     var options = {
