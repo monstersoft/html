@@ -23,7 +23,7 @@ function graphedChartBar(idChart) {
     var options = {
       stackBars: true,
       axisX: {
-        offset: 40,
+        offset: 10,
       },
       axisY: {
           labelInterpolationFnc: function(value) {return value+'%';}
@@ -37,15 +37,16 @@ function graphedChartBar(idChart) {
 function graphedChartDonut(idChart){
     var sum = function(a,b) { return a+b; }
     var data = {
-      series: [0,300]
+      series: [300,300]
+      
     };
 
     var options = {
       donut: true,
-      donutWidth: 20,
-      labelDirection: 'neutral',
-      chartPadding: 60,
-      labelOffset: 45,
+      donutWidth: 40,
+      labelDirection: 'explode',
+      chartPadding: 20,
+      labelOffset: 30,
       labelInterpolationFnc: function(value) {return Math.round(value/data.series.reduce(sum)*100)+'%';},
     };
 

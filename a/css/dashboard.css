@@ -56,7 +56,8 @@ table td {
     font-family: 'Montserrat';
     font-size: 1.2rem;
     text-overflow: ellipsis;
-    overflow: hidden
+    overflow: hidden;
+    display: block;
 }
 
 
@@ -119,12 +120,12 @@ table td {
 }
 /*DONUT*/
 #example {
-    height: 250px;
+    height: 220px;
     width: 100%;
     margin: 0 auto;
 }
 #example text {
-    font-size: 20px;
+    font-size: 16px;
     font-family: 'Montserrat';
 }
 #example .ct-series-a .ct-slice-donut {

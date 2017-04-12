@@ -75,28 +75,28 @@
     </div>
 </div>
 
-<div class="col-xs-12 col-sm-3 card">
+<div class="col-xs-12 col-sm-5 card">
     <div class="col-xs-12 shadow cardContent" style="height: 300px;">
         <div class="col-xs-12 titleCard"> <i class="fa fa-pie-chart pull-left"></i><p>Motor</p></div>
-        <div class="col-xs-6 cardContent" style="padding: 20px;">
+        <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
             <div class="motorLegend">
                 <div class="legendColor backYellow"></div>
-                <div class="motorLegend">Funcionando</div>
+                <div class="motorLegend">ON</div>
             </div>
         </div>
-        <div class="col-xs-6 cardContent" style="padding: 20px;">
+        <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
             <div class="motorLegend">
                 <div class="legendColor backGrey"></div>
-                <div class="motorLegend">No Funcionando</div>
+                <div class="motorLegend">OFF</div>
             </div>
         </div>
-        <div class="col-xs-12 cardContent" style="height: 250px;">
+        <div class="col-xs-12 cardContent">
             <div id="example"></div>
         </div>
     </div>
 </div>
-<!--
-<div class="col-xs-12 col-sm-9 card">
+
+<div class="col-xs-12 col-sm-7 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-bar-chart pull-left"></i>
             <p>Cambios</p>
@@ -106,7 +106,7 @@
         </div>
     </div>
 </div>
-
+<!--
 <div class="col-xs-12 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
