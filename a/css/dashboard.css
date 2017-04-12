@@ -111,12 +111,26 @@ table td {
 #example2 {
     height: 252px;
     width: 100%;
-    padding: 10px;
 }
 #example2 .ct-series-a line {
     stroke : #F5A214;
-    stroke-width: 30px;
+    stroke-width: 20px;
     color: yellow;
+}
+#example2 .ct-label.ct-vertical { 
+    font-size: 12px; 
+    color: #262626;
+    font-family: 'Montserrat';
+    
+}
+#example2 .ct-label.ct-horizontal { 
+    font-size: 10px; 
+    position: relative; 
+    transform: rotate(45deg); 
+    transform-origin: left top; 
+    color: #262626;
+    font-family: 'Montserrat';
+    padding: 0px;
 }
 /*DONUT*/
 #example {
@@ -134,6 +148,7 @@ table td {
 #example .ct-series-b .ct-slice-donut {
     stroke: #262626;
 }
+/* CHART LINE */
 .chartLineContainer {
     position: relative;
     top: 0;
