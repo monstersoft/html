@@ -24,7 +24,7 @@ function graphedChartBar(idChart) {
       /*chartPadding: 0,
       stackBars: true,
       axisX: {
-        offset: 50,
+        offset: 60,
       },*/
       axisY: {
           //offset: 50,
@@ -39,7 +39,7 @@ function graphedChartBar(idChart) {
 function graphedChartDonut(idChart){
     var sum = function(a,b) { return a+b; }
     var data = {
-      series: [300,300]
+      series: [0,300]
       
     };
 

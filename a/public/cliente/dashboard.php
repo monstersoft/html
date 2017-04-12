@@ -27,7 +27,7 @@
     </nav>-->
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
-<!--<div class="col-xs-12 col-sm-4 col-md-2 card">
+<div class="col-xs-12 col-sm-4 col-md-2 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="statistic">
             <i class="fa fa-road fa-3x"></i>
@@ -105,9 +105,9 @@
             <div id="example2"></div>
         </div>
     </div>
-</div>-->
+</div>
 
-<div class="col-xs-6 card">
+<div class="col-xs-12 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
             <p>Grados Pala</p>
@@ -120,16 +120,7 @@
         </div>
      </div>
 </div>
-<div class="col-xs-6 card">
-    <div class="col-xs-12 shadow cardContent">
-        <div class="col-xs-12 titleCard"> <i class="fa fa-bar-chart pull-left"></i>
-            <p>Cambios</p>
-        </div>
-        <div class="col-xs-12 cardContent" style="padding: 10px;">
-            <div id="example2"></div>
-        </div>
-    </div>
-</div>
+
 
 <!--
 <div class="col-xs-12 card">
