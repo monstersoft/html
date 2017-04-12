@@ -21,12 +21,13 @@ function graphedChartBar(idChart) {
       series: [get(0,100,10)]
     }
     var options = {
+      chartPadding: 20,
       stackBars: true,
       axisX: {
-        offset: 60,
+        offset: 50,
       },
       axisY: {
-          offset: 30,
+          offset: 50,
           labelInterpolationFnc: function(value) {return value+'%';}
       },
         plugins: [
