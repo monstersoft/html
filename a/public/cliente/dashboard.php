@@ -76,7 +76,7 @@
 </div>
 
 <div class="col-xs-12 col-sm-5 card">
-    <div class="col-xs-12 shadow cardContent" style="height: 300px;">
+    <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-pie-chart pull-left"></i><p>Motor</p></div>
         <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
             <div class="motorLegend">
@@ -101,7 +101,7 @@
         <div class="col-xs-12 titleCard"> <i class="fa fa-bar-chart pull-left"></i>
             <p>Cambios</p>
         </div>
-        <div class="col-xs-12 cardContent" style="height: 292px">
+        <div class="col-xs-12 cardContent">
             <div id="example2"></div>
         </div>
     </div>

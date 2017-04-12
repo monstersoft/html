@@ -254,6 +254,7 @@ nav  ul  li a:hover .icons {
     top: 45px;
     width: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 .leftContent {
     left: 250px;

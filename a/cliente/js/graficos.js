@@ -23,9 +23,10 @@ function graphedChartBar(idChart) {
     var options = {
       stackBars: true,
       axisX: {
-        offset: 10,
+        offset: 60,
       },
       axisY: {
+          offset: 30,
           labelInterpolationFnc: function(value) {return value+'%';}
       },
         plugins: [

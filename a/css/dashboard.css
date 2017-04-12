@@ -109,13 +109,13 @@ table td {
 }*/
 /*BARRAS*/
 #example2 {
-    height: 250px;
+    height: 252px;
     width: 100%;
     padding: 10px;
 }
 #example2 .ct-series-a line {
     stroke : #F5A214;
-    stroke-width: 20px;
+    stroke-width: 30px;
     color: yellow;
 }
 /*DONUT*/
