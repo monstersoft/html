@@ -72,8 +72,8 @@
             <tbody>
                 <tr>
                     <td>Concepción</td>
-                    <td>martes 25 de febrero 2017</td>
-                    <td><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton"><i class="fa fa-calendar"></i><i class="fa fa-search"></i></a>martes 25 de febrero 2017</td>
+                    <td>25 de febrero 2017</td>
+                    <td><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton"><i class="fa fa-calendar"></i><i class="fa fa-search"></i></a>25 de febrero 2017</td>
                 </tr>
             </tbody>
         </table>
