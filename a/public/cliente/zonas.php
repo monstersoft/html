@@ -65,20 +65,25 @@
         <table>
             <thead>
                 <tr>
-                    <th>Ultima Actualización</th>
+                    <th>Zona</th>
+                    <th>Última actualización</th>
                     <th>Fecha consulta</th>
-                    <th>Botones</th>
+                    <th>Última actualización</th>
+                    <th>bottones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                   <td>24 Febrero 2017</td>
-                   <td>25 Marzo 2017</td>
-                   <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
+                    <td>Concepción</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td><i class="calendar"></i><i class="search"></i></td>
                 </tr>
             </tbody>
         </table>
-    </div><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Ver</a> </div>
+    </div><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Ver</a> 
+</div>
+
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
