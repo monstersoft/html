@@ -119,7 +119,7 @@
                     <thead>
                         <tr>
                             <th class="sticky-cell">Zona</th>
-                            <th class="sticky-cell">Fecha consulta</th>
+                            <th>Fecha consulta</th>
                             <th>Ultima actualización</th>
                             <th>Subido por</th>
                             <th>Fecha subida</th>
@@ -129,7 +129,7 @@
                     <tbody>
                         <tr>
                             <td class="sticky-cell">Concepción</td>
-                            <td class="sticky-cell"><span>Lunes</span><br>05/07/2017</td>
+                            <td><span>Lunes</span><br>05/07/2017</td>
                             <td>Martes<br>07/05/2017</td>
                             <td>Patricio Andrés Villanueva Fuentes</td>
                             <td>Martes<br>07/05/2017</td>
@@ -137,7 +137,7 @@
                         </tr>
                         <tr>
                             <td class="sticky-cell">Concepción</td>
-                            <td class="sticky-cell">Lunes<br>05/07/2017</td>
+                            <td>Lunes<br>05/07/2017</td>
                             <td>Martes<br>07/05/2017</td>
                             <td>Juan Antonio Pérez Pérez</td>
                             <td>Martes<br>07/05/2017</td>
