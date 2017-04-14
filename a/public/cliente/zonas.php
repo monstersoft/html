@@ -66,14 +66,14 @@
                 <tr>
                     <th>Zona</th>
                     <th>Última actualización</th>
-                    <th>Fecha consulta</th>
+                    <th>Seleccionar fecha</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Concepción</td>
                     <td>25 de febrero 2017</td>
-                    <td><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton"><i class="fa fa-calendar"></i><i class="fa fa-search"></i></a>25 de febrero 2017</td>
+                    <td>25 de febrero 2017<i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
                 </tr>
             </tbody>
         </table>
