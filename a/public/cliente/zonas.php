@@ -40,7 +40,7 @@
             <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
         </ul>
     </nav>
-    <div id="content" class="animated fadeInUp unLeftContent">
+    <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
 <div class="col-xs-12">
     <form method='POST' action='maquinas.php'>
@@ -59,6 +59,26 @@
         </div>
     </form>
 </div>
+<div class="col-xs-12 col-sm-6 card">
+    <div class="col-xs-12 shadowButtonDown cardContent">
+        <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i><p>SERVICIOS BÍO BÍO</p></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ultima Actualización</th>
+                    <th>Fecha consulta</th>
+                    <th>Botones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                   <td>24 Febrero 2017</td>
+                   <td>25 Marzo 2017</td>
+                   <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Ver</a> </div>
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
