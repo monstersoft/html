@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../recursos/responsiveTables/responsiveTables.css">
     <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/a.css">
 </head>
 <body>
     <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p class="editarZona">Machine Monitors</p></div>
@@ -61,65 +62,39 @@
 <div class="col-xs-12 col-sm-6 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i><p>SERVICIOS BÍO BÍO</p></div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Zona</th>
-                    <th>Última actualización</th>
-                    <th>Seleccionar fecha</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Concepción</td>
-                    <td>25/03/17</td>
-                    <td>25/03/17<i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="tableContent">
+            <table>
+                    <tr>
+                        <th class="fixedColumn"><div class="t">Zona</div></th>
+                        <div class="noFixedColumn">
+                        <th>Última actualización</th>
+                        <th>Fecha consulta</th>
+                        <th>Subido por</th>
+                        <th>Fecha Subida</th>
+                        <th>Fecha consulta</th>
+                        <th>Subido por</th>
+                        <th>Fecha Subida</th>
+                        <th>Fecha consulta</th>
+                        <th>Subido por</th>
+                        <th>Fecha Subida</th>
+                        <th>Fecha consulta</th>
+                        <th>Subido por</th>
+                        <th>Fecha Subida</th>
+                        </div>
+                    </tr>
+                    <tr>
+                        <td class="fixedColumn">Concepción</td>
+                        <div class="noFixedColumn"><td class="noFixedColumn">25/03/17</td>
+                        <td>25/03/17</td>
+                        <td>25/03/17</td>
+                        <td>25/03/17</td>
+                        </div>
+                    </tr>
+            </table>
+        </div>
     </div> 
 </div>
-<div class="col-xs-12 col-sm-6 card">
-    <div class="col-xs-12 shadow cardContent">
-        <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i><p>SERVICIOS BÍO BÍO</p></div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Zona</th>
-                    <th>Última actualización</th>
-                    <th>Fecha consulta</th>
-                    <th>bottones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Concepción</td>
-                    <td>25/02/2017</td>
-                    <td>25/02/2017</td>
-                    <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
-                </tr>
-                <tr>
-                    <td>Concepción</td>
-                    <td>25/02/2017</td>
-                    <td>25/02/2017</td>
-                    <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
-                </tr>
-                <tr>
-                    <td>Concepción</td>
-                    <td>25/02/2017</td>
-                    <td>25/02/2017</td>
-                    <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
-                </tr>
-                <tr>
-                    <td>Concepción</td>
-                    <td>25/02/2017</td>
-                    <td>25/02/2017</td>
-                    <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
-                </tr>
-            </tbody>
-        </table>
-    </div> 
-</div>
+
 
 <!-- ............................................................................................................................ -->
     </div>

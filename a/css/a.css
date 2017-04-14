@@ -1,0 +1,21 @@
+.tableContent {
+    overflow-x: auto;
+    width: 100%;
+    border: 1px solid red;
+}
+table {
+    position: relative;
+}
+.fixedColumn {
+    position: fixed;
+    z-index: 100;
+}
+.noFixedColumn {
+    padding-left: 300px;
+}
+.t {
+    width: 100px;
+    height: 40px;
+    background: red;
+    position: absolute;
+}
