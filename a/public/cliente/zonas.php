@@ -68,7 +68,6 @@
                     <th>Zona</th>
                     <th>Última actualización</th>
                     <th>Fecha consulta</th>
-                    <th>Última actualización</th>
                     <th>bottones</th>
                 </tr>
             </thead>
