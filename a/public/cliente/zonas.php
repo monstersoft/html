@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="../../recursos/pickadate/default.time.css">
     <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
-    <link rel="stylesheet" href="../../recursos/responsiveTables/jquery.stickytable.css">
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/a.css">
 </head>
@@ -59,95 +58,37 @@
         </div>
     </form>
 </div>-->
-<div class="col-xs-12 col-sm-6 card">
-    <div class="col-xs-12 shadow cardContent">
+
+
+<div class="col-xs-12 col-sm-12 card">
+    <div class="col-xs-12 shadowButtonDown cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
             <p>SERVICIOS BÍO BÍO</p>
         </div>
-        <div class="col-xs-10 cardContent">
-            <div class="sticky-table sticky-headers sticky-ltr-cells">
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="sticky-cell">Zona</th>
-                            <th>Fecha consulta</th>
-                            <th>Ultima actualización</th>
-                            <th>Subido por</th>
-                            <th>Fecha subida</th>
-                            <th>Hora subida</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="sticky-cell">Concepción</td>
-                            <td><span>Lunes</span><br>05/07/2017</td>
-                            <td>Martes<br>07/05/2017</td>
-                            <td>Patricio Andrés Villanueva Fuentes</td>
-                            <td>Martes<br>07/05/2017</td>
-                            <td>08:55: AM</td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-cell">Concepción</td>
-                            <td>Lunes<br>05/07/2017</td>
-                            <td>Martes<br>07/05/2017</td>
-                            <td>Juan Antonio Pérez Pérez</td>
-                            <td>Martes<br>07/05/2017</td>
-                            <td>08:55 AM</td>
-                        </tr>
-                    </tbody>
-                </table>
-              </div>
-        </div>
-        <div class="col-xs-2 cardContent" style="margin-top: 27px;">
-            <div class="buttonsContainer">
-                <a href=""><i class="fa fa-calendar"></i></a><a href=""><i class="fa fa-search"></i></a>
-            </div>
-            <div class="buttonsContainer">
-                <a href=""><i class="fa fa-calendar"></i></a><a href=""><i class="fa fa-search"></i></a>
-            </div>
-        </div>
     </div>
-</div>
-<div class="col-xs-12 col-sm-6 card">
-    <div class="col-xs-12 shadow cardContent">
-        <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
-            <p>SERVICIOS BÍO BÍO</p>
-        </div>
         <div class="col-xs-10 cardContent">
-            <div class="sticky-table sticky-headers sticky-ltr-cells">
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="sticky-cell">Zona</th>
-                            <th>Fecha consulta</th>
-                            <th>Ultima actualización</th>
-                            <th>Subido por</th>
-                            <th>Fecha subida</th>
-                            <th>Hora subida</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="sticky-cell">Concepción</td>
-                            <td><span>Lunes</span><br>05/07/2017</td>
-                            <td>Martes<br>07/05/2017</td>
-                            <td>Patricio Andrés Villanueva Fuentes</td>
-                            <td>Martes<br>07/05/2017</td>
-                            <td>08:55: AM</td>
-                        </tr>
-                        <tr>
-                            <td class="sticky-cell">Concepción</td>
-                            <td>Lunes<br>05/07/2017</td>
-                            <td>Martes<br>07/05/2017</td>
-                            <td>Juan Antonio Pérez Pérez</td>
-                            <td>Martes<br>07/05/2017</td>
-                            <td>08:55 AM</td>
-                        </tr>
-                    </tbody>
-                </table>
-              </div>
+<div class="a">
+<table>
+       
+       
+
+        <tr><td class="headcol">Zona</td><td>Fecha consulta</td><td>Última actualización</td><td>Subido por</td><td>Fecha subida</td><td>Hora subida</td></tr>
+        <tr><td class="headcol">Concepción</td><td>Lunes 05-07-2017</td><td>Martes 07/05/2017</td><td>Juan Antonio Pérez Pérez</td><td>Martes 07/05/2017</td><td>08:55 AM</td></tr>
+        <tr><td class="headcol">Concepción</td><td>Lunes 05-07-2017</td><td>Martes 07/05/2017</td><td>Juan Antonio Pérez Pérez</td><td>Martes 07/05/2017</td><td>08:55 AM</td></tr>
+        <tr><td class="headcol">Concepción</td><td>Lunes 05-07-2017</td><td>Martes 07/05/2017</td><td>Juan Antonio Pérez Pérez</td><td>Martes 07/05/2017</td><td>08:55 AM</td></tr>
+        <tr><td class="headcol">Concepción</td><td>Lunes 05-07-2017</td><td>Martes 07/05/2017</td><td>Juan Antonio Pérez Pérez</td><td>Martes 07/05/2017</td><td>08:55 AM</td></tr>
+</table></div>
         </div>
-        <div class="col-xs-2 cardContent" style="margin-top: 27px;">
+        
+        
+        
+        <div class="col-xs-2 cardContent" style="margin-top: 50px;">
+            <div class="buttonsContainer">
+                <a href=""><i class="fa fa-calendar"></i></a><a href=""><i class="fa fa-search"></i></a>
+            </div>
+            <div class="buttonsContainer">
+                <a href=""><i class="fa fa-calendar"></i></a><a href=""><i class="fa fa-search"></i></a>
+            </div>
             <div class="buttonsContainer">
                 <a href=""><i class="fa fa-calendar"></i></a><a href=""><i class="fa fa-search"></i></a>
             </div>
@@ -155,8 +96,9 @@
                 <a href=""><i class="fa fa-calendar"></i></a><a href=""><i class="fa fa-search"></i></a>
             </div>
         </div>
-    </div>
 </div>
+
+
 
 
 <!-- ............................................................................................................................ -->
@@ -167,7 +109,6 @@
     <script src="../../recursos/pickadate/picker.js"></script>
     <script src="../../recursos/pickadate/picker.date.js"></script>
     <script src="../../recursos/pickadate/picker.time.js"></script>
-    <script src="../../recursos/responsiveTables/jquery.stickytable.js"></script>
     <script src="../../recursos/moment/moment.js"></script>
     <script src="../../js/funciones.js"></script>
     <script src="../../js/config.js"></script>
