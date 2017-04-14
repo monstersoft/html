@@ -80,24 +80,24 @@
     </div>
     <div class="col-xs-2 cardContent" style="margin-top: 30px;">
         <div class="buttonsContainer">
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+            <div class="icon-wrapper"><i class="fa fa-calendar custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
+            <div class="icon-wrapper"><i class="fa fa-search custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
         </div>
         <div class="buttonsContainer">
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+            <div class="icon-wrapper"><i class="fa fa-calendar custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
+            <div class="icon-wrapper"><i class="fa fa-search custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
         </div>
         <div class="buttonsContainer">
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+            <div class="icon-wrapper"><i class="fa fa-calendar custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
+            <div class="icon-wrapper"><i class="fa fa-search custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
         </div>
         <div class="buttonsContainer">
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+            <div class="icon-wrapper"><i class="fa fa-calendar custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
+            <div class="icon-wrapper"><i class="fa fa-search custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
         </div>
         <div class="buttonsContainer">
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+            <div class="icon-wrapper"><i class="fa fa-calendar custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
+            <div class="icon-wrapper"><i class="fa fa-search custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
         </div>
     </div>
 </div>
