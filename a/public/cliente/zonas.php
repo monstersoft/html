@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../recursos/responsiveTables/responsiveTables.css">
     <link rel="stylesheet" href="../../css/base.css">
-    <link rel="stylesheet" href="../../css/dashboard.css">
 </head>
 <body>
     <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p class="editarZona">Machine Monitors</p></div>
@@ -60,7 +59,7 @@
     </form>
 </div>
 <div class="col-xs-12 col-sm-6 card">
-    <div class="col-xs-12 shadowButtonDown cardContent">
+    <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i><p>SERVICIOS BÍO BÍO</p></div>
         <table>
             <thead>
@@ -76,11 +75,70 @@
                     <td>Concepción</td>
                     <td>martes 25 de febrero 2017</td>
                     <td>martes 25 de febrero 2017</td>
-                    <td><i class="calendar"></i><i class="search"></i></td>
+                    <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
+                </tr>
+                <tr>
+                    <td>Concepción</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
+                </tr>
+                <tr>
+                    <td>Concepción</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
+                </tr>
+                <tr>
+                    <td>Concepción</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton"><i class="fa fa-calendar"></i></a><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton"><i class="fa fa-search"></i></a></td>
                 </tr>
             </tbody>
         </table>
-    </div><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Ver</a> 
+    </div> 
+</div>
+<div class="col-xs-12 col-sm-6 card">
+    <div class="col-xs-12 shadow cardContent">
+        <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i><p>SERVICIOS BÍO BÍO</p></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Zona</th>
+                    <th>Última actualización</th>
+                    <th>Fecha consulta</th>
+                    <th>bottones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Concepción</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
+                </tr>
+                <tr>
+                    <td>Concepción</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
+                </tr>
+                <tr>
+                    <td>Concepción</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
+                </tr>
+                <tr>
+                    <td>Concepción</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td>martes 25 de febrero 2017</td>
+                    <td><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Ver</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
 </div>
 
 <!-- ............................................................................................................................ -->
