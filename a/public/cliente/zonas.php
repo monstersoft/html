@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../../recursos/pickadate/default.time.css">
     <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
-    <link rel="stylesheet" href="../../recursos/responsiveTables/responsiveTables.css">
+    <link rel="stylesheet" href="../../recursos/responsiveTables/jquery.stickytable.css">
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/a.css">
 </head>
@@ -42,7 +42,7 @@
     </nav>
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
-<div class="col-xs-12">
+<!--<div class="col-xs-12">
     <form method='POST' action='maquinas.php'>
         <div class="form-group">
             <label for="zonas" class="control-label">Zonas Asociadas</label>
@@ -58,41 +58,104 @@
             <input type="submit" value="submit">
         </div>
     </form>
+</div>-->
+<div class="col-xs-12 col-sm-6 card">
+    <div class="col-xs-12 shadow cardContent">
+        <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
+            <p>SERVICIOS BÍO BÍO</p>
+        </div>
+        <div class="col-xs-10 cardContent">
+            <div class="sticky-table sticky-headers sticky-ltr-cells">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="sticky-cell">Zona</th>
+                            <th class="sticky-cell">Fecha consulta</th>
+                            <th>Ultima actualización</th>
+                            <th>Subido por</th>
+                            <th>Fecha subida</th>
+                            <th>Hora subida</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="sticky-cell">Concepción</td>
+                            <td class="sticky-cell"><span>Lunes</span><br>05/07/2017</td>
+                            <td>Martes<br>07/05/2017</td>
+                            <td>Patricio Andrés Villanueva Fuentes</td>
+                            <td>Martes<br>07/05/2017</td>
+                            <td>08:55: AM</td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-cell">Concepción</td>
+                            <td class="sticky-cell">Lunes<br>05/07/2017</td>
+                            <td>Martes<br>07/05/2017</td>
+                            <td>Juan Antonio Pérez Pérez</td>
+                            <td>Martes<br>07/05/2017</td>
+                            <td>08:55 AM</td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+        </div>
+        <div class="col-xs-2 cardContent" style="margin-top: 27px;">
+            <div class="buttonsContainer">
+                <a href=""><i class="fa fa-calendar"></i></a><a href=""><i class="fa fa-search"></i></a>
+            </div>
+            <div class="buttonsContainer">
+                <a href=""><i class="fa fa-calendar"></i></a><a href=""><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="col-xs-12 col-sm-6 card">
     <div class="col-xs-12 shadow cardContent">
-        <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i><p>SERVICIOS BÍO BÍO</p></div>
-        <div class="tableContent">
-            <table>
-                    <tr>
-                        <th class="fixedColumn"><div class="t">Zona</div></th>
-                        <div class="noFixedColumn">
-                        <th>Última actualización</th>
-                        <th>Fecha consulta</th>
-                        <th>Subido por</th>
-                        <th>Fecha Subida</th>
-                        <th>Fecha consulta</th>
-                        <th>Subido por</th>
-                        <th>Fecha Subida</th>
-                        <th>Fecha consulta</th>
-                        <th>Subido por</th>
-                        <th>Fecha Subida</th>
-                        <th>Fecha consulta</th>
-                        <th>Subido por</th>
-                        <th>Fecha Subida</th>
-                        </div>
-                    </tr>
-                    <tr>
-                        <td class="fixedColumn">Concepción</td>
-                        <div class="noFixedColumn"><td class="noFixedColumn">25/03/17</td>
-                        <td>25/03/17</td>
-                        <td>25/03/17</td>
-                        <td>25/03/17</td>
-                        </div>
-                    </tr>
-            </table>
+        <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
+            <p>SERVICIOS BÍO BÍO</p>
         </div>
-    </div> 
+        <div class="col-xs-10 cardContent">
+            <div class="sticky-table sticky-headers sticky-ltr-cells">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="sticky-cell">Zona</th>
+                            <th class="sticky-cell">Fecha consulta</th>
+                            <th>Ultima actualización</th>
+                            <th>Subido por</th>
+                            <th>Fecha subida</th>
+                            <th>Hora subida</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="sticky-cell">Concepción</td>
+                            <td class="sticky-cell"><span>Lunes</span><br>05/07/2017</td>
+                            <td>Martes<br>07/05/2017</td>
+                            <td>Patricio Andrés Villanueva Fuentes</td>
+                            <td>Martes<br>07/05/2017</td>
+                            <td>08:55: AM</td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-cell">Concepción</td>
+                            <td class="sticky-cell">Lunes<br>05/07/2017</td>
+                            <td>Martes<br>07/05/2017</td>
+                            <td>Juan Antonio Pérez Pérez</td>
+                            <td>Martes<br>07/05/2017</td>
+                            <td>08:55 AM</td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+        </div>
+        <div class="col-xs-2 cardContent" style="margin-top: 27px;">
+            <div class="buttonsContainer">
+                <a href=""><i class="fa fa-calendar"></i></a><a href=""><i class="fa fa-search"></i></a>
+            </div>
+            <div class="buttonsContainer">
+                <a href=""><i class="fa fa-calendar"></i></a><a href=""><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -104,6 +167,7 @@
     <script src="../../recursos/pickadate/picker.js"></script>
     <script src="../../recursos/pickadate/picker.date.js"></script>
     <script src="../../recursos/pickadate/picker.time.js"></script>
+    <script src="../../recursos/responsiveTables/jquery.stickytable.js"></script>
     <script src="../../recursos/moment/moment.js"></script>
     <script src="../../js/funciones.js"></script>
     <script src="../../js/config.js"></script>

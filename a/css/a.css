@@ -1,21 +1,43 @@
-.tableContent {
-    overflow-x: auto;
+table th {
+    padding: 5px;
+    text-align: center;
+    white-space: nowrap;
+}
+table td {
+    padding: 5px;
+    text-align: center;
+    white-space: nowrap;
+}
+table tr {
+    font-family: 'Montserrat';
+    font-size: 12px;
+}
+.buttonsContainer {
     width: 100%;
-    border: 1px solid red;
+    height: 44px;
+    overflow: hidden;
 }
-table {
-    position: relative;
+.buttonsContainer a {
+    background: rgb(224, 225, 226);
+    width: 50%;
+    height: 100%;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    outline-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+    font-family: 'Montserrat';
+    float: left;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
-.fixedColumn {
-    position: fixed;
-    z-index: 100;
-}
-.noFixedColumn {
-    padding-left: 300px;
-}
-.t {
-    width: 100px;
-    height: 40px;
-    background: red;
-    position: absolute;
+.buttonsContainer a:hover {
+    text-decoration: none;
+    background-color: rgba(0,0,0,0.2);
+    color: rgba(0, 0, 0, 0.87);
 }
