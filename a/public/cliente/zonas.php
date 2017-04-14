@@ -72,8 +72,8 @@
             <tbody>
                 <tr>
                     <td>Concepción</td>
-                    <td>25 de febrero 2017</td>
-                    <td>25 de febrero 2017<i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
+                    <td>25/03/17</td>
+                    <td>25/03/17<i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
                 </tr>
             </tbody>
         </table>
