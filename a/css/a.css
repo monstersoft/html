@@ -5,6 +5,27 @@
     overflow: hidden;
 }
 
+
+.buttonsContainer a {
+    /*background: rgb(224, 225, 226);
+    /*width: 100%;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;*/
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    /*font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    outline-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+    font-family: 'Montserrat';*/
+}
+.buttonsContainer a:hover {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.87);
+}
+
 .buttonsContainer .buttonColumn {
     width: 50%;
     height: 100%;
@@ -45,7 +66,7 @@ table {
     background: white;
 }
 .icon-background1 {
-    color: #F5A214;
+    color: rgb(224, 225, 226);
 }
 
 
