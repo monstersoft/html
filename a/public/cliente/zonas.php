@@ -66,36 +66,123 @@
             <p>SERVICIOS BÍO BÍO</p>
         </div>
     </div>
-        <div class="col-xs-10 cardContent">
-<div class="a">
-<table>
-       
-       
+    <div class="col-xs-10 cardContent">
+    <div class="tableContainer">
+        <table>
+            <tr><td class="headcol">Zona</td><td>Fecha consulta</td><td>Última actualización</td><td>Subido por</td><td>Fecha subida</td><td>Hora subida</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+        </table>
+    </div>
+    </div>
+    <div class="col-xs-2 cardContent" style="margin-top: 50px;">
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+        </div>
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+        </div>
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+        </div>
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+        </div>
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+        </div>
+    </div>
+</div>
 
-        <tr><td class="headcol">Zona</td><td>Fecha consulta</td><td>Última actualización</td><td>Subido por</td><td>Fecha subida</td><td>Hora subida</td></tr>
-        <tr><td class="headcol">Concepción</td><td>Lunes 05-07-2017</td><td>Martes 07/05/2017</td><td>Juan Antonio Pérez Pérez</td><td>Martes 07/05/2017</td><td>08:55 AM</td></tr>
-        <tr><td class="headcol">Concepción</td><td>Lunes 05-07-2017</td><td>Martes 07/05/2017</td><td>Juan Antonio Pérez Pérez</td><td>Martes 07/05/2017</td><td>08:55 AM</td></tr>
-        <tr><td class="headcol">Concepción</td><td>Lunes 05-07-2017</td><td>Martes 07/05/2017</td><td>Juan Antonio Pérez Pérez</td><td>Martes 07/05/2017</td><td>08:55 AM</td></tr>
-        <tr><td class="headcol">Concepción</td><td>Lunes 05-07-2017</td><td>Martes 07/05/2017</td><td>Juan Antonio Pérez Pérez</td><td>Martes 07/05/2017</td><td>08:55 AM</td></tr>
-</table></div>
+<div class="col-xs-12 col-sm-12 card">
+    <div class="col-xs-12 shadowButtonDown cardContent">
+        <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
+            <p>SERVICIOS BÍO BÍO</p>
         </div>
-        
-        
-        
-        <div class="col-xs-2 cardContent" style="margin-top: 50px;">
-            <div class="buttonsContainer">
-                <a href=""><i class="fa fa-calendar"></i></a><a href=""><i class="fa fa-search"></i></a>
-            </div>
-            <div class="buttonsContainer">
-                <a href=""><i class="fa fa-calendar"></i></a><a href=""><i class="fa fa-search"></i></a>
-            </div>
-            <div class="buttonsContainer">
-                <a href=""><i class="fa fa-calendar"></i></a><a href=""><i class="fa fa-search"></i></a>
-            </div>
-            <div class="buttonsContainer">
-                <a href=""><i class="fa fa-calendar"></i></a><a href=""><i class="fa fa-search"></i></a>
-            </div>
+    </div>
+    <div class="col-xs-10 cardContent">
+    <div class="tableContainer">
+        <table>
+            <tr><td class="headcol">Zona</td><td>Fecha consulta</td><td>Última actualización</td><td>Subido por</td><td>Fecha subida</td><td>Hora subida</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+        </table>
+    </div>
+    </div>
+    <div class="col-xs-2 cardContent" style="margin-top: 50px;">
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
         </div>
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+        </div>
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+        </div>
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+        </div>
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12 col-sm-12 card">
+    <div class="col-xs-12 shadowButtonDown cardContent">
+        <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
+            <p>SERVICIOS BÍO BÍO</p>
+        </div>
+    </div>
+    <div class="col-xs-10 cardContent">
+    <div class="tableContainer">
+        <table>
+            <tr><td class="headcol">Zona</td><td>Fecha consulta</td><td>Última actualización</td><td>Subido por</td><td>Fecha subida</td><td>Hora subida</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
+        </table>
+    </div>
+    </div>
+    <div class="col-xs-2 cardContent" style="margin-top: 50px;">
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+        </div>
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+        </div>
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+        </div>
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+        </div>
+        <div class="buttonsContainer">
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
+            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
+        </div>
+    </div>
 </div>
 
 
