@@ -67,33 +67,13 @@
                     <th>Zona</th>
                     <th>Última actualización</th>
                     <th>Fecha consulta</th>
-                    <th>bottones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Concepción</td>
                     <td>martes 25 de febrero 2017</td>
-                    <td>martes 25 de febrero 2017</td>
-                    <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
-                </tr>
-                <tr>
-                    <td>Concepción</td>
-                    <td>martes 25 de febrero 2017</td>
-                    <td>martes 25 de febrero 2017</td>
-                    <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
-                </tr>
-                <tr>
-                    <td>Concepción</td>
-                    <td>martes 25 de febrero 2017</td>
-                    <td>martes 25 de febrero 2017</td>
-                    <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
-                </tr>
-                <tr>
-                    <td>Concepción</td>
-                    <td>martes 25 de febrero 2017</td>
-                    <td>martes 25 de febrero 2017</td>
-                    <td><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton"><i class="fa fa-calendar"></i></a><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton"><i class="fa fa-search"></i></a></td>
+                    <td><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton"><i class="fa fa-calendar"></i><i class="fa fa-search"></i></a>martes 25 de febrero 2017</td>
                 </tr>
             </tbody>
         </table>
@@ -114,27 +94,27 @@
             <tbody>
                 <tr>
                     <td>Concepción</td>
-                    <td>martes 25 de febrero 2017</td>
-                    <td>martes 25 de febrero 2017</td>
+                    <td>25/02/2017</td>
+                    <td>25/02/2017</td>
                     <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
                 </tr>
                 <tr>
                     <td>Concepción</td>
-                    <td>martes 25 de febrero 2017</td>
-                    <td>martes 25 de febrero 2017</td>
+                    <td>25/02/2017</td>
+                    <td>25/02/2017</td>
                     <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
                 </tr>
                 <tr>
                     <td>Concepción</td>
-                    <td>martes 25 de febrero 2017</td>
-                    <td>martes 25 de febrero 2017</td>
+                    <td>25/02/2017</td>
+                    <td>25/02/2017</td>
                     <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
                 </tr>
                 <tr>
                     <td>Concepción</td>
-                    <td>martes 25 de febrero 2017</td>
-                    <td>martes 25 de febrero 2017</td>
-                    <td><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Ver</a></td>
+                    <td>25/02/2017</td>
+                    <td>25/02/2017</td>
+                    <td><i class="fa fa-calendar"></i><i class="fa fa-search"></i></td>
                 </tr>
             </tbody>
         </table>
