@@ -42,7 +42,7 @@
             <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
         </ul>
     </nav>
-    <div id="content" class="animated fadeInUp unLeftContent">
+    <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
         <?php
             if(cantidadZonas($idEmpresa) == 0)

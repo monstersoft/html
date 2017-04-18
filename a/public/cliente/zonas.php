@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../css/base.css">
-    <link rel="stylesheet" href="../../css/a.css">
+    <link rel="stylesheet" href="../../css/zonasCliente.css">
 </head>
 <body>
     <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p class="editarZona">Machine Monitors</p></div>
@@ -40,103 +40,70 @@
         </ul>
     </nav>
     <div id="content" class="animated fadeIn unLeftContent">
-<!-- ............................................................................................................................ -->
-<!--<div class="col-xs-12">
-    <form method='POST' action='maquinas.php'>
-        <div class="form-group">
-            <label for="zonas" class="control-label">Zonas Asociadas</label>
-            <select style="width: 100%;" id="zonas" name="zona" class="form-control select2-single">
-                <?php foreach($arreglo as $value) { echo '<option value="'.$value['idZona'].'">'.$value['nombre'].'</option>';}?>
-            </select>
+    <div class="col-xs-12 col-sm-12 card">
+        <div class="col-xs-12 shadowButtonDown cardContent">
+            <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
+                <p>SERVICIOS BÍO BÍO</p>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="zonas" class="control-label">Fecha Datos</label>
-            <input type="date" id="fechaDatos" name="fechaDatos" class="form-control datepicker">
-        </div>
-        <div class="clearfix">
-            <input type="submit" value="submit">
-        </div>
-    </form>
-</div>-->
+        <div class="col-xs-12 shadow cardContent">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Zona</th>
+                        <th>Seleccionar fecha consulta</th>
+                        <th class="unDisplayColumn">Ultima actualización</th>
+                        <th class="unDisplayColumn">Subido por</th>
+                        <th class="unDisplayColumn">Fecha subida</th>
+                        <th class="unDisplayColumn">Hora subida</th>
+                        <th>Buscar</th>
+                    </tr>
+                </thead>
+                <tbody>            
+                    <tr>
+                        <td><a href="#" class="btnPlus"><i class="fa fa-plus"></i></a>San José de Maipo</td>
+                        <td>Lunes<br>27 Abril 2017</td>
+                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
+                        <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
+                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
+                        <td class="unDisplayColumn">08:55 AM</td>
+                        <td class="btnSearch"><i class="fa fa-search"></i></td>
+                    </tr>
+                    <tr class="accordion">
+                        <td colspan="7" class="activeAccordion">
+                            <ul>
+                                <li>Última actualización: Lunes 27 Abril 2017</li>
+                                <li>Subido por: Patricio Andrés Villanueva Fuentes</li>
+                                <li>Fecha Subida: Lunes 27 Abril 2017</li>
+                                <li>Hora Subida: 08:52 AM</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="btnPlus"><i class="fa fa-plus"></i></a>San José de Maipo</td>
+                        <td>Lunes<br>27 Abril 2017</td>
+                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
+                        <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
+                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
+                        <td class="unDisplayColumn">08:55 AM</td>
+                        <td class="btnSearch"><i class="fa fa-search"></i></td>
+                    </tr>
+                    <tr class="accordion">
+                        <td colspan="7" class="activeAccordion">
+                            <ul>
+                                <li>Última actualización: Lunes 27 Abril 2017</li>
+                                <li>Subido por: Patricio Andrés Villanueva Fuentes</li>
+                                <li>Fecha Subida: Lunes 27 Abril 2017</li>
+                                <li>Hora Subida: 08:52 AM</li>
+                            </ul>
+                        </td>
+                    </tr>
 
 
-<div class="col-xs-12 col-sm-12 card">
-    <div class="col-xs-12 shadowButtonDown cardContent">
-        <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
-            <p>SERVICIOS BÍO BÍO</p>
+                </tbody>
+            </table>
         </div>
     </div>
-    <div class="col-xs-10 cardContent">
-    <div class="tableContainer">
-        <table>
-            <tr><td class="headcol">Zona</td><td>Fecha consulta</td><td>Última actualización</td><td>Subido por</td><td>Fecha subida</td><td>Hora subida</td></tr>
-            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
-            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
-            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
-            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
-            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
-        </table>
-    </div>
-    </div>
-    <div class="col-xs-2 cardContent" style="margin-top: 30px;">
-        <div class="buttonsContainer">
-            <div style="border: 1px solid white;" class="buttonColumn"><a href=""><i class="fa fa-calendar"></i></a></div><div style="border: 1px solid white;" class="buttonColumn"><a href="#"><i class="fa fa-search"></i></a></div>
-        </div>
-        <div class="buttonsContainer">
-            <div style="border: 1px solid white;" class="buttonColumn"><a href=""><i class="fa fa-calendar"></i></a></div><div style="border: 1px solid white;" class="buttonColumn"><a href="#"><i class="fa fa-search"></i></a></div>
-        </div>
-        <div class="buttonsContainer">
-            <div style="border: 1px solid white;" class="buttonColumn"><a href=""><i class="fa fa-calendar"></i></a></div><div style="border: 1px solid white;" class="buttonColumn"><a href="#"><i class="fa fa-search"></i></a></div>
-        </div>
-        <div class="buttonsContainer">
-            <div style="border: 1px solid white;" class="buttonColumn"><a href=""><i class="fa fa-calendar"></i></a></div><div style="border: 1px solid white;" class="buttonColumn"><a href="#"><i class="fa fa-search"></i></a></div>
-        </div>
-        <div class="buttonsContainer">
-            <div style="border: 1px solid white;" class="buttonColumn"><a href=""><i class="fa fa-calendar"></i></a></div><div style="border: 1px solid white;" class="buttonColumn"><a href="#"><i class="fa fa-search"></i></a></div>
-        </div>
-    </div>
-</div>
-<div class="col-xs-12 col-sm-12 card">
-    <div class="col-xs-12 shadowButtonDown cardContent">
-        <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
-            <p>SERVICIOS BÍO BÍO</p>
-        </div>
-    </div>
-    <div class="col-xs-10 cardContent">
-    <div class="tableContainer">
-        <table>
-            <tr><td class="headcol">Zona</td><td>Fecha consulta</td><td>Última actualización</td><td>Subido por</td><td>Fecha subida</td><td>Hora subida</td></tr>
-            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
-            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
-            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
-            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
-            <tr><td class="headcol">Concepción</td><td>lunes 05-07-2017</td><td>martes 07/05/2017</td><td><a href="#">Juan Antonio Pérez Pérez</a></td><td>martes 07/05/2017</td><td>08:55:05 AM</td></tr>
-        </table>
-    </div>
-    </div>
-    <div class="col-xs-2 cardContent" style="margin-top: 30px;">
-        <div class="buttonsContainer">
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
-        </div>
-        <div class="buttonsContainer">
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
-        </div>
-        <div class="buttonsContainer">
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
-        </div>
-        <div class="buttonsContainer">
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
-        </div>
-        <div class="buttonsContainer">
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-calendar fa-stack-1x"></i></span></a></div>
-            <div class="buttonColumn"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x icon-background1"></i><i class="fa fa-search fa-stack-1x"></i></span></a></div>
-        </div>
-    </div>
-</div>
 
 
 
@@ -157,5 +124,21 @@
        fechaHoy(); 
        configSelect2();
     </script>
+   <script>
+       $(document).ready(function(){
+           var flag = false;
+           $('.btnPlus').click(function(){
+               $('.accordion').css('display','none');
+               var accordion = $(this).parent().parent().next();
+               accordion.toggle(function(){
+                   $(this).css('display','table-row');
+                });
+           });
+           $(window).resize(function(){
+               if($(window).width() > 970)
+                   $($('.accordion').css('display','none'));
+           });
+       });
+   </script>
 </body>
 </html>
