@@ -51,23 +51,30 @@
                 <thead>
                     <tr>
                         <th>Zona</th>
-                        <th>Seleccionar fecha consulta</th>
+                        <th>Seleccionar fecha</th>
                         <th class="unDisplayColumn">Ultima actualización</th>
                         <th class="unDisplayColumn">Subido por</th>
                         <th class="unDisplayColumn">Fecha subida</th>
                         <th class="unDisplayColumn">Hora subida</th>
-                        <th>Buscar</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>            
                     <tr>
-                        <td><a href="#" class="btnPlus"><i class="fa fa-plus"></i></a>San José de Maipo</td>
-                        <td>Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
+                        <!--<td><a href="#" class="btnPlus"><i class="fa fa-plus"></i></a>San José de Maipo</td>-->
+                        <td><button class="btn btn-sm"><i class="fa fa-plus"></i></button>San José de Maipo</td>
+                        <td>
+                            <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    <input id="email" type="text" style="text-align: center;" class="form-control btn-xs" placeholder="27/04/07">
+  </div>
+                        </td>
+                        <td class="unDisplayColumn">27/04/07</td>
                         <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
                         <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
                         <td class="unDisplayColumn">08:55 AM</td>
-                        <td class="btnSearch"><i class="fa fa-search"></i></td>
+                        <!--<td class="btnSearch"><i class="fa fa-search"></i></td>-->
+                        <td><div class="btn-group"><button class="btn btn-basic btn-sm">Ver</button></div></td>
                     </tr>
                     <tr class="accordion">
                         <td colspan="7" class="activeAccordion">
