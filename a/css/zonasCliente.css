@@ -10,7 +10,7 @@ table tr {
 table td {
     text-align: center;
     padding: 5px;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 table th {
@@ -18,7 +18,7 @@ table th {
     text-align: center;
     color: #262626;
     font-size: 12px;
-    padding: 5px;
+    /*padding: 5px;*/
 }
 .accordion {
     text-align: left;
@@ -51,7 +51,8 @@ table th {
 
 .plusIcon {
     float: left;
-    margin-left: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 @media (min-width: 970px) {
