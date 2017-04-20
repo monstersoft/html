@@ -6,7 +6,6 @@ table tr {
     font-size: 12px;
     font-weight: 100;
 }
-
 table td {
     text-align: center;
     padding: 5px;
@@ -21,28 +20,15 @@ table th {
     color: #262626;
     font-size: 12px;
 }
-.shadowBottomTr {
-        box-shadow: 0px 2px 10px #888888;
-}
-.shadowTopTr {
-        box-shadow: 0px -2px 10px #888888;
-}
+
 .accordion {
-    /*text-align: left;*/
     background: rgba(0,0,0,0.1);
-    color: #262626;
+}
+.activated {
+    display: table-row;
+}
+.unActivated {
     display: none;
-    
-}
-.ac {
-    display: table-cell;
-}
-.accordion ul {
-    padding: 0;
-}
-.accordion li {
-    list-style: none;
-    text-align: center;
 }
 .unDisplayColumn {
     display: none;
@@ -51,18 +37,22 @@ table th {
     position: relative;
 }
 
-.plusIcon {
+.btnPlus {
     float: left;
     margin-left: 5px;
     margin-right: 5px;
+}
+.btnPlus:hover {
+    cursor: pointer;
+}
+
+.form-control {
+    text-align: center;
 }
 
 @media (min-width: 970px) {
     .unDisplayColumn {
         display: table-cell;
-    }
-    .accordion {
-        display: none;
     }
      .btnPlus {
         display: none;
