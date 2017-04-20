@@ -63,21 +63,16 @@
                 <tbody>            
                     <tr>
                         <td class="tdPosition"><div class="plusIcon"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
-                        <td><div class="input-group input-xs">
-    <input type="text" class="form-control" placeholder="27/03/17">
-    <div class="input-group-btn">
-      <button class="btn btn-default" type="submit">
-        <i class="glyphicon glyphicon-search"></i>
-      </button>
-    </div>
-  </div></td>
+                        <td>
+                            <div class="input-group input-xs"><input type="text" class="form-control" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
+                        </td>
                         <td class="unDisplayColumn">Lunes</td>
                         <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
                         <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
                         <td class="unDisplayColumn">08:55 AM</td>
                     </tr>
                     <tr class="accordion">
-                        <td colspan="7" class="activeAccordion">
+                        <td colspan="6" class="activeAccordion">
                             <ul>
                                 <li>Última actualización: Lunes 27 Abril 2017</li>
                                 <li>Subido por: Patricio Andrés Villanueva Fuentes</li>
@@ -86,7 +81,52 @@
                             </ul>
                         </td>
                     </tr>
+                    
                     <tr>
+                        <td class="tdPosition"><div class="plusIcon"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
+                        <td>
+                            <div class="input-group input-xs"><input type="text" class="form-control" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
+                        </td>
+                        <td class="unDisplayColumn">Lunes</td>
+                        <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
+                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
+                        <td class="unDisplayColumn">08:55 AM</td>
+                    </tr>
+                    <tr class="accordion">
+                        <td colspan="6" class="activeAccordion">
+                            <ul>
+                                <li>Última actualización: Lunes 27 Abril 2017</li>
+                                <li>Subido por: Patricio Andrés Villanueva Fuentes</li>
+                                <li>Fecha Subida: Lunes 27 Abril 2017</li>
+                                <li>Hora Subida: 08:52 AM</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    
+                    <tr>
+                        <td class="tdPosition"><div class="plusIcon"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
+                        <td>
+                            <div class="input-group input-xs"><input type="text" class="form-control" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
+                        </td>
+                        <td class="unDisplayColumn">Lunes</td>
+                        <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
+                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
+                        <td class="unDisplayColumn">08:55 AM</td>
+                    </tr>
+                    <tr class="accordion">
+                        <td colspan="6" class="activeAccordion">
+                            <ul>
+                                <li>Última actualización: Lunes 27 Abril 2017</li>
+                                <li>Subido por: Patricio Andrés Villanueva Fuentes</li>
+                                <li>Fecha Subida: Lunes 27 Abril 2017</li>
+                                <li>Hora Subida: 08:52 AM</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    
+                    
                 </tbody>
             </table>
         </div>
@@ -110,9 +150,8 @@
     </script>
    <script>
        $(document).ready(function(){
-           $( "#accordion" ).accordion();
            var flag = false;
-           $('.btnPlus').click(function(){
+           $('.plusIcon').click(function(){
                $('.accordion').css('display','none');
                var accordion = $(this).parent().parent().next();
                accordion.toggle(function(){
