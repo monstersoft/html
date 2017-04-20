@@ -57,11 +57,10 @@
                         <th class="unDisplayColumn">Subido por</th>
                         <th class="unDisplayColumn">Fecha subida</th>
                         <th class="unDisplayColumn">Hora subida</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>            
-                    <tr>
+                    <tr class="shadowBottomTr">
                         <td class="tdPosition"><div class="plusIcon"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
                         <td>
                             <div class="input-group input-xs"><input type="text" class="form-control" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
@@ -72,7 +71,7 @@
                         <td class="unDisplayColumn">08:55 AM</td>
                     </tr>
                     <tr class="accordion">
-                        <td colspan="6" class="activeAccordion">
+                        <td colspan="2" class="activeAccordion">
                             <ul>
                                 <li>Última actualización: Lunes 27 Abril 2017</li>
                                 <li>Subido por: Patricio Andrés Villanueva Fuentes</li>
@@ -82,7 +81,8 @@
                         </td>
                     </tr>
                     
-                    <tr>
+                    
+                    <tr class="shadowTopTr">
                         <td class="tdPosition"><div class="plusIcon"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
                         <td>
                             <div class="input-group input-xs"><input type="text" class="form-control" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
@@ -92,8 +92,8 @@
                         <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
                         <td class="unDisplayColumn">08:55 AM</td>
                     </tr>
-                    <tr class="accordion">
-                        <td colspan="6" class="activeAccordion">
+                    <tr class="accordion ac">
+                        <td colspan="2">
                             <ul>
                                 <li>Última actualización: Lunes 27 Abril 2017</li>
                                 <li>Subido por: Patricio Andrés Villanueva Fuentes</li>
@@ -102,34 +102,13 @@
                             </ul>
                         </td>
                     </tr>
-                    
-                    
-                    <tr>
-                        <td class="tdPosition"><div class="plusIcon"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
-                        <td>
-                            <div class="input-group input-xs"><input type="text" class="form-control" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
-                        </td>
-                        <td class="unDisplayColumn">Lunes</td>
-                        <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
-                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">08:55 AM</td>
-                    </tr>
-                    <tr class="accordion">
-                        <td colspan="6" class="activeAccordion">
-                            <ul>
-                                <li>Última actualización: Lunes 27 Abril 2017</li>
-                                <li>Subido por: Patricio Andrés Villanueva Fuentes</li>
-                                <li>Fecha Subida: Lunes 27 Abril 2017</li>
-                                <li>Hora Subida: 08:52 AM</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    
                     
                     
                 </tbody>
             </table>
         </div>
+        
+
     </div>
 <!-- ............................................................................................................................ -->
     </div>
@@ -149,18 +128,30 @@
        configSelect2();
     </script>
    <script>
-       $(document).ready(function(){
+       /*$(document).ready(function(){
            var flag = false;
            $('.plusIcon').click(function(){
                $('.accordion').css('display','none');
                var accordion = $(this).parent().parent().next();
-               accordion.toggle(function(){
+               accordion.slideToggle(function(){
                    $(this).css('display','table-row');
                 });
            });
            $(window).resize(function(){
                if($(window).width() > 970)
                    $($('.accordion').css('display','none'));
+           });
+       });*/
+       $(document).ready(function(){
+           $('.plusIcon').click(function(){
+               if($(this).parent().parent().next().hasClass('ac')) {
+                  $(this).parent().parent().next().removeClass('ac');
+                  }
+                else {
+                  $('.accordion td ul').slideUp();
+                  $('.accordion td').removeClass('ac');
+                  $(this).children('tr').slideDown();
+                  }
            });
        });
    </script>
