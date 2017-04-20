@@ -63,12 +63,11 @@
                 <tbody>            
                     <tr>
                         <td class="tdPosition"><div class="plusIcon"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
-                        <td>Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
+                        <td><input type="text" value="27/04/07"><button class="btn btn-link btn-xs"><i class="fa fa-search"></i></button></td>
+                        <td class="unDisplayColumn">Lunes</td>
                         <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
                         <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">08:55 AM</td>
-                        <td><button class="btn btn-primary btn-xs">Ver</button></td>
+                        <td class="unDisplayColumn">08:55 AM <button class="btn btn-link btn-xs">Ver</button></td>
                     </tr>
                     <tr class="accordion">
                         <td colspan="7" class="activeAccordion">

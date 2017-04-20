@@ -1,6 +1,5 @@
 table {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100%;    
 }
 table tr {
     font-family: 'Montserrat';
@@ -45,6 +44,14 @@ table th {
 .btnSearch:hover {
     background-color: rgba(0,0,0,0.2);
     color: rgba(0, 0, 0, 0.87);
+}
+/*.tdPosition {
+    position: relative;
+}*/
+
+.plusIcon {
+    float: left;
+    margin-left: 10px;
 }
 
 @media (min-width: 970px) {
