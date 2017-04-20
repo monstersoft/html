@@ -74,9 +74,9 @@
                         <td colspan="2">
                             <ul>
                                 <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por           : Pedro</li>
-                                <li>Fecha subida         : 20 Febrero 2017</li>
-                                <li>Hora subida          : 08:55 AM</li>
+                                <li>Subido por: Juanito Perez Perez</li>
+                                <li>Fecha subida: 20 Febrero 2017</li>
+                                <li>Hora subida: 08:55 AM</li>
                             </ul>
                         </td>
                     </tr>
@@ -96,9 +96,9 @@
                         <td colspan="2">
                             <ul>
                                 <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por           : Pedro</li>
-                                <li>Fecha subida         : 20 Febrero 2017</li>
-                                <li>Hora subida          : 08:55 AM</li>
+                                <li>Subido por: Juanito Perez Perez</li>
+                                <li>Fecha subida: 20 Febrero 2017</li>
+                                <li>Hora subida: 08:55 AM</li>
                             </ul>
                         </td>
                     </tr>
@@ -117,9 +117,9 @@
                         <td colspan="2">
                             <ul>
                                 <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por           : Pedro</li>
-                                <li>Fecha subida         : 20 Febrero 2017</li>
-                                <li>Hora subida          : 08:55 AM</li>
+                                <li>Subido por: Juanito Perez Perez</li>
+                                <li>Fecha subida: 20 Febrero 2017</li>
+                                <li>Hora subida: 08:55 AM</li>
                             </ul>
                         </td>
                     </tr>
@@ -138,9 +138,9 @@
                         <td colspan="2">
                             <ul>
                                 <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por           : Pedro</li>
-                                <li>Fecha subida         : 20 Febrero 2017</li>
-                                <li>Hora subida          : 08:55 AM</li>
+                                <li>Subido por: Juanito Perez Perez</li>
+                                <li>Fecha subida: 20 Febrero 2017</li>
+                                <li>Hora subida: 08:55 AM</li>
                             </ul>
                         </td>
                     </tr>
@@ -159,9 +159,9 @@
                         <td colspan="2">
                             <ul>
                                 <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por           : Pedro</li>
-                                <li>Fecha subida         : 20 Febrero 2017</li>
-                                <li>Hora subida          : 08:55 AM</li>
+                                <li>Subido por: Juanito Perez Perez</li>
+                                <li>Fecha subida: 20 Febrero 2017</li>
+                                <li>Hora subida: 08:55 AM</li>
                             </ul>
                         </td>
                     </tr>
@@ -180,9 +180,9 @@
                         <td colspan="2">
                             <ul>
                                 <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por           : Pedro</li>
-                                <li>Fecha subida         : 20 Febrero 2017</li>
-                                <li>Hora subida          : 08:55 AM</li>
+                                <li>Subido por: Juanito Perez Perez</li>
+                                <li>Fecha subida: 20 Febrero 2017</li>
+                                <li>Hora subida: 08:55 AM</li>
                             </ul>
                         </td>
                     </tr>
@@ -202,9 +202,9 @@
                         <td colspan="2">
                             <ul>
                                 <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por           : Pedro</li>
-                                <li>Fecha subida         : 20 Febrero 2017</li>
-                                <li>Hora subida          : 08:55 AM</li>
+                                <li>Subido por: Juanito Perez Perez</li>
+                                <li>Fecha subida: 20 Febrero 2017</li>
+                                <li>Hora subida: 08:55 AM</li>
                             </ul>
                         </td>
                     </tr>

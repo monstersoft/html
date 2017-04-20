@@ -49,6 +49,13 @@ table th {
 .form-control {
     text-align: center;
 }
+ul {
+    list-style: none;
+    padding: 0;
+}
+ul li {
+    text-align: center;
+}
 
 @media (min-width: 970px) {
     .unDisplayColumn {
