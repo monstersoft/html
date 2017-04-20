@@ -12,6 +12,7 @@ table td {
     padding: 5px;
     white-space: nowrap;
     border-bottom: 1px solid rgba(0,0,0,0.1);
+    /*vertical-align: top;*/
 }
 table th {
     border-bottom: 3px solid #F5A214;
@@ -19,6 +20,7 @@ table th {
     color: #262626;
     font-size: 12px;
     padding: 5px;
+    white-space: nowrap;
 }
 .accordion {
     text-align: left;
@@ -35,15 +37,27 @@ table th {
 .activeAccordion {
     border-left: 5px solid #F5A214;
 }
-.btnSearch {
-    background: rgb(224, 225, 226);
-    color: rgba(0, 0, 0, 0.6);
-    cursor: pointer;
-    box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+
+.tdPosition {
+    position: relative;
 }
-.btnSearch:hover {
-    background-color: rgba(0,0,0,0.2);
-    color: rgba(0, 0, 0, 0.87);
+.plusIcon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    background: #F5A214;
+    color: white;
+}
+.plusIcon:hover {
+    cursor: pointer;
+    background: #262626;
 }
 
 @media (min-width: 970px) {

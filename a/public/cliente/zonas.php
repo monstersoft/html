@@ -16,6 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="../../recursos/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../recursos/jqueryUi/jquery-ui.min.css">
     <link rel="stylesheet" href="../../recursos/select2/select2.min.css">
     <link rel="stylesheet" href="../../recursos/select2/select2-bootstrap.css">
     <link rel="stylesheet" href="../../recursos/pickadate/default.css">
@@ -61,20 +62,13 @@
                 </thead>
                 <tbody>            
                     <tr>
-                        <!--<td><a href="#" class="btnPlus"><i class="fa fa-plus"></i></a>San José de Maipo</td>-->
-                        <td><button class="btn btn-sm"><i class="fa fa-plus"></i></button>San José de Maipo</td>
-                        <td>
-                            <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-    <input id="email" type="text" style="text-align: center;" class="form-control btn-xs" placeholder="27/04/07">
-  </div>
-                        </td>
-                        <td class="unDisplayColumn">27/04/07</td>
+                        <td class="tdPosition"><div class="plusIcon"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
+                        <td>Lunes<br>27 Abril 2017</td>
+                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
                         <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
                         <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
                         <td class="unDisplayColumn">08:55 AM</td>
-                        <!--<td class="btnSearch"><i class="fa fa-search"></i></td>-->
-                        <td><div class="btn-group"><button class="btn btn-basic btn-sm">Ver</button></div></td>
+                        <td><button class="btn btn-primary btn-xs">Ver</button></td>
                     </tr>
                     <tr class="accordion">
                         <td colspan="7" class="activeAccordion">
@@ -87,37 +81,14 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><a href="#" class="btnPlus"><i class="fa fa-plus"></i></a>San José de Maipo</td>
-                        <td>Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
-                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">08:55 AM</td>
-                        <td class="btnSearch"><i class="fa fa-search"></i></td>
-                    </tr>
-                    <tr class="accordion">
-                        <td colspan="7" class="activeAccordion">
-                            <ul>
-                                <li>Última actualización: Lunes 27 Abril 2017</li>
-                                <li>Subido por: Patricio Andrés Villanueva Fuentes</li>
-                                <li>Fecha Subida: Lunes 27 Abril 2017</li>
-                                <li>Hora Subida: 08:52 AM</li>
-                            </ul>
-                        </td>
-                    </tr>
-
-
                 </tbody>
             </table>
         </div>
     </div>
-
-
-
-
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
+    <script src="../../recursos/jqueryUi/jquery-ui.min.js"></script>
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../recursos/select2/select2.full.js"></script>
     <script src="../../recursos/pickadate/picker.js"></script>
@@ -133,6 +104,7 @@
     </script>
    <script>
        $(document).ready(function(){
+           $( "#accordion" ).accordion();
            var flag = false;
            $('.btnPlus').click(function(){
                $('.accordion').css('display','none');
