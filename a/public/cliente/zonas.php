@@ -189,9 +189,9 @@
                     
                     
                     <tr>
-                        <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
+                        <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>Patdgfgfgricio Andrés Villanueva Fuentes</td>
                         <td>
-                            <div class="input-group input-xs"><input type="text" class="form-control" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
+                            <div class="input-group input-xs"><input type="text" placeholder="2017-03-03" class="form-control datepicker" name="fecha" id="fechaDatosSubirArchivo"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
                         </td>
                         <td class="unDisplayColumn">Lunes</td>
                         <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
@@ -231,7 +231,6 @@
     <script>main();</script>
     <script>
        fechaHoy(); 
-       configSelect2();
     </script>
    <script>
        $(document).ready(function(){
