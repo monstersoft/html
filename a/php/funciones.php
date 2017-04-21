@@ -1,6 +1,24 @@
 <?php
 	include("conexion.php");
 //FUNCIONES PARA CLIENTE
+function debug( $var) 
+{ 
+  echo "<pre>";
+  print_r($var); 
+  echo "</pre>";
+}
+    function empresasZonas() {
+        $conexion = conectar();
+        $arreglo = array();
+        $consulta = 'SELECT empresas.nombre AS nombreEmpresa, zonas.idZona, zonas.nombre AS nombreZona FROM empresas INNER JOIN zonas ON empresas.idEmpresa = zonas.idEmpresa ORDER BY         empresas.nombre ASC';
+        if($resultado = mysqli_query($conexion,$consulta)) {
+            while($row = mysqli_fetch_array($resultado)) {
+                array_push($arreglo,array('nombreEmpresa' => utf8_encode($row['nombreEmpresa']), 'idZona' => $row['idZona'], 'nombreZona' => utf8_encode($row['nombreZona'])));
+            }
+        }
+        mysqli_close($conexion);
+        return $arreglo;
+    }
 	function empresas() {
         $conexion = conectar();
         $arreglo = array();

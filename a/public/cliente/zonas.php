@@ -1,13 +1,8 @@
 <?php
-/*	include '../../php/conexion.php';
+	include '../../php/funciones.php';
 	$conexion = conectar();
-	$arreglo = array();
-	$consulta = "SELECT zonas.idZona, zonas.nombre FROM zonas";
-	if($resultado = mysqli_query($conexion,$consulta)) {
-		while($row = mysqli_fetch_assoc($resultado)) {
-			array_push($arreglo,array('idZona' => $row['idZona'], 'nombre' => utf8_encode($row['nombre'])));
-        }
-	}*/
+	$empresasZonas = array();
+	$empresasZonas = empresasZonas();    
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,10 +36,11 @@
         </ul>
     </nav>
     <div id="content" class="animated fadeIn unLeftContent">
+    <?php foreach($empresasZonas as $value) { echo'
     <div class="col-xs-12 col-sm-12 card">
         <div class="col-xs-12 shadowButtonDown cardContent">
             <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
-                <p>SERVICIOS BÍO BÍO</p>
+                <p>'.$value['nombreEmpresa'].'</p>
             </div>
         </div>
         <div class="col-xs-12 shadow cardContent">
@@ -59,11 +55,11 @@
                         <th class="unDisplayColumn">Hora subida</th>
                     </tr>
                 </thead>
-                <tbody>            
+                <tbody>' echo '           
                     <tr>
                         <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
                         <td>
-                            <div class="input-group input-xs"><input type="text" class="form-control" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
+                            <div class="input-group input-xs"><input type="text" class="form-control datepicker" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
                         </td>
                         <td class="unDisplayColumn">Lunes</td>
                         <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
@@ -80,142 +76,16 @@
                             </ul>
                         </td>
                     </tr>
-                    
-                    
-                    <tr>
-                        <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
-                        <td>
-                            <div class="input-group input-xs"><input type="text" class="form-control" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
-                        </td>
-                        <td class="unDisplayColumn">Lunes</td>
-                        <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
-                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">08:55 AM</td>
-                    </tr>
-                    <tr class="accordion unActivated">
-                        <td colspan="2">
-                            <ul>
-                                <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por: Juanito Perez Perez</li>
-                                <li>Fecha subida: 20 Febrero 2017</li>
-                                <li>Hora subida: 08:55 AM</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
-                        <td>
-                            <div class="input-group input-xs"><input type="text" class="form-control" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
-                        </td>
-                        <td class="unDisplayColumn">Lunes</td>
-                        <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
-                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">08:55 AM</td>
-                    </tr>
-                    <tr class="accordion unActivated">
-                        <td colspan="2">
-                            <ul>
-                                <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por: Juanito Perez Perez</li>
-                                <li>Fecha subida: 20 Febrero 2017</li>
-                                <li>Hora subida: 08:55 AM</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
-                        <td>
-                            <div class="input-group input-xs"><input type="text" class="form-control" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
-                        </td>
-                        <td class="unDisplayColumn">Lunes</td>
-                        <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
-                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">08:55 AM</td>
-                    </tr>
-                    <tr class="accordion unActivated">
-                        <td colspan="2">
-                            <ul>
-                                <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por: Juanito Perez Perez</li>
-                                <li>Fecha subida: 20 Febrero 2017</li>
-                                <li>Hora subida: 08:55 AM</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
-                        <td>
-                            <div class="input-group input-xs"><input type="text" class="form-control" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
-                        </td>
-                        <td class="unDisplayColumn">Lunes</td>
-                        <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
-                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">08:55 AM</td>
-                    </tr>
-                    <tr class="accordion unActivated">
-                        <td colspan="2">
-                            <ul>
-                                <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por: Juanito Perez Perez</li>
-                                <li>Fecha subida: 20 Febrero 2017</li>
-                                <li>Hora subida: 08:55 AM</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
-                        <td>
-                            <div class="input-group input-xs"><input type="text" class="form-control" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
-                        </td>
-                        <td class="unDisplayColumn">Lunes</td>
-                        <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
-                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">08:55 AM</td>
-                    </tr>
-                    <tr class="accordion unActivated">
-                        <td colspan="2">
-                            <ul>
-                                <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por: Juanito Perez Perez</li>
-                                <li>Fecha subida: 20 Febrero 2017</li>
-                                <li>Hora subida: 08:55 AM</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    
-                    
-                    <tr>
-                        <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>Patdgfgfgricio Andrés Villanueva Fuentes</td>
-                        <td>
-                            <div class="input-group input-xs"><input type="text" placeholder="2017-03-03" class="form-control datepicker" name="fecha" id="fechaDatosSubirArchivo"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
-                        </td>
-                        <td class="unDisplayColumn">Lunes</td>
-                        <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
-                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">08:55 AM</td>
-                    </tr>
-                    <tr class="accordion unActivated">
-                        <td colspan="2">
-                            <ul>
-                                <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por: Juanito Perez Perez</li>
-                                <li>Fecha subida: 20 Febrero 2017</li>
-                                <li>Hora subida: 08:55 AM</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    
-                    
+                    '; echo '    
                 </tbody>
             </table>
         </div>
-        
-
     </div>
+    ';}
+    ?>
+    <?php 
+        debug($empresasZonas);
+    ?>
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
