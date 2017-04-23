@@ -1,27 +1,30 @@
 <?php
 	include ('../../php/conexion.php');
 	$con = conectar();
-set_time_limit(600);
+    set_time_limit(600);
 	/*$fechaDatos = $_POST['fechaDatos'];
 	$idZona = $_POST['idZona'];
 	$archivo = $_FILES['archivo'];
-	$idSupervisor= $_POST['idSupervisor'];*/
-
-	//$fechaDatos = '29-03-2017';
-	$idZona = 50;
-	$idSupervisor = 22;
+	$idSupervisor= $_POST['idSupervisor'];
 	$uploadDate = date("Y-m-d");
-	$dataDate = '29-03-2017';
 	$uploadTime = date("H-i-s");
-	$fileSize = 100;
-	echo insertDataFile($idZona,$idSupervisor,$uploadDate,$dataDate,$uploadTime,$fileSize,$con);
+	$fileSize = 100;*/
+    
+    $arr['fechaDatos'] = $_POST['fechaDatos'];
+	$arr['idZona'] = $_POST['idZona'];
+	$arr['archivo'] = $_FILES['archivo'];
+	$arr['idSupervisor'] = $_POST['idSupervisor'];
+	$arr['uploadDate'] = date("Y-m-d");
+	$arr['uploadTime'] = date("H:i:s");
+	$arr['fileSize'] = $arr['archivo']['name'];
+	//echo insertDataFile($idZona,$idSupervisor,$uploadDate,$dataDate,$uploadTime,$fileSize,$con);
 		//$csv = $_FILES['csv']['tmp_name'];
 	/*$arreglo['nameDateMatch'] = nameDateMatch($archivo['name'],$fechaDatos);
 	$arreglo['isCsv'] = isCsv($archivo['type']);
 	$arreglo['itAlreadyExists'] = itAlreadyExists($idZona,$fechaDatos,$con);
 	$arreglo['md5'] = calculateMD5(file_get_contents($archivo['name']));*/
 	//$arreglo['infoFile'] = $archivo;machineZone($idZona,$con);
-	//echo json_encode($arr);
+	echo json_encode($arr);
 
 
 

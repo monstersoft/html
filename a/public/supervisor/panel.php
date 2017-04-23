@@ -26,8 +26,10 @@
         <link rel="stylesheet" href="../../recursos/animate/animate.css">
         <link rel="stylesheet" href="../../recursos/select2/select2.min.css">
         <link rel="stylesheet" href="../../recursos/select2/select2-bootstrap.css">
-        <link rel="stylesheet" href="../../recursos/responsiveTables/responsiveTables.css">
         <link rel="stylesheet" href="../../recursos/bootstrapFileInput/fileinput.min.css">
+        <link rel="stylesheet" href="../../recursos/pickadate/default.css">
+        <link rel="stylesheet" href="../../recursos/pickadate/default.date.css">
+        <link rel="stylesheet" href="../../recursos/pickadate/default.time.css">
         <link rel="stylesheet" href="../../css/base.css">
         <link rel="stylesheet" href="../../css/zonas.css">
     </head>
@@ -114,10 +116,10 @@
                 <div class="modal-content">
                     <div class="modal-header"><i class="fa fa-upload"></i>Subir Archivo</div>
                     <div class="modal-body">
-                        <form id="formularioSubirArchivo">
+                        <form id="formularioSubirArchivo" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label>Fecha de datos</label>
-                                <input type="text" placeholder="2017-03-03" class="form-control" name="fecha" id="fechaDatosSubirArchivo">
+                                <label>Seleccionar fecha de datos</label>
+                                <input type="text" placeholder="2017-03-03" class="datepicker form-control" name="fechaDatos" id="fechaDatos">
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Seleccionar Archivo</label>
@@ -125,11 +127,11 @@
                             </div>
                             <div class="form-group">
                                 <label>idZonaSubirArchivo</label>
-                                <input type="text" class="form-control" name="id" id="idZonaSubirArchivo">
+                                <input type="text" class="form-control" name="idZona" id="idZonaSubirArchivo">
                             </div>
                             <div class="form-group">
                                 <label>idSupervisorSubirArchivo</label>
-                                <input type="text" class="form-control" name="idSupervsior" id="idSupervisorSubirArchivo">
+                                <input type="text" class="form-control" name="idSupervisor" id="idSupervisorSubirArchivo">
                             </div>
                         </form>
                         <div class="clearfix">
@@ -141,45 +143,15 @@
                 </div>
             </div>
         </div>
-        <!-- 
-<div class="ui modal modalSubirArchivo">
-            <div class="header"><i class="add icon" style="float: right;"></i>Agregar Maquina</div>
-            <div class="content">
-                <form class="ui form" id="formularioSubirArchivo" enctype="multipart/form-data">
-                    <div class="field">
-                        <label>Fecha de datos</label>
-                        <div class="ui calendar left icon input">
-                            <input class="datepicker" type="text" name="fechaDatos" id="fechaDatos">
-                            <i class="calendar icon"></i>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Adjuntar archivo</label>
-                        <div class="ui file input action">
-                            <input type="text" placeholder="Formato CVS" name="archivoZonaText" id="archivoZonaText">
-                            <input type="file" id="archivoZona" name="archivoZona" style="display: none">
-                            <a href="#" class="ui button">Buscar</a>
-                        </div>
-                    </div>
-                    <label for="idZonaArchivo">ID Zona Archivo</label>
-                    <input type="text" name="idZonaArchivo" id="idZonaArchivo">
-                </form>
-                <div style="text-align: right;margin-top: 15px">
-                    <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
-                    <a href="#" class="ui button green" id="btnSubirArchivo"><i class="upload icon"></i>Subir</a>
-                </div>
-                <div class="message" style="margin: 15px 0px 0px 0px"></div>
-            </div>
-        </div>
-            -->
-        <!-- MODAL EDITAR ZONA -->
-        <!-- VENTANAS MODALES -->
         <script src="../../recursos/jquery/jquery.min.js"></script>
         <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
         <script src="../../recursos/select2/select2.full.js"></script>
         <script src="../../recursos/rut/jquery.rut.chileno.js"></script>
-        <script src="../../recursos/responsiveTables/responsiveTables.js"></script>
         <script src="../../recursos/bootstrapFileInput/fileinput.min.js"></script>
+        <script src="../../recursos/moment/moment.js"></script>
+        <script src="../../recursos/pickadate/picker.js"></script>
+        <script src="../../recursos/pickadate/picker.date.js"></script>
+        <script src="../../recursos/pickadate/picker.time.js"></script>
         <script src="../../supervisor/js/modalAgregarMaquina.js"></script>
         <script src="../../supervisor/js/modalSubirArchivo.js"></script>
         <script src="../../js/funciones.js"></script>
@@ -234,25 +206,54 @@
                 }
             });
         </script>
-        <script>
-            /*$('.datepicker').pickadate({
-                        monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
-                        monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                        weekdaysFull: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
-                        weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
-                        showMonthsShort: undefined,
-                        showWeekdaysFull: undefined,
-                        today: 'Hoy',
-                        clear: '',
-                        close: 'Cerrar',
-                        min: new Date(2017,1,1),
-                        max: new Date(2018,1,1),
-                        format: 'dddd dd , mmmm yyyy',
-                        formatSubmit: 'yyyy/mm/dd',
-                        hiddenName : true,
-                        firstDay: 'Monday'
-                    })*/
-        </script>
+    <script>
+        $(document).ready(function(){
+            $('.modalSubirArchivo').modal();
+            fechaHoy();
+            $('.modal').on('hidden.bs.modal', function(){
+                $(this).find('form')[0].reset();
+                $("#zonasAsociadas").find("option[class='dinamico']").remove();
+            });
+            $('.cancelar').click(function(){$('.alert').remove();});
+            //alert(getDistanceFromLatLonInKm(48.8666667,2.3333333,19.4341667,-99.1386111));
+        });
+function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+              var R = 6371; // Radius of the earth in km
+              var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
+              var dLon = this.deg2rad(lon2-lon1); 
+              var a = 
+                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2); 
+              var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+              var d = R * c; // Distance in km
+              return d;
+            }
+
+    function deg2rad(deg) {
+              return deg * (Math.PI/180);
+    }
+    </script>
+    <script>
+        $('.datepicker').pickadate({
+            monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+            monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            weekdaysFull: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+            weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+            showMonthsShort: undefined,
+            showWeekdaysFull: undefined,
+            today: 'Hoy',
+            clear: '',
+            close: 'Cerrar',
+            min: new Date(2017,1,1),
+            max: new Date(2018,1,1),
+            format: 'dddd dd , mmmm yyyy',
+            formatSubmit: 'yyyy-mm-dd',
+            hiddenName : true,
+            firstDay: 'Monday',
+            container: 'body'
+        })
+    </script>
     </body>
 
     </html>
