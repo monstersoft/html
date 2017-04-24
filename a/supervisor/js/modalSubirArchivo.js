@@ -33,12 +33,17 @@ $(document).ready(function() {
                 cache: false,
                 contentType: false,
                 processData: false,
-                beforeSend: function() {activarLoaderBotones('fa-pencil','fa-refresh');},
+                beforeSend: function() {activarLoaderBotones('fa-upload','fa-refresh');},
                 success: function(arreglo) {
-                    console.log(JSON.stringify(arreglo));
+                    $.each(arreglo,function(key,value){
+                        var li = '';
+                        li+= '<li>'+key+':'+value+'</li>';
+                        $('.message').append(li);
+                    });
                 },
-                complete: function() {desactivarLoaderBotones('fa-pencil','fa-refresh');}
-            }).fail(function( jqXHR, textStatus, errorThrown ){alert(textStatus);});
+                complete: function() {desactivarLoaderBotones('fa-upload','fa-refresh');},
+                error: function(xhr) {console.log(xhr.responseText)}
+            });/*.fail(function( jqXHR, textStatus, errorThrown ){alert(textStatus);});*/
         }
         else {
             errorMessage(arreglo);

@@ -14,7 +14,7 @@ $('.datepicker').pickadate({
     max: [2017,11,1],
     disable: [new Date(2017,2,20)],
     format: 'dddd dd , mmmm yyyy',
-    formatSubmit: 'yyyymmdd',
+    formatSubmit: 'ddmmyyyy',
     hiddenName : true,
     firstDay: 'Monday'
 })

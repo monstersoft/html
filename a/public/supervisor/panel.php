@@ -127,11 +127,11 @@
                             </div>
                             <div class="form-group">
                                 <label>idZonaSubirArchivo</label>
-                                <input type="text" class="form-control" name="idZona" id="idZonaSubirArchivo">
+                                <input type="text" class="form-control" name="idZona" id="idZonaSubirArchivo" value="46">
                             </div>
                             <div class="form-group">
                                 <label>idSupervisorSubirArchivo</label>
-                                <input type="text" class="form-control" name="idSupervisor" id="idSupervisorSubirArchivo">
+                                <input type="text" class="form-control" name="idSupervisor" id="idSupervisorSubirArchivo" value="13">
                             </div>
                         </form>
                         <div class="clearfix">
