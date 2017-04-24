@@ -39,9 +39,6 @@
             </nav>
             <div id="content" class="animated fadeInUp unLeftContent">
                 <!-- ............................................................................................................................ -->
-                <?php 
-                    print_r($profile);
-                ?>
                 <?php
                 foreach(zonas($email) as $value) {
                     $idZona = $value['idZona'];
