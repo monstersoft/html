@@ -1,9 +1,10 @@
 $(document).ready(function() {
-    /*$('.subirArchivo').click(function(){
+    $('.subirArchivo').click(function(){
         $('#idZonaSubirArchivo').val($(this).attr('id'));
+        $('#idSupervisorSubirArchivo').val($('#idSupervisor').val());
         $('.modalSubirArchivo').modal();
-        //fechaHoy();
-    });*/
+        fechaHoy();
+    });
     $('#btnSubirArchivo').click(function(){
         var arreglo = new Array();
         var fecha = $('input[name=fechaDatos]').val();
@@ -35,11 +36,16 @@ $(document).ready(function() {
                 processData: false,
                 beforeSend: function() {activarLoaderBotones('fa-upload','fa-refresh');},
                 success: function(arreglo) {
-                    $.each(arreglo,function(key,value){
-                        var li = '';
-                        li+= '<li>'+key+':'+value+'</li>';
-                        $('.message').append(li);
-                    });
+                    if(arreglo.success == false) {
+                        oneWarningMessage('Archivo ya disponible','El archivo ya fué subido');
+                    }
+                    else {
+                         successMessage('Subida Exitosa','Los datos han sido subidos exitosamente');
+                        $('.cancelar').remove();
+                        $('#btnSubirArchivo').remove();
+                        setTimeout(function(){location.reload()}, 3000);
+                    }
+                    console.log(JSON.stringify(arreglo));
                 },
                 complete: function() {desactivarLoaderBotones('fa-upload','fa-refresh');},
                 error: function(xhr) {console.log(xhr.responseText)}

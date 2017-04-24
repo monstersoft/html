@@ -1,15 +1,3 @@
-function msg(titulo,mensaje,icono,accion) {
-    if(accion == 'warning')
-        toast('<div class="ui mini warning icon message"><i class="'+icono+'"></i><i class="cerrar close icon"></i><div class="content"><div class="header">'+titulo+'</div>'+mensaje+'</div>');
-    if(accion == 'info')
-        toast('<div class="ui mini info icon message"><i class="'+icono+'"></i><i class="cerrar close icon"></i><div class="content"><div class="header">'+titulo+'</div>'+mensaje+'</div>');
-    if(accion == 'success')
-        toast('<div class="ui mini success icon message"><i class="'+icono+'"></i><i class="cerrar close icon"></i><div class="content"><div class="header">'+titulo+'</div>'+mensaje+'</div>');
-    if(accion == 'negative')
-        toast('<div class="ui mini negative icon message"><i class="'+icono+'"></i><i class="cerrar close icon"></i><div class="content"><div class="header">'+titulo+'</div>'+mensaje+'</div>');
-    if(accion == 'error')
-        toast('<div class="ui mini icon message"><i class="'+icono+'"></i><i class="cerrar close icon"></i><div class="content"><div class="header">'+titulo+'</div>'+mensaje+'</div>');
-}
 function errorMessage(arrayErrors) {
     var list = '';
     arrayErrors.forEach(function(element){
@@ -23,6 +11,9 @@ function warningMessage(arrayWarnings) {
         list += '<li>'+value+'</li>';
     });
     $('.message').html('<div class="alert alert-warning"><ul>'+list+'</ul></div>');
+}
+function oneWarningMessage(titulo,parrafo) {
+    $('.message').html('<div class="alert alert-warning" style="padding: 10px;"><strong>'+titulo+'</strong>'+parrafo+'</div>');
 }
 function successMessage(titulo,parrafo) {
     $('.message').html('<div class="alert alert-success" style="padding: 10px;"><strong>'+titulo+'</strong>'+parrafo+'</div>');

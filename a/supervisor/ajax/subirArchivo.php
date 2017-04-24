@@ -18,9 +18,15 @@
 	$arr['fileSize'] = $file['size'];
     $arr['md5'] = md5_file($file['name']);
     $arr['countMD5'] = countMD5($arr['md5'],$con);
-    $arr['countSuccess'] = insertDataFile($idZone,$idManager,$uploadDate,$dateData,$uploadTime,$arr['fileSize'],$file,$arr['md5'],$con);
+    if($arr['itAlreadyExists'] == true)
+        $arr['success'] = false;
+    else {
+        $arr['countSuccess'] = insertDataFile($idZone,$idManager,$uploadDate,$dateData,$uploadTime,$arr['fileSize'],$file,$arr['md5'],$con);
+        $arr['success'] = true;
+    }
     $endTime = microtime(true);
     $arr['timeScript']  = $endTime - $beginTime;
+    mysqli_close($con);
     echo json_encode($arr);
 
     function nameDateMatch($fileName,$dateData) {

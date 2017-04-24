@@ -9,9 +9,7 @@
         //$email = $_SESSION['correo'];
         $email = 'juan@metropolitana.cl';
         $profile = datosPerfil($email);
-        /*echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div>
-        <div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div>
-        <div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>';*/
+        echo '<input id="idSupervisor" type="text" value="'.$profile["id"].'" hidden>';
     //}*/
 ?>
     <!DOCTYPE html>
@@ -127,11 +125,11 @@
                             </div>
                             <div class="form-group">
                                 <label>idZonaSubirArchivo</label>
-                                <input type="text" class="form-control" name="idZona" id="idZonaSubirArchivo" value="46">
+                                <input type="text" class="form-control" name="idZona" id="idZonaSubirArchivo">
                             </div>
                             <div class="form-group">
                                 <label>idSupervisorSubirArchivo</label>
-                                <input type="text" class="form-control" name="idSupervisor" id="idSupervisorSubirArchivo" value="13">
+                                <input type="text" class="form-control" name="idSupervisor" id="idSupervisorSubirArchivo">
                             </div>
                         </form>
                         <div class="clearfix">
@@ -208,7 +206,6 @@
         </script>
     <script>
         $(document).ready(function(){
-            $('.modalSubirArchivo').modal();
             fechaHoy();
             $('.modal').on('hidden.bs.modal', function(){
                 $(this).find('form')[0].reset();

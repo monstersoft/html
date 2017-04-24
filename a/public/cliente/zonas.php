@@ -11,7 +11,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="../../recursos/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../recursos/jqueryUi/jquery-ui.min.css">
     <link rel="stylesheet" href="../../recursos/select2/select2.min.css">
     <link rel="stylesheet" href="../../recursos/select2/select2-bootstrap.css">
     <link rel="stylesheet" href="../../recursos/pickadate/default.css">
@@ -55,7 +54,7 @@
                         <th class="unDisplayColumn">Hora subida</th>
                     </tr>
                 </thead>
-                <tbody>' echo '           
+                <tbody>'; echo '           
                     <tr>
                         <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
                         <td>
@@ -89,7 +88,6 @@
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
-    <script src="../../recursos/jqueryUi/jquery-ui.min.js"></script>
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../recursos/select2/select2.full.js"></script>
     <script src="../../recursos/pickadate/picker.js"></script>
