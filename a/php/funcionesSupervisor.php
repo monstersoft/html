@@ -1,17 +1,5 @@
 <?php 
-    //include('/../php/conexion.php');
-        
-        $conexion = mysqli_connect('127.0.0.1','root','Monsterinc2');
-        $nombre = 'html';
-        if(mysqli_connect_errno()) {
-            echo "Error de conexión: ".mysqli_connect_error();
-            exit();
-        }
-        
-        mysqli_select_db($conexion,$nombre) or die ("No se encontró la base de datos");
-        
-        mysqli_set_charset($conexion,"utf-8");
-        echo 'asdlkasjdlkajsd';
+    include('conexion.php');
     function datosPerfil($correo) {
         $arreglo = array();
         $conexion = conectar();
