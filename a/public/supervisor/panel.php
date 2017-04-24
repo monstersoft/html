@@ -1,8 +1,8 @@
 <?php
-    include("../../php/funcionesSupervisor.php");
+    /*include("../../php/funcionesSupervisor.php");
     $email = 'juan@metropolitana.cl';
     $profile = datosPerfil($email);
-    echo '<input id="idSupervisor" type="text" value="'.$profile["id"].'" hidden>';
+    echo '<input id="idSupervisor" type="text" value="'.$profile["id"].'" hidden>';*/
 ?>
     <!DOCTYPE html>
     <html>
