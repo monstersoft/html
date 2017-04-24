@@ -1,5 +1,17 @@
 <?php 
-    include('/../php/conexion.php');
+    //include('/../php/conexion.php');
+        
+        $conexion = mysqli_connect('127.0.0.1','root','Monsterinc2');
+        
+        if(mysqli_connect_errno()) {
+            echo "Error de conexión: ".mysqli_connect_error();
+            exit();
+        }
+        
+        mysqli_select_db($conexion,$nombre) or die ("No se encontró la base de datos");
+        
+        mysqli_set_charset($conexion,"utf-8");
+        echo 'asdlkasjdlkajsd';
     function datosPerfil($correo) {
         $arreglo = array();
         $conexion = conectar();
@@ -77,35 +89,6 @@
         return $arr;
     }
 
-    /*function cantidadMaquinas($idZona) {
-        $conexion = conectar();
-        $arreglo = array();
-        $consulta = "SELECT 
-                     COUNT(maquinas.idMaquina) 
-                     AS cantidadMaquinas 
-                     FROM maquinas 
-                     WHERE maquinas.idZona = '$idZona'"; 
-        if($resultado = mysqli_query($conexion,$consulta)) {
-            $arreglo = mysqli_fetch_assoc($resultado);
-        }
-        mysqli_close($conexion);
-        return $arreglo;
-    }*/
-
-    /*function cantidadSupervisores($idZona) {
-        $conexion = conectar();
-        $arreglo = array();
-        $consulta = "SELECT 
-                     COUNT(supervisoreszonas.idSupervisor) 
-                     AS cantidadSupervisores 
-                     FROM supervisoreszonas 
-                     WHERE supervisoreszonas.idZona = '$idZona'"; 
-        if($resultado = mysqli_query($conexion,$consulta)) {
-            $arreglo = mysqli_fetch_assoc($resultado);
-        }
-        mysqli_close($conexion);
-        return $arreglo;
-    }*/
     function proyectos($idEmpresa) {
         $conexion = conectar();
         $arreglo = array();
