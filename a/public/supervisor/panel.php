@@ -1,16 +1,8 @@
 <?php
-    /*$idEmpresa = $_GET['id'];
-    /*session_start();
-    if(!isset($_SESSION['correo'])){
-        header("Location:../../index.php");
-    }
-    else {*/
-        include("../../php/funcionesSupervisor.php");
-        //$email = $_SESSION['correo'];
-        $email = 'juan@metropolitana.cl';
-        $profile = datosPerfil($email);
-        echo '<input id="idSupervisor" type="text" value="'.$profile["id"].'" hidden>';
-    //}*/
+    include("../../php/funcionesSupervisor.php");
+    $email = 'juan@metropolitana.cl';
+    $profile = datosPerfil($email);
+    echo '<input id="idSupervisor" type="text" value="'.$profile["id"].'" hidden>';
 ?>
     <!DOCTYPE html>
     <html>
