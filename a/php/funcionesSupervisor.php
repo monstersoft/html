@@ -2,7 +2,7 @@
     //include('/../php/conexion.php');
         
         $conexion = mysqli_connect('127.0.0.1','root','Monsterinc2');
-        
+        $nombre = 'html';
         if(mysqli_connect_errno()) {
             echo "Error de conexión: ".mysqli_connect_error();
             exit();
