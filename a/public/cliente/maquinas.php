@@ -110,53 +110,26 @@
     </div>
     <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
 </div>
-<div class="col-xs-12 col-md-3 card">
-    <div class="col-xs-12 shadow cardContent" style="padding: 10px;">
-        <div class="disponible"><i class="fa fa-check-circle"></i></div>
-        <div class="center">
-            <img style="float: left;" src="excavator2.svg" width="70" height="70">
-            <div style="float: left;" class="info">
-               <ul>
-                <li class="patente">AB123CD - 01</li>
-                <li class="numero">1000 km </li>
-                <li class="legend">RECORRIDOS</li>
-            </ul>
+
+<div class="col-xs-12 col-sm-3 card"> 
+    <div class="col-xs-12 shadowButtonDown cardContent"> 
+        <div class="col-xs-12 titleCard"> 
+            <i class="fa fa-check-circle pull-left"></i>
+            <p>ABC 123 CD - 01</p>
+        </div>
+        <div class="col-xs-12" style="padding: 10px;">
+            <div class="center">
+                <img style="float: left;" src="excavator2.svg" width="60" height="60">
+                <div style="float: left;" class="info">
+                   <ul>
+                    <li class="numero">1000 km </li>
+                    <li class="legend">RECORRIDOS</li>
+                </ul>
+                </div>
             </div>
         </div>
     </div>
-    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
-</div>
-<div class="col-xs-12 col-md-3 card">
-    <div class="col-xs-12 shadow cardContent" style="padding: 10px;">
-        <div class="disponible"><i class="fa fa-check-circle"></i></div>
-        <div class="center">
-            <img style="float: left;" src="excavator2.svg" width="70" height="70">
-            <div style="float: left;" class="info">
-               <ul>
-                <li class="patente">AB123CD - 01</li>
-                <li class="numero">1000 km </li>
-                <li class="legend">RECORRIDOS</li>
-            </ul>
-            </div>
-        </div>
-    </div>
-    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
-</div>
-<div class="col-xs-12 col-md-3 card">
-    <div class="col-xs-12 shadow cardContent" style="padding: 10px;">
-        <div class="disponible"><i class="fa fa-check-circle"></i></div>
-        <div class="center">
-            <img style="float: left;" src="excavator2.svg" width="70" height="70">
-            <div style="float: left;" class="info">
-               <ul>
-                <li class="patente">AB123CD - 01</li>
-                <li class="numero">1000 km </li>
-                <li class="legend">RECORRIDOS</li>
-            </ul>
-            </div>
-        </div>
-    </div>
-    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
+    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a> 
 </div>
 
 
