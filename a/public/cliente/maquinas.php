@@ -1,5 +1,5 @@
 <?php
-    include '../../php/conexion.php';
+/*    include '../../php/conexion.php';
     $fechaDatos = $_POST['fechaDatos'];
     $zona = $_POST['zona'];
 	$conexion = conectar();
@@ -16,7 +16,7 @@
 		while($row = mysqli_fetch_assoc($resultado)) {
 			array_push($arreglo2,array('identificador' => $row['identificador']));
         }
-	}
+	}*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,6 +32,50 @@
         .cardContent {
             font-family: 'Montserrat';
         }
+
+.legend .number {
+    font-size: 20px;
+    font-weight: bold;
+}
+.legend .subLegend {
+    font-size: 12px;
+}
+        
+
+        .info ul  {
+            padding-left: 20px;
+        }
+        .info ul li {
+            list-style: none;
+        }
+        .center {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .patente {
+            font-size: 25px;
+            font-weight: bold;
+            color: #262626;
+        }
+        .numero {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .legend {
+            font-size: 16px;
+        }
+        .disponible {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            color: #F5A214;
+            z-index: 100;
+            font-size: 40px;
+        }
+
     </style>
 </head>
 <body>
@@ -50,50 +94,79 @@
     <div id="content" class="animated fadeInUp unLeftContent">
 <!-- ............................................................................................................................ -->
 
-<div class="col-xs-12 col-sm-4 card">
-    <div class="col-xs-12 shadowButtonDown cardContent">
-        <div class="col-xs-12 titleCard"> <i class="fa fa-check-circle pull-left"></i>
-            <p>PATENTE - 01</p>
+<div class="col-xs-12 col-md-3 card">
+    <div class="col-xs-12 shadow cardContent" style="padding: 10px;">
+        <div class="disponible"><i class="fa fa-check-circle"></i></div>
+        <div class="center">
+            <img style="float: left;" src="excavator2.svg" width="70" height="70">
+            <div style="float: left;" class="info">
+               <ul>
+                <li class="patente">AB123CD - 01</li>
+                <li class="numero">1000 km </li>
+                <li class="legend">RECORRIDOS</li>
+            </ul>
+            </div>
         </div>
-        <div class="col-xs-4 cardContent text-center"><img src="excavator.svg" width="100" height="50"></div>
-        <div class="col-xs-4 cardContent text-center">
-            <br><span>1000 km</span>
-            <br>RECORRIDOS</div>
-        <div class="col-xs-4 cardContent text-center">
-            <br><span>27/03/04</span>
-            <br>REGISTRADA</div>
-    </div><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
-</div>             
+    </div>
+    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
+</div>
+<div class="col-xs-12 col-md-3 card">
+    <div class="col-xs-12 shadow cardContent" style="padding: 10px;">
+        <div class="disponible"><i class="fa fa-check-circle"></i></div>
+        <div class="center">
+            <img style="float: left;" src="excavator2.svg" width="70" height="70">
+            <div style="float: left;" class="info">
+               <ul>
+                <li class="patente">AB123CD - 01</li>
+                <li class="numero">1000 km </li>
+                <li class="legend">RECORRIDOS</li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
+</div>
+<div class="col-xs-12 col-md-3 card">
+    <div class="col-xs-12 shadow cardContent" style="padding: 10px;">
+        <div class="disponible"><i class="fa fa-check-circle"></i></div>
+        <div class="center">
+            <img style="float: left;" src="excavator2.svg" width="70" height="70">
+            <div style="float: left;" class="info">
+               <ul>
+                <li class="patente">AB123CD - 01</li>
+                <li class="numero">1000 km </li>
+                <li class="legend">RECORRIDOS</li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
+</div>
+<div class="col-xs-12 col-md-3 card">
+    <div class="col-xs-12 shadow cardContent" style="padding: 10px;">
+        <div class="disponible"><i class="fa fa-check-circle"></i></div>
+        <div class="center">
+            <img style="float: left;" src="excavator2.svg" width="70" height="70">
+            <div style="float: left;" class="info">
+               <ul>
+                <li class="patente">AB123CD - 01</li>
+                <li class="numero">1000 km </li>
+                <li class="legend">RECORRIDOS</li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
+</div>
 
-<div class="col-xs-12 col-sm-4 card">
-    <div class="col-xs-12 shadowButtonDown cardContent">
-        <div class="col-xs-12 titleCard"> <i class="fa fa-check-circle pull-left"></i>
-            <p>PATENTE - 01</p>
-        </div>
-        <div class="col-xs-4 cardContent text-center"><img src="excavator.svg" width="100" height="50"></div>
-        <div class="col-xs-4 cardContent text-center">
-            <br><span>1000 km</span>
-            <br>RECORRIDOS</div>
-        <div class="col-xs-4 cardContent text-center">
-            <br><span>27/03/04</span>
-            <br>REGISTRADA</div>
-    </div><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
-</div>
+
+
+
+          
+
+
                        
-<div class="col-xs-12 col-sm-4 card">
-    <div class="col-xs-12 shadowButtonDown cardContent">
-        <div class="col-xs-12 titleCard"> <i class="fa fa-check-circle pull-left"></i>
-            <p>PATENTE - 01</p>
-        </div>
-        <div class="col-xs-4 cardContent text-center"><img src="excavator.svg" width="100" height="50"></div>
-        <div class="col-xs-4 cardContent text-center">
-            <br><span>1000 km</span>
-            <br>RECORRIDOS</div>
-        <div class="col-xs-4 cardContent text-center">
-            <br><span>27/03/04</span>
-            <br>REGISTRADA</div>
-    </div><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
-</div>
+
                         
                         
         <div class="col-xs-12">
