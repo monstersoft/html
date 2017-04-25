@@ -28,7 +28,11 @@
     <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../css/base.css">
-    <link rel="stylesheet" href="../../css/dashboard.css">
+    <style>
+        .cardContent {
+            font-family: 'Montserrat';
+        }
+    </style>
 </head>
 <body>
     <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p class="editarZona">Machine Monitors</p></div>
@@ -45,16 +49,53 @@
     </nav>
     <div id="content" class="animated fadeInUp unLeftContent">
 <!-- ............................................................................................................................ -->
-<div class="col-xs-12 col-sm-4 col-md-2 card">
-    <div class="col-xs-12 shadow cardContent">
-        <div>
-            <img src="excavator.svg" width="70" height="70">
-            <div class="legend"><div class="number">1000 km</div><div class="subLegend">27/07/03</div></div>
-            <div class="legend"><div class="number">Fecha registro</div><div class="subLegend">RECORRIDOS</div></div>
-            <div class="legend"><div class="number">20/100</div><div class="subLegend">días disponibles</div></div>
+
+<div class="col-xs-12 col-sm-4 card">
+    <div class="col-xs-12 shadowButtonDown cardContent">
+        <div class="col-xs-12 titleCard"> <i class="fa fa-check-circle pull-left"></i>
+            <p>PATENTE - 01</p>
         </div>
-    </div>
+        <div class="col-xs-4 cardContent text-center"><img src="excavator.svg" width="100" height="50"></div>
+        <div class="col-xs-4 cardContent text-center">
+            <br><span>1000 km</span>
+            <br>RECORRIDOS</div>
+        <div class="col-xs-4 cardContent text-center">
+            <br><span>27/03/04</span>
+            <br>REGISTRADA</div>
+    </div><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
+</div>             
+
+<div class="col-xs-12 col-sm-4 card">
+    <div class="col-xs-12 shadowButtonDown cardContent">
+        <div class="col-xs-12 titleCard"> <i class="fa fa-check-circle pull-left"></i>
+            <p>PATENTE - 01</p>
+        </div>
+        <div class="col-xs-4 cardContent text-center"><img src="excavator.svg" width="100" height="50"></div>
+        <div class="col-xs-4 cardContent text-center">
+            <br><span>1000 km</span>
+            <br>RECORRIDOS</div>
+        <div class="col-xs-4 cardContent text-center">
+            <br><span>27/03/04</span>
+            <br>REGISTRADA</div>
+    </div><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
 </div>
+                       
+<div class="col-xs-12 col-sm-4 card">
+    <div class="col-xs-12 shadowButtonDown cardContent">
+        <div class="col-xs-12 titleCard"> <i class="fa fa-check-circle pull-left"></i>
+            <p>PATENTE - 01</p>
+        </div>
+        <div class="col-xs-4 cardContent text-center"><img src="excavator.svg" width="100" height="50"></div>
+        <div class="col-xs-4 cardContent text-center">
+            <br><span>1000 km</span>
+            <br>RECORRIDOS</div>
+        <div class="col-xs-4 cardContent text-center">
+            <br><span>27/03/04</span>
+            <br>REGISTRADA</div>
+    </div><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
+</div>
+                        
+                        
         <div class="col-xs-12">
             <h1>Máquinas registradas</h1>
             <table style="width: 100%;">
