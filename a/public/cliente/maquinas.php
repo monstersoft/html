@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="../../recursos/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
-    <link rel="stylesheet" href="../../recursos/responsiveTables/responsiveTables.css">
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/dashboard.css">
 </head>
@@ -46,6 +45,16 @@
     </nav>
     <div id="content" class="animated fadeInUp unLeftContent">
 <!-- ............................................................................................................................ -->
+<div class="col-xs-12 col-sm-4 col-md-2 card">
+    <div class="col-xs-12 shadow cardContent">
+        <div>
+            <img src="excavator.svg" width="70" height="70">
+            <div class="legend"><div class="number">1000 km</div><div class="subLegend">27/07/03</div></div>
+            <div class="legend"><div class="number">Fecha registro</div><div class="subLegend">RECORRIDOS</div></div>
+            <div class="legend"><div class="number">20/100</div><div class="subLegend">días disponibles</div></div>
+        </div>
+    </div>
+</div>
         <div class="col-xs-12">
             <h1>Máquinas registradas</h1>
             <table style="width: 100%;">
