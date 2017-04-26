@@ -1,8 +1,7 @@
 <?php
 	include '../../php/funciones.php';
 	$conexion = conectar();
-	$empresasZonas = array();
-	$empresasZonas = empresasZonas();    
+    $datosRecientes = datosRecientes();
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,56 +34,80 @@
         </ul>
     </nav>
     <div id="content" class="animated fadeIn unLeftContent">
-    <?php foreach($empresasZonas as $value) { echo'
-    <div class="col-xs-12 col-sm-12 card">
-        <div class="col-xs-12 shadowButtonDown cardContent">
-            <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
-                <p>'.$value['nombreEmpresa'].'</p>
-            </div>
-        </div>
-        <div class="col-xs-12 shadow cardContent">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Zona</th>
-                        <th>Seleccionar fecha</th>
-                        <th class="unDisplayColumn">Ultima actualización</th>
-                        <th class="unDisplayColumn">Subido por</th>
-                        <th class="unDisplayColumn">Fecha subida</th>
-                        <th class="unDisplayColumn">Hora subida</th>
-                    </tr>
-                </thead>
-                <tbody>'; echo '           
-                    <tr>
-                        <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>Patricio Andrés Villanueva Fuentes</td>
-                        <td>
-                            <div class="input-group input-xs"><input type="text" class="form-control datepicker" placeholder="27/03/17"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
-                        </td>
-                        <td class="unDisplayColumn">Lunes</td>
-                        <td class="unDisplayColumn">Patricio Andrés Villanueva Fuentes</td>
-                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">08:55 AM</td>
-                    </tr>
-                    <tr class="accordion unActivated">
-                        <td colspan="2">
-                            <ul>
-                                <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por: Juanito Perez Perez</li>
-                                <li>Fecha subida: 20 Febrero 2017</li>
-                                <li>Hora subida: 08:55 AM</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    '; echo '    
-                </tbody>
-            </table>
-        </div>
-    </div>
-    ';}
-    ?>
-    <?php 
-        debug($empresasZonas);
-    ?>
+       <div class="col-xs-12-card">
+           <?php
+                foreach($datosRecientes as $key => $value) { echo '
+                    <div class="col-xs-12 col-sm-12 card">
+                        <div class="col-xs-12 shadowButtonDown cardContent">
+                            <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
+                                <p id="'.$value['idEmpresa'].'">'.$value['nombreEmpresa'].'</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 shadow cardContent">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Zona</th>
+                                        <th>Seleccionar fecha</th>
+                                        <th class="unDisplayColumn">Ultima actualización</th>
+                                        <th class="unDisplayColumn">Subido por</th>
+                                        <th class="unDisplayColumn">Fecha subida</th>
+                                        <th class="unDisplayColumn">Hora subida</th>
+                                    </tr>
+                                </thead>
+                                <tbody>'; 
+                                    foreach($datosRecientes[$key]['zonas'] as $v) { 
+                                        if($v['idArchivo'] != null) { echo '
+                                            <tr>
+                                                <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div id="'.$v['idZona'].'">'.$v['nombreZona'].'</td>
+                                                <td>
+                                                    <div class="input-group input-xs"><input type="text" class="form-control datepicker" placeholder="'.$v['fechaRecienteDatos'].'"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
+                                                </td>
+                                                <td class="unDisplayColumn">'.$v['fechaRecienteDatos'].'</td>
+                                                <td class="unDisplayColumn">'.$v['nombreSupervisor'].'</td>
+                                                <td class="unDisplayColumn">'.$v['fechaSubida'].'</td>
+                                                <td class="unDisplayColumn">'.$v['horaSubida'].'</td>
+                                            </tr>
+                                            <tr class="accordion unActivated">
+                                                <td colspan="2">
+                                                    <ul>
+                                                        <li>Última actualización : '.$v['fechaRecienteDatos'].'</li>
+                                                        <li>Subido por: '.$v['nombreSupervisor'].'</li>
+                                                        <li>Fecha subida: '.$v['fechaSubida'].'</li>
+                                                        <li>Hora subida: '.$v['horaSubida'].'</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>';
+                                        }
+                                        else { echo '
+                                            <tr>
+                                                <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div id="'.$v['idZona'].'">'.$v['nombreZona'].'</td>
+                                                <td>No hay archivos disponibles</td>
+                                                <td class="unDisplayColumn">-</td>
+                                                <td class="unDisplayColumn">-</td>
+                                                <td class="unDisplayColumn">-</td>
+                                                <td class="unDisplayColumn">-</td>
+                                            </tr>
+                                            <tr class="accordion unActivated">
+                                                <td colspan="2">
+                                                    <ul>
+                                                        <li>Última actualización : -</li>
+                                                        <li>Subido por: -</li>
+                                                        <li>Fecha subida: -</li>
+                                                        <li>Hora subida: -</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>';
+                                            
+                                        }
+                                    } echo '
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                ';}
+           ?>
+       </div>
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>

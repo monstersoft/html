@@ -7,19 +7,37 @@ function debug( $var)
   print_r($var); 
   echo "</pre>";
 }
-    function empresasZonas() {
-        $conexion = conectar();
-        $arreglo = array();
-        $consulta = 'SELECT empresas.nombre AS nombreEmpresa, zonas.idZona, zonas.nombre AS nombreZona FROM empresas INNER JOIN zonas ON empresas.idEmpresa = zonas.idEmpresa ORDER BY         empresas.nombre ASC';
-        if($resultado = mysqli_query($conexion,$consulta)) {
-            while($row = mysqli_fetch_array($resultado)) {
-                array_push($arreglo,array('nombreEmpresa' => utf8_encode($row['nombreEmpresa']), 'idZona' => $row['idZona'], 'nombreZona' => utf8_encode($row['nombreZona'])));
+
+// ZONAS.PHP
+function datosRecientes() {
+    $conexion = conectar();
+    $arreglo = array();
+    $flag = 0;
+    $consulta = 'SELECT empresas.idEmpresa, empresas.nombre AS nombreEmpresa, zonas.idZona, zonas.nombre AS nombreZona, supervisores.idSupervisor, supervisores.nombreSupervisor, archivos.idArchivo, archivos.fechaDatos, archivos.fechaSubida, archivos.horaSubida, MAX(fechaDatos) AS fechaRecienteDatos FROM zonas LEFT JOIN archivos ON zonas.idZona = archivos.idZona LEFT JOIN supervisores ON archivos.idSupervisor = supervisores.idSupervisor LEFT JOIN empresas ON zonas.idEmpresa = empresas.idEmpresa GROUP BY zonas.idZona ORDER BY empresas.nombre ASC';
+    if($resultado = mysqli_query($conexion,$consulta)) {
+        while($row = mysqli_fetch_array($resultado)) {
+            if($flag == 0) {
+               $zonas = [];
+               array_push($zonas,array('idZona' => $row['idZona'],'nombreZona' => utf8_encode($row['nombreZona']),'idSupervisor' => $row['idSupervisor'],'nombreSupervisor' => utf8_encode($row['nombreSupervisor']),'idArchivo' => $row['idArchivo'],'fechaDatos' => $row['fechaDatos'],'fechaSubida' => utf8_encode($row['fechaSubida']),'horaSubida' => utf8_encode($row['horaSubida']),'fechaRecienteDatos' => utf8_encode($row['fechaRecienteDatos'])));
+               array_push($arreglo,array('idEmpresa' => $row['idEmpresa'], 'nombreEmpresa' => utf8_encode($row['nombreEmpresa']), 'zonas' => $zonas));
+               $flag = 1;
+            }
+            else {
+                if($arreglo[sizeof($arreglo)-1]['idEmpresa'] == $row['idEmpresa'])
+                    array_push($arreglo[sizeof($arreglo)-1]['zonas'],array('idZona' => $row['idZona'],'nombreZona' => utf8_encode($row['nombreZona']),'idSupervisor' => $row['idSupervisor'],'nombreSupervisor' => utf8_encode($row['nombreSupervisor']),'idArchivo' => $row['idArchivo'],'fechaDatos' => $row['fechaDatos'],'fechaSubida' => utf8_encode($row['fechaSubida']),'horaSubida' => utf8_encode($row['horaSubida']),'fechaRecienteDatos' => utf8_encode($row['fechaRecienteDatos'])));
+
+                else {
+                    $zonas = [];
+                    array_push($zonas,array('idZona' => $row['idZona'],'nombreZona' => utf8_encode($row['nombreZona']),'idSupervisor' => $row['idSupervisor'],'nombreSupervisor' => utf8_encode($row['nombreSupervisor']),'idArchivo' => $row['idArchivo'],'fechaDatos' => $row['fechaDatos'],'fechaSubida' => utf8_encode($row['fechaSubida']),'horaSubida' => utf8_encode($row['horaSubida']),'fechaRecienteDatos' => utf8_encode($row['fechaRecienteDatos'])));
+                    array_push($arreglo,array('idEmpresa' => $row['idEmpresa'], 'nombreEmpresa' => utf8_encode($row['nombreEmpresa']), 'zonas' => $zonas));
+                }
             }
         }
-        mysqli_close($conexion);
-        return $arreglo;
     }
-	function empresas() {
+    mysqli_close($conexion);
+    return $arreglo;
+}
+function empresas() {
         $conexion = conectar();
         $arreglo = array();
         $arreglo['empresas'] = array();
