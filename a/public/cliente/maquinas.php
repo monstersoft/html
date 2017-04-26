@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/zonasCliente.css">
     <style>
         .cardContent {
             font-family: 'Montserrat';
@@ -94,24 +95,9 @@
     <div id="content" class="animated fadeInUp unLeftContent">
 <!-- ............................................................................................................................ -->
 
-<div class="col-xs-12 col-md-3 card">
-    <div class="col-xs-12 shadow cardContent" style="padding: 10px;">
-        <div class="disponible"><i class="fa fa-check-circle"></i></div>
-        <div class="center">
-            <img style="float: left;" src="excavator2.svg" width="70" height="70">
-            <div style="float: left;" class="info">
-               <ul>
-                <li class="patente">AB123CD - 01</li>
-                <li class="numero">1000 km </li>
-                <li class="legend">RECORRIDOS</li>
-            </ul>
-            </div>
-        </div>
-    </div>
-    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a>
-</div>
 
-<div class="col-xs-12 col-sm-3 card"> 
+
+<div class="col-xs-12 col-sm-4 col-md-2 card"> 
     <div class="col-xs-12 shadowButtonDown cardContent"> 
         <div class="col-xs-12 titleCard"> 
             <i class="fa fa-check-circle pull-left"></i>
@@ -133,6 +119,151 @@
 </div>
 
 
+<div class="col-xs-12 col-sm-4 col-md-2 card"> 
+    <div class="col-xs-12 shadowButtonDown cardContent"> 
+        <div class="col-xs-12 titleCard"> 
+            <i class="fa fa-check-circle pull-left"></i>
+            <p>ABC 123 CD - 01</p>
+        </div>
+        <div class="col-xs-12" style="padding: 10px;">
+            <div class="center">
+                <img style="float: left;" src="excavator2.svg" width="60" height="60">
+                <div style="float: left;" class="info">
+                   <ul>
+                    <li class="numero">1000 km </li>
+                    <li class="legend">RECORRIDOS</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a> 
+</div>
+<div class="col-xs-12 col-sm-4 col-md-2 card"> 
+    <div class="col-xs-12 shadowButtonDown cardContent"> 
+        <div class="col-xs-12 titleCard"> 
+            <i class="fa fa-check-circle pull-left"></i>
+            <p>ABC 123 CD - 01</p>
+        </div>
+        <div class="col-xs-12" style="padding: 10px;">
+            <div class="center">
+                <img style="float: left;" src="excavator2.svg" width="60" height="60">
+                <div style="float: left;" class="info">
+                   <ul>
+                    <li class="numero">1000 km </li>
+                    <li class="legend">RECORRIDOS</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a> 
+</div>
+<div class="col-xs-12 col-sm-4 col-md-2 card"> 
+    <div class="col-xs-12 shadowButtonDown cardContent"> 
+        <div class="col-xs-12 titleCard"> 
+            <i class="fa fa-check-circle pull-left"></i>
+            <p>ABC 123 CD - 01</p>
+        </div>
+        <div class="col-xs-12" style="padding: 10px;">
+            <div class="center">
+                <img style="float: left;" src="excavator2.svg" width="60" height="60">
+                <div style="float: left;" class="info">
+                   <ul>
+                    <li class="numero">1000 km </li>
+                    <li class="legend">RECORRIDOS</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a> 
+</div>
+<div class="col-xs-12 col-sm-4 col-md-2 card"> 
+    <div class="col-xs-12 shadowButtonDown cardContent"> 
+        <div class="col-xs-12 titleCard"> 
+            <i class="fa fa-check-circle pull-left"></i>
+            <p>ABC 123 CD - 01</p>
+        </div>
+        <div class="col-xs-12" style="padding: 10px;">
+            <div class="center">
+                <img style="float: left;" src="excavator2.svg" width="60" height="60">
+                <div style="float: left;" class="info">
+                   <ul>
+                    <li class="numero">1000 km </li>
+                    <li class="legend">RECORRIDOS</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a> 
+</div>
+<div class="col-xs-12 col-sm-4 col-md-2 card"> 
+    <div class="col-xs-12 shadowButtonDown cardContent"> 
+        <div class="col-xs-12 titleCard"> 
+            <i class="fa fa-check-circle pull-left"></i>
+            <p>ABC 123 CD - 01</p>
+        </div>
+        <div class="col-xs-12" style="padding: 10px;">
+            <div class="center">
+                <img style="float: left;" src="excavator2.svg" width="60" height="60">
+                <div style="float: left;" class="info">
+                   <ul>
+                    <li class="numero">1000 km </li>
+                    <li class="legend">RECORRIDOS</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a> 
+</div>
+
+
+<div class="col-xs-12 col-sm-12 card">
+        <div class="col-xs-12 shadowButtonDown cardContent">
+            <div class="col-xs-12 titleCard"> <i style="color: #262626;" class="fa fa-times-circle pull-left"></i>
+                <p>No Disponibles</p>
+            </div>
+        </div>
+        <div class="col-xs-12 shadow cardContent">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Patente</th>
+                        <th>ID</th>
+                        <th class="unDisplayColumn">Estado</th>
+                        <th class="unDisplayColumn">Fecha registro</th>
+                        <th class="unDisplayColumn">Días Disponible</th>
+                        <th class="unDisplayColumn">Hora subida</th>
+                    </tr>
+                </thead>
+                <tbody>          
+                    <tr>
+                        <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>ABC DE 123</td>
+                        <td>1</td>
+                        <td class="unDisplayColumn">No Disponible</td>
+                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
+                        <td class="unDisplayColumn">20 / 100</td>
+                        <td class="unDisplayColumn">08:55 AM</td>
+                    </tr>
+                    <tr class="accordion unActivated">
+                        <td colspan="2">
+                            <ul>
+                                <li>Última actualización : 20 Febrero 2017</li>
+                                <li>Subido por: Juanito Perez Perez</li>
+                                <li>Fecha subida: 20 Febrero 2017</li>
+                                <li>Hora subida: 08:55 AM</li>
+                            </ul>
+                        </td>
+                    </tr>   
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
 
 
           
@@ -142,7 +273,7 @@
 
                         
                         
-        <div class="col-xs-12">
+       <!-- <div class="col-xs-12">
             <h1>Máquinas registradas</h1>
             <table style="width: 100%;">
                 <thead>
@@ -190,7 +321,7 @@
                 $resultado = array_diff($enArchivos,$registrados);
                 print_r($resultado);
             ?>
-        </div>
+        </div>-->
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
