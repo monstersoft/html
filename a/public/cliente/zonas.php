@@ -59,9 +59,9 @@
                                     foreach($datosRecientes[$key]['zonas'] as $v) { 
                                         if($v['idArchivo'] != null) { echo '
                                             <tr>
-                                                <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div id="'.$v['idZona'].'">'.$v['nombreZona'].'</td>
+                                                <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>'.$v['nombreZona'].'</td>
                                                 <td>
-                                                    <div class="input-group input-xs"><input type="text" class="form-control datepicker" placeholder="'.$v['fechaRecienteDatos'].'"><div class="input-group-btn"><button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
+                                                    <div class="input-group input-xs"><input type="text" class="form-control datepicker" data-value="'.$v['fechaRecienteDatos'].'" name="fechaDatos'.$v['idZona'].'"><div class="input-group-btn"><button id="'.$v['idZona'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
                                                 </td>
                                                 <td class="unDisplayColumn">'.$v['fechaRecienteDatos'].'</td>
                                                 <td class="unDisplayColumn">'.$v['nombreSupervisor'].'</td>
@@ -144,6 +144,10 @@
                if($(window).width() > 970)
                    if($('.accordion').hasClass('activated')) 
                         $($('.accordion').removeClass('activated').addClass('unActivated'));
+           });
+           $('.btnBuscar').click(function(){
+               alert($(this).attr('id')+$(this).parent().prev().attr('value'));
+               /*$('input[name=fechaDatos48]').val('30-30-30');*/
            });
        });
    </script>
