@@ -9,10 +9,13 @@ table tr {
 table td {
     text-align: center;
     padding: 5px;
-    /*white-space: nowrap;*/
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    
-    
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(0,0,0,0.1);   
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+table td:first-child {
+	width: 250px;
 }
 table th {
     border-bottom: 3px solid #F5A214;
