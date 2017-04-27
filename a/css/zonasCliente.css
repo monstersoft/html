@@ -1,12 +1,12 @@
-table {
+.tableStyle {
     width: 100%;    
 }
-table tr {
+.tableStyle tr {
     font-family: 'Montserrat';
     font-size: 12px;
     font-weight: 100;
 }
-table td {
+.tableStyle td {
     text-align: center;
     padding: 5px;
     white-space: nowrap;
@@ -14,10 +14,10 @@ table td {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-table td:first-child {
+.tableStyle td:first-child {
 	width: 250px;
 }
-table th {
+.tableStyle th {
     border-bottom: 3px solid #F5A214;
     text-align: center;
     color: #262626;

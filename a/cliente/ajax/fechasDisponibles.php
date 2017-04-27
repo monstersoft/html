@@ -3,7 +3,9 @@
 	$idZona = $_POST['idZona'];
     $fechaDatos = $_POST['fechaDatos'];
     $arr = array();
-    $arr = $idZona.'-'.$fechaDatos;
+    $arr['sadasd'] = $idZona.'/'.$fechaDatos;
+    $arr['fechas'] = array(true, [2017,03,27]);
+    $arr['fechas'][] = [2017,03,26];
     echo json_encode($arr);
 ?>
 	
