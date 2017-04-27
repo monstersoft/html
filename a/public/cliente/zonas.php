@@ -61,7 +61,7 @@
                                             <tr>
                                                 <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>'.$v['nombreZona'].'</td>
                                                 <td>
-                                                    <div class="input-group input-xs"><input type="text" class="form-control datepicker" data-value="'.$v['fechaRecienteDatos'].'" name="fechaDatos'.$v['idZona'].'"><div class="input-group-btn"><button id="'.$v['idZona'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
+                                                    <div class="input-group input-xs"><input type="text" class="btnFecha form-control datepicker" data-value="'.$v['fechaRecienteDatos'].'" name="fechaRecienteDatos'.$v['idZona'].'"><div class="input-group-btn"><button id="'.$v['idZona'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
                                                 </td>
                                                 <td class="unDisplayColumn">'.$v['fechaRecienteDatos'].'</td>
                                                 <td class="unDisplayColumn">'.$v['nombreSupervisor'].'</td>
@@ -117,12 +117,10 @@
     <script src="../../recursos/pickadate/picker.date.js"></script>
     <script src="../../recursos/pickadate/picker.time.js"></script>
     <script src="../../recursos/moment/moment.js"></script>
+    <script src="../../cliente/js/fechasDisponibles.js"></script>
     <script src="../../js/funciones.js"></script>
     <script src="../../js/config.js"></script>
     <script>main();</script>
-    <script>
-       fechaHoy(); 
-    </script>
    <script>
        $(document).ready(function(){
            $('.btnPlus').click(function(){
@@ -144,10 +142,6 @@
                if($(window).width() > 970)
                    if($('.accordion').hasClass('activated')) 
                         $($('.accordion').removeClass('activated').addClass('unActivated'));
-           });
-           $('.btnBuscar').click(function(){
-               alert($(this).attr('id')+$(this).parent().prev().attr('value'));
-               /*$('input[name=fechaDatos48]').val('30-30-30');*/
            });
        });
    </script>

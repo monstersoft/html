@@ -1,27 +1,3 @@
-$('.datepicker').pickadate({
-    monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
-    monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-    weekdaysFull: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
-    weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
-    showMonthsShort: undefined,
-    showWeekdaysFull: undefined,
-    today: 'Hoy',
-    clear: '',
-    close: 'Cerrar',
-    //min: new Date(2017,1,1),
-    //max: new Date(2018,1,1),
-    min: [2017,3,20],
-    max: [2017,4,1],
-    disable: [
-        true,
-        [2017,3,22],
-        [2017,3,23],
-    ],
-    format: 'dddd dd , mmmm yyyy',
-    formatSubmit: 'yyyy-mm-dd',
-    hiddenName : true,
-    firstDay: 'Monday'
-})
 function configSelect2(){
     $.fn.select2.defaults.set( "theme", "bootstrap" );
     $( ".select2-single" ).select2( {
