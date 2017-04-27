@@ -37,8 +37,11 @@
 $('.datepicker').change(function(){
     console.log($(this).parent().parent().next().html('asdasdas'));
 });*/
-var d = [true,[2017,03,10]];
-var $input = $('.datepicker').pickadate({
+
+$('.datepicker').pickadate({
+                onOpen: function(){
+                    alert(this.get('id'));
+                },
                 monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
                 monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
                 weekdaysFull: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
@@ -48,21 +51,22 @@ var $input = $('.datepicker').pickadate({
                 today: 'Hoy',
                 clear: '',
                 close: 'Cerrar',
-                /*min: [2017,3,1],
-                max: [2017,3,26],*/
-                disable: d,
+                //min: new Date(2017,1,1),
+                //max: new Date(2018,1,1),
+                min: [2017,3,1],
+                max: [2017,3,30],
+                disable: [true,[2017,3,20]],
                 format: 'dddd dd , mmmm yyyy',
                 formatSubmit: 'yyyy-mm-dd',
                 hiddenName : true,
                 firstDay: 'Monday'
             });
-var picker = $input.data('pickadate');
-$('.btnBuscar').click( function( e ) {
+/*$('.btnBuscar').click( function( e ) {
+    var calendar = $('.datepicker48').pickadate({});
+    var picker = calendar.data('pickadate');
     e.stopPropagation();
     e.preventDefault();
-    console.log('asdasds');
     picker.open();
-    
-});
+});*/
 
 
