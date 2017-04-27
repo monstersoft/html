@@ -8,4 +8,3 @@
     $arr['fechas'][] = [2017,03,26];
     echo json_encode($arr);
 ?>
-	

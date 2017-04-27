@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="../../recursos/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../recursos/select2/select2.min.css">
     <link rel="stylesheet" href="../../recursos/select2/select2-bootstrap.css">
-    <link rel="stylesheet" href="../../recursos/bootstrapDatepicker/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="../../recursos/pickadate/default.css">
+    <link rel="stylesheet" href="../../recursos/pickadate/default.date.css">
+    <link rel="stylesheet" href="../../recursos/pickadate/default.time.css">
     <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../css/base.css">
@@ -33,12 +35,6 @@
     </nav>
     <div id="content" class="animated fadeIn unLeftContent">
        <div class="col-xs-12-card">
-          <div class="input-group date" data-provide="datepicker">
-    <input type="text" class="form-control">
-    <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
-    </div>
-</div>
            <?php
                 foreach($datosRecientes as $key => $value) { echo '
                     <div class="col-xs-12 col-sm-12 card">
@@ -65,9 +61,9 @@
                                             <tr>
                                                 <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>'.$v['nombreZona'].'</td>
                                                 <td>
-                                                    <div class="input-group input-xs"><input class="form-control" data-provide="datepicker"><div class="input-group-btn"><button id="'.$v['idZona'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
+                                                    <div class="input-group input-xs"><input type="text" class="btnFecha form-control datepicker" data-value="'.$v['fechaRecienteDatos'].'" name="fechaRecienteDatos'.$v['idZona'].'"><div class="input-group-btn"><button id="'.$v['idZona'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
                                                 </td>
-                                                <td class="unDisplayColumn prueba">'.$v['fechaRecienteDatos'].'</td>
+                                                <td class="unDisplayColumn">'.$v['fechaRecienteDatos'].'</td>
                                                 <td class="unDisplayColumn">'.$v['nombreSupervisor'].'</td>
                                                 <td class="unDisplayColumn">'.$v['fechaSubida'].'</td>
                                                 <td class="unDisplayColumn">'.$v['horaSubida'].'</td>
@@ -117,7 +113,9 @@
     <script src="../../recursos/jquery/jquery.min.js"></script>
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../recursos/select2/select2.full.js"></script>
-    <script src="../../recursos/bootstrapDatepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="../../recursos/pickadate/picker.js"></script>
+    <script src="../../recursos/pickadate/picker.date.js"></script>
+    <script src="../../recursos/pickadate/picker.time.js"></script>
     <script src="../../recursos/moment/moment.js"></script>
     <script src="../../cliente/js/fechasDisponibles.js"></script>
     <script src="../../js/funciones.js"></script>
@@ -145,11 +143,6 @@
                    if($('.accordion').hasClass('activated')) 
                         $($('.accordion').removeClass('activated').addClass('unActivated'));
            });
-           $('.datepicker').datepicker({
-    format: 'mm/dd/yyyy',
-    startDate: '-3d'
-});
-
        });
    </script>
 </body>
