@@ -15,8 +15,9 @@ $('.datepicker').pickadate({
         var currentCalendar = this;
         returnDays(function(response){
             currentCalendar.set({
-                min: [2017,03,01],
-                max: [2017,03,29]
+                min: [2017,03,05],
+                max: [2017,03,10],
+                disable: [[2017,03,07],[2017,03,09]]
             });
          });
      },
@@ -29,7 +30,7 @@ $('.datepicker').pickadate({
     today: 'Hoy',
     clear: '',
     close: 'Cerrar',
-    //disable: [true],
+    disable: [true],
     format: 'dddd dd , mmmm yyyy',
     formatSubmit: 'yyyy-mm-dd',
     hiddenName : true,
