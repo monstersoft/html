@@ -61,7 +61,7 @@
                                             <tr>
                                                 <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>'.$v['nombreZona'].'</td>
                                                 <td>
-                                                    <div class="input-group input-xs"><input type="text" class="btnFecha form-control datepicker" data-value="'.$v['fechaRecienteDatos'].'" name="fechaRecienteDatos'.$v['idZona'].'"><div class="input-group-btn"><button id="'.$v['idZona'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
+                                                    <div class="input-group input-xs"><input type="text" id="'.$v['idZona'].'" class="btnFecha form-control datepicker" data-value="'.$v['fechaRecienteDatos'].'" name="fechaRecienteDatos'.$v['idZona'].'"><div class="input-group-btn"><button id="'.$v['idZona'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
                                                 </td>
                                                 <td class="unDisplayColumn">'.$v['fechaRecienteDatos'].'</td>
                                                 <td class="unDisplayColumn">'.$v['nombreSupervisor'].'</td>
