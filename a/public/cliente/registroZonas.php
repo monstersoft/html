@@ -44,32 +44,61 @@
     </nav>
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
-        <?php
+    <?php
             if(cantidadZonas($idEmpresa) == 0)
                 echo '<div class="col-xs-12">No hay zonas asociadas a esta empresa</div>';
-            else {
-                foreach (zonas($idEmpresa) as $value) { 
-                    echo '<div class="col-xs-12 col-sm-6 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="editarZona"><i class="fa fa-pencil"></i>editar</a></li><li><a id="'.$value['idZona'].'" class="eliminarZona"><i class="fa fa-remove"></i>remover</a></li></ul> </div><p>'.$value['nombreZona'].'</p></div>';
-                    if(cantidadMaquinas($value['idZona']) == 0)
-                        echo '<div class="col-xs-12 cardContent">No hay máquinas asosciadas a esta zona</div>';
-                    else {
-                        echo '<div class="col-xs-12 cardContent"> <table class="responsiva montserrat"> <thead> <tr> <th class="text-center">ID</th> <th class="text-center">Patente</th> <th class="text-center">Fecha de Registro</th> <th class="text-center">Tara [kg]</th> <th class="text-center">Carga Máxima [kg]</th> </tr></thead> <tbody>';
-                            foreach(maquinas($value['idZona']) as $value) {
-                                echo '<tr> <td class="text-center tSticky">'.$value['identificador'].'</td><td class="text-center tSticky">'.$value['patente'].'</td><td class="text-center">'.$value['fechaRegistro'].'</td><td class="text-center">'.$value['tara'].'</td><td class="text-center">'.$value['cargaMaxima'].'</td></tr>';
-                            }
-                        echo '</tbody></table></div>';
-                    }
-                    if(cantidadSupervisores($value['idZona']) == 0)
-                        echo '<div class="col-xs-12 cardContent">No existen supervisores asociados a esta zona</div>';
-                    else {
-                        foreach(supervisores($value['idZona']) as $value) {
-                            echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><a href="supervisor.php" class="text-center montserrat">'.$value['nombreSupervisor'].'</a></div><div class="col-xs-12"> <ul> <li>'.$value['correoSupervisor'].'</li><li>'.$value['celular'].'</li><li>'.$value['status'].'</li></ul> <a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div></div>';
-                        }
-                    }
-                    echo '</div></div>'; 
-                }   
+            else { foreach(zonas($idEmpresa) as $value) { echo '  
+               <div class="col-xs-12 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="editarZona"><i class="fa fa-pencil"></i>editar</a></li><li><a id="'.$value['idZona'].'" class="eliminarZona"><i class="fa fa-remove"></i>remover</a></li></ul> </div><p>'.$value['nombreZona'].'</p></div>';;
+                            if(cantidadMaquinas($value['idZona']) == 0)
+                                echo '<div class="col-xs-12 cardContent">No hay máquinas asosciadas a esta zona</div>';
+                            else { echo '
+                                <table class="tableStyle">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Patente</th>
+                                            <th class="unDisplayColumn">Fecha de registro</th>
+                                            <th class="unDisplayColumn">Tara [kg]</th>
+                                            <th class="unDisplayColumn">Carga máxima [kg]</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>';
+                                        foreach(maquinas($value['idZona']) as $value) { echo '
+                                            <tr>
+                                                <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>'.$value['identificador'].'</td>
+                                                <td class="unDisplayColumn">'.$value['patente'].'</td>
+                                                <td class="unDisplayColumn">'.$value['fechaRegistro'].'</td>
+                                                <td class="unDisplayColumn">'.$value['tara'].'</td>
+                                                <td class="unDisplayColumn">'.$value['cargaMaxima'].'</td>
+                                            </tr>
+                                            <tr class="accordion unActivated">
+                                                <td colspan="2">
+                                                    <ul>
+                                                        <li>Última actualización : '.$value['fechaRegistro'].'</li>
+                                                        <li>Subido por: '.$value['tara'].'</li>
+                                                        <li>Fecha subida: '.$value['cargaMaxima'].'</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>';
+
+                                           } echo '
+                                    </tbody>
+                                </table>'; 
+                                  if(cantidadSupervisores($value['idZona']) == 0)
+                                    echo '<div class="col-xs-12 cardContent">No existen supervisores asociados a esta zona</div>';
+                                  else {
+                                        foreach(supervisores($value['idZona']) as $value) {
+                                            echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><a href="supervisor.php" class="text-center montserrat">'.$value['nombreSupervisor'].'</a></div><div class="pull-right"><a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div></div>';
+                                        }
+
+                                  }
+
+                            } echo '
+                    </div>
+               </div>';
+                }
             }
-        ?>
+    ?>
 <!-- ............................................................................................................................ -->
     </div>
  <!-- VENTANAS MODALES --> 
@@ -221,5 +250,29 @@
             }
         });
     </script>
+    <script>
+       $(document).ready(function(){
+           $('.btnPlus').click(function(){
+               var accordion = $(this).parent().parent().next();
+               if(accordion.hasClass('unActivated')) {
+                   $('.accordion').removeClass('activated');
+                   $('.accordion').addClass('unActivated');
+                   accordion.removeClass('unActivated');
+                   accordion.addClass('activated');
+               }
+               else {
+                   $('.accordion').removeClass('activated');
+                   $('.accordion').addClass('unActivated');
+                   accordion.removeClass('activated');
+                   accordion.addClass('unActivated');
+               }
+           });
+           $(window).resize(function(){
+               if($(window).width() > 970)
+                   if($('.accordion').hasClass('activated')) 
+                        $($('.accordion').removeClass('activated').addClass('unActivated'));
+           });
+       });
+   </script>
 </body>
 </html>

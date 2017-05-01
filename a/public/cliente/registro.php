@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="../../recursos/select2/select2.min.css">
     <link rel="stylesheet" href="../../recursos/select2/select2-bootstrap.css">
     <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/registro.css">
 </head>
 <body>
     <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p>Machine Monitors</p></div>
@@ -39,18 +40,46 @@
         </ul>
     </nav>
     <div id="content" class="animated fadeInUp unLeftContent">
-        <?php
+<?php
             if($empresas['cantidadEmpresas'] == 0)
-                    echo 'No hay empresas';
-            else {
-                foreach ($empresas['empresas'] as $key => $value) {
-                    echo '
-                        <div class="col-xs-12 col-sm-6 card"> <div class="col-xs-12 shadowButtonDown cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li><li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li></ul> </div><p>'.$value['nombre'].'</p></div><div class="col-xs-4 cardContent text-center"><i class="fa fa-map fa-2x"></i><br><span>ZONAS</span><br>'.$value['zonas'].'</div><div class="col-xs-4 cardContent text-center"><i class="fa fa-truck fa-2x"></i><br><span>MÁQUINAS</span><br>'.$value['maquinas'].'</div><div class="col-xs-4 cardContent text-center"><i class="fa fa-users fa-2x"></i><br><span>SUPERVISORES</span><br>'.$value['supervisores'].'</div></div><a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Ver</a> </div>
-                     ';
+                echo '<div class="col-xs-12">No hay empresas registradas</div>';
+            else { foreach($empresas['empresas'] as $value) { echo '  
+               <div class="col-xs-12 col-sm-6 card">
+                <div class="col-xs-12 shadow cardContent">
+                    <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i><p id="'.$value['idEmpresa'].'">'.$value['nombre'].'</p>
+                        <div class="dropdown pull-right">
+                            <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
+                                <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-remove"></i>remover</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <table class="tableStyle">
+                        <thead>
+                            <tr>
+                                <th>Rut</th>
+                                <th>Correo</th>
+                                <th class="unDisplayColumn">Teléfono</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>'.$value['rut'].'</td>
+                                <td class="unDisplayColumn">'.$value['correo'].'</td>
+                                <td class="unDisplayColumn">'.$value['telefono'].'</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>';
                 }
             }
-        ?>
+    ?>
+
     </div>
+        
+            
     <div class="stickyButton agregarEmpresa"><i class="fa fa-plus"></i></div>
 <!-- VENTANAS MODALES -->
     <!-- MODAL AGREGAR EMPRESA --> 
@@ -153,5 +182,29 @@
             });
         });
     </script>
+    <script>
+       $(document).ready(function(){
+           $('.btnPlus').click(function(){
+               var accordion = $(this).parent().parent().next();
+               if(accordion.hasClass('unActivated')) {
+                   $('.accordion').removeClass('activated');
+                   $('.accordion').addClass('unActivated');
+                   accordion.removeClass('unActivated');
+                   accordion.addClass('activated');
+               }
+               else {
+                   $('.accordion').removeClass('activated');
+                   $('.accordion').addClass('unActivated');
+                   accordion.removeClass('activated');
+                   accordion.addClass('unActivated');
+               }
+           });
+           $(window).resize(function(){
+               if($(window).width() > 970)
+                   if($('.accordion').hasClass('activated')) 
+                        $($('.accordion').removeClass('activated').addClass('unActivated'));
+           });
+       });
+   </script>
 </body>
 </html>

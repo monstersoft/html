@@ -45,7 +45,7 @@ function empresas() {
         if($resultado = mysqli_query($conexion,$consulta)) {
             $r = mysqli_fetch_assoc($resultado);
             $arreglo['cantidadEmpresas'] = $r['cantidadEmpresas'];
-            if($arreglo['cantidadEmpresas'] != 0) {
+            /*if($arreglo['cantidadEmpresas'] != 0) {
                 $consulta = 'SELECT empresas.idEmpresa, empresas.nombre, COUNT(DISTINCT zonas.idZona) AS zonas, COUNT(DISTINCT maquinas.idMaquina) AS maquinas, COUNT(DISTINCT supervisores.idSupervisor) AS supervisores
                              FROM empresas
                              LEFT JOIN zonas ON zonas.idEmpresa = empresas.idEmpresa
@@ -59,11 +59,20 @@ function empresas() {
                     }
                 
                 }
-            }
+            }*/
+            if($arreglo['cantidadEmpresas'] != 0) {
+                $consulta = 'SELECT * FROM empresas';
+                if($resultado = mysqli_query($conexion,$consulta)) {
+                    while($r = mysqli_fetch_array($resultado)) {
+                        array_push($arreglo['empresas'],array('idEmpresa' => $r['idEmpresa'],'nombre' => utf8_encode($r['nombre']), 'rut' => $r['rut'], 'correo' => $r['correo'], 'telefono' => $r['telefono'], 'estado' => $r['estado']));
+                    }
+                
+                }
             mysqli_close($conexion);
             return $arreglo;
         }
     }
+}
 // FUNCIONES PARA CLIENTES zonas.php 
     function zonas($idEmpresa) {
         $conexion = conectar();
@@ -215,3 +224,4 @@ function empresas() {
         mysqli_close($conexion);
         return $arreglo;
     }
+?>
