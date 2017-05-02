@@ -61,7 +61,7 @@
                                             <tr>
                                                 <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>'.$v['nombreZona'].'</td>
                                                 <td>
-                                                    <div class="input-group input-xs"><input type="text" id="'.$v['idZona'].'" class="btnFecha form-control datepicker" data-value="'.$v['fechaRecienteDatos'].'" name="fechaRecienteDatos'.$v['idZona'].'"><div class="input-group-btn"><button id="'.$v['idZona'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div>
+                                                    <form method="POST" action="maquinas.php"><input type="hidden" name="idArchivo" value="'.$v['idArchivo'].'"></input><input type="hidden" name="idZona" value="'.$v['idZona'].'"></input><div class="input-group input-xs"><input type="text" id="'.$v['idZona'].'" class="btnFecha form-control datepicker" data-value="'.$v['fechaRecienteDatos'].'" name="fechaRecienteDatos"><div class="input-group-btn"><button id="'.$v['idZona'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div></form>
                                                 </td>
                                                 <td class="unDisplayColumn">'.$v['fechaRecienteDatos'].'</td>
                                                 <td class="unDisplayColumn">'.$v['nombreSupervisor'].'</td>

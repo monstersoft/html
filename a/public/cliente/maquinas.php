@@ -17,6 +17,9 @@
 			array_push($arreglo2,array('identificador' => $row['identificador']));
         }
 	}*/
+    $fecha = $_POST['fechaRecienteDatos'];
+    $idZona = $_POST['idZona'];
+    $idArchivo = $_POST['idArchivo'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -96,7 +99,11 @@
 <!-- ............................................................................................................................ -->
 
 
-
+<?php 
+        echo $idZona.'<br>';
+        echo $fecha.'<br>';
+        echo $idArchivo.'<br>';
+        ?>
 <div class="col-xs-12 col-sm-4 col-md-2 card"> 
     <div class="col-xs-12 shadowButtonDown cardContent"> 
         <div class="col-xs-12 titleCard"> 

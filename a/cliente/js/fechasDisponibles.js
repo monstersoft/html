@@ -14,30 +14,32 @@ $('.datepicker').pickadate({
                     max: arr.lastDayAvailable,
                     disable: arr.availableDays
                 });
-                console.log(JSON.stringify(arr));
             },
             error: function(xhr) {console.log(xhr.responseText);}
         });
+        $(document.activeElement).blur();
     },
     onClose: function() {
         var currentCalendar = this;
-        var sD = this.get('select');
         var url = devuelveUrl('a/cliente/ajax/datosArchivo.php');
         $.ajax({
             url: url,
             type: 'POST',
-            data: {idZona: this.get('id'), fechaDatos: sD.year+'-'+sD.month+1+'-'+sD.date},
+            data: {idZona: currentCalendar.get('id'), fechaDatos: currentCalendar.get('select','yyyy-mm-dd')},
             dataType: 'json',
             cache: false,
             success: function(arr) {
-                var currentInput = document.getElementById(currentCalendar.get('id')).parentNode.parentNode.parentNode;
+                var currentInput = document.getElementById(currentCalendar.get('id')).parentNode.parentNode.parentNode.parentNode;
+                var currentForm = document.getElementById(currentCalendar.get('id')).parentNode.parentNode;
                 var supervisor = $(currentInput.childNodes[7]);
                 var fechaSubida = $(currentInput.childNodes[9]);
                 var horaSubida = $(currentInput.childNodes[11]);
+                console.log(currentInput);
+                console.log(JSON.stringify(arr));
+                currentForm.childNodes[0].value = arr.idArchivo;
                 supervisor.html(arr.nombreSupervisor);
                 fechaSubida.html(arr.fechaSubida);
                 horaSubida.html(arr.horaSubida);
-                console.log(JSON.stringify(arr));
             },
             error: function(xhr) {console.log(xhr.responseText);}
         });
@@ -49,7 +51,7 @@ $('.datepicker').pickadate({
     weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
     showMonthsShort: undefined,
     showWeekdaysFull: undefined,
-    today: 'Hoy',
+    today: '',
     clear: '',
     close: 'Cerrar',
     disable: [true],

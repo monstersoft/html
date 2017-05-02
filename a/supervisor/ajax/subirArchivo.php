@@ -70,14 +70,14 @@
         $countSuccess = 0;
         if(mysqli_query($con,$qry)) {
             $lastIdFile = mysqli_insert_id($con);
-            /*$file2 = fopen($file['name'],'r');
+            $file2 = fopen($file['name'],'r');
             while ($data = fgetcsv($file2,150,";")){
                 if($data[0]){
                     $qry = "INSERT INTO datos (idArchivo,identificador,hora,latitud,longitud,motorFuncionando,rpm,gradosPalaFrontal,gradosPalaTrasera,cambio,alturaPalaFrontal,alturaPalaTrasera)
                             VALUES ('$lastIdFile','$data[0]','$data[1]','$data[2]','$data[3]','$data[4]','$data[5]','$data[6]','$data[7]','$data[8]','$data[9]','$data[10]')";
                         if(mysqli_query($con,$qry)) $countSuccess++;
                 }
-            }*/
+            }
         }
         return $countSuccess;
     }

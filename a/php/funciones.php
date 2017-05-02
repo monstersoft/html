@@ -1,15 +1,13 @@
 <?php
 	include("conexion.php");
 //FUNCIONES PARA CLIENTE
-function debug( $var) 
-{ 
+    function debug( $var) { 
   echo "<pre>";
   print_r($var); 
   echo "</pre>";
 }
-
 // ZONAS.PHP
-function datosRecientes() {
+    function datosRecientes() {
     $conexion = conectar();
     $arreglo = array();
     $flag = 0;
@@ -37,7 +35,7 @@ function datosRecientes() {
     mysqli_close($conexion);
     return $arreglo;
 }
-function empresas() {
+    function empresas() {
         $conexion = conectar();
         $arreglo = array();
         $arreglo['empresas'] = array();
@@ -163,7 +161,6 @@ function empresas() {
         mysqli_close($conexion);
         return $arreglo;
 	}
-
 // FUNCIONES PARA OTRA COSA
 	function verifica($arreglo) {
 		$conexion = conectar();
@@ -192,8 +189,7 @@ function empresas() {
 		}
 		mysqli_close($conexion);
 		return $arreglo;
-	}
-
+}
 	function datosEmpresa($id) {
         $conexion = conectar();
         $consulta = "SELECT * FROM empresas WHERE empresas.idEmpresa = '$id'"; 
@@ -210,7 +206,6 @@ function empresas() {
         mysqli_close($conexion);
         return $arreglo;
     }
-
 	function datosPerfil($correo) {
         $conexion = conectar();
         $consulta = "SELECT correo,empresa FROM clientes WHERE correo = '$correo'"; 
