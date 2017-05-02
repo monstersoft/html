@@ -2,7 +2,7 @@
 	include ('/../../php/conexion.php');
     $beginTime = microtime(true);
 	$con = conectar();
-    set_time_limit(600);
+    set_time_limit(1200);
 	$dateData = $_POST['fechaDatos'];
 	$idZone = $_POST['idZona'];
 	$file = $_FILES['archivo'];

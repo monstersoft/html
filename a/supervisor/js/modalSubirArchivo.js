@@ -41,9 +41,9 @@ $(document).ready(function() {
                     }
                     else {
                          successMessage('Subida Exitosa','Los datos han sido subidos exitosamente');
-                        $('.cancelar').remove();
+                        //$('.cancelar').remove();
                         $('#btnSubirArchivo').remove();
-                        setTimeout(function(){location.reload()}, 3000);
+                        //setTimeout(function(){location.reload()}, 3000);
                     }
                     console.log(JSON.stringify(arreglo));
                 },

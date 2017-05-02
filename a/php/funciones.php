@@ -1,12 +1,36 @@
 <?php
-	include("conexion.php");
-//FUNCIONES PARA CLIENTE
-    function debug( $var) { 
-  echo "<pre>";
-  print_r($var); 
-  echo "</pre>";
+	include("conexion.php"); 
+debug(resultadosMaquinas(2));
+function resultadosMaquinas($idArchivo) {
+        $conexion = conectar();
+        $arreglo = array();
+        $flag = 0;
+        $consulta = "SELECT * FROM datos WHERE datos.idArchivo = '$idArchivo' ORDER BY datos.identificador ASC, datos.hora ASC";
+        if($resultado = mysqli_query($conexion,$consulta)) {
+            while($row = mysqli_fetch_array($resultado)) {
+                echo $row['hora'].'<br>';
+                /*if($flag == 0) {
+                   $zonas = [];
+                   array_push($zonas,array('idZona' => $row['idZona'],'nombreZona' => utf8_encode($row['nombreZona']),'idSupervisor' => $row['idSupervisor'],'nombreSupervisor' => utf8_encode($row['nombreSupervisor']),'idArchivo' => $row['idArchivo'],'fechaDatos' => $row['fechaDatos'],'fechaSubida' => utf8_encode($row['fechaSubida']),'horaSubida' => utf8_encode($row['horaSubida']),'fechaRecienteDatos' => utf8_encode($row['fechaRecienteDatos'])));
+                   array_push($arreglo,array('idEmpresa' => $row['idEmpresa'], 'nombreEmpresa' => utf8_encode($row['nombreEmpresa']), 'zonas' => $zonas));
+                   $flag = 1;
+                }
+                else {
+                    if($arreglo[sizeof($arreglo)-1]['idEmpresa'] == $row['idEmpresa'])
+                        array_push($arreglo[sizeof($arreglo)-1]['zonas'],array('idZona' => $row['idZona'],'nombreZona' => utf8_encode($row['nombreZona']),'idSupervisor' => $row['idSupervisor'],'nombreSupervisor' => utf8_encode($row['nombreSupervisor']),'idArchivo' => $row['idArchivo'],'fechaDatos' => $row['fechaDatos'],'fechaSubida' => utf8_encode($row['fechaSubida']),'horaSubida' => utf8_encode($row['horaSubida']),'fechaRecienteDatos' => utf8_encode($row['fechaRecienteDatos'])));
+
+                    else {
+                        $zonas = [];
+                        array_push($zonas,array('idZona' => $row['idZona'],'nombreZona' => utf8_encode($row['nombreZona']),'idSupervisor' => $row['idSupervisor'],'nombreSupervisor' => utf8_encode($row['nombreSupervisor']),'idArchivo' => $row['idArchivo'],'fechaDatos' => $row['fechaDatos'],'fechaSubida' => utf8_encode($row['fechaSubida']),'horaSubida' => utf8_encode($row['horaSubida']),'fechaRecienteDatos' => utf8_encode($row['fechaRecienteDatos'])));
+                        array_push($arreglo,array('idEmpresa' => $row['idEmpresa'], 'nombreEmpresa' => utf8_encode($row['nombreEmpresa']), 'zonas' => $zonas));
+                    }
+                }
+            }*/
+        }
+        mysqli_close($conexion);
+        }
+    return $arreglo;
 }
-// ZONAS.PHP
     function datosRecientes() {
     $conexion = conectar();
     $arreglo = array();
@@ -71,65 +95,64 @@
         }
     }
 }
-// FUNCIONES PARA CLIENTES zonas.php 
     function zonas($idEmpresa) {
-        $conexion = conectar();
-        $arreglo = array();
-        $consulta = "SELECT zonas.idZona AS idZona, zonas.nombre AS nombreZona
-                     FROM zonas
-                     WHERE zonas.idEmpresa = '$idEmpresa'";
+    $conexion = conectar();
+    $arreglo = array();
+    $consulta = "SELECT zonas.idZona AS idZona, zonas.nombre AS nombreZona
+                 FROM zonas
+                 WHERE zonas.idEmpresa = '$idEmpresa'";
+    if($resultado = mysqli_query($conexion,$consulta)) {
         if($resultado = mysqli_query($conexion,$consulta)) {
-            if($resultado = mysqli_query($conexion,$consulta)) {
-                while($row = mysqli_fetch_array($resultado)) {
-                    array_push($arreglo,array('idZona' => $row['idZona'], 'nombreZona' => utf8_encode($row['nombreZona'])));
-                }
+            while($row = mysqli_fetch_array($resultado)) {
+                array_push($arreglo,array('idZona' => $row['idZona'], 'nombreZona' => utf8_encode($row['nombreZona'])));
             }
         }
-        mysqli_close($conexion);
-        return $arreglo;
     }
-	function cantidadZonas($idEmpresa) {
-        $conexion = conectar();
-        $cantidad;
-        $consulta = "SELECT 
-                     COUNT(zonas.idZona) 
-                     AS cantidadZonas 
-                     FROM zonas 
-                     WHERE zonas.idEmpresa = '$idEmpresa'"; 
-        if($resultado = mysqli_query($conexion,$consulta)) {
-        	$row = mysqli_fetch_assoc($resultado);
-            $cantidad = $row['cantidadZonas'];
-        }
-        mysqli_close($conexion);
-        return $cantidad;
-	}
+    mysqli_close($conexion);
+    return $arreglo;
+}
+    function cantidadZonas($idEmpresa) {
+    $conexion = conectar();
+    $cantidad;
+    $consulta = "SELECT 
+                 COUNT(zonas.idZona) 
+                 AS cantidadZonas 
+                 FROM zonas 
+                 WHERE zonas.idEmpresa = '$idEmpresa'"; 
+    if($resultado = mysqli_query($conexion,$consulta)) {
+        $row = mysqli_fetch_assoc($resultado);
+        $cantidad = $row['cantidadZonas'];
+    }
+    mysqli_close($conexion);
+    return $cantidad;
+}
     function cantidadMaquinas($idZona) {
-        $conexion = conectar();
-        $cantidad;
-        $consulta = "SELECT 
-                     COUNT(maquinas.idMaquina) 
-                     AS cantidadMaquinas 
-                     FROM maquinas 
-                     WHERE maquinas.idZona = '$idZona'"; 
-        if($resultado = mysqli_query($conexion,$consulta)) {
-        	$row = mysqli_fetch_assoc($resultado);
-            $cantidad = $row['cantidadMaquinas'];
+    $conexion = conectar();
+    $cantidad;
+    $consulta = "SELECT 
+                 COUNT(maquinas.idMaquina) 
+                 AS cantidadMaquinas 
+                 FROM maquinas 
+                 WHERE maquinas.idZona = '$idZona'"; 
+    if($resultado = mysqli_query($conexion,$consulta)) {
+        $row = mysqli_fetch_assoc($resultado);
+        $cantidad = $row['cantidadMaquinas'];
+    }
+    mysqli_close($conexion);
+    return $cantidad;
+}
+    function maquinas($idZona) {
+    $conexion = conectar();
+    $arreglo = array();
+    $consulta = "SELECT * FROM maquinas WHERE maquinas.idZona = '$idZona'"; 
+    if($resultado = mysqli_query($conexion,$consulta)) {
+        while($r = mysqli_fetch_array($resultado)) {
+            array_push($arreglo,array('idMaquina' => $r['idMaquina'], 'idZona' => $r['idZona'], 'identificador' => $r['identificador'], 'patente' => $r['patente'], 'fechaRegistro' => $r['fechaRegistro'], 'tara' => $r['tara'], 'cargaMaxima' => $r['cargaMaxima']));
         }
-        mysqli_close($conexion);
-        return $cantidad;
-	}
-	function maquinas($idZona) {
-        $conexion = conectar();
-        $arreglo = array();
-        $consulta = "SELECT * FROM maquinas WHERE maquinas.idZona = '$idZona'"; 
-        if($resultado = mysqli_query($conexion,$consulta)) {
-            while($r = mysqli_fetch_array($resultado)) {
-                array_push($arreglo,array('idMaquina' => $r['idMaquina'], 'idZona' => $r['idZona'], 'identificador' => $r['identificador'], 'patente' => $r['patente'], 'fechaRegistro' => $r['fechaRegistro'], 'tara' => $r['tara'], 'cargaMaxima' => $r['cargaMaxima']));
-            }
-        }
-        mysqli_close($conexion);
-        return $arreglo;
-	}
+    }
+    mysqli_close($conexion);
+    return $arreglo;
+}
 	function cantidadSupervisores($idZona) {
         $conexion = conectar();
         $cantidad;
@@ -161,7 +184,6 @@
         mysqli_close($conexion);
         return $arreglo;
 	}
-// FUNCIONES PARA OTRA COSA
 	function verifica($arreglo) {
 		$conexion = conectar();
 		$arreglo = array();
@@ -219,4 +241,9 @@
         mysqli_close($conexion);
         return $arreglo;
     }
+function debug($var) { 
+  echo "<pre>";
+  print_r($var); 
+  echo "</pre>";
+}
 ?>
