@@ -1,34 +1,16 @@
 <?php
 	include("conexion.php"); 
-debug(resultadosMaquinas(2));
-function resultadosMaquinas($idArchivo) {
-        $conexion = conectar();
-        $arreglo = array();
-        $flag = 0;
-        $consulta = "SELECT * FROM datos WHERE datos.idArchivo = '$idArchivo' ORDER BY datos.identificador ASC, datos.hora ASC";
-        if($resultado = mysqli_query($conexion,$consulta)) {
-            while($row = mysqli_fetch_array($resultado)) {
-                echo $row['hora'].'<br>';
-                /*if($flag == 0) {
-                   $zonas = [];
-                   array_push($zonas,array('idZona' => $row['idZona'],'nombreZona' => utf8_encode($row['nombreZona']),'idSupervisor' => $row['idSupervisor'],'nombreSupervisor' => utf8_encode($row['nombreSupervisor']),'idArchivo' => $row['idArchivo'],'fechaDatos' => $row['fechaDatos'],'fechaSubida' => utf8_encode($row['fechaSubida']),'horaSubida' => utf8_encode($row['horaSubida']),'fechaRecienteDatos' => utf8_encode($row['fechaRecienteDatos'])));
-                   array_push($arreglo,array('idEmpresa' => $row['idEmpresa'], 'nombreEmpresa' => utf8_encode($row['nombreEmpresa']), 'zonas' => $zonas));
-                   $flag = 1;
-                }
-                else {
-                    if($arreglo[sizeof($arreglo)-1]['idEmpresa'] == $row['idEmpresa'])
-                        array_push($arreglo[sizeof($arreglo)-1]['zonas'],array('idZona' => $row['idZona'],'nombreZona' => utf8_encode($row['nombreZona']),'idSupervisor' => $row['idSupervisor'],'nombreSupervisor' => utf8_encode($row['nombreSupervisor']),'idArchivo' => $row['idArchivo'],'fechaDatos' => $row['fechaDatos'],'fechaSubida' => utf8_encode($row['fechaSubida']),'horaSubida' => utf8_encode($row['horaSubida']),'fechaRecienteDatos' => utf8_encode($row['fechaRecienteDatos'])));
-
-                    else {
-                        $zonas = [];
-                        array_push($zonas,array('idZona' => $row['idZona'],'nombreZona' => utf8_encode($row['nombreZona']),'idSupervisor' => $row['idSupervisor'],'nombreSupervisor' => utf8_encode($row['nombreSupervisor']),'idArchivo' => $row['idArchivo'],'fechaDatos' => $row['fechaDatos'],'fechaSubida' => utf8_encode($row['fechaSubida']),'horaSubida' => utf8_encode($row['horaSubida']),'fechaRecienteDatos' => utf8_encode($row['fechaRecienteDatos'])));
-                        array_push($arreglo,array('idEmpresa' => $row['idEmpresa'], 'nombreEmpresa' => utf8_encode($row['nombreEmpresa']), 'zonas' => $zonas));
-                    }
-                }
-            }*/
-        }
-        mysqli_close($conexion);
-        }
+    debug(resultadosMaquinas(89));
+    function resultadosMaquinas($idArchivo) {
+    $conexion = conectar();
+    $arreglo = array();
+    $flag = 0;
+    $consulta = "SELECT * FROM datos WHERE datos.idArchivo = '$idArchivo' ORDER BY datos.identificador ASC, datos.hora ASC";
+    if($resultado = mysqli_query($conexion,$consulta)) {
+        //while($row = mysqli_fetch_array($resultado)) {}
+        echo sizeof($resultado);
+    }
+    mysqli_close($conexion);
     return $arreglo;
 }
     function datosRecientes() {
@@ -241,7 +223,7 @@ function resultadosMaquinas($idArchivo) {
         mysqli_close($conexion);
         return $arreglo;
     }
-function debug($var) { 
+    function debug($var) { 
   echo "<pre>";
   print_r($var); 
   echo "</pre>";
