@@ -1,18 +1,49 @@
 <?php
 	include("conexion.php"); 
-    debug(resultadosMaquinas(89));
-    function resultadosMaquinas($idArchivo) {
+    //debug(resultadosMaquinas(89));
+    //function resultadosMaquinas($idArchivo) {
     $conexion = conectar();
-    $arreglo = array();
-    $flag = 0;
-    $consulta = "SELECT * FROM datos WHERE datos.idArchivo = '$idArchivo' ORDER BY datos.identificador ASC, datos.hora ASC";
+    //$arreglo = array('horas' => array(0 => array()));
+    $dato = array();
+    $arr = arrayResultados($conexion,89,1);
+    array_push($arr['horas'][0],array('hora' => '08:00:00','gradosPalaFrontal' => 100,'gradosPalaTrasera' => 100,'alturaPalaFrontal' => 100,'alturaPalaTrasera' => 100));
+array_push($arr['horas'][0],array('hora' => '08:00:00','gradosPalaFrontal' => 100,'gradosPalaTrasera' => 100,'alturaPalaFrontal' => 100,'alturaPalaTrasera' => 100));
+    echo debug($arr);
+    //array_push($arreglo['horas'][0],array('hora' => '08:01:00','gradosPalaFrontal' => 100,'gradosPalaTrasera' => 100,'alturaPalaFrontal' => 100,'alturaPalaTrasera' => 100));
+//array_push($arreglo['horas']['8am'],$dato);
+    /*$consulta = "SELECT * FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.identificador = 1 ORDER BY datos.identificador ASC, datos.hora ASC";
     if($resultado = mysqli_query($conexion,$consulta)) {
-        //while($row = mysqli_fetch_array($resultado)) {}
-        echo sizeof($resultado);
+        while($row = mysqli_fetch_array($resultado)) {
+            if($row['hora'] <= '08:59:00') {
+                echo 'AL ARRAY 0'.'/'.$row['hora'].'<br>';
+                array_push($arreglo['horas'][0],array('hora' => $row['row'], 'gradosPalaFrontal' => $row['gradosPalaFrontal'], 'gradosPalaTrasera' => $row['gradosPalaFrontal'], 'alturaPalaFrontal' => $row['alturaPalaFrontal'], 'alturaPalaTrasera' => $row['alturaPalaTrasera']));
+            }
+        }
+    }*/
+    //mysqli_close($conexion);
+    //echo json_encode($arreglo);
+//}
+    function arrayResultados($con,$idFile,$identifier) {
+        $qry = "SELECT MAX(datos.hora) FROM datos WHERE datos.idArchivo = '$idFile' AND datos.identificador = '$identifier'";
+            if($res = mysqli_query($con,$qry)) {
+                $row = mysqli_fetch_row($res);
+                list($h,$m,$s) = explode(':',$row[0]);
+                $maxHour = intval($h);
+            }
+        $qry = "SELECT MIN(datos.hora) FROM datos WHERE datos.idArchivo = '$idFile' AND datos.identificador = '$identifier'";
+            if($res = mysqli_query($con,$qry)) {
+                $row = mysqli_fetch_row($res);
+                list($h,$m,$s) = explode(':',$row[0]);
+                $minHour = intval($h);
+            }
+        $arr = array('horas' => array());
+        while($minHour <= $maxHour) {   
+            array_push($arr['horas'],array());
+            $minHour++;
+        }
+        
+        return $arr;
     }
-    mysqli_close($conexion);
-    return $arreglo;
-}
     function datosRecientes() {
     $conexion = conectar();
     $arreglo = array();
