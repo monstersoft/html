@@ -4,9 +4,11 @@
     function resultadosMaquinas($idFile,$identifier) {
         $conexion = conectar();
         $arr = arrayResultados($conexion,$idFile,$identifier);
+        $flag = 0;
         $consulta = "SELECT * FROM datos WHERE datos.idArchivo = '$idFile' AND datos.identificador = '$identifier' ORDER BY datos.identificador ASC, datos.hora ASC";
         if($resultado = mysqli_query($conexion,$consulta)) {
             while($row = mysqli_fetch_array($resultado)) {
+                if($flag == 0) { $firstPoint = array($row['latitud'],$row['longitud']); $arr['firstPoint'] = $firstPoint; $flag = 1;}    
                 $position = returnPositionInsert(date_create($row['hora']));
                 $arr['hours'][$position]['labels'][] = returnLabelChart($row['hora']);
                 $arr['hours'][$position]['degressFrontShovel']['values'][] = floatval($row['gradosPalaFrontal']);
@@ -16,7 +18,17 @@
             }
         }
         mysqli_close($conexion);
-        echo json_encode($arr);
+        //echo json_encode($arr);
+        debug($arr);
+    }
+    function getDistanceFromLatLonInKm($lat1,$lon1,$lat2,$lon2) {
+          $R = 6371; // Radius of the earth in km
+          $dLat = deg2rad($lat2-$lat1);  // deg2rad below
+          $dLon = deg2rad($lon2-$lon1); 
+          $a = sin($dLat/2)*sin($dLat/2)+cos(deg2rad($lat1))*cos(deg2rad($lat2)) * sin($dLon/2) * sin($dLon/2); 
+          $c = 2*atan2(sqrt($a),sqrt(1-$a)); 
+          $d = $R*$c; // Distance in km
+          return $d;
     }
     function returnLabelChart($date) {
         list($hour,$minute,$second) = explode(':',$date);
@@ -65,7 +77,7 @@
             $degressBackShovel = array('values' => array());
             $highFrontShovel = array('values' => array());
             $highBackShovel = array('values' => array());
-            array_push($arr['hours'],array('labels' => array(), 'degressFrontShovel' => $degressFrontShovel, 'degressBackShovel' => $degressBackShovel,'highFrontShovel' => $highFrontShovel, 'highBackShovel' => $highBackShovel));
+            array_push($arr['hours'],array('degressFrontShovel' => $degressFrontShovel, 'degressBackShovel' => $degressBackShovel,'highFrontShovel' => $highFrontShovel, 'highBackShovel' => $highBackShovel));
             $minHour++;
         }
         return $arr;
