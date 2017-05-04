@@ -1,47 +1,73 @@
 <?php
 	include("conexion.php"); 
-    //debug(resultadosMaquinas(89));
-    //function resultadosMaquinas($idArchivo) {
-    $conexion = conectar();
-    //$arreglo = array('horas' => array(0 => array()));
-    $dato = array();
-    $arr = arrayResultados($conexion,89,1);
-    array_push($arr['horas'][0],array('hora' => '08:00:00','gradosPalaFrontal' => 100,'gradosPalaTrasera' => 100,'alturaPalaFrontal' => 100,'alturaPalaTrasera' => 100));
-array_push($arr['horas'][0],array('hora' => '08:00:00','gradosPalaFrontal' => 100,'gradosPalaTrasera' => 100,'alturaPalaFrontal' => 100,'alturaPalaTrasera' => 100));
-    echo debug($arr);
-    //array_push($arreglo['horas'][0],array('hora' => '08:01:00','gradosPalaFrontal' => 100,'gradosPalaTrasera' => 100,'alturaPalaFrontal' => 100,'alturaPalaTrasera' => 100));
-//array_push($arreglo['horas']['8am'],$dato);
-    /*$consulta = "SELECT * FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.identificador = 1 ORDER BY datos.identificador ASC, datos.hora ASC";
-    if($resultado = mysqli_query($conexion,$consulta)) {
-        while($row = mysqli_fetch_array($resultado)) {
-            if($row['hora'] <= '08:59:00') {
-                echo 'AL ARRAY 0'.'/'.$row['hora'].'<br>';
-                array_push($arreglo['horas'][0],array('hora' => $row['row'], 'gradosPalaFrontal' => $row['gradosPalaFrontal'], 'gradosPalaTrasera' => $row['gradosPalaFrontal'], 'alturaPalaFrontal' => $row['alturaPalaFrontal'], 'alturaPalaTrasera' => $row['alturaPalaTrasera']));
+    echo resultadosMaquinas(89,1);
+    function resultadosMaquinas($idFile,$identifier) {
+        $conexion = conectar();
+        $arr = arrayResultados($conexion,$idFile,$identifier);
+        $consulta = "SELECT * FROM datos WHERE datos.idArchivo = '$idFile' AND datos.identificador = '$identifier' ORDER BY datos.identificador ASC, datos.hora ASC";
+        if($resultado = mysqli_query($conexion,$consulta)) {
+            while($row = mysqli_fetch_array($resultado)) {
+                $position = returnPositionInsert(date_create($row['hora']));
+                $arr['hours'][$position]['labels'][] = returnLabelChart($row['hora']);
+                $arr['hours'][$position]['degressFrontShovel']['values'][] = floatval($row['gradosPalaFrontal']);
+                $arr['hours'][$position]['degressBackShovel']['values'][] = floatval($row['gradosPalaTrasera']);
+                $arr['hours'][$position]['highFrontShovel']['values'][] = floatval($row['alturaPalaFrontal']);
+                $arr['hours'][$position]['highBackShovel']['values'][] = floatval($row['alturaPalaTrasera']);
             }
         }
-    }*/
-    //mysqli_close($conexion);
-    //echo json_encode($arreglo);
-//}
-    function arrayResultados($con,$idFile,$identifier) {
+        mysqli_close($conexion);
+        echo json_encode($arr);
+    }
+    function returnLabelChart($date) {
+        list($hour,$minute,$second) = explode(':',$date);
+        return intval($minute);
+    }
+    function returnPositionInsert($date) {
+        if($date <= date_create('08:59:59'))
+            return 0;
+        if(($date >= date_create('09:00:00')) and ($date <= date_create('09:59:59')))
+            return 1;
+        if(($date >= date_create('10:00:00')) and ($date <= date_create('10:59:59')))
+            return 2;
+        if(($date >= date_create('11:00:00')) and ($date <= date_create('11:59:59')))
+            return 3;
+        if(($date >= date_create('12:00:00')) and ($date <= date_create('12:59:59')))
+            return 4;
+        if(($date >= date_create('13:00:00')) and ($date <= date_create('13:59:59')))
+            return 5;
+        if(($date >= date_create('14:00:00')) and ($date <= date_create('14:59:59')))
+            return 6;
+        if(($date >= date_create('15:00:00')) and ($date <= date_create('15:59:59')))
+            return 7;
+        if(($date >= date_create('16:00:00')) and ($date <= date_create('16:59:59')))
+            return 8;
+        if(($date >= date_create('17:00:00')) and ($date <= date_create('17:59:59')))
+            return 9;
+    }
+    function arrayResultados($con, $idFile,$identifier) {
+        $arr = array('hours' => array());
         $qry = "SELECT MAX(datos.hora) FROM datos WHERE datos.idArchivo = '$idFile' AND datos.identificador = '$identifier'";
-            if($res = mysqli_query($con,$qry)) {
-                $row = mysqli_fetch_row($res);
-                list($h,$m,$s) = explode(':',$row[0]);
-                $maxHour = intval($h);
-            }
+        if($res = mysqli_query($con,$qry)) {
+            $row = mysqli_fetch_row($res);
+            list($h,$m,$s) = explode(':',$row[0]);
+            $maxHour = intval($h);
+        }
+        $arr['maxHour'] = $maxHour;
         $qry = "SELECT MIN(datos.hora) FROM datos WHERE datos.idArchivo = '$idFile' AND datos.identificador = '$identifier'";
-            if($res = mysqli_query($con,$qry)) {
-                $row = mysqli_fetch_row($res);
-                list($h,$m,$s) = explode(':',$row[0]);
-                $minHour = intval($h);
-            }
-        $arr = array('horas' => array());
-        while($minHour <= $maxHour) {   
-            array_push($arr['horas'],array());
+        if($res = mysqli_query($con,$qry)) {
+            $row = mysqli_fetch_row($res);
+            list($h,$m,$s) = explode(':',$row[0]);
+            $minHour = intval($h);
+        }
+        $arr['minHour'] = $minHour;
+        while($minHour <= $maxHour) {
+            $degressFrontShovel = array('values' => array());
+            $degressBackShovel = array('values' => array());
+            $highFrontShovel = array('values' => array());
+            $highBackShovel = array('values' => array());
+            array_push($arr['hours'],array('labels' => array(), 'degressFrontShovel' => $degressFrontShovel, 'degressBackShovel' => $degressBackShovel,'highFrontShovel' => $highFrontShovel, 'highBackShovel' => $highBackShovel));
             $minHour++;
         }
-        
         return $arr;
     }
     function datosRecientes() {
