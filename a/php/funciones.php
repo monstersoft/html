@@ -4,11 +4,11 @@
     function resultadosMaquinas($idFile,$identifier) {
         $conexion = conectar();
         $arr = arrayResultados($conexion,$idFile,$identifier);
-        $flag = 0;
+        $points = array();
         $consulta = "SELECT * FROM datos WHERE datos.idArchivo = '$idFile' AND datos.identificador = '$identifier' ORDER BY datos.identificador ASC, datos.hora ASC";
         if($resultado = mysqli_query($conexion,$consulta)) {
             while($row = mysqli_fetch_array($resultado)) {
-                if($flag == 0) { $firstPoint = array($row['latitud'],$row['longitud']); $arr['firstPoint'] = $firstPoint; $flag = 1;}    
+                array_push($points,array('latitud' => floatval($row['latitud']), 'longitud' => floatval($row['longitud'])));
                 $position = returnPositionInsert(date_create($row['hora']));
                 $arr['hours'][$position]['labels'][] = returnLabelChart($row['hora']);
                 $arr['hours'][$position]['degressFrontShovel']['values'][] = floatval($row['gradosPalaFrontal']);
@@ -19,16 +19,17 @@
         }
         mysqli_close($conexion);
         //echo json_encode($arr);
-        debug($arr);
+        //echo json_encode($points);
     }
-    function getDistanceFromLatLonInKm($lat1,$lon1,$lat2,$lon2) {
+    function getDistanceFromLatLonInKm($lat1,$lon1,$lat2,$lon2,$sum) {
           $R = 6371; // Radius of the earth in km
           $dLat = deg2rad($lat2-$lat1);  // deg2rad below
           $dLon = deg2rad($lon2-$lon1); 
           $a = sin($dLat/2)*sin($dLat/2)+cos(deg2rad($lat1))*cos(deg2rad($lat2)) * sin($dLon/2) * sin($dLon/2); 
           $c = 2*atan2(sqrt($a),sqrt(1-$a)); 
           $d = $R*$c; // Distance in km
-          return $d;
+          $sum = $sum +$d;
+          return $sum;
     }
     function returnLabelChart($date) {
         list($hour,$minute,$second) = explode(':',$date);
@@ -54,6 +55,28 @@
         if(($date >= date_create('16:00:00')) and ($date <= date_create('16:59:59')))
             return 8;
         if(($date >= date_create('17:00:00')) and ($date <= date_create('17:59:59')))
+            return 9;
+    }
+    function returnPositionInsertCambios($date) {
+        if($cambio == 1)
+            return 0;
+        if($cambio == 2)
+            return 1;
+        if($cambio == 3)
+            return 2;
+        if($cambio == 4)
+            return 3;
+        if($cambio == 5)
+            return 4;
+        if($cambio == 6)
+            return 5;
+        if(($date >= ('14:00:00')) and ($date <= date_create('14:59:59')))
+            return 6;
+        if(($date >= ('15:00:00')) and ($date <= date_create('15:59:59')))
+            return 7;
+        if(($date >= ('16:00:00')) and ($date <= date_create('16:59:59')))
+            return 8;
+        if(($date >= ('17:00:00')) and ($date <= date_create('17:59:59')))
             return 9;
     }
     function arrayResultados($con, $idFile,$identifier) {
