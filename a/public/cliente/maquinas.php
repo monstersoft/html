@@ -122,7 +122,7 @@
             </div>
         </div>
     </div>
-    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a> 
+    <a href="dashboard.php" class="boton">Detalle</a> 
 </div>
 
 
@@ -144,7 +144,7 @@
             </div>
         </div>
     </div>
-    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a> 
+    <a href="dashboard.php" class="boton">Detalle</a> 
 </div>
 <div class="col-xs-12 col-sm-4 col-md-2 card"> 
     <div class="col-xs-12 shadowButtonDown cardContent"> 
@@ -164,7 +164,7 @@
             </div>
         </div>
     </div>
-    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a> 
+    <a href="dashboard.php" class="boton">Detalle</a> 
 </div>
 <div class="col-xs-12 col-sm-4 col-md-2 card"> 
     <div class="col-xs-12 shadowButtonDown cardContent"> 
@@ -184,7 +184,7 @@
             </div>
         </div>
     </div>
-    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a> 
+    <a href="dashboard.php" class="boton">Detalle</a> 
 </div>
 <div class="col-xs-12 col-sm-4 col-md-2 card"> 
     <div class="col-xs-12 shadowButtonDown cardContent"> 
@@ -204,7 +204,7 @@
             </div>
         </div>
     </div>
-    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a> 
+    <a href="dashboard.php" class="boton">Detalle</a> 
 </div>
 <div class="col-xs-12 col-sm-4 col-md-2 card"> 
     <div class="col-xs-12 shadowButtonDown cardContent"> 
@@ -224,7 +224,7 @@
             </div>
         </div>
     </div>
-    <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Detalle</a> 
+    <a href="dashboard.php" class="boton">Detalle</a> 
 </div>
 
 
