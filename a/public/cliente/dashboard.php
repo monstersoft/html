@@ -75,7 +75,6 @@
         </table>
     </div>
 </div>
-
 <div class="col-xs-12 col-sm-5 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-pie-chart pull-left"></i><p>Motor</p></div>
@@ -96,7 +95,6 @@
         </div>
     </div>
 </div>
-
 <div class="col-xs-12 col-sm-7 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-bar-chart pull-left"></i>
@@ -107,7 +105,6 @@
         </div>
     </div>
 </div>
-
 <div class="col-xs-12 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
@@ -158,6 +155,70 @@
         </div>
      </div>
 </div>
+
+
+<div class="col-xs-12 card">
+    <div class="col-xs-12 shadow cardContent">
+        <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
+            <p>Históricos</p>
+        </div>
+        <!--<div class="col-xs-6 cardContent" style="padding: 30px 20px 0px 50px;">
+            <div class="motorLegend">
+                <div class="legendColor backYellow"></div>
+                <div class="motorLegend">FRONTAL</div>
+            </div>
+        </div>
+        <div class="col-xs-6 cardContent" style="padding: 30px 20px 0px 50px;">
+            <div class="motorLegend">
+                <div class="legendColor backGrey"></div>
+                <div class="motorLegend">TRASERA</div>
+            </div>
+        </div>-->
+
+        <div class="col-xs-12 cardContent">
+            <div class="chartLineContainerHistorical">
+                <div id="chartLineHistorical"></div>
+            </div>
+        </div>
+        <div class="col-xs-6 cardContent" style="padding: 0px 20px 0px 50px;">
+            <div class="motorLegend">
+                <div class="legendColor backYellow"></div>
+                <div class="motorLegend">FRONTAL</div>
+            </div>
+        </div>
+        <div class="col-xs-6 cardContent" style="padding: 0px 20px 0px 50px;">
+            <div class="motorLegend">
+                <div class="legendColor backGrey"></div>
+                <div class="motorLegend">TRASERA</div>
+            </div>
+        </div>
+        <div class="col-xs-12 cardContent">
+            <div class="chartLineContainerHistorical">
+                <div id="chartLineHistorical2"></div>
+            </div>
+        </div>
+        <div class="col-xs-12 cardContent" style="padding: 0px 20px 0px 50px;">
+            <div class="motorLegend">
+                <div class="motorLegend">RECORRIDO PROMEDIO</div>
+            </div>
+        </div>
+        <div class="col-xs-12 cardContent">
+            <div class="chartLineContainerHistorical">
+                <div id="chartLineHistorical3"></div>
+            </div>
+        </div>
+        <div class="col-xs-12 cardContent" style="padding: 0px 20px 0px 50px;">
+            <div class="motorLegend">
+                <div class="motorLegend">MOTOR FUNCIONANDO</div>
+            </div>
+        </div>
+        <div class="col-xs-12 cardContent">
+            <div class="chartLineContainerHistorical">
+                <div id="chartLineHistorical4"></div>
+            </div>
+        </div>
+     </div>
+</div>
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
@@ -168,5 +229,12 @@
     <script src="../../js/funciones.js"></script>
     <script src="../../cliente/js/graficos.js"></script>
     <!--<script>main();</script>-->
+    <!--console.log( Math.max(moment(new Date(2017, 11, 31)).isoWeek(),moment(new Date(2017, 11, 31-7)).isoWeek()));
+var year = 2018;
+var week = 1;
+var startDate = moment([year, 5, 30]).isoWeek(week).startOf('isoweek'); 
+var endDate = moment(startDate).endOf('isoweek');
+console.log(startDate.format('DD.MM.YYYY')); // = '04.01.2016'
+console.log(endDate.format('DD.MM.YYYY')); // = '10.01.2016'-->
 </body>
 </html>

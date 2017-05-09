@@ -6,14 +6,22 @@ var data = {
         get(0,3600,59)
     ]
     };
+var data2 = {
+    labels: ['1','2','3','4','5'],
+    series: [[100,200,100,400,500]]
+};
 graphedChartLine('#chartLineSticky', true, data);
 graphedChartLine('#chartLine', false, data);
-
 graphedChartLine('#chartLineSticky2', true, data);
 graphedChartLine('#chartLine2', false, data)
-
 graphedChartDonut('#example');
 graphedChartBar('#example2');
+
+
+graphedChartLineHistorical('#chartLineHistorical', false, data2);
+graphedChartLineHistorical('#chartLineHistorical2', false, data2);
+graphedChartLineHistorical('#chartLineHistorical3', false, data2);
+graphedChartLineHistorical('#chartLineHistorical4', true, data2);
 
 function graphedChartBar(idChart) {
     var data = {
@@ -86,6 +94,15 @@ function graphedChartLine(idChart, axisShowY, data) {
         plugins: [
             Chartist.plugins.tooltip(),
         ]
+    }
+    new Chartist.Line(idChart, data, options);
+}
+function graphedChartLineHistorical(idChart, axisShowX, data) {
+    var options = {
+        lineSmooth: Chartist.Interpolation.cardinal({tension: 0.5}),
+        axisX: {showLabel: axisShowX},
+        fullWidth: true,
+        plugins: [Chartist.plugins.tooltip(),]
     }
     new Chartist.Line(idChart, data, options);
 }

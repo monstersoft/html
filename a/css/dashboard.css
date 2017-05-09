@@ -59,12 +59,6 @@ table td {
     overflow: hidden;
     display: block;
 }
-
-
-
-
-
-
 .ct-series-a .ct-line {
     stroke : #F5A214;
     stroke-width: 1px;
@@ -168,6 +162,69 @@ table td {
     width: 2000px;
     height: 250px;
 }
+.chartLineContainerHistorical {
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0;
+    width: 100%;
+}
+#chartLineHistorical {
+    height: 100px;
+}
+#chartLineHistorical2 {
+    height: 100px;
+}
+
+#chartLineHistorical3 {
+    height: 100px;
+}
+
+#chartLineHistorical4 {
+    height: 100px;
+}
+
+
+.chartist-tooltip {
+    position: absolute;
+    display: inline-block;
+    min-width: 5em;
+    padding: 8px 10px;
+    background: #383838;
+    color: #fff;
+    text-align: center;
+    pointer-events: none;
+    z-index: 100;
+    transition: opacity .2s linear;
+    transform-origin: 50% 50%;
+transform: translateX(0px) translateY(20px) rotate(-45deg);
+ 
+    &:before {
+        position: absolute;
+        bottom: -14px;
+        left: 50%;
+        border: solid transparent;
+        content: ' ';
+        height: 0;
+        width: 0;
+        pointer-events: none;
+        border-color: rgba(251, 249, 228, 0);
+        border-top-color: #383838;
+        border-width: 7px;
+        margin-left: -8px;
+    }
+ 
+    &:hide {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+
+
+
 #chartLine2 {
     width: 2000px;
     height: 250px;
@@ -196,8 +253,6 @@ table td {
     background: white;
     z-index: 2;
 }
-
-
 @media (min-width: 1170px) {
     #chartLine {
         width: 100%;
