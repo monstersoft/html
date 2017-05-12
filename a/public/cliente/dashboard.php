@@ -28,6 +28,29 @@
     </nav>-->
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
+<div class="col-xs-12card">
+  <select id="years">
+    <option value="2017" selected="selected">2017</option>
+    <option value="2018">2018</option>
+    <option value="2019">2019</option>
+    <option value="2020">2020</option>
+  </select>
+  <select id="months">
+    <option value="Jan" selected="selected">Enero</option>
+    <option value="Feb">Febrero</option>
+    <option value="Mar">Marzo</option>
+    <option value="Apr">Abril</option>
+    <option value="May">Mayo</option>
+    <option value="Jun">Junio</option>
+    <option value="Jul">Julio</option>
+    <option value="Aug">Agosto</option>
+    <option value="Sep">Septiembre</option>
+    <option value="Oct">Octubre</option>
+    <option value="Nov">Noviembre</option>
+    <option value="Dec">Diciembre</option>
+  </select>
+
+</div>
 <div class="col-xs-12 col-sm-4 col-md-2 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="statistic">
@@ -155,8 +178,6 @@
         </div>
      </div>
 </div>
-
-
 <div class="col-xs-12 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
@@ -174,7 +195,6 @@
                 <div class="motorLegend">TRASERA</div>
             </div>
         </div>-->
-
         <div class="col-xs-12 cardContent">
             <div class="chartLineContainerHistorical">
                 <div id="chartLineHistorical"></div>
@@ -229,12 +249,5 @@
     <script src="../../js/funciones.js"></script>
     <script src="../../cliente/js/graficos.js"></script>
     <!--<script>main();</script>-->
-    <!--console.log( Math.max(moment(new Date(2017, 11, 31)).isoWeek(),moment(new Date(2017, 11, 31-7)).isoWeek()));
-var year = 2018;
-var week = 1;
-var startDate = moment([year, 5, 30]).isoWeek(week).startOf('isoweek'); 
-var endDate = moment(startDate).endOf('isoweek');
-console.log(startDate.format('DD.MM.YYYY')); // = '04.01.2016'
-console.log(endDate.format('DD.MM.YYYY')); // = '10.01.2016'-->
 </body>
 </html>

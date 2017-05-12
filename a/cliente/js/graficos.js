@@ -115,3 +115,48 @@ function get(min, max, cantidad) {
   }
   return a;
 }
+function getWeekNumber(d) {
+    d = new Date(+d);
+    d.setHours(0,0,0);
+    d.setDate(d.getDate() + 4 - (d.getDay()||7));
+    var yearStart = new Date(d.getFullYear(),0,1);
+    var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7)
+    return [d.getFullYear(), weekNo];
+}
+function weeksInYear(year) {
+  var month = 11, day = 31, week;
+  do {
+    d = new Date(year, month, day--);
+        week = getWeekNumber(d)[1];
+  } while (week == 1);
+
+  return week;
+}
+function returnWeeksRanges(year,month) {
+    var week = 1;
+    var weeks = new Array();
+    while(week <= weeksInYear(year)) {
+        var startDate = moment([year, 5, 30]).isoWeek(week).startOf('isoweek'); 
+        var endDate = moment(startDate).endOf('isoweek');
+        if(startDate.format('MMM') == 'Dec' && week == 1)
+            weeks.push({week: week, startWeek: startDate.format('YYYY-MM-DD'), endWeek: endDate.format('YYYY-MM-DD')});
+        if(startDate.format('MMM') == month)
+            weeks.push({week: week, startWeek: startDate.format('YYYY-MM-DD'), endWeek: endDate.format('YYYY-MM-DD')});
+        week++;
+    }
+    if(weeks[0].week == 1 && weeks[1].week == 1) {
+        weeks.shift();
+        weeks.shift();
+    }
+    return weeks;  
+}
+$( "#years" ).change(function() {
+    var month = $('#months').val();
+    var year = parseInt($('#years').val());
+    console.log(JSON.stringify(returnWeeksRanges(year,month)));
+});
+$( "#months" ).change(function() {
+    var month = $('#months').val();
+    var year = $('#years').val();
+    console.log(JSON.stringify(returnWeeksRanges(year,month)));
+});
