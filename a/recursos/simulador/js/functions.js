@@ -1,20 +1,26 @@
 var carpetaRaiz = 'html';
-function descargar(data,nombreArchivo){
-    console.log(JSON.stringify(data));
+function descargar(data,nombreArchivo,idZona){
+    var flag = 0;
     var csvData = new Array();
     $.each(data,function(index) {
-        csvData.push(
-            data[index].identificador+';'+
-            data[index].horaDato+';'+
-            data[index].latitud+';'+
-            data[index].longitud+';'+
-            data[index].motor+';'+
-            data[index].revoluciones+';'+
-            data[index].gradosFrontal+';'+
-            data[index].gradosTrasera+';'+
-            data[index].cambio+';'+
-            data[index].alturaFrontal+';'+
-            data[index].alturaTrasera);
+        if(flag == 0) {
+            csvData.push(idZona);
+            flag = 1;
+        }
+        else {
+            csvData.push(
+                data[index].identificador+';'+
+                data[index].horaDato+';'+
+                data[index].latitud+';'+
+                data[index].longitud+';'+
+                data[index].motor+';'+
+                data[index].revoluciones+';'+
+                data[index].gradosFrontal+';'+
+                data[index].gradosTrasera+';'+
+                data[index].cambio+';'+
+                data[index].alturaFrontal+';'+
+                data[index].alturaTrasera);
+        }
     });
     var buffer = csvData.join("\r\n");
     var blob = new Blob([buffer], {"type": "text/csv;charset=utf8;"});
