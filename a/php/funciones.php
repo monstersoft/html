@@ -1,6 +1,6 @@
 <?php
 	include("conexion.php"); 
-    echo resultadosMaquinas(89,1);
+    //echo resultadosMaquinas(89,1);
     function resultadosMaquinas($idFile,$identifier) {
         $conexion = conectar();
         $arr = arrayResultados($conexion,$idFile,$identifier);

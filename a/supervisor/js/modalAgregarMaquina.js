@@ -6,13 +6,10 @@ $(document).ready(function() {
     $('#btnAñadirMaquina').click(function(){
         $('.alert').remove();
         var arreglo = new Array();
-        var id = $('#identificadorAgregarMaquina').val();
         var patente = $('#patenteAgregarMaquina').val();
         var tara = $('#taraAgregarMaquina').val();
         var carga = $('#cargaAgregarMaquina').val();
         var numberErrors = 0;
-        if(isEmpty(id))
-            arreglo.push('<li>El campo id es obigatorio</li>');
         if(isEmpty(patente))
             arreglo.push('<li>Patente es obigatoria</li>');
         if(isEmpty(tara))
@@ -37,10 +34,9 @@ $(document).ready(function() {
                 data: data,
                 dataType: 'json',
                 cache: false,
-                beforeSend: function() {
-                  activarLoaderBotones('fa-pencil','fa-refresh');
-                },
+                beforeSend: function() {activarLoaderBotones('fa-plus','fa-refresh');},
                 success: function(arreglo) {
+                    console.log(JSON.stringify(arreglo));
                     if(arreglo.exito == 1) {
                         successMessage('Registro realizado con éxito','Serás redireccionado al panel de zonas');
                         $('.cancelar').remove();
@@ -48,28 +44,11 @@ $(document).ready(function() {
                         setTimeout(function(){location.reload()}, 3000);
                     }
                     else {
-                        warningMessage(arreglo.msg);
+                        oneWarningMessage(arreglo.msg);
                     }
                 },
-                complete: function() {
-                    desactivarLoaderBotones('fa-pencil','fa-refresh');
-                }
-            }).fail(function( jqXHR, textStatus, errorThrown ){
-                if (jqXHR.status === 0){
-                    alert('No hay coneccion con el servidor');
-                } else if (jqXHR.status == 404) {
-                    alert('La pagina solicitada no fue encontrada, error 404');
-                } else if (jqXHR.status == 500) {
-                    alert('Error interno del servidor');
-                } else if (textStatus === 'parsererror') {
-                    alert('Error en la respuesta, debes analizar la sintaxis JSON');
-                } else if (textStatus === 'timeout') {
-                    alert('Ya ha pasado mucho tiempo');
-                } else if (textStatus === 'abort') {
-                    alert('La peticion fue abortada');
-                } else {
-                    alert('Error desconocido');
-                }
+                complete: function() {desactivarLoaderBotones('fa-plus','fa-refresh');},
+                error: function(xhr) {console.log(xhr.responseText);}
             });
         }
         else {

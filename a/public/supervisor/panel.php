@@ -37,7 +37,7 @@
                     <li><a><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
                 </ul>
             </nav>
-            <div id="content" class="animated fadeInUp unLeftContent">
+            <div id="content" class="animated fadeIn unLeftContent">
                 <!-- ............................................................................................................................ -->
                 <?php
                 foreach(zonas($email) as $value) {
@@ -46,14 +46,14 @@
                         if(cantidadMaquinas($idZona) == 0)
                             echo '<div class="col-xs-12 emptyMessage"><i class="fa fa-exclamation-circle fa-2x pull-left"></i>No hay máquinas asociadas a esta zona</div>';
                         else {
-                            echo '<div class="col-xs-12 cardContent"> <div class="table-responsive"> <table class="responsive" style="width: 100%;"> <thead> <tr> <th>ID</th> <th>Patente</th> <th>Fecha de Registro</th> <th>Tara [kg]</th> <th>Carga Máxima [kg]</th> </tr></thead> <tbody>';
+                            echo '<div class="col-xs-12 cardContent"> <div class="table-responsive"> <table class="responsive" style="width: 100%;"> <thead> <tr><th>Patente</th> <th>Fecha de Registro</th> <th>Tara [kg]</th> <th>Carga Máxima [kg]</th> </tr></thead> <tbody>';
                             foreach(maquinas($idZona) as $value) {
-                                echo '<tr> <td class="firstColumn">'.$value['identificador'].'</td><td>'.$value['patente'].'</td><td>'.$value['fechaRegistro'].'</td><td>'.$value['tara'].'</td><td>'.$value['cargaMaxima'].'</td></tr>';
+                                echo '<tr> <td class="firstColumn">'.$value['patente'].'</td><td>'.$value['fechaRegistro'].'</td><td>'.$value['tara'].'</td><td>'.$value['cargaMaxima'].'</td></tr>';
                             }
                             echo '</tbody> </table> </div></div>';
                         }
                         foreach(supervisores($idZona) as $value) {
-                           echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><p class="text-center montserrat">'.$value['nombreSupervisor'].'</p></div><div class="col-xs-12"> <ul> <li>'.$value['correoSupervisor'].'</li><li>'.$value['celular'].'</li><li>'.$value['status'].'</li></ul> <a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div></div>';
+                           echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><p class="text-center montserrat">'.$value['nombreSupervisor'].'</p></div><div class="col-xs-12"><a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div></div>';
                         }
                     echo '</div></div>';
                 }
@@ -69,20 +69,16 @@
                         <div class="modal-body">
                             <form id="formularioAgregarMaquina">
                                 <div class="form-group">
-                                    <label>Identificador</label>
-                                    <input type="text" placeholder="1" class="form-control" name="identificador" id="identificadorAgregarMaquina">
-                                </div>
-                                <div class="form-group">
                                     <label>Patente</label>
                                     <input type="text" placeholder="ABCDEF" class="form-control" name="patente" id="patenteAgregarMaquina">
                                 </div>
                                 <div class="form-group">
                                     <label>Tara [kg]</label>
-                                    <input type="text" placeholder="1000" class="form-control" name="tara" id="taraAgregarMaquina">
+                                    <input type="text" placeholder="1000" class="form-control" name="tara" id="taraAgregarMaquina" value="1000">
                                 </div>
                                 <div class="form-group">
                                     <label>Carga Máxima [kg]</label>
-                                    <input type="text" placeholder="1000" class="form-control" name="carga" id="cargaAgregarMaquina">
+                                    <input type="text" placeholder="1000" class="form-control" name="carga" id="cargaAgregarMaquina" value="1000">
                                 </div>
                                 <div class="form-group">
                                     <label>idZonaAgregarMaquina</label>
@@ -204,7 +200,7 @@
                 $('.cancelar').click(function(){$('.alert').remove();});
                 //alert(getDistanceFromLatLonInKm(48.8666667,2.3333333,19.4341667,-99.1386111));
             });
-    function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+        function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
                   var R = 6371; // Radius of the earth in km
                   var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
                   var dLon = this.deg2rad(lon2-lon1); 
@@ -216,7 +212,6 @@
                   var d = R * c; // Distance in km
                   return d;
                 }
-
         function deg2rad(deg) {
                   return deg * (Math.PI/180);
         }

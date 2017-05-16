@@ -12,8 +12,8 @@ function warningMessage(arrayWarnings) {
     });
     $('.message').html('<div class="alert alert-warning"><ul>'+list+'</ul></div>');
 }
-function oneWarningMessage(titulo,parrafo) {
-    $('.message').html('<div class="alert alert-warning" style="padding: 10px;"><strong>'+titulo+'</strong>'+parrafo+'</div>');
+function oneWarningMessage(parrafo) {
+    $('.message').html('<div class="alert alert-warning" style="padding: 10px;">'+parrafo+'</div>');
 }
 function successMessage(titulo,parrafo) {
     $('.message').html('<div class="alert alert-success" style="padding: 10px;"><strong>'+titulo+'</strong>'+parrafo+'</div>');

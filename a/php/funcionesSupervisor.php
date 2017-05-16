@@ -54,7 +54,7 @@
         $qry = "SELECT * FROM maquinas WHERE maquinas.idZona = '$idZona'"; 
         if($res = mysqli_query($con,$qry)) {
             while($r = mysqli_fetch_array($res)) {
-                array_push($arr,array('identificador' => $r['identificador'], 'patente' => $r['patente'], 'fechaRegistro' => $r['fechaRegistro'], 'tara' => $r['tara'], 'cargaMaxima' => $r['cargaMaxima']));
+                array_push($arr,array('patente' => $r['patente'], 'fechaRegistro' => $r['fechaRegistro'], 'tara' => $r['tara'], 'cargaMaxima' => $r['cargaMaxima']));
             }
         }
         mysqli_close($con);
