@@ -10,6 +10,7 @@
 	$idManager= $_POST['idSupervisor'];
     if(nameDateMatch($file['name'],$dateData) == true) {
         $arr['nameDateMatch'] = true;
+        if(isCsv)
         
     }
     else {
