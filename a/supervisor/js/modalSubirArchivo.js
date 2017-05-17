@@ -40,16 +40,16 @@ $(document).ready(function() {
                         oneWarningMessage('Archivo ya disponible','El archivo ya fué subido');
                     }
                     else {
-                         successMessage('Subida Exitosa','Los datos han sido subidos exitosamente');
+                         successMessage('Los datos se han subido correctamente','');
                         //$('.cancelar').remove();
-                        $('#btnSubirArchivo').remove();
+                        //$('#btnSubirArchivo').remove();
                         //setTimeout(function(){location.reload()}, 3000);
                     }
-                    console.log(JSON.stringify(arreglo));
+                    console.log(JSON.stringify(arreglo, null,2));
                 },
                 complete: function() {desactivarLoaderBotones('fa-upload','fa-refresh');},
                 error: function(xhr) {console.log(xhr.responseText)}
-            });/*.fail(function( jqXHR, textStatus, errorThrown ){alert(textStatus);});*/
+            });
         }
         else {
             errorMessage(arreglo);

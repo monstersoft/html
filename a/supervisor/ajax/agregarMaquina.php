@@ -24,7 +24,5 @@
 			$arreglo['exito'] = 0;
 		}		
 	}
-    $arreglo['cantidadPatentes'] = $patentes;
-    $arreglo['info'] = $patente.$idZona;
 	echo json_encode($arreglo);
 ?>

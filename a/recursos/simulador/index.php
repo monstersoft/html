@@ -72,8 +72,7 @@
                         });
                         $('.contenido').html(contenido);
                     },
-                }).fail(function( jqXHR, textStatus, errorThrown ){
-                    alert(textStatus);
+                    error: function(xhr) {console.log(xhr.responseText);}
                 });
             });
             $('.descargar').click(function(){
