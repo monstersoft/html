@@ -1,19 +1,5 @@
 <?php
 	include ('/../../php/conexion.php');
-    $arr = array();
-    $arr['patente1'] = array(array('lat' => 50, 'lon' => 20), array('lat' => 1000, 'lon' => 20), array('lat' => 10, 'lon' => 20));
-    $arr['patente2'] = array(array('lat' => 10, 'lon' => 20), array('lat' => 10, 'lon' => 20), array('lat' => 10, 'lon' => 20));
-    //getDistanceFromLatLonInKm($lat1,$lon1,$lat2,$lon2);
-    foreach($arr as $key => $value) {
-        echo $key.'<br>';
-        foreach($arr[$key] as $k => $v) {
-           if($k < (sizeof($arr[$key])-1))
-               echo 'LATITUD ACTUAL: '.$arr[$key][$k]['lat'].' LATITUD SIGUIENTE '.$arr[$key][$k+1]['lat'].'<br>';
-        }
-    }
-//echo json_encode($arr);
-    echo '<h1>'.$arr['patente1'][0]['lat'].'</h1><br>';
-echo '<h1>'.$arr['patente1'][1]['lat'].'</h1><br>';
     /*set_time_limit(1200);
     $arr = array('msg' => array(), 'nameDateMatch' => false);
     $beginTime = microtime(true);
@@ -101,7 +87,7 @@ echo '<h1>'.$arr['patente1'][1]['lat'].'</h1><br>';
         $countSuccess = 0;
         if(mysqli_query($con,$qry)) {
             $lastIdFile = mysqli_insert_id($con);
-
+*/
             $arr = array();
             $archivo = array();
             $primeraFila = false;
@@ -123,7 +109,7 @@ echo '<h1>'.$arr['patente1'][1]['lat'].'</h1><br>';
                     }
                 }
                 else {
-                    $archivo['msg'] = 'No hay datos';
+                    $arr['msg'] = 'No hay datos';
                 }
                     
             }
@@ -141,7 +127,8 @@ echo '<h1>'.$arr['patente1'][1]['lat'].'</h1><br>';
                     $resultados[sizeof($resultados)-1]['pGpt'] = $resultados[sizeof($resultados)-1]['pGpt'] + $v['gpt'];
                     $resultados[sizeof($resultados)-1]['pApf'] = $resultados[sizeof($resultados)-1]['pApf'] + $v['apf'];
                     $resultados[sizeof($resultados)-1]['pApt'] = $resultados[sizeof($resultados)-1]['pApt'] + $v['apt'];
-                    //$resultados[sizeof($resultados)-1]['tRecorridos'] = get($v['latitud'],$v['longitud'],);
+                    if($k < (sizeof($archivo[$key])-1))
+                        $resultados[sizeof($resultados)-1]['tRecorridos'] = $resultados[sizeof($resultados)-1]['tRecorridos'] + getDistanceFromLatLonInKm($archivo[$key][$k]['latitud'],$archivo[$key][$k]['longitud'],$archivo[$key][$k+1]['latitud'],$archivo[$key][$k+1]['longitud']);
                     $resultados[sizeof($resultados)-1]['total']++;
                 }
                 $resultados[sizeof($resultados)-1]['pRpm'] = $resultados[sizeof($resultados)-1]['pRpm']/$resultados[sizeof($resultados)-1]['total'];
@@ -150,7 +137,7 @@ echo '<h1>'.$arr['patente1'][1]['lat'].'</h1><br>';
                 $resultados[sizeof($resultados)-1]['pApf'] = $resultados[sizeof($resultados)-1]['pApf']/$resultados[sizeof($resultados)-1]['total'];
                 $resultados[sizeof($resultados)-1]['pApt'] = $resultados[sizeof($resultados)-1]['pApt']/$resultados[sizeof($resultados)-1]['total'];
         }
-echo json_encode($resultados);
+echo json_encode($archivo);
         /*}
         return $countSuccess;
     }*/
