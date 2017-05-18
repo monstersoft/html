@@ -1,6 +1,5 @@
 <?php
 	include("conexion.php"); 
-    //echo resultadosMaquinas(89,1);
     function resultadosMaquinas($idFile,$identifier) {
         $conexion = conectar();
         $arr = arrayResultados($conexion,$idFile,$identifier);
@@ -20,16 +19,6 @@
         mysqli_close($conexion);
         //echo json_encode($arr);
         //echo json_encode($points);
-    }
-    function getDistanceFromLatLonInKm($lat1,$lon1,$lat2,$lon2,$sum) {
-          $R = 6371; // Radius of the earth in km
-          $dLat = deg2rad($lat2-$lat1);  // deg2rad below
-          $dLon = deg2rad($lon2-$lon1); 
-          $a = sin($dLat/2)*sin($dLat/2)+cos(deg2rad($lat1))*cos(deg2rad($lat2)) * sin($dLon/2) * sin($dLon/2); 
-          $c = 2*atan2(sqrt($a),sqrt(1-$a)); 
-          $d = $R*$c; // Distance in km
-          $sum = $sum +$d;
-          return $sum;
     }
     function returnLabelChart($date) {
         list($hour,$minute,$second) = explode(':',$date);

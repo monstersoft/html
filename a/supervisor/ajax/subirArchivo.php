@@ -1,5 +1,19 @@
 <?php
 	include ('/../../php/conexion.php');
+    $arr = array();
+    $arr['patente1'] = array(array('lat' => 50, 'lon' => 20), array('lat' => 1000, 'lon' => 20), array('lat' => 10, 'lon' => 20));
+    $arr['patente2'] = array(array('lat' => 10, 'lon' => 20), array('lat' => 10, 'lon' => 20), array('lat' => 10, 'lon' => 20));
+    //getDistanceFromLatLonInKm($lat1,$lon1,$lat2,$lon2);
+    foreach($arr as $key => $value) {
+        echo $key.'<br>';
+        foreach($arr[$key] as $k => $v) {
+           if($k < (sizeof($arr[$key])-1))
+               echo 'LATITUD ACTUAL: '.$arr[$key][$k]['lat'].' LATITUD SIGUIENTE '.$arr[$key][$k+1]['lat'].'<br>';
+        }
+    }
+//echo json_encode($arr);
+    echo '<h1>'.$arr['patente1'][0]['lat'].'</h1><br>';
+echo '<h1>'.$arr['patente1'][1]['lat'].'</h1><br>';
     /*set_time_limit(1200);
     $arr = array('msg' => array(), 'nameDateMatch' => false);
     $beginTime = microtime(true);
@@ -86,48 +100,67 @@
         $flag = false;
         $countSuccess = 0;
         if(mysqli_query($con,$qry)) {
-            $lastIdFile = mysqli_insert_id($con);*/
-            //$file2 = fopen($file['name'],'r');
-            $firstRow = false;
-            $machines = array();
-            $machines['maq1']['pRevoluciones'] = 0;
-            $machines['maq1']['pAnguloFrontal'] = 0;
-            $machines['maq1']['pAnguloTrasera'] = 0;
-            $machines['maq1']['pAlturaFrontal'] = 0;
-            $machines['maq1']['pAlturaTrasera'] = 0;
+            $lastIdFile = mysqli_insert_id($con);
 
-            $machines['maq2']['pRevoluciones'] = 0;
-            $machines['maq2']['pAnguloFrontal'] = 0;
-            $machines['maq2']['pAnguloTrasera'] = 0;
-            $machines['maq2']['pAlturaFrontal'] = 0;
-            $machines['maq2']['pAlturaTrasera'] = 0;
-            /*$file2 = fopen('16052017.csv','r');
-            while ($data = fgetcsv($file2,150,";")){
-                if($data[0]) {
-                    if($firstRow == false) {
-                        $arr['idZoneFile'] = $data[0];
-                        $firstRow = true;
+            $arr = array();
+            $archivo = array();
+            $primeraFila = false;
+            $file2 = fopen('16052017.csv','r');
+            while ($d = fgetcsv($file2,150,";")){
+                if($d[0]) {
+                    if($primeraFila == false) {
+                        $arr['idZonaArchivo'] = $d[0];
+                        $primeraFila = true;
                     }
                     else {
-                    $qry = "INSERT INTO datos (idArchivo,patente,hora,latitud,longitud,motorFuncionando,rpm,gradosPalaFrontal,gradosPalaTrasera,cambio,alturaPalaFrontal,alturaPalaTrasera)
-                            VALUES ('$lastIdFile','$data[0]','$data[1]','$data[2]','$data[3]','$data[4]','$data[5]','$data[6]','$data[7]','$data[8]','$data[9]','$data[10]')";
-                        if(mysqli_query($con,$qry)) $countSuccess++;
-                      if(sizeof($machines) == 0) {
-                          array_push($machines, $data[0]);
-                          array_push($machines)
-                      }
-                      else {
-                          if(!($machines[sizeof($machines)-1] == $data[0]))
-                              array_push($machines, $data[0]);
-                      }
+                        if(array_key_exists($d[0],$archivo))
+                           array_push($archivo[$d[0]], array('hora' => date('H:i:s',strtotime($d[1])), 'latitud' => floatval($d[2]), 'longitud' => floatval($d[3]), 'motor' => intval($d[4]), 'rpm' => floatval($d[5]), 'gpf' => floatval($d[6]), 'gpt' => floatval($d[7]), 'cambio' => intval($d[8]), 'apf' => floatval($d[9]), 'apt' => floatval($d[10])));
+                        else {
+                            $archivo[$d[0]] = array();
+                            array_push($archivo[$d[0]],array('hora' => date('H:i:s',strtotime($d[1])), 'latitud' => floatval($d[2]), 'longitud' => floatval($d[3]), 'motor' => intval($d[4]), 'rpm' => floatval($d[5]), 'gpf' => floatval($d[6]), 'gpt' => floatval($d[7]), 'cambio' => intval($d[8]), 'apf' => floatval($d[9]), 'apt' => floatval($d[10])));
+                        }
+
                     }
                 }
                 else {
-                    echo 'Archivo vacío';
+                    $archivo['msg'] = 'No hay datos';
                 }
-            }*/
-        echo json_encode($machines);
+                    
+            }
+            foreach($archivo as $key => $row) {
+                    foreach($archivo[$key] as $k => $r) {
+                        $aux[$k] = $r['hora'];
+                    }
+                array_multisort($aux, SORT_ASC, $archivo[$key]);
+            }
+            foreach($archivo as $key => $value) {
+                $resultados[] = array('patente' => $key, 'pRpm' => 0, 'pGpf' => 0, 'pGpt' => 0, 'pApf' => 0, 'pApt' => 0, 'tRecorridos' => 0, 'total' => 0);
+                foreach($archivo[$key] as $k => $v) {
+                    $resultados[sizeof($resultados)-1]['pRpm'] = $resultados[sizeof($resultados)-1]['pRpm'] + $v['rpm'];
+                    $resultados[sizeof($resultados)-1]['pGpf'] = $resultados[sizeof($resultados)-1]['pGpf'] + $v['gpf'];
+                    $resultados[sizeof($resultados)-1]['pGpt'] = $resultados[sizeof($resultados)-1]['pGpt'] + $v['gpt'];
+                    $resultados[sizeof($resultados)-1]['pApf'] = $resultados[sizeof($resultados)-1]['pApf'] + $v['apf'];
+                    $resultados[sizeof($resultados)-1]['pApt'] = $resultados[sizeof($resultados)-1]['pApt'] + $v['apt'];
+                    //$resultados[sizeof($resultados)-1]['tRecorridos'] = get($v['latitud'],$v['longitud'],);
+                    $resultados[sizeof($resultados)-1]['total']++;
+                }
+                $resultados[sizeof($resultados)-1]['pRpm'] = $resultados[sizeof($resultados)-1]['pRpm']/$resultados[sizeof($resultados)-1]['total'];
+                $resultados[sizeof($resultados)-1]['pGpf'] = $resultados[sizeof($resultados)-1]['pGpf']/$resultados[sizeof($resultados)-1]['total'];
+                $resultados[sizeof($resultados)-1]['pGpt'] = $resultados[sizeof($resultados)-1]['pGpt']/$resultados[sizeof($resultados)-1]['total'];
+                $resultados[sizeof($resultados)-1]['pApf'] = $resultados[sizeof($resultados)-1]['pApf']/$resultados[sizeof($resultados)-1]['total'];
+                $resultados[sizeof($resultados)-1]['pApt'] = $resultados[sizeof($resultados)-1]['pApt']/$resultados[sizeof($resultados)-1]['total'];
+        }
+echo json_encode($resultados);
         /*}
         return $countSuccess;
     }*/
+    function getDistanceFromLatLonInKm($lat1,$lon1,$lat2,$lon2) {
+          $R = 6371; // Radius of the earth in km
+          $dLat = deg2rad($lat2-$lat1);  // deg2rad below
+          $dLon = deg2rad($lon2-$lon1); 
+          $a = sin($dLat/2)*sin($dLat/2)+cos(deg2rad($lat1))*cos(deg2rad($lat2)) * sin($dLon/2) * sin($dLon/2); 
+          $c = 2*atan2(sqrt($a),sqrt(1-$a)); 
+          $d = $R*$c; // Distance in km
+          return $d;
+    }
 ?>
