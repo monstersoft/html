@@ -2,16 +2,22 @@
 	include ('/../../php/conexion.php');
     set_time_limit(1200);
     $arr = array('msg' => array(), 'nameDateMatch' => false);
-    $beginTime = microtime(true);
+    /*$beginTime = microtime(true);
 	$con = conectar();
 	$dateData = $_POST['fechaDatos'];
 	$idZone = $_POST['idZona'];
 	$file = $_FILES['archivo'];
 	$idManager = $_POST['idSupervisor'];
 	$arr['uploadDate'] = date("Y-m-d");
+	$arr['uploadTime'] = date("H:i:s");*/
+	$con = conectar();
+	$dateData = '2017-05-18';
+	$idZone = 46;
+	$idManager = 22;
+	$arr['uploadDate'] = date("Y-m-d");
 	$arr['uploadTime'] = date("H:i:s");
 
-    $arr['nameDateMatch'] = nameDateMatch($file['name'],$dateData,$arr['msg']);
+    /*$arr['nameDateMatch'] = nameDateMatch($file['name'],$dateData,$arr['msg']);
     $arr['isCsv'] = isCsv($file['type'], $arr['msg']);
     $arr['itAlreadyExists'] = itAlreadyExists($idZone,$dateData,$arr['msg'], $con);
     $arr['isZone'] = isZone($idZone,$file,$arr['msg']);
@@ -19,21 +25,21 @@
     if(($arr['nameDateMatch'] == false) or ($arr['isCsv'] == false) or ($arr['itAlreadyExists'] == true) or ($arr['isZone'] == false)) {
         $arr['success'] = false;
     }
-    else {
-        $arr['countInsertData'] = insertDataFile($idZone,$idManager,$arr['uploadDate'],$dateData,$arr['uploadTime'],$file,$con,$arr['msg']);
-        $arr['success'] = true;
+    else {*/
+        $arr['countInsertData'] = insertDataFile($idZone,$idManager,$arr['uploadDate'],$dateData,$arr['uploadTime'],/*$file,*/$con,$arr['msg']);
+        /*$arr['success'] = true;
     }
     $endTime = microtime(true);
     $arr['timeScript']  = $endTime - $beginTime;
-    mysqli_close($con);
-    echo json_encode($arr);
-    function insertDataFile($idZone,$idManager,$uploadDate,$dateData,$uploadTime,$file,$con, &$msg) {
+    mysqli_close($con);*/
+    echo json_encode($arr['countInsertData']);
+    function insertDataFile($idZone,$idManager,$uploadDate,$dateData,$uploadTime,/*$file,*/$con, &$msg) {
         $qry = "INSERT INTO archivos (idZona,idSupervisor,fechaSubida,fechaDatos,horaSubida) VALUES ('$idZone','$idManager','$uploadDate','$dateData','$uploadTime')";
         if(mysqli_query($con,$qry)) $lastIdFile = mysqli_insert_id($con);
         $archivo = array();
         $primeraFila = false;
         $countInsertData = 0;
-        $file2 = fopen($file['name'],'r');
+        $file2 = fopen('18052017.csv','r');
         while ($d = fgetcsv($file2,150,";")){
             if($d[0]) {
                 if($primeraFila == false) {
@@ -77,14 +83,25 @@
             $resultados[sizeof($resultados)-1]['pGpt'] = $resultados[sizeof($resultados)-1]['pGpt']/$resultados[sizeof($resultados)-1]['total'];
             $resultados[sizeof($resultados)-1]['pApf'] = $resultados[sizeof($resultados)-1]['pApf']/$resultados[sizeof($resultados)-1]['total'];
             $resultados[sizeof($resultados)-1]['pApt'] = $resultados[sizeof($resultados)-1]['pApt']/$resultados[sizeof($resultados)-1]['total'];
-        }
-        
+        } 
         $maquinas = array();
-        $qry = "SELECT maquinas.idMaquina, maquinas.patente FROM maquinas WHERE maquinas.idZona = '$idZone'";
+        $qry = "SELECT maquinas.idMaquina, maquinas.idZona, maquinas.patente FROM maquinas WHERE maquinas.idZona = '$idZone'";
         if($resultado = mysqli_query($con,$qry)) {
             while($row = mysqli_fetch_assoc($resultado)) {
-                array_push($maquinas,array('idMaquina' => $row['idMaquina'], 'patente' => utf8_encode($row['patente'])));
+                array_push($maquinas,array('patente' => utf8_encode($row['patente']),'idZona' => $row['idZona'], 'idMaquina' => $row['idMaquina'], 'fechaDatos' => $dateData));
             }
+        }
+        foreach($maquinas as $k => $v) {
+            $index = searchValueInArray($resultados, 'patente', $v['patente']);
+            if(!($index == -1)) {
+                $resultados[$index]['idZona'] = $v['idZona'];
+                $resultados[$index]['idMaquina'] = $v['idMaquina'];
+                $resultados[$index]['fechaDatos'] = $v['fechaDatos'];
+                $resultados[$index]['registrado'] = 1;
+                $resultados[$index]['existeEnArchivo'] = 1;
+            }
+            else
+                array_push($resultados,array('patente' => $v['patente'], 'pRpm' => 0, 'pGpf' => 0, 'pGpt' => 0, 'pApf' => 0, 'pApt' => 0, 'tRecorridos' => 0, 'total' => 0, 'idZona' => $v['idZona'], 'idMaquina' => $v['idMaquina'], 'fechaDatos' => $v['fechaDatos'], 'registrado' => 1, 'existeEnArchivo' => 0));
         }
         $arr = array('resultados' => $resultados, 'maquinas' => $maquinas, 'countInsertData' => $countInsertData);
         return $arr;
@@ -137,5 +154,13 @@
                 return false;
             }
         fclose($file2);
+    }
+    function searchValueInArray($array, $field, $value) {
+        $index = -1;
+        foreach($array as $k => $v) {
+            if($v[$field] == $value)
+                $index = $k;
+        }
+        return $index;
     }
 ?>
