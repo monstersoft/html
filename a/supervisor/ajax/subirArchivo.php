@@ -39,6 +39,7 @@
         $archivo = array();
         $primeraFila = false;
         $countInsertData = 0;
+        $countResultData = 0;
         $file2 = fopen('18052017.csv','r');
         while ($d = fgetcsv($file2,150,";")){
             if($d[0]) {
@@ -47,8 +48,8 @@
                     $primeraFila = true;
                 }
                 else {
-                    /*$qry = "INSERT INTO datos (idArchivo,patente,hora,latitud,longitud,motorFuncionando,rpm,gradosPalaFrontal,gradosPalaTrasera,cambio,alturaPalaFrontal,alturaPalaTrasera) VALUES ('$lastIdFile','$d[0]','$d[1]','$d[2]','$d[3]','$d[4]','$d[5]','$d[6]','$d[7]','$d[8]','$d[9]','$d[10]')";
-                    if(mysqli_query($con,$qry)) $countInsertData++;*/
+                    $qry = "INSERT INTO datos (idArchivo,patente,hora,latitud,longitud,motorFuncionando,rpm,gradosPalaFrontal,gradosPalaTrasera,cambio,alturaPalaFrontal,alturaPalaTrasera) VALUES ('$lastIdFile','$d[0]','$d[1]','$d[2]','$d[3]','$d[4]','$d[5]','$d[6]','$d[7]','$d[8]','$d[9]','$d[10]')";
+                    if(mysqli_query($con,$qry)) $countInsertData++;
                     if(array_key_exists($d[0],$archivo))
                        array_push($archivo[$d[0]], array('hora' => date('H:i:s',strtotime($d[1])), 'latitud' => floatval($d[2]), 'longitud' => floatval($d[3]), 'motor' => intval($d[4]), 'rpm' => floatval($d[5]), 'gpf' => floatval($d[6]), 'gpt' => floatval($d[7]), 'cambio' => intval($d[8]), 'apf' => floatval($d[9]), 'apt' => floatval($d[10])));
                     else {
@@ -103,7 +104,21 @@
             else
                 array_push($resultados,array('patente' => $v['patente'], 'pRpm' => 0, 'pGpf' => 0, 'pGpt' => 0, 'pApf' => 0, 'pApt' => 0, 'tRecorridos' => 0, 'total' => 0, 'idZona' => $v['idZona'], 'idMaquina' => $v['idMaquina'], 'fechaDatos' => $v['fechaDatos'], 'registrado' => 1, 'existeEnArchivo' => 0));
         }
-        $arr = array('resultados' => $resultados, 'maquinas' => $maquinas, 'countInsertData' => $countInsertData);
+        foreach($resultados as $k => $v) {
+            $index = searchValueInArray($maquinas, 'patente', $v['patente']);
+            if($index == -1) {
+                $resultados[$k]['idZona'] = $idZone;
+                $resultados[$k]['idMaquina'] = null;
+                $resultados[$k]['fechaDatos'] = $dateData;
+                $resultados[$k]['registrado'] = 0;
+                $resultados[$k]['existeEnArchivo'] = 1;    
+            }
+        }
+        foreach($resultados as $k => $v) {
+            $qry = "INSERT INTO resultados (patente,idMaquina,idZona,registrado,existeEnArchivo,fechaDatos,pRpm,pGpf,pGpt,pApf,pApt,tRecorridos,mediciones) VALUES ('".$v['patente']."',".$v['idMaquina'].",".$v['idZona'].",".$v['registrado'].",".$v['existeEnArchivo'].",'".$v['fechaDatos']."',".$v['pRpm'].",".$v['pGpf'].",".$v['pGpt'].",".$v['pApf'].",".$v['pApt'].",".$v['tRecorridos'].",".$v['total'].")";
+            if(mysqli_query($con,$qry)) $countResultData++;
+        }
+        $arr = array('resultados' => $resultados,'countInsertData' => $countInsertData, 'countResultData' => $countResultData);
         return $arr;
     }
     function getDistanceFromLatLonInKm($lat1,$lon1,$lat2,$lon2) {
