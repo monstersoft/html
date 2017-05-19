@@ -36,16 +36,11 @@ $(document).ready(function() {
                 processData: false,
                 beforeSend: function() {activarLoaderBotones('fa-upload','fa-refresh');},
                 success: function(arreglo) {
-                    if(arreglo.success == false) {
-                        oneWarningMessage('Archivo ya disponible','El archivo ya fué subido');
-                    }
-                    else {
-                         successMessage('Los datos se han subido correctamente','');
-                        //$('.cancelar').remove();
-                        //$('#btnSubirArchivo').remove();
-                        //setTimeout(function(){location.reload()}, 3000);
-                    }
-                    console.log(JSON.stringify(arreglo, null,2));
+                            if(arreglo.success)
+                                successMessage('Se han subido los datos de forma exitosa','');
+                            else
+                                warningMessage(arreglo.msg);
+                            console.log(JSON.stringify(arreglo, null,2));
                 },
                 complete: function() {desactivarLoaderBotones('fa-upload','fa-refresh');},
                 error: function(xhr) {console.log(xhr.responseText)}

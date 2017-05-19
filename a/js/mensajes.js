@@ -8,7 +8,7 @@ function errorMessage(arrayErrors) {
 function warningMessage(arrayWarnings) {
     var list = '';
     $.each(arrayWarnings,function(key, value){
-        list += '<li>'+value+'</li>';
+        list += '<li class="text-left">'+value+'</li>';
     });
     $('.message').html('<div class="alert alert-warning"><ul>'+list+'</ul></div>');
 }
