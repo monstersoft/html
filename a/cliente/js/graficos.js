@@ -1,3 +1,4 @@
+
 var data = {
     labels: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,
               31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59],
@@ -10,19 +11,34 @@ var data2 = {
     labels: ['1','2','3','4','5'],
     series: [[100,200,100,400,500]]
 };
+
+var donutData = {
+  series: [500,500]
+
+};
+donut('#example',donutData);
+var url = devuelveUrl('a/cliente/ajax/datosDashboard.php');
+$.ajax({
+    url: url,
+    type: 'POST',
+    data: {idResultado: getSearchParams().id, idArchivo: getSearchParams().idArchivo, patente: getSearchParams().patente},
+    dataType: 'json',
+    cache: false,
+    success: function(arr) {
+        console.log(JSON.stringify(arr));
+    },
+    error: function(xhr) {console.log(xhr.responseText);}
+});
+
 graphedChartLine('#chartLineSticky', true, data);
 graphedChartLine('#chartLine', false, data);
 graphedChartLine('#chartLineSticky2', true, data);
 graphedChartLine('#chartLine2', false, data)
-graphedChartDonut('#example');
 graphedChartBar('#example2');
-
-
 graphedChartLineHistorical('#chartLineHistorical', false, data2);
 graphedChartLineHistorical('#chartLineHistorical2', false, data2);
 graphedChartLineHistorical('#chartLineHistorical3', false, data2);
 graphedChartLineHistorical('#chartLineHistorical4', true, data2);
-
 function graphedChartBar(idChart) {
     var data = {
       labels: ['1ra', '2da', '3ra', '4ta','5ta','6ta','7ma','8va','9na','10ma'],
@@ -55,13 +71,8 @@ function graphedChartBar(idChart) {
     ];
     new Chartist.Bar(idChart,data,options, responsiveOptions);
 }
-function graphedChartDonut(idChart){
+function donut(idChart,data){
     var sum = function(a,b) { return a+b; }
-    var data = {
-      series: [200,300]
-      
-    };
-
     var options = {
       donut: true,
       donutWidth: 40,
@@ -149,6 +160,11 @@ function returnWeeksRanges(year,month) {
         weeks.shift();
     }
     return weeks;  
+}
+function getSearchParams(k){
+ var p={};
+ location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){p[k]=v})
+ return k?p[k]:p;
 }
 $( "#years" ).change(function() {
     var month = $('#months').val();

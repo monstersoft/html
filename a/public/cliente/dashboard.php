@@ -1,3 +1,10 @@
+<?php
+	include '../../php/funciones.php';
+    $idResultado = $_GET['id'];
+    $idArchivo = $_GET['idArchivo'];
+    $patente = $_GET['patente'];
+    $estadisticos = estadisticos($idResultado, $idArchivo, $patente);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +22,7 @@
 </head>
 <body>
     <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p class="editarZona">Machine Monitors</p></div>
-    <!--<nav class="unDisplayNav">
+    <nav class="unDisplayNav">
         <ul>
             <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile">Pato</span><br><span id="nameProfile">Arauco</span></li>
             <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
@@ -25,79 +32,57 @@
             <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
             <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
         </ul>
-    </nav>-->
+    </nav>
     <div id="content" class="animated fadeIn unLeftContent">
-<!-- ............................................................................................................................ -->
-<div class="col-xs-12card">
-  <select id="years">
-    <option value="2017" selected="selected">2017</option>
-    <option value="2018">2018</option>
-    <option value="2019">2019</option>
-    <option value="2020">2020</option>
-  </select>
-  <select id="months">
-    <option value="Jan" selected="selected">Enero</option>
-    <option value="Feb">Febrero</option>
-    <option value="Mar">Marzo</option>
-    <option value="Apr">Abril</option>
-    <option value="May">Mayo</option>
-    <option value="Jun">Junio</option>
-    <option value="Jul">Julio</option>
-    <option value="Aug">Agosto</option>
-    <option value="Sep">Septiembre</option>
-    <option value="Oct">Octubre</option>
-    <option value="Nov">Noviembre</option>
-    <option value="Dec">Diciembre</option>
-  </select>
-
-</div>
-<div class="col-xs-12 col-sm-4 col-md-2 card">
-    <div class="col-xs-12 shadow cardContent">
-        <div class="statistic">
-            <i class="fa fa-road fa-3x"></i>
-            <div class="legend"><div class="number">1000 km</div><div class="subLegend">RECORRIDOS</div></div>
+    <?php echo
+        '<div class="col-xs-12 col-sm-4 col-md-2 card">
+            <div class="col-xs-12 shadow cardContent">
+                <div class="statistic">
+                    <i class="fa fa-road fa-3x"></i>
+                    <div class="legend"><div class="number">'.$estadisticos['tRecorridos'].' km</div><div class="subLegend">RECORRIDOS</div></div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<div class="col-xs-12 col-sm-4 col-md-2 card">
-    <div class="col-xs-12 shadow cardContent">
-        <div class="statistic">
-            <i class="fa fa-file-text fa-3x"></i>
-            <div class="legend"><div class="number">1000</div><div class="subLegend">MEDICIONES</div></div>
+        <div class="col-xs-12 col-sm-4 col-md-2 card">
+            <div class="col-xs-12 shadow cardContent">
+                <div class="statistic">
+                    <i class="fa fa-file-text fa-3x"></i>
+                    <div class="legend"><div class="number">'.$estadisticos['mediciones'].'</div><div class="subLegend">MEDICIONES</div></div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<div class="col-xs-12 col-sm-4 col-md-2 card">
-    <div class="col-xs-12 shadow cardContent">
-        <div class="statistic">
-            <i class="fa fa-tachometer fa-3x"></i>
-            <div class="legend"><div class="number">1000 rpm</div><div class="subLegend">PROMEDIO</div></div>
+        <div class="col-xs-12 col-sm-4 col-md-2 card">
+            <div class="col-xs-12 shadow cardContent">
+                <div class="statistic">
+                    <i class="fa fa-tachometer fa-3x"></i>
+                    <div class="legend"><div class="number">'.$estadisticos['pRpm'].' rpm</div><div class="subLegend">PROMEDIO</div></div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<div class="col-xs-12 col-md-6 card">
-    <div class="col-xs-12 shadow cardContent">
-        <div class="col-xs-12 titleCard"><i class="fa fa-calculator pull-left"></i><p>Promedio</p></div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Grados Pala Frontal</th>
-                    <th>Grados Pala Trasera</th>
-                    <th>Altura Pala Frontal</th>
-                    <th>Altura Pala Trasera</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>100 °</td>
-                    <td>100 °</td>
-                    <td>100 m</td>
-                    <td style="border-right: 0px;">100 m</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+        <div class="col-xs-12 col-md-6 card">
+            <div class="col-xs-12 shadow cardContent">
+                <div class="col-xs-12 titleCard"><i class="fa fa-calculator pull-left"></i><p>Promedio</p></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Grados Pala Frontal</th>
+                            <th>Grados Pala Trasera</th>
+                            <th>Altura Pala Frontal</th>
+                            <th>Altura Pala Trasera</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>'.$estadisticos['pGpf'].' °</td>
+                            <td>'.$estadisticos['pGpt'].' °</td>
+                            <td>'.$estadisticos['pApf'].' m</td>
+                            <td style="border-right: 0px;">'.$estadisticos['pApt'].' m</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>';
+    ?>
 <div class="col-xs-12 col-sm-5 card">
     <div class="col-xs-12 shadow cardContent">
         <div class="col-xs-12 titleCard"> <i class="fa fa-pie-chart pull-left"></i><p>Motor</p></div>
@@ -183,18 +168,6 @@
         <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
             <p>Históricos</p>
         </div>
-        <!--<div class="col-xs-6 cardContent" style="padding: 30px 20px 0px 50px;">
-            <div class="motorLegend">
-                <div class="legendColor backYellow"></div>
-                <div class="motorLegend">FRONTAL</div>
-            </div>
-        </div>
-        <div class="col-xs-6 cardContent" style="padding: 30px 20px 0px 50px;">
-            <div class="motorLegend">
-                <div class="legendColor backGrey"></div>
-                <div class="motorLegend">TRASERA</div>
-            </div>
-        </div>-->
         <div class="col-xs-12 cardContent">
             <div class="chartLineContainerHistorical">
                 <div id="chartLineHistorical"></div>
@@ -239,7 +212,30 @@
         </div>
      </div>
 </div>
-<!-- ............................................................................................................................ -->
+<div class="col-xs-12card">
+  <select id="years">
+    <option value="2017" selected="selected">2017</option>
+    <option value="2018">2018</option>
+    <option value="2019">2019</option>
+    <option value="2020">2020</option>
+  </select>
+  <select id="months">
+    <option value="Jan" selected="selected">Enero</option>
+    <option value="Feb">Febrero</option>
+    <option value="Mar">Marzo</option>
+    <option value="Apr">Abril</option>
+    <option value="May">Mayo</option>
+    <option value="Jun">Junio</option>
+    <option value="Jul">Julio</option>
+    <option value="Aug">Agosto</option>
+    <option value="Sep">Septiembre</option>
+    <option value="Oct">Octubre</option>
+    <option value="Nov">Noviembre</option>
+    <option value="Dec">Diciembre</option>
+  </select>
+
+</div>
+
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
@@ -248,6 +244,6 @@
     <script src="../../recursos/moment/moment.js"></script>
     <script src="../../js/funciones.js"></script>
     <script src="../../cliente/js/graficos.js"></script>
-    <!--<script>main();</script>-->
+    <script>main();</script>
 </body>
 </html>

@@ -1,5 +1,28 @@
 <?php
-	include("conexion.php"); 
+	include("conexion.php");
+    // maquinas.php
+    function maquinasPorFecha($idZona, $fechaDatos) {
+        $c = conectar();
+        $a = array();
+        $q = "SELECT * FROM resultados WHERE idZona = '$idZona' AND fechaDatos = '$fechaDatos'";
+        if($res = mysqli_query($c, $q)){
+            while($r = mysqli_fetch_assoc($res)) {
+                array_push($a, array('id' => $r['id'], 'patente' => $r['patente'],'idMaquina' => $r['idMaquina'],'idZona' => $r['idZona'],'registrado' => $r['registrado'],'existeEnArchivo' => $r['existeEnArchivo'], 'tRecorridos' => intval($r['tRecorridos'])));
+            }
+        }
+        return $a;
+    }
+    //dashboard.php
+    function estadisticos($idResultado, $idArchivo, $patente) {
+        $c = conectar();
+        $a = array();
+        $q = "SELECT * FROM resultados WHERE id = '$idResultado'";
+        if($res = mysqli_query($c,$q)) {
+            $r = mysqli_fetch_assoc($res);
+            $a = array('tRecorridos' => intval($r['tRecorridos']), 'mediciones' => $r['mediciones'], 'pRpm' => intval($r['pRpm']), 'pGpf' => intval($r['pGpf']), 'pGpt' => intval($r['pGpt']), 'pApf' => intval($r['pApf']), 'pApt' => intval($r['pApt']));
+        }
+        return $a;
+    }
     function resultadosMaquinas($idFile,$identifier) {
         $conexion = conectar();
         $arr = arrayResultados($conexion,$idFile,$identifier);
@@ -305,8 +328,6 @@
         return $arreglo;
     }
     function debug($var) { 
-  echo "<pre>";
-  print_r($var); 
-  echo "</pre>";
-}
+        echo "<pre>"; print_r($var); echo "</pre>";
+    }
 ?>

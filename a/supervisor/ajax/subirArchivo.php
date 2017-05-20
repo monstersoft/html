@@ -2,22 +2,15 @@
 	include ('/../../php/conexion.php');
     set_time_limit(1200);
     $arr = array('msg' => array(), 'nameDateMatch' => false);
-    /*$beginTime = microtime(true);
+    $beginTime = microtime(true);
 	$con = conectar();
 	$dateData = $_POST['fechaDatos'];
 	$idZone = $_POST['idZona'];
 	$file = $_FILES['archivo'];
 	$idManager = $_POST['idSupervisor'];
 	$arr['uploadDate'] = date("Y-m-d");
-	$arr['uploadTime'] = date("H:i:s");*/
-	$con = conectar();
-	$dateData = '2017-05-18';
-	$idZone = 46;
-	$idManager = 22;
-	$arr['uploadDate'] = date("Y-m-d");
 	$arr['uploadTime'] = date("H:i:s");
-
-    /*$arr['nameDateMatch'] = nameDateMatch($file['name'],$dateData,$arr['msg']);
+    $arr['nameDateMatch'] = nameDateMatch($file['name'],$dateData,$arr['msg']);
     $arr['isCsv'] = isCsv($file['type'], $arr['msg']);
     $arr['itAlreadyExists'] = itAlreadyExists($idZone,$dateData,$arr['msg'], $con);
     $arr['isZone'] = isZone($idZone,$file,$arr['msg']);
@@ -25,22 +18,22 @@
     if(($arr['nameDateMatch'] == false) or ($arr['isCsv'] == false) or ($arr['itAlreadyExists'] == true) or ($arr['isZone'] == false)) {
         $arr['success'] = false;
     }
-    else {*/
-        $arr['countInsertData'] = insertDataFile($idZone,$idManager,$arr['uploadDate'],$dateData,$arr['uploadTime'],/*$file,*/$con,$arr['msg']);
-        /*$arr['success'] = true;
+    else {
+        $arr['countInsertData'] = insertDataFile($idZone,$idManager,$arr['uploadDate'],$dateData,$arr['uploadTime'],$file,$con,$arr['msg']);
+        $arr['success'] = true;
     }
     $endTime = microtime(true);
     $arr['timeScript']  = $endTime - $beginTime;
-    mysqli_close($con);*/
-    echo json_encode($arr['countInsertData']);
-    function insertDataFile($idZone,$idManager,$uploadDate,$dateData,$uploadTime,/*$file,*/$con, &$msg) {
+    mysqli_close($con);
+    echo json_encode($arr);
+    function insertDataFile($idZone,$idManager,$uploadDate,$dateData,$uploadTime,$file,$con, &$msg) {
         $qry = "INSERT INTO archivos (idZona,idSupervisor,fechaSubida,fechaDatos,horaSubida) VALUES ('$idZone','$idManager','$uploadDate','$dateData','$uploadTime')";
         if(mysqli_query($con,$qry)) $lastIdFile = mysqli_insert_id($con);
         $archivo = array();
         $primeraFila = false;
         $countInsertData = 0;
         $countResultData = 0;
-        $file2 = fopen('18052017.csv','r');
+        $file2 = fopen($file['tmp_name'],'r');
         while ($d = fgetcsv($file2,150,";")){
             if($d[0]) {
                 if($primeraFila == false) {
@@ -108,17 +101,17 @@
             $index = searchValueInArray($maquinas, 'patente', $v['patente']);
             if($index == -1) {
                 $resultados[$k]['idZona'] = $idZone;
-                $resultados[$k]['idMaquina'] = null;
+                $resultados[$k]['idMaquina'] = -1;
                 $resultados[$k]['fechaDatos'] = $dateData;
                 $resultados[$k]['registrado'] = 0;
                 $resultados[$k]['existeEnArchivo'] = 1;    
             }
         }
         foreach($resultados as $k => $v) {
-            $qry = "INSERT INTO resultados (patente,idMaquina,idZona,registrado,existeEnArchivo,fechaDatos,pRpm,pGpf,pGpt,pApf,pApt,tRecorridos,mediciones) VALUES ('".$v['patente']."',".$v['idMaquina'].",".$v['idZona'].",".$v['registrado'].",".$v['existeEnArchivo'].",'".$v['fechaDatos']."',".$v['pRpm'].",".$v['pGpf'].",".$v['pGpt'].",".$v['pApf'].",".$v['pApt'].",".$v['tRecorridos'].",".$v['total'].")";
+                $qry = "INSERT INTO resultados (patente,idMaquina,idZona,registrado,existeEnArchivo,fechaDatos,pRpm,pGpf,pGpt,pApf,pApt,tRecorridos,mediciones) VALUES ('".$v['patente']."',".$v['idMaquina'].",".$v['idZona'].",".$v['registrado'].",".$v['existeEnArchivo'].",'".$v['fechaDatos']."',".$v['pRpm'].",".$v['pGpf'].",".$v['pGpt'].",".$v['pApf'].",".$v['pApt'].",".$v['tRecorridos'].",".$v['total'].")";
             if(mysqli_query($con,$qry)) $countResultData++;
         }
-        $arr = array('resultados' => $resultados,'countInsertData' => $countInsertData, 'countResultData' => $countResultData);
+        $arr = array('countInsertData' => $countInsertData, 'countResultData' => $countResultData);
         return $arr;
     }
     function getDistanceFromLatLonInKm($lat1,$lon1,$lat2,$lon2) {
@@ -161,7 +154,7 @@
         }
     }
     function isZone($idZone, $file,&$msg) {
-        $file2 = fopen($file['name'],'r');
+        $file2 = fopen($file['tmp_name'],'r');
         $data = fgetcsv($file2,150,";");
             if($data[0] == $idZone) return true;
             else {

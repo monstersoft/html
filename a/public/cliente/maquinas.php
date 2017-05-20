@@ -1,25 +1,9 @@
 <?php
-/*    include '../../php/conexion.php';
-    $fechaDatos = $_POST['fechaDatos'];
-    $zona = $_POST['zona'];
-	$conexion = conectar();
-	$arreglo = array();
-    $arreglo2 = array();
-	$con1 = "SELECT * FROM maquinas WHERE maquinas.idZona = '$zona'";
-	if($res1 = mysqli_query($conexion,$con1)) {
-		while($row = mysqli_fetch_assoc($res1)) {
-			array_push($arreglo,array('idMaquina' => $row['idMaquina'], 'idZona' => $row['idZona'], 'identificador' => $row['identificador'], 'patente' => $row['patente'], 'fechaRegistro' => $row['fechaRegistro'], 'tara' => $row['tara'], 'cargaMaxima' => $row['cargaMaxima']));
-        }
-	}
-    $consulta = "SELECT datos.identificador  FROM archivos LEFT JOIN datos ON archivos.idArchivo = datos.idArchivo WHERE archivos.idZona = '$zona' GROUP BY datos.identificador";
-	if($resultado = mysqli_query($conexion,$consulta)) {
-		while($row = mysqli_fetch_assoc($resultado)) {
-			array_push($arreglo2,array('identificador' => $row['identificador']));
-        }
-	}*/
+    include '../../php/funciones.php';
     $fecha = $_POST['fechaRecienteDatos'];
     $idZona = $_POST['idZona'];
     $idArchivo = $_POST['idArchivo'];
+    $maquinas = maquinasPorFecha($idZona,$fecha);
 ?>
 <!DOCTYPE html>
 <html>
@@ -95,240 +79,81 @@
             <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
         </ul>
     </nav>
-    <div id="content" class="animated fadeInUp unLeftContent">
+    <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
 
 
-<?php 
-        echo $idZona.'<br>';
-        echo $fecha.'<br>';
-        echo $idArchivo.'<br>';
-        ?>
-<div class="col-xs-12 col-sm-4 col-md-2 card"> 
-    <div class="col-xs-12 shadowButtonDown cardContent"> 
-        <div class="col-xs-12 titleCard"> 
-            <i class="fa fa-check-circle pull-left"></i>
-            <p>ABC 123 CD - 01</p>
-        </div>
-        <div class="col-xs-12" style="padding: 10px;">
-            <div class="center">
-                <img style="float: left;" src="excavator2.svg" width="60" height="60">
-                <div style="float: left;" class="info">
-                   <ul>
-                    <li class="numero">1000 km </li>
-                    <li class="legend">RECORRIDOS</li>
-                </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="dashboard.php" class="boton">Detalle</a> 
-</div>
+<?php
+        foreach($maquinas as $value) {
+            if(($value['registrado'] == 1) and ($value['existeEnArchivo'] == 1)) { echo
+                '<div class="col-xs-12 col-sm-4 col-md-2 card"> 
+                    <div class="col-xs-12 shadowButtonDown cardContent"> 
+                        <div class="col-xs-12 titleCard"> 
+                            <i class="fa fa-check-circle pull-left"></i>
+                            <p>'.$value['patente'].'</p>
+                        </div>
+                        <div class="col-xs-12" style="padding: 10px;">
+                            <div class="center">
+                                <img style="float: left;" src="excavator2.svg" width="60" height="60">
+                                <div style="float: left;" class="info">
+                                   <ul>
+                                    <li class="numero">'.$value['tRecorridos'].'</li>
+                                    <li class="legend">RECORRIDOS</li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="dashboard.php?id='.$value['id'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'" class="boton">Detalle</a> 
+                </div>';
+            }
+            if(($value['registrado'] == 0) and ($value['existeEnArchivo'] == 1)) { echo
+                '<div class="col-xs-12 col-sm-4 col-md-2 card"> 
+                    <div class="col-xs-12 shadowButtonDown cardContent"> 
+                        <div class="col-xs-12 titleCard"> 
+                            <i class="fa fa-check-circle pull-left" style="color: #262626"></i>
+                            <p>'.$value['patente'].'</p>
+                        </div>
+                        <div class="col-xs-12" style="padding: 10px;">
+                            <div class="center">
+                                <img style="float: left;" src="excavator2.svg" width="60" height="60">
+                                <div style="float: left;" class="info">
+                                   <ul>
+                                    <li class="numero">'.$value['tRecorridos'].'</li>
+                                    <li class="legend">RECORRIDOS</li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="dashboard.php?id='.$value['id'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'" class="boton">Detalle</a>
+                </div>';
+            }
+            if(($value['registrado'] == 1) and ($value['existeEnArchivo'] == 0)) { echo
+                '<div class="col-xs-12 col-sm-4 col-md-2 card"> 
+                    <div class="col-xs-12 shadowButtonDown cardContent"> 
+                        <div class="col-xs-12 titleCard"> 
+                            <i class="fa fa-exclamation-circle pull-left" style="color: rgb(224, 225, 226)"></i>
+                            <p>'.$value['patente'].'</p>
+                        </div>
+                        <div class="col-xs-12" style="padding: 10px;">
+                            <div class="center">
+                                <img style="float: left;" src="excavator2.svg" width="60" height="60">
+                                <div style="float: left;" class="info">
+                                   <ul>
+                                    <li class="numero">'.$value['tRecorridos'].'</li>
+                                    <li class="legend">RECORRIDOS</li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="dashboard.php?id='.$value['id'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'" class="boton">Detalle</a> 
+                </div>';
+            }
+        }
+?>
 
-
-<div class="col-xs-12 col-sm-4 col-md-2 card"> 
-    <div class="col-xs-12 shadowButtonDown cardContent"> 
-        <div class="col-xs-12 titleCard"> 
-            <i class="fa fa-check-circle pull-left"></i>
-            <p>ABC 123 CD - 01</p>
-        </div>
-        <div class="col-xs-12" style="padding: 10px;">
-            <div class="center">
-                <img style="float: left;" src="excavator2.svg" width="60" height="60">
-                <div style="float: left;" class="info">
-                   <ul>
-                    <li class="numero">1000 km </li>
-                    <li class="legend">RECORRIDOS</li>
-                </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="dashboard.php" class="boton">Detalle</a> 
-</div>
-<div class="col-xs-12 col-sm-4 col-md-2 card"> 
-    <div class="col-xs-12 shadowButtonDown cardContent"> 
-        <div class="col-xs-12 titleCard"> 
-            <i class="fa fa-check-circle pull-left"></i>
-            <p>ABC 123 CD - 01</p>
-        </div>
-        <div class="col-xs-12" style="padding: 10px;">
-            <div class="center">
-                <img style="float: left;" src="excavator2.svg" width="60" height="60">
-                <div style="float: left;" class="info">
-                   <ul>
-                    <li class="numero">1000 km </li>
-                    <li class="legend">RECORRIDOS</li>
-                </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="dashboard.php" class="boton">Detalle</a> 
-</div>
-<div class="col-xs-12 col-sm-4 col-md-2 card"> 
-    <div class="col-xs-12 shadowButtonDown cardContent"> 
-        <div class="col-xs-12 titleCard"> 
-            <i class="fa fa-check-circle pull-left"></i>
-            <p>ABC 123 CD - 01</p>
-        </div>
-        <div class="col-xs-12" style="padding: 10px;">
-            <div class="center">
-                <img style="float: left;" src="excavator2.svg" width="60" height="60">
-                <div style="float: left;" class="info">
-                   <ul>
-                    <li class="numero">1000 km </li>
-                    <li class="legend">RECORRIDOS</li>
-                </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="dashboard.php" class="boton">Detalle</a> 
-</div>
-<div class="col-xs-12 col-sm-4 col-md-2 card"> 
-    <div class="col-xs-12 shadowButtonDown cardContent"> 
-        <div class="col-xs-12 titleCard"> 
-            <i class="fa fa-check-circle pull-left"></i>
-            <p>ABC 123 CD - 01</p>
-        </div>
-        <div class="col-xs-12" style="padding: 10px;">
-            <div class="center">
-                <img style="float: left;" src="excavator2.svg" width="60" height="60">
-                <div style="float: left;" class="info">
-                   <ul>
-                    <li class="numero">1000 km </li>
-                    <li class="legend">RECORRIDOS</li>
-                </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="dashboard.php" class="boton">Detalle</a> 
-</div>
-<div class="col-xs-12 col-sm-4 col-md-2 card"> 
-    <div class="col-xs-12 shadowButtonDown cardContent"> 
-        <div class="col-xs-12 titleCard"> 
-            <i class="fa fa-check-circle pull-left"></i>
-            <p>ABC 123 CD - 01</p>
-        </div>
-        <div class="col-xs-12" style="padding: 10px;">
-            <div class="center">
-                <img style="float: left;" src="excavator2.svg" width="60" height="60">
-                <div style="float: left;" class="info">
-                   <ul>
-                    <li class="numero">1000 km </li>
-                    <li class="legend">RECORRIDOS</li>
-                </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="dashboard.php" class="boton">Detalle</a> 
-</div>
-
-
-<div class="col-xs-12 col-sm-12 card">
-        <div class="col-xs-12 shadowButtonDown cardContent">
-            <div class="col-xs-12 titleCard"> <i style="color: #262626;" class="fa fa-times-circle pull-left"></i>
-                <p>No Disponibles</p>
-            </div>
-        </div>
-        <div class="col-xs-12 shadow cardContent">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Patente</th>
-                        <th>ID</th>
-                        <th class="unDisplayColumn">Estado</th>
-                        <th class="unDisplayColumn">Fecha registro</th>
-                        <th class="unDisplayColumn">Días Disponible</th>
-                        <th class="unDisplayColumn">Hora subida</th>
-                    </tr>
-                </thead>
-                <tbody>          
-                    <tr>
-                        <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>ABC DE 123</td>
-                        <td>1</td>
-                        <td class="unDisplayColumn">No Disponible</td>
-                        <td class="unDisplayColumn">Lunes<br>27 Abril 2017</td>
-                        <td class="unDisplayColumn">20 / 100</td>
-                        <td class="unDisplayColumn">08:55 AM</td>
-                    </tr>
-                    <tr class="accordion unActivated">
-                        <td colspan="2">
-                            <ul>
-                                <li>Última actualización : 20 Febrero 2017</li>
-                                <li>Subido por: Juanito Perez Perez</li>
-                                <li>Fecha subida: 20 Febrero 2017</li>
-                                <li>Hora subida: 08:55 AM</li>
-                            </ul>
-                        </td>
-                    </tr>   
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-
-
-
-          
-
-
-                       
-
-                        
-                        
-       <!-- <div class="col-xs-12">
-            <h1>Máquinas registradas</h1>
-            <table style="width: 100%;">
-                <thead>
-                    <tr>
-                        <th>idMaquina</th>
-                        <th>idZona</th>
-                        <th>identificador</th>
-                        <th>patente</th>
-                        <th>fechaRegistro</th>
-                        <th>tara</th>
-                        <th>cargaMaxima</th>
-                    </tr>
-                </thead>
-                <tbody><?php $registrados = array(); foreach($arreglo as $value) { echo '<tr><td>'.$value['idMaquina'].'</td><td>'.$value['idZona'].'</td><td>'.$value['identificador'].'<a href="dashboard.php?i='.$value['identificador'].'&z='.$value['idZona'].'">Ver Resultados</a></td><td>'.$value['patente'].'</td><td>'.$value['fechaRegistro'].'</td><td>'.$value['tara'].'</td><td>'.$value['cargaMaxima'].'</td></tr>'; array_push($registrados,$value['identificador']);}?></tbody>
-            </table>
-        </div>
-        <div class="col-xs-12">
-            <h1>Máquinas en archivos</h1>
-            <table style="width: 100%;">
-                <thead>
-                    <tr>
-                        <th>identificador</th>
-                    </tr>
-                </thead>
-                <tbody><?php $enArchivos = array(); foreach($arreglo2 as $value) { echo '<tr><td>'.$value['identificador'].'<a href="dashboard.php?i='.$value['identificador'].'">Ver Resultados</a></td></tr>'; array_push($enArchivos,$value['identificador']);}?></tbody>
-            </table>
-        </div>
-        <div class="col-xs-12">
-            <h1>Máquinas registradas que no están en archivos</h1>
-            <?php
-                $resultado = array_diff($registrados,$enArchivos);
-                print_r($resultado);
-            ?>
-        </div>
-        <div class="col-xs-12">
-            <h1>Máquinas que están en archivos y  que no están registradas</h1>
-            <?php
-                $resultado = array_diff($enArchivos,$registrados);
-                print_r($resultado);
-            ?>
-        </div>
-        <div class="col-xs-12">
-            <h1>Máquinas que no están disponibles</h1>
-            <?php
-                $resultado = array_diff($enArchivos,$registrados);
-                print_r($resultado);
-            ?>
-        </div>-->
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>

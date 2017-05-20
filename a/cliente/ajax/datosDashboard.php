@@ -1,9 +1,60 @@
 <?php
 	include '../../php/funciones.php';
-	/*$idZona = $_POST['id'];
-	$identificador = $_POST['identificador'];
-	$patente = $_POST['patente'];*/
-    $idZona = 50;
+	$idResultado = $_POST['idResultado'];
+	$idArchivo = $_POST['idArchivo'];
+	$patente = $_POST['patente'];
+    $c = conectar();
+    $a = array();
+    $q = "SELECT datos.motorFuncionando, COUNT(datos.motorFuncionando) AS frecuencia FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' GROUP BY datos.motorFuncionando";
+    if($res = mysqli_query($c,$q)) {
+        while($r = mysqli_fetch_assoc($res)) {
+            $torta['motorFuncionando'][] = $r['motorFuncionando'];
+            $torta['frecuencia'][] = intval($r['frecuencia']);
+        }
+    }
+    $q = "SELECT datos.cambio, COUNT(datos.cambio) AS frecuencia FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' GROUP BY datos.cambio";
+    if($res = mysqli_query($c,$q)) {
+        while($r = mysqli_fetch_assoc($res)) {
+            $barra['cambio'][] = $r['cambio'];
+            $barra['frecuencia'][] = intval($r['frecuencia']);
+        }
+    }
+    $a['torta'] = $torta;
+    $a['barra'] = $barra;
+    echo json_encode($a);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*$idZona = 50;
 	$identificador = 1;
 	$fechaDatos = '0000-00-00';
 	$con = conectar();
@@ -126,5 +177,5 @@
         $c = 2 * atan2(sqrt($a), sqrt(1-$a)); 
         $d = $R * $c;
         return $d;
-    }
+    }*/
 ?>
