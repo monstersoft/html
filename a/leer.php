@@ -1,16 +1,7 @@
 <?php
-
-
-$file = fopen('03042017.csv','r');
-while ($data = fgetcsv($file,150,";")){
-    if($data[0]){
-('$lastIdFile','$data[0]','$data[1]','$data[2]','$data[3]','$data[4]','$data[5]','$data[6]','$data[7]','$data[8]','$data[9]','$data[10]')";
-            if(mysqli_query($con,$qry)) $countSuccess++;
-    }
-}
+    $a = array();
+    $a['data']['labels'] = array('A','B','C','D','E','F','G','H','I','J');
+    $a['data']['frontal'] = array(1,2,3,4,5,6,7,8,9,10);
+    $a['data']['trasera'] = array(10,9,8,7,6,5,4,3,2,1);
+    echo json_encode($a);
 ?>
-
-
-
-
-$uploadTime = date("H-i-s");

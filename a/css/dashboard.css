@@ -94,13 +94,6 @@ table td {
 .chartist-tooltip {
     font-family: 'Montserrat';
 }
-/*.donutContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}*/
 /*BARRAS*/
 #example2 {
     height: 252px;
@@ -176,16 +169,12 @@ table td {
 #chartLineHistorical2 {
     height: 100px;
 }
-
 #chartLineHistorical3 {
     height: 100px;
 }
-
 #chartLineHistorical4 {
     height: 100px;
 }
-
-
 .chartist-tooltip {
     position: absolute;
     display: inline-block;
@@ -221,10 +210,6 @@ transform: translateX(0px) translateY(20px) rotate(-45deg);
         visibility: hidden;
     }
 }
-
-
-
-
 #chartLine2 {
     width: 2000px;
     height: 250px;
@@ -253,6 +238,23 @@ transform: translateX(0px) translateY(20px) rotate(-45deg);
     background: white;
     z-index: 2;
 }
+.yearsContainer {
+    border: 1px solid red;
+}
+.leftArrowYear {
+    border: 1px solid green;
+}
+.yearHistorical {
+    border: 5px solid black;
+    display: inline;
+}
+/*.donutContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}*/
 @media (min-width: 1170px) {
     #chartLine {
         width: 100%;

@@ -200,6 +200,12 @@
                 <div id="chartLineHistorical4"></div>
             </div>
         </div>
+        <div class="col-xs-6 cardContent">
+            <div class="yearsContainer"><i class="fa fa-2x fa-arrow-circle-left"></i><div class="yearHitorical">2016</div><i class="fa fa-2x fa-arrow-circle-right"></i></div>
+        </div>
+        <div class="col-xs-6 cardContent">
+            <div class="yearsContainer"><i class="leftArrowYear fa fa-2x fa-arrow-circle-left"></i><div class="yearHitorical">2016</div><i class="fa fa-2x fa-arrow-circle-right"></i></div>
+        </div>
      </div>
 </div>
 <div class="col-xs-12card">

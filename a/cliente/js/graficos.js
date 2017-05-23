@@ -24,13 +24,11 @@ $.ajax({
     dataType: 'json',
     cache: false,
     success: function(arr) {
-        console.log(arr);
-        var a = $.parseJSON(arr);
-        //donut('#example',{series: $.parseJSON(arr.torta.frecuencia)});
-        $.each(arr.torta.frecuencia,function(key,value) {
-            var array = [];
-            array.push(value);
+        var arreglo = [];
+        $.each(arr.torta.frecuencia,function(index) {
+            arreglo.push(arr.torta.frecuencia[index]);
         });
+        donut('#example',donutData);
         
     },
     error: function(xhr) {console.log(xhr.responseText);}
@@ -85,7 +83,7 @@ function donut(idChart,donutData){
       chartPadding: 20,
       labelOffset: 30,
       labelInterpolationFnc: function(value) {return Math.round(value/data.series.reduce(sum)*100)+'%';},
-    };
+};
 
     /*var responsiveOptions = [
       ['screen and (max-width: 720px)', {
