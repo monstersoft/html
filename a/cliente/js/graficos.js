@@ -27,10 +27,11 @@ $.ajax({
         console.log(arr);
         var a = $.parseJSON(arr);
         //donut('#example',{series: $.parseJSON(arr.torta.frecuencia)});
-        $.each(arr.torta.frecuencia,function(key,value)) {
+        $.each(arr.torta.frecuencia,function(key,value) {
             var array = [];
             array.push(value);
-        }
+        });
+        
     },
     error: function(xhr) {console.log(xhr.responseText);}
 });
