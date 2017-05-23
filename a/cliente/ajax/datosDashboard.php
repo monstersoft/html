@@ -3,9 +3,9 @@
 	$idResultado = $_POST['idResultado'];
 	$idArchivo = $_POST['idArchivo'];
 	$patente = $_POST['patente'];
-    $c = conectar();
+    //$c = conectar();
     $a = array();
-    $q = "SELECT datos.motorFuncionando, COUNT(datos.motorFuncionando) AS frecuencia FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' GROUP BY datos.motorFuncionando";
+    /*$q = "SELECT datos.motorFuncionando, COUNT(datos.motorFuncionando) AS frecuencia FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' GROUP BY datos.motorFuncionando";
     if($res = mysqli_query($c,$q)) {
         while($r = mysqli_fetch_assoc($res)) {
             $torta['motorFuncionando'][] = $r['motorFuncionando'];
@@ -19,8 +19,27 @@
             $barra['frecuencia'][] = intval($r['frecuencia']);
         }
     }
-    $a['torta'] = $torta;
+    $q = "SELECT DATE_FORMAT(datos.hora,'%i') AS hora, datos.gradosPalaFrontal FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' AND datos.hora BETWEEN '08:00:00' AND '08:59:00'";
+    if($res = mysqli_query($c,$q)) {
+        while($r = mysqli_fetch_assoc($res)) {
+            $gradosFrontal['hora'][] = $r['hora'];
+            $gradosFrontal['gradosPalaFrontal'][] = intval($r['gradosPalaFrontal']);
+        }
+    }
+    $q = "SELECT DATE_FORMAT(datos.hora, '%i') AS hora, datos.gradosPalaFrontal, datos.gradosPalaTrasera, datos.alturaPalaFrontal, datos.alturaPalaTrasera FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' AND datos.hora BETWEEN '08:00:00' AND '08:59:00'";
+    if($res = mysqli_query($c,$q)) {
+        while($r = mysqli_fetch_assoc($res)) {
+            $linea['hora'][] = $r['hora'];
+            $linea['gradosPalaFrontal'][] = intval($r['gradosPalaFrontal']);
+            $linea['gradosPalaTrasera'][] = intval($r['gradosPalaTrasera']);
+            $linea['alturaPalaFrontal'][] = intval($r['alturaPalaFrontal']);
+            $linea['alturaPalaTrasera'][] = intval($r['alturaPalaTrasera']);
+        }
+    }*/
+
+    /*$a['torta'] = $torta;
     $a['barra'] = $barra;
+    $a['linea'] = $linea;*/
     echo json_encode($a);
 
 

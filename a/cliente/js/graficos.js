@@ -1,4 +1,3 @@
-
 var data = {
     labels: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,
               31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59],
@@ -18,7 +17,7 @@ var donutData = {
 };
 donut('#example',donutData);
 var url = devuelveUrl('a/cliente/ajax/datosDashboard.php');
-$.ajax({
+/*$.ajax({
     url: url,
     type: 'POST',
     data: {idResultado: getSearchParams().id, idArchivo: getSearchParams().idArchivo, patente: getSearchParams().patente},
@@ -28,7 +27,7 @@ $.ajax({
         console.log(JSON.stringify(arr));
     },
     error: function(xhr) {console.log(xhr.responseText);}
-});
+});*/
 
 graphedChartLine('#chartLineSticky', true, data);
 graphedChartLine('#chartLine', false, data);
@@ -37,7 +36,6 @@ graphedChartLine('#chartLine2', false, data)
 graphedChartBar('#example2');
 graphedChartLineHistorical('#chartLineHistorical', false, data2);
 graphedChartLineHistorical('#chartLineHistorical2', false, data2);
-graphedChartLineHistorical('#chartLineHistorical3', false, data2);
 graphedChartLineHistorical('#chartLineHistorical4', true, data2);
 function graphedChartBar(idChart) {
     var data = {
@@ -143,22 +141,29 @@ function weeksInYear(year) {
 
   return week;
 }
-function returnWeeksRanges(year,month) {
+console.log(moment('2017-04-01').subtract('1','months').format('MMM'));
+
+function returnWeeksRangesAvailable(year,month) {
     var week = 1;
     var weeks = new Array();
     while(week <= weeksInYear(year)) {
         var startDate = moment([year, 5, 30]).isoWeek(week).startOf('isoweek'); 
         var endDate = moment(startDate).endOf('isoweek');
         if(startDate.format('MMM') == 'Dec' && week == 1)
-            weeks.push({week: week, startWeek: startDate.format('YYYY-MM-DD'), endWeek: endDate.format('YYYY-MM-DD')});
+            weeks.push({week: week, startWeek: startDate.format('YYYY-MM-DD'), endWeek: endDate.format('YYYY-MM-DD'), available: false});
         if(startDate.format('MMM') == month)
-            weeks.push({week: week, startWeek: startDate.format('YYYY-MM-DD'), endWeek: endDate.format('YYYY-MM-DD')});
+            weeks.push({week: week, startWeek: startDate.format('YYYY-MM-DD'), endWeek: endDate.format('YYYY-MM-DD'), available: false});
         week++;
     }
     if(weeks[0].week == 1 && weeks[1].week == 1) {
         weeks.shift();
         weeks.shift();
     }
+    $.each(weeks,function(key, value){
+        if(moment().format('YYYY-MM-DD') > value.endWeek)
+            value.available = true;
+        console.log(value.endWeek+'-'+value.available);
+    });
     return weeks;  
 }
 function getSearchParams(k){
@@ -169,10 +174,10 @@ function getSearchParams(k){
 $( "#years" ).change(function() {
     var month = $('#months').val();
     var year = parseInt($('#years').val());
-    console.log(JSON.stringify(returnWeeksRanges(year,month)));
+    console.log(JSON.stringify(returnWeeksRangesAvailable(year,month)));
 });
 $( "#months" ).change(function() {
     var month = $('#months').val();
     var year = $('#years').val();
-    console.log(JSON.stringify(returnWeeksRanges(year,month)));
+    console.log(JSON.stringify(returnWeeksRangesAvailable(year,month)));
 });
