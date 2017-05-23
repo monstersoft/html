@@ -11,23 +11,29 @@ var data2 = {
     series: [[100,200,100,400,500]]
 };
 
-var donutData = {
+/*var donutData = {
   series: [500,500]
 
-};
-donut('#example',donutData);
+};*/
+//donut('#example',donutData);
 var url = devuelveUrl('a/cliente/ajax/datosDashboard.php');
-/*$.ajax({
+$.ajax({
     url: url,
     type: 'POST',
-    data: {idResultado: getSearchParams().id, idArchivo: getSearchParams().idArchivo, patente: getSearchParams().patente},
+    data: {idResultado: getSearchParams().id, idArchivo: getSearchParams().idArchivo, patente: getSearchParams().patente, semanas: a(returnWeeksRangesAvailable(parseInt(moment().format('YYYY')),moment().format('MMM')))},
     dataType: 'json',
     cache: false,
     success: function(arr) {
-        console.log(JSON.stringify(arr));
+        console.log(arr);
+        var a = $.parseJSON(arr);
+        //donut('#example',{series: $.parseJSON(arr.torta.frecuencia)});
+        $.each(arr.torta.frecuencia,function(key,value)) {
+            var array = [];
+            array.push(value);
+        }
     },
     error: function(xhr) {console.log(xhr.responseText);}
-});*/
+});
 
 graphedChartLine('#chartLineSticky', true, data);
 graphedChartLine('#chartLine', false, data);
@@ -69,7 +75,7 @@ function graphedChartBar(idChart) {
     ];
     new Chartist.Bar(idChart,data,options, responsiveOptions);
 }
-function donut(idChart,data){
+function donut(idChart,donutData){
     var sum = function(a,b) { return a+b; }
     var options = {
       donut: true,
@@ -141,8 +147,17 @@ function weeksInYear(year) {
 
   return week;
 }
-console.log(moment('2017-04-01').subtract('1','months').format('MMM'));
-
+function a(weeks) {
+    if(weeks[0].available == false) {
+        beforeMonth = moment().subtract('1','months').format('MMM');
+        beforeYear = moment().subtract('1','years').format('YYYY');
+        newWeeks = returnWeeksRangesAvailable(parseInt(beforeYear),beforeMonth);
+        return newWeeks;
+    }
+    else {
+        return weeks;
+    }
+}
 function returnWeeksRangesAvailable(year,month) {
     var week = 1;
     var weeks = new Array();
@@ -160,9 +175,8 @@ function returnWeeksRangesAvailable(year,month) {
         weeks.shift();
     }
     $.each(weeks,function(key, value){
-        if(moment().format('YYYY-MM-DD') > value.endWeek)
+        if(moment().format('2017-MM-DD')> value.endWeek)
             value.available = true;
-        console.log(value.endWeek+'-'+value.available);
     });
     return weeks;  
 }

@@ -3,9 +3,10 @@
 	$idResultado = $_POST['idResultado'];
 	$idArchivo = $_POST['idArchivo'];
 	$patente = $_POST['patente'];
-    //$c = conectar();
+    $semanas = $_POST['semanas'];
+    $c = conectar();
     $a = array();
-    /*$q = "SELECT datos.motorFuncionando, COUNT(datos.motorFuncionando) AS frecuencia FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' GROUP BY datos.motorFuncionando";
+    $q = "SELECT datos.motorFuncionando, COUNT(datos.motorFuncionando) AS frecuencia FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' GROUP BY datos.motorFuncionando";
     if($res = mysqli_query($c,$q)) {
         while($r = mysqli_fetch_assoc($res)) {
             $torta['motorFuncionando'][] = $r['motorFuncionando'];
@@ -35,11 +36,29 @@
             $linea['alturaPalaFrontal'][] = intval($r['alturaPalaFrontal']);
             $linea['alturaPalaTrasera'][] = intval($r['alturaPalaTrasera']);
         }
-    }*/
+    }
+    $count = 0;
+    foreach($semanas as $value) {
+        if($value['available'] == 'true') {
+            $q = "SELECT AVG(resultados.pGpf) AS pGpf, AVG(resultados.pGpt) AS pGpt, AVG(resultados.pApf) AS pApf, AVG(resultados.pApt)  AS pApt, AVG(resultados.tRecorridos) AS pTre FROM resultados WHERE resultados.patente = '".$patente."' AND resultados.fechaDatos BETWEEN '".$value['startWeek']."' AND '".$value['endWeek']."'";
+            if($res = mysqli_query($c,$q)) {
+                $r = mysqli_fetch_assoc($res);
+                    $lineaHistorico['pGpf'][]= intval($r['pGpf']);
+                    $lineaHistorico['pGpt'][] = intval($r['pGpt']);
+                    $lineaHistorico['pApf'][] = intval($r['pApf']);
+                    $lineaHistorico['pApt'][] = intval($r['pApt']);
+                    $lineaHistorico['pTre'][] = intval($r['pTre']);
+                    $lineaHistorico['semanas'][] = $value['week'];
+                    $count++;
+            }
+        }
+    }
 
-    /*$a['torta'] = $torta;
+    $a['torta'] = $torta;
     $a['barra'] = $barra;
-    $a['linea'] = $linea;*/
+    $a['linea'] = $linea;   
+    $a['lineaHistorico'] = $lineaHistorico;
+    $a['semanas'] = $semanas;
     echo json_encode($a);
 
 
