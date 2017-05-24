@@ -1,13 +1,7 @@
-var posYear = 1;
-var posMonth = 2;
-var years = ['2016','2017','2018'];
-var months = ['Nov','Oct','Sep'];
-/*
-graphedChartLine('#chartLineSticky2', true, data);
-graphedChartLine('#chartLine2', false, data)
-graphedChartLineHistorical('#chartLineHistorical', false, data2);
-graphedChartLineHistorical('#chartLineHistorical2', false, data2);
-graphedChartLineHistorical('#chartLineHistorical4', true, data2);*/
+var posYear;
+var posMonth;
+var years = [];
+var months = [];
 var url = devuelveUrl('a/cliente/ajax/datosDashboard.php');
 $.ajax({
     url: url,
@@ -24,9 +18,9 @@ $.ajax({
         line('#chartLineSticky2', true, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false);
         line('#chartLine2', false, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false);
         
-        line('#chartLineHistorical', true, false,{labels: ['1ra Semana','2da Semana','3ra Semana','4ra Semana','5ta Semana'], series: [[1,2,3,4,5],[3,4,8,10,12]]}, '', false);
-        line('#chartLineHistorical2',{labels: res[1]['cambio'], series: [res[1]['frecuencia']]});
-        line('#chartLineHistorical4');
+        //line('#chartLineHistorical', true, false,{labels: ['1ra Semana','2da Semana','3ra Semana','4ra Semana','5ta Semana'], series: [[1,2,3,4,5],[3,4,8,10,12]]}, '', false);
+        //line('#chartLineHistorical2',{labels: res[1]['cambio'], series: [res[1]['frecuencia']]});
+        //line('#chartLineHistorical4');
         console.log(res);
     },
     error: function(xhr) {console.log(xhr.responseText);}

@@ -50,8 +50,9 @@
     $a['torta'] = $torta;
     $a['barra'] = $barra;
     $a['linea'] = $linea;   
-    /*$a['lineaHistorico'] = $lineaHistorico;
-    $a['semanas'] = $semanas;*/
+    /*$a['lineaHistorico'] = $lineaHistorico;*/
+    $a['semanas'] = $semanas;
+    $a['firstYear'] = '2017';
     echo json_encode($a);
 
 
