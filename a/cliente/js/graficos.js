@@ -19,10 +19,14 @@ $.ajax({
         var res = json2array(arr);
         donut('#donutChart',{series: res[0]['frecuencia']});
         bar('#barChart',{labels: res[1]['cambio'], series: [res[1]['frecuencia']]});
-        line('#chartLineSticky', true, {labels: res[2]['hora'], series: [res[2]['gradosPalaFrontal'],res[2]['gradosPalaTrasera']]}, '°');
-        line('#chartLine', false, {labels: res[2]['hora'], series: [res[2]['gradosPalaFrontal'],res[2]['gradosPalaTrasera']]}, '°');
-        line('#chartLineSticky2', true, {labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm');
-        line('#chartLine2', false, {labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm')
+        line('#chartLineSticky', true, true, {labels: res[2]['hora'], series: [res[2]['gradosPalaFrontal'],res[2]['gradosPalaTrasera']]}, '°', false);
+        line('#chartLine', false, true,{labels: res[2]['hora'], series: [res[2]['gradosPalaFrontal'],res[2]['gradosPalaTrasera']]}, '°', false);
+        line('#chartLineSticky2', true, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false);
+        line('#chartLine2', false, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false);
+        
+        line('#chartLineHistorical', true, false,{labels: ['1ra Semana','2da Semana','3ra Semana','4ra Semana','5ta Semana'], series: [[1,2,3,4,5],[3,4,8,10,12]]}, '', false);
+        line('#chartLineHistorical2',{labels: res[1]['cambio'], series: [res[1]['frecuencia']]});
+        line('#chartLineHistorical4');
         console.log(res);
     },
     error: function(xhr) {console.log(xhr.responseText);}
@@ -106,17 +110,18 @@ function bar(idChart,data) {
         }
       }],      
       ['screen and (min-width: 1920px)', {
-            offset: 100
+            offset: 200
         }]
         
         ];
     new Chartist.Bar(idChart,data,options, responsiveOptions);
 }
-function line(idChart, axisShowY, data, unidad) {
+function line(idChart, axisShowY, axisShowX, data, unidad, fullwidth) {
     var options = {
         lineSmooth: Chartist.Interpolation.cardinal({tension: 0.2}),
         axisY: {showLabel: axisShowY,labelInterpolationFnc: function(value) {return value + unidad;}},
-        axisX: {labelInterpolationFnc: function(value){return value+"'"}},
+        axisX: {showLabel: axisShowX,labelInterpolationFnc: function(value){return value+"'"}},
+        fullWidth: fullwidth,
         plugins: [Chartist.plugins.tooltip()]}
     var chart = new Chartist.Line(idChart, data, options);
     chart.on('draw', function(data) {
@@ -133,17 +138,6 @@ function line(idChart, axisShowY, data, unidad) {
         }
     });
 }
-/*function graphedChartLineHistorical(idChart, axisShowX, data) {
-    var options = {
-        lineSmooth: Chartist.Interpolation.cardinal({tension: 0.5}),
-        axisX: {showLabel: axisShowX},
-        fullWidth: true,
-        plugins: [Chartist.plugins.tooltip()]
-    }
-    new Chartist.Line(idChart, data, options);
-}*/
-
-
 function get(min, max, cantidad) {
   var a = [];
   var i=1;

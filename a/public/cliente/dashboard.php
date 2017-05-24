@@ -117,13 +117,13 @@
             <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
                 <p>Grados Pala</p>
             </div>
-            <div class="col-xs-6 cardContent" style="padding: 30px 20px 0px 20px;">
+            <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
                 <div class="motorLegend">
                     <div class="legendColor backYellow"></div>
                     <div class="motorLegend">FRONTAL</div>
                 </div>
             </div>
-            <div class="col-xs-6 cardContent" style="padding: 30px 20px 0px 20px;">
+            <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
                 <div class="motorLegend">
                     <div class="legendColor backGrey"></div>
                     <div class="motorLegend">TRASERA</div>
@@ -139,16 +139,16 @@
     </div>
     <div class="col-xs-12 card">
         <div class="col-xs-12 shadow cardContent">
-            <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
+            <div class="zi col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
                 <p>Altura Pala</p>
             </div>
-            <div class="col-xs-6 cardContent" style="padding: 30px 20px 0px 20px;">
+            <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
                 <div class="motorLegend">
                     <div class="legendColor backYellow"></div>
                     <div class="motorLegend">FRONTAL</div>
                 </div>
             </div>
-            <div class="col-xs-6 cardContent" style="padding: 30px 20px 0px 20px;">
+            <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
                 <div class="motorLegend">
                     <div class="legendColor backGrey"></div>
                     <div class="motorLegend">TRASERA</div>
