@@ -42,6 +42,21 @@ table td {
     font-weight: bold;
 }
 /* DONUTS CHART */
+#donutChart {
+    height: 240px;
+    width: 100%;
+    margin: 0 auto;
+}
+#donutChart text {
+    font-size: 16px;
+    font-family: 'Montserrat';
+}
+#donutChart .ct-series-a .ct-slice-donut {
+    stroke: #F5A214;
+}
+#donutChart .ct-series-b .ct-slice-donut {
+    stroke: #262626;
+}
 .backYellow {
     background: #F5A214;
 }
@@ -69,12 +84,12 @@ table td {
 }
 .ct-series-a .ct-point {
     stroke: #F5A214;
-    stroke-width: 12px;
+    stroke-width: 7px;
     stroke-linecap: square;
 }
 .ct-series-b .ct-point {
     stroke: #262626;
-    stroke-width: 12px;
+    stroke-width: 7px;
     stroke-linecap: circle;
 }
 .ct-label.ct-vertical { 
@@ -86,31 +101,28 @@ table td {
 .ct-label.ct-horizontal { 
     font-size: 10px; 
     position: relative; 
-    transform: rotate(45deg); 
+    transform: rotate(0deg); 
     transform-origin: left top; 
     color: #262626;
     font-family: 'Montserrat';
 }
-.chartist-tooltip {
-    font-family: 'Montserrat';
-}
 /*BARRAS*/
-#example2 {
+#barChart {
     height: 252px;
     width: 100%;
 }
-#example2 .ct-series-a line {
+#barChart .ct-series-a line {
     stroke : #F5A214;
     stroke-width: 20px;
     color: yellow;
 }
-#example2 .ct-label.ct-vertical { 
+#barChart .ct-label.ct-vertical { 
     font-size: 12px; 
     color: #262626;
     font-family: 'Montserrat';
     
 }
-#example2 .ct-label.ct-horizontal { 
+#barChart .ct-label.ct-horizontal { 
     font-size: 10px; 
     position: relative; 
     transform: rotate(45deg); 
@@ -118,22 +130,6 @@ table td {
     color: #262626;
     font-family: 'Montserrat';
     padding: 0px;
-}
-/*DONUT*/
-#example {
-    height: 240px;
-    width: 100%;
-    margin: 0 auto;
-}
-#example text {
-    font-size: 16px;
-    font-family: 'Montserrat';
-}
-#example .ct-series-a .ct-slice-donut {
-    stroke: #F5A214;
-}
-#example .ct-series-b .ct-slice-donut {
-    stroke: #262626;
 }
 /* CHART LINE */
 .chartLineContainer {
@@ -163,53 +159,6 @@ table td {
     z-index: 0;
     width: 100%;
 }
-#chartLineHistorical {
-    height: 100px;
-}
-#chartLineHistorical2 {
-    height: 100px;
-}
-#chartLineHistorical3 {
-    height: 100px;
-}
-#chartLineHistorical4 {
-    height: 100px;
-}
-.chartist-tooltip {
-    position: absolute;
-    display: inline-block;
-    min-width: 5em;
-    padding: 8px 10px;
-    background: #383838;
-    color: #fff;
-    text-align: center;
-    pointer-events: none;
-    z-index: 100;
-    transition: opacity .2s linear;
-    transform-origin: 50% 50%;
-transform: translateX(0px) translateY(20px) rotate(-45deg);
- 
-    &:before {
-        position: absolute;
-        bottom: -14px;
-        left: 50%;
-        border: solid transparent;
-        content: ' ';
-        height: 0;
-        width: 0;
-        pointer-events: none;
-        border-color: rgba(251, 249, 228, 0);
-        border-top-color: #383838;
-        border-width: 7px;
-        margin-left: -8px;
-    }
- 
-    &:hide {
-        display: block;
-        opacity: 0;
-        visibility: hidden;
-    }
-}
 #chartLine2 {
     width: 2000px;
     height: 250px;
@@ -238,23 +187,61 @@ transform: translateX(0px) translateY(20px) rotate(-45deg);
     background: white;
     z-index: 2;
 }
-.yearsContainer {
-    border: 1px solid red;
+#chartLineHistorical {
+    height: 100px;
 }
-.leftArrowYear {
-    border: 1px solid green;
+#chartLineHistorical2 {
+    height: 100px;
 }
-.yearHistorical {
-    border: 5px solid black;
-    display: inline;
+#chartLineHistorical3 {
+    height: 100px;
 }
-/*.donutContainer {
+#chartLineHistorical4 {
+    height: 100px;
+}
+/*TOOLTIP*/
+.chartist-tooltip {
+    font-family: 'Montserrat';
+    position: absolute;
+    display: inline-block;
+    min-width: 5em;
+    padding: 5px 5px;
+    background: #262626;
+    color: #fff;
+    text-align: center;
+    pointer-events: none;
+    z-index: 100;
+    transition: opacity .2s linear;
+    transform-origin: 50% 50%;
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+}
+/*YEARS MONTHS*/
+.yearContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-}*/
+}
+.yearLegend {
+    display: inline;
+    font-size: 16px;
+    margin: 5px;
+    font-family: 'Montserrat';
+}
+.monthLegend {
+    display: inline;
+    font-size: 16px;
+    margin: 5px;
+    font-family: 'Montserrat';
+}
+.yearContainer i {
+    color: #F5A214;
+}
+.yearContainer i:hover {
+    cursor: pointer;
+    /*box-shadow: 1px 1px 1px #888888;*/
+}
 @media (min-width: 1170px) {
     #chartLine {
         width: 100%;

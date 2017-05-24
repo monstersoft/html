@@ -20,13 +20,6 @@
             $barra['frecuencia'][] = intval($r['frecuencia']);
         }
     }
-    $q = "SELECT DATE_FORMAT(datos.hora,'%i') AS hora, datos.gradosPalaFrontal FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' AND datos.hora BETWEEN '08:00:00' AND '08:59:00'";
-    if($res = mysqli_query($c,$q)) {
-        while($r = mysqli_fetch_assoc($res)) {
-            $gradosFrontal['hora'][] = $r['hora'];
-            $gradosFrontal['gradosPalaFrontal'][] = intval($r['gradosPalaFrontal']);
-        }
-    }
     $q = "SELECT DATE_FORMAT(datos.hora, '%i') AS hora, datos.gradosPalaFrontal, datos.gradosPalaTrasera, datos.alturaPalaFrontal, datos.alturaPalaTrasera FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' AND datos.hora BETWEEN '08:00:00' AND '08:59:00'";
     if($res = mysqli_query($c,$q)) {
         while($r = mysqli_fetch_assoc($res)) {
@@ -37,7 +30,7 @@
             $linea['alturaPalaTrasera'][] = intval($r['alturaPalaTrasera']);
         }
     }
-    $count = 0;
+    /*$count = 0;
     foreach($semanas as $value) {
         if($value['available'] == 'true') {
             $q = "SELECT AVG(resultados.pGpf) AS pGpf, AVG(resultados.pGpt) AS pGpt, AVG(resultados.pApf) AS pApf, AVG(resultados.pApt)  AS pApt, AVG(resultados.tRecorridos) AS pTre FROM resultados WHERE resultados.patente = '".$patente."' AND resultados.fechaDatos BETWEEN '".$value['startWeek']."' AND '".$value['endWeek']."'";
@@ -52,13 +45,13 @@
                     $count++;
             }
         }
-    }
+    }*/
 
     $a['torta'] = $torta;
     $a['barra'] = $barra;
     $a['linea'] = $linea;   
-    $a['lineaHistorico'] = $lineaHistorico;
-    $a['semanas'] = $semanas;
+    /*$a['lineaHistorico'] = $lineaHistorico;
+    $a['semanas'] = $semanas;*/
     echo json_encode($a);
 
 

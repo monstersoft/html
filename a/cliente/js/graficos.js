@@ -1,21 +1,13 @@
-var data = {
-    labels: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,
-              31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59],
-    series: [
-        get(0,3600,59),
-        get(0,3600,59)
-    ]
-    };
-var data2 = {
-    labels: ['1','2','3','4','5'],
-    series: [[100,200,100,400,500]]
-};
-
-/*var donutData = {
-  series: [500,500]
-
-};*/
-//donut('#example',donutData);
+var posYear = 1;
+var posMonth = 2;
+var years = ['2016','2017','2018'];
+var months = ['Nov','Oct','Sep'];
+/*
+graphedChartLine('#chartLineSticky2', true, data);
+graphedChartLine('#chartLine2', false, data)
+graphedChartLineHistorical('#chartLineHistorical', false, data2);
+graphedChartLineHistorical('#chartLineHistorical2', false, data2);
+graphedChartLineHistorical('#chartLineHistorical4', true, data2);*/
 var url = devuelveUrl('a/cliente/ajax/datosDashboard.php');
 $.ajax({
     url: url,
@@ -24,44 +16,90 @@ $.ajax({
     dataType: 'json',
     cache: false,
     success: function(arr) {
-        var arreglo = [];
-        $.each(arr.torta.frecuencia,function(index) {
-            arreglo.push(arr.torta.frecuencia[index]);
-        });
-        donut('#example',donutData);
-        
+        var res = json2array(arr);
+        donut('#donutChart',{series: res[0]['frecuencia']});
+        bar('#barChart',{labels: res[1]['cambio'], series: [res[1]['frecuencia']]});
+        line('#chartLineSticky', true, {labels: res[2]['hora'], series: [res[2]['gradosPalaFrontal'],res[2]['gradosPalaTrasera']]}, '°');
+        line('#chartLine', false, {labels: res[2]['hora'], series: [res[2]['gradosPalaFrontal'],res[2]['gradosPalaTrasera']]}, '°');
+        line('#chartLineSticky2', true, {labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm');
+        line('#chartLine2', false, {labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm')
+        console.log(res);
     },
     error: function(xhr) {console.log(xhr.responseText);}
 });
+$( "#years" ).change(function() {
+    var month = $('#months').val();
+    var year = parseInt($('#years').val());
+    console.log(JSON.stringify(returnWeeksRangesAvailable(year,month)));
+});
+$( "#months" ).change(function() {
+    var month = $('#months').val();
+    var year = $('#years').val();
+    console.log(JSON.stringify(returnWeeksRangesAvailable(year,month)));
+});
+$('.yearButton').click(function(){
+    if($(this).hasClass('leftYear')) {
+        console.log(posYear+'aaa');
+        console.log(posYear = leftClickYear(posYear));
+        colorLimitYear(posYear,years.length);
+    }
+    else {
+        console.log(posYear+'aaa');
+        console.log(posYear = rightClickYear(posYear,years.length));
+        colorLimitYear(posYear,years.length);
+    }
+});
+$('.monthButton').click(function(){
+    if($(this).hasClass('leftMonth')) {
+        console.log(posMonth+'aaa');
+        console.log(posMonth = leftClickMonth(posMonth));
+        colorLimitMonth(posMonth,months.length);
+    }
+    else {
+        console.log(posMonth+'aaa');
+        console.log(posMonth = rightClickMonth(posMonth,months.length));
+        colorLimitMonth(posMonth,months.length);
+    }
+});
 
-graphedChartLine('#chartLineSticky', true, data);
-graphedChartLine('#chartLine', false, data);
-graphedChartLine('#chartLineSticky2', true, data);
-graphedChartLine('#chartLine2', false, data)
-graphedChartBar('#example2');
-graphedChartLineHistorical('#chartLineHistorical', false, data2);
-graphedChartLineHistorical('#chartLineHistorical2', false, data2);
-graphedChartLineHistorical('#chartLineHistorical4', true, data2);
-function graphedChartBar(idChart) {
-    var data = {
-      labels: ['1ra', '2da', '3ra', '4ta','5ta','6ta','7ma','8va','9na','10ma'],
-      series: [get(0,100,10)]
-    }
+function donut(idChart,data){
+    var sum = function(a,b) { return a+b; }
     var options = {
-      //chartPadding: 0,
-      stackBars: true,
-      /*axisX: {
-        offset: 60,
-      },*/
-      axisY: {
-          //offset: 50,
-          labelInterpolationFnc: function(value) {return value+'%';}
-      },
-        plugins: [
-            Chartist.plugins.tooltip()
-        ]
+      donut: true,
+      donutWidth: 40,
+      labelDirection: 'explode',
+      chartPadding: 20,
+      labelOffset: 30,
+      labelInterpolationFnc: function(value) {return Math.round(value/data.series.reduce(sum)*100)+'%';},
     }
-    var responsiveOptions = [
+    var chart = new Chartist.Pie(idChart, data, options);
+    chart.on('draw', function(data) {
+        if(data.type === 'slice') {
+            var pathLength = data.element._node.getTotalLength();
+            data.element.attr({'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'});
+            var animationDefinition = {
+                    'stroke-dashoffset': {
+                    id: 'anim' + data.index,
+                    dur: 1000,
+                    from: -pathLength + 'px',
+                    to:  '0px',
+                    easing: Chartist.Svg.Easing.easeOutQuint,
+                    fill: 'freeze'
+                }
+            };
+            if(data.index !== 0) {animationDefinition['stroke-dashoffset'].begin = 'anim' + (data.index - 1) + '.end';}
+            data.element.attr({'stroke-dashoffset': -pathLength + 'px'});
+            data.element.animate(animationDefinition, false);
+        }
+    });
+}
+function bar(idChart,data) {
+    var options = {
+      stackBars: true,
+      axisY: {labelInterpolationFnc: function(value) {return value+'%';}},
+      fullWidth: true,
+      plugins: [Chartist.plugins.tooltip()]}
+      var responsiveOptions = [
       ['screen and (min-width: 970px)', {
         axisX: {
             offset: 50,
@@ -71,55 +109,41 @@ function graphedChartBar(idChart) {
             offset: 100
         }]
         
-    ];
+        ];
     new Chartist.Bar(idChart,data,options, responsiveOptions);
 }
-function donut(idChart,donutData){
-    var sum = function(a,b) { return a+b; }
-    var options = {
-      donut: true,
-      donutWidth: 40,
-      labelDirection: 'explode',
-      chartPadding: 20,
-      labelOffset: 30,
-      labelInterpolationFnc: function(value) {return Math.round(value/data.series.reduce(sum)*100)+'%';},
-};
-
-    /*var responsiveOptions = [
-      ['screen and (max-width: 720px)', {
-        labelInterpolationFnc: function(value) {return Math.round(value/data.series.reduce(sum)*100)+'%';}
-      }]
-    ];*/
-
-    new Chartist.Pie(idChart, data, options/*,responsiveOptions*/);
-}
-function graphedChartLine(idChart, axisShowY, data) {
+function line(idChart, axisShowY, data, unidad) {
     var options = {
         lineSmooth: Chartist.Interpolation.cardinal({tension: 0.2}),
-        axisY: {
-          showLabel: axisShowY,
-          labelInterpolationFnc: function(value) {
-              return value + '°';
-          }
-        },
-        axisX: {
-          labelInterpolationFnc: function(value){return value+"'"}
-        },
-        plugins: [
-            Chartist.plugins.tooltip(),
-        ]
-    }
-    new Chartist.Line(idChart, data, options);
+        axisY: {showLabel: axisShowY,labelInterpolationFnc: function(value) {return value + unidad;}},
+        axisX: {labelInterpolationFnc: function(value){return value+"'"}},
+        plugins: [Chartist.plugins.tooltip()]}
+    var chart = new Chartist.Line(idChart, data, options);
+    chart.on('draw', function(data) {
+        if(data.type === 'line' || data.type === 'area') {
+            data.element.animate({
+              d: {
+                begin: 1000 * data.index,
+                dur: 1000,
+                from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                to: data.path.clone().stringify(),
+                easing: Chartist.Svg.Easing.easeOutQuint
+              }
+            });
+        }
+    });
 }
-function graphedChartLineHistorical(idChart, axisShowX, data) {
+/*function graphedChartLineHistorical(idChart, axisShowX, data) {
     var options = {
         lineSmooth: Chartist.Interpolation.cardinal({tension: 0.5}),
         axisX: {showLabel: axisShowX},
         fullWidth: true,
-        plugins: [Chartist.plugins.tooltip(),]
+        plugins: [Chartist.plugins.tooltip()]
     }
     new Chartist.Line(idChart, data, options);
-}
+}*/
+
+
 function get(min, max, cantidad) {
   var a = [];
   var i=1;
@@ -184,13 +208,71 @@ function getSearchParams(k){
  location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){p[k]=v})
  return k?p[k]:p;
 }
-$( "#years" ).change(function() {
-    var month = $('#months').val();
-    var year = parseInt($('#years').val());
-    console.log(JSON.stringify(returnWeeksRangesAvailable(year,month)));
-});
-$( "#months" ).change(function() {
-    var month = $('#months').val();
-    var year = $('#years').val();
-    console.log(JSON.stringify(returnWeeksRangesAvailable(year,month)));
-});
+function json2array(json){
+    var result = [];
+    var keys = Object.keys(json);
+    keys.forEach(function(key){
+        result.push(json[key]);
+    });
+    return result;
+}
+function leftClickYear(pos) {
+    if((pos-1) == -1) {
+        $('.yearLegend').html(years[0]);
+        return 0;
+    }
+    else {
+        $('.yearLegend').html(years[pos-1]);
+        return pos-1;
+    }
+}
+function rightClickYear(pos,tam) {
+    if((pos+1) == tam) {
+        $('.yearLegend').html(years[pos]);
+        return pos;
+    }
+    else {
+        $('.yearLegend').html(years[pos+1]);
+        return pos+1;
+    }
+}
+function leftClickMonth(pos) {
+    if((pos-1) == -1) {
+        $('.monthLegend').html(months[0]);
+        return 0;
+    }
+    else {
+        $('.monthLegend').html(months[pos-1]);
+        return pos-1;
+    }
+}
+function rightClickMonth(pos,tam) {
+    if((pos+1) == tam) {
+        $('.monthLegend').html(months[pos]);
+        return pos;
+    }
+    else {
+        $('.monthLegend').html(months[pos+1]);
+        return pos+1;
+    }
+}
+function colorLimitYear(pos,tam) {
+    if((pos == 0))
+        $('.leftYear').css('color','#dddddd');
+    else
+        $('.leftYear').css('color','#F5A214');
+    if((pos == tam-1))
+        $('.rightYear').css('color','#dddddd');
+    else
+        $('.rightYear').css('color','#F5A214');
+}
+function colorLimitMonth(pos,tam) {
+    if((pos == 0))
+        $('.leftMonth').css('color','#dddddd');
+    else
+        $('.leftMonth').css('color','#F5A214');
+    if((pos == tam-1))
+        $('.rightMonth').css('color','#dddddd');
+    else
+        $('.rightMonth').css('color','#F5A214');
+}
