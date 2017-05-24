@@ -200,8 +200,8 @@
                 </div>
             </div>
             <div class="col-xs-12 cardContent" style="padding: 0px 0px 30px 0px;">
-               <div class="col-xs-6 cardContent"><div class="yearContainer"><i class="yearButton leftYear fa fa-2x fa-arrow-circle-o-left"></i><div class="yearLegend">2017</div><i class="yearButton rightYear fa fa-2x fa-arrow-circle-o-right"></i></div></div>
-               <div class="col-xs-6 cardContent"><div class="yearContainer"><i class="monthButton leftMonth fa fa-2x fa-arrow-circle-o-left"></i><div class="monthLegend">Sep</div><i class="monthButton rightMonth fa fa-2x fa-arrow-circle-o-right"></i></div></div>
+               <div class="col-xs-6 cardContent"><div class="yearContainer"><i class="yearButton leftYear fa fa-2x fa-arrow-circle-o-left"></i><div class="yearLegend"></div><i class="yearButton rightYear fa fa-2x fa-arrow-circle-o-right"></i></div></div>
+               <div class="col-xs-6 cardContent"><div class="yearContainer"><i class="monthButton leftMonth fa fa-2x fa-arrow-circle-o-left"></i><div class="monthLegend"></div><i class="monthButton rightMonth fa fa-2x fa-arrow-circle-o-right"></i></div></div>
            </div>
          </div>
     </div>

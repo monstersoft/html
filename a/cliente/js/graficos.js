@@ -1,7 +1,13 @@
-var posYear;
-var posMonth;
-var years = [];
-var months = [];
+var yearsCalculate  = returnYearsAvailabes('2016',moment().format('YYYY'));
+var posYear = yearsCalculate['posYear'];
+var years = yearsCalculate['years'];
+var monthsCalculate = returnMonthsAvailables(years[posYear], moment().format('MMM'));
+var posMonth = monthsCalculate['posMonth'];
+var months = monthsCalculate['months'];
+colorLimitYear(posYear,years.length);
+colorLimitMonth(posMonth,months.length);
+$('.yearLegend').html(years[posYear]);
+$('.monthLegend').html(months[posMonth]);
 var url = devuelveUrl('a/cliente/ajax/datosDashboard.php');
 $.ajax({
     url: url,
@@ -21,7 +27,7 @@ $.ajax({
         //line('#chartLineHistorical', true, false,{labels: ['1ra Semana','2da Semana','3ra Semana','4ra Semana','5ta Semana'], series: [[1,2,3,4,5],[3,4,8,10,12]]}, '', false);
         //line('#chartLineHistorical2',{labels: res[1]['cambio'], series: [res[1]['frecuencia']]});
         //line('#chartLineHistorical4');
-        console.log(res);
+        //console.log(returnMonthsAvailables(moment().format('YYYY'), moment().format('MMM')));
     },
     error: function(xhr) {console.log(xhr.responseText);}
 });
@@ -36,12 +42,21 @@ $( "#months" ).change(function() {
     console.log(JSON.stringify(returnWeeksRangesAvailable(year,month)));
 });
 $('.yearButton').click(function(){
+    console.log(monthsCalculate);
     if($(this).hasClass('leftYear')) {
+    monthsCalculate = returnMonthsAvailables($('.yearLegend').text(), moment().format('MMM'));
+    posMonth = monthsCalculate['posMonth'];
+    months = monthsCalculate['months'];
+    $('.monthLegend').html(months[posMonth]);
         console.log(posYear+'aaa');
         console.log(posYear = leftClickYear(posYear));
         colorLimitYear(posYear,years.length);
     }
     else {
+    monthsCalculate = returnMonthsAvailables($('.yearLegend').text(), moment().format('MMM'));
+    posMonth = monthsCalculate['posMonth'];
+    months = monthsCalculate['months'];
+    $('.monthLegend').html(months[posMonth]);
         console.log(posYear+'aaa');
         console.log(posYear = rightClickYear(posYear,years.length));
         colorLimitYear(posYear,years.length);
@@ -59,7 +74,24 @@ $('.monthButton').click(function(){
         colorLimitMonth(posMonth,months.length);
     }
 });
-
+function returnYearsAvailabes(firstYear, currentYear) {
+    var years = [];
+    var aux = parseInt(firstYear);
+    var count = 0;
+    var current = parseInt(currentYear);
+    if(firstYear == currentYear) {
+        years.push(currentYear);
+        return {years: years, posYear: 0}
+    }
+    else {
+        while(aux <= current) {
+            years.push(aux);
+            aux++;
+            count++;
+        }
+        return {years: years, posYear: count-1}
+    }
+}
 function donut(idChart,data){
     var sum = function(a,b) { return a+b; }
     var options = {
@@ -131,6 +163,22 @@ function line(idChart, axisShowY, axisShowX, data, unidad, fullwidth) {
             });
         }
     });
+}
+function returnMonthsAvailables(year, currentMonth) {
+    var currentYear = moment().format('YYYY');
+    var months = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    if(year == currentYear) {
+        var weeks = a(returnWeeksRangesAvailable(year,currentMonth));
+        var posMonth = parseInt(moment(weeks[1]['startWeek']).format('MM'))-1;
+        var newMonths = [];
+        $.each(months,function(index) {
+            if(index <= posMonth)
+                newMonths.push(months[index]);
+        });
+        return {months: newMonths, posMonth: posMonth};
+    }
+    else
+        return { months: months, posMonth: 11}
 }
 function get(min, max, cantidad) {
   var a = [];

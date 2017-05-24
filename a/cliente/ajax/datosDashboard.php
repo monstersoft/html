@@ -52,7 +52,7 @@
     $a['linea'] = $linea;   
     /*$a['lineaHistorico'] = $lineaHistorico;*/
     $a['semanas'] = $semanas;
-    $a['firstYear'] = '2017';
+    $a['firstYear'] = '2015';
     echo json_encode($a);
 
 
