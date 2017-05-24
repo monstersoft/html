@@ -1,3 +1,21 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 24-05-2017 a las 00:33:13
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 5.6.24
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
 -- Base de datos: `html`
 --
@@ -3176,6 +3194,36 @@ INSERT INTO `maquinas` (`idMaquina`, `idZona`, `patente`, `fechaRegistro`, `tara
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `resultados`
+--
+
+CREATE TABLE `resultados` (
+  `id` int(11) NOT NULL,
+  `patente` varchar(6) COLLATE utf8_unicode_ci NOT NULL,
+  `idMaquina` int(11) DEFAULT NULL,
+  `idZona` int(11) NOT NULL,
+  `registrado` tinyint(1) NOT NULL,
+  `existeEnArchivo` tinyint(1) NOT NULL,
+  `fechaDatos` date NOT NULL,
+  `pRpm` float NOT NULL,
+  `pGpf` float NOT NULL,
+  `pGpt` float NOT NULL,
+  `pApf` float NOT NULL,
+  `pApt` float NOT NULL,
+  `tRecorridos` float NOT NULL,
+  `mediciones` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `resultados`
+--
+
+INSERT INTO `resultados` (`id`, `patente`, `idMaquina`, `idZona`, `registrado`, `existeEnArchivo`, `fechaDatos`, `pRpm`, `pGpf`, `pGpt`, `pApf`, `pApt`, `tRecorridos`, `mediciones`) VALUES
+(128, '98QUIN', 98, 47, 1, 1, '2017-05-20', 497.459, 188.262, 178.413, 4.97838, 5.1892, 32621, 599);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `supervisores`
 --
 
@@ -3325,6 +3373,13 @@ ALTER TABLE `maquinas`
   ADD KEY `fk_Maquinas_Zonas1_idx` (`idZona`);
 
 --
+-- Indices de la tabla `resultados`
+--
+ALTER TABLE `resultados`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `patente` (`patente`);
+
+--
 -- Indices de la tabla `supervisores`
 --
 ALTER TABLE `supervisores`
@@ -3377,6 +3432,11 @@ ALTER TABLE `empresas`
 --
 ALTER TABLE `maquinas`
   MODIFY `idMaquina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+--
+-- AUTO_INCREMENT de la tabla `resultados`
+--
+ALTER TABLE `resultados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 --
 -- AUTO_INCREMENT de la tabla `supervisores`
 --
