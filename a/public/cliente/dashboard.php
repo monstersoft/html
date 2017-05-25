@@ -178,11 +178,6 @@
                 </div>
             </div>
             <div class="col-xs-12 cardContent" style="padding: 0px 20px 0px 20px;">
-                <div class="motorLegend">
-                    <div class="motorLegend">RECORRIDO PROMEDIO</div>
-                </div>
-            </div>
-            <div class="col-xs-12 cardContent" style="padding: 0px 20px 0px 20px;">
                 <div class="chartLineContainerHistorical">
                     <div id="chartLineHistorical4"></div>
                 </div>

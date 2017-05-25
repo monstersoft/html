@@ -25,9 +25,9 @@ $.ajax({
         line('#chartLineSticky2', true, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false);
         line('#chartLine2', false, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false);
         console.log(res[3]);
-        lineHistorical('#chartLineHistorical', false, false, {labels: res[3]['semanas'], series: [res[3]['pGpf'],res[3]['pGpt']]},'°',true);
-        lineHistorical('#chartLineHistorical2', false, false,{labels: res[3]['semanas'], series: [res[3]['pApf'],res[3]['pApt']]}, 'm','true');
-        lineHistorical('#chartLineHistorical4', false, true, {labels: res[3]['semanas'], series: [res[3]['pTre']]},'km', false);
+        lineHistorical('#chartLineHistorical', false,false,{labels:res[3]['semanas'],series:[res[3]['pGpf'],res[3]['pGpt']]},'',false);
+        lineHistorical('#chartLineHistorical2',false,false,{labels:res[3]['semanas'],series:[res[3]['pApf'],res[3]['pApt']]},'',false);
+        lineHistorical('#chartLineHistorical4',false,true,{labels:res[3]['semanas'], series:[res[3]['pTre']]},'', false);
     },
     error: function(xhr) {console.log(xhr.responseText);}
 });
