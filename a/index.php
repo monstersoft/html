@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="recursos/chartist/chartist.min.css">
+    <link rel="stylesheet" href="recursos/bootstrap/css/bootstrap.min.css">
     <style>
 .ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point {
   stroke: #F5A214;
@@ -66,22 +67,59 @@ ul.ct-legend {
   border-color: #262626;
   opacity: 0.3;
 }
-
+        .containerHistorical {
+            position: relative;
+            border: 1px solid green;
+            overflow: hidden;
+            height: 500px;
+        }
+        .col-xs-12 {
+            padding: 0px;
+        }
+        #chart1 {
+            position: absolute;
+            top: 0;
+            left: 0px;
+            width: 100%;
+            z-index: 0;
+            height: 100px;
+        }
+        #chart2 {
+            position: absolute;
+            top: 105px;
+            left: 0px;
+            width: 100%;
+            z-index: 10000;
+            height: 100px;
+        }
+        #chart3 {
+            position: absolute;
+            top: 210px;
+            left: 0px;
+            width: 100%;
+            z-index: 10000;
+            height: 100px;
+        }
+        
 
 </style>
 </head>
 <body>
-    <div id="chart1" style="border: 1px solid red;"></div>
+   <div class="col-xs-12">
+       <div class="containerHistorical">
+        <div id="chart1"></div>
+        <div id="chart2"></div>
+        <div id="chart3"></div>
+       </div>
+    </div>
     <script src="recursos/jquery/jquery.min.js"></script>
     <script src="recursos/chartist/chartist.min.js"></script>
-    <script src="https://d318px5m0jadsp.cloudfront.net/assets/chartist-plugin-axistitle.min.js"></script>
-    <script src="https://d318px5m0jadsp.cloudfront.net/assets/chartist-plugin-accessibility.min.js"></script>
-    <script src="https://d318px5m0jadsp.cloudfront.net/assets/chartist-plugin-pointlabels.min.js"></script>
-    <script src="https://d318px5m0jadsp.cloudfront.net/assets/chartist-plugin-legend.js"></script>
+    <script src="recursos/chartist/chartist-plugin-axistitle.min.js"></script>
+    <script src="recursos/chartist/chartist-plugin-pointlabels.min.js"></script>
+    <script src="recursos/chartist/chartist-plugin-legend.js"></script>
+    <script src="recursos/bootstrap/js/bootstrap.min.js"></script>
     <script>
-lineHistorical('#chart1', false);
-function lineHistorical(idChart, showLabelX) {
-    var data01 = {
+var data01 = {
   labels: ['2012', '2013', '2014', '2015'],
   // Y axis data series
   series: [ 
@@ -89,12 +127,30 @@ function lineHistorical(idChart, showLabelX) {
     { name: 'Grados pala trasera', data: [1523,1561,1636,1764] },
   ]
 }
-    
+var data02 = {
+  labels: ['2012', '2013', '2014', '2015'],
+  // Y axis data series
+  series: [ 
+    { name: 'Altura pala frontal', data: [1647,1745,1863,1728] },
+    { name: 'Altura pala trasera', data: [1523,1561,1636,1764] },
+  ]
+}
+var data03 = {
+  labels: ['2012', '2013', '2014', '2015'],
+  // Y axis data series
+  series: [ 
+    { name: 'Recorrido', data: [1647,1745,1863,1728] },
+  ]
+}
+lineHistorical('#chart1', data01,false, 'Semanas', -10);
+        lineHistorical('#chart2', data02,false, 'Semanas', -10);
+        lineHistorical('#chart3', data03,false, 'Semanas', 10);
+function lineHistorical(idChart, data01, showLabelX, axisXTitle, paddingBottom) {  
     var plugins = [
      // Axis Titles  plugin and values
         Chartist.plugins.ctAxisTitle({
           axisX: {
-            axisTitle: 'Academic Year',
+            axisTitle: axisXTitle,
             axisClass: 'ct-axis-title',
             offset: {
               x: 0,
@@ -103,23 +159,23 @@ function lineHistorical(idChart, showLabelX) {
             textAnchor: 'middle'
           },
           axisY: {
-            offset: {
+            /*offset: {
               x: 0,
               y: 0
-            },
+            },*/
           }
         }),
         Chartist.plugins.legend({
             position: 'top',
         }),
         Chartist.plugins.ctPointLabels({
-          textAnchor: 'right'
+          textAnchor: 'middle'
         })
       ]
     var options01 = {
       axisY: {
-        //high:1900,
-        //low: 1500,
+        high:1900,
+        low: 1500,
         showLabel: false
       },
       axisX: {
@@ -131,7 +187,7 @@ function lineHistorical(idChart, showLabelX) {
       chartPadding: {
         right: 40,
         left: 0,
-        bottom: 40
+        bottom: paddingBottom
       },
       plugins: plugins
     }
