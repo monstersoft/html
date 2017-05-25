@@ -50,6 +50,7 @@ $('.yearButton').click(function(){
         months = monthsCalculate['months'];
         colorLimitMonth(posMonth,months.length);
         $('.monthLegend').html(months[posMonth]);
+        console.log(years[posYear]+'-'+months[posMonth]);
     }
     else {
         posYear = rightClickYear(posYear,years.length);
@@ -59,16 +60,19 @@ $('.yearButton').click(function(){
         months = monthsCalculate['months'];
         colorLimitMonth(posMonth,months.length);
         $('.monthLegend').html(months[posMonth]);
+        console.log(years[posYear]+'-'+months[posMonth]);
     }
 });
 $('.monthButton').click(function(){
     if($(this).hasClass('leftMonth')) {
         posMonth = leftClickMonth(posMonth);
         colorLimitMonth(posMonth,months.length);
+        console.log(years[posYear]+'-'+months[posMonth]);
     }
     else {
         posMonth = rightClickMonth(posMonth,months.length);
         colorLimitMonth(posMonth,months.length);
+        console.log(years[posYear]+'-'+months[posMonth]);
     }
 });
 function returnYearsAvailabes(firstYear, currentYear) {
