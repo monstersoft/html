@@ -31,32 +31,23 @@ $.ajax({
         line('#chartLine', false, true,{labels: res[2]['hora'], series: [res[2]['gradosPalaFrontal'],res[2]['gradosPalaTrasera']]}, '°', false);
         line('#chartLineSticky2', true, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false);
         line('#chartLine2', false, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false);
-        var data01 = {
+        /*var data01 = {
   labels: ['2012', '2013', '2014', '2015'],
-  // Y axis data series
   series: [ 
     { name: 'Grados pala frontal', data: [1647,1745,1863,1728] },
     { name: 'Grados pala trasera', data: [1523,1561,1636,1764] },
   ]
 }
-var data02 = {
-  labels: ['2012', '2013', '2014', '2015'],
-  // Y axis data series
-  series: [ 
-    { name: 'Altura pala frontal', data: [1647,1745,1863,1728] },
-    { name: 'Altura pala trasera', data: [1523,1561,1636,1764] },
-  ]
-}
 var data03 = {
   labels: ['2012', '2013', '2014', '2015'],
-  // Y axis data series
   series: [ 
     { name: 'Recorrido', data: [1647,1745,1863,1728] },
   ]
-}
+}*/
         lineHistorical('#chart1', data01,false, 'Semanas', -10);
         lineHistorical('#chart2', data02,false, 'Semanas', -10);
         lineHistorical('#chart3', data03,false, 'Semanas', 10);
+        console.log(arr);
     },
     error: function(xhr) {console.log(xhr.responseText);}
 });
