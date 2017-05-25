@@ -1,4 +1,4 @@
-var yearsCalculate  = returnYearsAvailabes('2016',moment().format('YYYY'));
+var yearsCalculate  = returnYearsAvailabes('2017',moment().format('YYYY'));
 var posYear = yearsCalculate['posYear'];
 var years = yearsCalculate['years'];
 var monthsCalculate = returnMonthsAvailables(years[posYear], moment().format('MMM'));
@@ -9,7 +9,7 @@ colorLimitMonth(posMonth,months.length);
 $('.yearLegend').html(years[posYear]);
 $('.monthLegend').html(months[posMonth]);
 var url = devuelveUrl('a/cliente/ajax/datosDashboard.php');
-$.ajax({
+/*$.ajax({
     url: url,
     type: 'POST',
     data: {idResultado: getSearchParams().id, idArchivo: getSearchParams().idArchivo, patente: getSearchParams().patente, semanas: a(returnWeeksRangesAvailable(parseInt(moment().format('YYYY')),moment().format('MMM')))},
@@ -30,7 +30,7 @@ $.ajax({
         //console.log(returnMonthsAvailables(moment().format('YYYY'), moment().format('MMM')));
     },
     error: function(xhr) {console.log(xhr.responseText);}
-});
+});*/
 $( "#years" ).change(function() {
     var month = $('#months').val();
     var year = parseInt($('#years').val());
@@ -42,35 +42,32 @@ $( "#months" ).change(function() {
     console.log(JSON.stringify(returnWeeksRangesAvailable(year,month)));
 });
 $('.yearButton').click(function(){
-    console.log(monthsCalculate);
     if($(this).hasClass('leftYear')) {
-    monthsCalculate = returnMonthsAvailables($('.yearLegend').text(), moment().format('MMM'));
-    posMonth = monthsCalculate['posMonth'];
-    months = monthsCalculate['months'];
-    $('.monthLegend').html(months[posMonth]);
-        console.log(posYear+'aaa');
-        console.log(posYear = leftClickYear(posYear));
+        posYear = leftClickYear(posYear);
         colorLimitYear(posYear,years.length);
+        monthsCalculate = returnMonthsAvailables(years[posYear], moment().format('MMM'));
+        posMonth = monthsCalculate['posMonth'];
+        months = monthsCalculate['months'];
+        colorLimitMonth(posMonth,months.length);
+        $('.monthLegend').html(months[posMonth]);
     }
     else {
-    monthsCalculate = returnMonthsAvailables($('.yearLegend').text(), moment().format('MMM'));
-    posMonth = monthsCalculate['posMonth'];
-    months = monthsCalculate['months'];
-    $('.monthLegend').html(months[posMonth]);
-        console.log(posYear+'aaa');
-        console.log(posYear = rightClickYear(posYear,years.length));
+        posYear = rightClickYear(posYear,years.length);
         colorLimitYear(posYear,years.length);
+        monthsCalculate = returnMonthsAvailables(years[posYear], moment().format('MMM'));
+        posMonth = monthsCalculate['posMonth'];
+        months = monthsCalculate['months'];
+        colorLimitMonth(posMonth,months.length);
+        $('.monthLegend').html(months[posMonth]);
     }
 });
 $('.monthButton').click(function(){
     if($(this).hasClass('leftMonth')) {
-        console.log(posMonth+'aaa');
-        console.log(posMonth = leftClickMonth(posMonth));
+        posMonth = leftClickMonth(posMonth);
         colorLimitMonth(posMonth,months.length);
     }
     else {
-        console.log(posMonth+'aaa');
-        console.log(posMonth = rightClickMonth(posMonth,months.length));
+        posMonth = rightClickMonth(posMonth,months.length);
         colorLimitMonth(posMonth,months.length);
     }
 });
