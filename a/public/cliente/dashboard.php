@@ -167,34 +167,22 @@
             <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
                 <p>Históricos</p>
             </div>
-            <div class="col-xs-12 cardContent">
+            <div class="col-xs-12 cardContent" style="padding: 20px 20px 0px 20px;">
                 <div class="chartLineContainerHistorical">
                     <div id="chartLineHistorical"></div>
                 </div>
             </div>
-            <div class="col-xs-6 cardContent" style="padding: 0px 20px 0px 50px;">
-                <div class="motorLegend">
-                    <div class="legendColor backYellow"></div>
-                    <div class="motorLegend">FRONTAL</div>
-                </div>
-            </div>
-            <div class="col-xs-6 cardContent" style="padding: 0px 20px 0px 50px;">
-                <div class="motorLegend">
-                    <div class="legendColor backGrey"></div>
-                    <div class="motorLegend">TRASERA</div>
-                </div>
-            </div>
-            <div class="col-xs-12 cardContent">
+            <div class="col-xs-12 cardContent" style="padding: 0px 20px 0px 20px;">
                 <div class="chartLineContainerHistorical">
                     <div id="chartLineHistorical2"></div>
                 </div>
             </div>
-            <div class="col-xs-12 cardContent" style="padding: 0px 20px 0px 50px;">
+            <div class="col-xs-12 cardContent" style="padding: 0px 20px 0px 20px;">
                 <div class="motorLegend">
                     <div class="motorLegend">RECORRIDO PROMEDIO</div>
                 </div>
             </div>
-            <div class="col-xs-12 cardContent">
+            <div class="col-xs-12 cardContent" style="padding: 0px 20px 0px 20px;">
                 <div class="chartLineContainerHistorical">
                     <div id="chartLineHistorical4"></div>
                 </div>

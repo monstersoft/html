@@ -1,3 +1,4 @@
+var monthsEnglish = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 var yearsCalculate  = returnYearsAvailabes('2017',moment().format('YYYY'));
 var posYear = yearsCalculate['posYear'];
 var years = yearsCalculate['years'];
@@ -9,7 +10,7 @@ colorLimitMonth(posMonth,months.length);
 $('.yearLegend').html(years[posYear]);
 $('.monthLegend').html(months[posMonth]);
 var url = devuelveUrl('a/cliente/ajax/datosDashboard.php');
-/*$.ajax({
+$.ajax({
     url: url,
     type: 'POST',
     data: {idResultado: getSearchParams().id, idArchivo: getSearchParams().idArchivo, patente: getSearchParams().patente, semanas: a(returnWeeksRangesAvailable(parseInt(moment().format('YYYY')),moment().format('MMM')))},
@@ -23,14 +24,13 @@ var url = devuelveUrl('a/cliente/ajax/datosDashboard.php');
         line('#chartLine', false, true,{labels: res[2]['hora'], series: [res[2]['gradosPalaFrontal'],res[2]['gradosPalaTrasera']]}, '°', false);
         line('#chartLineSticky2', true, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false);
         line('#chartLine2', false, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false);
-        
-        //line('#chartLineHistorical', true, false,{labels: ['1ra Semana','2da Semana','3ra Semana','4ra Semana','5ta Semana'], series: [[1,2,3,4,5],[3,4,8,10,12]]}, '', false);
-        //line('#chartLineHistorical2',{labels: res[1]['cambio'], series: [res[1]['frecuencia']]});
-        //line('#chartLineHistorical4');
-        //console.log(returnMonthsAvailables(moment().format('YYYY'), moment().format('MMM')));
+        console.log(res[3]);
+        lineHistorical('#chartLineHistorical', false, false, {labels: res[3]['semanas'], series: [res[3]['pGpf'],res[3]['pGpt']]},'°',true);
+        lineHistorical('#chartLineHistorical2', false, false,{labels: res[3]['semanas'], series: [res[3]['pApf'],res[3]['pApt']]}, 'm','true');
+        lineHistorical('#chartLineHistorical4', false, true, {labels: res[3]['semanas'], series: [res[3]['pTre']]},'km', false);
     },
     error: function(xhr) {console.log(xhr.responseText);}
-});*/
+});
 $( "#years" ).change(function() {
     var month = $('#months').val();
     var year = parseInt($('#years').val());
@@ -50,7 +50,7 @@ $('.yearButton').click(function(){
         months = monthsCalculate['months'];
         colorLimitMonth(posMonth,months.length);
         $('.monthLegend').html(months[posMonth]);
-        console.log(years[posYear]+'-'+months[posMonth]);
+        ajaxHistorical(returnWeeksRangesAvailable(years[posYear],monthsEnglish[posMonth]));
     }
     else {
         posYear = rightClickYear(posYear,years.length);
@@ -60,21 +60,35 @@ $('.yearButton').click(function(){
         months = monthsCalculate['months'];
         colorLimitMonth(posMonth,months.length);
         $('.monthLegend').html(months[posMonth]);
-        console.log(years[posYear]+'-'+months[posMonth]);
+        ajaxHistorical(returnWeeksRangesAvailable(years[posYear],monthsEnglish[posMonth]));
     }
 });
 $('.monthButton').click(function(){
     if($(this).hasClass('leftMonth')) {
         posMonth = leftClickMonth(posMonth);
         colorLimitMonth(posMonth,months.length);
-        console.log(years[posYear]+'-'+months[posMonth]);
+        ajaxHistorical(returnWeeksRangesAvailable(years[posYear],monthsEnglish[posMonth]));
     }
     else {
         posMonth = rightClickMonth(posMonth,months.length);
         colorLimitMonth(posMonth,months.length);
-        console.log(years[posYear]+'-'+months[posMonth]);
+        ajaxHistorical(returnWeeksRangesAvailable(years[posYear],monthsEnglish[posMonth]));
     }
 });
+function ajaxHistorical(weeks) {
+    var url = devuelveUrl('a/cliente/ajax/datosDinamicosHistoricos.php');
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: {idResultado: getSearchParams().id, idArchivo: getSearchParams().idArchivo, patente: getSearchParams().patente, semanas: weeks},
+        dataType: 'json',
+        cache: false,
+        success: function(arr) {
+            console.log(JSON.stringify(arr, null, 2));
+        },
+        error: function(xhr) {console.log(xhr.responseText);}
+    }); 
+}
 function returnYearsAvailabes(firstYear, currentYear) {
     var years = [];
     var aux = parseInt(firstYear);
@@ -142,6 +156,28 @@ function bar(idChart,data) {
         
         ];
     new Chartist.Bar(idChart,data,options, responsiveOptions);
+}
+function lineHistorical(idChart, axisShowY, axisShowX, data, unidad, fullwidth) {
+    var options = {
+        lineSmooth: Chartist.Interpolation.cardinal({tension: 0.5}),
+        axisY: {offset: 0,showLabel: axisShowY,labelInterpolationFnc: function(value) {return value + unidad;}},
+        axisX: {showLabel: axisShowX,labelInterpolationFnc: function(value){return 'Semana '+value}},
+        fullWidth: fullwidth,
+        plugins: [Chartist.plugins.tooltip()]}
+    var chart = new Chartist.Line(idChart, data, options);
+    chart.on('draw', function(data) {
+        if(data.type === 'line' || data.type === 'area') {
+            data.element.animate({
+              d: {
+                begin: 1000 * data.index,
+                dur: 1000,
+                from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                to: data.path.clone().stringify(),
+                easing: Chartist.Svg.Easing.easeOutQuint
+              }
+            });
+        }
+    });
 }
 function line(idChart, axisShowY, axisShowX, data, unidad, fullwidth) {
     var options = {

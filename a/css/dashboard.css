@@ -190,6 +190,7 @@ table td {
 /* BAR INVERSE */
 #chartLineHistorical {
     height: 100px;
+    width: 100%;
 }
 #chartLineHistorical2 {
     height: 100px;

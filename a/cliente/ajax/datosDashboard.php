@@ -30,7 +30,7 @@
             $linea['alturaPalaTrasera'][] = intval($r['alturaPalaTrasera']);
         }
     }
-    /*$count = 0;
+    $count = 0;
     foreach($semanas as $value) {
         if($value['available'] == 'true') {
             $q = "SELECT AVG(resultados.pGpf) AS pGpf, AVG(resultados.pGpt) AS pGpt, AVG(resultados.pApf) AS pApf, AVG(resultados.pApt)  AS pApt, AVG(resultados.tRecorridos) AS pTre FROM resultados WHERE resultados.patente = '".$patente."' AND resultados.fechaDatos BETWEEN '".$value['startWeek']."' AND '".$value['endWeek']."'";
@@ -45,14 +45,13 @@
                     $count++;
             }
         }
-    }*/
+    }
 
     $a['torta'] = $torta;
     $a['barra'] = $barra;
     $a['linea'] = $linea;   
-    /*$a['lineaHistorico'] = $lineaHistorico;*/
+    $a['lineaHistorico'] = $lineaHistorico;
     $a['semanas'] = $semanas;
-    $a['firstYear'] = '2015';
     echo json_encode($a);
 
 
