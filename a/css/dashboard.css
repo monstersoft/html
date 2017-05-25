@@ -1,6 +1,57 @@
 .ct-labels33 {
-    font-size: 20px;
-    color: red;
+    font-size: 10px;
+}
+/* Legend styles */
+.ct-legend {
+  position: relative;
+  z-index: 10;
+  list-style: none;
+  text-align: center;
+}
+ul.ct-legend {
+  top: -20px;
+  margin: auto;
+}
+.ct-legend li {
+  position: relative;
+  padding-left: 23px;
+  margin-right: 10px;
+  margin-bottom: 3px;
+  cursor: pointer;
+  display: inline-block;
+}
+.ct-legend li:before {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 0;
+  content: '';
+  border: 3px solid transparent;
+  border-radius: 2px;
+}
+.ct-legend li.inactive:before {
+  background: transparent;
+}
+.ct-legend.ct-legend-inside {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.ct-legend.ct-legend-inside li{
+  display: block;
+  margin: 0;
+}
+.ct-legend .ct-series-0:before {
+  background-color: #00386b;
+  border-color: #00386b;
+}
+.ct-legend .ct-series-1:before {
+  background-color: #e0aa0f;
+  border-color: #e0aa0f;
+}
+.ct-legend .ct-series-2:before {
+  background-color: #adafaa;
+  border-color: #adafaa;
 }
 /* STATISTIC */
 .statistic {
@@ -193,13 +244,13 @@ table td {
 }
 /* BAR INVERSE */
 #chartLineHistorical {
-    height: 100px;
+    height: 200px;
 }
 #chartLineHistorical2 {
     height: 100px;
 }
 #chartLineHistorical4 {
-    height: 200px;
+    height: 100px;
 }
 /*TOOLTIP*/
 .chartist-tooltip {
