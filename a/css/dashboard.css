@@ -1,5 +1,5 @@
 .ct-labels33 {
-    font-size: 10px;
+    font-size: 5px;
 }
 .ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point {
   stroke: #F5A214;
@@ -8,7 +8,7 @@
   stroke: #262626;
 }
 .ct-axis-title {
-  font-size: 16px;
+  font-size: 12px;
 }
 /* Legend styles */
 .ct-legend {
@@ -28,6 +28,8 @@ ul.ct-legend {
   margin-bottom: 3px;
   cursor: pointer;
   display: inline-block;
+  font-family: 'Montserrat';
+  font-size: 10px;
 }
 .ct-legend li:before {
   width: 12px;
@@ -62,12 +64,12 @@ ul.ct-legend {
     position: relative;
     border: 1px solid white;
     overflow: hidden;
-    height: 330px;
+    height: 370px;
 }
 
 #chart1 {
     position: absolute;
-    top: 0;
+    top: 10px;
     left: 0px;
     width: 100%;
     z-index: 0;
@@ -75,7 +77,7 @@ ul.ct-legend {
 }
 #chart2 {
     position: absolute;
-    top: 105px;
+    top: 130px;
     left: 0px;
     width: 100%;
     z-index: 10000;
@@ -83,7 +85,7 @@ ul.ct-legend {
 }
 #chart3 {
     position: absolute;
-    top: 210px;
+    top: 250px;
     left: 0px;
     width: 100%;
     z-index: 10000;
