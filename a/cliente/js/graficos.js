@@ -28,6 +28,26 @@ $.ajax({
         lineHistorical('#chartLineHistorical', false,false,{labels:res[3]['semanas'],series:[res[3]['pGpf'],res[3]['pGpt']]},'',false);
         lineHistorical('#chartLineHistorical2',false,false,{labels:res[3]['semanas'],series:[res[3]['pApf'],res[3]['pApt']]},'',false);
         lineHistorical('#chartLineHistorical4',false,true,{labels:res[3]['semanas'], series:[res[3]['pTre']]},'', false);
+var chart = new Chartist.Line('.ct-chart', {
+  labels: [1, 2, 3, 4, 5, 6, 7],
+  series: [
+    [1, 5, 3, 4, 6, 2, 3],
+    [2, 4, 2, 5, 4, 3, 6]
+  ]
+}, {
+  plugins: [
+    Chartist.plugins.ctPointLabels({
+  labelClass: 'ct-labels33',
+  labelOffset: {
+    x: 0,
+    y: 0
+  },
+      textAnchor: 'middle',
+      labelInterpolationFnc: Chartist.noop
+    })
+  ]
+});
+        
     },
     error: function(xhr) {console.log(xhr.responseText);}
 });
@@ -163,7 +183,7 @@ function lineHistorical(idChart, axisShowY, axisShowX, data, unidad, fullwidth) 
         axisY: {offset: 0,showLabel: axisShowY,labelInterpolationFnc: function(value) {return value + unidad;}},
         axisX: {showLabel: axisShowX,labelInterpolationFnc: function(value){return 'Semana '+value}},
         fullWidth: fullwidth,
-        plugins: [Chartist.plugins.tooltip()]}
+        plugins: [Chartist.plugins.ctPointLabels({textAnchor: 'middle'})]}
     var chart = new Chartist.Line(idChart, data, options);
     chart.on('draw', function(data) {
         if(data.type === 'line' || data.type === 'area') {

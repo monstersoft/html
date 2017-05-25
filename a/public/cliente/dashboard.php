@@ -188,33 +188,19 @@
            </div>
          </div>
     </div>
-    <div class="col-xs-12 card">
-        <select id="years">
-            <option value="2017" selected="selected">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-        </select>
-        <select id="months">
-            <option value="Jan" selected="selected">Enero</option>
-            <option value="Feb">Febrero</option>
-            <option value="Mar">Marzo</option>
-            <option value="Apr">Abril</option>
-            <option value="May">Mayo</option>
-            <option value="Jun">Junio</option>
-            <option value="Jul">Julio</option>
-            <option value="Aug">Agosto</option>
-            <option value="Sep">Septiembre</option>
-            <option value="Oct">Octubre</option>
-            <option value="Nov">Noviembre</option>
-            <option value="Dec">Diciembre</option>
-        </select>
+    <div class="col-xs-12">
+        <div class="ct-chart"></div>
     </div>
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../recursos/chartist/chartist.min.js"></script>
     <script src="../../recursos/chartist/chartist-plugin-tooltip.js"></script>
+    <!--<script src="../../recursos/chartist/chartist-plugin-pointlabels.min.js"></script>-->
+    <script src="https://d318px5m0jadsp.cloudfront.net/assets/chartist-plugin-axistitle.min.js"></script>
+    <script src="https://d318px5m0jadsp.cloudfront.net/assets/chartist-plugin-accessibility.min.js"></script>
+    <script src="https://d318px5m0jadsp.cloudfront.net/assets/chartist-plugin-pointlabels.min.js"></script>
+    <script src="https://d318px5m0jadsp.cloudfront.net/assets/chartist-plugin-legend.js"></script>
     <script src="../../recursos/moment/moment.js"></script>
     <script src="../../js/funciones.js"></script>
     <script src="../../cliente/js/graficos.js"></script>
