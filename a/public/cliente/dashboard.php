@@ -167,21 +167,11 @@
             <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
                 <p>Históricos</p>
             </div>
-            <div class="col-xs-12 cardContent" style="padding: 20px 20px 0px 20px;">
-                <div class="chartLineContainerHistorical">
-                    <div id="chartLineHistorical"></div>
-                </div>
-            </div>
-            <div class="col-xs-12 cardContent" style="padding: 0px 20px 0px 20px;">
-                <div class="chartLineContainerHistorical">
-                    <div id="chartLineHistorical2"></div>
-                </div>
-            </div>
-            <div class="col-xs-12 cardContent" style="padding: 0px 20px 0px 20px;">
-                <div class="chartLineContainerHistorical">
-                    <div id="chartLineHistorical4"></div>
-                </div>
-            </div>
+           <div class="containerHistorical">
+            <div id="chart1"></div>
+            <div id="chart2"></div>
+            <div id="chart3"></div>
+           </div>
             <div class="col-xs-12 cardContent" style="padding: 0px 0px 30px 0px;">
                <div class="col-xs-6 cardContent"><div class="yearContainer"><i class="yearButton leftYear fa fa-2x fa-arrow-circle-o-left"></i><div class="yearLegend"></div><i class="yearButton rightYear fa fa-2x fa-arrow-circle-o-right"></i></div></div>
                <div class="col-xs-6 cardContent"><div class="yearContainer"><i class="monthButton leftMonth fa fa-2x fa-arrow-circle-o-left"></i><div class="monthLegend"></div><i class="monthButton rightMonth fa fa-2x fa-arrow-circle-o-right"></i></div></div>
