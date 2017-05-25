@@ -136,7 +136,7 @@
                 </div>
             </div>
             <div class="col-xs-12 cardContent" style="padding: 0px 0px 30px 0px;">
-               <div class="col-xs-12 cardContent"><div class="yearContainer"><i class="yearButton leftYear fa fa-2x fa-arrow-circle-o-left"></i><div class="yearLegend"></div><i class="yearButton rightYear fa fa-2x fa-arrow-circle-o-right"></i></div></div>
+               <div class="col-xs-12 cardContent"><div class="yearContainer"><i class="degrees leftDegrees fa fa-2x fa-arrow-circle-o-left"></i><div class="degreesLegend"></div><i class="degrees rightDegrees fa fa-2x fa-arrow-circle-o-right"></i></div></div>
            </div>
          </div>
     </div>
@@ -164,7 +164,7 @@
                 </div>
             </div>
             <div class="col-xs-12 cardContent" style="padding: 0px 0px 30px 0px;">
-               <div class="col-xs-12 cardContent"><div class="yearContainer"><i class="yearButton leftYear fa fa-2x fa-arrow-circle-o-left"></i><div class="yearLegend"></div><i class="yearButton rightYear fa fa-2x fa-arrow-circle-o-right"></i></div></div>
+               <div class="col-xs-12 cardContent"><div class="yearContainer"><i class="height leftHeight fa fa-2x fa-arrow-circle-o-left"></i><div class="heightLegend"></div><i class="height rightHeight fa fa-2x fa-arrow-circle-o-right"></i></div></div>
            </div>
          </div>
     </div>

@@ -1,3 +1,6 @@
+var hours = ['08 am','09 am','10 am','11 am','12 am','13 pm','14 pm','15 pm','16 pm','17 pm'];
+var posHeight = 0;
+var posDegrees = 0;
 var monthsEnglish = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 var yearsCalculate  = returnYearsAvailabes('2017',moment().format('YYYY'));
 var posYear = yearsCalculate['posYear'];
@@ -7,8 +10,12 @@ var posMonth = monthsCalculate['posMonth'];
 var months = monthsCalculate['months'];
 colorLimitYear(posYear,years.length);
 colorLimitMonth(posMonth,months.length);
+colorLimitHeight(posHeight,hours.length);
+colorLimitDegrees(posDegrees,hours.length);
 $('.yearLegend').html(years[posYear]);
 $('.monthLegend').html(months[posMonth]);
+$('.heightLegend').html(hours[posHeight]);
+$('.degreesLegend').html(hours[posDegrees]);
 var url = devuelveUrl('a/cliente/ajax/datosDashboard.php');
 $.ajax({
     url: url,
@@ -76,6 +83,30 @@ $('.monthButton').click(function(){
         posMonth = rightClickMonth(posMonth,months.length);
         colorLimitMonth(posMonth,months.length);
         ajaxHistorical(returnWeeksRangesAvailable(years[posYear],monthsEnglish[posMonth]));
+    }
+});
+$('.degrees').click(function(){
+    if($(this).hasClass('leftDegrees')) {
+        posDegrees = leftClickDegrees(posDegrees,hours.length);
+        colorLimitDegrees(posDegrees,hours.length);
+        console.log(hours[posDegrees]+'-'+posDegrees);
+    }
+    else {
+        posDegrees = rightClickDegrees(posDegrees,hours.length);
+        colorLimitDegrees(posDegrees,hours.length);
+        console.log(hours[posDegrees]+'-'+posDegrees);
+    }
+});
+$('.height').click(function(){
+    if($(this).hasClass('leftHeight')) {
+        posHeight = leftClickHeight(posHeight,hours.length);
+        colorLimitHeight(posHeight,hours.length);
+        console.log(hours[posDegrees]+'-'+posDegrees);
+    }
+    else {
+        posHeight = rightClickHeight(posHeight, hours.length);
+        colorLimitHeight(posHeight,hours.length);
+        console.log(hours[posDegrees]+'-'+posDegrees);
     }
 });
 function ajaxHistorical(weeks) {
@@ -312,6 +343,46 @@ function rightClickYear(pos,tam) {
         return pos+1;
     }
 }
+function leftClickDegrees(pos) {
+    if((pos-1) == -1) {
+        $('.degreesLegend').html(hours[0]);
+        return 0;
+    }
+    else {
+        $('.degreesLegend').html(hours[pos-1]);
+        return pos-1;
+    }
+}
+function rightClickDegrees(pos,tam) {
+    if((pos+1) == tam) {
+        $('.degreesLegend').html(hours[pos]);
+        return pos;
+    }
+    else {
+        $('.degreesLegend').html(hours[pos+1]);
+        return pos+1;
+    }
+}
+function leftClickHeight(pos) {
+    if((pos-1) == -1) {
+        $('.heightLegend').html(hours[0]);
+        return 0;
+    }
+    else {
+        $('.heightLegend').html(hours[pos-1]);
+        return pos-1;
+    }
+}
+function rightClickHeight(pos,tam) {
+    if((pos+1) == tam) {
+        $('.heightLegend').html(hours[pos]);
+        return pos;
+    }
+    else {
+        $('.heightLegend').html(hours[pos+1]);
+        return pos+1;
+    }
+}
 function leftClickMonth(pos) {
     if((pos-1) == -1) {
         $('.monthLegend').html(months[0]);
@@ -351,6 +422,26 @@ function colorLimitMonth(pos,tam) {
         $('.rightMonth').css('color','#dddddd');
     else
         $('.rightMonth').css('color','#F5A214');
+}
+function colorLimitDegrees(pos,tam) {
+    if((pos == 0))
+        $('.leftDegrees').css('color','#dddddd');
+    else
+        $('.leftDegrees').css('color','#F5A214');
+    if((pos == tam-1))
+        $('.rightDegrees').css('color','#dddddd');
+    else
+        $('.rightDegrees').css('color','#F5A214');
+}
+function colorLimitHeight(pos,tam) {
+    if((pos == 0))
+        $('.leftHeight').css('color','#dddddd');
+    else
+        $('.leftHeight').css('color','#F5A214');
+    if((pos == tam-1))
+        $('.rightHeight').css('color','#dddddd');
+    else
+        $('.rightHeight').css('color','#F5A214');
 }
 var data01 = {
   labels: ['2012', '2013', '2014', '2015'],

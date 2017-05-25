@@ -326,6 +326,18 @@ table td {
     margin: 5px;
     font-family: 'Montserrat';
 }
+.heightLegend {
+    display: inline;
+    font-size: 16px;
+    margin: 5px;
+    font-family: 'Montserrat';
+}
+.degreesLegend {
+    display: inline;
+    font-size: 16px;
+    margin: 5px;
+    font-family: 'Montserrat';
+}
 .yearContainer i {
     color: #F5A214;
 }
