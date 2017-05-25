@@ -11,11 +11,8 @@
 .ct-series-b .ct-bar, .ct-series-b .ct-line, .ct-series-b .ct-point {
   stroke: #e0aa0f;
 }
-.ct-series-c .ct-bar, .ct-series-c .ct-line, .ct-series-c .ct-point {
-  stroke: #adafaa;
-}
 .ct-axis-title {
-  font-size: 20px;
+  font-size: 16px;
 }
 /* Legend styles */
 .ct-legend {
@@ -25,7 +22,7 @@
   text-align: center;
 }
 ul.ct-legend {
-  top: -20px;
+  top: 5px;
   margin: auto;
 }
 .ct-legend li {
@@ -73,10 +70,7 @@ ul.ct-legend {
 </style>
 </head>
 <body>
-
-<h1 style="text-align:center;">Credit Hour Benchmarks</h1>
-<!-- see https://codepen.io/adrianparr/pen/GZebqK for aspect ratio examples other than major 10th -->
-<div id="chart-01"></div>
+<div id="chart-01" style="border: 1px solid red;"></div>
     <script src="recursos/jquery/jquery.min.js"></script>
     <script src="recursos/chartist/chartist.min.js"></script>
     <script src="https://d318px5m0jadsp.cloudfront.net/assets/chartist-plugin-axistitle.min.js"></script>
@@ -86,25 +80,24 @@ ul.ct-legend {
     <script>
 // Chart 1
 var data01 = {
-  // X axis labels
   labels: ['2012', '2013', '2014', '2015'],
   // Y axis data series
   series: [ 
-    { name: '30 Hours', data: [1647,1745,1863,1728] },
-    { name: '60 hours', data: [1523,1561,1636,1764] },
-    { name: '90 hours', data: [1661,1619,1702,1815] }
+    { name: 'Grados pala frontal', data: [1647,1745,1863,1728] },
+    { name: 'Grados pala trasera', data: [1523,1561,1636,1764] },
   ]
 };
 
 var options01 = {
   axisY: {
-    low: 0,
+    high:1900,
+    low: 1500,
+    showLabel: false
   },
   fullWidth: true,
-  stretch: true,
   chartPadding: {
     right: 40,
-    left: 40,
+    left: 0,
     bottom: 40
   },
   plugins: [
@@ -115,19 +108,15 @@ var options01 = {
         axisClass: 'ct-axis-title',
         offset: {
           x: 0,
-          y: 44
+          y: 35
         },
         textAnchor: 'middle'
       },
       axisY: {
-        axisTitle: 'Headcount',
-        axisClass: 'ct-axis-title',
         offset: {
           x: 0,
-          y: 24
+          y: 0
         },
-        textAnchor: 'middle',
-        flipTitle: true
       }
     }),
     Chartist.plugins.legend({

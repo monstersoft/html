@@ -27,7 +27,7 @@ $.ajax({
         console.log(res[3]);
         lineHistorical('#chartLineHistorical', false,false,{labels:res[3]['semanas'],series:[  {name: 'Grados', data: res[3]['pGpf']},{name: 'aaa',data: res[3]['pGpt']}  ]},'',false);
         lineHistorical('#chartLineHistorical2',false,false,{labels:res[3]['semanas'],series:[res[3]['pApf'],res[3]['pApt']]},'',false);
-        lineHistorical('#chartLineHistorical4',false,true,{labels:res[3]['semanas'], series:[res[3]['pTre']]},'', false);
+        //lineHistorical('#chartLineHistorical4',false,true,{labels:res[3]['semanas'], series:[res[3]['pTre']]},'', false);
     },
     error: function(xhr) {console.log(xhr.responseText);}
 });
@@ -349,3 +349,55 @@ function colorLimitMonth(pos,tam) {
     else
         $('.rightMonth').css('color','#F5A214');
 }
+
+var data01 = {
+  labels: ['2012', '2013', '2014', '2015'],
+  // Y axis data series
+  series: [ 
+    { name: 'Grados pala frontal', data: [1647,1745,1863,1728] },
+    { name: 'Grados pala trasera', data: [1523,1561,1636,1764] },
+  ]
+};
+
+var options01 = {
+  axisY: {
+    high:1900,
+    low: 1500,
+    showLabel: false
+  },
+  fullWidth: false,
+  chartPadding: {
+    right: 0,
+    left: 0,
+    bottom: 40
+  },
+  plugins: [
+ // Axis Titles  plugin and values
+    Chartist.plugins.ctAxisTitle({
+      axisX: {
+        axisTitle: 'Academic Year',
+        axisClass: 'ct-axis-title',
+        offset: {
+          x: 0,
+          y: 35
+        },
+        textAnchor: 'middle'
+      },
+      axisY: {
+        offset: {
+          x: 0,
+          y: 0
+        },
+      }
+    }),
+    Chartist.plugins.legend({
+        position: 'top',
+    }),
+    Chartist.plugins.ctPointLabels({
+      textAnchor: 'right'
+    })
+  ]
+};
+
+// Create the Chart
+new Chartist.Line('#chartLineHistorical4', data01, options01);
