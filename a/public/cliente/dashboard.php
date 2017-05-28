@@ -84,6 +84,7 @@
     ?>
     <div class="col-sm-12 col-md-5 card">
         <div class="col-xs-12 shadow cardContent">
+            <div class="loader"></div>
             <div class="col-xs-12 titleCard"> <i class="fa fa-pie-chart pull-left"></i><p>Motor</p></div>
             <div class="col-xs-6 cardContent" style="padding: 10px 20px 0px 20px;">
                 <div class="motorLegend">
@@ -104,6 +105,7 @@
     </div>
     <div class="col-sm-12 col-md-7 card">
         <div class="col-xs-12 shadow cardContent">
+            <div class="loader"></div>
             <div class="col-xs-12 titleCard"> <i class="fa fa-bar-chart pull-left"></i>
                 <p>Cambios</p>
             </div>
@@ -114,6 +116,7 @@
     </div>
     <div class="col-xs-12 card">
         <div class="col-xs-12 shadow cardContent">
+            <div class="loader"></div>
             <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
                 <p>Grados Pala</p>
             </div>
@@ -142,6 +145,7 @@
     </div>
     <div class="col-xs-12 card">
         <div class="col-xs-12 shadow cardContent">
+            <div class="loader"></div>
             <div class="zi col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
                 <p>Altura Pala</p>
             </div>
@@ -170,6 +174,7 @@
     </div>
     <div class="col-xs-12 card">
         <div class="col-xs-12 shadow cardContent">
+            <div class="loader"></div>
             <div class="col-xs-12 titleCard"> <i class="fa fa-line-chart pull-left"></i>
                 <p>Históricos</p>
             </div>
@@ -183,9 +188,6 @@
                <div class="col-xs-6 cardContent"><div class="yearContainer"><i class="monthButton leftMonth fa fa-2x fa-arrow-circle-o-left"></i><div class="monthLegend"></div><i class="monthButton rightMonth fa fa-2x fa-arrow-circle-o-right"></i></div></div>
            </div>
          </div>
-    </div>
-    <div class="col-xs-12">
-        <div class="ct-chart"></div>
     </div>
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>

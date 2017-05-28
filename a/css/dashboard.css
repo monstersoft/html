@@ -1,3 +1,11 @@
+/* LOADER */
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+}
+
 .ct-labels33 {
     font-size: 5px;
 }
