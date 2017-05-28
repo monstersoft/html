@@ -58,6 +58,7 @@
             }
         }
         $linea['limites'] = $primerMinuto.'-'.$ultimoMinuto;
+        $linea['opcion'] = $opcion;
         echo json_encode($linea);
     }
     if($opcion == 1) {
@@ -70,6 +71,7 @@
             }
         }
         $linea['limites'] = $primerMinuto.'-'.$ultimoMinuto;
+        $linea['opcion'] = $opcion;
         echo json_encode($linea);
     }
     

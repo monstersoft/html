@@ -2,7 +2,7 @@ var hours = ['08 am','09 am','10 am','11 am','12 am','13 pm','14 pm','15 pm','16
 var posHeight = 0;
 var posDegrees = 0;
 var monthsEnglish = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-var yearsCalculate  = returnYearsAvailabes('2017',moment().format('YYYY'));
+var yearsCalculate  = returnYearsAvailabes('2016',moment().format('YYYY'));
 var posYear = yearsCalculate['posYear'];
 var years = yearsCalculate['years'];
 var monthsCalculate = returnMonthsAvailables(years[posYear], moment().format('MMM'));
@@ -34,30 +34,9 @@ $.ajax({
         line('#chartLine', false, true,{labels: res[2]['hora'], series: [res[2]['gradosPalaFrontal'],res[2]['gradosPalaTrasera']]}, '°', false);
         line('#chartLineSticky2', true, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false);
         line('#chartLine2', false, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false);
-        var data01 = {
-  labels: ['2012', '2013', '2014', '2015'],
-  series: [ 
-    { name: 'Grados pala frontal', data: [1647,1745,1863,1728] },
-    { name: 'Grados pala trasera', data: [1523,1561,1636,1764] },
-  ]
-}
-                var data02 = {
-  labels: ['2012', '2013', '2014', '2015'],
-  series: [ 
-    { name: 'Grados pala frontal', data: [1647,1745,1863,1728] },
-    { name: 'Grados pala trasera', data: [1523,1561,1636,1764] },
-  ]
-}
-var data03 = {
-  labels: ['2012', '2013', '2014', '2015'],
-  series: [ 
-    { name: 'Recorrido', data: [1647,1745,1863,1728] },
-  ]
-}
-        lineHistorical('#chart1', data01,false, 'Semanas', -10);
-        lineHistorical('#chart2', data02,false, 'Semanas', -10);
-        lineHistorical('#chart3', data03,false, 'Semanas', 10);
-        //console.log(arr);
+        lineHistorical('#chart1', {labels: res[3]['semanas'],series: [ { name: 'Grados pala frontal', data: res[3]['pGpf'] },{ name: 'Grados pala trasera', data: res[3]['pGpt'] }]},false, 'Semanas', -10);
+        lineHistorical('#chart2', {labels: res[3]['semanas'],series: [ { name: 'Altura pala frontal', data: res[3]['pApf'] },{ name: 'Altura pala trasera', data: res[3]['pApt'] }]},false, 'Semanas', -10);
+        lineHistorical('#chart3', {labels: res[3]['semanas'],series: [ { name: 'Recorrido', data: res[3]['pTre'] }]},true, 'Semanas', 10);
     },
     complete: function(){
         $('.loader').remove();
@@ -140,17 +119,18 @@ function ajaxHours(hora, opcion) {
         data: {idArchivo: getSearchParams().idArchivo, patente: getSearchParams().patente, hora: hora, opcion: opcion},
         dataType: 'json',
         cache: false,
-        beforeSend: function() {
-            $('.loader').html('<i class="fa fa-refresh fa-spin fa-2x" style="color: #F5A214;opacity: 0.5;"></i>');
-        },
         success: function(arr) {
             var res = json2array(arr);
-            console.log(res);
-            line('#chartLineSticky', true, true, {labels: res[0], series: [res[1],res[2]]}, '°', false);
-            line('#chartLine', false, true, {labels: res[0], series: [res[1],res[2]]}, '°', false);
-        },
-        complete: function(){
-            $('.loader').remove();
+            if(res[4] == 0) {
+                line('#chartLineSticky', true, true, {labels: res[0], series: [res[1],res[2]]}, '°', false);
+                line('#chartLine', false, true, {labels: res[0], series: [res[1],res[2]]}, '°', false);
+                console.log('Grados');
+            }
+            else {
+                line('#chartLineSticky2', true, true,{labels: res[0], series: [res[1],res[2]]}, 'm', false);
+                line('#chartLine2', false, true,{labels: res[0], series: [res[1],res[2]]}, 'm', false);
+                console.log('Altura');
+            }
         },
         error: function(xhr) {console.log(xhr.responseText);}
     }); 
@@ -164,6 +144,11 @@ function ajaxHistorical(weeks) {
         dataType: 'json',
         cache: false,
         success: function(arr) {
+            var res = json2array(arr);
+            console.log(res);
+            lineHistorical('#chart1', {labels: res[0]['semanas'],series: [ { name: 'Grados pala frontal', data: res[0]['pGpf'] },{ name: 'Grados pala trasera', data: res[0]['pGpt'] }]},false, 'Semanas', -10);
+            lineHistorical('#chart2', {labels: res[0]['semanas'],series: [ { name: 'Altura pala frontal', data: res[0]['pApf'] },{ name: 'Altura pala trasera', data: res[0]['pApt'] }]},false, 'Semanas', -10);
+            lineHistorical('#chart3', {labels: res[0]['semanas'],series: [ { name: 'Recorrido', data: res[0]['pTre'] }]},true, 'Semanas', 10);
         },
         error: function(xhr) {console.log(xhr.responseText);}
     }); 
@@ -265,8 +250,8 @@ function lineHistorical(idChart, data01, showLabelX, axisXTitle, paddingBottom) 
       ]
     var options01 = {
       axisY: {
-        high:1900,
-        low: 1500,
+        /*high:1900,
+        low: 1500,*/
         showLabel: false
       },
       axisX: {
