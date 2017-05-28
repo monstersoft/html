@@ -33,18 +33,17 @@
             <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile">Pato</span><br><span id="nameProfile">Arauco</span></li>
             <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
             <li><a href="registro.php" class="selected"><i class="fa fa-file-text icons"></i>Registro</a></li>
-            <li><a href="historicos.php"><i class="fa fa-bar-chart icons"></i>Históricos</a></li>
             <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
             <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
             <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
         </ul>
     </nav>
-    <div id="content" class="animated fadeInUp unLeftContent">
+    <div id="content" class="animated fadeIn unLeftContent">
 <?php
             if($empresas['cantidadEmpresas'] == 0)
                 echo '<div class="col-xs-12">No hay empresas registradas</div>';
             else { foreach($empresas['empresas'] as $value) { echo '  
-               <div class="col-xs-12 col-sm-6 card">
+               <div class="col-xs-12 card">
                 <div class="col-xs-12 shadow cardContent">
                     <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i><p id="'.$value['idEmpresa'].'">'.$value['nombre'].'</p>
                         <div class="dropdown pull-right">
