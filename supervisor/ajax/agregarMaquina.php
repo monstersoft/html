@@ -1,25 +1,22 @@
 <?php
-	include '../php/funciones.php';
-	$identificador = $_POST['identificadorMaquina'];
-	$patente = $_POST['patenteMaquina'];
-	$velocidad = $_POST['velocidadMaquina'];
-	$tara = $_POST['taraMaquina'];
-	$year = $_POST['anhoMaquina'];
-	$carga = $_POST['cargaMaquina'];
-	$idZona = $_POST['idZonaMaquina'];
+	include '../../php/conexion.php';
+	$idZona = $_POST['id'];
+	$patente = $_POST['patente'];
 	$fechaRegistro = date("Y-m-d");
+	$tara = $_POST['tara'];
+	$carga = $_POST['carga'];
 	$conexion = conectar();
 	$arreglo = array();
-	$consulta = "SELECT COUNT(patente) AS patentes FROM maquinas WHERE  patente = '$patente'";
+	$consulta = "SELECT COUNT(patente) AS patentes FROM maquinas WHERE  patente = '$patente' AND idZona = '$idZona'";
 	if($resultado = mysqli_query($conexion,$consulta)) {
 		$patentes = mysqli_fetch_assoc($resultado);
 		if($patentes['patentes'] == 1) {
-			$arreglo['msg'][] = 'La patente ingresada ya está registrada';
+			$arreglo['msg'] = 'Ya existe una patente registrada para esta zona';
 			$arreglo['exito'] = 0;
 		}
 	}
-	if($patentes['patentes'] == "0") {
-		$consulta = "INSERT INTO maquinas (idZona,identificador,patente,year,fechaRegistro,velocidadMaxima,tara,cargaMaxima) VALUES ('$idZona','$identificador','$patente','$year','$fechaRegistro','$velocidad','$tara','$carga')";
+	if($patentes['patentes'] == 0) {
+		$consulta = "INSERT INTO maquinas (idZona,patente,fechaRegistro,tara,cargaMaxima) VALUES ('$idZona','$patente','$fechaRegistro','$tara','$carga')";
 		if(mysqli_query($conexion,$consulta)) {
 			$arreglo['exito'] = 1;
 		}

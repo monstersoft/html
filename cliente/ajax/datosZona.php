@@ -1,25 +1,14 @@
 <?php
-	include '../php/conexion.php';
+	include '../../php/conexion.php';
 	$conexion = conectar();
-	$idZona = $_POST['idZona'];
+	$id = $_POST['id'];
 	$arreglo = array();
-	$consulta = "SELECT * FROM zonas WHERE idZona = '$idZona'";
+	$consulta = "SELECT * FROM zonas WHERE zonas.idZona = '$id'";
 	if($resultado = mysqli_query($conexion,$consulta)) {
-		while($row = mysqli_fetch_assoc($resultado)) {
-            $arreglo['idZona'] = $row['idZona'];
-	    	$arreglo['idProyecto'] = $row['idProyecto'];
-			$arreglo['nombre'] = $row['nombre'];
-        }
+		$row = mysqli_fetch_assoc($resultado);
+		$arreglo['idZona'] = $row['idZona'];
+		$arreglo['idEmpresa'] = $row['idEmpresa']; 
+		$arreglo['nombre'] = utf8_encode($row['nombre']);
 	}
-    $arreglo = utf8Converter($arreglo);
 	echo json_encode($arreglo);
-
-	function utf8Converter($array) {
-	    array_walk_recursive($array, function($item, $key){
-	        if(!mb_detect_encoding($item, 'utf-8', true)){
-	                $item = utf8_encode($item);
-	        }
-	    });
-    return $array;
-	}
 ?>

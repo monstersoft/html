@@ -1,297 +1,221 @@
 <?php
-    /*session_start();
-    if(!isset($_SESSION['correo'])){
-        header("Location:../../index.php");
-    }
-    else {*/
-        include("../../supervisor/funcionesSupervisor.php");
-        //$email = $_SESSION['correo'];
-        $email = 'pavillanueva@ing.ucsc.cl';
-        $perfil = datosPerfilSupervisor($email);
-        $proyectos = utf8Converter(proyectosSupervisor($perfil['id']));
-   //}
+    include("../../php/funcionesSupervisor.php");
+    $email = 'juan@metropolitana.cl';
+    $profile = datosPerfil($email);
+    echo '<input id="idSupervisor" type="text" value="'.$profile["id"].'" hidden>';
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <meta name="theme-color" content="#262626">
-        <link rel="stylesheet" href="../../semantic/semantic.min.css">
-        <link rel="stylesheet" href="../../cliente/css/panel.css">
-        <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.css">
-        <link rel="stylesheet" href="../../css/responsive-tables.css">
-        <link rel="stylesheet" href="../../pickadate/lib/themes/classic.css">
-        <link rel="stylesheet" href="../../pickadate/lib/themes/classic.time.css">
-        <link rel="stylesheet" href="../../pickadate/lib/themes/classic.date.css">
-    </head>
-    <body>
-        <!--    SIDEBAR      -->
-        <div class="ui sidebar inverted vertical menu">
-            <div id="perfil" class="item" href="/introduction/getting-started.html">
-                <h5 class="ui icon header">
-                    <i class="settings icon"></i>
-                    <div class="content">
-                        <?php echo $perfil['empresa']; ?>
-                        <div class="sub header"><?php echo $perfil['correo']; ?></div>
-                    </div>
-                </h5>
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+            <link rel="stylesheet" href="../../recursos/bootstrap/css/bootstrap.min.css">
+            <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
+            <link rel="stylesheet" href="../../recursos/animate/animate.css">
+            <link rel="stylesheet" href="../../recursos/select2/select2.min.css">
+            <link rel="stylesheet" href="../../recursos/select2/select2-bootstrap.css">
+            <link rel="stylesheet" href="../../recursos/bootstrapFileInput/fileinput.min.css">
+            <link rel="stylesheet" href="../../recursos/pickadate/default.css">
+            <link rel="stylesheet" href="../../recursos/pickadate/default.date.css">
+            <link rel="stylesheet" href="../../recursos/pickadate/default.time.css">
+            <link rel="stylesheet" href="../../css/base.css">
+            <link rel="stylesheet" href="../../css/zonas.css">
+        </head>
+        <body>
+            <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a>
+                <p>Machine Monitors</p>
             </div>
-            <a id="hola" class="item" href="panel.php">
-                <div class="ce">
-                    <i class="fa fa-tachometer iz"></i>
-                    <div>Dashboard</div>
-                </div>
-            </a>
-            <a id="hola" class="item" href="empresas.php">
-            <div class="ce">
-                <i class="fa fa-map-marker iz"></i>
-                <div>Zonas</div>
-            </div>
-            </a>
-            <a id="hola" class="item" href="/introduction/getting-started.html">
-                <div class="ce">
-                    <i class="fa fa-history iz"></i>
-                    <div>Registro de Actividad</div>
-                </div>
-            </a>
-            <h6 class="ui horizontal divider header">
-                <i class="user icon" style="color: #fff;"></i>
-            </h6>
-            <a id="hola" class="item" href="/introduction/new.html">
-                <div class="ce">
-                    <i class="fa fa-send iz"></i>
-                    <div>Contactar Administrador</div>
-                </div>
-            </a>
-            <a id="hola" class="item" href="/introduction/getting-started.html">
-                <div class="ce">
-                    <i class="fa fa-unlock iz"></i>
-                    <div>Cambiar Contraseña</div>
-                </div>
-            </a>
-            <a id="hola" class="item" href="panel.php">
-                <div class="ce">
-                    <i class="fa fa-sign-out iz"></i>
-                    <div>Cerrar Sesión</div>
-                </div>
-            </a>
-        </div>
-        <!-- PUSHER  -->
-        <div class="pusher">
-            <!-- MENU FIXED -->
-            <div class="ui top fixed menu">
-                <a id="menu" class="launch icon item"><i class="content icon"></i></a>
-                <p id="letra" class="ui center aligned header">
-                    Machine Monitors
-                </p>
-            </div>
-            <!-- GRID       -->
-            <div class="ui grid container">      
-<!-- CONTENIDO .......................................................................-->
-                <!-- PROYECTO       -->
+            <nav class="unDisplayNav">
+                <ul>
+                    <li id="profile"><i class="fa fa-user fa-4x" id="iconProfile"></i><br><span id="titleProfile"><?php echo $profile['empresa'] ?></span><br><span id="nameProfile"><?php echo $profile['correo'] ?></span></li>
+                    <li><a class="selected"><i class="fa fa-tachometer icons"></i>Dashboard</a></li>
+                    <li><a><i class="fa fa-globe icons"></i>Zonas</a></li>
+                    <li><a><i class="fa fa-file-text icons"></i>Archivos</a></li>
+                    <li><a><i class="fa fa-send icons"></i>Contacto</a></li>
+                    <li><a><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+                    <li><a><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
+                </ul>
+            </nav>
+            <div id="content" class="animated fadeIn unLeftContent">
+                <!-- ............................................................................................................................ -->
                 <?php
-                    foreach ($proyectos as $key => $value) { /*inicio each proyectos*/ echo '
-                    <div class="ui sixteen wide column">
-                        <div class="ui fluid card">
-                            <div class="content">
-                                <div class="compact ui top right basic pointing dropdown button right floated" style="box-shadow: 0px 0px 0px 1px white inset;padding: 3px;margin-top: -3px;">
-                                    <i class="file vertical icon"></i>
+                foreach(zonas($email) as $value) {
+                    $idZona = $value['idZona'];
+                    echo '<div class="col-xs-12 col-sm-6 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="subirArchivo"><i class="fa fa-upload"></i>subir archivo</a></li><li><a id="'.$value['idZona'].'" class="agregarMaquina"><i class="fa fa-cog"></i>agregar máquina</a></li></ul> </div><p>'.$value['nombre'].'</p></div>';
+                        if(cantidadMaquinas($idZona) == 0)
+                            echo '<div class="col-xs-12 emptyMessage"><i class="fa fa-exclamation-circle fa-2x pull-left"></i>No hay máquinas asociadas a esta zona</div>';
+                        else {
+                            echo '<div class="col-xs-12 cardContent"> <div class="table-responsive"> <table class="responsive" style="width: 100%;"> <thead> <tr><th>Patente</th> <th>Fecha de Registro</th> <th>Tara [kg]</th> <th>Carga Máxima [kg]</th> </tr></thead> <tbody>';
+                            foreach(maquinas($idZona) as $value) {
+                                echo '<tr> <td class="firstColumn">'.$value['patente'].'</td><td>'.$value['fechaRegistro'].'</td><td>'.$value['tara'].'</td><td>'.$value['cargaMaxima'].'</td></tr>';
+                            }
+                            echo '</tbody> </table> </div></div>';
+                        }
+                        foreach(supervisores($idZona) as $value) {
+                           echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><p class="text-center montserrat">'.$value['nombreSupervisor'].'</p></div><div class="col-xs-12"><a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div></div>';
+                        }
+                    echo '</div></div>';
+                }
+            ?>
+                    <!-- ............................................................................................................................ -->
+            </div>
+            <!-- VENTANAS MODALES -->
+            <!-- MODAL AGREGAR MÁQUINA -->
+            <div class="modalAgregarMaquina modal fade" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header"><i class="fa fa-cog"></i>Agregar Máquina</div>
+                        <div class="modal-body">
+                            <form id="formularioAgregarMaquina">
+                                <div class="form-group">
+                                    <label>Patente</label>
+                                    <input type="text" placeholder="ABCDEF" class="form-control" name="patente" id="patenteAgregarMaquina">
                                 </div>
-                                <div class="header">Proyecto '.$value['nombreProyecto'].'</div>
-                                <div class="ui divider"></div>
-                                <div class="description">';
-                                    $cantidadZonas = cantidadZonas($value['idProyecto']);
-                                    if($cantidadZonas['cantidadZonas'] == 0) {
-                                        echo 'No hay zonas asociadas para este proyecto';
-                                    }
-                                    else {
-                                        $zonas = zonas($value['idProyecto']);
-                                        foreach ($zonas as $value) { /*inicio each zonas*/ echo '
-                                            <div class="contenido">
-                                                <i class="mundo world outline icon huge" style="color: #F5A214"></i>
-                                                <div class="tituloZona ui large header">Zona - '.$value['nombreZona'].'</div>
-                                                <div class="botonesZona ui small basic icon buttons">
-                                                    <button class="ui button subirArchivo" id="'.$value['idZona'].'"><i class="upload icon"></i></button>
-                                                    <button class="ui button agregarMaquina" id="'.$value['idZona'].'"><i class="add icon"></i></button>
-                                                </div>
-                                            </div>';
-                                            $cantidadSupervisores = cantidadSupervisores($value['idZona']);
-                                                if($cantidadSupervisores['cantidadSupervisores'] == 0) {
-                                                    echo 'No hay supervisores registrados para esta zona';
-                                                }
-                                                else {
-                                                    $cantidadMaquinas = cantidadMaquinas($value['idZona']);
-                                                    if($cantidadMaquinas['cantidadMaquinas'] == 0) {
-                                                        echo 'No hay máquinas registradas';
-                                                    }
-                                                    else {
-                                                        $maquinas = maquinas($value['idZona']); echo '
-                                                        <table class="ui very basic unstackable table responsive" style="border: 1px solid #F5A214; padding: 15px">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th class="center aligned">Patente</th>
-                                                                    <th class="center aligned">Fecha de registro</th>
-                                                                    <th class="center aligned">Velocidad máxima [km/hr]</th>
-                                                                    <th class="center aligned">Tara [kg]</th>
-                                                                    <th class="center aligned">Carga máxima [kg]</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>'; 
-                                                                foreach ($maquinas as $key => $value) { /*inicio each maquinas*/ echo '
-                                                                <tr>
-                                                                    <td class="center aligned">'.$value['patente'].'</td>
-                                                                    <td class="center aligned">'.$value['fechaRegistro'].'</td>
-                                                                    <td class="center aligned">'.$value['velocidadMaxima'].'</td>
-                                                                    <td class="center aligned">'.$value['tara'].'</td>
-                                                                    <td class="center aligned">'.$value['cargaMaxima'].'</td>
-                                                                </tr>'; 
-                                                                } /*fin each maquinas*/ echo '
-                                                            </tbody>
-                                                        </table>';
-                                                    }
-                                                    $supervisores = supervisores($value['idZona']);
-                                                    foreach ($supervisores as $value) { /*inicio each supervisores*/ echo '
-                                                        <div class="ui relaxed divided list">
-                                                        <div class="item">
-                                                            <button class="ui button basic icon right floated"><i class="write icon"></i></button>
-                                                            <i class="large user middle aligned icon"></i>
-                                                        <div class="content">';
-                                                        if($value['status'] == 'desabilitado' or $value['status'] == null) { echo '
-                                                            <a class="header">'.$value['nombreSupervisor'].'</a>
-                                                            <a class="description"><i class="warning circle icon"></i>Supervisor no ha confirmado registro</a>';
-                                                        }
-                                                        else { echo '
-                                                            <a class="header">'.$value['nombreSupervisor'].'</a>
-                                                            <div class="description">'.$value['correoSupervisor'].'</div>
-                                                            <div class="description">Fono: '.$value['celular'].'</div>
-                                                            <div class="description">Status: '.$value['status'].'</div>
-                                                            <div class="description">Fecha de registro: '.$value['fechaRegistro'].'</div>';
-                                                        } echo '
-                                                                </div>
-                                                            </div>
-                                                            </div><div class="ui divider"></div>
-                                                                    ';
-                                                    }// fin each supervisores                                               
-                                                }
-                                        } /*fin each zonas*/
-                                    } echo '                                      
+                                <div class="form-group">
+                                    <label>Tara [kg]</label>
+                                    <input type="text" placeholder="1000" class="form-control" name="tara" id="taraAgregarMaquina" value="1000">
                                 </div>
+                                <div class="form-group">
+                                    <label>Carga Máxima [kg]</label>
+                                    <input type="text" placeholder="1000" class="form-control" name="carga" id="cargaAgregarMaquina" value="1000">
+                                </div>
+                                <div class="form-group">
+                                    <label>idZonaAgregarMaquina</label>
+                                    <input type="text" class="form-control" name="id" id="idZonaAgregarMaquina">
+                                </div>
+                            </form>
+                            <div class="clearfix">
+                                <button type="submit" class="btn btn-primary pull-right montserrat" id="btnAñadirMaquina"><i class="cargar fa fa-plus"></i>Agregar</button>
+                                <button type="button" class="btn btn-inverse pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                             </div>
-                        </div>
-                    </div>';
-                    } /*fin each proyectos*/
-                ?> 
-<!-- FIN CONTENIDO ...................................................................-->
-            </div>
-        </div>
-<!-- VENTANAS MODALES ..............................................................................-->
-    <!--    AGREGAR MAQUINA    --> 
-        <div class="ui modal modalAgregarMaquina">
-            <div class="header">
-              <i class="add icon" style="float: right;"></i>
-              Agregar Maquina
-            </div>
-            <div class="content">
-                <form class="ui form" id="formularioAgregarMaquina">
-                    <div class="field">
-                        <label>Identificador</label>
-                        <div class="ui corner labeled input">
-                            <input type="text" placeholder="Nuevo ID" name="identificadorMaquina" id="identificadorMaquina" value="1">
-                            <div class="ui corner label"><i class="asterisk icon"></i></div>
+                            <div class="message" style="margin: 15px 0px 0px 0px"></div>
                         </div>
                     </div>
-                    <div class="field">
-                        <label>Patente</label>
-                        <div class="ui corner labeled input">
-                            <input type="text" placeholder="ABCD00" name="patenteMaquina" id="patenteMaquina">
-                            <div class="ui corner label"><i class="asterisk icon"></i></div>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Velocidad Máxima [km/hr]</label>
-                        <div class="ui corner labeled input">
-                            <input type="text" placeholder="100" name="velocidadMaquina" id="velocidadMaquina" value="100">
-                            <div class="ui corner label"><i class="asterisk icon"></i></div>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Tara Máxima [kg]</label>
-                        <div class="ui corner labeled input">
-                            <input type="text" placeholder="100" name="taraMaquina" id="taraMaquina" value="500">
-                            <div class="ui corner label"><i class="asterisk icon"></i></div>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Año</label>
-                        <div class="ui corner labeled input">
-                            <input type="text" name="anhoMaquina" id="anhoMaquina" placeholder="2017">
-                            <div class="ui corner label"><i class="asterisk icon"></i></div>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Carga Máxima [kg]</label>
-                        <div class="ui corner labeled input">
-                            <input type="text" placeholder="100" name="cargaMaquina" id="cargaMaquina" value="500">
-                            <div class="ui corner label"><i class="asterisk icon"></i></div>
-                        </div>
-                    </div>
-                    <label for="idZonaMaquina">ID Zona Máquina</label>
-                    <input type="text" name="idZonaMaquina" id="idZonaMaquina">
-                </form>
-                <div style="text-align: right;margin-top: 15px">
-                    <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
-                    <a href="#" class="ui button green" id="btnAñadirMaquina"><i class="add icon"></i>Añadir</a>
                 </div>
-                <div class="message" style="margin: 15px 0px 0px 0px"></div>
             </div>
-        </div>
-    <!--    SUBIR ARCHIVO    --> 
-        <div class="ui modal modalSubirArchivo">
-            <div class="header"><i class="upload icon" style="float: right;"></i>Subir Archivo</div>
-            <div class="content">
-                <form class="ui form" id="myForm" enctype="multipart/form-data">
-                    <div class="field">
-                        <label>Fecha de datos</label>
-                        <div class="ui calendar left icon input">
-                            <input class="datepicker" type="text" name="fechaDatos" id="fechaDatos">
-                            <i class="calendar icon"></i>
+            <!-- MODAL SUBIR ARCHIVO -->
+            <div class="modalSubirArchivo modal fade" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header"><i class="fa fa-upload"></i>Subir Archivo</div>
+                        <div class="modal-body">
+                            <form id="formularioSubirArchivo" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label>Seleccionar fecha de datos</label>
+                                    <input type="text" placeholder="2017-03-03" class="datepicker form-control" name="fechaDatos" id="fechaDatos">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Seleccionar Archivo</label>
+                                    <input type="file" class="file" name="archivo" id="archivoSubirArchivo" data-show-preview="false" data-show-upload="false" data-show-remove="false">
+                                </div>
+                                <div class="form-group">
+                                    <label>idZonaSubirArchivo</label>
+                                    <input type="text" class="form-control" name="idZona" id="idZonaSubirArchivo">
+                                </div>
+                                <div class="form-group">
+                                    <label>idSupervisorSubirArchivo</label>
+                                    <input type="text" class="form-control" name="idSupervisor" id="idSupervisorSubirArchivo">
+                                </div>
+                            </form>
+                            <div class="clearfix">
+                                <button type="submit" class="btn btn-primary pull-right montserrat" id="btnSubirArchivo"><i class="cargar fa fa-upload"></i>Agregar</button>
+                                <button type="button" class="btn btn-inverse pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                            </div>
+                            <div class="message" style="margin: 15px 0px 0px 0px"></div>
                         </div>
                     </div>
-                    <div class="field">
-                        <label>Adjuntar archivo</label>
-                        <div class="ui file input action">
-                            <input type="text" placeholder="Formato CVS" name="archivoZonaText" id="archivoZonaText">
-                            <input type="file" id="archivoZona" name="archivoZona" style="display: none">
-                            <a href="#" class="ui button">Buscar</a>
-                        </div>
-                    </div>
-                    <label for="idZonaArchivo">ID Zona Archivo</label>
-                    <input type="text" name="idZonaArchivo" id="idZonaArchivo">
-                </form>
-                <div style="text-align: right;margin-top: 15px">
-                    <a href="#" class="ui button black cancelar"><i class="close icon"></i>Cancelar</a>
-                    <input type="submit" id="btnSubirArchivo" value="Subir">
-                    <!--<button type="submit" href="#" class="ui button green" id="btnSubirArchivo"><i class="upload icon"></i></button>-->
                 </div>
-                <div class="message" style="margin: 15px 0px 0px 0px"></div>
             </div>
-        </div>           
-<!--FIN VENTANAS MODALES ..............................................................................-->
-        <script src="../../js/jquery2.js"></script>
-        <script src="../../semantic/semantic.min.js"></script>
-        <script src="../../supervisor/js/funciones.js"></script>
-        <script src="../../js/moment.js"></script>
-        <script src="../../js/responsive-table.js"></script>
-        <script src="../../supervisor/js/modalAgregarMaquina.js"></script>
-        <script src="../../supervisor/js/modalSubirArchivo.js"></script>
-        <script src="../../cliente/js/compruebaInputs.js"></script>
-        <script src="../../cliente/js/mensajes.js"></script>
-        <script src="../../cliente/js/devuelveUrl.js"></script>
-        <script src="../../pickadate/lib/picker.js"></script>
-        <script src="../../pickadate/lib/picker.date.js"></script>
-        <script src="../../pickadate/lib/picker.time.js"></script>
+            <script src="../../recursos/jquery/jquery.min.js"></script>
+            <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
+            <script src="../../recursos/select2/select2.full.js"></script>
+            <script src="../../recursos/rut/jquery.rut.chileno.js"></script>
+            <script src="../../recursos/bootstrapFileInput/fileinput.min.js"></script>
+            <script src="../../recursos/moment/moment.js"></script>
+            <script src="../../recursos/pickadate/picker.js"></script>
+            <script src="../../recursos/pickadate/picker.date.js"></script>
+            <script src="../../recursos/pickadate/picker.time.js"></script>
+            <script src="../../supervisor/js/modalAgregarMaquina.js"></script>
+            <script src="../../supervisor/js/modalSubirArchivo.js"></script>
+            <script src="../../js/funciones.js"></script>
+            <script src="../../js/compruebaInputs.js"></script>
+            <script src="../../js/mensajes.js"></script>
+            <script>
+                $(document).ready(function() {
+                    var desplegar = 0;
+                    /*function explode(){
+                      $('#loader').css('display','none');
+                      $('#content').fadeIn().css('display','block');
+                    }
+                    setTimeout(explode, 5000);
+                        $(".hola").select2({
+                            placeholder: "Seleccionar Zona",
+                            theme: "bootstrap",
+                            maximumInputLength: 20,
+                            selectOnClose: true,
+                            closeOnSelect: false,
+                            minimumResultsForSearch: Infinity
+
+                        });*/
+                    main();
+                    $('.agregar').click(function() {
+                        $('.sOne').toggleClass('displaySticky');
+                        $('.sTwo').toggleClass('displaySticky');
+                    });
+                    $('.cancelar').click(function() {
+                        $('.alert').remove();
+                    });
+                    $('.modal').on('hidden.bs.modal', function() {
+                        $(this).find('form')[0].reset();
+                        $("#zonasAsociadas").find("option[class='dinamico']").remove();
+                    });
+                });
+            </script>
+            <script>
+                $.fn.select2.defaults.set("theme", "bootstrap");
+                $(".select2-multiple").select2({
+                    placeholder: "Seleccionar",
+                    width: null,
+                    containerCssClass: ':all:'
+                });
+                $(".select2-multiple").on("select2:open", function() {
+                    if ($(this).parents("[class*='has-']").length) {
+                        var classNames = $(this).parents("[class*='has-']")[0].className.split(/\s+/);
+                        for (var i = 0; i < classNames.length; ++i) {
+                            if (classNames[i].match("has-")) {
+                                $("body > .select2-container").addClass(classNames[i]);
+                            }
+                        }
+                    }
+                });
+            </script>
+        <script>
+            $(document).ready(function(){
+                fechaHoy();
+                $('.modal').on('hidden.bs.modal', function(){
+                    $(this).find('form')[0].reset();
+                    $("#zonasAsociadas").find("option[class='dinamico']").remove();
+                });
+                $('.cancelar').click(function(){$('.alert').remove();});
+                //alert(getDistanceFromLatLonInKm(48.8666667,2.3333333,19.4341667,-99.1386111));
+            });
+        function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+                  var R = 6371; // Radius of the earth in km
+                  var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
+                  var dLon = this.deg2rad(lon2-lon1); 
+                  var a = 
+                    Math.sin(dLat/2) * Math.sin(dLat/2) +
+                    Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * 
+                    Math.sin(dLon/2) * Math.sin(dLon/2); 
+                  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+                  var d = R * c; // Distance in km
+                  return d;
+                }
+        function deg2rad(deg) {
+                  return deg * (Math.PI/180);
+        }
+        </script>
         <script>
             $('.datepicker').pickadate({
                 monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
@@ -306,119 +230,12 @@
                 min: new Date(2017,1,1),
                 max: new Date(2018,1,1),
                 format: 'dddd dd , mmmm yyyy',
-                formatSubmit: 'yyyy/mm/dd',
+                formatSubmit: 'yyyy-mm-dd',
                 hiddenName : true,
-                firstDay: 'Monday'
+                firstDay: 'Monday',
+                container: 'body'
             })
         </script>
-        <script>
-            $(document).ready(function(){
-                $('#menu').click(function(){$('.ui.sidebar').sidebar('toggle');});
-                $('.ui.sidebar').sidebar({context: 'body'});
-                $('.ui.dropdown').click(function(){
-                    $('.zona').removeClass('disabled');
-                    $('.supervisor').removeClass('disabled');    
-                }).dropdown();
-            });
-            $('.cancelar').click(function(){
-                $('#formularioSubirArchivo').trigger("reset");
-                $('#formularioAgregarMaquina').trigger("reset");
-                $('.ui.negative.message').remove();
-                $('.ui.warning.message').remove();
-                $('.ui.icon.success.message').remove();
-                $('.modalSubirArchivo').modal('hide');
-                $('.modalAgregarMaquina').modal('hide');
-            });
-            $('.ui.file.input').find('input:text, .ui.button').on('click', function(e) {
-                $(e.target).parent().find('input:file').click();
-            });
-            $('input:file', '.ui.file.input').on('change', function(e) {
-                var file = $(e.target);
-                var name = '';
-                for (var i=0; i<e.target.files.length; i++) {
-                    name += e.target.files[i].name + ', ';
-                }
-                // remove trailing ","
-                name = name.replace(/,\s*$/, '');
-                $('input:text', file.parent()).val(name);
-            });
-        </script>
-        <script>
-            $(function(){
-                var callback = function(e) {
-                    e.preventDefault();
-                    /*var arreglo = new Array();
-                    var fecha = $('#fechaDatos').val();
-                    var archivo = $('#archivoZona').val();
-                    var idZona = $('#idZonaArchivo').val();
-                    var archivoText = $('#archivoZonaText').val();
-                    var numberErrors = 0;
-                    if(isEmpty(fecha))
-                        arreglo.push('<li>Fecha es obligatorio</li>');
-                    if(isEmpty(archivo))
-                        arreglo.push('<li>Archivo es obligatorio</li>');
-                    if(isEmpty(idZona))
-                        arreglo.push('<li>Id Zona es obligatorio</li>');
-                    if(isEmpty(archivoText))
-                        arreglo.push('<li>Archivo es obligatorio</li>');
-                    if(arreglo.length == 0) {*/
-                        var url = devuelveUrl('html/supervisor/subirArchivo.php');
-                        $.ajax({
-                            url: url,
-                            type: 'POST',
-                            data: new FormData(this),
-                            contentType: false,
-                            //cache: false,
-                            processData: false,
-                            dataType: 'json',
-                            success: function(response){
-                                alert(JSON.stringify(response));
-                            }
-                        }).fail(function( jqXHR, textStatus, errorThrown ){
-                            if (jqXHR.status === 0){
-                                alert('No hay coneccion con el servidor');
-                            } else if (jqXHR.status == 404) {
-                                alert('La pagina solicitada no fue encontrada, error 404');
-                            } else if (jqXHR.status == 500) {
-                                alert('Error interno del servidor');
-                            } else if (textStatus === 'parsererror') {
-                                alert('Error en la respuesta, debes analizar la sintaxis JSON');
-                            } else if (textStatus === 'timeout') {
-                                alert('Ya ha pasado mucho tiempo');
-                            } else if (textStatus === 'abort') {
-                                alert('La peticion fue abortada');
-                            } else {
-                                alert('Error desconocido');
-                            }
-                        });
-                    /*}
-                    else {
-                        errorMessage(arreglo);
-                    }*/
-                }
-                $('#formularioSubirArchivo').on('submit', callback);
-            });
-        </script>
-    <script>
-        $(function(){
-            var callback = function(e) {
-                e.preventDefault();
-                var url = devuelveUrl('html/supervisor/subirArchivo.php');
-                $.ajax({
-                    url: url,
-                    type: 'POST',
-                    data: new FormData(this),
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    dataType: 'json',
-                    success: function(response){
-                        alert(JSON.stringify(response));
-                    }
-                });
-            }
-             $('#myForm').on('submit', callback);
-        });
-    </script>
-    </body>
-</html>
+        </body>
+
+    </html>

@@ -1,70 +1,53 @@
 $(document).ready(function() {
     $('.subirArchivo').click(function(){
-        $('.ui.negative.message').remove();
-        $('.ui.warning.message').remove();
-        $('.ui.icon.success.message').remove();
-        $('#formularioSubirArchivo').trigger("reset");
-        //$('#idZonaArchivo').val($(this).attr('id'));
-        $('.modalSubirArchivo').modal({autofocus: false}).modal('show');
+        $('#idZonaSubirArchivo').val($(this).attr('id'));
+        $('#idSupervisorSubirArchivo').val($('#idSupervisor').val());
+        $('.modalSubirArchivo').modal();
         fechaHoy();
     });
     $('#btnSubirArchivo').click(function(){
         var arreglo = new Array();
-        var fecha = $('#fechaDatos').val();
-        var archivo = $('#archivoZonaText').val();
-        var idZona = $('#idZonaArchivo').val();
+        var fecha = $('input[name=fechaDatos]').val();
+        var archivo = $('#archivoSubirArchivo').val();
+        var idZona = $('#idZonaSubirArchivo').val();
+        var idSupervisor = $('#idSupervisorSubirArchivo').val();
         var numberErrors = 0;
-        if(isEmpty(fecha)) {
+        if(isEmpty(fecha))
             arreglo.push('<li>Fecha es obigatorio</li>');
-        }
-        if(isEmpty(archivo)) {
+        if(extensions(archivo))
+            arreglo.push('<li>Formato incorrecto de archivo</li>');
+        if(isEmpty(archivo))
             arreglo.push('<li>Archivo es obligatorio</li>');
-        }
-        if(isEmpty(idZona)) {
+        if(isEmpty(idZona))
             arreglo.push('<li>Id zona es obligatorio</li>');
-        }
+        if(isEmpty(idSupervisor))
+            arreglo.push('<li>Id supervisor es obligatorio</li>');
+        if(nameMatchSplit(archivo,fecha).match == true)
+           arreglo.push(nameMatchSplit(archivo,fecha).msg);
         if(arreglo.length == 0) {
-            var data = new FormData(document.getElementById('formularioSubirArchivo'));
-            var url = devuelveUrl('html/supervisor/subirArchivo.php');
+            var data  = new FormData(document.getElementById('formularioSubirArchivo'));
             $.ajax({
-                url: 'subirArchivo.php',
+                url: devuelveUrl('a/supervisor/ajax/subirArchivo.php'),
                 type: 'POST',
                 dataType: 'json',
                 data: data,
                 cache: false,
                 contentType: false,
                 processData: false,
-                beforeSend: function() {
-                  $('#cancelar').addClass('disabled');
-                  $('#btnSubirArchivo').addClass('disabled loading');
-                  //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
-                },
+                beforeSend: function() {activarLoaderBotones('fa-upload','fa-refresh');},
                 success: function(arreglo) {
-                    alert(JSON.stringify(arreglo));
-                    $('#cancelar').removeClass('disabled');
-                    $('#btnSubirArchivo').removeClass('disabled loading');
-                }
-            }).fail(function( jqXHR, textStatus, errorThrown ){
-                if (jqXHR.status === 0){
-                    alert('No hay coneccion con el servidor');
-                } else if (jqXHR.status == 404) {
-                    alert('La pagina solicitada no fue encontrada, error 404');
-                } else if (jqXHR.status == 500) {
-                    alert('Error interno del servidor');
-                } else if (textStatus === 'parsererror') {
-                    alert('Error en la respuesta, debes analizar la sintaxis JSON');
-                } else if (textStatus === 'timeout') {
-                    alert('Ya ha pasado mucho tiempo');
-                } else if (textStatus === 'abort') {
-                    alert('La peticion fue abortada');
-                } else {
-                    alert('Error desconocido');
-                }
+                    console.log(JSON.stringify(arreglo, null,2));
+                            if(arreglo.success == true)
+                                successMessage('Se han subido los datos de forma exitosa','');
+                            else
+                                warningMessage(arreglo.msg);
+                },
+                complete: function() {desactivarLoaderBotones('fa-upload','fa-refresh');},
+                error: function(xhr) {console.log(xhr.responseText)}
             });
         }
         else {
             errorMessage(arreglo);
         }
-    });
-    
+    });  
 });

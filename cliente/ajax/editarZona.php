@@ -1,19 +1,19 @@
 <?php
-	include '../php/conexion.php';
+	include '../../php/conexion.php';
 	$arreglo = $_POST['datos'];
 	$arreglo['fracasos'] = 0;
 	$arreglo['exitos'] = 0;
 	$arreglo['errores'] = 0;
 	$conexion = conectar();
-    $idProyecto= $arreglo[0]['idProyecto'];
+    $idEmpresa= $arreglo[0]['idEmpresa'];
     $idZona= $arreglo[1]['idZona'];
 	if($arreglo[2]['nombre']['cambio'] == 1) {
-		$nombre = $arreglo[2]['nombre']['modificado'];
+		$nombre = utf8_decode($arreglo[2]['nombre']['modificado']);
 		$consulta = "SELECT COUNT(zonas.idZona) 
 					 AS nombres 
 					 FROM zonas 
 					 WHERE zonas.nombre = '$nombre' 
-					 AND zonas.idProyecto = '$idProyecto'";
+					 AND zonas.idEmpresa = '$idEmpresa'";
 		if($resultado = mysqli_query($conexion,$consulta)) {
 			$nombres = mysqli_fetch_assoc($resultado);
 			if($nombres['nombres'] >= 1) {

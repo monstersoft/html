@@ -1,15 +1,16 @@
 $(document).ready(function() {
     $('.agregarEmpresa').click(function(){
-        borraMensajes();
-        $('.modalAgregarEmpresa').modal('show');
+        $('.modalAgregarEmpresa').modal();
     });
     $('#btnAñadirEmpresa').click(function(){
+        $('.alert').remove();
         var arreglo = new Array();
         var nombre = $('#nombreAgregarEmpresa').val();
-        var rut = $('#rutAgregarEmpresa').val();
+        var rut =  $('#rutAgregarEmpresa').val();
         var email = $('#emailAgregarEmpresa').val();
         var celular = $('#celularAgregarEmpresa').val();
         var numberErrors = 0;
+        console.log(nombre);
         if(isEmpty(nombre))
             arreglo.push('<li>Nombre es obigatorio</li>');
         if(isEmpty(rut))
@@ -31,7 +32,7 @@ $(document).ready(function() {
         if(arreglo.length == 0) {
             var data = $('#formularioAgregarEmpresa').serialize();
             //devuelveUrl(pathSinCarpetaRaiz);
-            var url = devuelveUrl('cliente/ajax/agregarEmpresa.php');
+            var url = devuelveUrl('a/cliente/ajax/agregarEmpresa.php');
             $.ajax({
                 url: url,
                 type: 'POST',
@@ -39,23 +40,21 @@ $(document).ready(function() {
                 dataType: 'json',
                 cache: false,
                 beforeSend: function() {
-                  $('.cancelar').addClass('disabled');
-                  $('#btnAñadirEmpresa').addClass('disabled loading');
+                  activarLoaderBotones('fa-pencil','fa-refresh');
                 },
                 success: function(returnedData) {
                     if(returnedData.exito == 1) {
                         successMessage('Registro realizado con éxito','Redireccionado al panel de empresas');
                         $('.cancelar').remove();
                         $('#btnAñadirEmpresa').remove();
-                        setTimeout(function(){location.reload()}, 5000);
+                        setTimeout(function(){location.reload()}, 3000);
                     }
                     else {
-                        warningMessage(returnedData);
+                        warningMessage(returnedData.msg);
                     }
                 },
                 complete: function() {
-                    $('.cancelar').removeClass('disabled');
-                    $('#btnAñadirEmpresa').removeClass('disabled loading');
+                    desactivarLoaderBotones('fa-pencil','fa-refresh');
                 }
             }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){

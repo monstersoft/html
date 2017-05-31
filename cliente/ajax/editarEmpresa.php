@@ -1,5 +1,5 @@
 <?php
-	include '../php/conexion.php';
+	include '../../php/conexion.php';
 	$arreglo = $_POST['datos'];
 	$arreglo['fracasos'] = 0;
 	$arreglo['exitos'] = 0;
@@ -7,7 +7,7 @@
 	$conexion = conectar();
     $id = $arreglo[0]['id'];
 	if($arreglo[1]['nombre']['cambio'] == 1){
-		$nombre = $arreglo[1]['nombre']['modificado'];
+		$nombre = utf8_decode($arreglo[1]['nombre']['modificado']);
 		$consulta = "SELECT COUNT(*) AS nombres FROM empresas WHERE empresas.nombre = '$nombre'";
 		if($resultado = mysqli_query($conexion,$consulta)) {
 			$nombres = mysqli_fetch_assoc($resultado);

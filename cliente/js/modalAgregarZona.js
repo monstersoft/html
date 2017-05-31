@@ -1,44 +1,47 @@
 $(document).ready(function() {
     $('.agregarZona').click(function(){
-        $('.ui.negative.message').remove();
-        $('.ui.warning.message').remove();
-        $('.ui.icon.success.message').remove();
-        $('#idProyectoZona').val($(this).attr('id'));
-        $('.modalAgregarZona').modal('show');
+        $('#idEmpresaAgregarZona').val($(this).attr('id'));
+        $('.modalAgregarZona').modal();
     });
     $('#btnAñadirZona').click(function(){
+        $('.alert').remove();
         var arreglo = new Array();
-        var nombre = $('#nombreZona').val();
+        var nombre = $('#nombreAgregarZona').val();
         var numberErrors = 0;
         if(isEmpty(nombre))
             arreglo.push('<li>El campo nombre es obigatorio</li>');
-        if(maxLength(nombre))
-            arreglo.push('<li>El campo nombre debe tener máximo 50 caracteres</li>');
+        if(maxLength(nombre,30))
+            arreglo.push('<li>El campo nombre debe tener máximo 30 caracteres</li>');
         if(arreglo.length == 0) {
             var data = $('#formularioAgregarZona').serialize();
-            var url = devuelveUrl('html/cliente/agregarZona.php');
+            //devuelveUrl(pathSinCarpetaRaiz);
+            var url = devuelveUrl('a/cliente/ajax/agregarZona.php');
             $.ajax({
                 url: url,
                 type: 'POST',
                 data: data,
                 dataType: 'json',
+                cache: false,
                 beforeSend: function() {
-                  $('#cancelar').addClass('disabled');
-                  $('#btnAñadir').addClass('disabled loading');
-                  //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
+                  activarLoaderBotones('fa-plus','fa-refresh');
                 },
                 success: function(arreglo) {
+                    console.log(JSON.stringify(arreglo));
                     if(arreglo.exito == 1) {
                         successMessage('Registro realizado con éxito','Serás redireccionado al panel de empresas');
-                        location.reload();
+                        $('.cancelar').remove();
+                        $('#btnAñadirZona').remove();
+                        setTimeout(function(){location.reload()}, 3000);
                     }
                     else {
-                        alert(JSON.stringify(arreglo));
-                        $('.message').html('<div class="ui warning message">'+arreglo.msg+'</div>');
+                        $('.message').html('<div class="alert alert-warning"><ul>'+arreglo.msg+'</ul></div>');
                     }
                     $('#cancelar').removeClass('disabled');
-                    $('#btnAñadir').removeClass('disabled loading');
-                }
+                    $('#btnAñadirZona').removeClass('disabled loading');
+                },
+                complete: function() {
+                    desactivarLoaderBotones('fa-pencil','fa-refresh');
+                },
             }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){
                     alert('No hay coneccion con el servidor');

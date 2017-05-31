@@ -1,20 +1,16 @@
 $(document).ready(function() {
     $('.agregarSupervisor').click(function(){
-        var id = $(this).attr('id');
-        var url = devuelveUrl('html/cliente/zonas.php');
-        $("#zonasAsociadas").dropdown('clear');
-        $("#zonasAsociadas").find("option[class='dinamico']").remove();
         $.ajax({
-                url: url,
+                url: devuelveUrl('a/cliente/ajax/datosZonas.php'),
                 type: 'POST',
-                data: {idProyecto: id},
+                data: {id: $(this).attr('id')},
                 dataType: 'json',
-                success: function(returnedData) {
-                    var option = '';
-                    returnedData.forEach(function(element,index){
-                            option += '<option class="dinamico" value='+returnedData[index].idZona+'>'+returnedData[index].nombre+'</option>';
-                        });
-                    $('#zonasAsociadas').append(option);
+                success: function(arreglo) {
+                    var opciones = '';
+                    $.each(arreglo,function(index) {
+                        opciones += '<option class="dinamico" value='+arreglo[index].idZona+'>'+arreglo[index].nombre+'</option>';
+                    });
+                    $('#zonasAsociadas').append(opciones);
                 }
             }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){
@@ -33,52 +29,46 @@ $(document).ready(function() {
                     alert('Error desconocido');
                 }
             });
-        $('.ui.negative.message').remove();
-        $('.ui.warning.message').remove();
-        $('.ui.icon.success.message').remove();
-        $('#idZonaSupervisor').val(id);
-        $('.modalAgregarSupervisor').modal('show');
+        $('.modalAgregarSupervisor').modal();
     });
     $('#btnAñadirSupervisor').click(function(){
         var arreglo = new Array();
-        var nombre = $('#nombreSupervisor').val();
-        var email = $('#correoSupervisor').val();
+        var nombre = $('#nombreAgregarSupervisor').val();
+        var email = $('#correoAgregarSupervisor').val();
         var numberErrors = 0;
-        if(isEmpty(nombre)) {
+        if(isEmpty(nombre))
             arreglo.push('<li>El campo nombre es obigatorio</li>');
-        }
-        if(isEmpty(email)) {
+        if(maxLength(nombre,30))
+            arreglo.push('<li>El campo nombre debe tener máximo 30 caracteres</li>');
+        if(isEmpty(email))
             arreglo.push('<li>El campo correo es obigatorio</li>');
-        }
-        if(isMail(email)) {
+        if(isMail(email))
             arreglo.push('<li>Formato erróneo de correo electrónico</li>');
-        }
-        if($('#zonasAsociadas').val() == null || $('#zonasAsociadas').val() == "") {
+        if($('#zonasAsociadas').val() == null || $('#zonasAsociadas').val() == "")
             arreglo.push('<li>Tienes que seleccionar al menos una zona</li>');
-        }
         if(arreglo.length == 0) {
-            var data = $('#formularioAgregarSupervisor').serialize();
-            var url = devuelveUrl('html/cliente/agregarSupervisor.php');
             $.ajax({
-                url: url,
+                url: devuelveUrl('a/cliente/ajax/agregarSupervisor.php'),
                 type: 'POST',
-                data: data,
+                data: $('#formularioAgregarSupervisor').serialize(),
                 dataType: 'json',
                 beforeSend: function() {
-                  $('#cancelar').addClass('disabled');
-                  $('#btnAñadirSupervisor').addClass('disabled loading');
-                  //$('#modalInsertar').modal({transition: 'fly up'}).modal('hide');
+                  activarLoaderBotones('fa-plus','fa-refresh');
                 },
-                success: function(returnedData) {
-                    if(returnedData.exito == 1) {
+                success: function(arreglo) {
+                    console.log(JSON.stringify(arreglo));
+                    if(arreglo.exito == 1) {
                         successMessage('Registro realizado con éxito','Serás redireccionado al panel');
-                        location.reload();
+                        $('#cancelar').removeClass('disabled');
+                        $('#btnAñadirSupervisor').removeClass('disabled loading');
+                        setTimeout(function(){location.reload()}, 5000);
                     }
                     else {
-                        warningMessage(returnedData);
+                        $('.message').html('<div class="alert alert-warning"><ul>'+arreglo.msg+'</ul></div>');
                     }
-                    $('#cancelar').removeClass('disabled');
-                    $('#btnAñadirSupervisor').removeClass('disabled loading');
+                },
+                complete: function() {
+                    desactivarLoaderBotones('fa-pencil','fa-refresh');
                 }
             }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){
