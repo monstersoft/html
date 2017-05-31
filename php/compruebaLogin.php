@@ -1,7 +1,9 @@
 <?php
     include("conexion.php");
-    $correo = $_POST['txtCorreo'];
-    $password = $_POST['txtPassword'];
+    //$correo = $_POST['txtCorreo'];
+    //$password = $_POST['txtPassword'];
+    $correo = 'benjamin@septima.cl';
+    $password = '123456';
     $arreglo = array();
     $arreglo = buscarCorreo($correo);
     if($arreglo['existeCorreo'] == true) {
@@ -17,8 +19,8 @@
         }
     }
     else {
-        $arreglo = utf8_encode('No estás registrado en el sistema');
-        $arreglo['usuario'] = utf8_encode('ninguno');
+        //$arreglo = utf8_encode('No estás registrado en el sistema');
+        //$arreglo['usuario'] = utf8_encode('ninguno');
         echo json_encode($arreglo);
     }
     function buscarCorreo($correo) {
@@ -95,20 +97,43 @@
 	}
 	function iniciaSesionSupervisor ($correo,$password) {
 		$conexion = conectar();
-        $consulta = "SELECT correoSupervisor, status FROM supervisores WHERE correoSupervisor = $correoSupervisor";
-        if($resultado = mysqli_query($conexion,$consulta)) {
-            $row = mysqli_fetch_assoc($resultado);
-        }
-        /*$numero = mysqli_fetch_assoc($resultado);
-        if($numero['cantidad'] == 1) {
-            session_start();
-            $_SESSION['correo'] = $correo;
-            $arreglo['error'] = false;
-            $arreglo['titulo'] = utf8_encode('Inicio de sesión');
-            $arreglo['mensaje'] = 'Bienvenidos '.$correo;
-            $arreglo['url'] = 'public/supervisor/panel.php';
-        }*/
+		$arreglo = array();
+		$arreglo['error'] = true;
+		$consulta = "SELECT COUNT(*) AS cantidad FROM supervisores WHERE correo = '$correo'";
+		if($resultado = mysqli_query($conexion,$consulta)) {
+			$numero = mysqli_fetch_assoc($resultado);
+			if($numero['cantidad'] == 1) {
+                $arreglo['titulo'] = 'Encontrado tu mail';
+				$arreglo['mensaje'] = 'Eres supervisor';
+				/*$consulta = "SELECT COUNT(*) AS cantidad FROM clientes WHERE correo = '$correo' AND password = '$password'";
+				if($resultado = mysqli_query($conexion,$consulta)) {
+					$numero = mysqli_fetch_assoc($resultado);
+					if($numero['cantidad'] == 1) {
+						session_start();
+                    	$_SESSION['correo'] = $correo;
+						$arreglo['error'] = false;
+						$arreglo['titulo'] = 'Inicio de sesión';
+						$arreglo['mensaje'] = 'Bienvenidos '.$correo;
+						$arreglo['url'] = 'public/cliente/dashboard.php';
+					}
+					else {
+						$arreglo['titulo'] = 'Error de sesión';
+						$arreglo['mensaje'] = 'La contraseña no coincide con el correo';
+					}
+				}
+				else {
+					$arreglo['errorMsg'] = mysqli_error($conexion);
+				}*/
 
+			}
+			else {
+				$arreglo['titulo'] = 'Error de registro';
+				$arreglo['mensaje'] = 'No estás registrado en el sistema';
+			}
+		}
+		else {
+			$arreglo['errorMsg'] = mysqli_error($conexion);
+		}
 		mysqli_close($conexion);
 		return $arreglo;
 	}
