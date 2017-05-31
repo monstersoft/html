@@ -49,7 +49,5 @@
         <script src="recursos/toast/toast.js"></script>
         <script src="recursos/hammer/hammer.min.js"></script>
         <script src="js/validaLogin.js"></script>
-        <script src="js/mensajes.js"></script>
-        <script src="js/devuelveUrl.js"></script>
     </body>
 </html>
