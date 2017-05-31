@@ -1,62 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="a/recursos/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="a/recursos/chartist/chartist.min.css" />
-    <link rel="stylesheet" href="a/recursos/chartist/chartist-plugin-tooltip.css">
-    <link rel="stylesheet" href="a/recursos/chartist/chartist-plugin-threshold.css">
-    <link rel="stylesheet" href="a/recursos/awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="a/css/base.css">
-    <link rel="stylesheet" href="a/css/dashboard.css">
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <meta name="theme-color" content="#DADADA" />
+        <title>Machine Monitors</title>
+        <link rel="stylesheet" href="recursos/semantic/semantic.css">
+        <link rel="stylesheet" href="recursos/toast/toast.css">
+        <link rel="stylesheet" href="recursos/awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/index.css">
+    </head>
     <body>
-
-        
-        <div class="col-xs-12 shadow cardContent">
-            <div class="col-xs-12 titleCard"> <i class="fa fa-pie-chart pull-left"></i>
-                <p>Motor</p>
+        <div class="ui aligned center aligned grid">
+            <div class="margen column">
+                <h2 class="ui icon header">
+                    <i class="settings icon" style="color: #F5A214;"></i>
+                    <div class="content" style="color: white;">
+                    Machine Monitors
+                        <div class="sub header" style="color: white;">Plan de vigilancia de maquinaria pesada</div>
+                    </div>
+                </h2>
+                <h2 class="titulo">Iniciar Sesión</h2>
+                <form class="ui form">
+                    <div class="ui segment" >
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" id="email" placeholder="Correo electrónico">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" id="password" placeholder="Contraseña">
+                            </div>
+                        </div>
+                        <div id="btnLogin" style="background: #262626;" class="ui fluid large submit button">Ingresar</div>
+                    </div>
+                </form>
+                <div class="ui message">
+                    <a href="index3.html">¿ Olvidaste tu contraseña ?</a>
+                </div>
             </div>
-            <div id="example2"></div>
-            
-        </div>
-        <script src="a/recursos/jquery/jquery.min.js"></script>
-        <script src="a/recursos/bootstrap/js/bootstrap.min.js"></script>
-        <script src="a/recursos/chartist/chartist.min.js"></script>
-        <script src="a/recursos/chartist/chartist-plugin-tooltip.js"></script>
-        <script src="a/recursos/chartist/chartist-plugin-pointlabels.js"></script>
-        <script src="a/recursos/chartist/chartist-plugin-threshold.min.js"></script>
-        <script>
-            graphedChartBar('#example2');
-
-            function graphedChartBar(idChart) {
-var data = {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  series: [
-    [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
-    [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
-  ]
-};
-
-var options = {
-  seriesBarDistance: 10
-};
-
-var responsiveOptions = [
-  ['screen and (max-width: 640px)', {
-    seriesBarDistance: 5,
-    axisX: {
-      labelInterpolationFnc: function (value) {
-        return value[0];
-      }
-    }
-  }]
-];
-
-                new Chartist.Bar(idChart,data,options, responsiveOptions);
-            }
-        </script>
+        </div>  
+        <script src="recursos/jquery/jquery.min.js"></script>
+        <script src="recursos/semantic/semantic.min.js"></script>
+        <script src="recursos/toast/toast.js"></script>
+        <script src="recursos/hammer/hammer.min.js"></script>
+        <script src="js/validaLogin.js"></script>
+        <script src="js/mensajes.js"></script>
+        <script src="js/devuelveUrl.js"></script>
     </body>
 </html>
