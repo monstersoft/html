@@ -35,10 +35,9 @@ $('#btnLogin').click(function(){
             }
             }
         else {
-            var esSupervisor = $('#supervisor').prop('checked');
             $.ajax({                  
             url: 'php/compruebaLogin.php',
-            data: {txtCorreo: correo, txtPassword: pass, txtSupervisor: esSupervisor},
+            data: {txtCorreo: correo, txtPassword: pass},
             type: "POST",
             dataType: "json",
             beforeSend: function() {
@@ -46,35 +45,37 @@ $('#btnLogin').click(function(){
                 $('#btnLogin').html('<i class="fa fa-cog fa-spin fa-2x fa-fw" style="color: white"></i>');
             },
             success: function(arreglo) {
+                console.log(JSON.stringify(arreglo));
                 if(arreglo.error == true){
-                    msg({mensaje: arreglo.mensaje,titulo: arreglo.titulo,accion: 'errorAjax'});
+                    msg({mensaje: arreglo.mensaje,titulo: arreglo.titulo,accion: 'warning'});
                 }
                 else {
                     msg({mensaje: arreglo.mensaje,titulo: 'Inicio de sesión',accion: 'success'});
-                    $(window).attr('location', arreglo.url);
+                    //$(window).attr('location', arreglo.url);
                 }
 
-        }
+            },
+            error: function(xhr) {console.log(xhr.responseText);},
         }).complete(function(){
                 $('#btnLogin').removeClass('disabled');
                 $('#btnLogin').html('Ingresar');
             }).fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){
-                msg({mensaje: 'No hay coneccion con el servidor',titulo: 'jqXHR.status === 0',accion: 'errorAjax'});
+                alert('No hay coneccion con el servidor, debe comunicarte con el administrador');
             } else if (jqXHR.status == 404) {
-                msg({mensaje: 'La pagina solicitada no fue encontrada, error 404', titulo: 'jqXHR.status == 404',accion: 'errorAjax'})
+                alert('La pagina solicitada no fue encontrada: error 404, debes comunicarte con el administrador');
             } else if (jqXHR.status == 500) {
-                msg({mensaje: 'Error interno del servidor',titulo: 'jqXHR.status == 500',accion: 'errorAjax'});
+                alert('Error interno del servidor, debes comunicarte con el administrador');
             } else if (textStatus === 'parsererror') {
-                msg({mensaje: 'Error en la respuesta, debes analizar la sintaxis JSON', titulo: 'textStatus === parsererror',accion: 'errorAjax'});
+                alert('Error en la respuesta JSON, debes comunicarte con el administrador');
             } else if (textStatus === 'timeout') {
-                msg({mensaje: 'Ya ha pasado mucho tiempo', titulo: 'textStatus === timeout',accion: 'errorAjax'});
+                alert('Se ha excedido el tiempo de respuesta, debes comunicarte con el administrador');
             } else if (textStatus === 'abort') {
-                msg({mensaje: 'La peticion fue abortada', titulo: 'textStatus === abort',accion: 'errorAjax'});
+                alert('La peticion fue abortada, debes comunicarte con el administrador');
             } else {
-                msg({mensaje: jqXHR.responseText, titulo: 'Error desconocido',accion: 'errorAjax'});
+                alert('Error desconocido, debes comunicarte con el administrador');
             }
-        });//FIN PETICION AJAX
+        });
             }
     }
 });

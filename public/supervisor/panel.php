@@ -29,9 +29,7 @@
             <nav class="unDisplayNav">
                 <ul>
                     <li id="profile"><i class="fa fa-user fa-4x" id="iconProfile"></i><br><span id="titleProfile"><?php echo $profile['empresa'] ?></span><br><span id="nameProfile"><?php echo $profile['correo'] ?></span></li>
-                    <li><a class="selected"><i class="fa fa-tachometer icons"></i>Dashboard</a></li>
-                    <li><a><i class="fa fa-globe icons"></i>Zonas</a></li>
-                    <li><a><i class="fa fa-file-text icons"></i>Archivos</a></li>
+                    <li><a class="selected"><i class="fa fa-globe icons"></i>Zonas</a></li>
                     <li><a><i class="fa fa-send icons"></i>Contacto</a></li>
                     <li><a><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                     <li><a><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
