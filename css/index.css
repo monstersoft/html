@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates');
+@import url('https://fonts.googleapis.com/css?family=Kumar+One');
+
 body {
     background-color: #262626;
 }
@@ -20,4 +23,7 @@ body {
     bottom: 0;
     left: : 0;
     color: #fff;
+}
+.montserrat {
+    font-family: 'Montserrat';
 }
