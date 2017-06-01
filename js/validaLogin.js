@@ -51,7 +51,7 @@ $('#btnLogin').click(function(){
                 }
                 else {
                     msg({mensaje: arreglo.mensaje,titulo: 'Inicio de sesión',accion: 'success'});
-                    //$(window).attr('location', arreglo.url);
+                    $(window).attr('location', arreglo.url);
                 }
 
             },
