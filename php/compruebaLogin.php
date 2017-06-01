@@ -9,18 +9,18 @@
     if($arreglo['existeCorreo'] == true) {
         if($arreglo['supervisor'] == true) {
             $arreglo = iniciaSesionSupervisor($correo,$password);
-            $arreglo['usuario'] = utf8_encode('supervisor');
+            $arreglo['usuario'] = 'supervisor';
             echo json_encode($arreglo);
         }
         if($arreglo['cliente'] == true) {
              $arreglo = iniciaSesionCliente($correo,$password);
-             $arreglo['usuario'] = utf8_encode('cliente');
+             $arreglo['usuario'] = 'cliente';
              echo json_encode($arreglo);   
         }
     }
     else {
-        //$arreglo = utf8_encode('No estás registrado en el sistema');
-        //$arreglo['usuario'] = utf8_encode('ninguno');
+        $arreglo['mensaje'] = 'No estás registrado en el sistema';
+        $arreglo['error'] = true;
         echo json_encode($arreglo);
     }
     function buscarCorreo($correo) {
