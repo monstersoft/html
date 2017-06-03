@@ -33,7 +33,6 @@
         </ul>
     </nav>
     <div id="content" class="animated fadeIn unLeftContent">
-       <div class="col-xs-12-card">
            <?php
                 foreach($datosRecientes as $key => $value) { echo '
                     <div class="col-xs-12 col-sm-12 card">
@@ -106,7 +105,6 @@
                     </div>
                 ';}
            ?>
-       </div>
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>

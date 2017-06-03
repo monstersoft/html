@@ -1,5 +1,58 @@
 <?php
 	include("conexion.php");
+    //barra y menu
+    function barraMenu($correo,$empresa,$nombrePagina) { echo 
+        '<div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a>
+            <p class="editarZona">Machine Monitors</p>
+        </div>
+        <nav class="unDisplayNav">
+            <ul>
+                <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i>
+                    <br><span id="titleProfile">'.$correo.'</span>
+                    <br><span id="nameProfile">'.$empresa.'</span></li>'; 
+                if($nombrePagina == 'zonas') { echo '
+                    <li class="selected"><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                    <li><a href="registroEmpresas.php"><i class="fa fa-file-text icons"></i>Registro</a></li>
+                    <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
+                    <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+                    <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
+                    
+                }
+                if($nombrePagina == 'registro') { echo '
+                    <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                    <li class="selected"><a href="registroEmpresas.php"><i class="fa fa-file-text icons"></i>Registro</a></li>
+                    <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
+                    <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+                    <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
+                    
+                }
+                if($nombrePagina == 'contacto') { echo '
+                    <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                    <li><a href="registroEmpresas.php"><i class="fa fa-file-text icons"></i>Registro</a></li>
+                    <li class="selected"><i class="fa fa-send icons"></i>Contacto</a></li>
+                    <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+                    <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
+                    
+                }
+                if($nombrePagina == 'contraseña') { echo '
+                    <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                    <li><a href="registroEmpresas.php"><i class="fa fa-file-text icons"></i>Registro</a></li>
+                    <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
+                    <li class="selected"><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+                    <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
+                    
+                }
+                if($nombrePagina == 'cerrar') { echo '
+                    <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                    <li><a href="registroEmpresas.php"><i class="fa fa-file-text icons"></i>Registro</a></li>
+                    <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
+                    <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+                    <li class="selected"><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
+                    
+                } echo '
+            </ul>
+        </nav>';
+    }
     // maquinas.php
     function maquinasPorFecha($idZona, $fechaDatos) {
         $c = conectar();
@@ -172,7 +225,7 @@
                 $consulta = 'SELECT * FROM empresas';
                 if($resultado = mysqli_query($conexion,$consulta)) {
                     while($r = mysqli_fetch_array($resultado)) {
-                        array_push($arreglo['empresas'],array('idEmpresa' => $r['idEmpresa'],'nombre' => utf8_encode($r['nombre']), 'rut' => $r['rut'], 'correo' => $r['correo'], 'telefono' => $r['telefono'], 'estado' => $r['estado']));
+                        array_push($arreglo['empresas'],array('idEmpresa' => $r['idEmpresa'],'nombre' => utf8_encode($r['nombre']), 'rut' => $r['rut'], 'correo' => $r['correo'], 'telefono' => $r['telefono'],));
                     }
                 
                 }
@@ -233,7 +286,7 @@
     $consulta = "SELECT * FROM maquinas WHERE maquinas.idZona = '$idZona'"; 
     if($resultado = mysqli_query($conexion,$consulta)) {
         while($r = mysqli_fetch_array($resultado)) {
-            array_push($arreglo,array('idMaquina' => $r['idMaquina'], 'idZona' => $r['idZona'], 'identificador' => $r['identificador'], 'patente' => $r['patente'], 'fechaRegistro' => $r['fechaRegistro'], 'tara' => $r['tara'], 'cargaMaxima' => $r['cargaMaxima']));
+            array_push($arreglo,array('idMaquina' => $r['idMaquina'], 'idZona' => $r['idZona'], 'patente' => $r['patente'], 'fechaRegistro' => $r['fechaRegistro'], 'tara' => $r['tara'], 'cargaMaxima' => $r['cargaMaxima']));
         }
     }
     mysqli_close($conexion);

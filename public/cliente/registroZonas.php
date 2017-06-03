@@ -1,6 +1,5 @@
 <?php
-    //$idEmpresa = $_GET['id'];
-$idEmpresa = 50;
+    $idEmpresa = $_GET['id'];
     /*session_start();
     if(!isset($_SESSION['correo'])){
         header("Location:../../index.php");
@@ -26,23 +25,12 @@ $idEmpresa = 50;
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../recursos/select2/select2.min.css">
     <link rel="stylesheet" href="../../recursos/select2/select2-bootstrap.css">
-    <link rel="stylesheet" href="../../recursos/responsiveTables/responsiveTables.css">
+    <link rel="stylesheet" href="../../css/menuBarra.css">
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/zonas.css">
 </head>
 <body>
-    <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p class="editarZona">Machine Monitors</p></div>
-    <nav class="unDisplayNav">
-        <ul>
-            <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile">Pato</span><br><span id="nameProfile">Arauco</span></li>
-            <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-            <li><a href="registro.php"><i class="fa fa-file-text icons"></i>Registro</a></li>
-            <li><a href="historicos.php"><i class="fa fa-bar-chart icons"></i>Históricos</a></li>
-            <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
-            <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-            <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
-        </ul>
-    </nav>
+    <?php barraMenu($perfil['correo'],$perfil['empresa'],'registro'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
     <?php
@@ -56,21 +44,21 @@ $idEmpresa = 50;
                                 <table class="tableStyle">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>Patente</th>
                                             <th class="unDisplayColumn">Fecha de registro</th>
                                             <th class="unDisplayColumn">Tara [kg]</th>
                                             <th class="unDisplayColumn">Carga máxima [kg]</th>
+                                            <th class="unDisplayColumn">Registrado por</th>
                                         </tr>
                                     </thead>
                                     <tbody>';
                                         foreach(maquinas($value['idZona']) as $value) { echo '
                                             <tr>
-                                                <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>'.$value['identificador'].'</td>
-                                                <td class="unDisplayColumn">'.$value['patente'].'</td>
+                                                <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>'.$value['patente'].'</td>
                                                 <td class="unDisplayColumn">'.$value['fechaRegistro'].'</td>
                                                 <td class="unDisplayColumn">'.$value['tara'].'</td>
                                                 <td class="unDisplayColumn">'.$value['cargaMaxima'].'</td>
+                                                <td class="unDisplayColumn">JUAN PEREZ VILLANUEVA</td>
                                             </tr>
                                             <tr class="accordion unActivated">
                                                 <td colspan="2">
@@ -83,6 +71,7 @@ $idEmpresa = 50;
                                             </tr>';
 
                                            } echo '
+
                                     </tbody>
                                 </table>'; 
                                   if(cantidadSupervisores($value['idZona']) == 0)
@@ -100,6 +89,77 @@ $idEmpresa = 50;
                 }
             }
     ?>
+<?php
+        foreach($maquinas as $value) {
+            if(($value['registrado'] == 1) and ($value['existeEnArchivo'] == 1)) { echo
+                '<div class="col-xs-12 col-sm-4 col-md-2 card"> 
+                    <div class="col-xs-12 shadowButtonDown cardContent"> 
+                        <div class="col-xs-12 titleCard"> 
+                            <i class="fa fa-check-circle pull-left"></i>
+                            <p>'.$value['patente'].'</p>
+                        </div>
+                        <div class="col-xs-12" style="padding: 10px;">
+                            <div class="center">
+                                <img style="float: left;" src="excavator2.svg" width="60" height="60">
+                                <div style="float: left;" class="info">
+                                   <ul>
+                                    <li class="numero">'.$value['tRecorridos'].'</li>
+                                    <li class="legend">RECORRIDOS</li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="dashboard.php?id='.$value['id'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'" class="boton">Detalle</a> 
+                </div>';
+            }
+            if(($value['registrado'] == 0) and ($value['existeEnArchivo'] == 1)) { echo
+                '<div class="col-xs-12 col-sm-4 col-md-2 card"> 
+                    <div class="col-xs-12 shadowButtonDown cardContent"> 
+                        <div class="col-xs-12 titleCard"> 
+                            <i class="fa fa-check-circle pull-left" style="color: #262626"></i>
+                            <p>'.$value['patente'].'</p>
+                        </div>
+                        <div class="col-xs-12" style="padding: 10px;">
+                            <div class="center">
+                                <img style="float: left;" src="excavator2.svg" width="60" height="60">
+                                <div style="float: left;" class="info">
+                                   <ul>
+                                    <li class="numero">'.$value['tRecorridos'].'</li>
+                                    <li class="legend">RECORRIDOS</li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="dashboard.php?id='.$value['id'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'" class="boton">Detalle</a>
+                </div>';
+            }
+            if(($value['registrado'] == 1) and ($value['existeEnArchivo'] == 0)) { echo
+                '<div class="col-xs-12 col-sm-4 col-md-2 card"> 
+                    <div class="col-xs-12 shadowButtonDown cardContent"> 
+                        <div class="col-xs-12 titleCard"> 
+                            <i class="fa fa-exclamation-circle pull-left" style="color: rgb(224, 225, 226)"></i>
+                            <p>'.$value['patente'].'</p>
+                        </div>
+                        <div class="col-xs-12" style="padding: 10px;">
+                            <div class="center">
+                                <img style="float: left;" src="excavator2.svg" width="60" height="60">
+                                <div style="float: left;" class="info">
+                                   <ul>
+                                    <li class="numero">'.$value['tRecorridos'].'</li>
+                                    <li class="legend">RECORRIDOS</li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="dashboard.php?id='.$value['id'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'" class="boton">Detalle</a> 
+                </div>';
+            }
+        }
+?>
+    
 <!-- ............................................................................................................................ -->
     </div>
  <!-- VENTANAS MODALES --> 
@@ -207,20 +267,6 @@ $idEmpresa = 50;
     <script>
         $(document).ready(function(){
             var desplegar = 0;
-            /*function explode(){
-              $('#loader').css('display','none');
-              $('#content').fadeIn().css('display','block');
-            }
-            setTimeout(explode, 5000);
-                $(".hola").select2({
-                    placeholder: "Seleccionar Zona",
-                    theme: "bootstrap",
-                    maximumInputLength: 20,
-                    selectOnClose: true,
-                    closeOnSelect: false,
-                    minimumResultsForSearch: Infinity
-                    
-                });*/
             main();
             $('.agregar').click(function(){
                 $('.sOne').toggleClass('displaySticky');

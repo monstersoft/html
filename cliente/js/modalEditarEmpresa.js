@@ -61,7 +61,7 @@ $(document).ready(function(){
     }
     $('.editarEmpresa').click(function(){
         $('.modalEditarEmpresa').modal();
-        var url = devuelveUrl('a/cliente/ajax/datosEmpresa.php');
+        var url = devuelveUrl('cliente/ajax/datosEmpresa.php');
         var id = $(this).attr('id');
         var datos = retornaDatos(id,url);
         datos.success(function(respuesta){
@@ -117,7 +117,7 @@ $(document).ready(function(){
                 flag = false;
             }
             if(flag != true){
-                var url = devuelveUrl('a/cliente/ajax/editarEmpresa.php');
+                var url = devuelveUrl('cliente/ajax/editarEmpresa.php');
                 $.ajax({
                     url : url,
                     type: 'POST',
