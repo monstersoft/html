@@ -1,7 +1,7 @@
 $('.datepicker').pickadate({
     onOpen: function(){
         var currentCalendar = this;
-        var url = devuelveUrl('a/cliente/ajax/fechasDisponibles.php');
+        var url = devuelveUrl('cliente/ajax/fechasDisponibles.php');
         $.ajax({
             url: url,
             type: 'POST',
@@ -21,7 +21,7 @@ $('.datepicker').pickadate({
     },
     onClose: function() {
         var currentCalendar = this;
-        var url = devuelveUrl('a/cliente/ajax/datosArchivo.php');
+        var url = devuelveUrl('cliente/ajax/datosArchivo.php');
         $.ajax({
             url: url,
             type: 'POST',

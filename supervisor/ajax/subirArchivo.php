@@ -108,7 +108,8 @@
             }
         }
         foreach($resultados as $k => $v) {
-                $qry = "INSERT INTO resultados (patente,idMaquina,idZona,registrado,existeEnArchivo,fechaDatos,pRpm,pGpf,pGpt,pApf,pApt,tRecorridos,mediciones) VALUES ('".$v['patente']."',".$v['idMaquina'].",".$v['idZona'].",".$v['registrado'].",".$v['existeEnArchivo'].",'".$v['fechaDatos']."',".$v['pRpm'].",".$v['pGpf'].",".$v['pGpt'].",".$v['pApf'].",".$v['pApt'].",".$v['tRecorridos'].",".$v['total'].")";
+                //$qry = "INSERT INTO resultados (idArchivo, patente,idMaquina,idZona,registrado,existeEnArchivo,fechaDatos,pRpm,pGpf,pGpt,pApf,pApt,tRecorridos,mediciones) VALUES (".$lastIdFile.",'".$v['patente']."',".$v['idMaquina'].",".$v['idZona'].",".$v['registrado'].",".$v['existeEnArchivo'].",'".$v['fechaDatos']."',".$v['pRpm'].",".$v['pGpf'].",".$v['pGpt'].",".$v['pApf'].",".$v['pApt'].",".$v['tRecorridos'].",".$v['total'].")";
+            $qry = "INSERT INTO resultados (idArchivo, patente,idMaquina,registrado,existeEnArchivo,fechaDatos,pRpm,pGpf,pGpt,pApf,pApt,tRecorridos,mediciones) VALUES (".$lastIdFile.",'".$v['patente']."',".$v['idMaquina'].",".$v['registrado'].",".$v['existeEnArchivo'].",'".$v['fechaDatos']."',".$v['pRpm'].",".$v['pGpf'].",".$v['pGpt'].",".$v['pApf'].",".$v['pApt'].",".$v['tRecorridos'].",".$v['total'].")";
             if(mysqli_query($con,$qry)) $countResultData++;
         }
         $arr = array('countInsertData' => $countInsertData, 'countResultData' => $countResultData);

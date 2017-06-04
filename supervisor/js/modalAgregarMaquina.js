@@ -29,7 +29,7 @@ $(document).ready(function() {
         if(arreglo.length == 0) {
             var data = $('#formularioAgregarMaquina').serialize();
             $.ajax({
-                url: devuelveUrl('a/supervisor/ajax/agregarMaquina.php'),
+                url: devuelveUrl('supervisor/ajax/agregarMaquina.php'),
                 type: 'POST',
                 data: data,
                 dataType: 'json',

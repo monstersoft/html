@@ -14,8 +14,7 @@ $(document).ready(function() {
             arreglo.push('<li>El campo nombre debe tener máximo 30 caracteres</li>');
         if(arreglo.length == 0) {
             var data = $('#formularioAgregarZona').serialize();
-            //devuelveUrl(pathSinCarpetaRaiz);
-            var url = devuelveUrl('a/cliente/ajax/agregarZona.php');
+            var url = devuelveUrl('cliente/ajax/agregarZona.php');
             $.ajax({
                 url: url,
                 type: 'POST',
@@ -28,7 +27,7 @@ $(document).ready(function() {
                 success: function(arreglo) {
                     console.log(JSON.stringify(arreglo));
                     if(arreglo.exito == 1) {
-                        successMessage('Registro realizado con éxito','Serás redireccionado al panel de empresas');
+                        successMessage('Registro realizado con éxito','Serás redireccionado al panel de zonas');
                         $('.cancelar').remove();
                         $('#btnAñadirZona').remove();
                         setTimeout(function(){location.reload()}, 3000);

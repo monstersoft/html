@@ -310,14 +310,14 @@
 	function supervisores($idZona) {
         $conexion = conectar();
         $arreglo = array();
-        $consulta = "SELECT zonas.idZona, supervisores.idSupervisor, supervisores.nombreSupervisor, supervisores.correoSupervisor, supervisores.celular, supervisores.status, supervisores.fechaMailEnviado 
+        $consulta = "SELECT zonas.idZona, supervisores.idSupervisor, supervisores.nombreSupervisor, supervisores.correoSupervisor, supervisores.celular, supervisores.status
         			 FROM zonas 
         			 LEFT JOIN supervisoreszonas ON zonas.idZona = supervisoreszonas.idZona 
         			 LEFT JOIN supervisores ON supervisoreszonas.idSupervisor = supervisores.idSupervisor 
         			 WHERE zonas.idZona = '$idZona'"; 
         if($resultado = mysqli_query($conexion,$consulta)) {
             while($r = mysqli_fetch_array($resultado)) {
-                array_push($arreglo,array('idZona' => $r['idZona'], 'idSupervisor' => $r['idSupervisor'], 'nombreSupervisor' => utf8_encode($r['nombreSupervisor']), 'correoSupervisor' => $r['correoSupervisor'], 'celular' => $r['celular'], 'status' => $r['status'], 'fechaMailEnviado' => $r['fechaMailEnviado']));
+                array_push($arreglo,array('idZona' => $r['idZona'], 'idSupervisor' => $r['idSupervisor'], 'nombreSupervisor' => utf8_encode($r['nombreSupervisor']), 'correoSupervisor' => $r['correoSupervisor'], 'celular' => $r['celular'], 'status' => $r['status']));
             }
         }
         mysqli_close($conexion);

@@ -47,7 +47,7 @@ $(document).ready(function(){
     }
     $('.editarZona').click(function(){
         $('.modalEditarZona').modal();
-        var url = devuelveUrl('a/cliente/ajax/datosZona.php');
+        var url = devuelveUrl('cliente/ajax/datosZona.php');
         var id = $(this).attr('id');
         var datos = retornaDatos(id,url);
         datos.success(function(respuesta){
@@ -72,7 +72,7 @@ $(document).ready(function(){
                 flag = false;
             }
             if(flag != true){
-                var url = devuelveUrl('a/cliente/ajax/editarZona.php');
+                var url = devuelveUrl('cliente/ajax/editarZona.php');
                 $.ajax({
                     url : url,
                     type: 'POST',

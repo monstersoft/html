@@ -7,8 +7,7 @@
     else {*/
         include("../../php/funciones.php");
         //$email = $_SESSION['correo'];
-        $email = 'pavillanueva@ing.ucsc.cl';
-        $perfil = datosPerfil($email);
+        $perfil = datosPerfil('pavillanueva@arauco.cl');
         echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div>
         <div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div>
         <div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>';
@@ -37,7 +36,7 @@
             if(cantidadZonas($idEmpresa) == 0)
                 echo '<div class="col-xs-12">No hay zonas asociadas a esta empresa</div>';
             else { foreach(zonas($idEmpresa) as $value) { echo '  
-               <div class="col-xs-12 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="editarZona"><i class="fa fa-pencil"></i>editar</a></li><li><a id="'.$value['idZona'].'" class="eliminarZona"><i class="fa fa-remove"></i>remover</a></li></ul> </div><p>'.$value['nombreZona'].'</p></div>';;
+                            <div class="col-xs-12 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="editarZona"><i class="fa fa-pencil"></i>editar</a></li><li><a id="'.$value['idZona'].'" class="eliminarZona"><i class="fa fa-remove"></i>remover</a></li></ul> </div><p>'.$value['nombreZona'].'</p></div>';
                             if(cantidadMaquinas($value['idZona']) == 0)
                                 echo '<div class="col-xs-12 cardContent">No hay máquinas asosciadas a esta zona</div>';
                             else { echo '
@@ -73,93 +72,22 @@
                                            } echo '
 
                                     </tbody>
-                                </table>'; 
-                                  if(cantidadSupervisores($value['idZona']) == 0)
-                                    echo '<div class="col-xs-12 cardContent">No existen supervisores asociados a esta zona</div>';
-                                  else {
-                                        foreach(supervisores($value['idZona']) as $value) {
-                                            echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><a href="supervisor.php" class="text-center montserrat">'.$value['nombreSupervisor'].'</a></div><div class="pull-right"><a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div></div>';
-                                        }
+                                </table>';
+                                 }
+                              if(cantidadSupervisores($value['idZona']) == 0)
+                                echo '<div class="col-xs-12 cardContent">No existen supervisores asociados a esta zona</div>';
+                              else {
+                                    foreach(supervisores($value['idZona']) as $value) {
+                                        echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><a href="supervisor.php" class="text-center montserrat">'.$value['nombreSupervisor'].'</a></div><div class="pull-right"><a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div></div>';
+                                    }
 
-                                  }
+                              } echo '
+                                </div>
+                              </div>';
 
-                            } echo '
-                    </div>
-               </div>';
-                }
+                            }
             }
     ?>
-<?php
-        foreach($maquinas as $value) {
-            if(($value['registrado'] == 1) and ($value['existeEnArchivo'] == 1)) { echo
-                '<div class="col-xs-12 col-sm-4 col-md-2 card"> 
-                    <div class="col-xs-12 shadowButtonDown cardContent"> 
-                        <div class="col-xs-12 titleCard"> 
-                            <i class="fa fa-check-circle pull-left"></i>
-                            <p>'.$value['patente'].'</p>
-                        </div>
-                        <div class="col-xs-12" style="padding: 10px;">
-                            <div class="center">
-                                <img style="float: left;" src="excavator2.svg" width="60" height="60">
-                                <div style="float: left;" class="info">
-                                   <ul>
-                                    <li class="numero">'.$value['tRecorridos'].'</li>
-                                    <li class="legend">RECORRIDOS</li>
-                                </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="dashboard.php?id='.$value['id'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'" class="boton">Detalle</a> 
-                </div>';
-            }
-            if(($value['registrado'] == 0) and ($value['existeEnArchivo'] == 1)) { echo
-                '<div class="col-xs-12 col-sm-4 col-md-2 card"> 
-                    <div class="col-xs-12 shadowButtonDown cardContent"> 
-                        <div class="col-xs-12 titleCard"> 
-                            <i class="fa fa-check-circle pull-left" style="color: #262626"></i>
-                            <p>'.$value['patente'].'</p>
-                        </div>
-                        <div class="col-xs-12" style="padding: 10px;">
-                            <div class="center">
-                                <img style="float: left;" src="excavator2.svg" width="60" height="60">
-                                <div style="float: left;" class="info">
-                                   <ul>
-                                    <li class="numero">'.$value['tRecorridos'].'</li>
-                                    <li class="legend">RECORRIDOS</li>
-                                </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="dashboard.php?id='.$value['id'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'" class="boton">Detalle</a>
-                </div>';
-            }
-            if(($value['registrado'] == 1) and ($value['existeEnArchivo'] == 0)) { echo
-                '<div class="col-xs-12 col-sm-4 col-md-2 card"> 
-                    <div class="col-xs-12 shadowButtonDown cardContent"> 
-                        <div class="col-xs-12 titleCard"> 
-                            <i class="fa fa-exclamation-circle pull-left" style="color: rgb(224, 225, 226)"></i>
-                            <p>'.$value['patente'].'</p>
-                        </div>
-                        <div class="col-xs-12" style="padding: 10px;">
-                            <div class="center">
-                                <img style="float: left;" src="excavator2.svg" width="60" height="60">
-                                <div style="float: left;" class="info">
-                                   <ul>
-                                    <li class="numero">'.$value['tRecorridos'].'</li>
-                                    <li class="legend">RECORRIDOS</li>
-                                </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="dashboard.php?id='.$value['id'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'" class="boton">Detalle</a> 
-                </div>';
-            }
-        }
-?>
-    
 <!-- ............................................................................................................................ -->
     </div>
  <!-- VENTANAS MODALES --> 
@@ -257,7 +185,6 @@
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../recursos/select2/select2.full.js"></script>
     <script src="../../recursos/rut/jquery.rut.chileno.js"></script>
-    <script src="../../recursos/responsiveTables/responsiveTables.js"></script>
     <script src="../../cliente/js/modalAgregarZona.js"></script>
     <script src="../../cliente/js/modalEditarZona.js"></script>
     <script src="../../cliente/js/modalAgregarSupervisor.js"></script>

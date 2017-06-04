@@ -27,7 +27,7 @@ $(document).ready(function() {
         if(arreglo.length == 0) {
             var data  = new FormData(document.getElementById('formularioSubirArchivo'));
             $.ajax({
-                url: devuelveUrl('a/supervisor/ajax/subirArchivo.php'),
+                url: devuelveUrl('supervisor/ajax/subirArchivo.php'),
                 type: 'POST',
                 dataType: 'json',
                 data: data,

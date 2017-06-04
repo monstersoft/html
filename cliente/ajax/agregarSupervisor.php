@@ -16,11 +16,12 @@
 			$arreglo['exito'] = 0;
 		}
 		else {
+            
 			if($correos['correos'] == 0) {
-				$consulta = "INSERT INTO supervisores (nombreSupervisor,correoSupervisor,password,celular,status,fechaMailEnviado,fechaMailConfirmado,horaMailEnviado,horaMailConfirmado) VALUES ('$nombre','$email',null,null,2,'$fecha',null,'$hora',null)";
+				$consulta = "INSERT INTO supervisores (nombreSupervisor,correoSupervisor,password,celular,status) VALUES ('$nombre','$email',null,null,2)";
 				if(mysqli_query($conexion,$consulta)) {
 					$ultimoId = mysqli_insert_id($conexion);
-					$link = 'http://localhost/html/a/cliente/ajax/confirmarRegistro.php?id='.$ultimoId;
+					$link = 'http://localhost/html/cliente/ajax/confirmarRegistro.php?id='.$ultimoId;
 					$insercionesExitosasSupervisoresZonas = 0;
 					$insercionesFallidasSupervisoresZonas = 0;
 					foreach ($zonas as $value) {
@@ -58,9 +59,7 @@
 			}
 		}
 	}
-	
 	echo json_encode($arreglo);
-
 	function enviarMailRegistroSupervisor($nombreSupervisor,$emailSupervisor,$link) {
 			$e = new PHPMailer;
 			$e->Host = 'localhost';

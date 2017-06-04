@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('.agregarSupervisor').click(function(){
         $.ajax({
-                url: devuelveUrl('a/cliente/ajax/datosZonas.php'),
+                url: devuelveUrl('cliente/ajax/datosZonas.php'),
                 type: 'POST',
                 data: {id: $(this).attr('id')},
                 dataType: 'json',
@@ -48,10 +48,11 @@ $(document).ready(function() {
             arreglo.push('<li>Tienes que seleccionar al menos una zona</li>');
         if(arreglo.length == 0) {
             $.ajax({
-                url: devuelveUrl('a/cliente/ajax/agregarSupervisor.php'),
+                url: devuelveUrl('cliente/ajax/agregarSupervisor.php'),
                 type: 'POST',
                 data: $('#formularioAgregarSupervisor').serialize(),
                 dataType: 'json',
+                cache: false,
                 beforeSend: function() {
                   activarLoaderBotones('fa-plus','fa-refresh');
                 },
@@ -69,7 +70,8 @@ $(document).ready(function() {
                 },
                 complete: function() {
                     desactivarLoaderBotones('fa-pencil','fa-refresh');
-                }
+                },
+                error: function(xhr) {console.log(xhr.responseText);}
             }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){
                     alert('No hay coneccion con el servidor');

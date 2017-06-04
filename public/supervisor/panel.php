@@ -1,8 +1,8 @@
 <?php
     include("../../php/funcionesSupervisor.php");
-    $email = 'juan@metropolitana.cl';
-    $profile = datosPerfil($email);
-    echo '<input id="idSupervisor" type="text" value="'.$profile["id"].'" hidden>';
+    $email = 'diego@serviciosbiobio.cl';
+    $perfil = datosPerfil($email);
+    echo '<input id="idSupervisor" type="text" value="'.$perfil["id"].'" hidden>';
 ?>
     <!DOCTYPE html>
     <html>
@@ -19,28 +19,18 @@
             <link rel="stylesheet" href="../../recursos/pickadate/default.css">
             <link rel="stylesheet" href="../../recursos/pickadate/default.date.css">
             <link rel="stylesheet" href="../../recursos/pickadate/default.time.css">
+            <link rel="stylesheet" href="../../css/menuBarra.css">
             <link rel="stylesheet" href="../../css/base.css">
             <link rel="stylesheet" href="../../css/zonas.css">
         </head>
         <body>
-            <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a>
-                <p>Machine Monitors</p>
-            </div>
-            <nav class="unDisplayNav">
-                <ul>
-                    <li id="profile"><i class="fa fa-user fa-4x" id="iconProfile"></i><br><span id="titleProfile"><?php echo $profile['empresa'] ?></span><br><span id="nameProfile"><?php echo $profile['correo'] ?></span></li>
-                    <li><a class="selected"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                    <li><a><i class="fa fa-send icons"></i>Contacto</a></li>
-                    <li><a><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-                    <li><a><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
-                </ul>
-            </nav>
+            <?php barraMenu($perfil['correo'],$perfil['empresa'],'zonas'); ?>
             <div id="content" class="animated fadeIn unLeftContent">
                 <!-- ............................................................................................................................ -->
                 <?php
                 foreach(zonas($email) as $value) {
                     $idZona = $value['idZona'];
-                    echo '<div class="col-xs-12 col-sm-6 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="subirArchivo"><i class="fa fa-upload"></i>subir archivo</a></li><li><a id="'.$value['idZona'].'" class="agregarMaquina"><i class="fa fa-cog"></i>agregar máquina</a></li></ul> </div><p>'.$value['nombre'].'</p></div>';
+                    echo '<div class="col-xs-12 col-sm-12 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="subirArchivo"><i class="fa fa-upload"></i>subir archivo</a></li><li><a id="'.$value['idZona'].'" class="agregarMaquina"><i class="fa fa-cog"></i>agregar máquina</a></li></ul> </div><p>'.$value['nombre'].'</p></div>';
                         if(cantidadMaquinas($idZona) == 0)
                             echo '<div class="col-xs-12 emptyMessage"><i class="fa fa-exclamation-circle fa-2x pull-left"></i>No hay máquinas asociadas a esta zona</div>';
                         else {
