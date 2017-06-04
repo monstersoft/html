@@ -1,6 +1,9 @@
 <?php
+    include '../../php/conexion.php';
     $idEmpresa = $_POST['idEmpresa'];
-	include '../../php/conexion.php';
+    $conexion = conectar();
+    $arreglo = array();
+    $consulta = 
 /*
 TODOS LOS SUPERVISORES DE UNA ZONA X
 SELECT zonas.nombre, supervisoreszonas.idZona, supervisoreszonas.idSupervisor, supervisores.nombreSupervisor

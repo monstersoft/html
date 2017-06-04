@@ -14740,7 +14740,9 @@ INSERT INTO `zonas` (`idZona`, `idEmpresa`, `nombre`) VALUES
 ALTER TABLE `archivos`
   ADD PRIMARY KEY (`idArchivo`),
   ADD KEY `idZona` (`idZona`),
-  ADD KEY `idSupervisor` (`idSupervisor`);
+  ADD KEY `idSupervisor` (`idSupervisor`),
+  ADD KEY `idZona_2` (`idZona`),
+  ADD KEY `idSupervisor_2` (`idSupervisor`);
 
 --
 -- Indices de la tabla `clientes`
@@ -14868,8 +14870,8 @@ ALTER TABLE `zonas`
 -- Filtros para la tabla `archivos`
 --
 ALTER TABLE `archivos`
-  ADD CONSTRAINT `archivos_ibfk_2` FOREIGN KEY (`idSupervisor`) REFERENCES `supervisores` (`idSupervisor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `archivos_ibfk_3` FOREIGN KEY (`idZona`) REFERENCES `zonas` (`idZona`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `archivos_ibfk_3` FOREIGN KEY (`idSupervisor`) REFERENCES `supervisores` (`idSupervisor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `archivos_ibfk_4` FOREIGN KEY (`idZona`) REFERENCES `zonas` (`idZona`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `clientesempresas`
@@ -14901,7 +14903,7 @@ ALTER TABLE `resultados`
 --
 ALTER TABLE `supervisoreszonas`
   ADD CONSTRAINT `supervisoreszonas_ibfk_1` FOREIGN KEY (`idZona`) REFERENCES `zonas` (`idZona`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `supervisoreszonas_ibfk_2` FOREIGN KEY (`idSupervisor`) REFERENCES `supervisores` (`idSupervisor`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `supervisoreszonas_ibfk_2` FOREIGN KEY (`idSupervisor`) REFERENCES `supervisores` (`idSupervisor`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `zonas`
