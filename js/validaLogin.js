@@ -7,33 +7,33 @@ $('#btnLogin').click(function(){
     var pass = $('#password').val();
     if(correo == '' || pass == '') {
         if(correo == '' && pass == '')
-            msg({mensaje: 'Correo y contraseña son obligatorios para iniciar sesión',titulo: 'Campos Vacíos',accion: 'warning'});
+            msg({mensaje: 'Correo y contraseña son requeridos para inciar sesión',titulo: 'Campos Vacíos',accion: 'warning'});
         else {
             if(correo == '')
-                msg({mensaje: 'El correo es obligatorio para iniciar sesión',titulo: 'Campo Vacío',accion: 'negative'});
+                msg({mensaje: 'Correo es requerido para inciar sesión',titulo: 'Campo Vacío',accion: 'negative'});
             else {
                 if(!expresion.test(correo)) 
-                    msg({mensaje: 'El correo no está en un formato adecuado',titulo: 'Error de formato'});
+                    msg({mensaje: 'Correo no está en un formato adecuado',titulo: 'Error de formato'});
             }
             if(pass == '')
-                msg({mensaje: 'La contraseña es obligatoria para iniciar sesión',titulo: 'Campo Vacío',accion: 'warning'});
+                msg({mensaje: 'Contraseña es requerida para inciar sesión',titulo: 'Campo Vacío',accion: 'warning'});
             else {
                 if(pass.length < 6 || pass.length >12)
-                msg({mensaje: 'La contraseña debe tener entre 6 y 12 caracteres',titulo: 'Error de formato',accion: 'warning'});
+                msg({mensaje: 'Contraseña debe tener mínimo 6 y máximo 12 caracteres',titulo: 'Error de formato',accion: 'warning'});
             }
         }
     }
     else {
         if(!expresion.test(correo) || (pass.length < 6 || pass.length >12)) {
             if(!expresion.test(correo) && (pass.length < 6 || pass.length >12))
-                msg({mensaje: 'El correo no está en un formato adecuado<br>La contraseña debe tener entre 6 y 12 caracteres',titulo: 'Errores de formato',accion: 'warning'});
+                msg({mensaje: 'Correo no está en un formato adecuado<br>Contraseña debe tener mínimo 6 y máximo 12 caracteres',titulo: 'Errores de formato',accion: 'warning'});
             else {
                 if(!expresion.test(correo))  
-                    msg({mensaje: 'El correo no está en un formato adecuado',titulo: 'Error de formato',accion: 'warning'});
+                    msg({mensaje: 'Correo no está en un formato adecuado',titulo: 'Error de formato',accion: 'warning'});
                 if(pass.length < 6 || pass.length >12)
-                    msg({mensaje: 'La contraseña debe tener entre 6 y 12 caracteres',titulo: 'Error de formato',accion: 'warning'});
+                    msg({mensaje: 'Contraseña debe tener mínimo 6 y máximo 12 caracteres',titulo: 'Error de formato',accion: 'warning'});
             }
-            }
+        }
         else {
             $.ajax({                  
             url: 'php/compruebaLogin.php',
