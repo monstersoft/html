@@ -11,15 +11,15 @@ $('#btnAñadirEmpresa').click(function(){
     var numberErrors = 0;
     console.log(nombre);
     if(isEmpty(nombre))
-        arreglo.push('<li>Nombre es obigatorio</li>');
+        arreglo.push('<li>Nombre es requerido</li>');
     if(isEmpty(rut))
-        arreglo.push('<li>Rut es obigatorio</li>');
+        arreglo.push('<li>Rut es requerido</li>');
     if(isEmpty(email))
-        arreglo.push('<li>Correo es obigatorio</li>');
+        arreglo.push('<li>Correo es requerido</li>');
     if(isEmpty(celular))
-        arreglo.push('<li>Celular es obigatorio</li>');
+        arreglo.push('<li>Celular es requerido</li>');
     if(isMail(email))
-        arreglo.push('<li>Formato erróneo de correo electrónico</li>');
+        arreglo.push('<li>Correo no está en un  formado adecuado</li>');
     if(isExactly(celular))
         arreglo.push('<li>Celular debe tener 9 dígitos</li>');
     if(isNumber(celular))
