@@ -9,9 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="theme-color" content="#DADADA" />
         <title>Machine Monitors</title>
-        <link rel="stylesheet" href="../semantic/semantic.css">
-        <link rel="stylesheet" href="../css/toast.css">
-        <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../recursos/semantic/semantic.min.css">
+        <link rel="stylesheet" href="../../recursos/toast/toast.css">
+        <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
         <style type="text/css">
             body {
                 background-color: #262626;
@@ -76,12 +76,11 @@
                 </form>
             </div>
         </div>  
-        <script src="../js/jquery2.js"></script>
-        <script src="../semantic/semantic.js"></script>
-        <script src="../js/validaConfirmacion.js"></script>	
-        <script src="../cliente/js/devuelveUrl.js"></script>
-        <script src="../cliente/js/compruebaInputs.js"></script>
-        <script src="../cliente/js/mensajes.js"></script>
-        <script src="../cliente/js/devuelveUrl.js"></script>
+        <script src="../../recursos/jquery/jquery.min.js"></script>
+        <script src="../../recursos/semantic/semantic.min.js"></script>
+        <script src="../../js/validaConfirmacion.js"></script>	
+        <script src="../../js/funciones.js"></script>
+        <script src="../../js/compruebaInputs.js"></script>
+        <script src="../../js/mensajes.js"></script>
     </body>
 </html>

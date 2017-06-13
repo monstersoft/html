@@ -30,7 +30,7 @@
                 <?php
                 foreach(zonas($email) as $value) {
                     $idZona = $value['idZona'];
-                    echo '<div class="col-xs-12 col-sm-12 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="subirArchivo"><i class="fa fa-upload"></i>subir archivo</a></li><li><a id="'.$value['idZona'].'" class="agregarMaquina"><i class="fa fa-cog"></i>agregar máquina</a></li></ul> </div><p>'.$value['nombre'].'</p></div>';
+                    echo '<div class="col-xs-12 col-sm-12 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="subirArchivo"><i class="fa fa-upload"></i>subir archivo</a></li><li><a id="'.$value['idZona'].'" class="agregarMaquina"><i class="fa fa-cog"></i>agregar máquina</a></li><li><a id="'.$value['idZona'].'" class="descargarId"><i class="fa fa-download"></i>descargar id</a></li></ul> </div><p>'.$value['nombre'].'</p></div>';
                         if(cantidadMaquinas($idZona) == 0)
                             echo '<div class="col-xs-12 emptyMessage"><i class="fa fa-exclamation-circle fa-2x pull-left"></i>No hay máquinas asociadas a esta zona</div>';
                         else {
@@ -126,6 +126,7 @@
             <script src="../../recursos/pickadate/picker.time.js"></script>
             <script src="../../supervisor/js/modalAgregarMaquina.js"></script>
             <script src="../../supervisor/js/modalSubirArchivo.js"></script>
+            <script src="../../supervisor/js/descargarIdZona.js"></script>
             <script src="../../js/funciones.js"></script>
             <script src="../../js/compruebaInputs.js"></script>
             <script src="../../js/mensajes.js"></script>

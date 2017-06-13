@@ -1,5 +1,7 @@
 <?php
 	include '../../php/funciones.php';
+    $perfil = datosPerfil('usuario@arauco.cl');
+    $datosRecientes = datosRecientes();
     $idResultado = $_GET['idResultado'];
     $idArchivo = $_GET['idArchivo'];
     $patente = $_GET['patente'];
@@ -22,17 +24,7 @@
     <link rel="stylesheet" href="../../css/dashboard.css">
 </head>
 <body>
-    <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p class="editarZona">Machine Monitors</p></div>
-    <nav class="unDisplayNav">
-        <ul>
-            <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile">Pato</span><br><span id="nameProfile">Arauco</span></li>
-            <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-            <li><a href="registro.php"><i class="fa fa-file-text icons"></i>Registro</a></li>
-            <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
-            <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-            <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
-        </ul>
-    </nav>
+    <?php barraMenu($perfil['correo'],$perfil['empresa'],'zonas'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
     <?php echo
         '<div class="col-xs-12 col-sm-4 col-md-2 card">

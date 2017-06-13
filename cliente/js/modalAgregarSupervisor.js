@@ -59,7 +59,7 @@ $(document).ready(function() {
                 success: function(arreglo) {
                     console.log(JSON.stringify(arreglo));
                     if(arreglo.exito == 1) {
-                        successMessage('Registro realizado con éxito','Serás redireccionado al panel');
+                        successMessage('Registro realizado con éxito','Se envió un e-mail al correo del supervisor para que habilite su cuenta');
                         $('#cancelar').removeClass('disabled');
                         $('#btnAñadirSupervisor').removeClass('disabled loading');
                         setTimeout(function(){location.reload()}, 5000);
