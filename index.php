@@ -40,7 +40,7 @@
                     </div>
                 </form>
                 <div class="ui message">
-                    <a href="recuperar.php" class="montserrat">¿ Olvidaste tu contraseña ?</a>
+                    <a href="reestablecer.php" class="montserrat">¿ Olvidaste tu contraseña ?</a>
                 </div>
             </div>
         </div>  
