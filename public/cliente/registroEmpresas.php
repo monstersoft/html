@@ -6,7 +6,7 @@
     else {*/
         include("../../php/funciones.php");
         //$email = $_SESSION['correo'];
-        $perfil = datosPerfil('pavillanueva@arauco.cl');
+        $perfil = datosPerfil('usuario@arauco.cl');
         $empresas = empresas();
         echo '<div class="sButton sPlus agregarEmpresa"><div><i class="fa fa-plus"></i></div></div>';
     //}

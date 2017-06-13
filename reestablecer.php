@@ -21,33 +21,24 @@
                         <div class="sub header montserrat" style="color: white;">Plan de vigilancia de maquinaria pesada</div>
                     </div>
                 </h2>
-                <h2 class="titulo montserrat">Iniciar Sesión</h2>
+                <h2 class="titulo montserrat">Reestablecer Contraseña</h2>
                 <form class="ui form">
                     <div class="ui segment" >
                         <div class="field">
                             <div class="ui left icon input">
-                                <i class="user icon"></i>
-                                <input type="text" id="email" placeholder="Correo electrónico">
+                                <i class="at icon"></i>
+                                <input type="text" id="txtCorreo" placeholder="Correo electrónico">
                             </div>
                         </div>
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="lock icon"></i>
-                                <input type="password" id="password" placeholder="Contraseña">
-                            </div>
-                        </div>
-                        <div id="btnLogin" style="background: #262626;font-family: 'Montserrat', cursive;" class="ui fluid large submit button">Ingresar</div>
+                        <div id="btnReestablecer" style="background: #262626;font-family: 'Montserrat', cursive;" class="ui fluid large submit button">Enviar correo</div>
                     </div>
                 </form>
-                <div class="ui message">
-                    <a href="recuperar.php" class="montserrat">¿ Olvidaste tu contraseña ?</a>
-                </div>
             </div>
         </div>  
         <script src="recursos/jquery/jquery.min.js"></script>
         <script src="recursos/semantic/semantic.min.js"></script>
         <script src="recursos/toast/toast.js"></script>
         <script src="recursos/hammer/hammer.min.js"></script>
-        <script src="js/validaLogin.js"></script>
+        <script src="js/reestablecer.js"></script>
     </body>
 </html>

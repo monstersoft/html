@@ -1,6 +1,6 @@
 <?php
     include("../../php/funcionesSupervisor.php");
-    $email = 'diego@serviciosbiobio.cl';
+    $email = 'usuario@usuario.cl';
     $perfil = datosPerfil($email);
     echo '<input id="idSupervisor" type="text" value="'.$perfil["id"].'" hidden>';
 ?>

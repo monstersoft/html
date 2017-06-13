@@ -6,7 +6,7 @@
         </div>
         <nav class="unDisplayNav">
             <ul>
-                <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i>
+                <li id="profile"><i class="fa fa-user fa-4x" id="iconProfile"></i>
                     <br><span id="titleProfile">'.$correo.'</span>
                     <br><span id="nameProfile">'.$empresa.'</span></li>'; 
                 if($nombrePagina == 'zonas') { echo '

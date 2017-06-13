@@ -16,11 +16,11 @@ $('.yearLegend').html(years[posYear]);
 $('.monthLegend').html(months[posMonth]);
 $('.heightLegend').html(hours[posHeight]);
 $('.degreesLegend').html(hours[posDegrees]);
-var url = devuelveUrl('a/cliente/ajax/datosDashboard.php');
+var url = devuelveUrl('cliente/ajax/datosDashboard.php');
 $.ajax({
     url: url,
     type: 'POST',
-    data: {idResultado: getSearchParams().id, idArchivo: getSearchParams().idArchivo, patente: getSearchParams().patente, semanas: a(returnWeeksRangesAvailable(parseInt(moment().format('YYYY')),moment().format('MMM')))},
+    data: {idResultado: getSearchParams().idResultado, idArchivo: getSearchParams().idArchivo, patente: getSearchParams().patente, semanas: a(returnWeeksRangesAvailable(parseInt(moment().format('YYYY')),moment().format('MMM')))},
     dataType: 'json',
     cache: false,
     beforeSend: function(){
@@ -112,7 +112,7 @@ $('.height').click(function(){
     }
 });
 function ajaxHours(hora, opcion) {
-    var url = devuelveUrl('a/cliente/ajax/datosDinamicosHorarios.php');
+    var url = devuelveUrl('cliente/ajax/datosDinamicosHorarios.php');
     $.ajax({
         url: url,
         type: 'POST',
@@ -136,7 +136,7 @@ function ajaxHours(hora, opcion) {
     }); 
 }
 function ajaxHistorical(weeks) {
-    var url = devuelveUrl('a/cliente/ajax/datosDinamicosHistoricos.php');
+    var url = devuelveUrl('cliente/ajax/datosDinamicosHistoricos.php');
     $.ajax({
         url: url,
         type: 'POST',

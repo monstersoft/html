@@ -1,6 +1,6 @@
 <?php
 	include '../../php/funciones.php';
-    $idResultado = $_GET['id'];
+    $idResultado = $_GET['idResultado'];
     $idArchivo = $_GET['idArchivo'];
     $patente = $_GET['patente'];
     $estadisticos = estadisticos($idResultado, $idArchivo, $patente);
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../recursos/chartist/chartist.min.css">
     <link rel="stylesheet" href="../../recursos/chartist/chartist-plugin-tooltip.css">
+    <link rel="stylesheet" href="../../css/menuBarra.css">
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/dashboard.css">
 </head>

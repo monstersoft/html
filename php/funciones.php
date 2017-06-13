@@ -12,7 +12,7 @@
                     <br><span id="nameProfile">'.$empresa.'</span></li>'; 
                 if($nombrePagina == 'zonas') { echo '
                     <li class="selected"><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                    <li><a href="registroEmpresas.php"><i class="fa fa-file-text icons"></i>Registro</a></li>
+                    <li><a href="registroEmpresas.php"><i class="fa fa fa-cog icons"></i>Ajustes</a></li>
                     <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
                     <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                     <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
@@ -20,7 +20,7 @@
                 }
                 if($nombrePagina == 'registro') { echo '
                     <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                    <li class="selected"><a href="registroEmpresas.php"><i class="fa fa-file-text icons"></i>Registro</a></li>
+                    <li class="selected"><a href="registroEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
                     <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
                     <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                     <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
@@ -28,15 +28,15 @@
                 }
                 if($nombrePagina == 'contacto') { echo '
                     <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                    <li><a href="registroEmpresas.php"><i class="fa fa-file-text icons"></i>Registro</a></li>
-                    <li class="selected"><i class="fa fa-send icons"></i>Contacto</a></li>
+                    <li><a href="registroEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
+                    <li class="selected"><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
                     <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                     <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
                     
                 }
                 if($nombrePagina == 'contraseña') { echo '
                     <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                    <li><a href="registroEmpresas.php"><i class="fa fa-file-text icons"></i>Registro</a></li>
+                    <li><a href="registroEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
                     <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
                     <li class="selected"><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                     <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
@@ -44,7 +44,7 @@
                 }
                 if($nombrePagina == 'cerrar') { echo '
                     <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                    <li><a href="registroEmpresas.php"><i class="fa fa-file-text icons"></i>Registro</a></li>
+                    <li><a href="registroEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
                     <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
                     <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                     <li class="selected"><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
@@ -54,13 +54,13 @@
         </nav>';
     }
     // maquinas.php
-    function maquinasPorFecha($idZona, $fechaDatos) {
+    function maquinasPorFecha($idArchivo, $fechaDatos) {
         $c = conectar();
         $a = array();
-        $q = "SELECT * FROM resultados WHERE idZona = '$idZona' AND fechaDatos = '$fechaDatos'";
+        $q = "SELECT * FROM resultados WHERE idArchivo = '$idArchivo' AND fechaDatos = '$fechaDatos'";
         if($res = mysqli_query($c, $q)){
             while($r = mysqli_fetch_assoc($res)) {
-                array_push($a, array('id' => $r['id'], 'patente' => $r['patente'],'idMaquina' => $r['idMaquina'],'idZona' => $r['idZona'],'registrado' => $r['registrado'],'existeEnArchivo' => $r['existeEnArchivo'], 'tRecorridos' => intval($r['tRecorridos'])));
+                array_push($a, array('idResultado' => $r['idResultado'], 'patente' => $r['patente'],'idMaquina' => $r['idMaquina'],'registrado' => $r['registrado'],'existeEnArchivo' => $r['existeEnArchivo'], 'tRecorridos' => intval($r['tRecorridos'])));
             }
         }
         return $a;
@@ -69,7 +69,7 @@
     function estadisticos($idResultado, $idArchivo, $patente) {
         $c = conectar();
         $a = array();
-        $q = "SELECT * FROM resultados WHERE id = '$idResultado'";
+        $q = "SELECT * FROM resultados WHERE idResultado = '$idResultado'";
         if($res = mysqli_query($c,$q)) {
             $r = mysqli_fetch_assoc($res);
             $a = array('tRecorridos' => intval($r['tRecorridos']), 'mediciones' => $r['mediciones'], 'pRpm' => intval($r['pRpm']), 'pGpf' => intval($r['pGpf']), 'pGpt' => intval($r['pGpt']), 'pApf' => intval($r['pApf']), 'pApt' => intval($r['pApt']));

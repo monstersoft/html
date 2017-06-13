@@ -21,27 +21,24 @@
                         <div class="sub header montserrat" style="color: white;">Plan de vigilancia de maquinaria pesada</div>
                     </div>
                 </h2>
-                <h2 class="titulo montserrat">Iniciar Sesión</h2>
+                <h2 class="titulo montserrat">Reestablecer Contraseña</h2>
                 <form class="ui form">
                     <div class="ui segment" >
                         <div class="field">
                             <div class="ui left icon input">
-                                <i class="user icon"></i>
-                                <input type="text" id="email" placeholder="Correo electrónico">
+                                <i class="lock icon"></i>
+                                <input type="text" id="txtCorreo" placeholder="Nueva contraseña">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
-                                <i class="lock icon"></i>
-                                <input type="password" id="password" placeholder="Contraseña">
+                                <i class="clone icon"></i>
+                                <input type="text" id="txtCorreo" placeholder="Confirmar contraseña">
                             </div>
                         </div>
-                        <div id="btnLogin" style="background: #262626;font-family: 'Montserrat', cursive;" class="ui fluid large submit button">Ingresar</div>
+                        <div id="btnReestablecer" style="background: #262626;font-family: 'Montserrat', cursive;" class="ui fluid large submit button">Reestablecer</div>
                     </div>
                 </form>
-                <div class="ui message">
-                    <a href="recuperar.php" class="montserrat">¿ Olvidaste tu contraseña ?</a>
-                </div>
             </div>
         </div>  
         <script src="recursos/jquery/jquery.min.js"></script>

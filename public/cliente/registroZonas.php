@@ -7,7 +7,7 @@
     else {*/
         include("../../php/funciones.php");
         //$email = $_SESSION['correo'];
-        $perfil = datosPerfil('pavillanueva@arauco.cl');
+        $perfil = datosPerfil('usuario@arauco.cl');
         echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div>
         <div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div>
         <div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>';
@@ -78,7 +78,7 @@
                                 echo '<div class="col-xs-12 cardContent">No existen supervisores asociados a esta zona</div>';
                               else {
                                     foreach(supervisores($value['idZona']) as $value) {
-                                        echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><a href="supervisor.php" class="text-center montserrat">'.$value['nombreSupervisor'].'</a></div><div class="pull-right"><a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div></div>';
+                                        echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><a href="supervisor.php" class="desvincularSupervisor text-center montserrat">'.$value['nombreSupervisor'].'</a></div><div class="pull-right"><a href="#" class="asignarZonas">Asignar nueva zona</a><a class="desvincularSupervisor" href="#">Desvincular</a> </div></div>';
                                     }
 
                               } echo '
@@ -179,7 +179,91 @@
             </div>
         </div>
     </div>
-    <!-- MODAL EDITAR ZONA -->
+    <!-- MODAL ELIMINAR ZONA -->
+    <div class="modalEliminarZona modal fade" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa fa-globe"></i>Eliminar Zona
+                </div>
+                <div class="modal-body"> ¿Estás seguro que quieres eliminar esta zona? , se borrarán todos los datos asociados a ella.
+                    <form id="formularioEliminarEmpresa">
+                        <div class="form-group">
+                            <label>ID ZONA</label>
+                            <input type="text" class="form-control" name="idZona" id="idEliminarZona">
+                        </div>
+                    </form>
+                    <div class="clearfix">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnEliminarEmpresa"><i class="cargar fa fa-trash"></i>Eliminar</button>
+                        <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                    </div>
+                    <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                    <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- DESVINCULAR SUPERVISOR ZONA -->
+    <div class="modalDesvincularSupervisor modal fade" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa fa-globe"></i>Desvincular Supervisor
+                </div>
+                <div class="modal-body"> ¿Estás seguro que quieres desvincular a este supervisor de esta zona?.
+                    <form id="formularioDesvincularSupervisor">
+                        <div class="form-group">
+                            <label>ID ZONA</label>
+                            <input type="text" class="form-control" name="idZona" id="idEliminarZona">
+                        </div>
+                        <div class="form-group">
+                            <label>ID SUPERVISOR</label>
+                            <input type="text" class="form-control" name="idZona" id="idEliminarZona">
+                        </div>
+                    </form>
+                    <div class="clearfix">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnEliminarEmpresa"><i class="cargar fa fa-remove"></i>Desvincular</button>
+                        <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                    </div>
+                    <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                    <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ASIGNAR ZONAS A SUPERVISOR -->
+    <div class="modalAsignarZonas modal fade" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa fa-globe"></i>Asignar zonas
+                </div>
+                <div class="modal-body">
+                    <form id="formularioAsignarZonas">
+                        <div class="form-group">
+                            <label for="zonas" class="control-label">Asignar Zonas</label>
+                            <select id="nuevasZonasAsociadas" name="nuevasZonasAsociadas[]" class="form-control select2-multiple" multiple>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>ID ZONA</label>
+                            <input type="text" class="form-control" name="idZona" id="idEliminarZona">
+                        </div>
+                        <div class="form-group">
+                            <label>ID SUPERVISOR</label>
+                            <input type="text" class="form-control" name="idZona" id="idEliminarZona">
+                        </div>
+                    </form>
+                    <div class="clearfix">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnAsignarZonas"><i class="cargar fa fa-plus"></i>Asignar</button>
+                        <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                    </div>
+                    <div class="message" style="margin: 15px 0px 0px 0px"></div>
+                    <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 <!-- VENTANAS MODALES -->
     <script src="../../recursos/jquery/jquery.min.js"></script>
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
@@ -187,7 +271,10 @@
     <script src="../../recursos/rut/jquery.rut.chileno.js"></script>
     <script src="../../cliente/js/modalAgregarZona.js"></script>
     <script src="../../cliente/js/modalEditarZona.js"></script>
+    <script src="../../cliente/js/modalEliminarZona.js"></script>
     <script src="../../cliente/js/modalAgregarSupervisor.js"></script>
+    <script src="../../cliente/js/modalAsignarZonas.js"></script>
+    <script src="../../cliente/js/modalDesvincularSupervisor.js"></script>
     <script src="../../js/funciones.js"></script>
     <script src="../../js/compruebaInputs.js"></script>
     <script src="../../js/mensajes.js"></script>

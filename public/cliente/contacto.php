@@ -1,3 +1,9 @@
+<?php
+	include '../../php/funciones.php';
+	$conexion = conectar();
+    $perfil = datosPerfil('usuario@arauco.cl');
+    $datosRecientes = datosRecientes();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,28 +11,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="../../recursos/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../recursos/select2/select2.min.css">
+    <link rel="stylesheet" href="../../recursos/select2/select2-bootstrap.css">
+    <link rel="stylesheet" href="../../recursos/pickadate/default.css">
+    <link rel="stylesheet" href="../../recursos/pickadate/default.date.css">
+    <link rel="stylesheet" href="../../recursos/pickadate/default.time.css">
     <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
-    <link rel="stylesheet" href="../../recursos/responsiveTables/responsiveTables.css">
     <link rel="stylesheet" href="../../css/base.css">
-    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/menuBarra.css">
 </head>
 <body>
-    <div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a><p class="editarZona">Machine Monitors</p></div>
-    <nav class="unDisplayNav">
-        <ul>
-            <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i><br><span id="titleProfile">Pato</span><br><span id="nameProfile">Arauco</span></li>
-            <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-            <li><a href="registro.php"><i class="fa fa-file-text icons"></i>Registro</a></li>
-            <li><a href="historicos.php"><i class="fa fa-bar-chart icons"></i>Históricos</a></li>
-            <li><a href="contacto.php" class="selected"><i class="fa fa-send icons"></i>Contacto</a></li>
-            <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-            <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>
-        </ul>
-    </nav>
-    <div id="content" class="animated fadeInUp unLeftContent">
+    <?php barraMenu($perfil['correo'],$perfil['empresa'],'contacto'); ?>
+    <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
-<p class="montserrat">CONTACTO</p>
+        <div class="col-xs-12" style="margin-top: 20px;">
+            <form id="formularioContactar">
+                <div class="form-group">
+                    <label>Correo</label>
+                    <input type="text" class="form-control disabled" name="correoUsuario" id="correoUsuario" value="usuario@usuario.cl" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Mensaje</label>
+                    <textarea type="text" class="form-control" rows="10" name="mensaje"></textarea>
+                </div>
+            </form>
+            <div class="clearfix">
+                <button type="submit" class="btn btn-normal pull-right montserrat" id="btnAñadirMaquina"><i class="cargar fa fa-send"></i>Enviar</button>
+            </div>
+            <div class="message" style="margin: 15px 0px 0px 0px"></div>
+        </div>
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
