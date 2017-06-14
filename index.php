@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <meta name="theme-color" content="#262626" />
+        <meta name="theme-color" content="#262626"/>
         <title>Machine Monitors</title>
         <link rel="stylesheet" href="recursos/semantic/semantic.css">
         <link rel="stylesheet" href="recursos/toast/toast.css">
