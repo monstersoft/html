@@ -1,8 +1,15 @@
 <?php
-	include '../../php/funciones.php';
-	$conexion = conectar();
-    $perfil = datosPerfil('usuario@arauco.cl');
-    $datosRecientes = datosRecientes();
+    session_start();
+    if(isset($_SESSION['datos'])) {
+        include '../../php/funciones.php';
+        $conexion = conectar();
+        $perfil = datosPerfil($_SESSION['correo']);
+        $datosRecientes = datosRecientes();
+        
+    }
+    else {
+        header('Location: ../../index.php');
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,6 +33,7 @@
 <body>
     <?php barraMenu($perfil['correo'],$perfil['empresa'],'zonas'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
+          <?php debug($_SESSION['datos']); ?>
            <?php
                 foreach($datosRecientes as $key => $value) { echo '
                     <div class="col-xs-12 col-sm-12 card">
@@ -50,7 +58,7 @@
                                     foreach($datosRecientes[$key]['zonas'] as $v) { 
                                         if($v['idArchivo'] != null) { echo '
                                             <tr>
-                                                <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>'.$v['nombreZona'].'</td>
+                                                <td class="tdPosition"><div class="btnPlus"><i class="fa fa-expand"></i></div>'.$v['nombreZona'].'</td>
                                                 <td>
                                                     <form method="POST" action="maquinas.php"><input type="hidden" name="idArchivo" value="'.$v['idArchivo'].'"></input><input type="hidden" name="idZona" value="'.$v['idZona'].'"></input><div class="input-group input-xs"><input type="text" id="'.$v['idZona'].'" class="btnFecha form-control datepicker" data-value="'.$v['fechaRecienteDatos'].'" name="fechaRecienteDatos"><div class="input-group-btn"><button id="'.$v['idArchivo'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div></form>
                                                 </td>
@@ -72,7 +80,7 @@
                                         }
                                         else { echo '
                                             <tr>
-                                                <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div id="'.$v['idZona'].'">'.$v['nombreZona'].'</td>
+                                                <td class="tdPosition"><div class="btnPlus"><i class="fa fa-expand"></i></div id="'.$v['idZona'].'">'.$v['nombreZona'].'</td>
                                                 <td>No hay archivos disponibles</td>
                                                 <td class="unDisplayColumn">-</td>
                                                 <td class="unDisplayColumn">-</td>

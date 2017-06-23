@@ -1,5 +1,7 @@
 <?php
+    sleep(2);
     include("conexion.php");
+    $datos = array();
     $correo = $_POST['txtCorreo'];
     $password = $_POST['txtPassword'];
     $arreglo = array();
@@ -9,10 +11,13 @@
         if($arreglo['esCliente'] == true) {
             $respuesta = iniciaSesionCliente($correo,$password);
             $respuesta['tipoUsuario'] = 'Cliente';
+            session_start();
+            $_SESSION['datos'] = $respuesta;
         }
         if($arreglo['esSupervisor'] == true) {
             $respuesta = iniciaSesionSupervisor($correo,$password);
             $respuesta['tipoUsuario'] = 'Supervisor';
+            $_SESSION['datos'] = $respuesta;
         }
     }
     else {
@@ -61,7 +66,7 @@
             $numero = mysqli_fetch_assoc($resultado);
             if($numero['cantidad'] == true) {
                 session_start();
-                $_SESSION['correo'] = $correo;
+                $arreglo['correo'] = $correo;
                 $arreglo['titulo'] = 'Inicio de sesión';
                 $arreglo['mensaje'] = 'Bienvenidos '.$correo;
                 $arreglo['url'] = 'public/cliente/zonas.php';
@@ -93,7 +98,7 @@
                     $numero = mysqli_fetch_assoc($resultado);
                     if($numero['cantidad'] == true) {
                         session_start();
-                        $_SESSION['correo'] = $correo;
+                        $arreglo['correo'] = $correo;
                         $arreglo['titulo'] = 'Inicio de sesión';
                         $arreglo['mensaje'] = 'Bienvenidos '.$correo;
                         $arreglo['url'] = 'public/supervisor/panel.php';
