@@ -1,17 +1,18 @@
 <?php
-    $idEmpresa = $_GET['id'];
-    /*session_start();
-    if(!isset($_SESSION['correo'])){
-        header("Location:../../index.php");
-    }
-    else {*/
+    session_start();
+    if(isset($_SESSION['datos'])){
         include("../../php/funciones.php");
-        //$email = $_SESSION['correo'];
-        $perfil = datosPerfil('usuario@arauco.cl');
+        $idEmpresa = $_GET['id'];
+        $perfil = datosPerfil($_SESSION['datos']['correo']);
+        $empresas = empresas();
         echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div>
         <div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div>
         <div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>';
-    //}
+    }
+    else {
+        echo '<script>console.log("NO EXISTE A VARIABLE")</script>';
+        header("Location:../../index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,7 +36,7 @@
 <!-- ............................................................................................................................ -->
     <?php
             if(cantidadZonas($idEmpresa) == 0)
-                echo '<div class="col-xs-12">No hay zonas asociadas a esta empresa</div>';
+                echo '<div class="alert"> <div class="row vertical-align"> <div class="col-xs-2"> <i class="fa fa-exclamation-circle fa-3x"></i> </div><div class="col-xs-10"> <strong class="montserrat">No existen zonas </strong>, debes agregar una zona presionando el botón <strong> Más </strong> y luego el botón del <strong> Mundo </strong> ubicado en la parte inferior derecha de la pantalla </div></div></div>';
             else { foreach(zonas($idEmpresa) as $value) { echo '  
                             <div class="col-xs-12 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="editarZona"><i class="fa fa-pencil"></i>editar</a></li><li><a id="'.$value['idZona'].'" class="eliminarZona"><i class="fa fa-remove"></i>remover</a></li></ul> </div><p>'.$value['nombreZona'].'</p></div>';
                             if(cantidadMaquinas($value['idZona']) == 0)
@@ -106,9 +107,9 @@
                             <label>Nombre</label>
                             <input type="text" placeholder="Nueva Zona" class="form-control" name="nombre" id="nombreAgregarZona">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="display: none;">
                             <label>idEmpresaAgregarZona</label>
-                            <input type="text" class="form-control" name="id" id="idEmpresaAgregarZona">
+                            <input type="hidden" class="form-control" name="id" id="idEmpresaAgregarZona">
                         </div>
                     </form>
                     <div class="clearfix">
@@ -252,7 +253,7 @@
                         </div>
                         <div class="form-group">
                             <label>ID SUPERVISOR</label>
-                            <input type="text" class="form-control" name="idZona" id="idEliminarZona">
+                            <input type="hidden" class="form-control" name="idZona" id="idEliminarZona">
                         </div>
                     </form>
                     <div class="clearfix">
@@ -287,7 +288,13 @@
                 $('.sOne').toggleClass('displaySticky');
                 $('.sTwo').toggleClass('displaySticky');
             });
-            $('.cancelar').click(function(){$('.alert').remove();});
+            $('.modal').on('click','.cancelar',function(){
+                console.log(exito);
+                if(exito == 1) {
+                    setTimeout(function(){location.reload()});
+                }
+                $('.alert').remove();
+            });
             $('.modal').on('hidden.bs.modal', function(){
                 $(this).find('form')[0].reset();
                 $("#zonasAsociadas").find("option[class='dinamico']").remove();

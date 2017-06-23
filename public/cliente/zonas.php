@@ -1,13 +1,15 @@
 <?php
     session_start();
     if(isset($_SESSION['datos'])) {
+        echo '<script>console.log("EXISTE A VARIABLE")</script>';
         include '../../php/funciones.php';
         $conexion = conectar();
-        $perfil = datosPerfil($_SESSION['correo']);
-        $datosRecientes = datosRecientes();
+        $perfil = datosPerfil($_SESSION['datos']['correo']);
+        $zonas = datosRecientes();
         
     }
     else {
+        echo '<script>console.log("NO EXISTE A VARIABLE")</script>';
         header('Location: ../../index.php');
     }
 ?>
@@ -33,78 +35,80 @@
 <body>
     <?php barraMenu($perfil['correo'],$perfil['empresa'],'zonas'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
-          <?php debug($_SESSION['datos']); ?>
            <?php
-                foreach($datosRecientes as $key => $value) { echo '
-                    <div class="col-xs-12 col-sm-12 card">
-                        <div class="col-xs-12 shadowButtonDown cardContent">
-                            <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
-                                <p id="'.$value['idEmpresa'].'">'.$value['nombreEmpresa'].'</p>
+                if($zonas['cantidadZonas'] == 0) {echo '<div class="alert"> <div class="row vertical-align"> <div class="col-xs-2"> <i class="fa fa-exclamation-circle fa-3x"></i> </div><div class="col-xs-10"> <strong class="montserrat">No existen zonas </strong>, debes agregar una empresa y luego una zona en el menú<strong> Ajustes </strong>de la barra de navegación. </div></div></div>';}
+                else {
+                    foreach($zonas['datosRecientes'] as $key => $value) { echo '
+                        <div class="col-xs-12 col-sm-12 card">
+                            <div class="col-xs-12 shadowButtonDown cardContent">
+                                <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
+                                    <p id="'.$value['idEmpresa'].'">'.$value['nombreEmpresa'].'</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 shadow cardContent">
+                                <table class="tableStyle">
+                                    <thead>
+                                        <tr>
+                                            <th>Zona</th>
+                                            <th>Seleccionar fecha</th>
+                                            <th class="unDisplayColumn">Ultima actualización</th>
+                                            <th class="unDisplayColumn">Subido por</th>
+                                            <th class="unDisplayColumn">Fecha subida</th>
+                                            <th class="unDisplayColumn">Hora subida</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>'; 
+                                        foreach($zonas[$key]['zonas'] as $v) { 
+                                            if($v['idArchivo'] != null) { echo '
+                                                <tr>
+                                                    <td class="tdPosition"><div class="btnPlus"><i class="fa fa-expand"></i></div>'.$v['nombreZona'].'</td>
+                                                    <td>
+                                                        <form method="POST" action="maquinas.php"><input type="hidden" name="idArchivo" value="'.$v['idArchivo'].'"></input><input type="hidden" name="idZona" value="'.$v['idZona'].'"></input><div class="input-group input-xs"><input type="text" id="'.$v['idZona'].'" class="btnFecha form-control datepicker" data-value="'.$v['fechaRecienteDatos'].'" name="fechaRecienteDatos"><div class="input-group-btn"><button id="'.$v['idArchivo'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div></form>
+                                                    </td>
+                                                    <td class="unDisplayColumn">'.$v['fechaRecienteDatos'].'</td>
+                                                    <td class="unDisplayColumn">'.$v['nombreSupervisor'].'</td>
+                                                    <td class="unDisplayColumn">'.$v['fechaSubida'].'</td>
+                                                    <td class="unDisplayColumn">'.$v['horaSubida'].'</td>
+                                                </tr>
+                                                <tr class="accordion unActivated">
+                                                    <td colspan="2">
+                                                        <ul>
+                                                            <li>Última actualización : '.$v['fechaRecienteDatos'].'</li>
+                                                            <li>Subido por: '.$v['nombreSupervisor'].'</li>
+                                                            <li>Fecha subida: '.$v['fechaSubida'].'</li>
+                                                            <li>Hora subida: '.$v['horaSubida'].'</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>';
+                                            }
+                                            else { echo '
+                                                <tr>
+                                                    <td class="tdPosition"><div class="btnPlus"><i class="fa fa-expand"></i></div id="'.$v['idZona'].'">'.$v['nombreZona'].'</td>
+                                                    <td>No hay archivos disponibles</td>
+                                                    <td class="unDisplayColumn">-</td>
+                                                    <td class="unDisplayColumn">-</td>
+                                                    <td class="unDisplayColumn">-</td>
+                                                    <td class="unDisplayColumn">-</td>
+                                                </tr>
+                                                <tr class="accordion unActivated">
+                                                    <td colspan="2">
+                                                        <ul>
+                                                            <li>Última actualización : -</li>
+                                                            <li>Subido por: -</li>
+                                                            <li>Fecha subida: -</li>
+                                                            <li>Hora subida: -</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>';
+
+                                            }
+                                        } echo '
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="col-xs-12 shadow cardContent">
-                            <table class="tableStyle">
-                                <thead>
-                                    <tr>
-                                        <th>Zona</th>
-                                        <th>Seleccionar fecha</th>
-                                        <th class="unDisplayColumn">Ultima actualización</th>
-                                        <th class="unDisplayColumn">Subido por</th>
-                                        <th class="unDisplayColumn">Fecha subida</th>
-                                        <th class="unDisplayColumn">Hora subida</th>
-                                    </tr>
-                                </thead>
-                                <tbody>'; 
-                                    foreach($datosRecientes[$key]['zonas'] as $v) { 
-                                        if($v['idArchivo'] != null) { echo '
-                                            <tr>
-                                                <td class="tdPosition"><div class="btnPlus"><i class="fa fa-expand"></i></div>'.$v['nombreZona'].'</td>
-                                                <td>
-                                                    <form method="POST" action="maquinas.php"><input type="hidden" name="idArchivo" value="'.$v['idArchivo'].'"></input><input type="hidden" name="idZona" value="'.$v['idZona'].'"></input><div class="input-group input-xs"><input type="text" id="'.$v['idZona'].'" class="btnFecha form-control datepicker" data-value="'.$v['fechaRecienteDatos'].'" name="fechaRecienteDatos"><div class="input-group-btn"><button id="'.$v['idArchivo'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div></form>
-                                                </td>
-                                                <td class="unDisplayColumn">'.$v['fechaRecienteDatos'].'</td>
-                                                <td class="unDisplayColumn">'.$v['nombreSupervisor'].'</td>
-                                                <td class="unDisplayColumn">'.$v['fechaSubida'].'</td>
-                                                <td class="unDisplayColumn">'.$v['horaSubida'].'</td>
-                                            </tr>
-                                            <tr class="accordion unActivated">
-                                                <td colspan="2">
-                                                    <ul>
-                                                        <li>Última actualización : '.$v['fechaRecienteDatos'].'</li>
-                                                        <li>Subido por: '.$v['nombreSupervisor'].'</li>
-                                                        <li>Fecha subida: '.$v['fechaSubida'].'</li>
-                                                        <li>Hora subida: '.$v['horaSubida'].'</li>
-                                                    </ul>
-                                                </td>
-                                            </tr>';
-                                        }
-                                        else { echo '
-                                            <tr>
-                                                <td class="tdPosition"><div class="btnPlus"><i class="fa fa-expand"></i></div id="'.$v['idZona'].'">'.$v['nombreZona'].'</td>
-                                                <td>No hay archivos disponibles</td>
-                                                <td class="unDisplayColumn">-</td>
-                                                <td class="unDisplayColumn">-</td>
-                                                <td class="unDisplayColumn">-</td>
-                                                <td class="unDisplayColumn">-</td>
-                                            </tr>
-                                            <tr class="accordion unActivated">
-                                                <td colspan="2">
-                                                    <ul>
-                                                        <li>Última actualización : -</li>
-                                                        <li>Subido por: -</li>
-                                                        <li>Fecha subida: -</li>
-                                                        <li>Hora subida: -</li>
-                                                    </ul>
-                                                </td>
-                                            </tr>';
-                                            
-                                        }
-                                    } echo '
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                ';}
+                    ';}
+                }
            ?>
 <!-- ............................................................................................................................ -->
     </div>

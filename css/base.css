@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
 /* AUX */
 .borde {
     border: 1px solid red;

@@ -1,7 +1,16 @@
+var exito = 0;
+$('.modalAgregarEmpresa').on('click','.volverAgregar',function(){
+    $('#formularioAgregarEmpresa')[0].reset();
+    $('.alert').remove();
+    $('.volverAgregar').remove();
+    $('.cancelar').remove();
+    $('.clearfix').append('<button type="submit" class="btn btn-primary pull-right" id="btnAñadirEmpresa"><i class="cargar fa fa-plus"></i>Agregar</button>');
+    $('.clearfix').append('<button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>');
+});
 $('.agregarEmpresa').click(function(){
     $('.modalAgregarEmpresa').modal();
 });
-$('#btnAñadirEmpresa').click(function(){
+$('.modalAgregarEmpresa').on('click','#btnAñadirEmpresa',function(){
     $('.alert').remove();
     var arreglo = new Array();
     var nombre = $('#nombreAgregarEmpresa').val();
@@ -9,7 +18,6 @@ $('#btnAñadirEmpresa').click(function(){
     var email = $('#emailAgregarEmpresa').val();
     var celular = $('#celularAgregarEmpresa').val();
     var numberErrors = 0;
-    console.log(nombre);
     if(isEmpty(nombre))
         arreglo.push('<li>Nombre es requerido</li>');
     if(isEmpty(rut))
@@ -38,21 +46,23 @@ $('#btnAñadirEmpresa').click(function(){
             dataType: 'json',
             cache: false,
             beforeSend: function() {
-              activarLoaderBotones('fa-pencil','fa-refresh');
+              activarLoaderBotones('fa-plus','fa-refresh');
             },
             success: function(returnedData) {
                 if(returnedData.exito == 1) {
-                    successMessage('Registro realizado con éxito','Redireccionado al panel de empresas');
+                    successMessage('Registro realizado con éxito ','se ha ingresado la empresa  a la base de datos');
                     $('.cancelar').remove();
                     $('#btnAñadirEmpresa').remove();
-                    setTimeout(function(){location.reload()}, 3000);
+                    $('.clearfix').append('<button type="button" class="btn btn-success pull-right volverAgregar"><i class="fa fa-repeat"></i>Volver a Agregar</button>');
+                    $('.clearfix').append('<button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>');
+                    exito = 1;
                 }
                 else {
                     warningMessage(returnedData.msg);
                 }
             },
             complete: function() {
-                desactivarLoaderBotones('fa-pencil','fa-refresh');
+                desactivarLoaderBotones('fa-plus','fa-refresh');
             }
         }).fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){

@@ -1,15 +1,15 @@
 <?php
-    /*session_start();
-    if(!isset($_SESSION['correo'])){
-        header("Location:../../index.php");
-    }
-    else {*/
+    session_start();
+    if(isset($_SESSION['datos'])){
         include("../../php/funciones.php");
-        //$email = $_SESSION['correo'];
-        $perfil = datosPerfil('usuario@arauco.cl');
+        $perfil = datosPerfil($_SESSION['datos']['correo']);
         $empresas = empresas();
         echo '<div class="sButton sPlus agregarEmpresa"><div><i class="fa fa-plus"></i></div></div>';
-    //}
+    }
+    else {
+        echo '<script>console.log("NO EXISTE A VARIABLE")</script>';
+        header("Location:../../index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,8 +80,7 @@
     <?php barraMenu($perfil['correo'],$perfil['empresa'],'registro'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
     <?php
-        if($empresas['cantidadEmpresas'] == 0)
-            echo '<div class="col-xs-12">No hay empresas registradas</div>';
+        if($empresas['cantidadEmpresas'] == 0) {echo '<div class="alert"> <div class="row vertical-align"> <div class="col-xs-2"> <i class="fa fa-exclamation-circle fa-3x"></i> </div><div class="col-xs-10"> <strong class="montserrat">No existen empresas </strong>, debes agregar una empresa presionando el botón <strong> Más </strong> ubicado en la parte inferior derecha de la pantalla </div></div></div>';}
         else { foreach($empresas['empresas'] as $value) { echo '  
            <div class="col-xs-12  col-md-6 card">
             <div class="col-xs-12 shadow cardContent">
@@ -104,7 +103,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>'.$value['rut'].'</td>
+                            <td class="tdPosition"><div class="btnPlus"><i class="fa fa-expand"></i></div>'.$value['rut'].'</td>
                             <td class="unDisplayColumn">'.$value['correo'].'</td>
                             <td class="unDisplayColumn">'.$value['telefono'].'</td>
                         </tr>
@@ -155,7 +154,7 @@
                         </div>
                     </form>
                     <div class="clearfix">
-                        <button type="submit" class="btn btn-primary pull-right" id="btnAñadirEmpresa"><i class="cargar fa fa-pencil"></i>Agregar</button>
+                        <button type="submit" class="btn btn-primary pull-right" id="btnAñadirEmpresa"><i class="cargar fa fa-plus"></i>Agregar</button>
                         <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
@@ -240,13 +239,19 @@
     <script src="../../js/mensajes.js"></script>
     <script>
         $(document).ready(function(){
+            var exito = 0;
             function explode(){
               $('#loader').css('display','none');
               $('#content').fadeIn().css('display','block');
             }
             setTimeout(explode, 5000);
             main();
-            $('.cancelar').click(function(){$('.alert').remove();});
+            $('.modal').on('click','.cancelar',function(){
+                if(exito == 1) {
+                    setTimeout(function(){location.reload()});
+                }
+                $('.alert').remove();
+            });
             $('.modal').on('hidden.bs.modal', function(){
                 $(this).find('form')[0].reset();
             });

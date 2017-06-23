@@ -22,19 +22,19 @@
 				if(mysqli_query($conexion,$consulta)) {
 					$ultimoId = mysqli_insert_id($conexion);
 					$link = 'http://localhost/html/cliente/ajax/confirmarRegistro.php?id='.$ultimoId;
-					$insercionesExitosasSupervisoresZonas = 0;
-					$insercionesFallidasSupervisoresZonas = 0;
+					$insercionesExitosassupervisores_zonas = 0;
+					$insercionesFallidassupervisores_zonas = 0;
 					foreach ($zonas as $value) {
-						$consulta = "INSERT INTO supervisoreszonas (idZona,idSupervisor) VALUES ('$value','$ultimoId')";
+						$consulta = "INSERT INTO supervisores_zonas (idZona,idSupervisor) VALUES ('$value','$ultimoId')";
 						if(mysqli_query($conexion,$consulta))
-							$insercionesExitosasSupervisoresZonas++;
+							$insercionesExitosassupervisores_zonas++;
 						else 
-							$insercionesFallidasSupervisoresZonas++;
+							$insercionesFallidassupervisores_zonas++;
 					}
-					$arreglo['insercionesExitosasSupervisoresZonas'] = $insercionesExitosasSupervisoresZonas;
-					$arreglo['insercionesFallidasSupervisoresZonas'] = $insercionesFallidasSupervisoresZonas;
+					$arreglo['insercionesExitosassupervisores_zonas'] = $insercionesExitosassupervisores_zonas;
+					$arreglo['insercionesFallidassupervisores_zonas'] = $insercionesFallidassupervisores_zonas;
 					$arreglo['tamanhoArregloZonas'] = sizeof($zonas);
-					if(sizeof($zonas) == $arreglo['insercionesExitosasSupervisoresZonas']) {
+					if(sizeof($zonas) == $arreglo['insercionesExitosassupervisores_zonas']) {
 						if(enviarMailRegistroSupervisor($nombre,$email,$link)){
 							$arreglo['mailEnviado'] = 1;
 							$arreglo['mailHora'] = $hora;
@@ -47,7 +47,7 @@
 						}
 					}
 					else {
-						$arreglo['exitoInsercionesSupervisoresZonas'] = 0;
+						$arreglo['exitoInsercionessupervisores_zonas'] = 0;
 						$arreglo['exito'] = 0;
 					}
 					$arreglo['exitoInsercionSupervisor'] = 1;

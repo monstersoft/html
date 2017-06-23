@@ -1,17 +1,8 @@
 <?php
     session_start();
     if(isset($_SESSION['datos'])) {
-        echo '<script>alert("Si existe")</script>';
-        //header('Location: public/cliente/zonas.php');
-        include 'php/funciones.php';
-        $conexion = conectar();
-        $perfil = datosPerfil($_SESSION['correo']);
-        $datosRecientes = datosRecientes();
+        header('Location: public/cliente/zonas.php');
         
-    }
-    else {
-        //header('Location: index.php');
-        echo '<script>alert("No existe")</script>';
     }
 ?>
 <!DOCTYPE html>

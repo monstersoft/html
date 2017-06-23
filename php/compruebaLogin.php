@@ -1,5 +1,5 @@
 <?php
-    sleep(2);
+    sleep(1);
     include("conexion.php");
     $datos = array();
     $correo = $_POST['txtCorreo'];
@@ -17,6 +17,7 @@
         if($arreglo['esSupervisor'] == true) {
             $respuesta = iniciaSesionSupervisor($correo,$password);
             $respuesta['tipoUsuario'] = 'Supervisor';
+            session_start();
             $_SESSION['datos'] = $respuesta;
         }
     }
@@ -65,7 +66,6 @@
         if($resultado = mysqli_query($conexion,$consulta)) {
             $numero = mysqli_fetch_assoc($resultado);
             if($numero['cantidad'] == true) {
-                session_start();
                 $arreglo['correo'] = $correo;
                 $arreglo['titulo'] = 'Inicio de sesión';
                 $arreglo['mensaje'] = 'Bienvenidos '.$correo;
@@ -97,7 +97,6 @@
                 if($resultado = mysqli_query($conexion,$consulta)) {
                     $numero = mysqli_fetch_assoc($resultado);
                     if($numero['cantidad'] == true) {
-                        session_start();
                         $arreglo['correo'] = $correo;
                         $arreglo['titulo'] = 'Inicio de sesión';
                         $arreglo['mensaje'] = 'Bienvenidos '.$correo;
