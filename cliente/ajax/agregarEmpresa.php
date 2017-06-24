@@ -1,6 +1,6 @@
 <?php
 	include '../../php/conexion.php'; 
-	$name = strtoupper(utf8_decode($_POST['nombre']));
+    $name = strtoupper($_POST['nombre']);
 	$rut = strtoupper($_POST['rut']);
 	$email = strtolower($_POST['email']);
 	$celular = $_POST['celular'];
@@ -9,6 +9,7 @@
 
 	function verificaFormularioEmpresa($name,$rut,$email,$phone) {
 		$conexion = conectar();
+        mysqli_set_charset($conexion,"utf8");
 		$arreglo = array();
 		$consulta = "SELECT COUNT(*) AS nombres FROM empresas WHERE empresas.nombre = '$name'";
 		if($resultado = mysqli_query($conexion,$consulta)) {

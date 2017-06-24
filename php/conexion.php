@@ -9,9 +9,6 @@
         }
         
         mysqli_select_db($conexion,$nombre) or die ("No se encontró la base de datos");
-        
-        mysqli_set_charset($conexion,"utf-8");
-        
         return $conexion;
     }
 ?>

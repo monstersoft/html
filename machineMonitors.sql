@@ -1,10 +1,16 @@
+DROP DATABASE IF EXISTS machine_monitors;
+
+CREATE DATABASE machine_monitors;
+
+USE machine_monitors;
+
 CREATE TABLE clientes (
     idCliente INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     correo VARCHAR(60) DEFAULT NULL,
     password VARCHAR(12) DEFAULT NULL,
     empresa VARCHAR(45) DEFAULT NULL,
     cargo VARCHAR(45) DEFAULT NULL
-)ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_unicode_ci;
+);
 
 CREATE TABLE empresas (
     idEmpresa INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -12,7 +18,7 @@ CREATE TABLE empresas (
     nombre VARCHAR(45) DEFAULT NULL,
     correo VARCHAR(60) DEFAULT NULL,
     telefono INT(9) DEFAULT NULL
-)ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_unicode_ci;
+);
 
 CREATE TABLE clientes_empresas (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -20,14 +26,14 @@ CREATE TABLE clientes_empresas (
     idEmpresa INT NOT NULL,
     FOREIGN KEY (idCliente) REFERENCES clientes(idCliente) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (idEmpresa) REFERENCES empresas(idEmpresa) ON DELETE CASCADE ON UPDATE CASCADE
-)ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_unicode_ci;
+);
 
 CREATE TABLE zonas (
     idZona INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     idEmpresa INT NOT NULL,
     nombre VARCHAR(45),
     FOREIGN KEY (idEmpresa) REFERENCES empresas(idEmpresa) ON DELETE CASCADE ON UPDATE CASCADE
-)ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_unicode_ci;
+);
 
 CREATE TABLE supervisores (
     idSupervisor INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -36,7 +42,7 @@ CREATE TABLE supervisores (
     password VARCHAR(12) DEFAULT NULL,
     celular INT(9) DEFAULT NULL,
     status ENUM('habilitado','deshabilitado')
-)ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_unicode_ci;
+);
 
 CREATE TABLE supervisores_zonas (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -44,7 +50,7 @@ CREATE TABLE supervisores_zonas (
     idSupervisor INT NOT NULL,
     FOREIGN KEY (idZona) REFERENCES zonas(idZona) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (idSupervisor) REFERENCES supervisores(idSupervisor) ON DELETE CASCADE ON UPDATE CASCADE
-)ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_unicode_ci;
+);
 
 CREATE TABLE maquinas (
     idMaquina INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -54,7 +60,7 @@ CREATE TABLE maquinas (
     tara int(6) NOT NULL,
     cargaMaxima int(6) NOT NULL,
     FOREIGN KEY (idZona) REFERENCES zonas(idZona) ON DELETE CASCADE ON UPDATE CASCADE
-)ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_unicode_ci;
+);
 
 CREATE TABLE archivos (
 	idArchivo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -65,7 +71,7 @@ CREATE TABLE archivos (
     horaSubida TIME DEFAULT NULL,
     FOREIGN KEY (idSupervisor) REFERENCES supervisores(idSupervisor) ON DELETE SET NULL ON UPDATE SET NULL,
     FOREIGN KEY (idZona) REFERENCES zonas(idZona) ON DELETE CASCADE ON UPDATE CASCADE
-)ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_unicode_ci;
+);
 
 CREATE TABLE datos (
     idDato INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -82,7 +88,7 @@ CREATE TABLE datos (
     alturaPalaFrontal INT(3) DEFAULT NULL,
     alturaPalaTrasera INT(3) DEFAULT NULL,
     FOREIGN KEY (idArchivo) REFERENCES archivos(idArchivo) ON DELETE CASCADE ON UPDATE CASCADE
-)ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_unicode_ci;
+);
 
 CREATE TABLE resultados (
     idResultado INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -100,5 +106,5 @@ CREATE TABLE resultados (
     tRecorridos FLOAT DEFAULT NULL,
     mediciones INT DEFAULT NULL,
     FOREIGN KEY (idArchivo) REFERENCES archivos(idArchivo) ON DELETE CASCADE ON UPDATE CASCADE
-)ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_unicode_ci;
+);
 
