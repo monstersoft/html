@@ -37,6 +37,14 @@
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/menuBarra.css">
+    <style>
+        label {
+            font-family: 'Montserrat';
+        }
+        input {
+            font-family: 'Montserrat';
+        }
+    </style>
 </head>
 <body>
     <?php barraMenu($perfil,'contraseña'); ?>
