@@ -1,7 +1,8 @@
 <?php
     sleep(1);
 	include '../../php/conexion.php'; 
-	$name = strtoupper(utf8_decode($_POST['nombre']));
+	//$name = strtoupper(utf8_decode($_POST['nombre']));
+    $name = strtoupper($_POST['nombre']);
 	$id = $_POST['id'];
 	$conexion = conectar();
 	$arreglo = array();
