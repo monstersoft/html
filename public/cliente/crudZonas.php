@@ -10,6 +10,7 @@
         if($_SESSION['datos']['tipoUsuario'] == 'Cliente') {
             echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
             include '../../php/funciones.php';
+            $idEmpresa = $_GET['id'];
             $perfil = datosPerfil($_SESSION['datos']['correo']);
             $empresas = empresas();
             echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div>
