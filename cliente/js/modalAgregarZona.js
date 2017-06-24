@@ -48,6 +48,7 @@ $('.modalAgregarZona').on('click','#btnAñadirZona',function(){
             complete: function() {
                 desactivarLoaderBotones('fa-plus','fa-refresh');
             },
+            error: function(xhr) {console.log(xhr.responseText);},
         }).fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){
                 alert('No hay coneccion con el servidor');
