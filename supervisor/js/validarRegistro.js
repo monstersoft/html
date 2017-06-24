@@ -40,7 +40,7 @@ $(document).ready(function() {
         console.log(arreglo.length);
         if(arreglo.length == 0) {
             var data = $('#formularioConfirmarSupervisor').serialize();
-            var url = devuelveUrl('html/php/habilitarSupervisor.php');
+            var url = devuelveUrl('html/supervisor/ajax/habilitarRegistro.php');
             $.ajax({
                 url: url,
                 type: 'POST',

@@ -78,7 +78,7 @@
         </div>  
         <script src="../../recursos/jquery/jquery.min.js"></script>
         <script src="../../recursos/semantic/semantic.min.js"></script>
-        <script src="../../js/validaConfirmacion.js"></script>	
+        <script src="../../js/validarRegistro.js"></script>	
         <script src="../../js/funciones.js"></script>
         <script src="../../js/compruebaInputs.js"></script>
         <script src="../../js/mensajes.js"></script>

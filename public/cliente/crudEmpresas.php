@@ -77,7 +77,7 @@
     </style>
 </head>
 <body>
-    <?php barraMenu($perfil['correo'],$perfil['empresa'],'registro'); ?>
+    <?php barraMenu($perfil,'registro'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
     <?php
         if($empresas['cantidadEmpresas'] == 0) {echo '<div class="alert"> <div class="row vertical-align"> <div class="col-xs-2"> <i class="fa fa-exclamation-circle fa-3x"></i> </div><div class="col-xs-10"> <strong class="montserrat">No existen empresas </strong>, debes agregar una empresa presionando el botón <strong> Más </strong> ubicado en la parte inferior derecha de la pantalla </div></div></div>';}
@@ -117,7 +117,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <a href="registroZonas.php?id='.$value['idEmpresa'].'" class="boton">Ver Zonas</a>
+                <a href="crudZonas.php?id='.$value['idEmpresa'].'" class="boton">Ver Zonas</a>
             </div>
         </div>';
             }
@@ -239,7 +239,6 @@
     <script src="../../js/mensajes.js"></script>
     <script>
         $(document).ready(function(){
-            var exito = 0;
             function explode(){
               $('#loader').css('display','none');
               $('#content').fadeIn().css('display','block');

@@ -15,7 +15,7 @@
                         <br><span id="nameProfile">'.$perfil['empresa'].'</span></li>'; 
                     if($nombrePagina == 'zonas') { echo '
                         <li class="selected"><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                        <li><a href="registroEmpresas.php"><i class="fa fa fa-cog icons"></i>Ajustes</a></li>
+                        <li><a href="crudEmpresas.php"><i class="fa fa fa-cog icons"></i>Ajustes</a></li>
                         <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
                         <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                         <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
@@ -23,7 +23,7 @@
                     }
                     if($nombrePagina == 'registro') { echo '
                         <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                        <li class="selected"><a href="registroEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
+                        <li class="selected"><a href="crudEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
                         <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
                         <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                         <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
@@ -31,7 +31,7 @@
                     }
                     if($nombrePagina == 'contacto') { echo '
                         <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                        <li><a href="registroEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
+                        <li><a href="crudEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
                         <li class="selected"><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
                         <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                         <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
@@ -39,7 +39,7 @@
                     }
                     if($nombrePagina == 'contraseña') { echo '
                         <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                        <li><a href="registroEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
+                        <li><a href="crudEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
                         <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
                         <li class="selected"><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                         <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
@@ -47,7 +47,7 @@
                     }
                     if($nombrePagina == 'cerrar') { echo '
                         <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                        <li><a href="registroEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
+                        <li><a href="crudEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
                         <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
                         <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                         <li class="selected"><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
@@ -96,7 +96,7 @@
         mysqli_close($conexion);
         return $arreglo;
     }
-    //registroZonas.php
+    //crudZonas.php
     function cantidadZonas($idEmpresa) {
     $conexion = conectar();
     $cantidad;

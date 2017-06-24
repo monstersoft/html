@@ -21,7 +21,7 @@
 				$consulta = "INSERT INTO supervisores (nombreSupervisor,correoSupervisor,password,celular,status) VALUES ('$nombre','$email',null,null,2)";
 				if(mysqli_query($conexion,$consulta)) {
 					$ultimoId = mysqli_insert_id($conexion);
-					$link = 'http://localhost/html/cliente/ajax/confirmarRegistro.php?id='.$ultimoId;
+					$link = 'http://localhost/html/public/supervisor/confirmarRegistro.php?id='.$ultimoId;
 					$insercionesExitosassupervisores_zonas = 0;
 					$insercionesFallidassupervisores_zonas = 0;
 					foreach ($zonas as $value) {

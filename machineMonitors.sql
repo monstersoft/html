@@ -26,7 +26,7 @@ CREATE TABLE zonas (
     idZona INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     idEmpresa INT NOT NULL,
     nombre VARCHAR(45),
-    FOREIGN KEY (idEmpresa) REFERENCES empresas(idEmpresa)
+    FOREIGN KEY (idEmpresa) REFERENCES empresas(idEmpresa) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE supervisores (
@@ -60,7 +60,7 @@ CREATE TABLE archivos (
 	idArchivo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     idSupervisor INT DEFAULT NULL,
     idZona INT DEFAULT NULL,
-    fechaSubidad DATE DEFAULT NULL,
+    fechaSubida DATE DEFAULT NULL,
     fechaDatos DATE DEFAULT NULL,
     horaSubida TIME DEFAULT NULL,
     FOREIGN KEY (idSupervisor) REFERENCES supervisores(idSupervisor) ON DELETE SET NULL ON UPDATE SET NULL,

@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="../../css/zonas.css">
 </head>
 <body>
-    <?php barraMenu($perfil['correo'],$perfil['empresa'],'registro'); ?>
+    <?php barraMenu($perfil,'registro'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
     <?php
@@ -303,7 +303,6 @@
                 $('.sTwo').toggleClass('displaySticky');
             });
             $('.modal').on('click','.cancelar',function(){
-                console.log(exito);
                 if(exito == 1) {
                     setTimeout(function(){location.reload()});
                 }
@@ -320,7 +319,10 @@
         $( ".select2-multiple" ).select2( {
             placeholder: "Seleccionar",
             width: null,
-            containerCssClass: ':all:'
+            containerCssClass: ':all:',
+            closeOnSelect: false,
+            tags: true,
+            allowClear: true
         } );
         $( ".select2-multiple" ).on( "select2:open", function() {
             if ( $( this ).parents( "[class*='has-']" ).length ) {

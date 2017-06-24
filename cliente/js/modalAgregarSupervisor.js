@@ -1,11 +1,10 @@
 var exito = 0;
-$('.modalAgregarSupervisor').on('click','.volverAgregar',function(){
+$('.modalAgregarSupervisor').on('click','#btnVolverSupervisor',function(){
     $('#formularioAgregarSupervisor')[0].reset();
+    console.log($('#formularioAgregarSupervisor')[0][2]);
+    $('#zonasAsociadas').val('');
     $('.alert').remove();
-    $('.volverAgregar').remove();
-    $('.cancelar').remove();
-    $('.clearfix').append('<button type="submit" class="btn btn-primary pull-right" id="btnAñadirSupervisor"><i class="cargar fa fa-plus"></i>Agregar</button>');
-    $('.clearfix').append('<button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>');
+    $('#btnVolverSupervisor').removeClass('btn-success').addClass('btn-primary').attr('id','btnAñadirSupervisor').html('<i class="cargar fa fa-repeat"></i>Agregar');
 });
 $('.agregarSupervisor').click(function(){
     $.ajax({
@@ -66,13 +65,9 @@ $('.modalAgregarSupervisor').on('click','#btnAñadirSupervisor',function(){
               activarLoaderBotones('fa-plus','fa-refresh');
             },
             success: function(arreglo) {
-                console.log(JSON.stringify(arreglo));
                 if(arreglo.exito == 1) {
                     successMessage('Registro realizado con éxito ','se ha enviado un e-mail al supervisor para que habilite su cuenta');
-                    $('.cancelar').remove();
-                    $('#btnAñadirSupervisor').remove();
-                    $('.clearfix').append('<button type="button" class="btn btn-success pull-right volverAgregar"><i class="fa fa-repeat"></i>Volver a Agregar</button>');
-                    $('.clearfix').append('<button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>');
+                    $('#btnAñadirSupervisor').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverSupervisor').html('<i class="cargar fa fa-repeat"></i>Volver a agregar');
                     exito = 1;
                 }
                 else {
