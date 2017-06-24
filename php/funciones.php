@@ -3,8 +3,8 @@
     // barra y menu
     function barraMenu($perfil,$nombrePagina) {
         if(sizeof($perfil) == 0)
-            echo '<div class="alert alert-danger"> <div class="row vertical-align"> <div class="col-xs-2"> <i class="fa fa-grav fa-4x"></i> </div><div class="col-xs-10"> <strong class="montserrat">No hay ususarios en la BD </strong>el arreglo <strong>Perfil</strong> está vacío</div></div></div>';
-        else { 
+            echo '<div class="alert alert-danger"> <div class="row vertical-align"> <div class="col-xs-2"> <i class="fa fa-grav fa-4x"></i> </div><div class="col-xs-10"> <strong class="montserrat">No hay ususarios </strong>el arreglo <strong>Perfil</strong> está vacío</div></div></div>';
+        else { echo
             '<div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a>
                 <p class="editarZona">Machine Monitors</p>
             </div>
