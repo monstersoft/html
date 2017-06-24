@@ -1,7 +1,6 @@
 var exito = 0;
 $('.modalAgregarSupervisor').on('click','.volverAgregar',function(){
     $('#formularioAgregarSupervisor')[0].reset();
-    $("#zonasAsociadas").find("option[class='dinamico']").remove();
     $('.alert').remove();
     $('.volverAgregar').remove();
     $('.cancelar').remove();
@@ -40,7 +39,7 @@ $('.agregarSupervisor').click(function(){
         });
     $('.modalAgregarSupervisor').modal();
 });
-$('#btnAñadirSupervisor').click(function(){
+$('.modalAgregarSupervisor').on('click','#btnAñadirSupervisor',function(){
     $('.alert').remove();
     var arreglo = new Array();
     var nombre = $('#nombreAgregarSupervisor').val();
@@ -48,8 +47,8 @@ $('#btnAñadirSupervisor').click(function(){
     var numberErrors = 0;
     if(isEmpty(nombre))
         arreglo.push('<li>El campo nombre es obigatorio</li>');
-    if(maxLength(nombre,30))
-        arreglo.push('<li>El campo nombre debe tener máximo 30 caracteres</li>');
+    if(maxLength(nombre,45))
+        arreglo.push('<li>El campo nombre debe tener máximo 45 caracteres</li>');
     if(isEmpty(email))
         arreglo.push('<li>El campo correo es obigatorio</li>');
     if(isMail(email))

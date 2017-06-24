@@ -80,7 +80,21 @@
                                 echo '<div class="col-xs-12 cardContent">No existen supervisores asociados a esta zona</div>';
                               else {
                                     foreach(supervisores($value['idZona']) as $value) {
-                                        echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><a href="supervisor.php" class="desvincularSupervisor text-center montserrat">'.$value['nombreSupervisor'].'</a></div><div class="pull-right"><a href="#" class="asignarZonas">Asignar nueva zona</a><a class="desvincularSupervisor" href="#">Desvincular</a> </div></div>';
+                                        echo '
+                                        <div class="col-xs-12 col-md-6 cardContent a">
+                                            <div class="flex-parent">
+                                                <i class="fa fa-user-circle pull-left"></i>
+                                                <div class="long-and-truncated-with-child-corrected">
+                                                    <a href="supervisor.php" id="'.$value['idSupervisor'].'" class=" montserrat">'.$value['nombreSupervisor'].'</a>
+                                                </div>
+                                                <br>
+                                                <div class="links btn-group">
+                                                    <button type="button" id="'.$value['idSupervisor'].'" class="btn btn-link btn-xs asignarZonas montserrat">Asignar</button>
+                                                    <button type="button" id="'.$value['idSupervisor'].'" class="btn btn-link btn-xs desvincularSupervisor montserrat">Desvincular</button>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        ';
                                     }
 
                               } echo '

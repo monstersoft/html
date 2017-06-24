@@ -1,3 +1,28 @@
+.flex-parent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /*justify-content: center;*/
+    align-items: center;
+    padding: 0px;
+    margin: 5px 5px 20px 5px;
+}
+.long-and-truncated-with-child-corrected {
+    flex: 1;
+    min-width: 0; /* or some value */
+}
+.long-and-truncated-with-child-corrected > a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+.links {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
 .tableStyle {
     width: 100%;    
 }
@@ -57,11 +82,21 @@ ul li {
     text-align: center;
 }
 
+
+
 @media (min-width: 970px) {
     .unDisplayColumn {
         display: table-cell;
     }
      .btnPlus {
         display: none;
+    }
+}
+@media (min-width: 1400px) {
+    .flex-parent {
+        margin: 2px 2px 2px 2px;
+    }
+    .links {
+        position: static;
     }
 }

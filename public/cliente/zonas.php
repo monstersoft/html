@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="../../css/zonasCliente.css">
 </head>
 <body>
-    <?php barraMenu($perfil['correo'],$perfil['empresa'],'zonas'); ?>
+    <?php barraMenu($perfil,'zonas'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
            <?php
                 if($zonas['cantidadZonas'] == 0) {echo '<div class="alert"> <div class="row vertical-align"> <div class="col-xs-2"> <i class="fa fa-exclamation-circle fa-3x"></i> </div><div class="col-xs-10"> <strong class="montserrat">No existen zonas </strong>, debes agregar una empresa y luego una zona en el menú<strong> Ajustes </strong>de la barra de navegación. </div></div></div>';}
