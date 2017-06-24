@@ -365,6 +365,7 @@
     }
     function empresas() {
         $conexion = conectar();
+        mysqli_set_charset($conexion,'utf8');
         $arreglo = array();
         $arreglo['empresas'] = array();
         $consulta = 'SELECT COUNT(empresas.idEmpresa) AS cantidadEmpresas FROM empresas';
@@ -375,7 +376,7 @@
                 $consulta = 'SELECT * FROM empresas';
                 if($resultado = mysqli_query($conexion,$consulta)) {
                     while($r = mysqli_fetch_array($resultado)) {
-                        array_push($arreglo['empresas'],array('idEmpresa' => $r['idEmpresa'],'nombre' => utf8_encode($r['nombre']), 'rut' => $r['rut'], 'correo' => $r['correo'], 'telefono' => $r['telefono'],));
+                        array_push($arreglo['empresas'],array('idEmpresa' => $r['idEmpresa'],'nombre' => $r['nombre'], 'rut' => $r['rut'], 'correo' => $r['correo'], 'telefono' => $r['telefono']));
                     }
                 
                 }
