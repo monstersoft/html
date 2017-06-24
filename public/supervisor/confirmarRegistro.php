@@ -49,19 +49,19 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
-                                <input type="text" name="nuevoPassword" id="nuevoPassword" placeholder="Nueva Contraseña">
+                                <input type="password" name="nuevoPassword" id="nuevoPassword" placeholder="Nueva Contraseña" value="123456">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="repeat icon"></i>
-                                <input type="text" name="confirmarPassword" id="confirmarPassword" placeholder="Confirmar Contraseña">
+                                <input type="password" name="confirmarPassword" id="confirmarPassword" placeholder="Confirmar Contraseña" value=123456>
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="phone icon"></i>
-                                <input type="text" name="telefono" id="telefono" placeholder="Teléfono Móvil - 9 500 78 12">
+                                <input type="text" name="telefono" id="telefono" placeholder="Teléfono Móvil - 9 9 500 78 12" value="995007812">
                             </div>
                         </div>
                         <?php 
@@ -71,14 +71,13 @@
                             <div id="btnConfirmar" style="color: white;background: #262626;" class="ui fluid large submit button">Confirmar</div>
                         </div>
                         <div class="message" style="margin: 5px 0px 0px 0px"></div>
-                        <div class="messageError" style="margin: 5px 0px 0px 0px"></div>
                     </div>
                 </form>
             </div>
         </div>  
         <script src="../../recursos/jquery/jquery.min.js"></script>
         <script src="../../recursos/semantic/semantic.min.js"></script>
-        <script src="../../js/validarRegistro.js"></script>	
+        <script src="../../supervisor/js/validarRegistro.js"></script>	
         <script src="../../js/funciones.js"></script>
         <script src="../../js/compruebaInputs.js"></script>
         <script src="../../js/mensajes.js"></script>

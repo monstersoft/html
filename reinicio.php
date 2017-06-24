@@ -32,7 +32,7 @@
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
-                                <i class="clone icon"></i>
+                                <i class="repeat icon"></i>
                                 <input type="text" id="txtCorreo" placeholder="Confirmar contraseña">
                             </div>
                         </div>

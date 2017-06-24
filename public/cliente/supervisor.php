@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    if(isset($_SESSION['datos'])){
+        include("../../php/funciones.php");
+        $perfil = datosPerfil($_SESSION['datos']['correo']);
+    }
+    else {
+        header("Location:../../index.php");
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>

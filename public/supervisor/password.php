@@ -1,23 +1,23 @@
 <?php
     session_start();
-    if(isset($_SESSION['datos'])) {
-        if($_SESSION['datos']['tipoUsuario'] == 'Supervisor') {
+    if(isset($_SESSION['datos'])){
+        if($_SESSION['datos']['tipoUsuario'] == 'Cliente') {
             echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
             $_SESSION = [];
             session_destroy();
             header('Location: ../../index.php');
         }
-        if($_SESSION['datos']['tipoUsuario'] == 'Cliente') {
+        if($_SESSION['datos']['tipoUsuario'] == 'Supervisor') {
             echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
-            include '../../php/funciones.php';
-            $conexion = conectar();
+            include("../../php/funcionesSupervisor.php");
             $perfil = datosPerfil($_SESSION['datos']['correo']);
-            $zonas = datosRecientes();
+            $email = $_SESSION['datos']['correo'];
+            echo '<input id="idSupervisor" type="text" value="'.$perfil["id"].'" hidden>';
         }
     }
     else {
         echo '<script>console.log("No existe la sesión")</script>';
-        header('Location: ../../index.php');
+        header("Location:../../index.php");
     }
 ?>
 <!DOCTYPE html>

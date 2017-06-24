@@ -1,15 +1,22 @@
 <?php
     session_start();
     if(isset($_SESSION['datos'])) {
-        echo '<script>console.log("EXISTE A VARIABLE")</script>';
-        include '../../php/funciones.php';
-        $conexion = conectar();
-        $perfil = datosPerfil($_SESSION['datos']['correo']);
-        $zonas = datosRecientes();
-        
+        if($_SESSION['datos']['tipoUsuario'] == 'Supervisor') {
+            echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
+            $_SESSION = [];
+            session_destroy();
+            header('Location: ../../index.php');
+        }
+        if($_SESSION['datos']['tipoUsuario'] == 'Cliente') {
+            echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
+            include '../../php/funciones.php';
+            $conexion = conectar();
+            $perfil = datosPerfil($_SESSION['datos']['correo']);
+            $zonas = datosRecientes();
+        }
     }
     else {
-        echo '<script>console.log("NO EXISTE A VARIABLE")</script>';
+        echo '<script>console.log("No existe la sesión")</script>';
         header('Location: ../../index.php');
     }
 ?>

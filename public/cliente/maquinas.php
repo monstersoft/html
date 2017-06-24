@@ -1,10 +1,26 @@
 <?php
-    include '../../php/funciones.php';
-    $perfil = datosPerfil('usuario@arauco.cl');
-    $fecha = $_POST['fechaRecienteDatos'];
-    $idZona = $_POST['idZona'];
-    $idArchivo = $_POST['idArchivo'];
-    $maquinas = maquinasPorFecha($idArchivo,$fecha);
+    session_start();
+    if(isset($_SESSION['datos'])) {
+        if($_SESSION['datos']['tipoUsuario'] == 'Supervisor') {
+            echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
+            $_SESSION = [];
+            session_destroy();
+            header('Location: ../../index.php');
+        }
+        if($_SESSION['datos']['tipoUsuario'] == 'Cliente') {
+            echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
+            include '../../php/funciones.php';
+            $perfil = datosPerfil($_SESSION['datos']['correo']);
+            $fecha = $_POST['fechaRecienteDatos'];
+            $idZona = $_POST['idZona'];
+            $idArchivo = $_POST['idArchivo'];
+            $maquinas = maquinasPorFecha($idArchivo,$fecha);
+        }
+    }
+    else {
+        echo '<script>console.log("No existe la sesión")</script>';
+        header('Location: ../../index.php');
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,7 +86,7 @@
     </style>
 </head>
 <body>
-    <?php barraMenu($perfil['correo'],$perfil['empresa'],'registro'); ?>
+    <?php barraMenu($perfil,'registro'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
 <?php

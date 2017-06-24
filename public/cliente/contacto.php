@@ -1,8 +1,22 @@
 <?php
-	include '../../php/funciones.php';
-	$conexion = conectar();
-    $perfil = datosPerfil('usuario@arauco.cl');
-    $datosRecientes = datosRecientes();
+    session_start();
+    if(isset($_SESSION['datos'])) {
+        if($_SESSION['datos']['tipoUsuario'] == 'Supervisor') {
+            echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
+            $_SESSION = [];
+            session_destroy();
+            header('Location: ../../index.php');
+        }
+        if($_SESSION['datos']['tipoUsuario'] == 'Cliente') {
+            echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
+            include '../../php/funciones.php';
+            $perfil = datosPerfil($_SESSION['datos']['correo']);
+        }
+    }
+    else {
+        echo '<script>console.log("No existe la sesión")</script>';
+        header('Location: ../../index.php');
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +37,7 @@
     <link rel="stylesheet" href="../../css/menuBarra.css">
 </head>
 <body>
-    <?php barraMenu($perfil['correo'],$perfil['empresa'],'contacto'); ?>
+    <?php barraMenu($perfil,'contacto'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
         <div class="col-xs-12" style="margin-top: 20px;">

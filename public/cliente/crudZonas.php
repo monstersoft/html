@@ -1,17 +1,25 @@
 <?php
     session_start();
-    if(isset($_SESSION['datos'])){
-        include("../../php/funciones.php");
-        $idEmpresa = $_GET['id'];
-        $perfil = datosPerfil($_SESSION['datos']['correo']);
-        $empresas = empresas();
-        echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div>
-        <div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div>
-        <div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>';
+    if(isset($_SESSION['datos'])) {
+        if($_SESSION['datos']['tipoUsuario'] == 'Supervisor') {
+            echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
+            $_SESSION = [];
+            session_destroy();
+            header('Location: ../../index.php');
+        }
+        if($_SESSION['datos']['tipoUsuario'] == 'Cliente') {
+            echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
+            include '../../php/funciones.php';
+            $perfil = datosPerfil($_SESSION['datos']['correo']);
+            $empresas = empresas();
+            echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div>
+            <div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div>
+            <div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>';
+        }
     }
     else {
-        echo '<script>console.log("NO EXISTE A VARIABLE")</script>';
-        header("Location:../../index.php");
+        echo '<script>console.log("No existe la sesión")</script>';
+        header('Location: ../../index.php');
     }
 ?>
 <!DOCTYPE html>

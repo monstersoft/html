@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if(isset($_SESSION['datos'])){
+        include("../../php/funciones.php");
+    }
+    else {
+        header("Location:../../index.php");
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>

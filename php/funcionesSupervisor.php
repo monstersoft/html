@@ -1,44 +1,45 @@
 <?php 
     include('conexion.php');
-    function barraMenu($correo,$empresa,$nombrePagina) { echo 
-        '<div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a>
-            <p class="editarZona">Machine Monitors</p>
-        </div>
-        <nav class="unDisplayNav">
-            <ul>
-                <li id="profile"><i class="fa fa-user fa-4x" id="iconProfile"></i>
-                    <br><span id="titleProfile">'.$correo.'</span>
-                    <br><span id="nameProfile">'.$empresa.'</span></li>'; 
+    function barraMenu($perfil,$nombrePagina) {
+            echo
+            '<div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a>
+                <p>Machine Monitors</p>
+            </div>
+            <nav class="unDisplayNav">
+                <ul>
+                    <li id="profile"><i class="fa fa-user fa-4x" id="iconProfile"></i>
+                        <br><span id="titleProfile">'.$perfil['correo'].'</span>
+                        <br><span id="nameProfile">'.$perfil['empresa'].'</span></li>'; 
                 if($nombrePagina == 'zonas') { echo '
-                    <li class="selected"><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                    <li class="selected"><a href="panel.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
                     <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
                     <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                     <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
                     
                 }
                 if($nombrePagina == 'contacto') { echo '
-                    <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                    <li class="selected"><i class="fa fa-send icons"></i>Contacto</a></li>
+                    <li><a href="panel.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                    <li class="selected"><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
                     <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                     <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
                     
                 }
                 if($nombrePagina == 'contraseña') { echo '
-                    <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                    <li><a href="panel.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
                     <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
                     <li class="selected"><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                     <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
                     
                 }
                 if($nombrePagina == 'cerrar') { echo '
-                    <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                    <li><a href="panel.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
                     <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
                     <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
                     <li class="selected"><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
                     
                 } echo '
-            </ul>
-        </nav>';
+                </ul>
+               </nav>';
     }
     function datosPerfil($correo) {
         $arreglo = array();
@@ -46,8 +47,8 @@
         $consulta = "SELECT supervisores.idSupervisor AS id, supervisores.correoSupervisor AS correo, empresas.nombre AS empresa
                         FROM empresas
                         LEFT JOIN zonas ON empresas.idEmpresa = zonas.idEmpresa
-                        LEFT JOIN supervisoreszonas ON zonas.idZona = supervisoreszonas.idZona
-                        LEFT join supervisores ON supervisoreszonas.idSupervisor = supervisores.idSupervisor
+                        LEFT JOIN supervisores_zonas ON zonas.idZona = supervisores_zonas.idZona
+                        LEFT JOIN supervisores ON supervisores_zonas.idSupervisor = supervisores.idSupervisor
                         WHERE supervisores.correoSupervisor = '$correo'
                         GROUP BY supervisores.idSupervisor";
         if($resultado = mysqli_query($conexion,$consulta)) {
@@ -62,8 +63,8 @@
         $arreglo = array();
         $consulta = "SELECT zonas.idZona, zonas.nombre
                     FROM zonas
-                    LEFT JOIN supervisoreszonas ON zonas.idZona = supervisoreszonas.idZona
-                    LEFT JOIN supervisores ON supervisoreszonas.idSupervisor = supervisores.idSupervisor
+                    LEFT JOIN supervisores_zonas ON zonas.idZona = supervisores_zonas.idZona
+                    LEFT JOIN supervisores ON supervisores_zonas.idSupervisor = supervisores.idSupervisor
                     WHERE supervisores.correoSupervisor = '$correo'";
         if($resultado = mysqli_query($conexion,$consulta)) {
             while($r = mysqli_fetch_array($resultado)) {
@@ -105,8 +106,8 @@
         $arr = array();
         $qry = "SELECT zonas.idZona, supervisores.idSupervisor, supervisores.nombreSupervisor, supervisores.correoSupervisor, supervisores.celular, supervisores.status, supervisores.fechaMailEnviado 
                      FROM zonas 
-                     LEFT JOIN supervisoreszonas ON zonas.idZona = supervisoreszonas.idZona 
-                     LEFT JOIN supervisores ON supervisoreszonas.idSupervisor = supervisores.idSupervisor 
+                     LEFT JOIN supervisores_zonas ON zonas.idZona = supervisores_zonas.idZona 
+                     LEFT JOIN supervisores ON supervisores_zonas.idSupervisor = supervisores.idSupervisor 
                      WHERE zonas.idZona = '$idZona'"; 
         if($res = mysqli_query($con,$qry)) {
             while($r = mysqli_fetch_array($res)) {
@@ -178,5 +179,9 @@
         }
         mysqli_close($conexion);
         return $arreglo;
+    }
+
+    function debug($var) { 
+        echo "<pre>"; print_r($var); echo "</pre>";
     }
 ?>
