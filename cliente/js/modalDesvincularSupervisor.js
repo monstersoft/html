@@ -1,35 +1,34 @@
+var exito = 0;
 $('.desvincularSupervisor').click(function(){
-    $('#idZonaDesvincularSupervisor').val($(this).attr('id'));
-    $('#idSupervisorDesvincularSupervisor').val($(this).attr('id'));
+    var ides = $(this).attr('id').split('-');
+    $('#idZonaDesvincularSupervisor').val(ides[0]);
+    $('#idSupervisorDesvincularSupervisor').val(ides[1]);
     $('.modalDesvincularSupervisor').modal();
 });
-$('#btnDesvincularSupervisor').click(function(){
-    /*$('.alert').remove();
-    var data = $('#formularioDesvincularSupervisor').serialize();
-    var url = devuelveUrl('cliente/ajax/eliminarZona.php');
+$('.modalDesvincularSupervisor').on('click','#btnDesvincularSupervisor',function(){
+    $('.alert').remove();
     $.ajax({
-        url: url,
+        url: devuelveUrl('cliente/ajax/desvincularSupervisor.php'),
         type: 'POST',
-        data: data,
+        data: $('#formularioDesvincularSupervisor').serialize(),
         dataType: 'json',
         cache: false,
         beforeSend: function() {
-          activarLoaderBotones('fa-trash','fa-refresh');
+            
+            activarLoaderBotones('fa-remove','fa-refresh');
         },
-        success: function(returnedData) {
-            console.log(JSON.stringify(returnedData));
-            /*if(returnedData.exito == 1) {
-                successMessage('Registro realizado con éxito','Redireccionado al panel de empresas');
-                $('.cancelar').remove();
-                $('#btnAñadirEmpresa').remove();
-                setTimeout(function(){location.reload()}, 3000);
+        success: function(arreglo) {
+            if(arreglo.exito == 1) {
+                successMessage('Desvinculación con éxito,',' se ha desvinculado al supervisor de la zona');
+                $('#btnDesvincularSupervisor').remove();
+                exito = 1;
             }
             else {
-                warningMessage(returnedData.msg);
+                $('.message').html('<div class="alert alert-warning"><ul>Error, debes comunicarte con el administrador del sistema</ul></div>');
             }
         },
         complete: function() {
-            desactivarLoaderBotones('fa-trash','fa-refresh');
+            desactivarLoaderBotones('fa-plus','fa-refresh');
         },
         error: function(xhr) {console.log(xhr.responseText);}
     }).fail(function( jqXHR, textStatus, errorThrown ){
@@ -48,5 +47,5 @@ $('#btnDesvincularSupervisor').click(function(){
         } else {
             alert('Error desconocido');
         }
-    });*/
+    });
 });

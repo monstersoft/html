@@ -1,8 +1,8 @@
 $('#btnReestablecer').click(function(){
-            //msg({mensaje: 'Se ha enviado un e-mail al correo ingresado',titulo: 'Correo enviado',accion: 'success'});
             msg({mensaje: 'Se ha enviado un e-mail al correo ingresado',titulo: 'Correo enviado',accion: 'success'});
-            /*$.ajax({                  
-            url: 'php/reestablecer.php',
+            console.log(devuelveUrl('ajax/generaLink.php'));
+            $.ajax({                  
+            url: 'ajax/generaLink.php',
             data: {txtCorreo: $('#txtCorreo').val()},
             type: "POST",
             dataType: "json",
@@ -31,7 +31,7 @@ $('#btnReestablecer').click(function(){
             } else {
                 alert('Error desconocido, debes comunicarte con el administrador');
             }
-        });*/
+        });
 });
 function msg(mensaje) {
 	if(mensaje.accion == 'warning')

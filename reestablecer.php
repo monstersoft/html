@@ -40,5 +40,7 @@
         <script src="recursos/toast/toast.js"></script>
         <script src="recursos/hammer/hammer.min.js"></script>
         <script src="js/reestablecer.js"></script>
+        <script src="js/funciones.js"></script>
+        <script src="js/compruebaInputs.js"></script>
     </body>
 </html>

@@ -94,12 +94,11 @@
                                             <div class="flex-parent">
                                                 <i class="fa fa-user-circle pull-left"></i>
                                                 <div class="long-and-truncated-with-child-corrected">
-                                                    <a href="supervisor.php" id="'.$value['idSupervisor'].'" class=" montserrat">'.$value['nombreSupervisor'].'</a>
+                                                    <a href="supervisor.php?id='.$value['idSupervisor'].'" id="'.$value['idSupervisor'].'" class=" montserrat">'.$value['nombreSupervisor'].'</a>
                                                 </div>
                                                 <br>
                                                 <div class="links btn-group">
-                                                    <button type="button" id="'.$value['idSupervisor'].'" class="btn btn-link btn-xs asignarZonas montserrat">Asignar</button>
-                                                    <button type="button" id="'.$value['idSupervisor'].'" class="btn btn-link btn-xs desvincularSupervisor montserrat">Desvincular</button>
+                                                    <button type="button" id="'.$value['idZona'].'-'.$value['idSupervisor'].'" class="btn btn-link btn-xs desvincularSupervisor montserrat">Desvincular</button>
                                                 </div> 
                                             </div>
                                         </div>
@@ -235,19 +234,19 @@
                 <div class="modal-header">
                     <i class="fa fa-globe"></i>Desvincular Supervisor
                 </div>
-                <div class="modal-body"> ¿Estás seguro que quieres desvincular a este supervisor de esta zona?.
+                <div class="modal-body"> <div class="montserrat text-center">¿Estás seguro que quieres desvincular a este supervisor de esta zona?</div>
                     <form id="formularioDesvincularSupervisor">
-                        <div class="form-group">
+                        <div style="display: none;" class="form-group">
                             <label>ID ZONA</label>
-                            <input type="text" class="form-control" name="idZona" id="idEliminarZona">
+                            <input type="text" class="form-control" name="idZona" id="idZonaDesvincularSupervisor">
                         </div>
-                        <div class="form-group">
+                        <div style="display: none;" class="form-group">
                             <label>ID SUPERVISOR</label>
-                            <input type="text" class="form-control" name="idZona" id="idEliminarZona">
+                            <input type="text" class="form-control" name="idSupervisor" id="idSupervisorDesvincularSupervisor">
                         </div>
                     </form>
                     <div class="clearfix">
-                        <button type="submit" class="btn btn-primary pull-right" id="btnEliminarEmpresa"><i class="cargar fa fa-remove"></i>Desvincular</button>
+                        <button type="submit" class="btn btn-primary pull-right" id="btnDesvincularSupervisor"><i class="cargar fa fa-remove"></i>Desvincular</button>
                         <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
@@ -284,7 +283,6 @@
                         <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
-                    <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
                 </div>
             </div>
         </div>

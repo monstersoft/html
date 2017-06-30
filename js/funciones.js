@@ -10,11 +10,11 @@ function upperCase(value) {
     return cadena;
 }
 function activarLoaderBotones(iconoEstatico,iconoDinamico) {
-	$('.btn').addClass('disabled');
+	$('.btn').attr('disabled','disabled');
 	$('.cargar').removeClass(iconoEstatico).addClass(iconoDinamico+' fa fa-spin');
 }
 function desactivarLoaderBotones(iconoEstatico,iconoDinamico) {
-	$('.btn').removeClass('disabled');
+	$('.btn').removeAttr('disabled');
 	$('.cargar').removeClass(iconoDinamico+' fa-spin').addClass(iconoEstatico);
 }
 function devuelveUrl(pathSinCarpetaRaiz) {

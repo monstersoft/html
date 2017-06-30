@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="../../css/dashboard.css">
 </head>
 <body>
-    <?php barraMenu($perfil['correo'],$perfil['empresa'],'zonas'); ?>
+    <?php barraMenu($perfil,'zonas'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
     <?php echo
         '<div class="col-xs-12 col-sm-4 col-md-2 card">
