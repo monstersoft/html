@@ -1,3 +1,18 @@
+<?php 
+    if(isset($_GET['token'])) {
+        $token = $_GET['token'];
+        if(!(strlen($token) == 65 and (substr($token, -1) == 'c' or substr($token, -1) == 's'))) 
+            header('Location: '.$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/html');
+        else {
+            include ('php/funciones.php');
+            $datos = valida($token,substr($token,-1));
+            if($datos['cantidadToken'] == 0)
+                header('Location: '.$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/html');
+        }
+    }
+    else
+        header('Location: '.$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/html');
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,6 +25,16 @@
         <link rel="stylesheet" href="recursos/toast/toast.css">
         <link rel="stylesheet" href="recursos/awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/index.css">
+        <style>
+            .cent {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+        
+        </style>
     </head>
     <body>
         <div class="ui aligned center aligned grid">
@@ -22,20 +47,33 @@
                     </div>
                 </h2>
                 <h2 class="titulo montserrat">Reestablecer Contraseña</h2>
-                <form class="ui form">
+                <form class="ui form" id="formularioReinicio">
                     <div class="ui segment" >
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
-                                <input type="text" id="txtCorreo" placeholder="Nueva contraseña">
+                                <input type="text" id="nuevaContraseña" placeholder="Nueva contraseña">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="repeat icon"></i>
-                                <input type="text" id="txtCorreo" placeholder="Confirmar contraseña">
+                                <input type="text" id="contraseñaConfirmada" placeholder="Confirmar contraseña">
                             </div>
                         </div>
+                        <?php 
+                            if($datos['cantidadToken'] == 1 and $datos['tipoUsuario'] == 'Cliente') {
+                                echo '<div class="field "><div class="ui left icon input"><i class="hide icon"></i><input type="text" value="'.$datos['tipoUsuario'].'" name="tipoUsuario"></input></div></div>';
+                                echo '<div class="field "><div class="ui left icon input"><i class="hide icon"></i><input type="text" value="'.$datos['idUsuario'].'" name="id"></input></div></div>';
+                            }
+                            if($datos['cantidadToken'] == 1 and $datos['tipoUsuario'] == 'Supervisor' and $datos['status'] == 'deshabilitado') {
+                                echo '<div class="field "><div class="ui left icon input"><i class="phone icon"></i><input type="text" placeholder="Teléfono Móvil - 9 9 500 78 12" id="telefono" name="celular"></input></div></div>';
+                            }
+                            if($datos['cantidadToken'] == 1 and $datos['tipoUsuario'] == 'Supervisor') {
+                                echo '<div class="field "><div class="ui left icon input"><i class="hide icon"></i><input type="text" value="'.$datos['tipoUsuario'].'" name="tipoUsuario"></input></div></div>';
+                                echo '<div class="field "><div class="ui left icon input"><i class="hide icon"></i><input type="text" value="'.$datos['idUsuario'].'" name="id"></input></div></div>';
+                            }
+                        ?>
                         <div id="btnReestablecer" style="background: #262626;font-family: 'Montserrat', cursive;" class="ui fluid large submit button">Reestablecer</div>
                     </div>
                 </form>
@@ -45,6 +83,9 @@
         <script src="recursos/semantic/semantic.min.js"></script>
         <script src="recursos/toast/toast.js"></script>
         <script src="recursos/hammer/hammer.min.js"></script>
-        <script src="js/validaLogin.js"></script>
+        <script src="js/funciones.js"></script>
+        <script src="js/compruebaInputs.js"></script>
+        <script src="js/mensajes.js"></script>
+        <script src="js/validaReinicio.js"></script>
     </body>
 </html>

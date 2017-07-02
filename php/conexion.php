@@ -8,6 +8,7 @@
             exit();
         }
         mysqli_select_db($conexion,$nombre) or die ("No se encontró la base de datos");
+        
         return $conexion;
     }
 ?>

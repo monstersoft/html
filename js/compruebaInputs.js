@@ -78,8 +78,9 @@ function isRutEditar() {
 }
 
 function maxLength(value, max) {
-    if(value == '') 
+    if(value == '') { 
         return false;
+    }
     else {
       if(value.length > max) 
         return true;
@@ -102,10 +103,14 @@ function maxMinValue(value, max, min) {
     if(value == '') 
         return false;
     else {
-      if(value < min || value > max) 
+      if(value < min || value > max) {
+          console.log('kakakakkakas');
         return true;
-      else
+        }
+      else {
+          consle.log('kjsajasjaja');
         return false;
+    }
     }
 }
 function extensions(value) {

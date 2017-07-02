@@ -28,3 +28,27 @@ function errorMessage2(arrayErrors) {
     });
     $('.message').html('<div class="ui negative message"><ul>'+list+'</ul></div>');
 }
+function successUi(array) {
+    var list = '';
+    if(Array.isArray(array))
+        $.each(array,function(key, value){list += value;});
+    else
+        list = array;
+    $('.form').html('<div class="ui icon positive message cent"><i class="check circle icon"></i><div class="ui list montserrat">'+list+'</div></div>');
+}
+function errorUi(array) {
+    var list = '';
+    if(Array.isArray(array))
+        $.each(array,function(key, value){list += value;});
+    else
+        list = array;
+    $('.ui .button').after('<div class="ui negative icon message cent"><div class="ui list montserrat center aligned">'+list+'</div></div>');
+}
+function infoUi(array) {
+    var list = '';
+    if(Array.isArray(array))
+        $.each(array,function(key, value){list += value;});
+    else
+        list = array;
+    $('.ui .button').after('<div class="ui info message cent"><div class="ui list montserrat">'+list+'</div></div>');
+}

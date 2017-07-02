@@ -4,18 +4,34 @@ $('body').on('click','.cerrar',function(){
 $('#btnReestablecer').click(function() {
     $('.ui .message').remove();
     var arreglo = new Array();
-    var email = $('#txtCorreo').val();
+    var nueva = $('#nuevaContraseña').val();
+    var confirmada = $('#contraseñaConfirmada').val();
+    var celular = $('#telefono').val();
     var numberErrors = 0;
-    if(isEmpty(email))
-        arreglo.push('<div class="item">Correo es requerido</div>');
-    if(isMail(email))
-        arreglo.push('<div class="item">Correo no está en un  formado adecuado</div>');
-    if(maxLength(email, 60))
-        arreglo.push('<div class="item">Correo no debe superar los 60 caracteres</div>');
+    if(isEmpty(nueva))
+        arreglo.push('<div>Contreseña nueva es requerida</div>');
+    if(isEmpty(confirmada))
+        arreglo.push('<div>Confirmar contraseña es requerido</div>');
+    if(celular) {
+        if(isEmpty(celular))
+            arreglo.push('<div>Celular es requerido</div>');
+        if(isExactly(celular))
+            arreglo.push('<div>Celular debe tener 9 dígitos</div>');
+        if(isNumber(celular))
+            arreglo.push('<div>Celular no es un número o no está en un formato adecuado</div>');
+    }
+    if(maxMinValue(nueva, 11, 5))
+        arreglo.push('<div>Contraseña nueva debe tener mínimo 6 y máximo 12</div>');
+    if(maxMinValue(confirmada, 11, 5))
+        arreglo.push('<div>Contraseña confirmada debe tener mínimo 6 y máximo 12</div>');
+    if(areEqual(nueva,confirmada))
+        arreglo.push('<div>Las contraseña no son iguales</div>');
+    console.log(nueva.length);
+    console.log(confirmada.length);
     if(arreglo.length == 0) {
         $.ajax({                  
-            url: devuelveUrl('ajax/generaLink.php'),
-            data: {txtCorreo: $('#txtCorreo').val()},
+            url: devuelveUrl('ajax/validaReinicio.php'),
+            data: $('#formularioReinicio').serialize(),
             type: "POST",
             dataType: "json",
             beforeSend: function() {
@@ -24,10 +40,11 @@ $('#btnReestablecer').click(function() {
             },
             cache: false,
             success: function(arreglo) {
-                if(arreglo.exito == true)  
+                console.log(arreglo);
+                /*if(arreglo.exito == true)  
                     successUi('<div class="item text-center">Se ha enviado un correo para reestablecer tu contraseña, <a href="http://localhost/html">haz click aquí para ir a inicio de sesión</a></div>');
                 else
-                    errorUi('<div class="item">El correo no está registrado en el sistema</div>');
+                    errorUi('<div class="item">El correo no está registrado en el sistema</div>');*/
             },
             error: function(xhr) {console.log(xhr.responseText);}
         }).complete(function(){

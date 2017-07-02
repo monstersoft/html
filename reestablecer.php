@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div id="btnReestablecer" style="background: #262626;font-family: 'Montserrat', cursive;" class="ui fluid large submit button">Enviar correo</div>
-                    </div>
+                    </div>     
                 </form>
             </div>
         </div>  
@@ -41,6 +41,7 @@
         <script src="recursos/hammer/hammer.min.js"></script>
         <script src="js/reestablecer.js"></script>
         <script src="js/funciones.js"></script>
+        <script src="js/mensajes.js"></script>
         <script src="js/compruebaInputs.js"></script>
     </body>
 </html>
