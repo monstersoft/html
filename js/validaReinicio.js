@@ -1,6 +1,3 @@
-$('body').on('click','.cerrar',function(){
-    $(this).closest('.message').transition('fade');
-});
 $('#btnReestablecer').click(function() {
     $('.ui .message').remove();
     var arreglo = new Array();
@@ -10,8 +7,12 @@ $('#btnReestablecer').click(function() {
     var numberErrors = 0;
     if(isEmpty(nueva))
         arreglo.push('<div>Contreseña nueva es requerida</div>');
+    if(maxMinValue(nueva, 12, 6))
+        arreglo.push('<div>Contraseña nueva debe tener mínimo 6 y máximo 12</div>');
     if(isEmpty(confirmada))
         arreglo.push('<div>Confirmar contraseña es requerido</div>');
+    if(maxMinValue(confirmada, 12, 6))
+        arreglo.push('<div>Contraseña confirmada debe tener mínimo 6 y máximo 12</div>');
     if(celular) {
         if(isEmpty(celular))
             arreglo.push('<div>Celular es requerido</div>');
@@ -20,14 +21,8 @@ $('#btnReestablecer').click(function() {
         if(isNumber(celular))
             arreglo.push('<div>Celular no es un número o no está en un formato adecuado</div>');
     }
-    if(maxMinValue(nueva, 11, 5))
-        arreglo.push('<div>Contraseña nueva debe tener mínimo 6 y máximo 12</div>');
-    if(maxMinValue(confirmada, 11, 5))
-        arreglo.push('<div>Contraseña confirmada debe tener mínimo 6 y máximo 12</div>');
     if(areEqual(nueva,confirmada))
         arreglo.push('<div>Las contraseña no son iguales</div>');
-    console.log(nueva.length);
-    console.log(confirmada.length);
     if(arreglo.length == 0) {
         $.ajax({                  
             url: devuelveUrl('ajax/validaReinicio.php'),
@@ -40,11 +35,10 @@ $('#btnReestablecer').click(function() {
             },
             cache: false,
             success: function(arreglo) {
-                console.log(arreglo);
-                /*if(arreglo.exito == true)  
-                    successUi('<div class="item text-center">Se ha enviado un correo para reestablecer tu contraseña, <a href="http://localhost/html">haz click aquí para ir a inicio de sesión</a></div>');
+                if(arreglo.exito == true)  
+                    successUi('<div class="item text-center">Se ha reestablecido tu contraseña correctamente, <a href="http://localhost/html">haz click aquí para ir a inicio de sesión</a></div>');
                 else
-                    errorUi('<div class="item">El correo no está registrado en el sistema</div>');*/
+                    errorUi('<div class="item">Error, debes comunicarte con el administrador del sistema</div>');
             },
             error: function(xhr) {console.log(xhr.responseText);}
         }).complete(function(){

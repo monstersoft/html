@@ -25,16 +25,6 @@
         <link rel="stylesheet" href="recursos/toast/toast.css">
         <link rel="stylesheet" href="recursos/awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/index.css">
-        <style>
-            .cent {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-items: center;
-            }
-        
-        </style>
     </head>
     <body>
         <div class="ui aligned center aligned grid">
@@ -52,13 +42,13 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
-                                <input type="text" id="nuevaContraseña" placeholder="Nueva contraseña">
+                                <input type="text" name="nuevaContrasena" id="nuevaContraseña" placeholder="Nueva contraseña">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="repeat icon"></i>
-                                <input type="text" id="contraseñaConfirmada" placeholder="Confirmar contraseña">
+                                <input type="text" name="contrasenaConfirmada" id="contraseñaConfirmada" placeholder="Confirmar contraseña">
                             </div>
                         </div>
                         <?php 

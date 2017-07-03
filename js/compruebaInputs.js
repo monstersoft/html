@@ -100,17 +100,14 @@ function minLength(value) {
 }
 
 function maxMinValue(value, max, min) {
+    
     if(value == '') 
         return false;
     else {
-      if(value < min || value > max) {
-          console.log('kakakakkakas');
+      if((value.length < min) || (value.length > max))
         return true;
-        }
-      else {
-          consle.log('kjsajasjaja');
+      else
         return false;
-    }
     }
 }
 function extensions(value) {

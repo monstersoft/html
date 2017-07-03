@@ -46,10 +46,10 @@ $('#btnLogin').click(function(){
             },
             success: function(arreglo) {
                 console.log(JSON.stringify(arreglo));
-                if(arreglo.error == true){
+                if(arreglo.error == true) {
                     msg({mensaje: arreglo.mensaje,titulo: arreglo.titulo,accion: 'warning'});
                 }
-                else {
+                if (arreglo.error == false) {
                     msg({mensaje: arreglo.mensaje,titulo: 'Inicio de sesión',accion: 'success'});
                     setTimeout($(window).attr('location', arreglo.url),1000);
                 }

@@ -49,19 +49,19 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
-                                <input type="password" name="nuevoPassword" id="nuevoPassword" placeholder="Nueva Contraseña" value="123456">
+                                <input type="password" name="nuevoPassword" id="nuevoPassword" placeholder="Nueva Contraseña">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="repeat icon"></i>
-                                <input type="password" name="confirmarPassword" id="confirmarPassword" placeholder="Confirmar Contraseña" value=123456>
+                                <input type="password" name="confirmarPassword" id="confirmarPassword" placeholder="Confirmar Contraseña">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="phone icon"></i>
-                                <input type="text" name="telefono" id="telefono" placeholder="Teléfono Móvil - 9 9 500 78 12" value="995007812">
+                                <input type="text" name="telefono" id="telefono" placeholder="Teléfono Móvil - 9 9 500 78 12">
                             </div>
                         </div>
                         <?php 

@@ -33,7 +33,8 @@
                             $arreglo['mensaje'] = 'El celular ya está en uso';
                         }
                         else {
-                            $consulta = "UPDATE supervisores SET password = '$nuevo', celular = '$telefono', status = 1 WHERE idSupervisor = '$idSupervisor'";
+                            $pass = password_hash($nuevo,PASSWORD_DEFAULT, array("cost"=>10));
+                            $consulta = "UPDATE supervisores SET password = '$pass', celular = '$telefono', status = 1 WHERE idSupervisor = '$idSupervisor'";
                             if(mysqli_query($conexion,$consulta)) {
                                 $arreglo['exito'] = 1;
                                 $arreglo['mensaje'] = ' tu cuenta ha sido habilitada ahora podrás inicar sesión en el sistema';

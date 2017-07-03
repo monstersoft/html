@@ -26,3 +26,10 @@ body {
 .montserrat {
     font-family: 'Montserrat';
 }
+.cent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}

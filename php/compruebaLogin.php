@@ -10,15 +10,17 @@
     if($arreglo['existeCorreo'] == true) {
         if($arreglo['esCliente'] == true) {
             $respuesta = iniciaSesionCliente($correo,$password);
-            $respuesta['tipoUsuario'] = 'Cliente';
-            session_start();
-            $_SESSION['datos'] = $respuesta;
+            if($respuesta['error'] == false) {
+                session_start();
+                $_SESSION['datos'] = $respuesta;
+            }
         }
         if($arreglo['esSupervisor'] == true) {
             $respuesta = iniciaSesionSupervisor($correo,$password);
-            $respuesta['tipoUsuario'] = 'Supervisor';
-            session_start();
-            $_SESSION['datos'] = $respuesta;
+            if($respuesta['error'] == false) {
+                session_start();
+                $_SESSION['datos'] = $respuesta;
+            }
         }
     }
     else {
@@ -61,7 +63,7 @@
 	function iniciaSesionCliente ($correo,$password) {
 		$conexion = conectar();
 		$arreglo = array();
-		$arreglo['error'] = false;
+		$arreglo['error'] = true;
         $consulta = "SELECT COUNT(*) AS cantidad FROM clientes WHERE correo = '$correo' AND password = '$password'";
         if($resultado = mysqli_query($conexion,$consulta)) {
             $numero = mysqli_fetch_assoc($resultado);
@@ -69,12 +71,13 @@
                 $arreglo['correo'] = $correo;
                 $arreglo['titulo'] = 'Inicio de sesión';
                 $arreglo['mensaje'] = 'Bienvenidos '.$correo;
+                $arreglo['error'] = false;
                 $arreglo['url'] = 'public/cliente/zonas.php';
+                $arreglo['tipoUsuario'] = 'Cliente';
             }
             else {
                 $arreglo['titulo'] = 'Error de sesión';
                 $arreglo['mensaje'] = 'La contraseña no coincide con el correo';
-                $arreglo['error'] = true;
             }
         }
 		mysqli_close($conexion);
@@ -83,30 +86,30 @@
 	function iniciaSesionSupervisor ($correo,$password) {
 		$conexion = conectar();
 		$arreglo = array();
-		$arreglo['error'] = false;
+		$arreglo['error'] = true;
         $consulta = "SELECT status FROM supervisores WHERE correoSupervisor = '$correo'";
         if($resultado = mysqli_query($conexion,$consulta)) {
             $row = mysqli_fetch_assoc($resultado);
-            if($row['status'] == 'desabilitado') {
+            if($row['status'] == 'deshabilitado') {
                 $arreglo['titulo'] = 'Error de registro';
                 $arreglo['mensaje'] = 'Debes activar tu cuenta para inicar sesión';
-                $arreglo['error'] = true;
             }
             else {
-                $consulta = "SELECT COUNT(*) AS cantidad FROM supervisores WHERE correoSupervisor = '$correo' AND password = '$password'";
+                $consulta = "SELECT password AS hash FROM supervisores WHERE correoSupervisor = '$correo'";
                 if($resultado = mysqli_query($conexion,$consulta)) {
-                    $numero = mysqli_fetch_assoc($resultado);
-                    if($numero['cantidad'] == true) {
+                    $row = mysqli_fetch_assoc($resultado);
+                    if(password_verify($password, $row['hash'])) {
                         $arreglo['correo'] = $correo;
                         $arreglo['titulo'] = 'Inicio de sesión';
                         $arreglo['mensaje'] = 'Bienvenidos '.$correo;
+                        $arreglo['error'] = false;
                         $arreglo['url'] = 'public/supervisor/panel.php';
-                        
+                        $arreglo['tipoUsuario'] = 'Supervisor';
+
                     }
                     else {
                         $arreglo['titulo'] = 'Error de sesión';
                         $arreglo['mensaje'] = 'La contraseña no coincide con el correo';
-                        $arreglo['error'] = true;
                     }
                 }
             }

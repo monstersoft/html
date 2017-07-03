@@ -1,6 +1,3 @@
-$('body').on('click','.cerrar',function(){
-    $(this).closest('.message').transition('fade');
-});
 $('#btnReestablecer').click(function() {
     $('.ui .message').remove();
     var arreglo = new Array();
