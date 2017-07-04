@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(isset($_SESSION['datos'])){
+    if(isset($_SESSION['datos'])) {
         if($_SESSION['datos']['tipoUsuario'] == 'Cliente') {
             echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
             $_SESSION = [];
@@ -12,7 +12,6 @@
             include("../../php/funcionesSupervisor.php");
             $perfil = datosPerfil($_SESSION['datos']['correo']);
             $email = $_SESSION['datos']['correo'];
-            echo '<input id="idSupervisor" type="text" value="'.$perfil["id"].'" hidden>';
         }
     }
     else {
@@ -37,28 +36,48 @@
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/menuBarra.css">
+    <style>
+        label {
+            font-family: 'Montserrat';
+        }
+        input {
+            font-family: 'Montserrat';
+        }
+        .input-group-addon {
+            background: white;
+        }
+    </style>
 </head>
 <body>
     <?php barraMenu($perfil,'contraseña'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
         <div class="col-xs-12" style="margin-top: 20px;">
-            <form id="formularioContactar">
-                <div class="form-group">
-                    <label>Cotraseña Actual</label>
-                    <input type="text" class="form-control disabled" name="correoUsuario" id="correoUsuario">
+            <form id="formularioCambiarPassword" class="cent">
+                <div class="form-group ">
+                    <label class="control-label " for="email">Contraseña actual</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                        <input class="form-control" name="actual" id="actualPass" type="password" placeholder="entre 6 y 12 caracteres"/>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Cotraseña Nueva</label>
-                    <input type="text" class="form-control disabled" name="correoUsuario" id="correoUsuario">
+                <div class="form-group ">
+                    <label class="control-label " for="email">Contraseña nueva</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                        <input class="form-control" name="nueva" id="nuevaPass" type="password" placeholder="entre 6 y 12 caracteres"/>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Confirmar Contraseña Nueva</label>
-                    <input type="text" class="form-control disabled" name="correoUsuario" id="correoUsuario">
+                <div class="form-group ">
+                    <label class="control-label " for="email">Confirmar contraseña nueva</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-repeat"></i></div>
+                        <input class="form-control" name="confirmada" id="confirmadaPass" type="password" placeholder="entre 6 y 12 caracteres"/>
+                    </div>
                 </div>
             </form>
             <div class="clearfix">
-                <button type="submit" class="btn btn-normal pull-right montserrat" id="btnAñadirMaquina"><i class="cargar fa fa-refresh"></i>Cambiar</button>
+                <button type="button" class="btn pull-right montserrat" id="btnCambiarContraseña"><i class="cargar fa fa-refresh"></i> Cambiar</button>
             </div>
             <div class="message" style="margin: 15px 0px 0px 0px"></div>
         </div>
@@ -67,7 +86,10 @@
     <script src="../../recursos/jquery/jquery.min.js"></script>
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../recursos/moment/moment.js"></script>
-    <script src="../../js/funciones.js"></script>    
+    <script src="../../js/funciones.js"></script>
+    <script src="../../js/mensajes.js"></script>
+    <script src="../../js/compruebaInputs.js"></script>
+    <script src="../../supervisor/js/cambiarContrasena.js"></script>   
     <script>main();</script>
 </body>
 </html>

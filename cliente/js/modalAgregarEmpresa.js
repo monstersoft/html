@@ -48,7 +48,7 @@ $('.modalAgregarEmpresa').on('click','#btnAñadirEmpresa',function(){
             success: function(returnedData) {
                 if(returnedData.exito == 1) {
                     successMessage('Registro realizado con éxito ','se ha ingresado la empresa  a la base de datos');
-                    $('#btnAñadirEmpresa').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverEmpresa').html('<i class="cargar fa fa-repeat"></i>Volver a agregar');
+                    $('#btnAñadirEmpresa').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverEmpresa').html('<i class="fa fa-repeat"></i>Volver a agregar');
                     exito = 1;
                 }
                 else {

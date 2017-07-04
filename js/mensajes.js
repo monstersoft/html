@@ -1,22 +1,34 @@
-function errorMessage(arrayErrors) {
+function errorMessage(array) {
     var list = '';
-    arrayErrors.forEach(function(element){
-        list += element;
+    $.each(array,function(key, value){
+        list += value;
     });
-    $('.message').html('<div class="alert alert-danger"><ul>'+list+'</ul></div>');
+    $('.message').html('<div class="alert alert-danger" style="padding: 10px;">'+list+'</div>');
 }
-function warningMessage(arrayWarnings) {
+function warningMessage(array) {
     var list = '';
-    $.each(arrayWarnings,function(key, value){
-        list += '<li class="text-left">'+value+'</li>';
-    });
-    $('.message').html('<div class="alert alert-warning"><ul>'+list+'</ul></div>');
+    if(Array.isArray(array)) {
+        $.each(array,function(key, value){
+            list += '<li class="text-left">'+value+'</li>';
+        });
+    }
+    else
+        list = '<li class="text-left">'+array+'</li>';
+    $('.message').append('<div class="alert alert-warning" style="padding: 10px;">'+list+'</div>');
 }
 function oneWarningMessage(parrafo) {
     $('.message').html('<div class="alert alert-warning" style="padding: 10px;">'+parrafo+'</div>');
 }
 function successMessage(titulo,parrafo) {
-    $('.message').html('<div class="alert alert-success" style="padding: 10px;"><strong>'+titulo+'</strong>'+parrafo+'</div>');
+    list = '';
+    if(Array.isArray(parrafo)) {
+        $.each(parrafo,function(key, value){
+            list += '<li class="text-left">'+value+'</li>';
+        });  
+    }
+    else
+        list = '<li class="text-left">'+parrafo+'</li>';
+    $('.message').html('<div class="alert alert-success" style="padding: 10px;"><strong>'+titulo+'</strong>'+list+'</div>');
 }
 function infoMessage(titulo,parrafo) {
     $('.message').html('<div class="alert alert-info"><strong>'+titulo+' </strong>'+parrafo+'</div>');

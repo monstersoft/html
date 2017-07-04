@@ -1,4 +1,4 @@
-$('.message').html(devuelveUrl('cliente/ajax/cambiarContrasena.php'));
+$('.message').html(devuelveUrl('supervisor/ajax/cambiarContrasena.php'));
 $('body').on('click','#btnVolverCambiarContraseña',function() {
     $('#formularioCambiarPassword')[0].reset();
     $('.alert').remove();
@@ -27,7 +27,7 @@ $('body').on('click','#btnCambiarContraseña',function() {
         arreglo.push('<li>Contraseña nueva y confirmada no son iguales</li>');
     if(arreglo.length == 0) {
         $.ajax({                  
-            url: devuelveUrl('cliente/ajax/cambiarContrasena.php'),
+            url: devuelveUrl('supervisor/ajax/cambiarContrasena.php'),
             data: $('#formularioCambiarPassword').serialize(),
             type: "POST",
             dataType: "json",

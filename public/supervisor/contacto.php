@@ -12,7 +12,6 @@
             include("../../php/funcionesSupervisor.php");
             $perfil = datosPerfil($_SESSION['datos']['correo']);
             $email = $_SESSION['datos']['correo'];
-            echo '<input id="idSupervisor" type="text" value="'.$perfil["id"].'" hidden>';
         }
     }
     else {
@@ -38,18 +37,14 @@
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
         <div class="col-xs-12" style="margin-top: 20px;">
-            <form id="formularioContactar">
-                <div class="form-group">
-                    <label>Correo</label>
-                    <input type="text" class="form-control disabled" name="correoUsuario" id="correoUsuario" value="usuario@usuario.cl" disabled>
-                </div>
+            <form id="formularioEnviar">
                 <div class="form-group">
                     <label>Mensaje</label>
-                    <textarea type="text" class="form-control" rows="10" name="mensaje"></textarea>
+                    <textarea type="text" class="form-control" rows="10" id="mensaje" name="mensaje"></textarea>
                 </div>
             </form>
             <div class="clearfix">
-                <button type="submit" class="btn btn-normal pull-right montserrat" id="btnAñadirMaquina"><i class="cargar fa fa-send"></i>Enviar</button>
+                <button type="submit" class="btn btn-normal pull-right montserrat" id="btnEnviar"><i class="cargar fa fa-send"></i>Enviar</button>
             </div>
             <div class="message" style="margin: 15px 0px 0px 0px"></div>
         </div>
@@ -58,7 +53,10 @@
     <script src="../../recursos/jquery/jquery.min.js"></script>
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../recursos/moment/moment.js"></script>
-    <script src="../../js/funciones.js"></script>    
+    <script src="../../js/funciones.js"></script>
+    <script src="../../js/compruebaInputs.js"></script>
+    <script src="../../js/mensajes.js"></script>
+    <script src="../../supervisor/js/contactar.js"></script> 
     <script>main();</script>
 </body>
 </html>

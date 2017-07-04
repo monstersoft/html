@@ -78,7 +78,7 @@
                 </div>
             </form>
             <div class="clearfix">
-                <btn class="btn btn-default pull-right montserrat" id="btnCambiarContraseña"><i class="cargar fa fa-refresh"></i> Cambiar</btn>
+                <button type="button" class="btn pull-right montserrat" id="btnCambiarContraseña"><i class="cargar fa fa-refresh"></i> Cambiar</button>
             </div>
             <div class="message" style="margin: 15px 0px 0px 0px"></div>
         </div>

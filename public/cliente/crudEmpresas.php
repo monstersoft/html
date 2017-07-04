@@ -202,7 +202,7 @@
                         </div>
                     </form>
                     <div class="clearfix">
-                        <button type="submit" class="btn btn-primary pull-right" id="btnEditarEmpresa"><i class="fa fa-pencil"></i>Editar</button>
+                        <button type="submit" class="btn btn-primary pull-right" id="btnEditarEmpresa"><i class="cargar fa fa-pencil"></i>Editar</button>
                         <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>

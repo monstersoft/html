@@ -64,16 +64,17 @@
 		$conexion = conectar();
 		$arreglo = array();
 		$arreglo['error'] = true;
-        $consulta = "SELECT COUNT(*) AS cantidad FROM clientes WHERE correo = '$correo' AND password = '$password'";
+        $consulta = "SELECT idCliente, password AS hash FROM clientes WHERE correo = '$correo'";
         if($resultado = mysqli_query($conexion,$consulta)) {
-            $numero = mysqli_fetch_assoc($resultado);
-            if($numero['cantidad'] == true) {
+            $row = mysqli_fetch_assoc($resultado);
+            if($password == $row['hash']) {
                 $arreglo['correo'] = $correo;
                 $arreglo['titulo'] = 'Inicio de sesión';
                 $arreglo['mensaje'] = 'Bienvenidos '.$correo;
                 $arreglo['error'] = false;
                 $arreglo['url'] = 'public/cliente/zonas.php';
                 $arreglo['tipoUsuario'] = 'Cliente';
+                $arreglo['idUsuario'] = $row['idCliente'];
             }
             else {
                 $arreglo['titulo'] = 'Error de sesión';
@@ -95,7 +96,7 @@
                 $arreglo['mensaje'] = 'Debes activar tu cuenta para inicar sesión';
             }
             else {
-                $consulta = "SELECT password AS hash FROM supervisores WHERE correoSupervisor = '$correo'";
+                $consulta = "SELECT idSupervisor, password AS hash FROM supervisores WHERE correoSupervisor = '$correo'";
                 if($resultado = mysqli_query($conexion,$consulta)) {
                     $row = mysqli_fetch_assoc($resultado);
                     if(password_verify($password, $row['hash'])) {
@@ -104,6 +105,7 @@
                         $arreglo['mensaje'] = 'Bienvenidos '.$correo;
                         $arreglo['error'] = false;
                         $arreglo['url'] = 'public/supervisor/panel.php';
+                        $arreglo['idUsuario'] = $row['idSupervisor'];
                         $arreglo['tipoUsuario'] = 'Supervisor';
 
                     }
