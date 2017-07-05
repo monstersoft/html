@@ -37,9 +37,6 @@
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/zonas.css">
     <style>
-        .panel {
-            max-width: 1000px;
-        }
         .cent {
     display: flex;
     flex-direction: row;
@@ -47,28 +44,29 @@
     justify-content: center;
     align-items: center;
 }
+
     </style>
 </head>
 <body>
     <?php barraMenu($perfil,'registro'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
-<div class="col-xs-12 card"> 
-    <div class="col-xs-12 shadow cardContent montserrat panel cent"> 
-        <div class="col-xs-12" style="text-align: center; padding: 10px;"> <i class="fa fa-user-circle fa-3x" style="color: #F5A214;"></i><br><br>
-            <a style="font-size: 15px;">PEDRO PABLO VÁQUEZ</a>
+        <div class="col-xs-12 card"> 
+            <div class="col-xs-12 shadow cardContent montserrat">
+                <div class="col-xs-12 col-md-6 cent" style="height: 200px;">
+                    <i class="fa fa-user-circle fa-5x" style="color: #F5A214;"></i>
+                    <div style="font-size: 20px; text-align: center;">PATRICIO ANDRES VILLANUEVA FUENTES</div>
+                </div>
+                <div class="col-xs-12 col-md-6 cent" style="height: 200px;">
+                    <ul>
+                      <li><i class="fa fa-send"></i> pvasquez@serviciosbioiob.cl</li>
+                      <li><i class="fa fa-check"></i> habilitado</li>
+                      <li><i class="fa fa-phone"></i> 995007812</li>
+                      <li><?php if(zonasSinAsociar($idEmpresa,$idZona,$idSupervisor) == 0) echo 'No hay zonas para asociar'; else echo '<button type="button" class="btn btn-normal desvincularSupervisor montserrat asignarZonas">Asignar zonas</button>'; ?></li> 
+                    </ul>
+                </div>
+            </div>
         </div>
-        <ul style="margin-top: 45px;">
-          <li>pvasquez@serviciosbioiob.cl</li>
-          <li>habilitado</li>
-          <li>995007812</li>
-          <li><?php echo 'idEmpresa: '.$idEmpresa ?></li>
-          <li><?php echo 'idZona: '.$idZona ?></li>
-          <li><?php echo 'idSupervisor: '.$idSupervisor ?></li>
-          <li><?php if(zonasSinAsociar($idEmpresa,$idZona,$idSupervisor) == 0) echo 'No hay zonas para asociar'; else echo '<button type="button" class="btn btn-normal desvincularSupervisor montserrat asignarZonas">Asignar zonas</button>'; ?></li> 
-        </ul>
-    </div>
-</div>
 <!-- ............................................................................................................................ -->
     </div>
  <!-- VENTANAS MODALES --> 
