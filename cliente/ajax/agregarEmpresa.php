@@ -1,5 +1,4 @@
 <?php
-    sleep(2);
 	include '../../php/conexion.php'; 
     $name = strtoupper($_POST['nombre']);
 	$rut = strtoupper($_POST['rut']);

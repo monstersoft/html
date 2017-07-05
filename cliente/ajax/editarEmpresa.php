@@ -1,5 +1,4 @@
 <?php
-    sleep(1);
 	include '../../php/conexion.php';
     $datos = $_POST['datos'];
     $arreglo['edicion'] = array('nombre' => 0,'rut' => 0,'correo' => 0,'celular' => 0);

@@ -79,15 +79,15 @@
                             </div>
                             <div class="form-group">
                                 <label>Tara [kg]</label>
-                                <input type="text" placeholder="1000" class="form-control" name="tara" id="taraAgregarMaquina" value="1000">
+                                <input type="text" placeholder="1000" class="form-control" name="tara" id="taraAgregarMaquina">
                             </div>
                             <div class="form-group">
                                 <label>Carga Máxima [kg]</label>
-                                <input type="text" placeholder="1000" class="form-control" name="carga" id="cargaAgregarMaquina" value="1000">
+                                <input type="text" placeholder="1000" class="form-control" name="carga" id="cargaAgregarMaquina">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="display: none;">
                                 <label>idZonaAgregarMaquina</label>
-                                <input type="text" class="form-control" name="id" id="idZonaAgregarMaquina">
+                                <input type="hidden" class="form-control" name="id" id="idZonaAgregarMaquina">
                             </div>
                         </form>
                         <div class="clearfix">
@@ -114,17 +114,17 @@
                                 <label class="control-label">Seleccionar Archivo</label>
                                 <input type="file" class="file" name="archivo" id="archivoSubirArchivo" data-show-preview="false" data-show-upload="false" data-show-remove="false">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="display: none;">
                                 <label>idZonaSubirArchivo</label>
-                                <input type="text" class="form-control" name="idZona" id="idZonaSubirArchivo">
+                                <input type="hidden" class="form-control" name="idZona" id="idZonaSubirArchivo">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="display: none;">
                                 <label>idSupervisorSubirArchivo</label>
-                                <input type="text" class="form-control" name="idSupervisor" id="idSupervisorSubirArchivo">
+                                <input type="hidden" class="form-control" name="idSupervisor" id="idSupervisorSubirArchivo">
                             </div>
                         </form>
                         <div class="clearfix">
-                            <button type="submit" class="btn btn-primary pull-right montserrat" id="btnSubirArchivo"><i class="cargar fa fa-upload"></i>Agregar</button>
+                            <button type="submit" class="btn btn-primary pull-right montserrat" id="btnSubirArchivo"><i class="cargar fa fa-upload"></i>Subir</button>
                             <button type="button" class="btn btn-inverse pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
@@ -150,97 +150,39 @@
         <script>
             $(document).ready(function() {
                 var desplegar = 0;
-                /*function explode(){
-                  $('#loader').css('display','none');
-                  $('#content').fadeIn().css('display','block');
-                }
-                setTimeout(explode, 5000);
-                    $(".hola").select2({
-                        placeholder: "Seleccionar Zona",
-                        theme: "bootstrap",
-                        maximumInputLength: 20,
-                        selectOnClose: true,
-                        closeOnSelect: false,
-                        minimumResultsForSearch: Infinity
-
-                    });*/
                 main();
-                $('.agregar').click(function() {
-                    $('.sOne').toggleClass('displaySticky');
-                    $('.sTwo').toggleClass('displaySticky');
-                });
-                $('.cancelar').click(function() {
-                    $('.alert').remove();
-                });
+                fechaHoy();
                 $('.modal').on('hidden.bs.modal', function() {
                     $(this).find('form')[0].reset();
                     $("#zonasAsociadas").find("option[class='dinamico']").remove();
                 });
+                $('.modal').on('click','.cancelar',function(){
+                    if(exito == 1) {
+                        setTimeout(function(){location.reload()});
+                    }
+                    $('.alert').remove();
+                });
             });
         </script>
         <script>
-            $.fn.select2.defaults.set("theme", "bootstrap");
-            $(".select2-multiple").select2({
-                placeholder: "Seleccionar",
-                width: null,
-                containerCssClass: ':all:'
-            });
-            $(".select2-multiple").on("select2:open", function() {
-                if ($(this).parents("[class*='has-']").length) {
-                    var classNames = $(this).parents("[class*='has-']")[0].className.split(/\s+/);
-                    for (var i = 0; i < classNames.length; ++i) {
-                        if (classNames[i].match("has-")) {
-                            $("body > .select2-container").addClass(classNames[i]);
-                        }
-                    }
-                }
-            });
+            $('.datepicker').pickadate({
+                monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+                monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                weekdaysFull: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+                weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+                showMonthsShort: undefined,
+                showWeekdaysFull: undefined,
+                today: 'Hoy',
+                clear: '',
+                close: 'Cerrar',
+                min: new Date(2017,1,1),
+                max: new Date(2018,1,1),
+                format: 'dddd dd , mmmm yyyy',
+                formatSubmit: 'yyyy-mm-dd',
+                hiddenName : true,
+                firstDay: 'Monday',
+                container: 'body'
+            })
         </script>
-    <script>
-        $(document).ready(function(){
-            fechaHoy();
-            $('.modal').on('hidden.bs.modal', function(){
-                $(this).find('form')[0].reset();
-                $("#zonasAsociadas").find("option[class='dinamico']").remove();
-            });
-            $('.cancelar').click(function(){$('.alert').remove();});
-            //alert(getDistanceFromLatLonInKm(48.8666667,2.3333333,19.4341667,-99.1386111));
-        });
-    function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
-              var R = 6371; // Radius of the earth in km
-              var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
-              var dLon = this.deg2rad(lon2-lon1); 
-              var a = 
-                Math.sin(dLat/2) * Math.sin(dLat/2) +
-                Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * 
-                Math.sin(dLon/2) * Math.sin(dLon/2); 
-              var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-              var d = R * c; // Distance in km
-              return d;
-            }
-    function deg2rad(deg) {
-              return deg * (Math.PI/180);
-    }
-    </script>
-    <script>
-        $('.datepicker').pickadate({
-            monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
-            monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-            weekdaysFull: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
-            weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
-            showMonthsShort: undefined,
-            showWeekdaysFull: undefined,
-            today: 'Hoy',
-            clear: '',
-            close: 'Cerrar',
-            min: new Date(2017,1,1),
-            max: new Date(2018,1,1),
-            format: 'dddd dd , mmmm yyyy',
-            formatSubmit: 'yyyy-mm-dd',
-            hiddenName : true,
-            firstDay: 'Monday',
-            container: 'body'
-        })
-    </script>
     </body>
 </html>

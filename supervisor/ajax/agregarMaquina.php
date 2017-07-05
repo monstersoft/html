@@ -11,7 +11,7 @@
 	if($resultado = mysqli_query($conexion,$consulta)) {
 		$patentes = mysqli_fetch_assoc($resultado);
 		if($patentes['patentes'] == 1) {
-			$arreglo['msg'] = 'Ya existe una patente registrada para esta zona';
+			$arreglo['msg'] = 'La patente ya está en uso para esta zona';
 			$arreglo['exito'] = 0;
 		}
 	}

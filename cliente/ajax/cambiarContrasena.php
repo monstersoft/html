@@ -1,6 +1,5 @@
 <?php
     include '../../php/conexion.php';
-    sleep(1);
     $actual = $_POST['actual'];
     $nueva = $_POST['nueva'];
     $confirmada = $_POST['confirmada'];

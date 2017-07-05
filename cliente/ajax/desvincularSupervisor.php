@@ -1,5 +1,4 @@
 <?php
-    sleep(1);
 	include '../../php/conexion.php'; 
     $idZona = $_POST['idZona'];
     $idSupervisor = $_POST['idSupervisor'];

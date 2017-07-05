@@ -1,4 +1,5 @@
 <?php
+    sleep(1);
 	include ('/../../php/conexion.php');
     set_time_limit(1200);
     $arr = array('msg' => array(), 'nameDateMatch' => false);

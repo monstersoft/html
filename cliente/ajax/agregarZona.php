@@ -1,5 +1,4 @@
 <?php
-    sleep(1);
 	include '../../php/conexion.php'; 
     $name = strtoupper($_POST['nombre']);
 	$id = $_POST['id'];

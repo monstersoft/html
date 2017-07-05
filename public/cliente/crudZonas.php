@@ -289,6 +289,7 @@
 <!-- VENTANAS MODALES -->
     <script src="../../recursos/jquery/jquery.min.js"></script>
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../recursos/moment/moment.js"></script>
     <script src="../../recursos/select2/select2.full.js"></script>
     <script src="../../recursos/rut/jquery.rut.chileno.js"></script>
     <script src="../../cliente/js/modalAgregarZona.js"></script>
@@ -304,6 +305,7 @@
         $(document).ready(function(){
             var desplegar = 0;
             main();
+            fechaHoy();
             $('.agregar').click(function(){
                 $('.sOne').toggleClass('displaySticky');
                 $('.sTwo').toggleClass('displaySticky');

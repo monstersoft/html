@@ -1,5 +1,6 @@
 <?php
 	include("conexion.php");
+    //echo json_encode(datosRecientes());
     // barra y menu
     function barraMenu($perfil,$nombrePagina) {
         if(sizeof($perfil) == 0)
