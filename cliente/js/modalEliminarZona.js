@@ -2,7 +2,7 @@ $('.eliminarZona').click(function(){
     $('#idEliminarZona').val($(this).attr('id'));
     $('.modalEliminarZona').modal();
 });
-$('#btnEliminarEmpresa').click(function(){
+$('#btnEliminarZona').click(function(){
     $('.alert').remove();
     var data = $('#formularioEliminarZona').serialize();
     var url = devuelveUrl('cliente/ajax/eliminarZona.php');
@@ -15,17 +15,15 @@ $('#btnEliminarEmpresa').click(function(){
         beforeSend: function() {
           activarLoaderBotones('fa-trash','fa-refresh');
         },
-        success: function(returnedData) {
-            console.log(JSON.stringify(returnedData));
-            /*if(returnedData.exito == 1) {
-                successMessage('Registro realizado con éxito','Redireccionado al panel de empresas');
-                $('.cancelar').remove();
-                $('#btnAñadirEmpresa').remove();
-                setTimeout(function(){location.reload()}, 3000);
+        success: function(arreglo) {
+            console.log(JSON.stringify(arreglo));
+            if(arreglo.exito == 1) {
+                successMessage('Eliminación con éxito, ','se ha eliminado la zona y todos los datos asociados a ella');
+                $('#btnEliminarZona').remove();
+                exito = 1;
             }
-            else {
-                warningMessage(returnedData.msg);
-            }*/
+            else
+                warningMessage('Error, debes comunicarte con el administrador del sistema');
         },
         complete: function() {
             desactivarLoaderBotones('fa-trash','fa-refresh');

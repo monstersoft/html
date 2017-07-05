@@ -1,3 +1,4 @@
+var exito = 0;
 $('.eliminarEmpresa').click(function(){
     $('#idEliminarEmpresa').val($(this).attr('id'));
     $('.modalEliminarEmpresa').modal();
@@ -12,20 +13,16 @@ $('#btnEliminarEmpresa').click(function(){
         data: data,
         dataType: 'json',
         cache: false,
-        beforeSend: function() {
-          activarLoaderBotones('fa-trash','fa-refresh');
-        },
-        success: function(returnedData) {
-            console.log(JSON.stringify(returnedData));
-            /*if(returnedData.exito == 1) {
-                successMessage('Registro realizado con éxito','Redireccionado al panel de empresas');
-                $('.cancelar').remove();
-                $('#btnAñadirEmpresa').remove();
-                setTimeout(function(){location.reload()}, 3000);
+        beforeSend: function() {activarLoaderBotones('fa-trash','fa-refresh');},
+        success: function(arreglo) {
+            console.log(JSON.stringify(arreglo));
+            if(arreglo.exito == 1) {
+                successMessage('Eliminación con éxito, ','se ha eliminado la empresa y todos los datos asociados a ella');
+                $('#btnEliminarZona').remove();
+                exito = 1;
             }
-            else {
-                warningMessage(returnedData.msg);
-            }*/
+            else
+                warningMessage('Error, debes comunicarte con el administrador del sistema');
         },
         complete: function() {
             desactivarLoaderBotones('fa-trash','fa-refresh');

@@ -94,7 +94,7 @@
                                             <div class="flex-parent">
                                                 <i class="fa fa-user-circle pull-left"></i>
                                                 <div class="long-and-truncated-with-child-corrected">
-                                                    <a href="supervisor.php?id='.$value['idSupervisor'].'" id="'.$value['idSupervisor'].'" class=" montserrat">'.$value['nombreSupervisor'].'</a>
+                                                    <a href="supervisor.php?empresa='.$idEmpresa.'&zona='.$value['idZona'].'&supervisor='.$value['idSupervisor'].'" class=" montserrat">'.$value['nombreSupervisor'].'</a>
                                                 </div>
                                                 <br>
                                                 <div class="links btn-group">
@@ -211,18 +211,17 @@
                     <i class="fa fa-globe"></i>Eliminar Zona
                 </div>
                 <div class="modal-body"> ¿Estás seguro que quieres eliminar esta zona? , se borrarán todos los datos asociados a ella.
-                    <form id="formularioEliminarEmpresa">
+                    <form id="formularioEliminarZona">
                         <div class="form-group">
                             <label>ID ZONA</label>
                             <input type="text" class="form-control" name="idZona" id="idEliminarZona">
                         </div>
                     </form>
                     <div class="clearfix">
-                        <button type="submit" class="btn btn-primary pull-right" id="btnEliminarEmpresa"><i class="cargar fa fa-trash"></i>Eliminar</button>
+                        <button type="submit" class="btn btn-primary pull-right" id="btnEliminarZona"><i class="cargar fa fa-trash"></i>Eliminar</button>
                         <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
-                    <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
                 </div>
             </div>
         </div>

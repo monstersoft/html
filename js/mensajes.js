@@ -27,7 +27,7 @@ function successMessage(titulo,parrafo) {
         });  
     }
     else
-        list = '<li class="text-left">'+parrafo+'</li>';
+        list = parrafo;
     $('.message').html('<div class="alert alert-success" style="padding: 10px;"><strong>'+titulo+'</strong>'+list+'</div>');
 }
 function infoMessage(titulo,parrafo) {
