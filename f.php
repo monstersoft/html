@@ -120,16 +120,16 @@ ul li {
             </thead>
             <tbody>
                 <tr>
-                    <td class="col-xs-8"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
-                    <td class="col-xs-4"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px; padding: 0;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
+                    <td class="col-xs-7"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
+                    <td class="col-xs-5"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px; padding: 0;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
                 </tr>
                 <tr>
-                    <td class="col-xs-8"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
-                    <td class="col-xs-4"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
+                    <td class="col-xs-7"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
+                    <td class="col-xs-5"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
                 </tr>
                 <tr>
-                    <td class="col-xs-8"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
-                    <td class="col-xs-4"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
+                    <td class="col-xs-7"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
+                    <td class="col-xs-5"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
                 </tr>
             </tbody>
         </table>
