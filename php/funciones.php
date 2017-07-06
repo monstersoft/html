@@ -97,7 +97,8 @@
             $r = mysqli_fetch_assoc($resultado);
             $cantidad= $r['cantidadZonas'];
             if($cantidad != 0) {
-                $consulta = 'SELECT empresas.idEmpresa, empresas.nombre AS nombreEmpresa, zonas.idZona, zonas.nombre AS nombreZona, supervisores.idSupervisor, supervisores.nombreSupervisor, archivos.idArchivo, archivos.fechaDatos, archivos.fechaSubida, archivos.horaSubida, MAX(fechaDatos) AS fechaRecienteDatos FROM zonas LEFT JOIN archivos ON zonas.idZona = archivos.idZona LEFT JOIN supervisores ON archivos.idSupervisor = supervisores.idSupervisor LEFT JOIN empresas ON zonas.idEmpresa = empresas.idEmpresa GROUP BY zonas.idZona ORDER BY empresas.nombre ASC';
+                $consulta = 'SELECT empresas.idEmpresa, empresas.nombre AS nombreEmpresa, zonas.idZona, zonas.nombre AS nombreZona, supervisores.nombreSupervisor, archivos.idZona, archivos.idArchivo, archivos.idSupervisor, archivos.fechaSubida, archivos.horaSubida, MAX(archivos.fechaDatos) FROM empresas LEFT JOIN zonas ON empresas.idEmpresa = zonas.idEmpresa LEFT JOIN archivos ON archivos.idZona = zonas.idZona LEFT JOIN supervisores ON supervisores.idSupervisor = archivos.idSupervisor GROUP BY zonas.idZona ORDER BY empresas.nombre ASC, zonas.nombre ASC';
+                
                 if($resultado = mysqli_query($conexion,$consulta)) {
                     while($row = mysqli_fetch_array($resultado)) {
                         if($flag == 0) {
