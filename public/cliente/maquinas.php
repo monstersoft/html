@@ -11,9 +11,9 @@
             echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
             include '../../php/funciones.php';
             $perfil = datosPerfil($_SESSION['datos']['correo']);
-            $fecha = $_POST['fechaRecienteDatos'];
-            $idZona = $_POST['idZona'];
-            $idArchivo = $_POST['idArchivo'];
+            $fecha = $_GET['fechaRecienteDatos'];
+            $idZona = $_GET['idZona'];
+            $idArchivo = $_GET['idArchivo'];
             $maquinas = maquinasPorFecha($idArchivo,$fecha);
         }
     }
@@ -90,7 +90,6 @@
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
 <?php
-        
         foreach($maquinas as $value) {
             if(($value['registrado'] == 1) and ($value['existeEnArchivo'] == 1)) { echo
                 '<div class="col-xs-12 col-sm-4 col-md-2 card"> 
