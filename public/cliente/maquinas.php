@@ -15,6 +15,9 @@
             $idZona = $_POST['idZona'];
             $idArchivo = $_POST['idArchivo'];
             $maquinas = maquinasPorFecha($idArchivo,$fecha);
+            echo '<script>console.log('.$fecha.')</script>';
+            echo '<script>console.log('.$idZona.')</script>';
+            echo '<script>console.log('.$idArchivo.')</script>';
         }
     }
     else {
@@ -90,7 +93,6 @@
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
 <?php
-        
         foreach($maquinas as $value) {
             if(($value['registrado'] == 1) and ($value['existeEnArchivo'] == 1)) { echo
                 '<div class="col-xs-12 col-sm-4 col-md-2 card"> 

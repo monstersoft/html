@@ -13,6 +13,7 @@
     </head>
     <body>
         <div class="ui aligned center aligned grid">
+                      <?php include 'php/funciones.php'; debug(datosRecientes()) ?>
             <div class="margen column">
                 <h2 class="ui icon header">
                     <i class="settings icon" style="color: #F5A214;"></i>

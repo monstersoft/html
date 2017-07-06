@@ -87,43 +87,22 @@
     }
     // zonas.php
     function datosRecientes() {
-        $conexion = conectar();
-        $arreglo = array();
-        $cantidad;
-        $flag = 0;
-        $consulta = 'SELECT COUNT(zonas.idZona) AS cantidadZonas FROM zonas';
-        if($resultado = mysqli_query($conexion,$consulta)) {
-            $r = mysqli_fetch_assoc($resultado);
-            $cantidad= $r['cantidadZonas'];
-            if($cantidad != 0) {
-                $consulta = 'SELECT empresas.idEmpresa, empresas.nombre AS nombreEmpresa, zonas.idZona, zonas.nombre AS nombreZona, supervisores.nombreSupervisor, archivos.idZona, archivos.idArchivo, archivos.idSupervisor, archivos.fechaSubida AS fechaSubida, archivos.horaSubida, MAX(archivos.fechaDatos) FROM empresas LEFT JOIN zonas ON empresas.idEmpresa = zonas.idEmpresa LEFT JOIN archivos ON archivos.idZona = zonas.idZona LEFT JOIN supervisores ON supervisores.idSupervisor = archivos.idSupervisor GROUP BY zonas.idZona ORDER BY empresas.nombre ASC, zonas.nombre ASC';
-                
-                if($resultado = mysqli_query($conexion,$consulta)) {
-                    while($row = mysqli_fetch_array($resultado)) {
-                        if($flag == 0) {
-                           $zonas = [];
-                           array_push($zonas,array('idZona' => $row['idZona'],'nombreZona' => utf8_encode($row['nombreZona']),'idSupervisor' => $row['idSupervisor'],'nombreSupervisor' => utf8_encode($row['nombreSupervisor']),'idArchivo' => $row['idArchivo'],'fechaDatos' => $row['fechaDatos'],'fechaSubida' => utf8_encode($row['fechaSubida']),'horaSubida' => utf8_encode($row['horaSubida']),'fechaRecienteDatos' => utf8_encode($row['fechaRecienteDatos'])));
-                           array_push($arreglo,array('idEmpresa' => $row['idEmpresa'], 'nombreEmpresa' => utf8_encode($row['nombreEmpresa']), 'zonas' => $zonas));
-                           $flag = 1;
-                        }
-                        else {
-                            if($arreglo[sizeof($arreglo)-1]['idEmpresa'] == $row['idEmpresa'])
-                                array_push($arreglo[sizeof($arreglo)-1]['zonas'],array('idZona' => $row['idZona'],'nombreZona' => utf8_encode($row['nombreZona']),'idSupervisor' => $row['idSupervisor'],'nombreSupervisor' => utf8_encode($row['nombreSupervisor']),'idArchivo' => $row['idArchivo'],'fechaDatos' => $row['fechaDatos'],'fechaSubida' => utf8_encode($row['fechaSubida']),'horaSubida' => utf8_encode($row['horaSubida']),'fechaRecienteDatos' => utf8_encode($row['fechaRecienteDatos'])));
-
-                            else {
-                                $zonas = [];
-                                array_push($zonas,array('idZona' => $row['idZona'],'nombreZona' => utf8_encode($row['nombreZona']),'idSupervisor' => $row['idSupervisor'],'nombreSupervisor' => utf8_encode($row['nombreSupervisor']),'idArchivo' => $row['idArchivo'],'fechaDatos' => $row['fechaDatos'],'fechaSubida' => utf8_encode($row['fechaSubida']),'horaSubida' => utf8_encode($row['horaSubida']),'fechaRecienteDatos' => utf8_encode($row['fechaRecienteDatos'])));
-                                array_push($arreglo,array('idEmpresa' => $row['idEmpresa'], 'nombreEmpresa' => utf8_encode($row['nombreEmpresa']), 'zonas' => $zonas));
-                            }
-                        }
-                    }
-                }
+        $l = conectar();
+        mysqli_set_charset($l,'utf8');
+        $c = "SELECT empresas.idEmpresa, empresas.nombre AS nombreEmpresa, zonas.idZona, zonas.nombre AS nombreZona, archivos.idSupervisor, supervisores.nombreSupervisor, archivos.idArchivo, archivos.fechaSubida, archivos.horaSubida, MAX(archivos.fechaDatos) AS fechaRecienteDatos FROM empresas LEFT JOIN zonas ON empresas.idEmpresa = zonas.idEmpresa LEFT JOIN archivos ON archivos.idZona = zonas.idZona LEFT JOIN supervisores ON supervisores.idSupervisor = archivos.idSupervisor GROUP BY zonas.idZona ORDER BY empresas.nombre ASC, zonas.nombre ASC";
+        $a = array();
+        if($r = mysqli_query($l,$c)) {
+            while($f = mysqli_fetch_assoc($r)) {
+                if(sizeof($a) == 0)
+                    array_push($a,array('idEmpresa'=>$f['idEmpresa'],'nombreEmpresa'=>$f['nombreEmpresa'], 'zonas'=>array(array('idZona'=>$f['idZona'],'nombreZona'=>$f['nombreZona'],'idSupervisor'=>$f['idSupervisor'],'nombreSupervisor'=>$f['nombreSupervisor'],'idArchivo'=>$f['idArchivo'],'fechaSubida'=>$f['fechaSubida'],'horaSubida'=>$f['horaSubida'],'fechaRecienteDatos'=>$f['fechaRecienteDatos']))));
+                else
+                    if($a[sizeof($a)-1]['idEmpresa'] == $f['idEmpresa'])
+                        array_push($a[sizeof($a)-1]['zonas'], array('idZona'=>$f['idZona'],'nombreZona'=>$f['nombreZona'],'idSupervisor'=>$f['idSupervisor'],'nombreSupervisor'=>$f['nombreSupervisor'],'idArchivo'=>$f['idArchivo'],'fechaSubida'=>$f['fechaSubida'],'horaSubida'=>$f['horaSubida'],'fechaRecienteDatos'=>$f['fechaRecienteDatos']));
+                    else
+                        array_push($a,array('idEmpresa'=>$f['idEmpresa'],'nombreEmpresa'=>$f['nombreEmpresa'], 'zonas'=>array(array('idZona'=>$f['idZona'],'nombreZona'=>$f['nombreZona'],'idSupervisor'=>$f['idSupervisor'],'nombreSupervisor'=>$f['nombreSupervisor'],'idArchivo'=>$f['idArchivo'],'fechaSubida'=>$f['fechaSubida'],'horaSubida'=>$f['horaSubida'],'fechaRecienteDatos'=>$f['fechaRecienteDatos']))));
             }
         }
-        $arreglo['datosRecientes'] = $arreglo;
-        $arreglo['cantidadZonas'] = $cantidad;
-        mysqli_close($conexion);
-        return $arreglo;
+        return $a;
     }
     //crudZonas.php
     function cantidadZonas($idEmpresa) {
@@ -389,7 +368,8 @@
         mysqli_close($conexion);
         return $arreglo;
     }
-    function debug($var) { 
+    function debug($var) {
+        echo '<head><style>* {background: black;}</style></head>';
         echo "<pre style='color: lime;'>"; print_r($var); echo "</pre>";
     }
     function empresas() {

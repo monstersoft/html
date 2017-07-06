@@ -34,12 +34,13 @@ $('.datepicker').pickadate({
                 var supervisor = $(currentInput.childNodes[7]);
                 var fechaSubida = $(currentInput.childNodes[9]);
                 var horaSubida = $(currentInput.childNodes[11]);
-                console.log(currentInput);
-                console.log(JSON.stringify(arr));
+                //console.log(currentInput);
+                //console.log(JSON.stringify(arr));
                 currentForm.childNodes[0].value = arr.idArchivo;
                 supervisor.html(arr.nombreSupervisor);
                 fechaSubida.html(arr.fechaSubida);
                 horaSubida.html(arr.horaSubida);
+                console.log($('input[name=fechaRecienteDatos]').val());
             },
             error: function(xhr) {console.log(xhr.responseText);}
         });
