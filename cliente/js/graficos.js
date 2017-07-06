@@ -20,7 +20,7 @@ var url = devuelveUrl('cliente/ajax/datosDashboard.php');
 $.ajax({
     url: url,
     type: 'POST',
-    data: {idResultado: getSearchParams().idResultado, idArchivo: getSearchParams().idArchivo, patente: getSearchParams().patente, semanas: a(returnWeeksRangesAvailable(parseInt(moment().format('YYYY')),moment().format('MMM')))},
+    data: {idResultado: getQueryVariable('idResultado'), idArchivo: getQueryVariable('idArchivo'), patente: getQueryVariable('patente'), semanas: a(returnWeeksRangesAvailable(parseInt(moment().format('YYYY')),moment().format('MMM')))},
     dataType: 'json',
     cache: false,
     beforeSend: function(){
@@ -116,7 +116,7 @@ function ajaxHours(hora, opcion) {
     $.ajax({
         url: url,
         type: 'POST',
-        data: {idArchivo: getSearchParams().idArchivo, patente: getSearchParams().patente, hora: hora, opcion: opcion},
+        data: {idArchivo: getQueryVariable('idArchivo'), patente: getQueryVariable('patente'), hora: hora, opcion: opcion},
         dataType: 'json',
         cache: false,
         success: function(arr) {
@@ -140,12 +140,11 @@ function ajaxHistorical(weeks) {
     $.ajax({
         url: url,
         type: 'POST',
-        data: {idResultado: getSearchParams().id, idArchivo: getSearchParams().idArchivo, patente: getSearchParams().patente, semanas: weeks},
+        data: {idResultado: getQueryVariable('idResultado'), idArchivo: getQueryVariable('idArchivo'), patente: getQueryVariable('patente'), semanas: weeks},
         dataType: 'json',
         cache: false,
         success: function(arr) {
             var res = json2array(arr);
-            console.log(res);
             lineHistorical('#chart1', {labels: res[0]['semanas'],series: [ { name: 'Grados pala frontal', data: res[0]['pGpf'] },{ name: 'Grados pala trasera', data: res[0]['pGpt'] }]},false, 'Semanas', -10);
             lineHistorical('#chart2', {labels: res[0]['semanas'],series: [ { name: 'Altura pala frontal', data: res[0]['pApf'] },{ name: 'Altura pala trasera', data: res[0]['pApt'] }]},false, 'Semanas', -10);
             lineHistorical('#chart3', {labels: res[0]['semanas'],series: [ { name: 'Recorrido', data: res[0]['pTre'] }]},true, 'Semanas', 10);
@@ -380,10 +379,16 @@ function returnWeeksRangesAvailable(year,month) {
     });
     return weeks;  
 }
-function getSearchParams(k){
- var p={};
- location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){p[k]=v})
- return k?p[k]:p;
+function getQueryVariable(variable) {
+   var query = window.location.search.substring(1);
+   var vars = query.split("&");
+   for (var i=0; i < vars.length; i++) {
+       var pair = vars[i].split("=");
+       if(pair[0] == variable) {
+           return pair[1];
+       }
+   }
+   return false;
 }
 function json2array(json){
     var result = [];
