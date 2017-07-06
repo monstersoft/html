@@ -1,6 +1,5 @@
 <?php
 	include("conexion.php");
-    //echo json_encode(datosRecientes());
     // barra y menu
     function barraMenu($perfil,$nombrePagina) {
         if(sizeof($perfil) == 0)
@@ -97,7 +96,7 @@
             $r = mysqli_fetch_assoc($resultado);
             $cantidad= $r['cantidadZonas'];
             if($cantidad != 0) {
-                $consulta = 'SELECT empresas.idEmpresa, empresas.nombre AS nombreEmpresa, zonas.idZona, zonas.nombre AS nombreZona, supervisores.nombreSupervisor, archivos.idZona, archivos.idArchivo, archivos.idSupervisor, archivos.fechaSubida, archivos.horaSubida, MAX(archivos.fechaDatos) FROM empresas LEFT JOIN zonas ON empresas.idEmpresa = zonas.idEmpresa LEFT JOIN archivos ON archivos.idZona = zonas.idZona LEFT JOIN supervisores ON supervisores.idSupervisor = archivos.idSupervisor GROUP BY zonas.idZona ORDER BY empresas.nombre ASC, zonas.nombre ASC';
+                $consulta = 'SELECT empresas.idEmpresa, empresas.nombre AS nombreEmpresa, zonas.idZona, zonas.nombre AS nombreZona, supervisores.nombreSupervisor, archivos.idZona, archivos.idArchivo, archivos.idSupervisor, archivos.fechaSubida AS fechaSubida, archivos.horaSubida, MAX(archivos.fechaDatos) FROM empresas LEFT JOIN zonas ON empresas.idEmpresa = zonas.idEmpresa LEFT JOIN archivos ON archivos.idZona = zonas.idZona LEFT JOIN supervisores ON supervisores.idSupervisor = archivos.idSupervisor GROUP BY zonas.idZona ORDER BY empresas.nombre ASC, zonas.nombre ASC';
                 
                 if($resultado = mysqli_query($conexion,$consulta)) {
                     while($row = mysqli_fetch_array($resultado)) {
