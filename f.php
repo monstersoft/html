@@ -107,6 +107,14 @@ ul li {
 .table th {
   text-align: center;
 }
+.cent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
     </style>
 </head>
 <body>
@@ -114,22 +122,22 @@ ul li {
         <table class="table">
             <thead>
                 <tr>
-                    <th class="col-xs-8">Zona</th>
-                    <th class="col-xs-4">Seleccionar</th>
+                    <th class="col-xs-7" style="vertical-align: middle;">Zona</th>
+                    <th class="col-xs-5" style="vertical-align: middle;">Seleccionar</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="col-xs-7"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
-                    <td class="col-xs-5"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px; padding: 0;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
+                    <td class="col-xs-7" style="vertical-align: middle;"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
+                    <td class="col-xs-5" style="vertical-align: middle"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px; padding: 0;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
                 </tr>
                 <tr>
-                    <td class="col-xs-7"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
-                    <td class="col-xs-5"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
+                    <td class="col-xs-7" style="vertical-align: middle;"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
+                    <td class="col-xs-7" style="vertical-align: middle;"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
                 </tr>
                 <tr>
-                    <td class="col-xs-7"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
-                    <td class="col-xs-5"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
+                    <td class="col-xs-7" style="vertical-align: middle;"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
+                    <td class="col-xs-7" style="vertical-align: middle;"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
                 </tr>
             </tbody>
         </table>
