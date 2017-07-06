@@ -11,13 +11,10 @@
             echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
             include '../../php/funciones.php';
             $perfil = datosPerfil($_SESSION['datos']['correo']);
-            $fecha = $_POST['fechaRecienteDatos'];
-            $idZona = $_POST['idZona'];
-            $idArchivo = $_POST['idArchivo'];
+            $fecha = $_GET['fechaRecienteDatos'];
+            $idZona = $_GET['idZona'];
+            $idArchivo = $_GET['idArchivo'];
             $maquinas = maquinasPorFecha($idArchivo,$fecha);
-            echo '<script>console.log('.$fecha.')</script>';
-            echo '<script>console.log('.$idZona.')</script>';
-            echo '<script>console.log('.$idArchivo.')</script>';
         }
     }
     else {

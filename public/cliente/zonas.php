@@ -82,7 +82,15 @@
                                                     <tr>
                                                         <td class="tdPosition"><div class="btnPlus"><i class="fa fa-expand"></i></div>'.$v['nombreZona'].'</td>
                                                         <td>
-                                                            <form method="POST" action="maquinas.php"><input type="text" name="idArchivo" value="'.$v['idArchivo'].'"></input><input type="text" name="idZona" value="'.$v['idZona'].'"></input><div class="input-group input-xs"><input type="text" id="'.$v['idZona'].'" class="btnFecha form-control datepicker" data-value="'.$v['fechaRecienteDatos'].'" name="fechaRecienteDatos"><div class="input-group-btn"><button id="'.$v['idArchivo'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button></div></div></form>
+                                                            <form method="GET" action="maquinas.php">
+                                                                <input type="text" name="idArchivo" value="'.$v['idArchivo'].'"></input>
+                                                                <div class="input-group input-xs">
+                                                                    <input type="text" id="'.$v['idZona'].'" class="btnFecha form-control datepicker" data-value="'.$v['fechaRecienteDatos'].'" name="fechaRecienteDatos">
+                                                                    <div class="input-group-btn">
+                                                                        <button id="'.$v['idArchivo'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
                                                         </td>
                                                         <td class="unDisplayColumn">'.$v['fechaRecienteDatos'].'</td>
                                                         <td class="unDisplayColumn">'.$v['nombreSupervisor'].'</td>
