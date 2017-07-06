@@ -14,7 +14,7 @@
         .montserrat {
             font-family: 'Montserrat';
         }
-        .tableStyle {
+        /*.tableStyle {
     width: 100%;    
 }
 .tableStyle tr {
@@ -73,6 +73,11 @@ ul li {
     text-align: center;
 }
 
+        .nw {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
 
 @media (min-width: 970px) {
@@ -90,63 +95,45 @@ ul li {
     .links {
         position: static;
     }
+}*/
+.table {
+    table-layout: fixed;
+}
+.table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.table th {
+  text-align: center;
 }
     </style>
 </head>
 <body>
-    <div class="col-xs-12 montserrat" style="border: 1px solid red; padding: 5px;; overflow: hidden;">
-        <table style="width: 100%;">
+    <div class="col-xs-12 montserrat" style="padding: 0;">
+        <table class="table">
             <thead>
                 <tr>
-                    <th nowrap class="text-center">Zona</th>
-                    <th nowrap class="text-center">Seleccionar</th>
+                    <th class="col-xs-8">Zona</th>
+                    <th class="col-xs-4">Seleccionar</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td nowrap><div style="overflow: hidden; width:235px; text-overflow: ellipsis;"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td></div>
-                    <td nowrap><input style="width: 100%; text-align: center;" type="text" class="datepicker"></td>
+                    <td class="col-xs-8"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
+                    <td class="col-xs-4"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px; padding: 0;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
                 </tr>
                 <tr>
-                    <td nowrap><div style="overflow: hidden; width:235px; text-overflow: ellipsis;"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>CONCEPCION, LOS LIRIOS</td></div>
-                    <td nowrap><input style="width: 100%; text-align: center;" type="text" class="datepicker"></td>
+                    <td class="col-xs-8"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
+                    <td class="col-xs-4"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
                 </tr>
                 <tr>
-                    <td nowrap><div style="overflow: hidden; width:235px; text-overflow: ellipsis;"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>CHIGUAYENTE, LEONERA NORESTE</td></div>
-                    <td nowrap><input style="width: 100%; text-align: center;" type="text" class="datepicker"></td>
+                    <td class="col-xs-8"><button class="btn btn-xs" style="margin-right: 5px;"><i class="fa fa-chevron-right"></i></button>SAN PEDRO DE LA PAZ, HUMEDAL SAN PEDRO A</td>
+                    <td class="col-xs-4"><form><div class="input-group"><input type="text" class="form-control datepicker text-center montserrat" placeholder="Search" style="height: 22px;"><div class="input-group-btn"><button class="btn btn-xs" type="submit"><i class="fa fa-search"></i></button></div></div></form></td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <table class="tableStyle">
-        <thead>
-            <tr>
-                <th>Patente</th>
-                <th class="unDisplayColumn">Fecha de registro</th>
-                <th class="unDisplayColumn">Tara [kg]</th>
-                <th class="unDisplayColumn">Carga máxima [kg]</th>
-                <th class="unDisplayColumn">Registrado por</th>
-            </tr>
-        </thead>
-        <tbody>
-                <tr>
-                    <td class="tdPosition"><div class="btnPlus"><i class="fa fa-plus"></i></div>'.$value['patente'].'</td>
-                    <td class="unDisplayColumn">'.$value['fechaRegistro'].'</td>
-                    <td class="unDisplayColumn">'.$value['tara'].'</td>
-                    <td class="unDisplayColumn">'.$value['cargaMaxima'].'</td>
-                    <td class="unDisplayColumn">JUAN PEREZ VILLANUEVA</td>
-                </tr>
-                <tr class="accordion unActivated">
-                    <td colspan="2">
-                        <ul>
-                            <li>Última actualización : '.$value['fechaRegistro'].'</li>
-                            <li>Subido por: '.$value['tara'].'</li>
-                            <li>Fecha subida: '.$value['cargaMaxima'].'</li>
-                        </ul>
-                    </td>
-                </tr>
-        </tbody>
-    </table>
     <script src="recursos/jquery/jquery.min.js"></script>
     <script src="recursos/bootstrap/js/bootstrap.min.js"></script>
     <script src="recursos/pickadate/picker.js"></script>
