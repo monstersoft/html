@@ -89,7 +89,7 @@
     function datosRecientes() {
         $l = conectar();
         mysqli_set_charset($l,'utf8');
-        $c = "SELECT empresas.idEmpresa, empresas.nombre AS nombreEmpresa, zonas.idZona, zonas.nombre AS nombreZona, archivos.idSupervisor, supervisores.nombreSupervisor, archivos.idArchivo, archivos.fechaSubida, archivos.horaSubida, MAX(archivos.fechaDatos) AS fechaRecienteDatos FROM empresas LEFT JOIN zonas ON empresas.idEmpresa = zonas.idEmpresa LEFT JOIN archivos ON archivos.idZona = zonas.idZona LEFT JOIN supervisores ON supervisores.idSupervisor = archivos.idSupervisor GROUP BY zonas.idZona ORDER BY empresas.nombre ASC, zonas.nombre ASC";
+        $c = "SELECT DISTINCT ta.idZona, te.idEmpresa, te.nombre AS nombreEmpresa, tz.nombre AS nombreZona, ts.nombreSupervisor, ta.idArchivo, ta.idSupervisor, ta.fechaSubida, ta.fechaDatos AS fechaRecienteDatos, ta.horaSubida FROM archivos ta LEFT JOIN zonas tz ON ta.idZona = tz.idZona LEFT JOIN supervisores ts ON ta.idSupervisor = ts.idSupervisor LEFT JOIN empresas te ON tz.idEmpresa = te.idEmpresa WHERE fechaDatos = (SELECT MAX(fechaDatos) FROM archivos ta2 WHERE ta.idZona = ta2.idZona) ORDER BY te.nombre, tz.nombre";
         $a = array();
         if($r = mysqli_query($l,$c)) {
             while($f = mysqli_fetch_assoc($r)) {

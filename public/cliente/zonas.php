@@ -37,105 +37,65 @@
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/menuBarra.css">
-    <link rel="stylesheet" href="../../css/zonasCliente.css">
-    <style>
-        .cent {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/tables.css">
 </head>
 <body>
-    <?php barraMenu($perfil,'zonas'); ?>
+    <?php barraMenu($perfil,'zonas'); ?>sizeof($zonas) == 0 $zonas[$key]['zonas'] as $v
     <div id="content" class="animated fadeIn unLeftContent">
            <?php
                 if(sizeof($zonas) == 0) echo '<div class="alert"><div class="row vertical-align"> <div class="col-xs-2"> <i class="fa fa-exclamation-circle fa-3x"></i> </div><div class="col-xs-10"> <strong class="montserrat">No existen empresas </strong>, debes agregar una empresa y luego una zona en el menú<strong> Ajustes </strong>de la barra de navegación. </div></div></div>';
-                else {
-                    foreach($zonas as $key => $value) { echo '
-                        <div class="col-xs-12 col-sm-12 card">
-                            <div class="col-xs-12 shadowButtonDown cardContent">
-                                <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i>
-                                    <p id="'.$value['idEmpresa'].'">'.$value['nombreEmpresa'].'</p>
+                else
+                    foreach($zonas as $key => $value) {
+                        echo'<div class="col-xs-12 card montserrat">
+                                <div class="col-xs-12 shadowButtonDown cardContent">
+                                    <div class="col-xs-12 titleCard"><i class="fa fa-industry pull-left"></i><p>'.$value['nombreEmpresa'].'</p></div>
                                 </div>
-                            </div>
-                            <div class="col-xs-12 shadow cardContent">'; 
-                                if($zonas[$key]['zonas'][0]['idZona'] == null) 
-                                    echo '<div class="montserrat cent" style="padding: 10px;"><i class="fa fa-exclamation-circle" style="margin-right: 5px;"></i>No hay zonas registradas</div>'; 
-                                else { echo '
-                                <table class="tableStyle">
-                                        <thead>
-                                            <tr>
-                                                <th>Zona</th>
-                                                <th>Seleccionar fecha</th>
-                                                <th class="unDisplayColumn">Ultima actualización</th>
-                                                <th class="unDisplayColumn">Subido por</th>
-                                                <th class="unDisplayColumn">Fecha subida</th>
-                                                <th class="unDisplayColumn">Hora subida</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>';
-                                            foreach($zonas[$key]['zonas'] as $v) {
-                                                if($v['idArchivo'] != null) { echo '
-                                                    <tr>
-                                                        <td class="tdPosition"><div class="btnPlus"><i class="fa fa-expand"></i></div>'.$v['nombreZona'].'</td>
-                                                        <td>
-                                                            <form method="GET" action="maquinas.php">
-                                                                <input type="text" name="idArchivo" value="'.$v['idArchivo'].'"></input>
-                                                                <div class="input-group input-xs">
-                                                                    <input type="text" id="'.$v['idZona'].'" class="btnFecha form-control datepicker" data-value="'.$v['fechaRecienteDatos'].'" name="fechaRecienteDatos">
-                                                                    <div class="input-group-btn">
-                                                                        <button id="'.$v['idArchivo'].'" class="btnBuscar btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </td>
-                                                        <td class="unDisplayColumn">'.$v['fechaRecienteDatos'].'</td>
-                                                        <td class="unDisplayColumn">'.$v['nombreSupervisor'].'</td>
-                                                        <td class="unDisplayColumn">'.$v['fechaSubida'].'</td>
-                                                        <td class="unDisplayColumn">'.$v['horaSubida'].'</td>
-                                                    </tr>
-                                                    <tr class="accordion unActivated">
-                                                        <td colspan="2">
-                                                            <ul>
-                                                                <li>Última actualización : '.$v['fechaRecienteDatos'].'</li>
-                                                                <li>Subido por: '.$v['nombreSupervisor'].'</li>
-                                                                <li>Fecha subida: '.$v['fechaSubida'].'</li>
-                                                                <li>Hora subida: '.$v['horaSubida'].'</li>
-                                                            </ul>
-                                                        </td>
-                                                    </tr>';
-                                                }
-                                                else { echo '
-                                                    <tr>
-                                                        <td class="tdPosition"><div class="btnPlus"><i class="fa fa-expand"></i></div id="'.$v['idZona'].'">'.$v['nombreZona'].'</td>
-                                                        <td>No hay archivos disponibles</td>
-                                                        <td class="unDisplayColumn">-</td>
-                                                        <td class="unDisplayColumn">-</td>
-                                                        <td class="unDisplayColumn">-</td>
-                                                        <td class="unDisplayColumn">-</td>
-                                                    </tr>
-                                                    <tr class="accordion unActivated">
-                                                        <td colspan="2">
-                                                            <ul>
-                                                                <li>Última actualización : -</li>
-                                                                <li>Subido por: -</li>
-                                                                <li>Fecha subida: -</li>
-                                                                <li>Hora subida: -</li>
-                                                            </ul>
-                                                        </td>
-                                                    </tr>';
-                                                }
-                                             } echo '
-                                        </tbody>
-                                    </table>';
-                                } echo '
-                            </div>
-                        </div>';
+                                <div class="headTable col-xs-12" style="border-bottom: 3px solid #F5A214;">
+                                    <div class="col-xs-8 col-md-3 nw text-center">Zona</div>
+                                    <div class="col-xs-4 col-md-2 nw text-center">Seleccionar</div>
+                                    <div class="col-md-2 dn nw text-center">Última actualización</div>
+                                    <div class="col-md-2 dn nw text-center">Subido por</div>
+                                    <div class="col-md-2 dn nw text-center">Fecha subida</div>
+                                    <div class="col-md-1 dn nw text-center">Hora subida</div>
+                                </div>';
+                                foreach($zonas[$key]['zonas'] as $k => $v) {
+                                    if($v['idArchivo'] == null)
+                                        echo'<div class="bodyTable col-xs-12 bor">
+                                                <div class="col-xs-8 col-md-3 nw ai">'.$v['nombreZona'].'</div>
+                                                <div class="col-xs-4 col-md-2 nw">No hay archivos disponibles</div>
+                                                <div class="col-md-2 dn nw ce">-</div>
+                                                <div class="col-md-2 dn nw ce">-</div>
+                                                <div class="col-md-2 dn nw ce">-</div>
+                                                <div class="col-md-1 dn nw ce">-</div>
+                                            </div>';
+                                    else
+                                        echo'<div class="bodyTable col-xs-12 bor">
+                                                <div class="col-xs-8 col-md-3 nw ai"><button class="btn btn-xs btnPlus"><i class="fa fa-chevron-right"></i></button>'.$v['nombreZona'].'</div>
+                                                <div class="col-xs-4 col-md-2 nw">
+                                                    <form method="GET" action="maquinas.php" style="margin: 0;">
+                                                        <input type="hidden" name="idArchivo" value="'.$v['idArchivo'].'"></input>
+                                                        <div class="input-group">
+                                                            <input type="text" id="'.$v['idZona'].'" class="btnFecha form-control datepicker text-center iXs" data-value="'.$v['fechaRecienteDatos'].'" placeholder="Buscar" name="fechaRecienteDatos">
+                                                            <div class="input-group-btn">
+                                                                <button id="'.$v['fechaRecienteDatos'].'" class="btn btn-xs iXs" type="submit"><i class="fa fa-search"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-md-2 dn nw ce">'.$v['fechaRecienteDatos'].'</div>
+                                                <div class="col-md-2 dn nw text-center">'.$v['nombreSupervisor'].'</div>
+                                                <div class="col-md-2 dn nw ce">'.$v['fechaSubida'].'</div>
+                                                <div class="col-md-1 dn nw ad">'.$v['horaSubida'].'</div>
+                                            </div>
+                                            <div class="listTable desactivado col-xs-12">
+                                                <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Última actualización :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['fechaRecienteDatos'].'</div></div>
+                                                <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Subido por :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['nombreSupervisor'].'</div></div>
+                                                <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Fecha subida :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['fechaSubida'].'</div></div>
+                                                <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Hora subida :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['horaSubida'].'</div></div>
+                                            </div>';       
+                                }
+                        echo'</div>';
                     }
-                }
            ?>
 <!-- ............................................................................................................................ -->
     </div>
@@ -149,30 +109,7 @@
     <script src="../../cliente/js/fechasDisponibles.js"></script>
     <script src="../../js/funciones.js"></script>
     <script src="../../js/config.js"></script>
+    <script src="../../js/tables.js"></script>
     <script>main();</script>
-   <script>
-       $(document).ready(function(){
-           $('.btnPlus').click(function(){
-               var accordion = $(this).parent().parent().next();
-               if(accordion.hasClass('unActivated')) {
-                   $('.accordion').removeClass('activated');
-                   $('.accordion').addClass('unActivated');
-                   accordion.removeClass('unActivated');
-                   accordion.addClass('activated');
-               }
-               else {
-                   $('.accordion').removeClass('activated');
-                   $('.accordion').addClass('unActivated');
-                   accordion.removeClass('activated');
-                   accordion.addClass('unActivated');
-               }
-           });
-           $(window).resize(function(){
-               if($(window).width() > 970)
-                   if($('.accordion').hasClass('activated')) 
-                        $($('.accordion').removeClass('activated').addClass('unActivated'));
-           });
-       });
-   </script>
 </body>
 </html>

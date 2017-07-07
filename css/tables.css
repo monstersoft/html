@@ -1,0 +1,79 @@
+.nw {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px;
+}
+.bor {
+    border-left: 1px solid #D4D4D5;
+    border-right: 1px solid #D4D4D5;
+    border-bottom: 1px solid #D4D4D5;
+}
+.headTable {
+    border-left: 1px solid #D4D4D5;
+    border-right: 1px solid #D4D4D5;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0;
+}
+.bodyTable {
+    padding: 0;
+}
+.listTable {
+    padding: 10px;
+    background: rgba(0,0,0,0.1);
+    font-size: 10px;
+}
+.btnPlus {
+    margin-right: 10px;
+}
+.row {
+    padding: 0;
+}
+.iXs {
+    height: 22px;
+}
+.activado {
+    display: inline-block;
+}
+.desactivado {
+    display: none;
+}
+.ce {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width: 992px) {
+    .dn {
+        display: none;
+    }
+}
+@media (min-width: 993px) {
+    .btnPlus {
+        display: none;
+    }
+    .ai {
+        text-align: left;
+    }
+    .ad {
+        text-align: right;
+    }
+    .listTable {
+        display: none;
+    }
+}
+@media (min-width: 1200px) {
+    .ai {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .ad {
+        text-align: center;
+    }
+}

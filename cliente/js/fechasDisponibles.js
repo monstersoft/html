@@ -29,16 +29,15 @@ $('.datepicker').pickadate({
             dataType: 'json',
             cache: false,
             success: function(arr) {
-                var currentTr = document.getElementById(currentCalendar.get('id')).parentNode.parentNode.parentNode.parentNode;
+                var currentBodyTable = document.getElementById(currentCalendar.get('id')).parentNode.parentNode.parentNode.parentNode;
                 var currentForm = document.getElementById(currentCalendar.get('id')).parentNode.parentNode;
-                var supervisor = $(currentTr.childNodes[7]);
-                var fechaSubida = $(currentTr.childNodes[9]);
-                var horaSubida = $(currentTr.childNodes[11]);
+                var supervisor = $(currentBodyTable.childNodes[7]);
+                var fechaSubida = $(currentBodyTable.childNodes[9]);
+                var horaSubida = $(currentBodyTable.childNodes[11]);
                 currentForm.childNodes[1].value = arr.idArchivo;
                 supervisor.html(arr.nombreSupervisor);
                 fechaSubida.html(arr.fechaSubida);
                 horaSubida.html(arr.horaSubida);
-                console.log(arr.idArchivo);
             },
             error: function(xhr) {console.log(xhr.responseText);}
         });

@@ -1,3 +1,8 @@
+<?php 
+    include 'php/funciones.php';
+debug(datosRecientes());
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,3 +50,4 @@
         <script src="js/compruebaInputs.js"></script>
     </body>
 </html>
+
