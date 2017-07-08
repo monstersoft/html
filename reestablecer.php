@@ -1,6 +1,6 @@
 <?php 
     include 'php/funciones.php';
-debug(datosRecientes());
+debug(empresas());
 
 ?>
 <!DOCTYPE html>

@@ -34,103 +34,44 @@
     <link rel="stylesheet" href="../../recursos/select2/select2-bootstrap.css">
     <link rel="stylesheet" href="../../css/menuBarra.css">
     <link rel="stylesheet" href="../../css/base.css">
-    <link rel="stylesheet" href="../../css/registro.css">
-    <style>
-        .cardContent {
-            font-family: 'Montserrat';
-        }
-
-.legend .number {
-    font-size: 20px;
-    font-weight: bold;
-}
-.legend .subLegend {
-    font-size: 12px;
-}
-        
-
-        .info ul  {
-            padding-left: 20px;
-        }
-        .info ul li {
-            list-style: none;
-        }
-        .center {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-        }
-        .patente {
-            font-size: 25px;
-            font-weight: bold;
-            color: #262626;
-        }
-        .numero {
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .legend {
-            font-size: 16px;
-        }
-        .disponible {
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            color: #F5A214;
-            z-index: 100;
-            font-size: 40px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="../../css/tables.css">
 </head>
 <body>
     <?php barraMenu($perfil,'registro'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
     <?php
         if($empresas['cantidadEmpresas'] == 0) {echo '<div class="alert"> <div class="row vertical-align"> <div class="col-xs-2"> <i class="fa fa-exclamation-circle fa-3x"></i> </div><div class="col-xs-10"> <strong class="montserrat">No existen empresas </strong>, debes agregar una empresa presionando el botón <strong> Más </strong> ubicado en la parte inferior derecha de la pantalla </div></div></div>';}
-        else { foreach($empresas['empresas'] as $value) { echo '  
-           <div class="col-xs-12  col-md-6 card">
-            <div class="col-xs-12 shadow cardContent">
-                <div class="col-xs-12 titleCard"> <i class="fa fa-industry pull-left"></i><p id="'.$value['idEmpresa'].'">'.$value['nombre'].'</p>
-                    <div class="dropdown pull-right">
-                        <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
-                            <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-trash"></i>eliminar</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <table class="tableStyle">
-                    <thead>
-                        <tr>
-                            <th>Rut</th>
-                            <th class="unDisplayColumn">Correo</th>
-                            <th class="unDisplayColumn">Teléfono</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="tdPosition"><div class="btnPlus"><i class="fa fa-expand"></i></div>'.$value['rut'].'</td>
-                            <td class="unDisplayColumn">'.$value['correo'].'</td>
-                            <td class="unDisplayColumn">'.$value['telefono'].'</td>
-                        </tr>
-                        <tr class="accordion unActivated">
-                            <td colspan="2">
-                                <ul>
-                                    <li>Correo : '.$value['correo'].'</li>
-                                    <li>Teléfono: '.$value['telefono'].'</li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <a href="crudZonas.php?id='.$value['idEmpresa'].'" class="boton">Ver Zonas</a>
-            </div>
-        </div>';
+        else  
+            foreach($empresas['empresas'] as $value) {
+                echo'<div class="col-xs-12 card montserrat">
+                        <div class="col-xs-12 shadowButtonDown cardContent">
+                            <div class="col-xs-12 titleCard"><i class="fa fa-industry"></i><p>'.$value['nombre'].'</p>
+                                <div class="dropdown pull-right">
+                                    <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
+                                        <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-trash"></i>eliminar</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="headTable col-xs-12 ce" style="border-bottom: 3px solid #F5A214;">
+                            <div class="col-xs-12 col-md-4 nw ce">Correo</div>
+                            <div class="col-md-4 dn nw ce">Rut</div>
+                            <div class="col-md-4 dn nw ce">Celular</div>
+                        </div>
+                        <div class="bodyTable col-xs-12 bor">
+                            <div class="col-xs-12 col-md-4 nw ce"><button class="btn btn-xs btnPlus"><i class="fa fa-chevron-right"></i></button>'.$value['correo'].'</div>
+                            <div class="col-md-4 dn nw ce">'.$value['rut'].'</div>
+                            <div class="col-md-4 dn nw ce">'.$value['telefono'].'</div>
+                        </div>
+                        <div class="listTable desactivado col-xs-12">
+                            <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Rut :</div><div class="col-xs-6" style="padding-left: 0px;">'.$value['rut'].'</div></div>
+                            <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Celular :</div><div class="col-xs-6" style="padding-left: 0px;">'.$value['telefono'].'</div></div>
+                        </div>
+                        <a href="crudZonas.php?id='.$value['idEmpresa'].'" class="boton">Ver Zonas</a>
+                    </div>';
             }
-        }
     ?>
 
     </div>
@@ -244,6 +185,7 @@
     <script src="../../cliente/js/modalEditarEmpresa.js"></script>
     <script src="../../cliente/js/modalEliminarEmpresa.js"></script>
     <script src="../../js/funciones.js"></script>
+    <script src="../../js/tables.js"></script>
     <script src="../../js/compruebaInputs.js"></script>
     <script src="../../js/mensajes.js"></script>
     <script>
@@ -265,29 +207,5 @@
             });
         });
     </script>
-   <script>
-       $(document).ready(function(){
-           $('.btnPlus').click(function(){
-               var accordion = $(this).parent().parent().next();
-               if(accordion.hasClass('unActivated')) {
-                   $('.accordion').removeClass('activated');
-                   $('.accordion').addClass('unActivated');
-                   accordion.removeClass('unActivated');
-                   accordion.addClass('activated');
-               }
-               else {
-                   $('.accordion').removeClass('activated');
-                   $('.accordion').addClass('unActivated');
-                   accordion.removeClass('activated');
-                   accordion.addClass('unActivated');
-               }
-           });
-           $(window).resize(function(){
-               if($(window).width() > 970)
-                   if($('.accordion').hasClass('activated')) 
-                        $($('.accordion').removeClass('activated').addClass('unActivated'));
-           });
-       });
-   </script>
 </body>
 </html>

@@ -26,6 +26,11 @@
 }
 .btnPlus {
     margin-right: 10px;
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
 }
 .row {
     padding: 0;
