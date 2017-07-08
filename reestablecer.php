@@ -1,7 +1,3 @@
-<?php 
-    include 'php/funciones.php';
-debug(empresas());
-
 ?>
 <!DOCTYPE html>
 <html>

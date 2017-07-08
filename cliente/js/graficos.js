@@ -1,3 +1,7 @@
+var torta;
+var barra;
+var lineaHistoricos;
+var linea;
 var hours = ['08 am','09 am','10 am','11 am','12 am','13 pm','14 pm','15 pm','16 pm','17 pm'];
 var posHeight = 0;
 var posDegrees = 0;
@@ -200,6 +204,7 @@ function donut(idChart,data){
             data.element.animate(animationDefinition, false);
         }
     });
+    torta = chart;
 }
 function bar(idChart,data) {
     var options = {
@@ -218,7 +223,8 @@ function bar(idChart,data) {
         }]
         
         ];
-    new Chartist.Bar(idChart,data,options, responsiveOptions);
+    var chart = new Chartist.Bar(idChart,data,options, responsiveOptions);
+    barra = chart;
 }
 function lineHistorical(idChart, data01, showLabelX, axisXTitle, paddingBottom) {  
     var plugins = [
@@ -280,6 +286,7 @@ function lineHistorical(idChart, data01, showLabelX, axisXTitle, paddingBottom) 
             });
         }
     });
+    lineaHistoricos = chart;
     
 }
 function line(idChart, axisShowY, axisShowX, data, unidad, fullwidth) {
@@ -303,6 +310,7 @@ function line(idChart, axisShowY, axisShowX, data, unidad, fullwidth) {
             });
         }
     });
+    linea = chart;
 }
 function returnMonthsAvailables(year, currentMonth) {
     var currentYear = moment().format('YYYY');

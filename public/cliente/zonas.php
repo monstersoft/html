@@ -70,8 +70,8 @@
                                             </div>';
                                     else
                                         echo'<div class="bodyTable col-xs-12 bor">
-                                                <div class="col-xs-8 col-md-3 nw ai"><button class="btn btn-xs btnPlus"><i class="fa fa-chevron-right"></i></button>'.$v['nombreZona'].'</div>
-                                                <div class="col-xs-4 col-md-2 nw">
+                                                <div class="col-xs-8 col-md-3 nw text-center"><button class="btn btn-xs btnPlus"><i class="fa fa-chevron-right"></i></button><div class="te">'.$v['nombreZona'].'</div></div>
+                                                <div class="col-xs-4 col-md-2 nw text-center" style="height: 30px">
                                                     <form method="GET" action="maquinas.php" style="margin: 0;">
                                                         <input type="hidden" name="idArchivo" value="'.$v['idArchivo'].'"></input>
                                                         <div class="input-group">
@@ -82,10 +82,10 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <div class="col-md-2 dn nw ce">'.$v['fechaRecienteDatos'].'</div>
+                                                <div class="col-md-2 dn nw text-center">'.$v['fechaRecienteDatos'].'</div>
                                                 <div class="col-md-2 dn nw text-center">'.$v['nombreSupervisor'].'</div>
-                                                <div class="col-md-2 dn nw ce">'.$v['fechaSubida'].'</div>
-                                                <div class="col-md-1 dn nw ad">'.$v['horaSubida'].'</div>
+                                                <div class="col-md-2 dn nw text-center">'.$v['fechaSubida'].'</div>
+                                                <div class="col-md-1 dn nw text-center">'.$v['horaSubida'].'</div>
                                             </div>
                                             <div class="listTable desactivado col-xs-12">
                                                 <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Última actualización :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['fechaRecienteDatos'].'</div></div>

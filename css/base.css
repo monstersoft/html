@@ -54,20 +54,8 @@
     background-color: #FFFFFF;
 }
  /*DROPDOWN */
-.dropdown {
-    background: white;
-    padding: 0px !important;
-}
-.dropdown-menu {
-    padding: 0px;
-    border-radius: 0px;
-}
-.dropdown-menu li a {
-    padding: 5px;
-}
-.dropdown-menu li i {
-    margin-right: 20px;
-    margin-left: 20px;
+.aAction {
+    text-align: right;
 }
 /* BUTTON LONG DOWN CARD */
 .boton {

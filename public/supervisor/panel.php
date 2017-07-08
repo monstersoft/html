@@ -38,31 +38,74 @@
         <link rel="stylesheet" href="../../recursos/pickadate/default.time.css">
         <link rel="stylesheet" href="../../css/menuBarra.css">
         <link rel="stylesheet" href="../../css/base.css">
-        <link rel="stylesheet" href="../../css/zonas.css">
+        <link rel="stylesheet" href="../../css/tables.css">
+        <style>
+            .dropdown-menu {
+                min-width: 160px;
+                padding: 0;
+            }
+            .dropdown-menu li a {
+                padding: 10px;
+                cursor: pointer;
+                width: 100%;
+            }
+        </style>
     </head>
     <body>
         <?php barraMenu($perfil,'zonas'); ?>
         <div id="content" class="animated fadeIn unLeftContent">
             <!-- ............................................................................................................................ -->
             <?php
-            foreach(zonas($email) as $value) {
-                $idZona = $value['idZona'];
-                echo '<div class="col-xs-12 col-sm-12 card"> <div class="col-xs-12 shadow cardContent"> <div class="col-xs-12 titleCard"> <i class="fa fa-globe pull-left"></i> <div class="dropdown pull-right"> <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div><ul class="dropdown-menu dropdown-menu-right"> <li><a id="'.$value['idZona'].'" class="subirArchivo"><i class="fa fa-upload"></i>subir archivo</a></li><li><a id="'.$value['idZona'].'" class="agregarMaquina"><i class="fa fa-cog"></i>agregar máquina</a></li><li><a id="'.$value['idZona'].'" class="descargarId"><i class="fa fa-download"></i>descargar id</a></li></ul> </div><p>'.$value['nombre'].'</p></div>';
-                    if(cantidadMaquinas($idZona) == 0)
-                        echo '<div class="col-xs-12 emptyMessage"><i class="fa fa-exclamation-circle fa-2x pull-left"></i>No hay máquinas asociadas a esta zona</div>';
-                    else {
-                        echo '<div class="col-xs-12 cardContent"> <div class="table-responsive"> <table class="responsive" style="width: 100%;"> <thead> <tr><th>Patente</th> <th>Fecha de Registro</th> <th>Tara [kg]</th> <th>Carga Máxima [kg]</th> </tr></thead> <tbody>';
-                        foreach(maquinas($idZona) as $value) {
-                            echo '<tr> <td class="firstColumn">'.$value['patente'].'</td><td>'.$value['fechaRegistro'].'</td><td>'.$value['tara'].'</td><td>'.$value['cargaMaxima'].'</td></tr>';
+                foreach(zonas($email) as $value) {
+                echo'<div class="col-xs-12 card montserrat">
+                        <div class="col-xs-12 shadowButtonDown cardContent">
+                            <div class="col-xs-12 titleCard"><i class="fa fa-industry"></i><p>'.$value['nombre'].'</p>
+                                <div class="dropdown pull-right">
+                                    <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a id="'.$value['idZona'].'" class="subirArchivo"><i class="fa fa-upload pull-left"></i><div class="aAction">subir archivo</div></a></li>
+                                        <li><a id="'.$value['idZona'].'" class="agregarMaquina"><i class="fa fa-plus pull-left"></i><div class="aAction">agregar máquina</div></a></li>
+                                        <li><a id="'.$value['idZona'].'" class="descargarId"><i class="fa fa-download pull-left"></i><div class="aAction">descargar id</div></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>';
+                        if(cantidadMaquinas($value['idZona']) == 0)
+                            echo '<div class="col-xs-12 text-center montserrat">No existen máquinas registradas</div>';
+                        else {
+                            echo'<div class="headTable col-xs-12" style="border-bottom: 3px solid #F5A214;">
+                                    <div class="col-xs-6 col-md-3 nw ce">Patente</div>
+                                    <div class="col-md-3 col-md-3 nw ce">Fecha de registro</div>
+                                    <div class="col-md-3 dn nw ce">Tara [kg]</div>
+                                    <div class="col-md-3 dn nw ce">Carga máxima</div>
+                                </div>';
+                            foreach(maquinas($value['idZona']) as $v) {               
+                            echo'<div class="bodyTable col-xs-12 bor">
+                                    <div class="col-xs-6 col-md-3 nw ce"><button class="btn btn-xs btnPlus"><i class="fa fa-chevron-right"></i></button>'.$v['patente'].'</div>
+                                    <div class="col-xs-6 col-md-3 nw ce">'.$v['fechaRegistro'].'</div>
+                                    <div class="col-md-3 dn nw ce">7'.$v['tara'].'</div>
+                                    <div class="col-md-3  dn nw ce">7'.$v['cargaMaxima'].'</div>
+                                </div>
+                                <div class="listTable desactivado col-xs-12">
+                                    <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Tara[kg] :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['tara'].'</div></div>
+                                    <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Carga máxima[kg] :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['cargaMaxima'].'</div></div>
+                                </div>';
+                            }
                         }
-                        echo '</tbody> </table> </div></div>';
-                    }
-                    foreach(supervisores($idZona) as $value) {
-                       echo '<div class="col-xs-12 col-sm-6 cardContent a"> <div class="col-xs-12"><i class="fa fa-user-circle fa-2x pull-left"></i><p class="text-center montserrat">'.$value['nombreSupervisor'].'</p></div><div class="col-xs-12"><a href="#">Asignar nueva zona</a><a href="#">Eliminar</a> </div></div>';
-                    }
-                echo '</div></div>';
-            }
-        ?>
+                        foreach(supervisores($value['idZona']) as $value) {
+                        echo'<div class="col-xs-12 col-md-6 cardContent a">
+                                <div class="flex-parent">
+                                    <i class="fa fa-user-circle pull-left"></i>
+                                    <div class="long-and-truncated-with-child-corrected">
+                                        <a class="montserrat">'.$value['nombreSupervisor'].'</a>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>';
+                        }
+                echo'</div>';
+                }
+            ?>
                 <!-- ............................................................................................................................ -->
         </div>
         <!-- VENTANAS MODALES -->
@@ -145,6 +188,7 @@
         <script src="../../supervisor/js/modalSubirArchivo.js"></script>
         <script src="../../supervisor/js/descargarIdZona.js"></script>
         <script src="../../js/funciones.js"></script>
+        <script src="../../js/tables.js"></script>
         <script src="../../js/compruebaInputs.js"></script>
         <script src="../../js/mensajes.js"></script>
         <script>

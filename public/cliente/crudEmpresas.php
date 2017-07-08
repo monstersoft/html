@@ -35,35 +35,46 @@
     <link rel="stylesheet" href="../../css/menuBarra.css">
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/tables.css">
+    <style>
+        .dropdown-menu {
+            min-width: 100px;
+            padding: 0;
+        }
+        .dropdown-menu li a {
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <?php barraMenu($perfil,'registro'); ?>
-    <div id="content" class="animated fadeIn unLeftContent">
+    <div id="content" class="animated fadeIn unLeftContent" style="margin-bottom: 55px;">
     <?php
         if($empresas['cantidadEmpresas'] == 0) {echo '<div class="alert"> <div class="row vertical-align"> <div class="col-xs-2"> <i class="fa fa-exclamation-circle fa-3x"></i> </div><div class="col-xs-10"> <strong class="montserrat">No existen empresas </strong>, debes agregar una empresa presionando el botón <strong> Más </strong> ubicado en la parte inferior derecha de la pantalla </div></div></div>';}
         else  
             foreach($empresas['empresas'] as $value) {
-                echo'<div class="col-xs-12 card montserrat">
+                echo'<div class="col-xs-12 col-lg-6 card montserrat">
                         <div class="col-xs-12 shadowButtonDown cardContent">
                             <div class="col-xs-12 titleCard"><i class="fa fa-industry"></i><p>'.$value['nombre'].'</p>
                                 <div class="dropdown pull-right">
                                     <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
                                     <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil"></i>editar</a></li>
-                                        <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-trash"></i>eliminar</a></li>
+                                        <li><a id="'.$value['idEmpresa'].'" class="editarEmpresa"><i class="fa fa-pencil pull-left"></i><div class="aAction">editar</div></a></li>
+                                        <li><a id="'.$value['idEmpresa'].'" class="eliminarEmpresa"><i class="fa fa-trash pull-left"></i><div class="aAction">eliminar</div></a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="headTable col-xs-12 ce" style="border-bottom: 3px solid #F5A214;">
-                            <div class="col-xs-12 col-md-4 nw ce">Correo</div>
-                            <div class="col-md-4 dn nw ce">Rut</div>
-                            <div class="col-md-4 dn nw ce">Celular</div>
+                            <div class="col-xs-12 col-md-6 nw ce">Correo</div>
+                            <div class="col-md-3 dn nw ce">Rut</div>
+                            <div class="col-md-3 dn nw ce">Celular</div>
                         </div>
                         <div class="bodyTable col-xs-12 bor">
-                            <div class="col-xs-12 col-md-4 nw ce"><button class="btn btn-xs btnPlus"><i class="fa fa-chevron-right"></i></button>'.$value['correo'].'</div>
-                            <div class="col-md-4 dn nw ce">'.$value['rut'].'</div>
-                            <div class="col-md-4 dn nw ce">'.$value['telefono'].'</div>
+                            <div class="col-xs-12 col-md-6 nw ce"><button class="btn btn-xs btnPlus"><i class="fa fa-chevron-right"></i></button><div class="te">'.$value['correo'].'</div></div>
+                            <div class="col-md-3 dn nw ce">'.$value['rut'].'</div>
+                            <div class="col-md-3 dn nw ce">'.$value['telefono'].'</div>
                         </div>
                         <div class="listTable desactivado col-xs-12">
                             <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Rut :</div><div class="col-xs-6" style="padding-left: 0px;">'.$value['rut'].'</div></div>
@@ -137,9 +148,9 @@
                             <label>Celular</label>
                             <input type="text" name="telefono" class="form-control" id="celularEditarEmpresa">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="display: none;">
                             <label>ID EMPRESA</label>
-                            <input type="text" class="form-control" id="idEditarEmpresa">
+                            <input type="hidden" class="form-control" id="idEditarEmpresa">
                         </div>
                     </form>
                     <div class="clearfix">
@@ -159,11 +170,11 @@
                 <div class="modal-header">
                     <i class="fa fa-industry"></i>Eliminar Empresa
                 </div>
-                <div class="modal-body"> ¿Estás seguro que quieres eliminar esta empresa? , se borrarán todos los datos asociados a ella.
+                <div class="modal-body montserrat"> ¿Estás seguro que quieres eliminar esta empresa? , se borrarán todos los datos asociados a ella.
                     <form id="formularioEliminarEmpresa">
-                        <div class="form-group">
+                        <div class="form-group" style="display: none;">
                             <label>ID EMPRESA</label>
-                            <input type="text" class="form-control" name="idEmpresa" id="idEliminarEmpresa">
+                            <input type="hidden" class="form-control" name="idEmpresa" id="idEliminarEmpresa">
                         </div>
                     </form>
                     <div class="clearfix">

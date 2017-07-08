@@ -15,6 +15,10 @@
             $idArchivo = $_GET['idArchivo'];
             $patente = $_GET['patente'];
             $estadisticos = estadisticos($idResultado, $idArchivo, $patente);
+            echo '<button id="t" class="btn btn-primary montserrat"><i class="fa fa-grav fa-2x"></i><br>T</button>
+            <button id="b" class="btn btn-success montserrat"><i class="fa fa-grav fa-2x"></i><br>B</button>
+            <button id="l" class="btn btn-info montserrat"><i class="fa fa-grav fa-2x"></i><br>L</button>
+            <button id="lh" class="btn btn-danger montserrat"><i class="fa fa-grav fa-2x"></i><br>H</button>';
         }
     }
     else {
@@ -38,6 +42,32 @@
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/dashboard.css">
 </head>
+<style>
+    #lh {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+    }
+    #l {
+        position: fixed;
+        bottom: 100;
+        left: 0;
+        z-index: 100;
+    }
+    #t {
+        position: fixed;
+        bottom: 200;
+        left: 0;
+        z-index: 100;
+    }
+    #b {
+        position: fixed;
+        bottom: 300;
+        left: 0;
+        z-index: 100;
+    }
+</style>
 <body>
     <?php barraMenu($perfil,'zonas'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
@@ -210,6 +240,26 @@
     <script src="../../recursos/moment/moment.js"></script>
     <script src="../../js/funciones.js"></script>
     <script src="../../cliente/js/graficos.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#lh').click(function(){
+                lineaHistoricos.update();
+                console.log('Linea Hitoricos');
+            });
+            $('#l').click(function(){
+                linea.update();
+                console.log('Linea');
+            });
+            $('#t').click(function(){
+                torta.update();
+                console.log('torta');
+            });
+            $('#b').click(function(){
+                barra.update();
+                console.log('Barra');
+            });
+        });
+    </script>
     <script>main();</script>
 </body>
 </html>
