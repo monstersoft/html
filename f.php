@@ -1,7 +1,6 @@
 <?php
 	include 'recursos/mailer/class.phpmailer.php';
-echo 'asdasdasdasdasdsad';
-/*$mail = new PHPMailer;
+$mail = new PHPMailer;
 
 //$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
@@ -25,5 +24,5 @@ if(!$mail->send()) {
     echo 'Mailer Error: ' . $mail->ErrorInfo;
 } else {
     echo 'Message has been sent';
-}*/
+}
 ?>
