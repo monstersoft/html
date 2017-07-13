@@ -6,7 +6,7 @@
 	function enviarMailRegistroSupervisor($nombreSupervisor,$emailSupervisor,$link) {
 			$e = new PHPMailer;
 			$e->Host = 'localhost';
-			$e->From = "machmonitor@gmail.com";
+			$e->From = "machmonitors@gmail.com";
 			$e->FromName = 'Machine Monitors';
 			$e->Subject = 'Registro de Supervisores';
 			$e->addAddress($emailSupervisor);
