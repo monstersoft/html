@@ -12,6 +12,7 @@
     font-family: 'Montserrat';
 }
 .contloader {
+    display: -webkit-flex;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -26,7 +27,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 10000;
+    z-index: 100;
     overflow: hidden;
 }
 
