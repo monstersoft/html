@@ -9,7 +9,7 @@ $('.datepicker').pickadate({
             dataType: 'json',
             cache: false,
             beforeSend: function(){
-                $('.picker__wrap').append('<div class="capa"><div class="contLoader animated zoomIn"><i style="color: #F5A214;" class="loader fa-2x fa fa-refresh fa-spin"></i></div></div>');
+                $('.picker__wrap').append('<div class="capa"><div class="contLoader"><i style="color: #F5A214;" class="loader fa-2x fa fa-refresh fa-spin"></i></div></div>');
             },
             success: function(arr) {
                 currentCalendar.set({
