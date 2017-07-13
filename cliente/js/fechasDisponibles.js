@@ -9,7 +9,8 @@ $('.datepicker').pickadate({
             dataType: 'json',
             cache: false,
             beforeSend: function(){
-                $('.picker__wrap').append('<div class="capa"><div class="contLoader"><i style="color: #F5A214;" class="loader fa-2x fa fa-refresh fa-spin"></i></div></div>');
+                /*$('.picker__wrap').append('<div class="capa"><div class="contLoader"><i style="color: #F5A214;" class="loader fa-2x fa fa-refresh fa-spin"></i></div></div>');*/
+                console.log('cargando');
             },
             success: function(arr) {
                 currentCalendar.set({
@@ -19,7 +20,8 @@ $('.datepicker').pickadate({
                 });
             },
             complete: function() {
-                $('.picker__wrap .capa').remove();
+                console.log('se han cargado los días');
+                /*$('.picker__wrap .capa').remove();*/
             },
             error: function(xhr) {console.log(xhr.responseText);}
         }).fail(function( jqXHR, textStatus, errorThrown ){
