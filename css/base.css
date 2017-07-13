@@ -11,7 +11,7 @@
 .montserrat {
     font-family: 'Montserrat';
 }
-.contloader {
+/*.contloader {
     display: -webkit-flex;
     display: flex;
     flex-direction: row;
@@ -19,7 +19,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-}
+}*/
 .capa {
     background-color: rgba(255, 255, 255, 0.9);
     width: 100%;
