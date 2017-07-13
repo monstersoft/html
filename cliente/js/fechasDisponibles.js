@@ -8,6 +8,9 @@ $('.datepicker').pickadate({
             data: {idZona: this.get('id')},
             dataType: 'json',
             cache: false,
+            beforeSend: function(){
+                $('.picker__wrap').append('<div class="capa"><div class="contLoader animated zoomIn"><i style="color: #F5A214;" class="loader fa-2x fa fa-refresh fa-spin"></i></div></div>');
+            },
             success: function(arr) {
                 currentCalendar.set({
                     min: arr.firstDayAvailable,
@@ -15,7 +18,26 @@ $('.datepicker').pickadate({
                     disable: arr.availableDays
                 });
             },
+            complete: function() {
+                $('.picker__wrap .capa').remove();
+            },
             error: function(xhr) {console.log(xhr.responseText);}
+        }).fail(function( jqXHR, textStatus, errorThrown ){
+            if (jqXHR.status === 0){
+                alert('No hay coneccion con el servidor');
+            } else if (jqXHR.status == 404) {
+                alert('La pagina solicitada no fue encontrada, error 404');
+            } else if (jqXHR.status == 500) {
+                alert('Error interno del servidor');
+            } else if (textStatus === 'parsererror') {
+                alert('Error en la respuesta, debes analizar la sintaxis JSON');
+            } else if (textStatus === 'timeout') {
+                alert('Ya ha pasado mucho tiempo');
+            } else if (textStatus === 'abort') {
+                alert('La peticion fue abortada');
+            } else {
+                alert('Error desconocido');
+            }
         });
         $(document.activeElement).blur();
     },
@@ -40,6 +62,22 @@ $('.datepicker').pickadate({
                 horaSubida.html(arr.horaSubida);
             },
             error: function(xhr) {console.log(xhr.responseText);}
+        }).fail(function( jqXHR, textStatus, errorThrown ){
+            if (jqXHR.status === 0){
+                alert('No hay coneccion con el servidor');
+            } else if (jqXHR.status == 404) {
+                alert('La pagina solicitada no fue encontrada, error 404');
+            } else if (jqXHR.status == 500) {
+                alert('Error interno del servidor');
+            } else if (textStatus === 'parsererror') {
+                alert('Error en la respuesta, debes analizar la sintaxis JSON');
+            } else if (textStatus === 'timeout') {
+                alert('Ya ha pasado mucho tiempo');
+            } else if (textStatus === 'abort') {
+                alert('La peticion fue abortada');
+            } else {
+                alert('Error desconocido');
+            }
         });
         $(document.activeElement).blur();
     },

@@ -5,100 +5,6 @@
     left: 50%;
     z-index: 100;
 }
-
-.ct-labels33 {
-    font-size: 5px;
-}
-.ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point {
-  stroke: #F5A214;
-}
-.ct-series-b .ct-bar, .ct-series-b .ct-line, .ct-series-b .ct-point {
-  stroke: #262626;
-}
-.ct-axis-title {
-  font-size: 12px;
-}
-/* Legend styles */
-.ct-legend {
-  position: relative;
-  z-index: 10;
-  list-style: none;
-  text-align: center;
-}
-ul.ct-legend {
-  top: 5px;
-  margin: auto;
-}
-.ct-legend li {
-  position: relative;
-  padding-left: 23px;
-  margin-right: 10px;
-  margin-bottom: 3px;
-  cursor: pointer;
-  display: inline-block;
-  font-family: 'Montserrat';
-  font-size: 10px;
-}
-.ct-legend li:before {
-  width: 12px;
-  height: 12px;
-  position: absolute;
-  left: 0;
-  content: '';
-  border: 3px solid transparent;
-  border-radius: 2px;
-}
-.ct-legend li.inactive:before {
-  background: transparent;
-}
-.ct-legend.ct-legend-inside {
-  position: absolute;
-  top: 0px;
-  right: 0;
-}
-.ct-legend.ct-legend-inside li{
-  display: block;
-  margin: 0;
-}
-.ct-legend .ct-series-0:before {
-  background-color: #F5A214;
-  border-color: #F5A214;
-}
-.ct-legend .ct-series-1:before {
-  background-color: #262626;
-  border-color: #262626;
-}
-.containerHistorical {
-    position: relative;
-    border: 1px solid white;
-    overflow: hidden;
-    height: 370px;
-}
-
-#chart1 {
-    position: absolute;
-    top: 10px;
-    left: 0px;
-    width: 100%;
-    z-index: 0;
-    height: 100px;
-}
-#chart2 {
-    position: absolute;
-    top: 130px;
-    left: 0px;
-    width: 100%;
-    z-index: 10000;
-    height: 100px;
-}
-#chart3 {
-    position: absolute;
-    top: 250px;
-    left: 0px;
-    width: 100%;
-    z-index: 10000;
-    height: 100px;
-}
 /* STATISTIC */
 .statistic {
     font-family: 'Montserrat';
@@ -175,39 +81,218 @@ table td {
     overflow: hidden;
     display: block;
 }
-.ct-series-a .ct-line {
+/* LINE CHART GRADOS */
+#chartLine .ct-series-a .ct-line {
     stroke : #F5A214;
     stroke-width: 1px;
 }
-.ct-series-b .ct-line {
+#chartLine .ct-series-b .ct-line {
     stroke : #262626;
     stroke-width: 1px;
 }
-.ct-series-a .ct-point {
+#chartLine .ct-series-a .ct-point {
     stroke: #F5A214;
     stroke-width: 7px;
     stroke-linecap: square;
 }
-.ct-series-b .ct-point {
+#chartLine .ct-series-b .ct-point {
     stroke: #262626;
     stroke-width: 7px;
     stroke-linecap: circle;
 }
-.ct-label.ct-vertical { 
+#chartLineSticky .ct-label.ct-vertical { 
     font-size: 12px; 
     color: #262626;
     font-family: 'Montserrat';
+    color: #262626;
     
 }
-.ct-label.ct-horizontal { 
-    font-size: 10px; 
+#chartLine .ct-label.ct-horizontal { 
+    font-size: 12px; 
     position: relative; 
-    transform: rotate(0deg); 
-    transform-origin: left top; 
+    transform: rotate(45deg); 
+    transform-origin: left top;
+    color: #262626;
+    font-family: 'Montserrat';
+    text-anchor: middle;
+}
+/* LINE CHART ALTURA */
+#chartLine2 .ct-series-a .ct-line {
+    stroke : #F5A214;
+    stroke-width: 1px;
+}
+#chartLine2 .ct-series-b .ct-line {
+    stroke : #262626;
+    stroke-width: 1px;
+}
+#chartLine2 .ct-series-a .ct-point {
+    stroke: #F5A214;
+    stroke-width: 7px;
+    stroke-linecap: square;
+}
+#chartLine2 .ct-series-b .ct-point {
+    stroke: #262626;
+    stroke-width: 7px;
+    stroke-linecap: circle;
+}
+#chartLineSticky2 .ct-label.ct-vertical { 
+    font-size: 12px; 
+    color: #262626;
+    font-family: 'Montserrat';
+    color: #262626;
+    
+}
+#chartLine2 .ct-label.ct-horizontal { 
+    font-size: 12px; 
+    position: relative; 
+    transform: rotate(45deg); 
+    transform-origin: left top;
+    color: #262626;
+    font-family: 'Montserrat';
+    text-anchor: middle;
+}
+/* LINE CHART HISTORICAL GRADOS */
+.containerHistorical {
+    position: relative;
+    border: 1px solid white;
+    overflow: hidden;
+    height: 370px;
+}
+#chart1 {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    width: 100%;
+    z-index: 0;
+    height: 100px;
+}
+#chart1 .ct-series-a .ct-line {
+    stroke : #F5A214;
+    stroke-width: 1px;
+}
+#chart1 .ct-series-b .ct-line {
+    stroke : #262626;
+    stroke-width: 1px;
+}
+#chart1 .ct-series-a .ct-point {
+    stroke: #F5A214;
+    stroke-width: 7px;
+    stroke-linecap: square;
+}
+#chart1 .ct-series-b .ct-point {
+    stroke: #262626;
+    stroke-width: 7px;
+    stroke-linecap: circle;
+}
+#chart1 .ct-label.ct-horizontal { 
+    font-size: 12px; 
+    position: relative; 
+    transform: rotate(45deg); 
+    transform-origin: left top;
+    color: #262626;
+    font-family: 'Montserrat';
+    text-anchor: middle;
+}
+#chart1 .ct-series-a .ct-label {
+    font-size: 12px;
+    fill: #F5A214;
+    font-weight: bold;
+    font-family: 'Montserrat';
+    transform: translate(-25px,0px);
+}
+#chart1 .ct-series-b .ct-label {
+    font-size: 12px;
+    fill: #262626;
+    font-weight: bold;
+    font-family: 'Montserrat';
+    transform: translate(0px,30px);
+}
+/* LINE CHART HISTORICAL ALTURA */
+#chart2 {
+    position: absolute;
+    top: 130px;
+    left: 0px;
+    width: 100%;
+    z-index: 10000;
+    height: 100px;
+}
+#chart2 .ct-series-a .ct-line {
+    stroke : #F5A214;
+    stroke-width: 1px;
+}
+#chart2 .ct-series-b .ct-line {
+    stroke : #262626;
+    stroke-width: 1px;
+}
+#chart2 .ct-series-a .ct-point {
+    stroke: #F5A214;
+    stroke-width: 7px;
+    stroke-linecap: square;
+}
+#chart2 .ct-series-b .ct-point {
+    stroke: #262626;
+    stroke-width: 7px;
+    stroke-linecap: circle;
+}
+#chart2 .ct-label.ct-horizontal { 
+    font-size: 12px; 
+    position: relative; 
+    transform: rotate(45deg); 
+    transform-origin: left top;
+    color: #262626;
+    font-family: 'Montserrat';
+    text-anchor: middle;
+}
+#chart2 .ct-series-a .ct-label {
+    font-size: 12px;
+    fill: #F5A214;
+    font-weight: bold;
+    font-family: 'Montserrat';
+    transform: translate(-10px,0px);
+}
+#chart2 .ct-series-b .ct-label {
+    font-size: 12px;
+    fill: #262626;
+    font-weight: bold;
+    font-family: 'Montserrat';
+    transform: translate(0px,30px);
+}
+/* LINE CHART HISTORICAL RECORRIDO */
+#chart3 {
+    position: absolute;
+    top: 250px;
+    left: 0px;
+    width: 100%;
+    z-index: 10000;
+    height: 100px;
+}
+#chart3 .ct-series-a .ct-line {
+    stroke : #F5A214;
+    stroke-width: 1px;
+}
+#chart3 .ct-series-a .ct-point {
+    stroke: #F5A214;
+    stroke-width: 7px;
+    stroke-linecap: square;
+}
+#chart3 .ct-series-a .ct-label {
+    font-size: 12px;
+    fill: #F5A214;
+    font-weight: bold;
+    font-family: 'Montserrat';
+    text-anchor: middle;
+}
+#chart3 .ct-labels span {
+    font-size: 12px;
     color: #262626;
     font-family: 'Montserrat';
 }
-/*BARRAS*/
+#chart3 .ct-axis-title {
+    font-size: 16px;
+    fill: #262626;
+    font-family: 'Montserrat';
+}
+/* BARRAS */
 #barChart {
     height: 252px;
     width: 100%;
@@ -298,7 +383,7 @@ table td {
 #chartLineHistorical4 {
     height: 100px;
 }
-/*TOOLTIP*/
+/* TOOLTIP */
 .chartist-tooltip {
     font-family: 'Montserrat';
     position: absolute;
@@ -314,7 +399,7 @@ table td {
     transform-origin: 50% 50%;
     transform: translateX(0px) translateY(0px) rotate(0deg);
 }
-/*YEARS MONTHS*/
+/* YEARS MONTHS */
 .yearContainer {
     display: flex;
     flex-direction: row;

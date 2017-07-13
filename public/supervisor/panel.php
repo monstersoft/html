@@ -53,7 +53,7 @@
     </head>
     <body>
         <?php barraMenu($perfil,'zonas'); ?>
-        <div id="content" class="animated fadeIn unLeftContent">
+        <div id="content" class="animated fadeIn unLeftContent" style="padding-bottom: 55px;">
             <!-- ............................................................................................................................ -->
             <?php
                 foreach(zonas($email) as $value) {
@@ -63,9 +63,9 @@
                                 <div class="dropdown pull-right">
                                     <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
                                     <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a id="'.$value['idZona'].'" class="subirArchivo"><i class="fa fa-upload pull-left"></i><div class="aAction">subir archivo</div></a></li>
-                                        <li><a id="'.$value['idZona'].'" class="agregarMaquina"><i class="fa fa-plus pull-left"></i><div class="aAction">agregar máquina</div></a></li>
-                                        <li><a id="'.$value['idZona'].'" class="descargarId"><i class="fa fa-download pull-left"></i><div class="aAction">descargar id</div></a></li>
+                                        <li><a id="'.$value['idZona'].'" class="subirArchivo"><i class="fa fa-upload pull-left"></i><div class="aAction">Subir archivo</div></a></li>
+                                        <li><a id="'.$value['idZona'].'" class="agregarMaquina"><i class="fa fa-plus pull-left"></i><div class="aAction">Agregar máquina</div></a></li>
+                                        <li><a id="'.$value['idZona'].'" class="descargarId"><i class="fa fa-download pull-left"></i><div class="aAction">Descargar id</div></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -220,7 +220,7 @@
                 clear: '',
                 close: 'Cerrar',
                 min: new Date(2017,1,1),
-                max: new Date(2018,1,1),
+                max: [parseInt(moment().format('YYYY')),parseInt(moment().format('MM'))-1, parseInt(moment().format('DD'))],
                 format: 'dddd dd , mmmm yyyy',
                 formatSubmit: 'yyyy-mm-dd',
                 hiddenName : true,

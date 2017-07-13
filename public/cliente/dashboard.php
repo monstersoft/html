@@ -15,10 +15,6 @@
             $idArchivo = $_GET['idArchivo'];
             $patente = $_GET['patente'];
             $estadisticos = estadisticos($idResultado, $idArchivo, $patente);
-            echo '<button id="t" class="btn btn-primary montserrat"><i class="fa fa-grav fa-2x"></i><br>T</button>
-            <button id="b" class="btn btn-success montserrat"><i class="fa fa-grav fa-2x"></i><br>B</button>
-            <button id="l" class="btn btn-info montserrat"><i class="fa fa-grav fa-2x"></i><br>L</button>
-            <button id="lh" class="btn btn-danger montserrat"><i class="fa fa-grav fa-2x"></i><br>H</button>';
         }
     }
     else {
@@ -43,27 +39,45 @@
     <link rel="stylesheet" href="../../css/dashboard.css">
 </head>
 <style>
-    #lh {
+    #motor {
         position: fixed;
-        bottom: 0;
+        top: 50;
         left: 0;
         z-index: 100;
     }
-    #l {
+    #cambios {
         position: fixed;
-        bottom: 100;
+        top: 100;
         left: 0;
         z-index: 100;
     }
-    #t {
+    #gradosPala {
         position: fixed;
-        bottom: 200;
+        top: 150;
+        left: 0;
+        z-index: 150;
+    }
+    #alturaPala {
+        position: fixed;
+        top: 200;
         left: 0;
         z-index: 100;
     }
-    #b {
+    #gradosHistoricos {
         position: fixed;
-        bottom: 300;
+        top: 250;
+        left: 0;
+        z-index: 100;
+    }
+    #alturaHistoricos {
+        position: fixed;
+        top: 300;
+        left: 0;
+        z-index: 100;
+    }
+    #recorridoHistoricos {
+        position: fixed;
+        top: 350;
         left: 0;
         z-index: 100;
     }
@@ -232,34 +246,11 @@
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../recursos/chartist/chartist.min.js"></script>
     <script src="../../recursos/chartist/chartist-plugin-tooltip.js"></script>
-    <!--<script src="../../recursos/chartist/chartist-plugin-pointlabels.min.js"></script>-->
-    <script src="https://d318px5m0jadsp.cloudfront.net/assets/chartist-plugin-axistitle.min.js"></script>
-    <script src="https://d318px5m0jadsp.cloudfront.net/assets/chartist-plugin-accessibility.min.js"></script>
-    <script src="https://d318px5m0jadsp.cloudfront.net/assets/chartist-plugin-pointlabels.min.js"></script>
-    <script src="https://d318px5m0jadsp.cloudfront.net/assets/chartist-plugin-legend.js"></script>
+    <script src="../../recursos/chartist/chartist-plugin-axistitle.min.js"></script>
+    <script src="../../recursos/chartist/chartist-plugin-pointlabels.min.js"></script>
     <script src="../../recursos/moment/moment.js"></script>
     <script src="../../js/funciones.js"></script>
     <script src="../../cliente/js/graficos.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#lh').click(function(){
-                lineaHistoricos.update();
-                console.log('Linea Hitoricos');
-            });
-            $('#l').click(function(){
-                linea.update();
-                console.log('Linea');
-            });
-            $('#t').click(function(){
-                torta.update();
-                console.log('torta');
-            });
-            $('#b').click(function(){
-                barra.update();
-                console.log('Barra');
-            });
-        });
-    </script>
     <script>main();</script>
 </body>
 </html>
