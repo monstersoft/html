@@ -1,72 +1,28 @@
 <?php
 	include 'recursos/mailer/class.phpmailer.php';
-	$fecha = date('Y-m-d');
-	$hora = date('H:i:s');
-	echo '<h1>'.enviarMailRegistroSupervisor('Patricio Villanueva Fuentes','pavillanueva@ing.ucsc.cl','http://www.mmonitors.com').'</h1>';
-	function enviarMailRegistroSupervisor($nombreSupervisor,$emailSupervisor,$link) {
-			$e = new PHPMailer;
-			$e->Host = 'localhost';
-			$e->From = "machmonitors@gmail.com";
-			$e->FromName = 'Machine Monitors';
-			$e->Subject = 'Registro de Supervisores';
-			$e->addAddress($emailSupervisor);
-			$e->MsgHTML('<!DOCTYPE html>
-							<html>
-							    <head>
-							    	<meta charset="UTF-8">
-							    	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-									<style>
-										* {
-											margin: 0;
-											padding: 0;
-											box-sizing: border-box;
-										}
-										body {
-											font-family: Arial;
-										}
-										.letra {
-											font-size: 20px;
-											font-weight: 100;
-											color: #fff;
-										}
-							            .contenedor {
-							                width: 100%;
-							                margin: 0 auto;
-							                overflow: hidden;
-							            }
-							            .rectangulo {
-							                text-align: center;
-							                float: left;
-							                padding: 10px;
-											border-bottom: 5px solid #F5A214;
-											width: 100%;
-											height: 45px;
-											background: #262626;
-							            }
-							            .cuadrado {
-							                width: 100%;
-							                float: left;
-							                padding: 20px 0px 20px 0px;
-							                border-bottom: 5px solid #F5A214;
-							                font-size: 15px;
-							            }
-							        </style>
-							    </head>
-							    <body>
-							    	<div class="contenedor">
-							    		<div class="rectangulo">
-							                <p class="letra">Machine Monitors'.$fecha.$hora'</p>
-                                            
-							            </div>
-							    		<div class="cuadrado">Estimado '.$nombreSupervisor.', para finalizar el registro debes ingresar al siguiente enlance y completar el formulario<br><br><a href='.$link.'>'.$link.'</a><div>
-							        </div>
-							    </body>
-							</html>');
-			if($e->Send()) {
-				return true;
-				}
-			else
-				return false;
-		}
 
-?>
+$mail = new PHPMailer;
+
+//$mail->SMTPDebug = 3;                               // Enable verbose debug output
+
+$mail->isSMTP();                                      // Set mailer to use SMTP
+$mail->Host = 'smtp1.example.com;smtp2.example.com';  // Specify main and backup SMTP servers
+$mail->SMTPAuth = true;                               // Enable SMTP authentication
+$mail->Username = 'machmonitors@gmail.com';                 // SMTP username
+$mail->Password = 'Monsterinc2';                           // SMTP password
+$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+$mail->Port = 587;                                    // TCP port to connect to
+
+$mail->setFrom('machmonitors@gmail.com', 'Mailer');
+$mail->addAddress('pavillanueva@ing.ucsc.cl', 'Joe User');     // Add a recipient
+$mail->isHTML(true);                                  // Set email format to HTML
+$mail->Subject = 'Here is the subject';
+$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+if(!$mail->send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+    echo 'Message has been sent';
+}
