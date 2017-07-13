@@ -2,7 +2,7 @@
 	include 'recursos/mailer/class.phpmailer.php';
 	$fecha = date('Y-m-d');
 	$hora = date('H:i:s');
-	echo enviarMailRegistroSupervisor('Patricio Villanueva Fuentes','pavillanueva@ing.ucsc.cl','http://www.mmonitors.com');
+	echo '<h1>'.enviarMailRegistroSupervisor('Patricio Villanueva Fuentes','pavillanueva@ing.ucsc.cl','http://www.mmonitors.com').'</h1>';
 	function enviarMailRegistroSupervisor($nombreSupervisor,$emailSupervisor,$link) {
 			$e = new PHPMailer;
 			$e->Host = 'localhost';
