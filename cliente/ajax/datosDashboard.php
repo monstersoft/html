@@ -1,6 +1,11 @@
 <?php
 	include '../../php/funciones.php';
-	$idResultado = $_POST['idResultado'];
+    $c = conectar();
+    $a = array();
+	$idResultado = 188;
+	$idArchivo = 69;
+	$patente = 'KOM010';
+    $idResultado = $_POST['idResultado'];
 	$idArchivo = $_POST['idArchivo'];
 	$patente = $_POST['patente'];
     $semanas = $_POST['semanas'];
@@ -22,10 +27,17 @@
         }
     }
     $q = "SELECT datos.cambio, COUNT(datos.cambio) AS frecuencia FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' GROUP BY datos.cambio";
+    $sum = 0;
     if($res = mysqli_query($c,$q)) {
         while($r = mysqli_fetch_assoc($res)) {
             $barra['cambio'][] = $r['cambio'];
             $barra['frecuencia'][] = intval($r['frecuencia']);
+            $sum = intval($r['frecuencia']) + $sum;
+        }
+        $i = 0;
+        while($i < sizeof($barra['frecuencia'])) {
+            $barra['frecuencia'][$i] = ($barra['frecuencia'][$i]*100)/$sum;
+            $i++;
         }
     }
     $count = 0;

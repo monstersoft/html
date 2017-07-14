@@ -310,9 +310,6 @@ table td {
 }
 #barChart .ct-label.ct-horizontal { 
     font-size: 10px; 
-    position: relative; 
-    transform: rotate(45deg); 
-    transform-origin: left top; 
     color: #262626;
     font-family: 'Montserrat';
     padding: 0px;

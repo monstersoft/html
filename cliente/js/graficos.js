@@ -64,9 +64,6 @@ $.ajax({
         line('#chartLine', false, true,{labels: res[2]['hora'], series: [res[2]['gradosPalaFrontal'],res[2]['gradosPalaTrasera']]}, '°', false,'gradosPala'); 
         line('#chartLineSticky2', true, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false,'alturaPala');
         line('#chartLine2', false, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false,'alturaPala');
-        console.log(res);
-        
-        
         
         lineHistorical('#chart1', {labels: res[3]['semanas'],series: [res[3]['pGpf'],res[3]['pGpt']]},false, 'Semanas', -10, 'gradosHistoricos');
         lineHistorical('#chart2', {labels: res[3]['semanas'],series: [res[3]['pApf'],res[3]['pApt']]},false, 'Semanas', -10,'alturaHistoricos');
@@ -175,11 +172,11 @@ function bar(idChart,data) {
       var responsiveOptions = [
       ['screen and (min-width: 970px)', {
         axisX: {
-            offset: 50,
+            offset: 20,
         }
       }],      
       ['screen and (min-width: 1920px)', {
-            offset: 200
+            offset: 0
         }]
         
         ];
@@ -563,7 +560,4 @@ function colorLimitHeight(pos,tam) {
     else
         $('.rightHeight').css('color','#F5A214');
 }
-function completarArray(arreglo) {
-    //completa el array con ceros 
-    return arreglo;
-}
+
