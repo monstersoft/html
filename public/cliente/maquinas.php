@@ -12,7 +12,6 @@
             include '../../php/funciones.php';
             $perfil = datosPerfil($_SESSION['datos']['correo']);
             $fecha = $_GET['fechaRecienteDatos'];
-            $idZona = $_GET['idZona'];
             $idArchivo = $_GET['idArchivo'];
             $maquinas = maquinasPorFecha($idArchivo,$fecha);
         }

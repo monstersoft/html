@@ -8,58 +8,83 @@
 	$hora = date('H:i:s');
 	$conexion = conectar();
 	$arreglo = array();
-	$consulta = "SELECT COUNT(idSupervisor) AS correos FROM supervisores WHERE correoSupervisor = '$email'";
-	if($resultado = mysqli_query($conexion,$consulta)) {
-		$correos = mysqli_fetch_assoc($resultado);
-		if($correos['correos'] == 1) {
+    $arreglo = buscarCorreo($email);
+	if($arreglo['existeCorreo'] == true) {
 			$arreglo['msg'] = 'El correo ya está en uso';
 			$arreglo['exito'] = 0;
-		}
-		else {
-            
-			if($correos['correos'] == 0) {
-				$consulta = "INSERT INTO supervisores (nombreSupervisor,correoSupervisor,password,celular,status) VALUES ('$nombre','$email',null,null,2)";
-				if(mysqli_query($conexion,$consulta)) {
-					$ultimoId = mysqli_insert_id($conexion);
-					$link = 'http://localhost/html/public/supervisor/confirmarRegistro.php?id='.$ultimoId;
-					$insercionesExitosassupervisores_zonas = 0;
-					$insercionesFallidassupervisores_zonas = 0;
-					foreach ($zonas as $value) {
-						$consulta = "INSERT INTO supervisores_zonas (idZona,idSupervisor) VALUES ('$value','$ultimoId')";
-						if(mysqli_query($conexion,$consulta))
-							$insercionesExitosassupervisores_zonas++;
-						else 
-							$insercionesFallidassupervisores_zonas++;
-					}
-					$arreglo['insercionesExitosassupervisores_zonas'] = $insercionesExitosassupervisores_zonas;
-					$arreglo['insercionesFallidassupervisores_zonas'] = $insercionesFallidassupervisores_zonas;
-					$arreglo['tamanhoArregloZonas'] = sizeof($zonas);
-					if(sizeof($zonas) == $arreglo['insercionesExitosassupervisores_zonas']) {
-						if(enviarMailRegistroSupervisor($nombre,$email,$link)){
-							$arreglo['mailEnviado'] = 1;
-							$arreglo['mailHora'] = $hora;
-							$arreglo['mailFecha'] = $fecha;
-							$arreglo['exito'] = 1;
-						}
-						else {
-							$arreglo['mailEnviado'] = 0;
-							$arreglo['exito'] = 0;
-						}
-					}
-					else {
-						$arreglo['exitoInsercionessupervisores_zonas'] = 0;
-						$arreglo['exito'] = 0;
-					}
-					$arreglo['exitoInsercionSupervisor'] = 1;
-				}
-				else {
-					$arreglo['exitoInsercionSupervisor'] = 0;
-					$arreglo['exito'] = 0;
-				}
-			}
-		}
-	}
+    }
+    else {
+        $consulta = "INSERT INTO supervisores (nombreSupervisor,correoSupervisor,password,celular,status) VALUES ('$nombre','$email',null,null,2)";
+        if(mysqli_query($conexion,$consulta)) {
+            $ultimoId = mysqli_insert_id($conexion);
+            $link = 'http://localhost/html/public/supervisor/confirmarRegistro.php?id='.$ultimoId;
+            $insercionesExitosassupervisores_zonas = 0;
+            $insercionesFallidassupervisores_zonas = 0;
+            foreach ($zonas as $value) {
+                $consulta = "INSERT INTO supervisores_zonas (idZona,idSupervisor) VALUES ('$value','$ultimoId')";
+                if(mysqli_query($conexion,$consulta))
+                    $insercionesExitosassupervisores_zonas++;
+                else 
+                    $insercionesFallidassupervisores_zonas++;
+            }
+            $arreglo['insercionesExitosassupervisores_zonas'] = $insercionesExitosassupervisores_zonas;
+            $arreglo['insercionesFallidassupervisores_zonas'] = $insercionesFallidassupervisores_zonas;
+            $arreglo['tamanhoArregloZonas'] = sizeof($zonas);
+            if(sizeof($zonas) == $arreglo['insercionesExitosassupervisores_zonas']) {
+                if(enviarMailRegistroSupervisor($nombre,$email,$link)){
+                    $arreglo['mailEnviado'] = 1;
+                    $arreglo['mailHora'] = $hora;
+                    $arreglo['mailFecha'] = $fecha;
+                    $arreglo['exito'] = 1;
+                }
+                else {
+                    $arreglo['mailEnviado'] = 0;
+                    $arreglo['exito'] = 0;
+                }
+            }
+            else {
+                $arreglo['exitoInsercionessupervisores_zonas'] = 0;
+                $arreglo['exito'] = 0;
+            }
+            $arreglo['exitoInsercionSupervisor'] = 1;
+        }
+        else {
+            $arreglo['exitoInsercionSupervisor'] = 0;
+            $arreglo['exito'] = 0;
+        }
+    }
 	echo json_encode($arreglo);
+    function buscarCorreo($correo) {
+        $conexion = conectar();
+        $existeCorreo = false;
+        $esCliente = false;
+        $esSupervisor = false;
+        $busqueda = array();
+        $consulta = "SELECT COUNT(*) AS cantidad FROM clientes WHERE correo = '$correo'";
+        if($resultado = mysqli_query($conexion,$consulta)) {
+            $numero = mysqli_fetch_assoc($resultado);
+            if($numero['cantidad'] >= 1) {
+                $existeCorreo = true;
+                $esCliente = true;
+            }
+            else {
+                $consulta = "SELECT COUNT(*) AS cantidad FROM supervisores WHERE correoSupervisor = '$correo'";
+                if($resultado = mysqli_query($conexion,$consulta)) {
+                    $numero = mysqli_fetch_assoc($resultado);
+                    if($numero['cantidad'] >= 1) {
+                        $existeCorreo = true;
+                        $esSupervisor = true;
+                    }
+                }
+                
+            }
+        }
+        $busqueda['existeCorreo'] = $existeCorreo;
+        $busqueda['esCliente'] = $esCliente;
+        $busqueda['esSupervisor'] = $esSupervisor;
+        mysqli_close($conexion);
+        return $busqueda;
+    }
 	function enviarMailRegistroSupervisor($nombreSupervisor,$emailSupervisor,$link) {
 			$e = new PHPMailer;
 			$e->Host = 'localhost';

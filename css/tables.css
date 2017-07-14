@@ -1,3 +1,10 @@
+.bordes {
+    border-left: 1px solid #D4D4D5;
+    border-right: 1px solid #D4D4D5;
+    border-bottom: 1px solid #D4D4D5;
+    padding: 0px;
+    margin: 0px;
+}
 .nw {
     white-space: nowrap;
     overflow: hidden;
@@ -5,13 +12,9 @@
     padding: 5px;
 }
 .bor {
-    border-left: 1px solid #D4D4D5;
-    border-right: 1px solid #D4D4D5;
     border-bottom: 1px solid #D4D4D5;
 }
 .headTable {
-    border-left: 1px solid #D4D4D5;
-    border-right: 1px solid #D4D4D5;
     font-size: 12px;
     font-weight: 600;
     padding: 0;

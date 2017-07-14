@@ -84,13 +84,13 @@
                             <select id="zonasAsociadas" name="zonasAsociadas[]" class="form-control select2-multiple" multiple>
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="display: none;">
                             <label>ID ZONA</label>
-                            <input type="text" class="form-control" name="idZona" id="idZona">
+                            <input type="hidden" class="form-control" name="idZona" id="idZona">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="display: none;">
                             <label>ID SUPERVISOR</label>
-                            <input type="text" class="form-control" name="idSupervisor" id="idSupervisor">
+                            <input type="hidden" class="form-control" name="idSupervisor" id="idSupervisor">
                         </div>
                     </form>
                     <div class="clearfix">

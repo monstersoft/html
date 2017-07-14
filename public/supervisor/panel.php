@@ -53,7 +53,7 @@
     </head>
     <body>
         <?php barraMenu($perfil,'zonas'); ?>
-        <div id="content" class="animated fadeIn unLeftContent" style="padding-bottom: 55px;">
+        <div id="content" class="animated fadeIn unLeftContent" style="padding-bottom: 95px;">
             <!-- ............................................................................................................................ -->
             <?php
                 foreach(zonas($email) as $value) {
@@ -69,9 +69,10 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>';
+                        </div>
+                        <div class="col-xs-12 bordes">';
                         if(cantidadMaquinas($value['idZona']) == 0)
-                            echo '<div class="col-xs-12 text-center montserrat">No existen máquinas registradas</div>';
+                            echo '<div class="col-xs-12 text-center montserrat" style="font-size: 12px;padding: 5px;">No existen máquinas registradas</div>';
                         else {
                             echo'<div class="headTable col-xs-12" style="border-bottom: 3px solid #F5A214;">
                                     <div class="col-xs-6 col-md-3 nw ce">Patente</div>
@@ -103,7 +104,7 @@
                                 </div>
                             </div>';
                         }
-                echo'</div>';
+                echo'</div></div>';
                 }
             ?>
                 <!-- ............................................................................................................................ -->

@@ -45,7 +45,7 @@ $('.modalSubirArchivo').on('click','#btnSubirArchivo',function(){
                 console.log(JSON.stringify(arreglo));
                 if(arreglo.success == true) {
                     successMessage('Subida exitosa, ','se han subido los datos a la base de datos');
-                    $('#btnSubirArchivo').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverSubir').html('<i class="fa fa-repeat"></i>Volver a subir');
+                    $('#btnSubirArchivo').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverSubir').html('<i class="fa fa-repeat"></i>Subir otro');
                     $('#btnSubirArchivo').remove();
                 }
                 else

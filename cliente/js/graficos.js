@@ -64,6 +64,7 @@ $.ajax({
         line('#chartLine', false, true,{labels: res[2]['hora'], series: [res[2]['gradosPalaFrontal'],res[2]['gradosPalaTrasera']]}, '°', false,'gradosPala'); 
         line('#chartLineSticky2', true, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false,'alturaPala');
         line('#chartLine2', false, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false,'alturaPala');
+        console.log(res);
         
         
         
@@ -85,6 +86,7 @@ function ajaxHours(hora, opcion) {
         dataType: 'json',
         cache: false,
         success: function(arr) {
+            console.log(arr);
             var res = json2array(arr);
             if(res[4] == 0) {
                 line('#chartLineSticky', true, true, {labels: res[0], series: [res[1],res[2]]}, '°', false);
@@ -561,4 +563,7 @@ function colorLimitHeight(pos,tam) {
     else
         $('.rightHeight').css('color','#F5A214');
 }
-
+function completarArray(arreglo) {
+    //completa el array con ceros 
+    return arreglo;
+}

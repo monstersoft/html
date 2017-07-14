@@ -18,7 +18,16 @@
 	if($patentes['patentes'] == 0) {
 		$consulta = "INSERT INTO maquinas (idZona,patente,fechaRegistro,tara,cargaMaxima) VALUES ('$idZona','$patente','$fechaRegistro','$tara','$carga')";
 		if(mysqli_query($conexion,$consulta)) {
+            $idMaquina = mysqli_insert_id($conexion);
 			$arreglo['exito'] = 1;
+            if($res = mysqli_query($conexion,"SELECT COUNT(idResultado) AS cantidad FROM resultados LEFT JOIN archivos ON resultados.idArchivo = archivos.idArchivo LEFT JOIN zonas ON archivos.idZona = zonas.idZona WHERE zonas.idZona = '$idZona' AND resultados.patente = '$patente' AND idMaquina = -1")) {
+                $resultado = mysqli_fetch_assoc($res);
+                if($resultado['cantidad'] >= 1) {
+                    mysqli_query($conexion, "UPDATE resultados SET idMaquina = '$idMaquina', registrado = 1 WHERE patente = '$patente'");
+                    $arreglo['mensaje'] = 'Se ha registrado la máquina que estaba en -1';
+                }
+            }
+                
 		}
 		else {
 			$arreglo['exito'] = 0;

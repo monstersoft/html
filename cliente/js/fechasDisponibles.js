@@ -54,14 +54,21 @@ $('.datepicker').pickadate({
             cache: false,
             success: function(arr) {
                 var currentBodyTable = document.getElementById(currentCalendar.get('id')).parentNode.parentNode.parentNode.parentNode;
+                var currentListTable = currentBodyTable.nextSibling.nextSibling;
                 var currentForm = document.getElementById(currentCalendar.get('id')).parentNode.parentNode;
                 var supervisor = $(currentBodyTable.childNodes[7]);
                 var fechaSubida = $(currentBodyTable.childNodes[9]);
                 var horaSubida = $(currentBodyTable.childNodes[11]);
+                var supervisorList = $(currentListTable.childNodes[3].childNodes[1]);
+                var fechaSubidaList = $(currentListTable.childNodes[5].childNodes[1]);
+                var horaSubidaList = $(currentListTable.childNodes[7].childNodes[1]);
                 currentForm.childNodes[1].value = arr.idArchivo;
                 supervisor.html(arr.nombreSupervisor);
                 fechaSubida.html(arr.fechaSubida);
                 horaSubida.html(arr.horaSubida);
+                supervisorList.html(arr.nombreSupervisor);
+                fechaSubidaList.html(arr.fechaSubida);
+                horaSubidaList.html(arr.horaSubida);
             },
             error: function(xhr) {console.log(xhr.responseText);}
         }).fail(function( jqXHR, textStatus, errorThrown ){

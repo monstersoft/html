@@ -7,7 +7,6 @@
     $primerMinuto = ':00:00';
     $ultimoMinuto = ':59:00';
     $c = conectar();
-    $linea = array();
     if($hora == 0) {
         $primerMinuto = '08'.$primerMinuto;
         $ultimoMinuto = '08'.$ultimoMinuto;
@@ -51,12 +50,12 @@
     if($opcion == 0) {
         $q = "SELECT DATE_FORMAT(datos.hora, '%i') AS hora, datos.gradosPalaFrontal, datos.gradosPalaTrasera FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' AND datos.hora BETWEEN '$primerMinuto' AND '$ultimoMinuto'";
         if($res = mysqli_query($c,$q)) {
+            $linea = array('hora' => array(), 'gradosPalaFrontal' => array(), 'gradosPalaTrasera' => array());
             while($r = mysqli_fetch_assoc($res)) {
-                $linea['hora'][] = $r['hora'];
-                $linea['gradosPalaFrontal'][] = intval($r['gradosPalaFrontal']);
-                $linea['gradosPalaTrasera'][] = intval($r['gradosPalaTrasera']);
+                $linea = completaConCeros(intval($r['hora']), intval($r['gradosPalaFrontal']), intval($r['gradosPalaTrasera']), $linea);
             }
         }
+        $linea = completaConCerosDespues($linea);
         $linea['limites'] = $primerMinuto.'-'.$ultimoMinuto;
         $linea['opcion'] = $opcion;
         echo json_encode($linea);
@@ -64,15 +63,53 @@
     if($opcion == 1) {
         $q = "SELECT DATE_FORMAT(datos.hora, '%i') AS hora, datos.alturaPalaFrontal, datos.alturaPalaTrasera FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' AND datos.hora BETWEEN '$primerMinuto' AND '$ultimoMinuto'";
         if($res = mysqli_query($c,$q)) {
+            $linea = array('hora' => array(), 'alturaPalaFrontal' => array(), 'alturaPalaTrasera' => array());
             while($r = mysqli_fetch_assoc($res)) {
-                $linea['hora'][] = $r['hora'];
-                $linea['alturaPalaFrontal'][] = intval($r['alturaPalaFrontal']);
-                $linea['alturaPalaTrasera'][] = intval($r['alturaPalaTrasera']);
+                $linea = completaConCeros2(intval($r['hora']), intval($r['alturaPalaFrontal']), intval($r['alturaPalaTrasera']), $linea);
             }
         }
+        $linea = completaConCerosDespues2($linea);
         $linea['limites'] = $primerMinuto.'-'.$ultimoMinuto;
         $linea['opcion'] = $opcion;
         echo json_encode($linea);
+    }
+    function completaConCeros($minuto, $gradosPalaFrontal, $gradosPalaTrasera, $arr) {
+        for($i = sizeof($arr['hora']); $i < $minuto; $i++) {
+            $arr['hora'][] = $i;
+            $arr['gradosPalaFrontal'][] = 0;
+            $arr['gradosPalaTrasera'][] = 0;
+        }
+        $arr['hora'][] = $minuto;
+        $arr['gradosPalaFrontal'][] = $gradosPalaFrontal;
+        $arr['gradosPalaTrasera'][] = $gradosPalaTrasera;
+        return $arr;
+    }
+    function completaConCerosDespues($arr) {
+        for($i = sizeof($arr['hora']); $i <= 59; $i++) {
+            $arr['hora'][] = $i;
+            $arr['gradosPalaFrontal'][] = 0;
+            $arr['gradosPalaTrasera'][] = 0;
+        }
+        return $arr;
+    }
+    function completaConCeros2($minuto, $gradosPalaFrontal, $gradosPalaTrasera, $arr) {
+        for($i = sizeof($arr['hora']); $i < $minuto; $i++) {
+            $arr['hora'][] = $i;
+            $arr['alturaPalaFrontal'][] = 0;
+            $arr['alturaPalaTrasera'][] = 0;
+        }
+        $arr['hora'][] = $minuto;
+        $arr['alturaPalaFrontal'][] = $gradosPalaFrontal;
+        $arr['alturaPalaTrasera'][] = $gradosPalaTrasera;
+        return $arr;
+    }
+    function completaConCerosDespues2($arr) {
+        for($i = sizeof($arr['hora']); $i <= 59; $i++) {
+            $arr['hora'][] = $i;
+            $arr['alturaPalaFrontal'][] = 0;
+            $arr['alturaPalaTrasera'][] = 0;
+        }
+        return $arr;
     }
     
 ?>

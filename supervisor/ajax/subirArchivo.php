@@ -143,9 +143,7 @@
         }
     }
     function itAlreadyExists($idZone,$dateData,&$msg,$con) {
-        $qry = "SELECT COUNT(archivos.idArchivo) AS quantityFile
-                FROM archivos
-                WHERE archivos.idZona = '$idZone' AND archivos.fechaDatos = '$dateData'";
+        $qry = "SELECT COUNT(archivos.idArchivo) AS quantityFile FROM archivos LEFT JOIN zonas ON archivos.idZona = zonas.idZona WHERE archivos.fechaDatos = '$dateData' AND zonas.idZona = '$idZone'";
         if($res = mysqli_query($con,$qry)) {
             $quantityFile = mysqli_fetch_assoc($res);
             if($quantityFile['quantityFile'] == 0) return false;

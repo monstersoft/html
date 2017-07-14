@@ -42,26 +42,26 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
-                                <input type="text" name="nuevaContrasena" id="nuevaContraseña" placeholder="Nueva contraseña">
+                                <input type="password" name="nuevaContrasena" id="nuevaContraseña" placeholder="Nueva contraseña">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="repeat icon"></i>
-                                <input type="text" name="contrasenaConfirmada" id="contraseñaConfirmada" placeholder="Confirmar contraseña">
+                                <input type="password" name="contrasenaConfirmada" id="contraseñaConfirmada" placeholder="Confirmar contraseña">
                             </div>
                         </div>
                         <?php 
                             if($datos['cantidadToken'] == 1 and $datos['tipoUsuario'] == 'Cliente') {
-                                echo '<div class="field "><div class="ui left icon input"><i class="hide icon"></i><input type="text" value="'.$datos['tipoUsuario'].'" name="tipoUsuario"></input></div></div>';
-                                echo '<div class="field "><div class="ui left icon input"><i class="hide icon"></i><input type="text" value="'.$datos['idUsuario'].'" name="id"></input></div></div>';
+                                echo '<div class="field" style="display: none;"><div class="ui left icon input"><i class="hide icon"></i><input type="hidden" value="'.$datos['tipoUsuario'].'" name="tipoUsuario"></input></div></div>';
+                                echo '<div class="field" style="display: none"><div class="ui left icon input"><i class="hide icon"></i><input type="hidden" value="'.$datos['idUsuario'].'" name="id"></input></div></div>';
                             }
                             if($datos['cantidadToken'] == 1 and $datos['tipoUsuario'] == 'Supervisor' and $datos['status'] == 'deshabilitado') {
-                                echo '<div class="field "><div class="ui left icon input"><i class="phone icon"></i><input type="text" placeholder="Teléfono Móvil - 9 9 500 78 12" id="telefono" name="celular"></input></div></div>';
+                                echo '<div class="field" style="display: none;"><div class="ui left icon input"><i class="phone icon"></i><input type="hidden" placeholder="Teléfono Móvil - 9 9 500 78 12" id="telefono" name="celular"></input></div></div>';
                             }
                             if($datos['cantidadToken'] == 1 and $datos['tipoUsuario'] == 'Supervisor') {
-                                echo '<div class="field "><div class="ui left icon input"><i class="hide icon"></i><input type="text" value="'.$datos['tipoUsuario'].'" name="tipoUsuario"></input></div></div>';
-                                echo '<div class="field "><div class="ui left icon input"><i class="hide icon"></i><input type="text" value="'.$datos['idUsuario'].'" name="id"></input></div></div>';
+                                echo '<div class="field" style="display: none;"><div class="ui left icon input"><i class="hide icon"></i><input type="hidden" value="'.$datos['tipoUsuario'].'" name="tipoUsuario"></input></div></div>';
+                                echo '<div class="field" style="display: none;"><div class="ui left icon input"><i class="hide icon"></i><input type="hidden" value="'.$datos['idUsuario'].'" name="id"></input></div></div>';
                             }
                         ?>
                         <div id="btnReestablecer" style="background: #262626;font-family: 'Montserrat', cursive;" class="ui fluid large submit button">Reestablecer</div>
