@@ -395,6 +395,15 @@
         }
     }
     //supervisor.php
+    function supervisor($idSupervisor) {
+        $conexion = conectar();
+        $consulta = "SELECT COUNT(*) FROM supervisores WHERE idSupervisor = '$idSupervisor'";
+        if($res = mysqli_query($conexion,$consulta)) {
+            $row = mysqli_fetch_assoc($res);
+            return $row['cantidad'];
+        }
+        mysqli_close($conexion);
+    }
     function zonasSinAsociar($idEmpresa,$idZona,$idSupervisor) {
         $conexion = conectar();
         $consulta = "SELECT COUNT(zonas.idZona) AS cantidad FROM zonas WHERE zonas.idZona NOT IN (SELECT supervisores_zonas.idZona FROM supervisores_zonas WHERE supervisores_zonas.idSupervisor = '$idSupervisor' AND supervisores_zonas.idZona != '$idZona' GROUP BY supervisores_zonas.idZona) AND zonas.idEmpresa = '$idEmpresa' AND zonas.idZona != '$idZona'";

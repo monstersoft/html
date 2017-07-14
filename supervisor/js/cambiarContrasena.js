@@ -1,4 +1,3 @@
-$('.message').html(devuelveUrl('supervisor/ajax/cambiarContrasena.php'));
 $('body').on('click','#btnVolverCambiarContraseña',function() {
     $('#formularioCambiarPassword')[0].reset();
     $('.alert').remove();

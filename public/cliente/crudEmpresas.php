@@ -66,22 +66,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="headTable col-xs-12 ce" style="border-bottom: 3px solid #F5A214;">
-                            <div class="col-xs-12 col-md-6 nw ce">Correo</div>
-                            <div class="col-md-3 dn nw ce">Rut</div>
-                            <div class="col-md-3 dn nw ce">Celular</div>
-                        </div>
-                        <div class="bodyTable col-xs-12 bor">
-                            <div class="col-xs-12 col-md-6 nw ce"><button class="btn btn-xs btnPlus"><i class="fa fa-chevron-right"></i></button><div class="te">'.$value['correo'].'</div></div>
-                            <div class="col-md-3 dn nw ce">'.$value['rut'].'</div>
-                            <div class="col-md-3 dn nw ce">'.$value['telefono'].'</div>
-                        </div>
-                        <div class="listTable desactivado col-xs-12">
-                            <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Rut :</div><div class="col-xs-6" style="padding-left: 0px;">'.$value['rut'].'</div></div>
-                            <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Celular :</div><div class="col-xs-6" style="padding-left: 0px;">'.$value['telefono'].'</div></div>
-                        </div>
-                        <a href="crudZonas.php?id='.$value['idEmpresa'].'" class="boton">Ver Zonas</a>
-                    </div>';
+                        <div class="col-xs-12 bordes">
+                            <div class="headTable col-xs-12 ce" style="border-bottom: 3px solid #F5A214;">
+                                <div class="col-xs-12 col-md-6 nw ce">Correo</div>
+                                <div class="col-md-3 dn nw ce">Rut</div>
+                                <div class="col-md-3 dn nw ce">Celular</div>
+                            </div>
+                            <div class="bodyTable col-xs-12 bor">
+                                <div class="col-xs-12 col-md-6 nw ce"><button class="btn btn-xs btnPlus"><i class="fa fa-chevron-right"></i></button><div class="te">'.$value['correo'].'</div></div>
+                                <div class="col-md-3 dn nw ce">'.$value['rut'].'</div>
+                                <div class="col-md-3 dn nw ce">'.$value['telefono'].'</div>
+                            </div>
+                            <div class="listTable desactivado col-xs-12">
+                                <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Rut :</div><div class="col-xs-6" style="padding-left: 0px;">'.$value['rut'].'</div></div>
+                                <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Celular :</div><div class="col-xs-6" style="padding-left: 0px;">'.$value['telefono'].'</div></div>
+                            </div>
+                            <a href="crudZonas.php?id='.$value['idEmpresa'].'" class="boton">Ver Zonas</a>
+                    </div></div>';
             }
     ?>
 

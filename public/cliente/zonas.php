@@ -50,51 +50,52 @@
                                 <div class="col-xs-12 shadowButtonDown cardContent">
                                     <div class="col-xs-12 titleCard"><i class="fa fa-industry pull-left"></i><p>'.$value['nombreEmpresa'].'</p></div>
                                 </div>
-                                <div class="headTable col-xs-12" style="border-bottom: 3px solid #F5A214;">
-                                    <div class="col-xs-8 col-md-3 nw text-center">Zona</div>
-                                    <div class="col-xs-4 col-md-2 nw text-center">Seleccionar</div>
-                                    <div class="col-md-2 dn nw text-center">Última actualización</div>
-                                    <div class="col-md-2 dn nw text-center">Subido por</div>
-                                    <div class="col-md-2 dn nw text-center">Fecha subida</div>
-                                    <div class="col-md-1 dn nw text-center">Hora subida</div>
-                                </div>';
-                                foreach($zonas[$key]['zonas'] as $k => $v) {
-                                    if($v['idArchivo'] == null)
-                                        echo'<div class="bodyTable col-xs-12 bor">
-                                                <div class="col-xs-8 col-md-3 nw ai">'.$v['nombreZona'].'</div>
-                                                <div class="col-xs-4 col-md-2 nw">No hay archivos disponibles</div>
-                                                <div class="col-md-2 dn nw ce">-</div>
-                                                <div class="col-md-2 dn nw ce">-</div>
-                                                <div class="col-md-2 dn nw ce">-</div>
-                                                <div class="col-md-1 dn nw ce">-</div>
-                                            </div>';
-                                    else
-                                        echo'<div class="bodyTable col-xs-12 bor">
-                                                <div class="col-xs-8 col-md-3 nw text-center"><button class="btn btn-xs btnPlus"><i class="fa fa-chevron-right"></i></button><div class="te">'.$v['nombreZona'].'</div></div>
-                                                <div class="col-xs-4 col-md-2 nw text-center" style="height: 30px">
-                                                    <form method="GET" action="maquinas.php" style="margin: 0;">
-                                                        <input type="hidden" name="idArchivo" value="'.$v['idArchivo'].'"></input>
-                                                        <div class="input-group">
-                                                            <input type="text" id="'.$v['idZona'].'" class="btnFecha form-control datepicker text-center iXs" data-value="'.$v['fechaRecienteDatos'].'" placeholder="Buscar" name="fechaRecienteDatos">
-                                                            <div class="input-group-btn">
-                                                                <button id="'.$v['fechaRecienteDatos'].'" class="btn btn-xs iXs" type="submit"><i class="fa fa-search"></i></button>
+                                <div class="col-xs-12 bordes">
+                                    <div class="headTable col-xs-12" style="border-bottom: 3px solid #F5A214;">
+                                        <div class="col-xs-8 col-md-3 nw text-center">Zona</div>
+                                        <div class="col-xs-4 col-md-2 nw text-center">Seleccionar</div>
+                                        <div class="col-md-2 dn nw text-center">Última actualización</div>
+                                        <div class="col-md-2 dn nw text-center">Subido por</div>
+                                        <div class="col-md-2 dn nw text-center">Fecha subida</div>
+                                        <div class="col-md-1 dn nw text-center">Hora subida</div>
+                                    </div>';
+                                    foreach($zonas[$key]['zonas'] as $k => $v) {
+                                        if($v['idArchivo'] == null)
+                                            echo'<div class="bodyTable col-xs-12 bor">
+                                                    <div class="col-xs-8 col-md-3 nw ai">'.$v['nombreZona'].'</div>
+                                                    <div class="col-xs-4 col-md-2 nw">No hay archivos disponibles</div>
+                                                    <div class="col-md-2 dn nw ce">-</div>
+                                                    <div class="col-md-2 dn nw ce">-</div>
+                                                    <div class="col-md-2 dn nw ce">-</div>
+                                                    <div class="col-md-1 dn nw ce">-</div>
+                                                </div>';
+                                        else
+                                            echo'<div class="bodyTable col-xs-12 bor">
+                                                    <div class="col-xs-8 col-md-3 nw text-center"><button class="btn btn-xs btnPlus"><i class="fa fa-chevron-right"></i></button><div class="te">'.$v['nombreZona'].'</div></div>
+                                                    <div class="col-xs-4 col-md-2 nw text-center" style="height: 30px">
+                                                        <form method="GET" action="maquinas.php" style="margin: 0;">
+                                                            <input type="hidden" name="idArchivo" value="'.$v['idArchivo'].'"></input>
+                                                            <div class="input-group">
+                                                                <input type="text" id="'.$v['idZona'].'" class="btnFecha form-control datepicker text-center iXs" data-value="'.$v['fechaRecienteDatos'].'" placeholder="Buscar" name="fechaRecienteDatos">
+                                                                <div class="input-group-btn">
+                                                                    <button id="'.$v['fechaRecienteDatos'].'" class="btn btn-xs iXs" type="submit"><i class="fa fa-search"></i></button>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </form>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-md-2 dn nw text-center">'.$v['fechaRecienteDatos'].'</div>
+                                                    <div class="col-md-2 dn nw text-center">'.$v['nombreSupervisor'].'</div>
+                                                    <div class="col-md-2 dn nw text-center">'.$v['fechaSubida'].'</div>
+                                                    <div class="col-md-1 dn nw text-center">'.$v['horaSubida'].'</div>
                                                 </div>
-                                                <div class="col-md-2 dn nw text-center">'.$v['fechaRecienteDatos'].'</div>
-                                                <div class="col-md-2 dn nw text-center">'.$v['nombreSupervisor'].'</div>
-                                                <div class="col-md-2 dn nw text-center">'.$v['fechaSubida'].'</div>
-                                                <div class="col-md-1 dn nw text-center">'.$v['horaSubida'].'</div>
-                                            </div>
-                                            <div class="listTable desactivado col-xs-12">
-                                                <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Última actualización :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['fechaRecienteDatos'].'</div></div>
-                                                <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Subido por :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['nombreSupervisor'].'</div></div>
-                                                <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Fecha subida :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['fechaSubida'].'</div></div>
-                                                <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Hora subida :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['horaSubida'].'</div></div>
-                                            </div>';       
-                                }
-                        echo'</div>';
+                                                <div class="listTable desactivado col-xs-12">
+                                                    <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Última actualización :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['fechaRecienteDatos'].'</div></div>
+                                                    <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Subido por :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['nombreSupervisor'].'</div></div>
+                                                    <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Fecha subida :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['fechaSubida'].'</div></div>
+                                                    <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Hora subida :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['horaSubida'].'</div></div>
+                                                </div>';       
+                                    }
+                        echo'</div></div>';
                     }
            ?>
 <!-- ............................................................................................................................ -->

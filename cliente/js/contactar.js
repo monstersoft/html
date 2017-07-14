@@ -1,4 +1,3 @@
-$('.message').html(devuelveUrl('cliente/ajax/cambiarContrasena.php'));
 $('body').on('click','#btnVolverEnviar',function() {
     $('#formularioEnviar')[0].reset();
     $('.alert').remove();
