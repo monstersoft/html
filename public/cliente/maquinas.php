@@ -90,7 +90,7 @@
 <?php
         foreach($maquinas as $value) {
             if(($value['registrado'] == 1) and ($value['existeEnArchivo'] == 1)) { echo
-                '<div class="col-xs-12 col-sm-4 col-md-2 card"> 
+                '<div class="col-xs-12 col-sm-4 card"> 
                     <div class="col-xs-12 shadowButtonDown cardContent"> 
                         <div class="col-xs-12 titleCard"> 
                             <i class="fa fa-check-circle pull-left"></i>
@@ -112,7 +112,7 @@
                 </div>';
             }
             if(($value['registrado'] == 0) and ($value['existeEnArchivo'] == 1)) { echo
-                '<div class="col-xs-12 col-sm-4 col-md-2 card"> 
+                '<div class="col-xs-12 col-sm-4 card"> 
                     <div class="col-xs-12 shadowButtonDown cardContent"> 
                         <div class="col-xs-12 titleCard"> 
                             <i class="fa fa-check-circle pull-left" style="color: #262626"></i>
@@ -134,7 +134,7 @@
                 </div>';
             }
             if(($value['registrado'] == 1) and ($value['existeEnArchivo'] == 0)) { echo
-                '<div class="col-xs-12 col-sm-4 col-md-2 card"> 
+                '<div class="col-xs-12 col-sm-4 card"> 
                     <div class="col-xs-12 shadowButtonDown cardContent"> 
                         <div class="col-xs-12 titleCard"> 
                             <i class="fa fa-exclamation-circle pull-left" style="color: rgb(224, 225, 226)"></i>
