@@ -397,12 +397,15 @@
     //supervisor.php
     function supervisor($idSupervisor) {
         $conexion = conectar();
-        $consulta = "SELECT COUNT(*) FROM supervisores WHERE idSupervisor = '$idSupervisor'";
-        if($res = mysqli_query($conexion,$consulta)) {
+        if($res = mysqli_query($conexion,"SELECT supervisores.nombreSupervisor, supervisores.correoSupervisor, supervisores.celular, supervisores.status FROM supervisores WHERE supervisores.idSupervisor = '$idSupervisor'")) {
             $row = mysqli_fetch_assoc($res);
-            return $row['cantidad'];
+            $arr['nombreSupervisor'] = $row['nombreSupervisor'];
+            $arr['correoSupervisor'] = $row['correoSupervisor'];
+            $arr['celular'] = $row['celular'];
+            $arr['status'] = $row['status'];
         }
         mysqli_close($conexion);
+        return $arr;
     }
     function zonasSinAsociar($idEmpresa,$idZona,$idSupervisor) {
         $conexion = conectar();

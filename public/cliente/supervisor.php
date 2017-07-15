@@ -14,6 +14,7 @@
             $idZona = $_GET['zona'];
             $idSupervisor = $_GET['supervisor'];
             $perfil = datosPerfil($_SESSION['datos']['correo']);
+            $supervisor = supervisor($idSupervisor);
         }
     }
     else {
@@ -53,15 +54,15 @@
 <!-- ............................................................................................................................ -->
         <div class="col-xs-12 card"> 
             <div class="col-xs-12 shadow cardContent montserrat">
-                <div class="col-xs-12 col-md-6 cent" style="height: 200px;">
-                    <i class="fa fa-user-circle fa-5x" style="color: #F5A214;"></i>
-                    <div style="font-size: 20px; text-align: center;">PATRICIO ANDRES VILLANUEVA FUENTES</div>
+                <div class="col-xs-12 col-md-6" style="padding: 30px;">
+                    <div align="center"><i class="fa fa-user-circle fa-5x" style="color: #F5A214;"></i></div><br>
+                    <div style="font-size: 20px; text-align: center;"><?php echo $supervisor['nombreSupervisor']; ?></div>
                 </div>
-                <div class="col-xs-12 col-md-6 cent" style="height: 200px;">
+                <div class="col-xs-12 col-md-6 cent"  style="padding: 30px;">
                     <ul>
-                      <li><i class="fa fa-send"></i> pvasquez@serviciosbioiob.cl</li>
-                      <li><i class="fa fa-check"></i> habilitado</li>
-                      <li><i class="fa fa-phone"></i> 995007812</li>
+                      <li><i class="fa fa-send"></i><?php echo $supervisor['correoSupervisor']; ?></li>
+                      <li><i class="fa fa-check"></i><?php echo $supervisor['status']; ?></li>
+                      <li><i class="fa fa-phone"></i><?php echo $supervisor['celular']; ?></li>
                       <li><?php if(zonasSinAsociar($idEmpresa,$idZona,$idSupervisor) == 0) echo 'No hay zonas para asociar'; else echo '<button type="button" class="btn btn-normal desvincularSupervisor montserrat asignarZonas">Asignar zonas</button>'; ?></li> 
                     </ul>
                 </div>

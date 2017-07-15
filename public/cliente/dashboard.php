@@ -231,9 +231,9 @@
                 <p>Históricos</p>
             </div>
            <div class="containerHistorical">
-            <div id="chart1"></div>
-            <div id="chart2"></div>
-            <div id="chart3"></div>
+            <div id="chart1"><div class="historicalLegend" style="top: -10px"><div class="cuadroAmarillo"></div><div style="padding-right: 5px;padding-left: 5px;">G. P. FRONTAL</div><div class="cuadroNegro"></div><div style="padding-left: 5px;">G. P. TRASERA</div></div></div>
+            <div id="chart2"><div class="historicalLegend" style="top: -20px"><div class="cuadroAmarillo"></div><div style="padding-right: 5px;padding-left: 5px;">A. P. FRONTAL</div><div class="cuadroNegro"></div><div style="padding-left: 5px;">A. P. TRASERA</div></div></div>
+            <div id="chart3"><div class="historicalLegend" style="top: -20px"><div class="cuadroAmarillo"></div><div style="padding-right: 5px;padding-left: 5px;">RECORRIDO</div></div></div>
            </div>
             <div class="col-xs-12 cardContent" style="padding: 0px 0px 30px 0px;">
                <div class="col-xs-6 cardContent"><div class="yearContainer"><i class="yearButton leftYear fa fa-2x fa-arrow-circle-o-left"></i><div class="yearLegend"></div><i class="yearButton rightYear fa fa-2x fa-arrow-circle-o-right"></i></div></div>

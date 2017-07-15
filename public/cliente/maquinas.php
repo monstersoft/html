@@ -37,16 +37,13 @@
         .cardContent {
             font-family: 'Montserrat';
         }
-
-.legend .number {
-    font-size: 20px;
-    font-weight: bold;
-}
-.legend .subLegend {
-    font-size: 12px;
-}
-        
-
+        .legend .number {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .legend .subLegend {
+            font-size: 12px;
+        }
         .info ul  {
             padding-left: 20px;
         }
@@ -80,12 +77,35 @@
             z-index: 100;
             font-size: 40px;
         }
+        .fix {
+            font-family: 'Montserrat';
+        }
+        .textoCentro {
+            -ms-transform: translateY(3px);
+            -webkit-transform: translateY(3px);
+            transform: translateY(4px);
+            text-align: center;
+            font-size: 12px;
+        }
+        .pad0 {
+                padding: 0;
+            }
+        @media (max-width: 768px) {
+            .pad0 {
+                padding: 0;
+            }
+        }
 
     </style>
 </head>
 <body>
     <?php barraMenu($perfil,'registro'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
+    <div class="fix col-xs-12 card"> 
+        <div class="col-xs-12 col-sm-4"><div class="col-xs-1 pad0"><i class="fa fa-2x fa-check-circle" style="color: #F5A214;"></i></div><div class="col-xs-11 pad0"><div class="textoCentro">REGISTRADA CON DATOS</div></div></div>
+        <div class="col-xs-12 col-sm-4"><div class="col-xs-1 pad0"><i class="fa fa-2x fa-check-circle" style="color: #262626;"></i></div><div class="col-xs-11 pad0"><div class="textoCentro">NO REGISTRADA   CON DATOS</div></div></div>
+        <div class="col-xs-12 col-sm-4"><div class="col-xs-1 pad0"><i class="fa fa-2x fa-exclamation-circle" style="color: rgb(224, 225, 226);"></i></div><div class="col-xs-11 pad0"><div class="textoCentro">REGISTRADA SIN DATOS</div></div></div>
+    </div>
 <!-- ............................................................................................................................ -->
 <?php
         foreach($maquinas as $value) {
