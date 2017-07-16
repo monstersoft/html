@@ -14,6 +14,7 @@
             $idResultado = $_GET['idResultado'];
             $idArchivo = $_GET['idArchivo'];
             $patente = $_GET['patente'];
+            $fecha = $_GET['fechaDatos'];
             $estadisticos = estadisticos($idResultado, $idArchivo, $patente);
         }
     }
@@ -39,52 +40,34 @@
     <link rel="stylesheet" href="../../css/dashboard.css">
 </head>
 <style>
-    #motor {
-        position: fixed;
-        top: 50;
-        left: 0;
-        z-index: 100;
-    }
-    #cambios {
-        position: fixed;
-        top: 100;
-        left: 0;
-        z-index: 100;
-    }
-    #gradosPala {
-        position: fixed;
-        top: 150;
-        left: 0;
-        z-index: 150;
-    }
-    #alturaPala {
-        position: fixed;
-        top: 200;
-        left: 0;
-        z-index: 100;
-    }
-    #gradosHistoricos {
-        position: fixed;
-        top: 250;
-        left: 0;
-        z-index: 100;
-    }
-    #alturaHistoricos {
-        position: fixed;
-        top: 300;
-        left: 0;
-        z-index: 100;
-    }
-    #recorridoHistoricos {
-        position: fixed;
-        top: 350;
-        left: 0;
-        z-index: 100;
-    }
+    .center2 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+    .fix2 {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            background: #262626;
+            color: white;
+            font-family: 'Montserrat';
+            z-index: 3;
+            padding: 5px;
+            font-size: 16px;
+        }
+@media (max-width: 768px) {
+            .fix2 {
+                font-size: 10px;
+            }
+        }
 </style>
 <body>
     <?php barraMenu($perfil,'zonas'); ?>
-    <div id="content" class="animated fadeIn unLeftContent">
+    <div id="content" class="animated fadeIn unLeftContent" style="padding-bottom: 30px;">
     <?php echo
         '<div class="col-xs-12 col-sm-4 col-md-2 card">
             <div class="col-xs-12 shadow cardContent">
@@ -251,6 +234,52 @@
     <script src="../../recursos/moment/moment.js"></script>
     <script src="../../js/funciones.js"></script>
     <script src="../../cliente/js/graficos.js"></script>
-    <script>main();</script>
+    <script>
+        main();
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable) {
+                    return pair[1];
+                }
+            }
+            return false;
+        }
+    </script>
+    <script>
+        $(document).ready(function(){
+            var url = devuelveUrl('cliente/ajax/footer.php');
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {idArchivo: getQueryVariable('idArchivo'), fecha: getQueryVariable('fechaDatos'), patente: getQueryVariable('patente'), opcion: 'dashboard'},
+                dataType: 'json',
+                cache: false,
+                success: function(arreglo) {
+                    $('body').append('<div class="fix2 center2"><i class="fa fa-globe" style="color: #F5A214;"></i> '+arreglo.nombreZona+'<i class="fa fa-calendar" style="color: #F5A214;"></i> '+moment('2017-01-01','YYYY-MM-DD','es').format('dddd Do MMMM  YYYY').toUpperCase()+'<i class="fa fa-cog" style="color: #F5A214;"></i>'+arreglo.patente+'</div>');
+                    console.log(JSON.stringify(arreglo));
+                },
+                error: function(xhr) {console.log(xhr.responseText);}
+            }).fail(function( jqXHR, textStatus, errorThrown ){
+                if (jqXHR.status === 0){
+                    alert('No hay coneccion con el servidor');
+                } else if (jqXHR.status == 404) {
+                    alert('La pagina solicitada no fue encontrada, error 404');
+                } else if (jqXHR.status == 500) {
+                    alert('Error interno del servidor');
+                } else if (textStatus === 'parsererror') {
+                    alert('Error en la respuesta, debes analizar la sintaxis JSON');
+                } else if (textStatus === 'timeout') {
+                    alert('Ya ha pasado mucho tiempo');
+                } else if (textStatus === 'abort') {
+                    alert('La peticion fue abortada');
+                } else {
+                    alert('Error desconocido');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

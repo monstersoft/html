@@ -49,7 +49,7 @@ $('.modalAgregarMaquina').on('click','#btnAñadirMaquina',function(){
                     exito = 1;
                 }
                 else {
-                    warningMessage(returnedData.msg);
+                    warningMessage(arreglo.msg);
                 }
             },
             complete: function() {desactivarLoaderBotones('fa-plus','fa-refresh');},

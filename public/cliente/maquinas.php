@@ -57,6 +57,13 @@
             justify-content: center;
             align-items: center;
         }
+        .center2 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
         .patente {
             font-size: 25px;
             font-weight: bold;
@@ -87,12 +94,27 @@
             text-align: center;
             font-size: 12px;
         }
+        .fix2 {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            background: #262626;
+            color: white;
+            font-family: 'Montserrat';
+            z-index: 3;
+            padding: 5px;
+            font-size: 16px;
+        }
         .pad0 {
-                padding: 0;
-            }
+            padding: 0;
+        }
         @media (max-width: 768px) {
             .pad0 {
                 padding: 0;
+            }
+            .fix2 {
+                font-size: 10px;
             }
         }
 
@@ -100,10 +122,10 @@
 </head>
 <body>
     <?php barraMenu($perfil,'registro'); ?>
-    <div id="content" class="animated fadeIn unLeftContent">
+    <div id="content" class="animated fadeIn unLeftContent" style="padding-bottom: 30px;">
     <div class="fix col-xs-12 card"> 
         <div class="col-xs-12 col-sm-4"><div class="col-xs-1 pad0"><i class="fa fa-2x fa-check-circle" style="color: #F5A214;"></i></div><div class="col-xs-11 pad0"><div class="textoCentro">REGISTRADA CON DATOS</div></div></div>
-        <div class="col-xs-12 col-sm-4"><div class="col-xs-1 pad0"><i class="fa fa-2x fa-check-circle" style="color: #262626;"></i></div><div class="col-xs-11 pad0"><div class="textoCentro">NO REGISTRADA   CON DATOS</div></div></div>
+        <div class="col-xs-12 col-sm-4"><div class="col-xs-1 pad0"><i class="fa fa-2x fa-check-circle" style="color: #262626;"></i></div><div class="col-xs-11 pad0"><div class="textoCentro">NO REGISTRADA CON DATOS</div></div></div>
         <div class="col-xs-12 col-sm-4"><div class="col-xs-1 pad0"><i class="fa fa-2x fa-exclamation-circle" style="color: rgb(224, 225, 226);"></i></div><div class="col-xs-11 pad0"><div class="textoCentro">REGISTRADA SIN DATOS</div></div></div>
     </div>
 <!-- ............................................................................................................................ -->
@@ -128,7 +150,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="dashboard.php?idResultado='.$value['idResultado'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'" class="boton">Detalle</a> 
+                    <a href="dashboard.php?idResultado='.$value['idResultado'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'&fechaDatos='.$fecha.'" class="boton">Detalle</a> 
                 </div>';
             }
             if(($value['registrado'] == 0) and ($value['existeEnArchivo'] == 1)) { echo
@@ -150,7 +172,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="dashboard.php?idResultado='.$value['idResultado'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'" class="boton">Detalle</a>
+                    <a href="dashboard.php?idResultado='.$value['idResultado'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'&fechaDatos='.$fecha.'" class="boton">Detalle</a>
                 </div>';
             }
             if(($value['registrado'] == 1) and ($value['existeEnArchivo'] == 0)) { echo
@@ -172,18 +194,62 @@
                             </div>
                         </div>
                     </div>
-                    <a href="dashboard.php?idResultado='.$value['idResultado'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'" class="boton">Detalle</a> 
+                    <a href="dashboard.php?idResultado='.$value['idResultado'].'&patente='.$value['patente'].'&idArchivo='.$idArchivo.'&fechaDatos='.$fecha.'" class="boton">Detalle</a> 
                 </div>';
             }
         }
 ?>
-
 <!-- ............................................................................................................................ -->
     </div>
     <script src="../../recursos/jquery/jquery.min.js"></script>
     <script src="../../recursos/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../recursos/moment/moment.js"></script>
     <script src="../../js/funciones.js"></script>    
-    <script>main();</script>
+    <script>
+        main();
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable) {
+                    return pair[1];
+                }
+            }
+            return false;
+        }
+    </script>
+    <script>
+        $(document).ready(function(){
+            var url = devuelveUrl('cliente/ajax/footer.php');
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {idArchivo: getQueryVariable('idArchivo'), fecha: getQueryVariable('fechaRecienteDatos'), opcion: 'maquinas'},
+                dataType: 'json',
+                cache: false,
+                success: function(arreglo) {
+                    $('body').append('<div class="fix2 center2"><i class="fa fa-globe" style="color: #F5A214;"></i> '+arreglo.nombreZona+'<i class="fa fa-calendar" style="color: #F5A214;"></i> '+moment('2017-01-01','YYYY-MM-DD','es').format('dddd Do MMMM  YYYY').toUpperCase()+'</div>')
+                },
+                error: function(xhr) {console.log(xhr.responseText);}
+            }).fail(function( jqXHR, textStatus, errorThrown ){
+                if (jqXHR.status === 0){
+                    alert('No hay coneccion con el servidor');
+                } else if (jqXHR.status == 404) {
+                    alert('La pagina solicitada no fue encontrada, error 404');
+                } else if (jqXHR.status == 500) {
+                    alert('Error interno del servidor');
+                } else if (textStatus === 'parsererror') {
+                    alert('Error en la respuesta, debes analizar la sintaxis JSON');
+                } else if (textStatus === 'timeout') {
+                    alert('Ya ha pasado mucho tiempo');
+                } else if (textStatus === 'abort') {
+                    alert('La peticion fue abortada');
+                } else {
+                    alert('Error desconocido');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
