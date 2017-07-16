@@ -18,6 +18,7 @@ $('.datepicker').pickadate({
                     max: arr.lastDayAvailable,
                     disable: arr.availableDays
                 });
+                console.log(devuelveUrl('cliente/ajax/fechasDisponibles.php'));
             },
             complete: function() {
                 console.log('se han cargado los días');
