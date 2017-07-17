@@ -108,9 +108,9 @@ table td {
     
 }
 #chartLine .ct-label.ct-horizontal { 
-    font-size: 12px; 
+    font-size: 10px; 
     position: relative; 
-    transform: rotate(0deg); 
+    transform: rotate(45deg); 
     transform-origin: left top;
     color: #262626;
     font-family: 'Montserrat';
@@ -143,7 +143,7 @@ table td {
     
 }
 #chartLine2 .ct-label.ct-horizontal { 
-    font-size: 12px; 
+    font-size: 10px; 
     position: relative; 
     transform: rotate(45deg); 
     transform-origin: left top;
