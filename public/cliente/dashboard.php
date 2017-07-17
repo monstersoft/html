@@ -258,8 +258,7 @@
                 dataType: 'json',
                 cache: false,
                 success: function(arreglo) {
-                    $('body').append('<div class="fix2 center2"><i class="fa fa-globe" style="color: #F5A214;"></i> '+arreglo.nombreZona+'<i class="fa fa-calendar" style="color: #F5A214;"></i> '+moment('2017-07-14','YYYY-MM-DD','es').format('dddd Do MMMM  YYYY').toUpperCase()+'<i class="fa fa-cog" style="color: #F5A214;"></i>'+arreglo.patente+'</div>');
-                    console.log(JSON.stringify(arreglo));
+                    $('body').append('<div class="fix2 center2"><i class="fa fa-globe" style="color: #F5A214;"></i> '+arreglo.nombreZona+'<i class="fa fa-calendar" style="color: #F5A214;"></i> '+moment(arreglo.fechaDatos,'YYYY-MM-DD','es').format('dddd Do MMMM  YYYY').toUpperCase()+'<i class="fa fa-cog" style="color: #F5A214;"></i>'+arreglo.patente+'</div>');
                 },
                 error: function(xhr) {console.log(xhr.responseText);}
             }).fail(function( jqXHR, textStatus, errorThrown ){
