@@ -21,10 +21,8 @@ function devuelveUrl(pathSinCarpetaRaiz) {
     var url;
     var host = window.location.host;
     var protocolo = window.location.protocol;
-    /*if(host == 'www.mmonitors.com')
+    if(host == 'www.mmonitors.com')
             url = protocolo+'//'+host+'/'+pathSinCarpetaRaiz;*/
-    if(host == '165.227.140.38')
-        url = protocolo+'//'+host+'/'+pathSinCarpetaRaiz;
     else
         url = protocolo+'//'+host+'/'+carpetaRaiz+'/'+pathSinCarpetaRaiz;
     return url;
