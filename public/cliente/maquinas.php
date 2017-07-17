@@ -229,7 +229,7 @@
                 dataType: 'json',
                 cache: false,
                 success: function(arreglo) {
-                    console.log(JSON.stringify(arreglo.fecha));
+                    console.log(JSON.stringify(arreglo));
                     $('body').append('<div class="fix2 center2"><i class="fa fa-globe" style="color: #F5A214;"></i> '+arreglo.nombreZona+'<i class="fa fa-calendar" style="color: #F5A214;"></i> '+moment(arreglo.fecha,'YYYY-MM-DD','es').format('dddd Do MMMM  YYYY').toUpperCase()+'</div>')
                 },
                 error: function(xhr) {console.log(xhr.responseText);}
