@@ -22,7 +22,7 @@ function devuelveUrl(pathSinCarpetaRaiz) {
     var host = window.location.host;
     var protocolo = window.location.protocol;
     if(host == 'www.mmonitors.com')
-            url = protocolo+'//'+host+'/'+pathSinCarpetaRaiz;*/
+            url = protocolo+'//'+host+'/'+pathSinCarpetaRaiz;
     else
         url = protocolo+'//'+host+'/'+carpetaRaiz+'/'+pathSinCarpetaRaiz;
     return url;
@@ -47,32 +47,32 @@ function main () {
 		}
 		//WHEN DOES THE RESIZE
 		$(window).resize(function(){
-				if($(window).width() > 767) {
-						if(shadow == true) {
-								$('#shadowDisplay').remove();
-								shadow = false;
-						}
-						if($('nav').hasClass('unDisplayNav'))
-								$('nav').removeClass('unDisplayNav');
-						if($('#content').hasClass('unLeftContent'))
-								$('#content').removeClass('unLeftContent');
-						$('nav').addClass('displayNav');
-						$('#content').addClass('leftContent');
-						$('#content').css('width','calc(100% - 250px)');
-				}
-				if($(window).width() <= 767) {
-						if(shadow == true) {
-								$('#shadowDisplay').remove();
-								shadow = false;
-						}
-						if($('nav').hasClass('displayNav'))
-								$('nav').removeClass('displayNav');
-						if($('#content').hasClass('leftContent'))
-								$('#content').removeClass('leftContent');
-						$('nav').addClass('unDisplayNav');
-						$('#content').addClass('unLeftContent');
-						$('#content').css('width','100%');
-				}
+            if($(window).width() > 767) {
+                    if(shadow == true) {
+                            $('#shadowDisplay').remove();
+                            shadow = false;
+                    }
+                    if($('nav').hasClass('unDisplayNav'))
+                            $('nav').removeClass('unDisplayNav');
+                    if($('#content').hasClass('unLeftContent'))
+                            $('#content').removeClass('unLeftContent');
+                    $('nav').addClass('displayNav');
+                    $('#content').addClass('leftContent');
+                    $('#content').css('width','calc(100% - 250px)');
+            }
+            if($(window).width() <= 767) {
+                    if(shadow == true) {
+                            $('#shadowDisplay').remove();
+                            shadow = false;
+                    }
+                    if($('nav').hasClass('displayNav'))
+                            $('nav').removeClass('displayNav');
+                    if($('#content').hasClass('leftContent'))
+                            $('#content').removeClass('leftContent');
+                    $('nav').addClass('unDisplayNav');
+                    $('#content').addClass('unLeftContent');
+                    $('#content').css('width','100%');
+            }
 		});
 		//WHEN CLICK
 		$('#clickMenu').click(function(){
