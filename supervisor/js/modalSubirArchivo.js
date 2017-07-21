@@ -44,13 +44,13 @@ $('.modalSubirArchivo').on('click','#btnSubirArchivo',function(){
             beforeSend: function() {activarLoaderBotones('fa-upload','fa-refresh');},
             success: function(arreglo) {
                 console.log(JSON.stringify(arreglo));
-                if(arreglo.success == true) {
+                /*if(arreglo.success == true) {
                     successMessage('Subida exitosa, ','se han subido los datos a la base de datos');
                     $('#btnSubirArchivo').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverSubir').html('<i class="fa fa-repeat"></i>Subir otro');
                     $('#btnSubirArchivo').remove();
                 }
                 else
-                    warningMessage(arreglo.msg);
+                    warningMessage(arreglo.msg);*/
             },
             complete: function() {desactivarLoaderBotones('fa-upload','fa-refresh');},
             error: function(xhr) {console.log(xhr.responseText)}
