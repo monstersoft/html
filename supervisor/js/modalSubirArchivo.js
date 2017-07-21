@@ -32,7 +32,7 @@ $('.modalSubirArchivo').on('click','#btnSubirArchivo',function(){
        arreglo.push(nameMatchSplit(archivo,fecha).msg);
     if(arreglo.length == 0) {
         var data  = new FormData(document.getElementById('formularioSubirArchivo'));
-        console.log(arreglo);
+        console.log(devuelveUrl('supervisor/ajax/subirArchivo.php'));
         $.ajax({
             url: devuelveUrl('supervisor/ajax/subirArchivo.php'),
             type: 'POST',
