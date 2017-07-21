@@ -1,4 +1,3 @@
-var carpetaRaiz = 'html';
 function lowerCase(value) {
     var cadena = new String(value);
     cadena = cadena.toLowerCase();
@@ -21,10 +20,10 @@ function devuelveUrl(pathSinCarpetaRaiz) {
     var url;
     var host = window.location.host;
     var protocolo = window.location.protocol;
-    if(!host == 'localhost')
+    if(host != 'localhost')
             url = protocolo+'//'+host+'/'+pathSinCarpetaRaiz;
     else
-        url = protocolo+'//'+host+'/'+carpetaRaiz+'/'+pathSinCarpetaRaiz;
+        url = protocolo+'//'+host+'/html/'+pathSinCarpetaRaiz;
     return url;
 }
 function fechaHoy() {
