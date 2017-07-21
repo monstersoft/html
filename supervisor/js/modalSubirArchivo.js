@@ -51,8 +51,8 @@ $('.modalSubirArchivo').on('click','#btnSubirArchivo',function(){
                 else
                     warningMessage(arreglo.msg);
             },
-            complete: function() {desactivarLoaderBotones('fa-upload','fa-refresh');},
-            error: function(xhr) {console.log(xhr.responseText)}
+            complete: function() {desactivarLoaderBotones('fa-upload','fa-refresh');}
+            /*error: function(xhr) {console.log(xhr.responseText)}*/
         }).fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){
                 alert('No hay coneccion con el servidor');
