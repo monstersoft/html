@@ -43,7 +43,7 @@
     <?php barraMenu($perfil,'zonas'); ?>sizeof($zonas) == 0 $zonas[$key]['zonas'] as $v
     <div id="content" class="animated fadeIn unLeftContent">
            <?php
-                if(sizeof($zonas) == 0) echo '<div class="alert"><div class="row vertical-align"> <div class="col-xs-2"> <i class="fa fa-exclamation-circle fa-3x"></i> </div><div class="col-xs-10"> <strong class="montserrat">No existen datos </strong>, el supervisor debe subir al menos un archivo por cada zona.</div></div></div>';
+                if(sizeof($zonas) == 0) echo '<div class="alert"><div class="row vertical-align"> <div class="col-xs-2"> <i class="fa fa-exclamation-circle fa-3x"></i> </div><div class="col-xs-10"> <strong class="montserrat">No existen datos </strong>, el supervisor debe subir al menos un archivo por cada zona. Para agregar empresas y zonas debes ir la sección <strong>Ajustes </strong> del menú de navegación</div></div></div>';
                 else
                     foreach($zonas as $key => $value) {
                         echo'<div class="col-xs-12 card montserrat">
