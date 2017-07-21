@@ -51,9 +51,9 @@ $('.modalSubirArchivo').on('click','#btnSubirArchivo',function(){
                 else
                     warningMessage(arreglo.msg);
             },
-            complete: function() {desactivarLoaderBotones('fa-upload','fa-refresh');}
-            /*error: function(xhr) {console.log(xhr.responseText)}*/
-        }).fail(function( jqXHR, textStatus, errorThrown ){
+            complete: function() {desactivarLoaderBotones('fa-upload','fa-refresh');},
+            error: function(xhr) {console.log(xhr.responseText)}
+        })/*.fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){
                 alert('No hay coneccion con el servidor');
             } else if (jqXHR.status == 404) {
@@ -69,7 +69,7 @@ $('.modalSubirArchivo').on('click','#btnSubirArchivo',function(){
             } else {
                 alert('Error desconocido');
             }
-        });;
+        })*/;
     }
     else {
         errorMessage(arreglo);
