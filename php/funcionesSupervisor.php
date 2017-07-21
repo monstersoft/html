@@ -12,30 +12,30 @@
                         <br><span id="nameProfile">'.$perfil['empresa'].'</span></li>'; 
                 if($nombrePagina == 'zonas') { echo '
                     <li class="selected"><a href="panel.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                    <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
-                    <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-                    <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
+                    <li><a style="color: white;" href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
+                    <li><a style="color: white;" href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+                    <li><a style="color: white;" href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
                     
                 }
                 if($nombrePagina == 'contacto') { echo '
-                    <li><a href="panel.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                    <li class="selected"><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
-                    <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-                    <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
+                    <li><a style="color: white;" href="panel.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                    <li class="selected"><a style="color: white;" href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
+                    <li><a style="color: white;" href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+                    <li><a style="color: white;" href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
                     
                 }
                 if($nombrePagina == 'contraseña') { echo '
-                    <li><a href="panel.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                    <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
-                    <li class="selected"><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-                    <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
+                    <li><a style="color: white;" href="panel.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                    <li><a style="color: white;" href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
+                    <li class="selected"><a style="color: white;" href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+                    <li><a style="color: white;" href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
                     
                 }
                 if($nombrePagina == 'cerrar') { echo '
-                    <li><a href="panel.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                    <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
-                    <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-                    <li class="selected"><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
+                    <li><a style="color: white;" href="panel.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                    <li><a style="color: white;" href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
+                    <li><a style="color: white;" href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+                    <li class="selected"><a style="color: white;" href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
                     
                 } echo '
                 </ul>
