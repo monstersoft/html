@@ -32,6 +32,7 @@ $('.modalSubirArchivo').on('click','#btnSubirArchivo',function(){
        arreglo.push(nameMatchSplit(archivo,fecha).msg);
     if(arreglo.length == 0) {
         var data  = new FormData(document.getElementById('formularioSubirArchivo'));
+        console.log(arreglo);
         $.ajax({
             url: devuelveUrl('supervisor/ajax/subirArchivo.php'),
             type: 'POST',
@@ -53,7 +54,7 @@ $('.modalSubirArchivo').on('click','#btnSubirArchivo',function(){
             },
             complete: function() {desactivarLoaderBotones('fa-upload','fa-refresh');},
             error: function(xhr) {console.log(xhr.responseText)}
-        })/*.fail(function( jqXHR, textStatus, errorThrown ){
+        }).fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){
                 alert('No hay coneccion con el servidor');
             } else if (jqXHR.status == 404) {
@@ -69,7 +70,7 @@ $('.modalSubirArchivo').on('click','#btnSubirArchivo',function(){
             } else {
                 alert('Error desconocido');
             }
-        })*/;
+        });
     }
     else {
         errorMessage(arreglo);
