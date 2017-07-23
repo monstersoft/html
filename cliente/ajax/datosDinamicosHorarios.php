@@ -75,9 +75,9 @@
     }
     function completaConCeros($minuto, $gradosPalaFrontal, $gradosPalaTrasera, $arr) {
         for($i = sizeof($arr['hora']); $i < $minuto; $i++) {
-            $arr['hora'][] = $i;
-            $arr['gradosPalaFrontal'][] = 0;
-            $arr['gradosPalaTrasera'][] = 0;
+            $arr['hora'][] = $i."' s/d";
+            $arr['gradosPalaFrontal'][] = null;
+            $arr['gradosPalaTrasera'][] = null;
         }
         $arr['hora'][] = $minuto;
         $arr['gradosPalaFrontal'][] = $gradosPalaFrontal;
@@ -86,28 +86,28 @@
     }
     function completaConCerosDespues($arr) {
         for($i = sizeof($arr['hora']); $i <= 59; $i++) {
-            $arr['hora'][] = $i;
-            $arr['gradosPalaFrontal'][] = 0;
-            $arr['gradosPalaTrasera'][] = 0;
+            $arr['hora'][] = $i."' s/d";
+            $arr['gradosPalaFrontal'][] = null;
+            $arr['gradosPalaTrasera'][] = null;
         }
         return $arr;
     }
-    function completaConCeros2($minuto, $gradosPalaFrontal, $gradosPalaTrasera, $arr) {
+    function completaConCeros2($minuto, $alturaPalaFrontal, $alturaPalaTrasera, $arr) {
         for($i = sizeof($arr['hora']); $i < $minuto; $i++) {
-            $arr['hora'][] = $i;
-            $arr['alturaPalaFrontal'][] = 0;
-            $arr['alturaPalaTrasera'][] = 0;
+            $arr['hora'][] = $i."' s/d";
+            $arr['alturaPalaFrontal'][] = null;
+            $arr['alturaPalaTrasera'][] = null;
         }
         $arr['hora'][] = $minuto;
-        $arr['alturaPalaFrontal'][] = $gradosPalaFrontal;
-        $arr['alturaPalaTrasera'][] = $gradosPalaTrasera;
+        $arr['alturaPalaFrontal'][] = $alturaPalaFrontal;
+        $arr['alturaPalaTrasera'][] = $alturaPalaTrasera;
         return $arr;
     }
     function completaConCerosDespues2($arr) {
         for($i = sizeof($arr['hora']); $i <= 59; $i++) {
-            $arr['hora'][] = $i;
-            $arr['alturaPalaFrontal'][] = 0;
-            $arr['alturaPalaTrasera'][] = 0;
+            $arr['hora'][] = $i."' s/d";
+            $arr['alturaPalaFrontal'][] = null;
+            $arr['alturaPalaTrasera'][] = null;
         }
         return $arr;
     }

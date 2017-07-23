@@ -95,7 +95,7 @@
                 $resultados[$index]['existeEnArchivo'] = 1;
             }
             else
-                array_push($resultados,array('patente' => $v['patente'], 'pRpm' => 0, 'pGpf' => 0, 'pGpt' => 0, 'pApf' => 0, 'pApt' => 0, 'tRecorridos' => 0, 'total' => 0, 'idZona' => $v['idZona'], 'idMaquina' => $v['idMaquina'], 'fechaDatos' => $v['fechaDatos'], 'registrado' => 1, 'existeEnArchivo' => 0));
+                array_push($resultados,array('patente' => $v['patente'], 'pRpm' => -1, 'pGpf' => -1, 'pGpt' => -1, 'pApf' => -1, 'pApt' => -1, 'tRecorridos' => -1, 'total' => -1, 'idZona' => $v['idZona'], 'idMaquina' => $v['idMaquina'], 'fechaDatos' => $v['fechaDatos'], 'registrado' => 1, 'existeEnArchivo' => 0));
         }
         foreach($resultados as $k => $v) {
             $index = searchValueInArray($maquinas, 'patente', $v['patente']);

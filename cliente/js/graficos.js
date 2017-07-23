@@ -9,8 +9,8 @@ var hours = ['08 am','09 am','10 am','11 am','12 am','13 pm','14 pm','15 pm','16
 var posHeight = 0;
 var posDegrees = 0;
 var monthsEnglish = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-var yearsCalculate  = returnYearsAvailabes('2016',moment().format('YYYY')); //DEVUELVE UN ARRAY CON AÑOS DESDE EL 2016 HASTA EL ACTUAL, ORDENADO DE MENOR A MAYOR
-var posYear = yearsCalculate['posYear']; //POSICION DEL ULTIMO AÑO DEL yearsCalculate
+var yearsCalculate  = returnYearsAvailabes('2016',moment().format('YYYY'));
+var posYear = yearsCalculate['posYear'];
 var years = yearsCalculate['years'];
 var monthsCalculate = returnMonthsAvailables(years[posYear], moment().format('MMM'));
 var posMonth = monthsCalculate['posMonth'];
@@ -68,6 +68,16 @@ $.ajax({
         lineHistorical('#chart1', {labels: res[3]['semanas'],series: [res[3]['pGpf'],res[3]['pGpt']]},false, 'Semanas', -10, 'gradosHistoricos');
         lineHistorical('#chart2', {labels: res[3]['semanas'],series: [res[3]['pApf'],res[3]['pApt']]},false, 'Semanas', -10,'alturaHistoricos');
         lineHistorical('#chart3', {labels: res[3]['semanas'],series: [res[3]['pTre']]},true, 'Semanas', 10,'recorridoHistoricos');
+        if(arr.barra.cambio.length == 0) 
+            $('#barChart').html('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;">No existen datos</div>');
+        if(arr.barra.cambio.length == 0) 
+            $('#barChart').html('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;">No existen datos</div>');
+        if(arr.torta.length == 0) 
+            $('#donutChart').html('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;">No existen datos</div>');
+        if(arr.barra.cambio.length == 0) 
+            $('#barChart').html('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;">No existen datos</div>');
+        if(arr.torta.length == 0) 
+            $('#donutChart').html('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;">No existen datos</div>');
     },
     complete: function(){
         $('.loader').remove();
@@ -83,7 +93,6 @@ function ajaxHours(hora, opcion) {
         dataType: 'json',
         cache: false,
         success: function(arr) {
-            console.log(arr);
             var res = json2array(arr);
             if(res[4] == 0) {
                 line('#chartLineSticky', true, true, {labels: res[0], series: [res[1],res[2]]}, '°', false);
@@ -187,7 +196,6 @@ function line(idChart, axisShowY, axisShowX, data, unidad, fullwidth, grafico) {
     var options = {
         lineSmooth: Chartist.Interpolation.cardinal({tension: 0.2}),
         axisY: {showLabel: axisShowY,labelInterpolationFnc: function(value) {return value + unidad;}},
-        axisX: {showLabel: axisShowX,labelInterpolationFnc: function(value){return value+"'"}},
         fullWidth: fullwidth}
     var chart = new Chartist.Line(idChart, data, options);
     chart.on('draw', function(data) {
@@ -384,7 +392,6 @@ $('.yearButton').click(function(){
         colorLimitMonth(posMonth,months.length);
         $('.monthLegend').html(months[posMonth]);
         ajaxHistorical(returnWeeksRangesAvailable(years[posYear],monthsEnglish[posMonth]));
-        console.log('leftYear: '+posYear);
     }
     else {
         posYear = rightClickYear(posYear,years.length);
@@ -395,7 +402,6 @@ $('.yearButton').click(function(){
         colorLimitMonth(posMonth,months.length);
         $('.monthLegend').html(months[posMonth]);
         ajaxHistorical(returnWeeksRangesAvailable(years[posYear],monthsEnglish[posMonth]));
-        console.log('rightYear: '+posYear);
     }
 });
 $('.monthButton').click(function(){
@@ -403,13 +409,11 @@ $('.monthButton').click(function(){
         posMonth = leftClickMonth(posMonth);
         colorLimitMonth(posMonth,months.length);
         ajaxHistorical(returnWeeksRangesAvailable(years[posYear],monthsEnglish[posMonth]));
-        console.log('leftMonth: '+posMonth);
     }
     else {
         posMonth = rightClickMonth(posMonth,months.length);
         colorLimitMonth(posMonth,months.length);
         ajaxHistorical(returnWeeksRangesAvailable(years[posYear],monthsEnglish[posMonth]));
-        console.log('rightMonth: '+posMonth);
     }
 });
 $('.degrees').click(function(){
@@ -431,13 +435,11 @@ $('.height').click(function(){
         posHeight = leftClickHeight(posHeight,hours.length);
         colorLimitHeight(posHeight,hours.length);
         ajaxHours(posHeight, 1);
-        console.log('leftHeight: '+posHeight);
     }
     else {
         posHeight = rightClickHeight(posHeight, hours.length);
         colorLimitHeight(posHeight,hours.length);
         ajaxHours(posHeight, 1);
-        console.log('rightHeight: '+posHeight);
     }
 });
 function leftClickYear(pos) {

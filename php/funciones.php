@@ -370,7 +370,7 @@
     }
     function debug($var) {
         echo '<head><style>* {background: black;}</style></head>';
-        echo "<pre style='color: lime;'>"; print_r($var); echo "</pre>";
+        echo "<pre style='position: fixed; top: 0; z-index: 100; width: 100%; height: 100%; color: lime;'>"; print_r($var); echo "</pre>";
     }
     function empresas() {
         $conexion = conectar();

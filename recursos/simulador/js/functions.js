@@ -42,7 +42,7 @@ function generarObjetoLimites() {
                 if(j == 17)
                     objAux[i].mf = formularios[i].elements[j].value;
                 if(j == 18)
-                    objAux[i].marcado = formularios[i].elements[j].value;
+                    objAux[i].marcado = formularios[i].elements[j].checked;
                 
             }
         }
@@ -112,30 +112,35 @@ function generarObjetoDatos(o){
     var cantidadRegistros = 0;
     $.each(o,function(index) {
         var hora = 8;
-        while(hora<18) { //HASTA LAS 17:59
-            while(minuto<60){ //HASTA EL MINUTO 59
-                objRegistros.push({
-                    identificador:      o[index].id,
-                    latitud:            r(o[index].lamin,o[index].lamax,6),
-                    longitud:           r(o[index].lomin,o[index].lomax,6),
-                    revoluciones:       r(o[index].rmin,o[index].rmax,2),
-                    gradosFrontal:      r(o[index].gfmin,o[index].gfmax,2),
-                    gradosTrasera:      r(o[index].gtmin,o[index].gtmax,2),
-                    alturaFrontal:      r(o[index].afmin,o[index].afmax,2),
-                    alturaTrasera:      r(o[index].atmin,o[index].atmax,2),
-                    cambio:             r(1,10,0),
-                    motor:              r(0,1,0),
-                    horaDato:           hora+":"+minuto+":00"
-                });
-                minuto++;
-                cantidadRegistros++;
+        if(o[index].marcado == true) {
+            while(hora<18) { //HASTA LAS 17:59
+                while(minuto<60){ //HASTA EL MINUTO 59
+                    objRegistros.push({
+                        identificador:      o[index].id,
+                        latitud:            r(o[index].lamin,o[index].lamax,6),
+                        longitud:           r(o[index].lomin,o[index].lomax,6),
+                        revoluciones:       r(o[index].rmin,o[index].rmax,2),
+                        gradosFrontal:      r(o[index].gfmin,o[index].gfmax,2),
+                        gradosTrasera:      r(o[index].gtmin,o[index].gtmax,2),
+                        alturaFrontal:      r(o[index].afmin,o[index].afmax,2),
+                        alturaTrasera:      r(o[index].atmin,o[index].atmax,2),
+                        cambio:             r(1,10,0),
+                        motor:              r(0,1,0),
+                        horaDato:           hora+":"+minuto+":00"
+                    });
+                    minuto++;
+                    cantidadRegistros++;
+                }
+                minuto = 0;
+                hora++;
             }
+            cantidadRegistros = 0;
             minuto = 0;
-            hora++;
-        }
-        cantidadRegistros = 0;
-        minuto = 0;
-        hora = 8;
+            hora = 8;
+    }
+    else {
+     console.log('Formulario sin marcar con patente: '+o[index].id);   
+    }
     });
     return objRegistros;
 }

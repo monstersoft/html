@@ -187,7 +187,7 @@
                                 <img style="float: left;" src="excavator2.svg" width="60" height="60">
                                 <div style="float: left;" class="info">
                                    <ul>
-                                    <li class="numero">'.$value['tRecorridos'].'</li>
+                                    <li class="numero">s/d</li>
                                     <li class="legend">RECORRIDOS</li>
                                 </ul>
                                 </div>

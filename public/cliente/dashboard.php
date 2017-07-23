@@ -15,7 +15,14 @@
             $idArchivo = $_GET['idArchivo'];
             $patente = $_GET['patente'];
             $fecha = $_GET['fechaDatos'];
-            $estadisticos = estadisticos($idResultado, $idArchivo, $patente);
+            $estadisticos = estadisticos($idResultado, $idArchivo, $patente);    
+            if($estadisticos['tRecorridos'] == -1) $estadisticos['tRecorridos'] = 's/d';
+            if($estadisticos['mediciones'] == -1) $estadisticos['mediciones'] = 's/d';
+            if($estadisticos['pRpm'] == -1) $estadisticos['pRpm'] = 's/d';
+            if($estadisticos['pGpf'] == -1) $estadisticos['pGpf'] = 's/d';
+            if($estadisticos['pGpt'] == -1) $estadisticos['pGpt'] = 's/d';
+            if($estadisticos['pApf'] == -1) $estadisticos['pApf'] = 's/d';
+            if($estadisticos['pApt'] == -1) $estadisticos['pApt'] = 's/d';
         }
     }
     else {
