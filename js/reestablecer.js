@@ -21,8 +21,12 @@ $('#btnReestablecer').click(function() {
             },
             cache: false,
             success: function(arreglo) {
-                if(arreglo.exito == true)  
-                    successUi('<div class="item text-center">Se ha enviado un correo para reestablecer tu contraseña, <a href="http://localhost/html">haz click aquí para ir a inicio de sesión</a></div>');
+                if(arreglo.exito == true) {
+                    if(arreglo.mailEnviado == true)
+                        successUi('<div class="item text-center">Se ha enviado un correo para reestablecer tu contraseña, <a href="http://localhost/html">haz click aquí para ir a inicio de sesión</a></div>');
+                    else
+                        errorUi('<div class="item">El correo no pudo ser enviado, debes comunicarte con el administrador dele sistema o verificar tu conexión</div>');
+                }
                 else
                     errorUi('<div class="item">El correo no está registrado en el sistema</div>');
             },

@@ -1,13 +1,14 @@
 <?php 
     include ('../php/conexion.php');
-	include ('../recursos/mailer/class.phpmailer.php');
+	include ('../recursos/mailer/PHPMailerAutoload.php');
     $correo = $_POST['txtCorreo'];
     $arreglo = array();
     $conexion = conectar();
     $arreglo = buscarCorreo($correo);
-    if($arreglo['existeCorreo'] == true){
+    if($arreglo['existeCorreo'] == true) {
         $token = generaToken($correo,$arreglo['tipoUsuario']);
-        $link = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/html/reinicio.php?token='.$token;
+        if($_SERVER['SERVER_NAME'] == 'localhost') $link = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/html/reinicio.php?token='.$token;
+        else $link = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/reinicio.php?token='.$token;
         $arreglo['link'] = $link;
         $id = $arreglo['idUsuario'];
         if($arreglo['mailEnviado'] = enviarMailReestablecer($arreglo['nombre'],$arreglo['correo'],$link)) {
@@ -67,66 +68,77 @@
         return $token;
     }
 	function enviarMailReestablecer($nombreSupervisor,$emailSupervisor,$link) {
-			$e = new PHPMailer;
-			$e->Host = 'localhost';
-			$e->From = "machmonitor@gmail.com";
-			$e->FromName = 'Machine Monitors';
-			$e->Subject = 'Reestablecer Clave';
-			$e->addAddress($emailSupervisor);
-			$e->MsgHTML('<!DOCTYPE html>
-							<html>
-							    <head>
-							    	<meta charset="UTF-8">
-							    	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-									<style>
-										* {
-											margin: 0;
-											padding: 0;
-											box-sizing: border-box;
-										}
-										body {
-											font-family: Arial;
-										}
-										.letra {
-											font-size: 20px;
-											font-weight: 100;
-											color: #fff;
-										}
-							            .contenedor {
-							                width: 100%;
-							                margin: 0 auto;
-							                overflow: hidden;
-							            }
-							            .rectangulo {
-							                text-align: center;
-							                float: left;
-							                padding: 10px;
-											border-bottom: 5px solid #F5A214;
-											width: 100%;
-											height: 45px;
-											background: #262626;
-							            }
-							            .cuadrado {
-							                width: 100%;
-							                float: left;
-							                padding: 20px 0px 20px 0px;
-							                border-bottom: 5px solid #F5A214;
-							                font-size: 15px;
-							            }
-							        </style>
-							    </head>
-							    <body>
-							    	<div class="contenedor">
-							    		<div class="rectangulo">
-							                <p class="letra">Machine Monitors</p>
-							            </div>
-							    		<div class="cuadrado">Estimado '.$nombreSupervisor.', para reestablecer tu contraseña debes ingresar al siguiente enlance y completar el formulario<br><br><a href='.$link.'>'.$link.'</a><div>
-							        </div>
-							    </body>
-							</html>');
-			if($e->Send())
-				return true;
-			else
-				return false;
-		}
-?>
+        $arr = false;
+        date_default_timezone_set('Etc/UTC');
+        $e = new PHPMailer;
+        $e->isSMTP();
+        $e->CharSet = 'UTF-8';
+        //Enable SMTP debugging
+        // 0 = off (for production use)
+        // 1 = client messages
+        // 2 = client and server messages
+        $e->SMTPDebug = 0;
+        $e->Host = 'smtp.gmail.com';
+        $e->Port = 587;
+        $e->SMTPSecure = 'tls';
+        $e->SMTPAuth = true;
+        $e->Username = "mmonitors17@gmail.com";
+        $e->Password = "Monsterinc2";
+        $e->FromName = "Machine Monitors";
+        $e->addAddress($emailSupervisor);
+        $e->Subject = 'Reestablecer Contraseña';
+        $e->MsgHTML('<!DOCTYPE html>
+                                    <html>
+                                        <head>
+                                            <meta charset="UTF-8">
+                                            <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                                            <style>
+                                                * {
+                                                    margin: 0;
+                                                    padding: 0;
+                                                    box-sizing: border-box;
+                                                }
+                                                body {
+                                                    font-family: Arial;
+                                                }
+                                                .letra {
+                                                    font-size: 20px;
+                                                    font-weight: 100;
+                                                    color: #fff;
+                                                }
+                                                .contenedor {
+                                                    width: 100%;
+                                                    margin: 0 auto;
+                                                    overflow: hidden;
+                                                }
+                                                .rectangulo {
+                                                    text-align: center;
+                                                    float: left;
+                                                    padding: 10px;
+                                                    border-bottom: 5px solid #F5A214;
+                                                    width: 100%;
+                                                    height: 45px;
+                                                    background: #262626;
+                                                }
+                                                .cuadrado {
+                                                    width: 100%;
+                                                    float: left;
+                                                    padding: 20px 0px 20px 0px;
+                                                    border-bottom: 5px solid #F5A214;
+                                                    font-size: 15px;
+                                                }
+                                            </style>
+                                        </head>
+                                        <body>
+                                            <div class="contenedor">
+                                                <div class="rectangulo">
+                                                    <p class="letra">Machine Monitors</p>
+                                                </div>
+                                                <div class="cuadrado">Estimado '.$nombreSupervisor.', para reestablecer tu contraseña debes ingresar al siguiente enlance y completar el formulario<br><br><a href='.$link.'>'.$link.'</a><div>
+                                            </div>
+                                        </body>
+                                    </html>');
+        if ($e->send())
+            $arr = true;
+        return $arr;
+    }
