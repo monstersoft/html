@@ -5,7 +5,7 @@
     $arreglo = array();
     $conexion = conectar();
     $arreglo = buscarCorreo($correo);
-    if($arreglo['existeCorreo'] == true) {
+    /*if($arreglo['existeCorreo'] == true) {
         $token = generaToken($correo,$arreglo['tipoUsuario']);
         if($_SERVER['SERVER_NAME'] == 'localhost') 
             $link = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/html/reinicio.php?token='.$token;
@@ -25,7 +25,7 @@
         }
     }
     else
-        $arreglo['exito'] = false;
+        $arreglo['exito'] = false;*/
     echo json_encode($arreglo);
     function buscarCorreo($correo) {
         $conexion = conectar();
