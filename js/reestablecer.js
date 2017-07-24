@@ -32,7 +32,7 @@ $('#btnReestablecer').click(function() {
                 else
                     errorUi('<div class="item">El correo no está registrado en el sistema</div>');
             },
-            error: function(xhr) {alert('Error de conexión, debes comunicarte con el administrador del sistema'); console.log(xhr.responseText);}
+            error: function(xhr) {console.log(xhr.responseText);}
         }).complete(function(){
             $('#btnReestablecer').removeClass('disabled');
             $('#btnReestablecer').html('Enviar correo');
