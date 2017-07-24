@@ -21,6 +21,7 @@ $('#btnReestablecer').click(function() {
             },
             cache: false,
             success: function(arreglo) {
+                console.log(arreglo);
                 if(arreglo.exito == true) {
                     if(arreglo.mailEnviado == true)
                         successUi('<div class="item text-center">Se ha enviado un correo para reestablecer tu contraseña, <a href="http://localhost/html">haz click aquí para ir a inicio de sesión</a></div>');
