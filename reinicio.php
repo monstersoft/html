@@ -11,7 +11,7 @@
         }
     }
     else
-        header('Location: '.$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/html');
+        header('Location: '.$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'');
 ?>
 <!DOCTYPE html>
 <html>
