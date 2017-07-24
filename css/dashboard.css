@@ -372,6 +372,7 @@ table td {
     height: 250px;
 }
 .chartLineSticky {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     left: 0;
@@ -379,11 +380,12 @@ table td {
     z-index: 1;
 }
 #chartLineSticky {
-    width: 2000px;
+    width: 250px;
     height: 250px;
+    border: 1px solid red;
 }
 #chartLineSticky2 {
-    width: 2000px;
+    width: 1000px;
     height: 250px;
 }
 .chartLineBackground {
