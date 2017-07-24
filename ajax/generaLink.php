@@ -29,7 +29,7 @@
     echo json_encode($arreglo);
     function buscarCorreo($correo) {
         $conexion = conectar();
-        mysqli_set_charset ($conexion,'utf8');
+        /*mysqli_set_charset ($conexion,'utf8');*/
         $busqueda = array();
         $busqueda['correo'] = $correo;
         $busqueda['existeCorreo'] = false;
