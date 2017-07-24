@@ -2,7 +2,7 @@
     if(isset($_GET['token'])) {
         $token = $_GET['token'];
         if(!(strlen($token) == 65 and (substr($token, -1) == 'c' or substr($token, -1) == 's'))) 
-            header('Location: '.$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/html');
+            header('Location: '.$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'');
         else {
             include ('php/funciones.php');
             $datos = valida($token,substr($token,-1));
