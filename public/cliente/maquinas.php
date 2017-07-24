@@ -69,13 +69,6 @@
             font-weight: bold;
             color: #262626;
         }
-        .numero {
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .legend {
-            font-size: 16px;
-        }
         .disponible {
             position: absolute;
             top: 10px;
@@ -83,16 +76,6 @@
             color: #F5A214;
             z-index: 100;
             font-size: 40px;
-        }
-        .fix {
-            font-family: 'Montserrat';
-        }
-        .textoCentro {
-            -ms-transform: translateY(3px);
-            -webkit-transform: translateY(3px);
-            transform: translateY(4px);
-            text-align: center;
-            font-size: 12px;
         }
         .fix2 {
             position: fixed;
@@ -117,17 +100,11 @@
                 font-size: 10px;
             }
         }
-
     </style>
 </head>
 <body>
     <?php barraMenu($perfil,'registro'); ?>
     <div id="content" class="animated fadeIn unLeftContent" style="padding-bottom: 30px;">
-    <div class="fix col-xs-12 card"> 
-        <div class="col-xs-12 col-sm-4"><div class="col-xs-1 pad0"><i class="fa fa-2x fa-check-circle" style="color: #F5A214;"></i></div><div class="col-xs-11 pad0"><div class="textoCentro">REGISTRADA CON DATOS</div></div></div>
-        <div class="col-xs-12 col-sm-4"><div class="col-xs-1 pad0"><i class="fa fa-2x fa-check-circle" style="color: #262626;"></i></div><div class="col-xs-11 pad0"><div class="textoCentro">NO REGISTRADA CON DATOS</div></div></div>
-        <div class="col-xs-12 col-sm-4"><div class="col-xs-1 pad0"><i class="fa fa-2x fa-exclamation-circle" style="color: rgb(224, 225, 226);"></i></div><div class="col-xs-11 pad0"><div class="textoCentro">REGISTRADA SIN DATOS</div></div></div>
-    </div>
 <!-- ............................................................................................................................ -->
 <?php
         foreach($maquinas as $value) {
@@ -143,8 +120,9 @@
                                 <img style="float: left;" src="excavator2.svg" width="60" height="60">
                                 <div style="float: left;" class="info">
                                    <ul>
-                                    <li class="numero">'.$value['tRecorridos'].'</li>
-                                    <li class="legend">RECORRIDOS</li>
+                                    <li style="font-size: 16px; font-weight: bold;">'.$value['tRecorridos'].'km</li>
+                                    <li style="font-size: 14px;">RECORRIDOS</li>
+                                    <li style="font-size: 10px;">Registrada con datos</li>
                                 </ul>
                                 </div>
                             </div>
@@ -165,8 +143,9 @@
                                 <img style="float: left;" src="excavator2.svg" width="60" height="60">
                                 <div style="float: left;" class="info">
                                    <ul>
-                                    <li class="numero">'.$value['tRecorridos'].'</li>
-                                    <li class="legend">RECORRIDOS</li>
+                                    <li style="font-size: 16px; font-weight: bold;">'.$value['tRecorridos'].'km</li>
+                                    <li style="font-size: 14px;">RECORRIDOS</li>
+                                    <li style="font-size: 10px;">No registrada con datos</li>
                                 </ul>
                                 </div>
                             </div>
@@ -187,8 +166,9 @@
                                 <img style="float: left;" src="excavator2.svg" width="60" height="60">
                                 <div style="float: left;" class="info">
                                    <ul>
-                                    <li class="numero">s/d</li>
-                                    <li class="legend">RECORRIDOS</li>
+                                    <li style="font-size: 16px; font-weight: bold;">s/d</li>
+                                    <li style="font-size: 14px;">RECORRIDOS</li>
+                                    <li style="font-size: 10px;">Registrada sin datos</li>
                                 </ul>
                                 </div>
                             </div>

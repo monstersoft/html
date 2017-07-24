@@ -328,7 +328,7 @@ table td {
     color: yellow;
 }
 #barChart .ct-label.ct-vertical { 
-    font-size: 12px; 
+    font-size: 10px; 
     color: #262626;
     font-family: 'Montserrat';
     
@@ -380,7 +380,6 @@ table td {
     background: white;
     z-index: 2;
 }
-
 #chartLine2 {
     width: 2000px;
     height: 250px;
