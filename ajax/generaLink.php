@@ -1,10 +1,10 @@
 <?php 
-    include ('../php/conexion.php');
+    /*include ('../php/conexion.php');*/
 	include ('../recursos/mailer/PHPMailerAutoload.php');
     $correo = $_POST['txtCorreo'];
-    $arreglo = array();
-    $conexion = conectar();
-    /*$arreglo = buscarCorreo($correo);
+    $arreglo['correo'] = $correo;
+    /*$conexion = conectar();
+    $arreglo = buscarCorreo($correo);
     if($arreglo['existeCorreo'] == true) {
         $token = generaToken($correo,$arreglo['tipoUsuario']);
         if($_SERVER['SERVER_NAME'] == 'localhost') 
