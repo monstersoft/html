@@ -124,7 +124,7 @@
             </div>
         </div>';
     ?>
-    <div class="col-sm-12 col-md-5 card">
+    <div class="col-sm-12 col-md-5 card" style="height: 331px; overflow: hidden;">
         <div class="col-xs-12 shadow cardContent">
             <div class="loader"></div>
             <div class="col-xs-12 titleCard"> <i class="fa fa-pie-chart pull-left"></i><p>Motor</p></div>
@@ -145,13 +145,11 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-12 col-md-7 card">
+    <div class="col-sm-12 col-md-7 card" style="height: 331px; overflow: hidden;">
         <div class="col-xs-12 shadow cardContent">
             <div class="loader"></div>
-            <div class="col-xs-12 titleCard"> <i class="fa fa-bar-chart pull-left"></i>
-                <p>Cambios</p>
-            </div>
-            <div class="col-xs-12 cardContent" style="padding: 10px;">
+            <div class="col-xs-12 titleCard"> <i class="fa fa-bar-chart pull-left"></i><p>Cambios</p></div>
+            <div class="col-xs-12 cardContent" style="padding: 10px 20px 0px 20px;">
                 <div id="barChart"></div>
             </div>
         </div>
@@ -174,7 +172,7 @@
                     <div class="motorLegend">TRASERA</div>
                 </div>
             </div>
-            <div class="col-xs-12 cardContent" style="padding: 20px;">
+            <div class="col-xs-12 cardContent" style="padding: 20px 20px 0px 20px;">
                 <div class="chartLineContainer">
                     <div class="chartLineSticky"><div id="chartLineSticky"></div><div class="chartLineBackground"></div></div>
                     <div class="chartLine"><div id="chartLine"></div></div>
@@ -203,7 +201,7 @@
                     <div class="motorLegend">TRASERA</div>
                 </div>
             </div>
-            <div class="col-xs-12 cardContent" style="padding: 20px;">
+            <div class="col-xs-12 cardContent" style="padding: 20px 20px 0px 20px;">
                 <div class="chartLineContainer">
                     <div class="chartLineSticky"><div id="chartLineSticky2"></div><div class="chartLineBackground"></div></div>
                     <div class="chartLine"><div id="chartLine2"></div></div>

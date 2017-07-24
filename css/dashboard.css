@@ -101,7 +101,7 @@ table td {
     stroke-linecap: circle;
 }
 #chartLineSticky .ct-label.ct-vertical { 
-    font-size: 12px; 
+    font-size: 10px; 
     color: #262626;
     font-family: 'Montserrat';
     color: #262626;
@@ -116,6 +116,10 @@ table td {
     font-family: 'Montserrat';
     text-anchor: middle;
 }
+#chartLine .ct-label.ct-horizontal.ct-end { 
+    width: 45px !important;
+}
+
 /* LINE CHART ALTURA */
 #chartLine2 .ct-series-a .ct-line {
     stroke : #F5A214;
@@ -136,7 +140,7 @@ table td {
     stroke-linecap: circle;
 }
 #chartLineSticky2 .ct-label.ct-vertical { 
-    font-size: 12px; 
+    font-size: 10px; 
     color: #262626;
     font-family: 'Montserrat';
     color: #262626;
@@ -150,6 +154,9 @@ table td {
     color: #262626;
     font-family: 'Montserrat';
     text-anchor: middle;
+}
+#chartLine2 .ct-label.ct-horizontal.ct-end { 
+    width: 45px !important;
 }
 /* LINE CHART HISTORICAL GRADOS */
 .containerHistorical {
@@ -312,7 +319,7 @@ table td {
 }
 /* BARRAS */
 #barChart {
-    height: 252px;
+    height: 262px;
     width: 100%;
 }
 #barChart .ct-series-a line {
@@ -388,32 +395,6 @@ table td {
     background: white;
     z-index: 2;
 }
-/* BAR INVERSE */
-#chartLineHistorical {
-    height: 100px;
-}
-#chartLineHistorical2 {
-    height: 100px;
-}
-#chartLineHistorical4 {
-    height: 100px;
-}
-/* TOOLTIP */
-.chartist-tooltip {
-    font-family: 'Montserrat';
-    position: absolute;
-    display: inline-block;
-    min-width: 5em;
-    padding: 5px 5px;
-    background: #262626;
-    color: #fff;
-    text-align: center;
-    pointer-events: none;
-    z-index: 1000;
-    transition: opacity .2s linear;
-    transform-origin: 50% 50%;
-    transform: translateX(0px) translateY(0px) rotate(0deg);
-}
 /* YEARS MONTHS */
 .yearContainer {
     display: flex;
@@ -453,9 +434,15 @@ table td {
     cursor: pointer;
     /*box-shadow: 1px 1px 1px #888888;*/
 }
-@media (min-width: 1170px) {
+@media (max-width: 1699px) {
+    .chartLineContainer {
+        overflow-x: visible;
+    }
+}
+@media (min-width: 1700px) {
     #chartLine {
         width: 100%;
+        overflow-x: visible;
     }
     #chartLine2 {
         width: 100%;
