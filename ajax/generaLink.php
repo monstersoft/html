@@ -2,14 +2,15 @@
     include ('../php/conexion.php');
 	include ('../recursos/mailer/PHPMailerAutoload.php');
     $correo = $_POST['txtCorreo'];
-    $arreglo['correo'] = $correo;
-    /*$arreglo = array();
+    $arreglo = array();
     $conexion = conectar();
     $arreglo = buscarCorreo($correo);
     if($arreglo['existeCorreo'] == true) {
         $token = generaToken($correo,$arreglo['tipoUsuario']);
-        if($_SERVER['SERVER_NAME'] == 'localhost') $link = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/html/reinicio.php?token='.$token;
-        else $link = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/reinicio.php?token='.$token;
+        if($_SERVER['SERVER_NAME'] == 'localhost') 
+            $link = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/html/reinicio.php?token='.$token;
+        else 
+            $link = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/reinicio.php?token='.$token;
         $arreglo['link'] = $link;
         $id = $arreglo['idUsuario'];
         if($arreglo['mailEnviado'] = enviarMailReestablecer($arreglo['nombre'],$arreglo['correo'],$link)) {
@@ -24,7 +25,7 @@
         }
     }
     else
-        $arreglo['exito'] = false;*/
+        $arreglo['exito'] = false;
     echo json_encode($arreglo);
     function buscarCorreo($correo) {
         $conexion = conectar();
