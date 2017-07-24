@@ -1,4 +1,7 @@
 $('.datepicker').pickadate({
+    onStart: function() {
+        $('.picker').appendTo('body').css('font-family','"Montserrat"');
+    },
     onOpen: function(){
         var currentCalendar = this;
         var url = devuelveUrl('cliente/ajax/fechasDisponibles.php');

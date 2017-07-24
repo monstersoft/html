@@ -1,26 +1,26 @@
-<?php
-date_default_timezone_set('Etc/UTC');
-require 'recursos/mailer/PHPMailerAutoload.php';
-$mail = new PHPMailer;
-$mail->isSMTP();
-//Enable SMTP debugging
-// 0 = off (for production use)
-// 1 = client messages
-// 2 = client and server messages
-$mail->SMTPDebug = 2;
-$mail->Debugoutput = 'html';
-$mail->Host = 'smtp.gmail.com';
-$mail->Port = 587;
-$mail->SMTPSecure = 'tls';
-$mail->SMTPAuth = true;
-$mail->Username = "mmonitors17@gmail.com";
-$mail->Password = "Monsterinc2";
-$mail->Subject = 'PHPMailer GMail SMTP test';
-$mail->addAddress('pavillanueva@ing.ucsc.cl');
-$mail->MsgHTML('<h1>kjakkjajksakjasjksakjjksajk</h1>');
-if (!$mail->send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
-} else {
-    echo "Message sent!";
-}
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="recursos/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="recursos/pickadate/default.css">
+    <link rel="stylesheet" href="recursos/pickadate/classic.time.css">
+    <link rel="stylesheet" href="recursos/pickadate/classic.date.css">
+</head>
+    <div class="col-xs-12" id="cont"><input type="text" class="datepicker"></div>
+<body>
+    <script src="recursos/jquery/jquery.min.js"></script>
+    <script src="recursos/bootstrap/js/bootstrap.min.js"></script>
+    <script src="recursos/pickadate/picker.js"></script>
+    <script src="recursos/pickadate/picker.time.js"></script>
+    <script src="recursos/pickadate/picker.date.js"></script>
+    <script>
+        $('.datepicker').pickadate({
+  container: 'body'
+})
+    
+    
+    </script>
+</body>
+</html>
