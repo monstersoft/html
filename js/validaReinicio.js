@@ -36,7 +36,7 @@ $('#btnReestablecer').click(function() {
             cache: false,
             success: function(arreglo) {
                 if(arreglo.exito == true)  
-                    successUi('<div class="item text-center">Se ha reestablecido tu contraseña correctamente, <a href="http://localhost/html">haz click aquí para ir a inicio de sesión</a></div>');
+                    successUi('<div class="item text-center">Se ha reestablecido tu contraseña correctamente, <a href="http://www.mmonitors.com">haz click aquí para ir a inicio de sesión</a></div>');
                 else
                     errorUi('<div class="item">Error, debes comunicarte con el administrador del sistema</div>');
             },
