@@ -10,6 +10,7 @@ $('#btnReestablecer').click(function() {
     if(maxLength(email, 60))
         arreglo.push('<div class="item">Correo no debe superar los 60 caracteres</div>');
     if(arreglo.length == 0) {
+        console.log(devuelveUrl('ajax/generalink.php'));
         $.ajax({                  
             url: devuelveUrl('ajax/generaLink.php'),
             data: {txtCorreo: $('#txtCorreo').val()},
