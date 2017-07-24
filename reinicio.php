@@ -7,7 +7,7 @@
             include ('php/funciones.php');
             $datos = valida($token,substr($token,-1));
             if($datos['cantidadToken'] == 0)
-                header('Location: '.$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/html');
+                header('Location: '.$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'');
         }
     }
     else
