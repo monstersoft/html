@@ -457,6 +457,8 @@ table td {
     }
     .chartLineBackground {
         width: calc(100% - 40px);
+        width: -webkit-calc(100% - 40px);
+        width: -moz-calc(100% - 40px);
     }
 }
 @media (max-width: 500px) {
