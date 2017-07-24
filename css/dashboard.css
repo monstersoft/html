@@ -438,7 +438,7 @@ table td {
 }
 @media (max-width: 1699px) {
     .chartLineContainer {
-        overflow-x: inherit;
+        overflow-x: visible;
     }
 }
 @media (min-width: 1700px) {
