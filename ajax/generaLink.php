@@ -2,7 +2,8 @@
     include ('../php/conexion.php');
 	include ('../recursos/mailer/PHPMailerAutoload.php');
     $correo = $_POST['txtCorreo'];
-    $arreglo = array();
+    $arreglo['correo'] = $correo;
+    /*$arreglo = array();
     $conexion = conectar();
     $arreglo = buscarCorreo($correo);
     if($arreglo['existeCorreo'] == true) {
@@ -23,7 +24,7 @@
         }
     }
     else
-        $arreglo['exito'] = false;
+        $arreglo['exito'] = false;*/
     echo json_encode($arreglo);
     function buscarCorreo($correo) {
         $conexion = conectar();
