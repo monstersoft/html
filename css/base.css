@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
-@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 .vertical-align {
     display: flex;
     align-items: center;
@@ -11,15 +10,7 @@
 .montserrat {
     font-family: 'Montserrat';
 }
-/*.contloader {
-    display: -webkit-flex;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}*/
+
 .capa {
     background-color: rgba(255, 255, 255, 0.9);
     width: 100%;

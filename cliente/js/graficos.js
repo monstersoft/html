@@ -57,6 +57,7 @@ $.ajax({
         $('.loader').html('<i class="fa fa-refresh fa-spin fa-2x" style="color: #F5A214;opacity: 0.5;"></i>');
     },
     success: function(arr) {
+        console.log(arr);
         var res = json2array(arr);
         donut('#donutChart',{series: res[0]['frecuencia']});
         bar('#barChart',{labels: res[1]['cambio'], series: [res[1]['frecuencia']]});
