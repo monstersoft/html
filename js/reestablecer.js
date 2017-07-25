@@ -1,3 +1,4 @@
+console.log(raiz());
 $('#btnReestablecer').click(function() {
     $('.ui .message').remove();
     var arreglo = new Array();
@@ -25,7 +26,7 @@ $('#btnReestablecer').click(function() {
                 console.log(arreglo);
                 if(arreglo.exito == true) {
                     if(arreglo.mailEnviado == true)
-                        successUi('<div class="item text-center">Se ha enviado un correo para reestablecer tu contraseña, <a href="http://www.mmonitors.com">haz click aquí para ir a inicio de sesión</a></div>');
+                        successUi('<div class="item text-center">Se ha enviado un correo para reestablecer tu contraseña, <a href="'+raiz()+'">haz click aquí para ir a inicio de sesión</a></div>');
                     else
                         errorUi('<div class="item">El correo no pudo ser enviado, debes comunicarte con el administrador dele sistema o verificar tu conexión</div>');
                 }
