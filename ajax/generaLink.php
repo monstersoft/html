@@ -79,7 +79,7 @@
         // 2 = client and server messages
         $e->SMTPDebug = 0;
         $e->Host = 'smtp.gmail.com';
-        $e->Port = 583;
+        $e->Port = 587;
         $e->SMTPSecure = 'tls';
         $e->SMTPAuth = true;
         $e->Username = "mmonitors17@gmail.com";
