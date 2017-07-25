@@ -11,7 +11,7 @@
         // 0 = off (for production use)
         // 1 = client messages
         // 2 = client and server messages
-        $e->SMTPDebug = 0;
+        $e->SMTPDebug = 2;
         $e->Host = 'smtp.gmail.com';
         $e->Port = 583;
         $e->SMTPSecure = 'tls';
