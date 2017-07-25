@@ -9,18 +9,18 @@ $('#btnReestablecer').click(function() {
         arreglo.push('<div class="item">Correo no está en un  formado adecuado</div>');
     if(maxLength(email, 60))
         arreglo.push('<div class="item">Correo no debe superar los 60 caracteres</div>');
-    if(arreglo.length == 0) {
-        console.log(devuelveUrl('ajax/generalink.php'));
+   // if(arreglo.length == 0) {
         $.ajax({                  
             url: devuelveUrl('ajax/generaLink.php'),
             data: {txtCorreo: $('#txtCorreo').val()},
             type: "POST",
             dataType: "json",
             beforeSend: function() {
-                $('#btnReestablecer').html('Verificando').addClass('disabled');
+                $('#btnReestablecer').addClass('disabled');
                 $('#btnReestablecer i').removeClass('fa-send').addClass('fa-cog fa-spin');
             },
             success: function(arreglo) {
+                console.log(JSON.stringify(arreglo));
                 if(arreglo.exito == true) {
                     if(arreglo.mailEnviado == true)
                         successUi('<div class="item text-center">Se ha enviado un correo para reestablecer tu contraseña, <a href="'+raiz()+'">haz click aquí para ir a inicio de sesión</a></div>');
@@ -29,14 +29,14 @@ $('#btnReestablecer').click(function() {
                 }
                 else
                     errorUi('<div class="item">El correo no está registrado en el sistema</div>');
-                console.log(JSON.stringify(arreglo));
             },
-            error: function(xhr) {console.log(xhr.responseText);}
+            error: function(xhr) {console.log(xhr.responseText); alert('error'); }
         }).complete(function(){
-            $('#btnReestablecer').html('Enviar correo').removeClass('disabled');
+            $('#btnReestablecer').removeClass('disabled');
             $('#btnReestablecer i').removeClass('fa-cog fa-spin').addClass('fa-send');
         }).fail(function( jqXHR, textStatus, errorThrown ){
-            if (jqXHR.status === 0){
+            alert('fail');
+            /*if (jqXHR.status === 0){
                 alert('No hay coneccion con el servidor, debe comunicarte con el administrador');
             } else if (jqXHR.status == 404) {
                 alert('La pagina solicitada no fue encontrada: error 404, debes comunicarte con el administrador');
@@ -50,9 +50,9 @@ $('#btnReestablecer').click(function() {
                 alert('La peticion fue abortada, debes comunicarte con el administrador');
             } else {
                 alert('Error desconocido, debes comunicarte con el administrador');
-            }
+            }*/
         });
-    }
-    else
-        errorUi('<div class="item">El correo no está en un formato adecuado</div>');
+    //}
+    //else
+      //  errorUi(arreglo);
 });
