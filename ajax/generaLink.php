@@ -1,5 +1,4 @@
 <?php
-    sleep(60);
     include ('../php/conexion.php');
     include ('../php/raiz.php');
 	include ('../recursos/mailer/PHPMailerAutoload.php');
