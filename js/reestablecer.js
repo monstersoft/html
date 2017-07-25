@@ -17,12 +17,12 @@ $('#btnReestablecer').click(function() {
             type: "POST",
             dataType: "json",
             beforeSend: function() {
+                var html = '<i class="fa fa-cog fa-spin fa-2x fa-fw" style="color: white"></i>';
                 $('#btnReestablecer').addClass('disabled');
-                $('#btnReestablecer').html('<i class="fa fa-cog fa-spin fa-2x fa-fw" style="color: white"></i>');
+                $('#btnReestablecer').html(html);
             },
             cache: false,
             success: function(arreglo) {
-                console.log(arreglo);
                 if(arreglo.exito == true) {
                     if(arreglo.mailEnviado == true)
                         successUi('<div class="item text-center">Se ha enviado un correo para reestablecer tu contraseña, <a href="'+raiz()+'">haz click aquí para ir a inicio de sesión</a></div>');
