@@ -8,7 +8,7 @@
     $arreglo = buscarCorreo($correo);
     if($arreglo['existeCorreo'] == true) {
         $token = generaToken($correo,$arreglo['tipoUsuario']);
-        $link = $raiz.'reinicio.php?token='.$token;
+        $link = raiz().'reinicio.php?token='.$token;
         $arreglo['link'] = $link;
         $id = $arreglo['idUsuario'];
         if($arreglo['mailEnviado'] = enviarMailReestablecer($arreglo['nombre'],$arreglo['correo'],$link)) {
