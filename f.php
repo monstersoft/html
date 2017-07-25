@@ -1,7 +1,5 @@
 <?php
+    include 'php/route.php';
     include 'php/funciones.php';
-    $raiz = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'];
-    //header("Location: ".$raiz);
-    echo $raiz;
-    debug($_SERVER);
+    echo raiz();
 ?>
