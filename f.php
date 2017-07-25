@@ -1,4 +1,4 @@
 <?php
     include 'php/funciones.php';
-    debug($_SERVER);
+    debug($_SERVER['PHP_SELF']);
 ?>
