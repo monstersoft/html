@@ -1,6 +1,6 @@
 <?php
     include 'recursos/mailer/PHPMailerAutoload.php';
-    e('hola','pavillanueva@ing.ucsc.cl','hola');
+    echo e('hola','pavillanueva@ing.ucsc.cl','hola');
 	function e($nombreSupervisor,$emailSupervisor,$link) {
         $arr = false;
         date_default_timezone_set('Etc/UTC');
