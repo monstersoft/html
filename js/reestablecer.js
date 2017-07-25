@@ -29,6 +29,7 @@ $('#btnReestablecer').click(function() {
                 }
                 else
                     errorUi('<div class="item">El correo no está registrado en el sistema</div>');
+                console.log(JSON.stringify(arreglo));
             },
             error: function(xhr) {console.log(xhr.responseText);}
         }).complete(function(){
