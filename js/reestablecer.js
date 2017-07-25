@@ -17,7 +17,7 @@ $('#btnReestablecer').click(function() {
             type: "POST",
             dataType: "json",
             beforeSend: function() {
-                $('#btnReestablecer').addClass('disabled');
+                $('#btnReestablecer').html('Verificando').addClass('disabled');
                 $('#btnReestablecer i').removeClass('fa-send').addClass('fa-cog fa-spin');
             },
             success: function(arreglo) {
@@ -32,7 +32,7 @@ $('#btnReestablecer').click(function() {
             },
             error: function(xhr) {console.log(xhr.responseText);}
         }).complete(function(){
-            $('#btnReestablecer').removeClass('disabled');
+            $('#btnReestablecer').html('Enviar correo').removeClass('disabled');
             $('#btnReestablecer i').removeClass('fa-cog fa-spin').addClass('fa-send');
         }).fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){
