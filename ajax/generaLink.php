@@ -1,5 +1,7 @@
-<?php 
+<?php
+    sleep(5);
     include ('../php/conexion.php');
+    include ('../php/raiz.php');
 	include ('../recursos/mailer/PHPMailerAutoload.php');
     $correo = $_POST['txtCorreo'];
     $arreglo['correo'] = $correo;
@@ -7,10 +9,7 @@
     $arreglo = buscarCorreo($correo);
     if($arreglo['existeCorreo'] == true) {
         $token = generaToken($correo,$arreglo['tipoUsuario']);
-        if($_SERVER['SERVER_NAME'] == 'localhost') 
-            $link = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/html/reinicio.php?token='.$token;
-        else 
-            $link = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/reinicio.php?token='.$token;
+        $link = $raiz.'reinicio.php?token='.$token;
         $arreglo['link'] = $link;
         $id = $arreglo['idUsuario'];
         if($arreglo['mailEnviado'] = enviarMailReestablecer($arreglo['nombre'],$arreglo['correo'],$link)) {

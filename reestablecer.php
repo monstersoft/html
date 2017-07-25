@@ -23,14 +23,14 @@
                 </h2>
                 <h2 class="titulo montserrat">Reestablecer Contraseña</h2>
                 <form class="ui form">
-                    <div class="ui segment" >
+                    <div class="ui segment">
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="at icon"></i>
                                 <input type="text" id="txtCorreo" placeholder="Correo electrónico">
                             </div>
                         </div>
-                        <div id="btnReestablecer" style="background: #262626;font-family: 'Montserrat', cursive;" class="ui fluid large submit button">Enviar correo</div>
+                        <div id="btnReestablecer" style="background: #262626;" class="ui fluid large submit button montserrat"><i class="fa fa-send" style="margin-right: 10px;"></i>Enviar correo</div>
                     </div>     
                 </form>
             </div>

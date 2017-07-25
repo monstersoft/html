@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 .montserrat {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", fantasy;
 }
 body {
     background-color: #262626;
@@ -23,7 +23,7 @@ body {
 #btnGenerar, #btnReestablecer {
     bottom: 0;
     left: : 0;
-    color: #fff;
+    color: white;
 }
 .cent {
     display: flex;

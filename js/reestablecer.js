@@ -17,11 +17,9 @@ $('#btnReestablecer').click(function() {
             type: "POST",
             dataType: "json",
             beforeSend: function() {
-                var html = '<i class="fa fa-cog fa-spin fa-2x fa-fw" style="color: white"></i>';
                 $('#btnReestablecer').addClass('disabled');
-                $('#btnReestablecer').html(html);
+                $('#btnReestablecer i').removeClass('fa-send').addClass('fa-cog fa-spin');
             },
-            cache: false,
             success: function(arreglo) {
                 if(arreglo.exito == true) {
                     if(arreglo.mailEnviado == true)
@@ -35,7 +33,7 @@ $('#btnReestablecer').click(function() {
             error: function(xhr) {console.log(xhr.responseText);}
         }).complete(function(){
             $('#btnReestablecer').removeClass('disabled');
-            $('#btnReestablecer').html('Enviar correo');
+            $('#btnReestablecer i').removeClass('fa-cog fa-spin').addClass('fa-send');
         }).fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){
                 alert('No hay coneccion con el servidor, debe comunicarte con el administrador');
@@ -55,5 +53,5 @@ $('#btnReestablecer').click(function() {
         });
     }
     else
-        errorUi(arreglo);
+        errorUi('<div class="item">El correo no está en un formato adecuado</div>');
 });
