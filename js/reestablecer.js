@@ -15,6 +15,7 @@ $('#btnReestablecer').click(function() {
             data: {txtCorreo: $('#txtCorreo').val()},
             type: "POST",
             dataType: "json",
+            cache: false,
             beforeSend: function() {
                 $('#btnReestablecer').addClass('disabled');
                 $('#btnReestablecer i').removeClass('fa-send').addClass('fa-cog fa-spin');
