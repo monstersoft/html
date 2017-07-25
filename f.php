@@ -1,4 +1,5 @@
 <?php
     include 'php/funciones.php';
-    debug($_SERVER['PHP_SELF']);
+    $raiz = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'];
+    header("Location: ".$raiz);
 ?>
