@@ -1,6 +1,6 @@
 <?php
     include 'recursos/mailer/PHPMailerAutoload.php';
-    e()
+    e('hola','pavillanueva@ing.ucsc.cl','hola');
 	function e($nombreSupervisor,$emailSupervisor,$link) {
         $arr = false;
         date_default_timezone_set('Etc/UTC');
@@ -13,7 +13,7 @@
         // 2 = client and server messages
         $e->SMTPDebug = 0;
         $e->Host = 'smtp.gmail.com';
-        $e->Port = 583;
+        $e->Port = 587;
         $e->SMTPSecure = 'tls';
         $e->SMTPAuth = true;
         $e->Username = "mmonitors17@gmail.com";
