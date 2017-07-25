@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="theme-color" content="#262626" />
         <title>Machine Monitors</title>
-        <link rel="stylesheet" href="recursos/semantic/semantic.css">
+        <link rel="stylesheet" href="recursos/semantic/semantic.min.css">
         <link rel="stylesheet" href="recursos/toast/toast.css">
         <link rel="stylesheet" href="recursos/awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/index.css">

@@ -1,4 +1,3 @@
-console.log(raiz());
 $('#btnReestablecer').click(function() {
     $('.ui .message').remove();
     var arreglo = new Array();
