@@ -39,7 +39,7 @@ $('#btnReestablecer').click(function() {
             console.log(textStatus);
             console.log(errorThrown);
             if (jqXHR.status === 0){
-                alert('No hay coneccion con el servidor, debe comunicarte con el administrador');
+                alert('No hay conección con el servidor, debe comunicarte con el administrador');
             } else if (jqXHR.status == 404) {
                 alert('La pagina solicitada no fue encontrada: error 404, debes comunicarte con el administrador');
             } else if (jqXHR.status == 500) {
