@@ -3,4 +3,5 @@
     $raiz = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'];
     //header("Location: ".$raiz);
     echo $raiz;
+    debug($_SERVER);
 ?>
