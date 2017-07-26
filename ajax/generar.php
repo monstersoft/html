@@ -130,7 +130,7 @@
                                                 <div class="rectangulo">
                                                     <p class="letra">Machine Monitors</p>
                                                 </div>
-                                                <div class="cuadrado">Estimado '.$nombre.', podrás iniciar sesión con la siguiente contraseña: <br><strong>'.$contrasena.'</strong><br>Te recomendamos la cambies en la sección "Contraseña" una vez iniciado sesión en la aplicación<div>
+                                                <div class="cuadrado">Estimado '.$nombre.', podrás iniciar sesión con la siguiente contraseña: <br><strong>'.$contrasena.'</strong><br>Te recomendamos cambies la contaseña en la sección "Contraseña" del menú de navegación,  una vez iniciado sesión en la aplicación<div>
                                             </div>
                                         </body>
                                     </html>');
