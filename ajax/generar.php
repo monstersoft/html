@@ -1,5 +1,5 @@
 <?php
-    include ('../../php/raiz.php');
+    include ('../php/raiz.php');
     include ('../php/conexion.php');
 	include ('../recursos/mailer/PHPMailerAutoload.php');
 	$email = $_POST['email'];
