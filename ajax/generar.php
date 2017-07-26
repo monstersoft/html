@@ -63,6 +63,7 @@
         return $busqueda;
     }
 	function enviarMail($email,$contrasena,$nombre) {
+        $nombre = strtoupper($nombre);
         $arr = false;
         date_default_timezone_set('Etc/UTC');
         $e = new PHPMailer;
@@ -129,7 +130,7 @@
                                                 <div class="rectangulo">
                                                     <p class="letra">Machine Monitors</p>
                                                 </div>
-                                                <div class="cuadrado">Estimado '.$nombre.', podrás iniciar sesión con la siguiente contraseña: '.$contrasena.'<div>
+                                                <div class="cuadrado">Estimado '.$nombre.', podrás iniciar sesión con la siguiente contraseña: <br><strong>'.$contrasena.'</strong><br>Te recomendamos la cambies en la sección "Contraseña" una vez iniciado sesión en la aplicación<div>
                                             </div>
                                         </body>
                                     </html>');
