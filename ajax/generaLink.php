@@ -134,7 +134,7 @@
                                                 <div class="rectangulo">
                                                     <p class="letra">Machine Monitors</p>
                                                 </div>
-                                                <div class="cuadrado">Estimado '.$nombreSupervisor.', para reestablecer tu contraseña debes ingresar al siguiente enlance y completar el formulario<br><br><a href='.$link.'>'.$link.'</a><div>
+                                                <div class="cuadrado">Estimado '.strtoupper($nombreSupervisor).', para reestablecer tu contraseña debes ingresar al siguiente enlance y completar el formulario<br><br><a href='.$link.'>'.$link.'</a><div>
                                             </div>
                                         </body>
                                     </html>');

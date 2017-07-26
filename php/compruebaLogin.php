@@ -1,5 +1,4 @@
 <?php
-    sleep(1);
     include("conexion.php");
     $datos = array();
     $correo = $_POST['txtCorreo'];

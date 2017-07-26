@@ -31,19 +31,19 @@ $('#btnReestablecer').click(function() {
             dataType: "json",
             beforeSend: function() {
                 $('#btnReestablecer').addClass('disabled');
-                $('#btnReestablecer').html('<i class="fa fa-cog fa-spin fa-2x fa-fw" style="color: white"></i>');
+                $('#btnReestablecer i').removeClass('fa-exchange').addClass('fa-cog fa-spin');
             },
             cache: false,
             success: function(arreglo) {
                 if(arreglo.exito == true)  
-                    successUi('<div class="item text-center">Se ha reestablecido tu contraseña correctamente, <a href="http://www.mmonitors.com">haz click aquí para ir a inicio de sesión</a></div>');
+                    successUi('Cambio de contraseña con éxito','haz click <strong><a href="'+raiz()+'">AQUÍ</a></strong> para ir a inicio de sesión.');
                 else
                     errorUi('<div class="item">Error, debes comunicarte con el administrador del sistema</div>');
             },
             error: function(xhr) {console.log(xhr.responseText);}
         }).complete(function(){
             $('#btnReestablecer').removeClass('disabled');
-            $('#btnReestablecer').html('Enviar correo');
+            $('#btnReestablecer i').removeClass('fa-cog fa-spin').addClass('fa-exchange');
         }).fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){
                 alert('No hay coneccion con el servidor, debe comunicarte con el administrador');

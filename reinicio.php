@@ -1,17 +1,18 @@
 <?php 
     if(isset($_GET['token'])) {
         $token = $_GET['token'];
+        include ('php/raiz.php');
         if(!(strlen($token) == 65 and (substr($token, -1) == 'c' or substr($token, -1) == 's'))) 
-            header('Location: '.$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'');
+            header('Location: '.raiz());
         else {
             include ('php/funciones.php');
             $datos = valida($token,substr($token,-1));
             if($datos['cantidadToken'] == 0)
-                header('Location: '.$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'');
+                header('Location: '.raiz());
         }
     }
     else
-        header('Location: '.$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'');
+        header('Location: '.raiz());
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,13 +43,13 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
-                                <input type="password" name="nuevaContrasena" id="nuevaContraseña" placeholder="Nueva contraseña">
+                                <input type="password" name="nuevaContrasena" id="nuevaContraseña" placeholder="(*) Nueva contraseña">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="repeat icon"></i>
-                                <input type="password" name="contrasenaConfirmada" id="contraseñaConfirmada" placeholder="Confirmar contraseña">
+                                <input type="password" name="contrasenaConfirmada" id="contraseñaConfirmada" placeholder="(*) Confirmar contraseña">
                             </div>
                         </div>
                         <?php 
@@ -64,7 +65,7 @@
                                 echo '<div class="field" style="display: none;"><div class="ui left icon input"><i class="hide icon"></i><input type="hidden" value="'.$datos['idUsuario'].'" name="id"></input></div></div>';
                             }
                         ?>
-                        <div id="btnReestablecer" style="background: #262626;font-family: 'Montserrat', cursive;" class="ui fluid large submit button">Reestablecer</div>
+                        <div id="btnReestablecer" style="background: #262626;" class="ui fluid large submit button montserrat"><i class="fa fa-exchange" style="margin-right: 10px;"></i>Reestablecer</div>
                     </div>
                 </form>
             </div>
@@ -74,6 +75,7 @@
         <script src="recursos/toast/toast.js"></script>
         <script src="recursos/hammer/hammer.min.js"></script>
         <script src="js/funciones.js"></script>
+        <script src="js/raiz.js"></script>
         <script src="js/compruebaInputs.js"></script>
         <script src="js/mensajes.js"></script>
         <script src="js/validaReinicio.js"></script>

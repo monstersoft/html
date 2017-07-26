@@ -21,10 +21,9 @@ $('#btnReestablecer').click(function() {
                 $('#btnReestablecer i').removeClass('fa-send').addClass('fa-cog fa-spin');
             },
             success: function(arreglo) {
-                console.log(JSON.stringify(arreglo));
                 if(arreglo.exito == true) {
                     if(arreglo.mailEnviado == true)
-                        successUi('<div class="item text-center">Se ha enviado un correo para reestablecer tu contraseña, <a href="'+raiz()+'">haz click aquí para ir a inicio de sesión</a></div>');
+                        successUi('Envío de mail con éxito','Debes revisar tu correo electrónico para reestablecer tu contraseña');
                     else
                         errorUi('<div class="item">El correo no pudo ser enviado, debes comunicarte con el administrador dele sistema o verificar tu conexión</div>');
                 }

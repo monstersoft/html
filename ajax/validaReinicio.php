@@ -11,6 +11,7 @@
     else
         $celular = 0;
     if($tipo == 'Cliente') {
+        $nueva = password_hash($nueva, PASSWORD_DEFAULT, array("cost" => 10));
         if(mysqli_query($c,"UPDATE clientes SET password = '$nueva', clientes.token = '' WHERE clientes.idCliente = '$id'"))
             $arreglo['exito'] = true;
         else

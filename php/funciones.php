@@ -59,7 +59,6 @@
     }
     // reestablecer contraseña
     function valida($token, $caracterUsuario) {
-        echo '<h1>'.$caracterUsuario.'</h1></br>';
         $c = conectar();
         $arreglo = array('cantidadToken' => 0, 'tipoUsuario' => false, 'idUsuario' => -1);
         if($caracterUsuario == 'c' and $r = mysqli_query($c,"SELECT idCliente FROM clientes WHERE clientes.token = '$token'")) {
