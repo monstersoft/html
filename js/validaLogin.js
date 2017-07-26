@@ -42,10 +42,9 @@ $('#btnLogin').click(function(){
             dataType: "json",
             beforeSend: function() {
                 $('#btnLogin').addClass('disabled');
-                $('#btnLogin').html('<i class="fa fa-cog fa-spin fa-2x fa-fw" style="color: white"></i>');
+                $('#btnLogin i').removeClass('fa-sign-in').addClass('fa-cog fa-spin');
             },
             success: function(arreglo) {
-                console.log(JSON.stringify(arreglo));
                 if(arreglo.error == true) {
                     msg({mensaje: arreglo.mensaje,titulo: arreglo.titulo,accion: 'warning'});
                 }
@@ -57,7 +56,7 @@ $('#btnLogin').click(function(){
             error: function(xhr) {console.log(xhr.responseText);},
         }).complete(function(){
                 $('#btnLogin').removeClass('disabled');
-                $('#btnLogin').html('Ingresar');
+                $('#btnLogin i').removeClass('fa-cog fa-spin').addClass('fa-sign-in');
             }).fail(function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0){
                 alert('No hay coneccion con el servidor, debe comunicarte con el administrador');

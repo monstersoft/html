@@ -36,6 +36,7 @@ $('#btnLogin').click(function(){
                 $('#btnLogin i').removeClass('fa-send').addClass('fa-cog fa-spin');
             },
             success: function(arreglo) {
+                console.log(JSON.stringify(arreglo));
                 if(arreglo.exito == 1)
                     successUi('Registro exitoso','Se ha enviado un correo al cliente');
                 else

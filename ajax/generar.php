@@ -14,10 +14,14 @@
         if($arreglo['existeCorreo'] == true)
                 $arreglo['msg'] = 'El correo ya está registrado';
         else {
-            $clave = generaClave();
-            if(enviarMail($email,$clave,$nombre) == true) {
+            $arreglo['aux'] = generaClave($email);
+            $token = $arreglo['aux']['token'];
+            $clave = $arreglo['aux']['pass'];
+            $link = raiz().'reinicio.php?token='.$token;
+            $arreglo['link'] = $link;
+            if(enviarMail($email,$clave,$nombre,$link) == true) {
                 $claveCifrada = password_hash($clave,PASSWORD_DEFAULT, array("cost"=>10));
-                $consulta = "INSERT INTO clientes (nombre,correo,password,empresa,cargo) VALUES ('$nombre','$email','$claveCifrada','$empresa','$cargo')";
+                $consulta = "INSERT INTO clientes (nombre,correo,password,empresa,cargo,token) VALUES ('$nombre','$email','$claveCifrada','$empresa','$cargo','$token')";
                 if(mysqli_query($conexion,$consulta)) {
                     $arreglo['msg'] = '<div class="item text-center">Se ha enviado un correo al cliente</div>';
                     $arreglo['exito'] = 1;
@@ -63,7 +67,7 @@
         mysqli_close($conexion);
         return $busqueda;
     }
-	function enviarMail($email,$contrasena,$nombre) {
+	function enviarMail($email,$contrasena,$nombre,$link) {
         $nombre = strtoupper($nombre);
         $arr = false;
         date_default_timezone_set('Etc/UTC');
@@ -131,7 +135,7 @@
                                                 <div class="rectangulo">
                                                     <p class="letra">Machine Monitors</p>
                                                 </div>
-                                                <div class="cuadrado">Estimado '.$nombre.', podrás iniciar sesión con la siguiente contraseña: <br><strong>'.$contrasena.'</strong><br>Te recomendamos cambies la contaseña en la sección "Contraseña" del menú de navegación,  una vez iniciado sesión en la plataforma<br>Haz click <a href="'.raiz().'">Aquí</a>para ir a inicio de sesión<div>
+                                                <div class="cuadrado">Estimado '.$nombre.', podrás iniciar sesión con la siguiente contraseña: <br><strong>'.$contrasena.'</strong><br>Para cambiar la constraseña debes ingresar al siguiente link: <br><a href="'.$link.'">'.$link.'</a><div>
                                             </div>
                                         </body>
                                     </html>');
@@ -139,11 +143,13 @@
             $arr = true;
         return $arr;
     }
-    function generaClave() {
-        $arreglo = array();
+    function generaClave($correo) {
+        $arreglo = array('pass' => '', 'token' => '');
         $string = 'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKMLNOPQRSTUVWYZ';
         $stringRandom = str_shuffle($string);
-        return substr($stringRandom,0,12);
+        $arreglo['pass'] = substr($stringRandom,0,12);
+        $arreglo['token'] = hash('sha256',$stringRandom.$correo).'c';
+        return $arreglo;
     }
 
 ?>

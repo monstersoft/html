@@ -37,16 +37,16 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
-                                <input type="text" id="email" placeholder="Correo electrónico">
+                                <input type="text" id="email" placeholder="(*) Correo electrónico">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
-                                <input type="password" id="password" placeholder="Contraseña">
+                                <input type="password" id="password" placeholder="(*) Contraseña">
                             </div>
                         </div>
-                        <div id="btnLogin" style="background: #262626;font-family: 'Montserrat', cursive;" class="ui fluid large submit button">Ingresar</div>
+                        <div id="btnLogin" style="background: #262626;" class="ui fluid large submit button montserrat"><i class="fa fa-sign-in" style="margin-right: 10px;"></i>Iniciar sesión</div>
                     </div>
                 </form>
                 <div class="ui message">

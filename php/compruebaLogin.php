@@ -67,7 +67,7 @@
         $consulta = "SELECT idCliente, password AS hash FROM clientes WHERE correo = '$correo'";
         if($resultado = mysqli_query($conexion,$consulta)) {
             $row = mysqli_fetch_assoc($resultado);
-            if($password == $row['hash']) {
+            if(password_verify($password,$row['hash'])) {
                 $arreglo['correo'] = $correo;
                 $arreglo['titulo'] = 'Inicio de sesión';
                 $arreglo['mensaje'] = 'Bienvenidos '.$correo;
