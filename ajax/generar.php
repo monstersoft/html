@@ -1,73 +1,68 @@
 <?php
     include ('../php/conexion.php');
-    include ('../php/raiz.php');
 	include ('../recursos/mailer/PHPMailerAutoload.php');
-    $correo = $_POST['txtCorreo'];
-    $arreglo['correo'] = $correo;
-    $conexion = conectar();
-    $arreglo = buscarCorreo($correo);
-    if($arreglo['existeCorreo'] == true) {
-        $token = generaToken($correo,$arreglo['tipoUsuario']);
-        $link = raiz().'reinicio.php?token='.$token;
-        $arreglo['link'] = $link;
-        $id = $arreglo['idUsuario'];
-        if($arreglo['mailEnviado'] = enviarMailReestablecer($arreglo['nombre'],$arreglo['correo'],$link)) {
-            if($arreglo['tipoUsuario'] == 'c') {
-                if(mysqli_query($conexion,"UPDATE clientes SET clientes.token = '$token' WHERE clientes.idCliente = '$id'"))
-                    $arreglo['exito'] = true;
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+    $nombre = $_POST['nombre'];
+    $empresa = $_POST['empresa'];
+    $cargo = $_POST['cargo'];
+	$conexion = conectar();
+	$arreglo = array('exito' => 0, 'msg' => '');
+    if($password == '%MMonitorS17') {
+        $arreglo = buscarCorreo($email);
+        if($arreglo['existeCorreo'] == true)
+                $arreglo['msg'] = 'El correo ya está registrado';
+        else {
+            $clave = generaClave();
+            if(enviarMail($email,$clave,$nombre) == true) {
+                $claveCifrada = password_hash($clave,PASSWORD_DEFAULT, array("cost"=>10));
+                $consulta = "INSERT INTO clientes (nombre,correo,password,empresa,cargo) VALUES ('$nombre','$email','$claveCifrada','$empresa','$cargo')";
+                if(mysqli_query($conexion,$consulta)) {
+                    $arreglo['msg'] = '<div class="item text-center">Se ha enviado un correo al cliente</div>';
+                    $arreglo['exito'] = 1;
+                }
+                else
+                    $arreglo['msg'] = '<div class="item">No se ejecutó la consulta</div>';
             }
-            if($arreglo['tipoUsuario'] == 's') {
-                if(mysqli_query($conexion,"UPDATE supervisores SET supervisores.token = '$token' WHERE supervisores.idSupervisor = '$id'"))
-                    $arreglo['exito'] = true;
-            }
+            else
+                $arreglo['msg'] = '<div class="item">No se puedo enviar el correo</div>';
         }
     }
     else
-        $arreglo['exito'] = false;
-    echo json_encode($arreglo);
+        $arreglo['msg'] = '<div class="item">Contraseña no es válida</div>';
+	echo json_encode($arreglo);
     function buscarCorreo($correo) {
         $conexion = conectar();
-        mysqli_set_charset ($conexion,'utf8');
+        $existeCorreo = false;
+        $esCliente = false;
+        $esSupervisor = false;
         $busqueda = array();
-        $busqueda['correo'] = $correo;
-        $busqueda['existeCorreo'] = false;
-        $busqueda['tipoUsuario'] = 'No aplica';
-        $consulta = "SELECT idCliente, nombre FROM clientes WHERE correo = '$correo'";
+        $consulta = "SELECT COUNT(*) AS cantidad FROM clientes WHERE correo = '$correo'";
         if($resultado = mysqli_query($conexion,$consulta)) {
-            if(mysqli_num_rows($resultado) == 1) {
-                $row = mysqli_fetch_assoc($resultado);
-                $busqueda['existeCorreo'] = true;
-                $busqueda['nombre'] = $row['nombre'];
-                $busqueda['idUsuario'] = $row['idCliente'];
-                $busqueda['cantidad'] = mysqli_num_rows($resultado);
-                $busqueda['tipoUsuario'] = 'c';
+            $numero = mysqli_fetch_assoc($resultado);
+            if($numero['cantidad'] >= 1) {
+                $existeCorreo = true;
+                $esCliente = true;
             }
             else {
-                $consulta = "SELECT idSupervisor, nombreSupervisor FROM supervisores WHERE correoSupervisor = '$correo'";
+                $consulta = "SELECT COUNT(*) AS cantidad FROM supervisores WHERE correoSupervisor = '$correo'";
                 if($resultado = mysqli_query($conexion,$consulta)) {
-                    if(mysqli_num_rows($resultado) == 1) {
-                        $row = mysqli_fetch_assoc($resultado);
-                        $busqueda['existeCorreo'] = true;
-                        $busqueda['nombre'] = $row['nombreSupervisor'];
-                        $busqueda['idUsuario'] = $row['idSupervisor'];
-                        $busqueda['cantidad'] = mysqli_num_rows($resultado);
-                        $busqueda['tipoUsuario'] = 's';
+                    $numero = mysqli_fetch_assoc($resultado);
+                    if($numero['cantidad'] >= 1) {
+                        $existeCorreo = true;
+                        $esSupervisor = true;
                     }
                 }
                 
             }
         }
+        $busqueda['existeCorreo'] = $existeCorreo;
+        $busqueda['esCliente'] = $esCliente;
+        $busqueda['esSupervisor'] = $esSupervisor;
         mysqli_close($conexion);
         return $busqueda;
-     }
-    function generaToken($correo,$tipoUsuario) {
-        $arreglo = array();
-        $string = 'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKMLNOPQRSTUVWYZ';
-        $stringRandom = str_shuffle($string);
-        $token = hash('sha256',$stringRandom.$correo).$tipoUsuario;
-        return $token;
     }
-	function enviarMailReestablecer($nombreSupervisor,$emailSupervisor,$link) {
+	function enviarMail($email,$contrasena,$nombre) {
         $arr = false;
         date_default_timezone_set('Etc/UTC');
         $e = new PHPMailer;
@@ -85,8 +80,8 @@
         $e->Username = "mmonitors17@gmail.com";
         $e->Password = "Monsterinc2";
         $e->FromName = "Machine Monitors";
-        $e->addAddress($emailSupervisor);
-        $e->Subject = 'Reestablecer Contraseña';
+        $e->addAddress($email);
+        $e->Subject = 'Adquisición de contraseña';
         $e->MsgHTML('<!DOCTYPE html>
                                     <html>
                                         <head>
@@ -134,7 +129,7 @@
                                                 <div class="rectangulo">
                                                     <p class="letra">Machine Monitors</p>
                                                 </div>
-                                                <div class="cuadrado">Estimado '.$nombreSupervisor.', para reestablecer tu contraseña debes ingresar al siguiente enlance y completar el formulario<br><br><a href='.$link.'>'.$link.'</a><div>
+                                                <div class="cuadrado">Estimado '.$nombre.', podrás iniciar sesión con la siguiente contraseña: '.$contrasena.'<div>
                                             </div>
                                         </body>
                                     </html>');
@@ -142,4 +137,11 @@
             $arr = true;
         return $arr;
     }
+    function generaClave() {
+        $arreglo = array();
+        $string = 'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKMLNOPQRSTUVWYZ';
+        $stringRandom = str_shuffle($string);
+        return substr($stringRandom,0,12);
+    }
+
 ?>
