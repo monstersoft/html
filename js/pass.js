@@ -47,17 +47,17 @@ $('#btnLogin').click(function(){
                 $('#btnLogin i').removeClass('fa-cog fa-spin').addClass('fa-send');
         }).fail(function( jqXHR, textStatus, errorThrown ){
         if (jqXHR.status === 0){
-            alert('No hay coneccion con el servidor, debe comunicarte con el administrador');
+            alert('No hay conexión con el servidor, debes comunicarte con el administrador');
         } else if (jqXHR.status == 404) {
-            alert('La pagina solicitada no fue encontrada: error 404, debes comunicarte con el administrador');
+            alert('La página solicitada no fue encontrada: error 404, debes comunicarte con el administrador');
         } else if (jqXHR.status == 500) {
             alert('Error interno del servidor, debes comunicarte con el administrador');
         } else if (textStatus === 'parsererror') {
-            alert('Error en la respuesta JSON, debes comunicarte con el administrador');
+            alert('Error en la respuesta, debes comunicarte con el administrador');
         } else if (textStatus === 'timeout') {
             alert('Se ha excedido el tiempo de respuesta, debes comunicarte con el administrador');
         } else if (textStatus === 'abort') {
-            alert('La peticion fue abortada, debes comunicarte con el administrador');
+            alert('La petición fue abortada, debes comunicarte con el administrador');
         } else {
             alert('Error desconocido, debes comunicarte con el administrador');
         }
