@@ -1,80 +1,28 @@
 <?php
-    include 'recursos/mailer/PHPMailerAutoload.php';
-    echo e('hola','pavillanueva@ing.ucsc.cl','hola');
-	function e($nombreSupervisor,$emailSupervisor,$link) {
-        $arr = false;
-        date_default_timezone_set('Etc/UTC');
-        $e = new PHPMailer;
-        $e->isSMTP();
-        $e->CharSet = 'UTF-8';
-        //Enable SMTP debugging
-        // 0 = off (for production use)
-        // 1 = client messages
-        // 2 = client and server messages
-        $e->SMTPDebug = 2;
-        $e->Host = 'smtp.gmail.com';
-        $e->Port = 587;
-        $e->SMTPSecure = 'tls';
-        $e->SMTPAuth = true;
-        $e->Username = "mmonitors17@gmail.com";
-        $e->Password = "Monsterinc2";
-        $e->FromName = "Machine Monitors";
-        $e->addAddress($emailSupervisor);
-        $e->Subject = 'Reestablecer Contraseña';
-        $e->MsgHTML('<!DOCTYPE html>
-                                    <html>
-                                        <head>
-                                            <meta charset="UTF-8">
-                                            <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-                                            <style>
-                                                * {
-                                                    margin: 0;
-                                                    padding: 0;
-                                                    box-sizing: border-box;
-                                                }
-                                                body {
-                                                    font-family: Arial;
-                                                }
-                                                .letra {
-                                                    font-size: 20px;
-                                                    font-weight: 100;
-                                                    color: #fff;
-                                                }
-                                                .contenedor {
-                                                    width: 100%;
-                                                    margin: 0 auto;
-                                                    overflow: hidden;
-                                                }
-                                                .rectangulo {
-                                                    text-align: center;
-                                                    float: left;
-                                                    padding: 10px;
-                                                    border-bottom: 5px solid #F5A214;
-                                                    width: 100%;
-                                                    height: 45px;
-                                                    background: #262626;
-                                                }
-                                                .cuadrado {
-                                                    width: 100%;
-                                                    float: left;
-                                                    padding: 20px 0px 20px 0px;
-                                                    border-bottom: 5px solid #F5A214;
-                                                    font-size: 15px;
-                                                }
-                                            </style>
-                                        </head>
-                                        <body>
-                                            <div class="contenedor">
-                                                <div class="rectangulo">
-                                                    <p class="letra">Machine Monitors</p>
-                                                </div>
-                                                <div class="cuadrado">Estimado '.$nombreSupervisor.', para reestablecer tu contraseña debes ingresar al siguiente enlance y completar el formulario<br><br><a href='.$link.'>'.$link.'</a><div>
-                                            </div>
-                                        </body>
-                                    </html>');
-        echo $e->ErrorInfo;
-        if ($e->send())
-            $arr = true;
-        return $arr;
+	include ('php/conexion.php');
+    $beginTime = microtime(true);
+    set_time_limit(1200);
+    $con = conectar();
+    $file2 = fopen('27072017.csv','r');
+    $arr = array('str' => '','countRowCsv' => 0,'idZona' => null, 'insertOk' => false);
+    while ($d = fgetcsv($file2,150,";")) {
+        if(strlen($d[0]) == 2) generateQueryString(null,null,null,null,null,null,null,null,null,null,null,null,$arr,$d[0],true);
+        else generateQueryString(70,$d[0],$d[1],$d[2],$d[3],$d[4],$d[5],$d[6],$d[7],$d[8],$d[9],$d[10],$arr,$d[0],false);
+        $arr['sql'] = rtrim($arr['str'],",");
     }
+    if(mysqli_query($con,$arr['sql']));
+        $arr['insertOk'] = true;
+    mysqli_close($con);
+    $endTime = microtime(true);
+    $arr['timeScript']  = $endTime - $beginTime;
+    function generateQueryString($ia,$p,$h,$la,$lo,$mf,$r,$gpf,$gpt,$c,$apf,$apt,&$qry,$idZona,$isFirstRow) {
+        if($isFirstRow == true) {
+            $qry['str'] = "INSERT INTO datos (idArchivo,patente,hora,latitud,longitud,motorFuncionando,rpm,gradosPalaFrontal,gradosPalaTrasera,cambio,alturaPalaFrontal,alturaPalaTrasera) VALUES ";
+            $qry['idZona'] = $idZona;    
+        }
+        else
+            $qry['str'] .= '('.$ia.',"'.$p.'","'.$h.'",'.$la.','.$lo.','.$mf.','.$r.','.$gpf.','.$gpt.','.$c.','.$apf.','.$apt.'),';
+            $qry['countRowCsv']++;
+    }
+    echo json_encode($arr);
 ?>
