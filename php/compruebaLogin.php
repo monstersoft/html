@@ -63,10 +63,11 @@
 		$conexion = conectar();
 		$arreglo = array();
 		$arreglo['error'] = true;
-        $consulta = "SELECT idCliente, password AS hash FROM clientes WHERE correo = '$correo'";
+        $consulta = "SELECT nombre, idCliente, password AS hash FROM clientes WHERE correo = '$correo'";
         if($resultado = mysqli_query($conexion,$consulta)) {
             $row = mysqli_fetch_assoc($resultado);
             if(password_verify($password,$row['hash'])) {
+                $arreglo['nombre'] = $row['nombre'];
                 $arreglo['correo'] = $correo;
                 $arreglo['titulo'] = 'Inicio de sesión';
                 $arreglo['mensaje'] = 'Bienvenidos '.$correo;
@@ -95,10 +96,11 @@
                 $arreglo['mensaje'] = 'Debes activar tu cuenta para inicar sesión';
             }
             else {
-                $consulta = "SELECT idSupervisor, password AS hash FROM supervisores WHERE correoSupervisor = '$correo'";
+                $consulta = "SELECT nombreSupervisor, idSupervisor, password AS hash FROM supervisores WHERE correoSupervisor = '$correo'";
                 if($resultado = mysqli_query($conexion,$consulta)) {
                     $row = mysqli_fetch_assoc($resultado);
                     if(password_verify($password, $row['hash'])) {
+                        $arreglo['nombreSupervisor'] = $row['nombre'];
                         $arreglo['correo'] = $correo;
                         $arreglo['titulo'] = 'Inicio de sesión';
                         $arreglo['mensaje'] = 'Bienvenidos '.$correo;

@@ -36,16 +36,18 @@
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
         <div class="col-xs-12" style="margin-top: 20px;">
-            <form id="formularioEnviar">
-                <div class="form-group">
-                    <label>Mensaje</label>
-                    <textarea type="text" class="form-control" rows="10" id="mensaje" name="mensaje"></textarea>
+            <div style="margin: 0 auto;">
+                <form id="formularioEnviar">
+                    <div class="form-group">
+                        <label class="montserrat">Mensaje</label>
+                        <textarea type="text" class="form-control montserrat" rows="10" id="mensaje" name="mensaje"></textarea>
+                    </div>
+                </form>
+                <div class="clearfix">
+                    <button type="submit" class="btn btn-default pull-right montserrat" id="btnEnviar"><i class="cargar fa fa-send"></i>Enviar</button>
                 </div>
-            </form>
-            <div class="clearfix">
-                <button type="submit" class="btn btn-normal pull-right montserrat" id="btnEnviar"><i class="cargar fa fa-send"></i>Enviar</button>
+                <div class="message" style="margin: 15px 0px 0px 0px"></div>
             </div>
-            <div class="message" style="margin: 15px 0px 0px 0px"></div>
         </div>
 <!-- ............................................................................................................................ -->
     </div>

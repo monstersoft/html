@@ -10,12 +10,11 @@ $('body').on('click','#btnEnviar',function() {
     var numberErrors = 0;
     if(isEmpty(mensaje))
         arreglo.push('<li>Mensaje es requerido</li>');
-    if(maxLength(mensaje, 1000))
-        arreglo.push('<li>Mensaje debe tener máximo 1000 caracteres</li>');
+    if(maxLength(mensaje, 2000))
+        arreglo.push('<li>Mensaje debe tener máximo 2000 caracteres</li>');
     if(arreglo.length == 0) {
-        console.log(mensaje.length);
         $.ajax({                  
-            url: devuelveUrl('supervisor/ajax/contactar.php'),
+            url: devuelveUrl('cliente/ajax/contactar.php'),
             data: $('#formularioEnviar').serialize(),
             type: "POST",
             dataType: "json",
@@ -24,10 +23,9 @@ $('body').on('click','#btnEnviar',function() {
             },
             cache: false,
             success: function(arreglo) {
-                console.log(JSON.stringify(arreglo));
-                if(arreglo.exito == true) {
+                if(arreglo == true) {
                     successMessage('Mensaje enviado, ','el administrador se contactará a la brevedad');
-                    $('#btnEnviar').addClass('btn-success').html('<i class="cargar fa fa-repeat"></i>  Volver a enviar').attr('id','btnVolverEnviar');
+                    $('#btnEnviar').addClass('btn-success').html('<i class="cargar fa fa-repeat"></i>  Enviar otro').attr('id','btnVolverEnviar');
                 }
                 else
                     warningMessage('Error al enviar el mensaje');
