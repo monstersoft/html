@@ -36,7 +36,7 @@ $('#btnLogin').click(function(){
         }
         else {
             $.ajax({                  
-            url: 'php/compruebaLogin.php',
+            url: devuelveUrl('ajax/compruebaLogin.php'),
             data: {txtCorreo: correo, txtPassword: pass},
             type: "POST",
             dataType: "json",

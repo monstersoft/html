@@ -1,5 +1,5 @@
 <?php
-	include '../../php/funciones.php';
+	include '../funciones.php';
 	include '../../recursos/mailer/class.phpmailer.php';
 	$nombre = strtoupper(utf8_decode($_POST['nombre']));
 	$email = $_POST['correo'];

@@ -2,7 +2,7 @@ var exito = 0;
 $('.modalAgregarEmpresa').on('click','#btnVolverEmpresa',function(){
     $('#formularioAgregarEmpresa')[0].reset();
     $('.alert').remove();
-    $('#btnVolverEmpresa').removeClass('btn-success').addClass('btn-primary').attr('id','btnAñadirEmpresa').html('<i class="cargar fa fa-repeat"></i>Agregar');
+    $('#btnVolverEmpresa').removeClass('btn-success').addClass('btn-primary').attr('id','btnAñadirEmpresa').html('<i class="cargar fa fa-plus"></i>Agregar');
 });
 $('.agregarEmpresa').click(function(){
     $('.modalAgregarEmpresa').modal();
@@ -47,8 +47,8 @@ $('.modalAgregarEmpresa').on('click','#btnAñadirEmpresa',function(){
             },
             success: function(returnedData) {
                 if(returnedData.exito == 1) {
-                    successMessage('Registro realizado con éxito ','se ha ingresado la empresa  a la base de datos');
-                    $('#btnAñadirEmpresa').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverEmpresa').html('<i class="fa fa-repeat"></i>Volver a agregar');
+                    successMessage('Registro realizado con éxito, ','se ha ingresado la empresa  a la base de datos');
+                    $('#btnAñadirEmpresa').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverEmpresa').html('<i class="fa fa-repeat"></i>Agregar otra');
                     exito = 1;
                 }
                 else {

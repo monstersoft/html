@@ -9,7 +9,7 @@
         }
         if($_SESSION['datos']['tipoUsuario'] == 'Cliente') {
             echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
-            include '../../php/funciones.php';
+            include '../../cliente/funciones.php';
             $perfil = datosPerfil($_SESSION['datos']['correo']);
             $empresas = empresas();
             echo '<div class="sButton sPlus agregarEmpresa"><div><i class="fa fa-plus"></i></div></div>';
@@ -100,19 +100,19 @@
                     <form id="formularioAgregarEmpresa">
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" placeholder="Empresa" class="form-control" name="nombre" id="nombreAgregarEmpresa">
+                            <input type="text" placeholder="(*) Empresa" class="form-control" name="nombre" id="nombreAgregarEmpresa">
                         </div>
                         <div class="form-group">
                             <label for="rut">Rut</label>
-                            <input type="text" placeholder="17286211-K" class="form-control" name="rut" id="rutAgregarEmpresa">
+                            <input type="text" placeholder="(*) 17286211-K" class="form-control" name="rut" id="rutAgregarEmpresa">
                         </div>
                         <div class="form-group">
                             <label for="email">Correo</label>
-                            <input type="text" placeholder=". . . . . @ . . . . . " class="form-control" name="email" id="emailAgregarEmpresa">
+                            <input type="text" placeholder="(*) . . . . . @ . . . . . " class="form-control" name="email" id="emailAgregarEmpresa">
                         </div>
                         <div class="form-group">
                             <label for="celular">Celular</label>
-                            <input type="text" placeholder="995007812" class="form-control" name="celular" id="celularAgregarEmpresa">
+                            <input type="text" placeholder="(*) 995007812" class="form-control" name="celular" id="celularAgregarEmpresa">
                         </div>
                     </form>
                     <div class="clearfix">

@@ -7,7 +7,7 @@
 		$row = mysqli_fetch_assoc($resultado);
 		$arreglo['idEmpresa'] = $row['idEmpresa'];
 		$arreglo['rut'] = $row['rut'];
-		$arreglo['nombre'] = utf8_encode($row['nombre']);
+		$arreglo['nombre'] = $row['nombre'];
 		$arreglo['correo'] = $row['correo'];
 		$arreglo['telefono'] = $row['telefono'];
 	}

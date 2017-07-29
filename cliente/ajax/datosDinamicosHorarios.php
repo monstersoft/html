@@ -1,5 +1,5 @@
 <?php 
-    include '../../php/funciones.php';
+    include '../funciones.php';
 	$idArchivo = $_POST['idArchivo'];
 	$patente = $_POST['patente'];
     $hora = $_POST['hora'];

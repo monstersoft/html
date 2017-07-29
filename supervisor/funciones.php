@@ -1,5 +1,5 @@
 <?php 
-    include('conexion.php');
+    include('../../php/conexion.php');
     function barraMenu($perfil,$nombrePagina) {
             echo
             '<div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a>

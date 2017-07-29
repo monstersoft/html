@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+.cent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
 .vertical-align {
     display: flex;
     align-items: center;
@@ -89,12 +96,16 @@
     color: rgba(0, 0, 0, 0.87);
 }
 /* MODALS */
-.modal {
-    font-family: 'Montserrat';
-}
 .modal-header {
     position: relative;
     padding: 20px 20px 10px 20px;
+    font-family: 'Montserrat', fantasy;
+}
+.modal-body label, input {
+    font-family: 'Montserrat', fantasy;
+}
+.clearfix {
+    font-family: 'Montserrat', fantasy;
 }
 .modal-header > i {
     float: right;
@@ -104,8 +115,9 @@
     margin: 0px;
     font-size: 20px;
 }
-.modal-body {
-    font-family: 'Lato';
+
+.message {
+    font-family: 'Montserrat', fantasy;
 }
 .clearfix .btn-inverse {
     margin-right: 20px;

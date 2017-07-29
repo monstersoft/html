@@ -1,5 +1,5 @@
 <?php
-    include("conexion.php");
+    include("../php/conexion.php");
     $datos = array();
     $correo = $_POST['txtCorreo'];
     $password = $_POST['txtPassword'];
@@ -100,7 +100,7 @@
                 if($resultado = mysqli_query($conexion,$consulta)) {
                     $row = mysqli_fetch_assoc($resultado);
                     if(password_verify($password, $row['hash'])) {
-                        $arreglo['nombreSupervisor'] = $row['nombre'];
+                        $arreglo['nombre'] = $row['nombreSupervisor'];
                         $arreglo['correo'] = $correo;
                         $arreglo['titulo'] = 'Inicio de sesión';
                         $arreglo['mensaje'] = 'Bienvenidos '.$correo;

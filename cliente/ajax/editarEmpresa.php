@@ -5,10 +5,9 @@
     $arreglo['msgNoEditados'] = array();
 	$arreglo['msgEditados'] = array();
 	$conexion = conectar();
-    mysqli_set_charset($conexion,'utf8');
     $id = $datos[0]['id'];
 	if($datos[1]['nombre']['cambio'] == 1) {
-		$nombre = $datos[1]['nombre']['modificado'];
+		$nombre = mb_strtoupper($datos[1]['nombre']['modificado'],'utf-8');
 		if($resultado = mysqli_query($conexion,"SELECT idEmpresa FROM empresas WHERE empresas.nombre = '$nombre'")) {
 			if(mysqli_num_rows($resultado) >= 1)
 				array_push($arreglo['msgNoEditados'],'El nombre ingresado ya está en uso');
@@ -20,7 +19,7 @@
 		}
 	}
     if($datos[2]['rut']['cambio'] == 1) {
-        $rut = $datos[2]['rut']['modificado'];
+        $rut = mb_strtoupper($datos[2]['rut']['modificado'],'utf-8');
         if($resultado = mysqli_query($conexion,"SELECT idEmpresa FROM empresas WHERE empresas.rut = '$rut'")) {
             if(mysqli_num_rows($resultado) >= 1)
                 array_push($arreglo['msgNoEditados'],'El rut ingresado ya está en uso');
@@ -32,7 +31,7 @@
         }
     }
 	if($datos[3]['correo']['cambio'] == 1) {
-		$correo = $datos[3]['correo']['modificado'];
+		$correo = mb_strtoupper($datos[3]['correo']['modificado'],'utf-8');
 		if($resultado = mysqli_query($conexion,"SELECT idEmpresa AS correos FROM empresas WHERE empresas.correo = '$correo'")) {
 			if(mysqli_num_rows($resultado) >= 1)
 				array_push($arreglo['msgNoEditados'],'El correo ingresado ya está en uso');

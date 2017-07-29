@@ -3,13 +3,13 @@
     if(isset($_SESSION['datos'])) {
         if($_SESSION['datos']['tipoUsuario'] == 'Cliente') {
             echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
-            $_SESSION = [];
+            unset($_SESSION['datos']);
             session_destroy();
             header('Location: ../../index.php');
         }
         if($_SESSION['datos']['tipoUsuario'] == 'Supervisor') {
             echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
-            include("../../php/funcionesSupervisor.php");
+            include("../../supervisor/funciones.php");
             $perfil = datosPerfil($_SESSION['datos']['correo']);
             $email = $_SESSION['datos']['correo'];
             echo '<input id="idSupervisor" type="text" value="'.$perfil["id"].'" hidden>';
@@ -84,8 +84,8 @@
                             echo'<div class="bodyTable col-xs-12 bor">
                                     <div class="col-xs-6 col-md-3 nw ce"><button class="btn btn-xs btnPlus"><i class="fa fa-chevron-right"></i></button>'.$v['patente'].'</div>
                                     <div class="col-xs-6 col-md-3 nw ce">'.$v['fechaRegistro'].'</div>
-                                    <div class="col-md-3 dn nw ce">7'.$v['tara'].'</div>
-                                    <div class="col-md-3  dn nw ce">7'.$v['cargaMaxima'].'</div>
+                                    <div class="col-md-3 dn nw ce">'.$v['tara'].'</div>
+                                    <div class="col-md-3  dn nw ce">'.$v['cargaMaxima'].'</div>
                                 </div>
                                 <div class="listTable desactivado col-xs-12">
                                     <div class="row"><div class="col-xs-6 text-right" style="padding-right: 5px;">Tara[kg] :</div><div class="col-xs-6" style="padding-left: 0px;">'.$v['tara'].'</div></div>

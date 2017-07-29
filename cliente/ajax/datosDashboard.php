@@ -1,5 +1,5 @@
 <?php
-	include '../../php/funciones.php';
+	include '../funciones.php';
     $c = conectar();
     $a = array();
     $idResultado = $_POST['idResultado'];

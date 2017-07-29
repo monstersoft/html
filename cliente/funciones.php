@@ -1,10 +1,13 @@
 <?php
-	include("conexion.php");
-    // barra y menu
+	include("../../php/conexion.php");
+    /*
+        SE APLICA EN : TODAS LAS SECCIONES DEL MÓDULO CLIENTE (ZONAS.PHP, CRUDEMPRESAS.PHP, CRUDZONAS.PHP ETC..)
+        OBJETIVO     : IMPRIMIR LA BARRA DE NAVEGACIÓN DEL CLIENTE
+        ENTRADA      : ARREGLO LLAMADO PERFIL QUE CONTIENE EL CORREO Y LA EMPRESA A LA CUAL PERTENECE EL CLIENTE
+        ENTRADA      : NOMBRE DE LA PÁGINA QUE ESTÁ ACTIVA, EN EL MENÚ DE NAVEGACIÓN SE LE AÑADE LA CLASE SELECTED SEGÚN LA PÁGINA
+    */
     function barraMenu($perfil,$nombrePagina) {
-        if(sizeof($perfil) == 0)
-            echo '<div class="alert alert-danger"> <div class="row vertical-align"> <div class="col-xs-2"> <i class="fa fa-grav fa-4x"></i> </div><div class="col-xs-10"> <strong class="montserrat">No hay ususarios </strong>el arreglo <strong>Perfil</strong> está vacío</div></div></div>';
-        else { echo
+        echo
             '<div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a>
                 <p class="editarZona">Machine Monitors</p>
             </div>
@@ -55,7 +58,75 @@
                     } echo '
                 </ul>
                </nav>';
+    }
+    /*
+        SE APLICA EN : ZONAS.PHP
+        OBJETIVO     : RETORNAR TODAS LAS ZONAS QUE TIENEN AL MENOS UN ARCHIVO PARA REVISAR, LOS DATOS RELACIONADOS AL ARCHIVO SON LOS MÁS ACTUALES, ES DECIR EL ÚLTIMO ARCHIVO QUE SE SUBIÓ EN LA ZONA.
+        RETORNA      : ARREGLO QUE CONTIENE LA EMPRESA CON LAS RESPECTIVAS ZONAS Y LOS DATOS DEL ARCHIVO POR CADA ZONA .
+    */
+    function datosRecientes() {
+        $l = conectar();
+        $c = "SELECT DISTINCT ta.idZona, te.idEmpresa, te.nombre AS nombreEmpresa, tz.nombre AS nombreZona, ts.nombreSupervisor, ta.idArchivo, ta.idSupervisor, ta.fechaSubida, ta.fechaDatos AS fechaRecienteDatos, ta.horaSubida FROM archivos ta LEFT JOIN zonas tz ON ta.idZona = tz.idZona LEFT JOIN supervisores ts ON ta.idSupervisor = ts.idSupervisor LEFT JOIN empresas te ON tz.idEmpresa = te.idEmpresa WHERE fechaDatos = (SELECT MAX(fechaDatos) FROM archivos ta2 WHERE ta.idZona = ta2.idZona) ORDER BY te.nombre, tz.nombre";
+        $a = array();
+        if($r = mysqli_query($l,$c)) {
+            while($f = mysqli_fetch_assoc($r)) {
+                if(sizeof($a) == 0)
+                    array_push($a,array('idEmpresa'=>$f['idEmpresa'],'nombreEmpresa'=>$f['nombreEmpresa'], 'zonas'=>array(array('idZona'=>$f['idZona'],'nombreZona'=>$f['nombreZona'],'idSupervisor'=>$f['idSupervisor'],'nombreSupervisor'=>$f['nombreSupervisor'],'idArchivo'=>$f['idArchivo'],'fechaSubida'=>$f['fechaSubida'],'horaSubida'=>$f['horaSubida'],'fechaRecienteDatos'=>$f['fechaRecienteDatos']))));
+                else
+                    if($a[sizeof($a)-1]['idEmpresa'] == $f['idEmpresa'])
+                        array_push($a[sizeof($a)-1]['zonas'], array('idZona'=>$f['idZona'],'nombreZona'=>$f['nombreZona'],'idSupervisor'=>$f['idSupervisor'],'nombreSupervisor'=>$f['nombreSupervisor'],'idArchivo'=>$f['idArchivo'],'fechaSubida'=>$f['fechaSubida'],'horaSubida'=>$f['horaSubida'],'fechaRecienteDatos'=>$f['fechaRecienteDatos']));
+                    else
+                        array_push($a,array('idEmpresa'=>$f['idEmpresa'],'nombreEmpresa'=>$f['nombreEmpresa'], 'zonas'=>array(array('idZona'=>$f['idZona'],'nombreZona'=>$f['nombreZona'],'idSupervisor'=>$f['idSupervisor'],'nombreSupervisor'=>$f['nombreSupervisor'],'idArchivo'=>$f['idArchivo'],'fechaSubida'=>$f['fechaSubida'],'horaSubida'=>$f['horaSubida'],'fechaRecienteDatos'=>$f['fechaRecienteDatos']))));
             }
+        }
+        return $a;
+    }
+    /*
+        SE APLICA EN : CRUDEMPRESAS.PHP
+        OBJETIVO     : RESCATAR TODAS LAS EMPRESAS DE LA BD.
+        RETORNA      : RETORNA UN ARREGLO CON LOS DATOS DE LAS EMPRESAS.
+    */
+    function empresas() {
+        $conexion = conectar();
+        $arreglo = array();
+        $arreglo['empresas'] = array();
+        $consulta = 'SELECT COUNT(empresas.idEmpresa) AS cantidadEmpresas FROM empresas';
+        if($resultado = mysqli_query($conexion,$consulta)) {
+            $r = mysqli_fetch_assoc($resultado);
+            $arreglo['cantidadEmpresas'] = $r['cantidadEmpresas'];
+            if($arreglo['cantidadEmpresas'] != 0) {
+                $consulta = 'SELECT * FROM empresas';
+                if($resultado = mysqli_query($conexion,$consulta)) {
+                    while($r = mysqli_fetch_array($resultado)) {
+                        array_push($arreglo['empresas'],array('idEmpresa' => $r['idEmpresa'],'nombre' => $r['nombre'], 'rut' => $r['rut'], 'correo' => $r['correo'], 'telefono' => $r['telefono']));
+                    }
+                
+                }
+            }
+        }
+        mysqli_close($conexion);
+        return $arreglo;
+    }
+
+
+
+
+
+    function zonas($idEmpresa) {
+        $conexion = conectar();
+        $arreglo = array();
+        $consulta = "SELECT zonas.idZona AS idZona, zonas.nombre AS nombreZona
+                     FROM zonas
+                     WHERE zonas.idEmpresa = '$idEmpresa'";
+        if($resultado = mysqli_query($conexion,$consulta)) {
+            if($resultado = mysqli_query($conexion,$consulta)) {
+                while($row = mysqli_fetch_array($resultado)) {
+                    array_push($arreglo,array('idZona' => $row['idZona'], 'nombreZona' => utf8_encode($row['nombreZona'])));
+                }
+            }
+        }
+        mysqli_close($conexion);
+        return $arreglo;
     }
     // reestablecer contraseña
     function valida($token, $caracterUsuario) {
@@ -84,25 +155,6 @@
         }
         return $arreglo;
     }
-    // zonas.php
-    function datosRecientes() {
-        $l = conectar();
-        mysqli_set_charset($l,'utf8');
-        $c = "SELECT DISTINCT ta.idZona, te.idEmpresa, te.nombre AS nombreEmpresa, tz.nombre AS nombreZona, ts.nombreSupervisor, ta.idArchivo, ta.idSupervisor, ta.fechaSubida, ta.fechaDatos AS fechaRecienteDatos, ta.horaSubida FROM archivos ta LEFT JOIN zonas tz ON ta.idZona = tz.idZona LEFT JOIN supervisores ts ON ta.idSupervisor = ts.idSupervisor LEFT JOIN empresas te ON tz.idEmpresa = te.idEmpresa WHERE fechaDatos = (SELECT MAX(fechaDatos) FROM archivos ta2 WHERE ta.idZona = ta2.idZona) ORDER BY te.nombre, tz.nombre";
-        $a = array();
-        if($r = mysqli_query($l,$c)) {
-            while($f = mysqli_fetch_assoc($r)) {
-                if(sizeof($a) == 0)
-                    array_push($a,array('idEmpresa'=>$f['idEmpresa'],'nombreEmpresa'=>$f['nombreEmpresa'], 'zonas'=>array(array('idZona'=>$f['idZona'],'nombreZona'=>$f['nombreZona'],'idSupervisor'=>$f['idSupervisor'],'nombreSupervisor'=>$f['nombreSupervisor'],'idArchivo'=>$f['idArchivo'],'fechaSubida'=>$f['fechaSubida'],'horaSubida'=>$f['horaSubida'],'fechaRecienteDatos'=>$f['fechaRecienteDatos']))));
-                else
-                    if($a[sizeof($a)-1]['idEmpresa'] == $f['idEmpresa'])
-                        array_push($a[sizeof($a)-1]['zonas'], array('idZona'=>$f['idZona'],'nombreZona'=>$f['nombreZona'],'idSupervisor'=>$f['idSupervisor'],'nombreSupervisor'=>$f['nombreSupervisor'],'idArchivo'=>$f['idArchivo'],'fechaSubida'=>$f['fechaSubida'],'horaSubida'=>$f['horaSubida'],'fechaRecienteDatos'=>$f['fechaRecienteDatos']));
-                    else
-                        array_push($a,array('idEmpresa'=>$f['idEmpresa'],'nombreEmpresa'=>$f['nombreEmpresa'], 'zonas'=>array(array('idZona'=>$f['idZona'],'nombreZona'=>$f['nombreZona'],'idSupervisor'=>$f['idSupervisor'],'nombreSupervisor'=>$f['nombreSupervisor'],'idArchivo'=>$f['idArchivo'],'fechaSubida'=>$f['fechaSubida'],'horaSubida'=>$f['horaSubida'],'fechaRecienteDatos'=>$f['fechaRecienteDatos']))));
-            }
-        }
-        return $a;
-    }
     //crudZonas.php
     function cantidadZonas($idEmpresa) {
     $conexion = conectar();
@@ -118,22 +170,6 @@
     }
     mysqli_close($conexion);
     return $cantidad;
-}
-    function zonas($idEmpresa) {
-    $conexion = conectar();
-    $arreglo = array();
-    $consulta = "SELECT zonas.idZona AS idZona, zonas.nombre AS nombreZona
-                 FROM zonas
-                 WHERE zonas.idEmpresa = '$idEmpresa'";
-    if($resultado = mysqli_query($conexion,$consulta)) {
-        if($resultado = mysqli_query($conexion,$consulta)) {
-            while($row = mysqli_fetch_array($resultado)) {
-                array_push($arreglo,array('idZona' => $row['idZona'], 'nombreZona' => utf8_encode($row['nombreZona'])));
-            }
-        }
-    }
-    mysqli_close($conexion);
-    return $arreglo;
 }
     function cantidadMaquinas($idZona) {
     $conexion = conectar();
@@ -371,28 +407,7 @@
         echo '<head><style>* {background: black;}</style></head>';
         echo "<pre style='position: fixed; top: 0; z-index: 100; width: 100%; height: 100%; color: lime;'>"; print_r($var); echo "</pre>";
     }
-    function empresas() {
-        $conexion = conectar();
-        mysqli_set_charset($conexion,'utf8');
-        $arreglo = array();
-        $arreglo['empresas'] = array();
-        $consulta = 'SELECT COUNT(empresas.idEmpresa) AS cantidadEmpresas FROM empresas';
-        if($resultado = mysqli_query($conexion,$consulta)) {
-            $r = mysqli_fetch_assoc($resultado);
-            $arreglo['cantidadEmpresas'] = $r['cantidadEmpresas'];
-            if($arreglo['cantidadEmpresas'] != 0) {
-                $consulta = 'SELECT * FROM empresas';
-                if($resultado = mysqli_query($conexion,$consulta)) {
-                    while($r = mysqli_fetch_array($resultado)) {
-                        array_push($arreglo['empresas'],array('idEmpresa' => $r['idEmpresa'],'nombre' => $r['nombre'], 'rut' => $r['rut'], 'correo' => $r['correo'], 'telefono' => $r['telefono']));
-                    }
-                
-                }
-            mysqli_close($conexion);
-            return $arreglo;
-        }
-        }
-    }
+
     //supervisor.php
     function supervisor($idSupervisor) {
         $conexion = conectar();
@@ -417,3 +432,4 @@
             return $row['cantidad'] = -1;
         mysqli_close($conexion);
     }
+?>

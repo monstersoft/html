@@ -9,7 +9,7 @@
         }
         if($_SESSION['datos']['tipoUsuario'] == 'Cliente') {
             echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
-            include '../../php/funciones.php';
+            include '../../cliente/funciones.php';
             $conexion = conectar();
             $perfil = datosPerfil($_SESSION['datos']['correo']);
             $zonas = datosRecientes();
@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="../../css/tables.css">
 </head>
 <body>
-    <?php barraMenu($perfil,'zonas'); ?>sizeof($zonas) == 0 $zonas[$key]['zonas'] as $v
+    <?php barraMenu($perfil,'zonas'); ?>
     <div id="content" class="animated fadeIn unLeftContent">
            <?php
                 if(sizeof($zonas) == 0) echo '<div class="alert"><div class="row vertical-align"> <div class="col-xs-2"> <i class="fa fa-exclamation-circle fa-3x"></i> </div><div class="col-xs-10"> <strong class="montserrat">No existen datos </strong>, el supervisor debe subir al menos un archivo por cada zona. Para agregar empresas y zonas debes ir la sección <strong>Ajustes </strong> del menú de navegación</div></div></div>';

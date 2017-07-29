@@ -31,9 +31,9 @@ $('.editarEmpresa').click(function(){
 $('.modalEditarEmpresa').on('click','#btnEditarEmpresa',function(){
     $('.alert').remove();
     var arreglo = new Array();
-    data[1].nombre.modificado = upperCase($('#nombreEditarEmpresa').val());
-    data[2].rut.modificado = upperCase($('#rutEditarEmpresa').val());
-    data[3].correo.modificado = lowerCase($('#emailEditarEmpresa').val());
+    data[1].nombre.modificado = $('#nombreEditarEmpresa').val().toUpperCase();
+    data[2].rut.modificado = $('#rutEditarEmpresa').val().toUpperCase();
+    data[3].correo.modificado = $('#emailEditarEmpresa').val().toUpperCase();
     data[4].telefono.modificado =  $('#celularEditarEmpresa').val();
     var numberErrors = 0;
     if(isEmpty(data[1].nombre.modificado))
@@ -81,7 +81,6 @@ $('.modalEditarEmpresa').on('click','#btnEditarEmpresa',function(){
                 beforeSend: function() {activarLoaderBotones('fa-pencil','fa-refresh');},
                 success: function(arreglo) {
                     var array = JSON.parse(arreglo);
-                    console.log(array);
                     if(array.msgEditados.length > 0) {
                         successMessage('',array.msgEditados);
                         $('#btnEditarEmpresa').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverEditar').html('<i class="fa fa-repeat"></i>Volver a editar');
@@ -146,7 +145,8 @@ function retornaDatos(id,url) {
             $('#rutEditarEmpresa').val(arreglo.rut);
             $('#emailEditarEmpresa').val(arreglo.correo);
             $('#celularEditarEmpresa').val(arreglo.telefono);
-        }
+        },
+        error: function(xhr) {console.log(xhr.responseText);}
     }).fail(function( jqXHR, textStatus, errorThrown ){
         if (jqXHR.status === 0){
             alert('No hay coneccion con el servidor');

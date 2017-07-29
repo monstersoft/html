@@ -9,7 +9,7 @@
         }
         if($_SESSION['datos']['tipoUsuario'] == 'Supervisor') {
             echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
-            include("../../php/funcionesSupervisor.php");
+            include("../../supervisor/funciones.php");
             $perfil = datosPerfil($_SESSION['datos']['correo']);
             $email = $_SESSION['datos']['correo'];
         }

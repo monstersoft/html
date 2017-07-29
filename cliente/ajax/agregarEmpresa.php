@@ -1,15 +1,13 @@
 <?php
 	include '../../php/conexion.php'; 
-    $name = strtoupper($_POST['nombre']);
-	$rut = strtoupper($_POST['rut']);
-	$email = strtolower($_POST['email']);
+    $name = mb_strtoupper($_POST['nombre'],'utf-8');
+	$rut = mb_strtoupper($_POST['rut'],'utf-8');
+	$email = mb_strtoupper($_POST['email'],'utf-8');
 	$celular = $_POST['celular'];
 	$returnedData = verificaFormularioEmpresa($name,$rut,$email,$celular);
 	echo json_encode($returnedData);
-
 	function verificaFormularioEmpresa($name,$rut,$email,$phone) {
 		$conexion = conectar();
-        mysqli_set_charset($conexion,"utf8");
 		$arreglo = array();
 		$consulta = "SELECT COUNT(*) AS nombres FROM empresas WHERE empresas.nombre = '$name'";
 		if($resultado = mysqli_query($conexion,$consulta)) {

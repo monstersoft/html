@@ -18,7 +18,7 @@ $('#btnEliminarEmpresa').click(function(){
             console.log(JSON.stringify(arreglo));
             if(arreglo.exito == 1) {
                 successMessage('Eliminación con éxito, ','se ha eliminado la empresa y todos los datos asociados a ella');
-                $('#btnEliminarZona').remove();
+                $('#btnEliminarEmpresa').remove();
                 exito = 1;
             }
             else
