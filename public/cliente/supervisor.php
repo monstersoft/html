@@ -9,7 +9,7 @@
         }
         if($_SESSION['datos']['tipoUsuario'] == 'Cliente') {
             echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
-            include '../../php/funciones.php';
+            include '../../cliente/funciones.php';
             $idEmpresa = $_GET['empresa'];
             $idZona = $_GET['zona'];
             $idSupervisor = $_GET['supervisor'];
@@ -39,13 +39,12 @@
     <link rel="stylesheet" href="../../css/zonas.css">
     <style>
         .cent {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 <body>

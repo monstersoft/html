@@ -1,9 +1,8 @@
 <?php
 	include '../../php/conexion.php'; 
-    $name = strtoupper($_POST['nombre']);
+    $name = mb_strtoupper($_POST['nombre']);
 	$id = $_POST['id'];
 	$conexion = conectar();
-    mysqli_set_charset($conexion,'utf8');
 	$arreglo = array();
 	$consulta = "SELECT COUNT(zonas.idZona) AS nombres FROM zonas WHERE zonas.idEmpresa = '$id' AND zonas.nombre = '$name'";
 	if($resultado = mysqli_query($conexion,$consulta)) {

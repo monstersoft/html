@@ -37,7 +37,7 @@ $('.modalAgregarZona').on('click','#btnAñadirZona',function(){
                     successMessage('Registro realizado con éxito ','se ha ingresado la zona a la base de datos');
                     $('.cancelar').remove();
                     $('#btnAñadirZona').remove();
-                    $('.clearfix').append('<button type="button" class="btn btn-success pull-right volverAgregar"><i class="fa fa-repeat"></i>Volver a Agregar</button>');
+                    $('.clearfix').append('<button type="button" class="btn btn-success pull-right volverAgregar"><i class="fa fa-repeat"></i>Agregar otra</button>');
                     $('.clearfix').append('<button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>');
                     exito = 1;
                 }

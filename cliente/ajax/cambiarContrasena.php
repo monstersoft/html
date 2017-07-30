@@ -9,8 +9,8 @@
     $idUsuario = $_SESSION['datos']['idUsuario'];
     if($resultado = mysqli_query($c,"SELECT password AS hash FROM clientes WHERE idCliente = '$idUsuario'")) {
         $row = mysqli_fetch_assoc($resultado);
-        if($actual == $row['hash']) {
-            //$pass = password_hash($actual, PASSWORD_DEFAULT, "cost" => 10);
+        if(password_verify($actual, $row['hash'])) {
+            $nueva = password_hash($nueva, PASSWORD_DEFAULT, array("cost" => 10));
             if($res = mysqli_query($c,"UPDATE clientes SET clientes.password = '$nueva' WHERE clientes.idCliente = '$idUsuario'"))
                 $arreglo['exito'] = true;
             else

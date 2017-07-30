@@ -9,7 +9,7 @@
         }
         if($_SESSION['datos']['tipoUsuario'] == 'Cliente') {
             echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
-            include '../../php/funciones.php';
+            include '../../cliente/funciones.php';
             $perfil = datosPerfil($_SESSION['datos']['correo']);
         }
     }

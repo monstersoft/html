@@ -5,7 +5,6 @@
     $arreglo['msgNoEditados'] = array();
 	$arreglo['msgEditados'] = array();
 	$conexion = conectar();
-    mysqli_set_charset($conexion,'utf8');
     $idEmpresa= $datos[0]['idEmpresa'];
     $idZona= $datos[1]['idZona'];
 	if($datos[2]['nombre']['cambio'] == 1) {

@@ -3,7 +3,7 @@
     if(isset($_SESSION['datos'])) {
         if($_SESSION['datos']['tipoUsuario'] == 'Supervisor') {
             echo "<script>console.log('".$_SESSION['datos']['tipoUsuario']."')</script>";
-            $_SESSION = [];
+            unset($_SESSION['datos']);
             session_destroy();
             header('Location: ../../index.php');
         }
@@ -12,7 +12,6 @@
             include '../../cliente/funciones.php';
             $idEmpresa = $_GET['id'];
             $perfil = datosPerfil($_SESSION['datos']['correo']);
-            $empresas = empresas();
             echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div>
             <div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div>
             <div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>';
@@ -47,6 +46,12 @@
             padding: 10px;
             cursor: pointer;
             width: 100%;
+        }
+        .select2-search select2-search--inline {
+            width: 100% !important;
+        }
+        .select2-search__field {
+            width: 100% !important;
         }
     </style>
 </head>
@@ -212,7 +217,7 @@
                 <div class="modal-header">
                     <i class="fa fa-globe"></i>Eliminar Zona
                 </div>
-                <div class="modal-body"> ¿Estás seguro que quieres eliminar esta zona? , se borrarán todos los datos asociados a ella.
+                <div class="modal-body montserrat"> ¿Estás seguro que quieres eliminar esta zona? , se borrarán todos los datos asociados a ella.
                     <form id="formularioEliminarZona">
                         <div class="form-group" style="display: none;">
                             <label>ID ZONA</label>
@@ -328,7 +333,7 @@
     <script>
         $.fn.select2.defaults.set( "theme", "bootstrap" );
         $( ".select2-multiple" ).select2( {
-            placeholder: "Seleccionar",
+            placeholder: "Seleccionar Zona",
             width: null,
             containerCssClass: ':all:',
             closeOnSelect: false,

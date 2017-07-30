@@ -25,7 +25,7 @@ $('.editarZona').click(function(){
 $('.modalEditarZona').on('click','#btnEditarZona',function(){
     $('.alert').remove();
     var arreglo = new Array();
-    data[2].nombre.modificado = upperCase($('#nombreEditarZona').val());
+    data[2].nombre.modificado = $('#nombreEditarZona').val().toUpperCase();
     var numberErrors = 0;
     if(isEmpty(data[2].nombre.modificado))
         arreglo.push('<li>El campo nombre es obigatorio</li>');

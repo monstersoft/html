@@ -107,11 +107,31 @@
         mysqli_close($conexion);
         return $arreglo;
     }
-
-
-
-
-
+    /*
+        SE APLICA EN : CRUDZONAS.PHP
+        OBJETIVO     : RESCATAR LA CANTIDAD DE ZONAS ASOCIADAS A UNA EMPRESA.
+        RETORNA      : CANTIDAD DE ZONAS ASOCIADA A UNA EMPRESA.
+    */
+    function cantidadZonas($idEmpresa) {
+        $conexion = conectar();
+        $cantidad;
+        $consulta = "SELECT 
+                     COUNT(zonas.idZona) 
+                     AS cantidadZonas 
+                     FROM zonas 
+                     WHERE zonas.idEmpresa = '$idEmpresa'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+            $row = mysqli_fetch_assoc($resultado);
+            $cantidad = $row['cantidadZonas'];
+        }
+        mysqli_close($conexion);
+        return $cantidad;
+    }
+    /*
+        SE APLICA EN : CRUDZONAS.PHP
+        OBJETIVO     : RESCATAR LAS ZONAS ASOCIADAS A UNA EMPRESA.
+        RETORNA      : ARREGLO CON DATOS DE LAS ZONAS ASOCIADAS A UNA EMPRESA.
+    */
     function zonas($idEmpresa) {
         $conexion = conectar();
         $arreglo = array();
@@ -121,13 +141,38 @@
         if($resultado = mysqli_query($conexion,$consulta)) {
             if($resultado = mysqli_query($conexion,$consulta)) {
                 while($row = mysqli_fetch_array($resultado)) {
-                    array_push($arreglo,array('idZona' => $row['idZona'], 'nombreZona' => utf8_encode($row['nombreZona'])));
+                    array_push($arreglo,array('idZona' => $row['idZona'], 'nombreZona' => $row['nombreZona']));
                 }
             }
         }
         mysqli_close($conexion);
         return $arreglo;
     }
+    /*
+        SE APLICA EN : CRUDZONAS.PHP
+        OBJETIVO     : RESCATAR CANTIDAD DE MÁQUINAS ASOCIADAS A UNA ZONA.
+        RETORNA      : CANTIDAD DE MÁQUINAS ASOCIADAS A UNA ZONA.
+    */
+    function cantidadMaquinas($idZona) {
+        $conexion = conectar();
+        $cantidad;
+        $consulta = "SELECT 
+                     COUNT(maquinas.idMaquina) 
+                     AS cantidadMaquinas 
+                     FROM maquinas 
+                     WHERE maquinas.idZona = '$idZona'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+            $row = mysqli_fetch_assoc($resultado);
+            $cantidad = $row['cantidadMaquinas'];
+        }
+        mysqli_close($conexion);
+        return $cantidad;
+    }
+
+
+
+
+
     // reestablecer contraseña
     function valida($token, $caracterUsuario) {
         $c = conectar();
@@ -155,49 +200,23 @@
         }
         return $arreglo;
     }
-    //crudZonas.php
-    function cantidadZonas($idEmpresa) {
-    $conexion = conectar();
-    $cantidad;
-    $consulta = "SELECT 
-                 COUNT(zonas.idZona) 
-                 AS cantidadZonas 
-                 FROM zonas 
-                 WHERE zonas.idEmpresa = '$idEmpresa'"; 
-    if($resultado = mysqli_query($conexion,$consulta)) {
-        $row = mysqli_fetch_assoc($resultado);
-        $cantidad = $row['cantidadZonas'];
-    }
-    mysqli_close($conexion);
-    return $cantidad;
-}
-    function cantidadMaquinas($idZona) {
-    $conexion = conectar();
-    $cantidad;
-    $consulta = "SELECT 
-                 COUNT(maquinas.idMaquina) 
-                 AS cantidadMaquinas 
-                 FROM maquinas 
-                 WHERE maquinas.idZona = '$idZona'"; 
-    if($resultado = mysqli_query($conexion,$consulta)) {
-        $row = mysqli_fetch_assoc($resultado);
-        $cantidad = $row['cantidadMaquinas'];
-    }
-    mysqli_close($conexion);
-    return $cantidad;
-}
+    /*
+        SE APLICA EN : CRUDZONAS.PHP
+        OBJETIVO     : RESCATAR MÁQUINAS ASOCIADAS A UNA ZONA.
+        RETORNA      : ARREGLO CON DATOS DE LAS MÁQUINAS POR CADA ZONA.
+    */
     function maquinas($idZona) {
-    $conexion = conectar();
-    $arreglo = array();
-    $consulta = "SELECT * FROM maquinas WHERE maquinas.idZona = '$idZona'"; 
-    if($resultado = mysqli_query($conexion,$consulta)) {
-        while($r = mysqli_fetch_array($resultado)) {
-            array_push($arreglo,array('idMaquina' => $r['idMaquina'], 'idZona' => $r['idZona'], 'patente' => $r['patente'], 'fechaRegistro' => $r['fechaRegistro'], 'tara' => $r['tara'], 'cargaMaxima' => $r['cargaMaxima']));
+        $conexion = conectar();
+        $arreglo = array();
+        $consulta = "SELECT * FROM maquinas WHERE maquinas.idZona = '$idZona'"; 
+        if($resultado = mysqli_query($conexion,$consulta)) {
+            while($r = mysqli_fetch_array($resultado)) {
+                array_push($arreglo,array('idMaquina' => $r['idMaquina'], 'idZona' => $r['idZona'], 'patente' => $r['patente'], 'fechaRegistro' => $r['fechaRegistro'], 'tara' => $r['tara'], 'cargaMaxima' => $r['cargaMaxima']));
+            }
         }
+        mysqli_close($conexion);
+        return $arreglo;
     }
-    mysqli_close($conexion);
-    return $arreglo;
-}
 	function cantidadSupervisores($idZona) {
         $conexion = conectar();
         $cantidad;

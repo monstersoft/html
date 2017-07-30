@@ -8,7 +8,7 @@
 		$row = mysqli_fetch_assoc($resultado);
 		$arreglo['idZona'] = $row['idZona'];
 		$arreglo['idEmpresa'] = $row['idEmpresa']; 
-		$arreglo['nombre'] = utf8_encode($row['nombre']);
+		$arreglo['nombre'] = $row['nombre'];
 	}
 	echo json_encode($arreglo);
 ?>

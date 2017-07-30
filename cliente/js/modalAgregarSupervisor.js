@@ -67,7 +67,7 @@ $('.modalAgregarSupervisor').on('click','#btnAñadirSupervisor',function(){
             success: function(arreglo) {
                 if(arreglo.exito == 1) {
                     successMessage('Registro realizado con éxito ','se ha enviado un e-mail al supervisor para que habilite su cuenta');
-                    $('#btnAñadirSupervisor').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverSupervisor').html('<i class="cargar fa fa-repeat"></i>Volver a agregar');
+                    $('#btnAñadirSupervisor').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverSupervisor').html('<i class="cargar fa fa-repeat"></i>Agregar otro');
                     exito = 1;
                 }
                 else {
