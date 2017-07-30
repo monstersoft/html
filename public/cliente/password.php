@@ -39,10 +39,10 @@
     <link rel="stylesheet" href="../../css/menuBarra.css">
     <style>
         label {
-            font-family: 'Montserrat';
+            font-family: 'Montserrat', fantasy;
         }
         input {
-            font-family: 'Montserrat';
+            font-family: 'Montserrat', fantasy;
         }
         .input-group-addon {
             background: white;
@@ -54,7 +54,7 @@
     <div id="content" class="animated fadeIn unLeftContent">
 <!-- ............................................................................................................................ -->
         <div class="col-xs-12" style="margin-top: 20px;">
-            <form id="formularioCambiarPassword" class="cent">
+            <form id="formularioCambiarPassword">
                 <div class="form-group ">
                     <label class="control-label " for="email">Contraseña actual</label>
                     <div class="input-group">
@@ -78,7 +78,7 @@
                 </div>
             </form>
             <div class="clearfix">
-                <button type="button" class="btn pull-right montserrat" id="btnCambiarContraseña"><i class="cargar fa fa-refresh"></i> Cambiar</button>
+                <button type="button" class="btn btn-default pull-right montserrat" id="btnCambiarContraseña"><i class="cargar fa fa-refresh"></i> Cambiar</button>
             </div>
             <div class="message" style="margin: 15px 0px 0px 0px"></div>
         </div>

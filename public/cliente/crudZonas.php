@@ -12,9 +12,6 @@
             include '../../cliente/funciones.php';
             $idEmpresa = $_GET['id'];
             $perfil = datosPerfil($_SESSION['datos']['correo']);
-            echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div>
-            <div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div>
-            <div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>';
         }
     }
     else {
@@ -119,6 +116,7 @@
                 echo'</div></div>';
                 }
     ?>
+    <?php echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div><div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div><div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>'; ?>
 <!-- ............................................................................................................................ -->
     </div>
  <!-- VENTANAS MODALES --> 

@@ -28,7 +28,11 @@
     z-index: 100;
     overflow: hidden;
 }
-
+.contLoader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* CARD */
 .card {
     padding: 5px;
@@ -125,33 +129,7 @@
 .clearfix button i {
     margin-right: 10px;
 }
-.a {
-    background: rgba(0, 0, 0, 0.1);
-}
-.gc {
-    background-color: #F5F4F3;
-}
-.go {
-    background-color: #262626;
-}
-.c {
-    background-color: #4183C4;
-}
-.cA {
-    color: #F5A214;
-}
-.cGc {
-    color: #F5F4F3;
-}
-.cGo {
-    color: #262626;
-}
-.cC {
-    color: #4183C4;
-}
-.cB {
-    color: #FFF;
-}
+
 /* CONTENT */
 #content {
     position: absolute;
@@ -173,7 +151,7 @@
     /*border-radius: 5px;*/
     color: white;
     background: #F5A214;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

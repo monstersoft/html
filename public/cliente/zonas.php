@@ -15,10 +15,8 @@
             $zonas = datosRecientes();
         }
     }
-    else {
-        echo '<script>console.log("No existe la sesión")</script>';
+    else
         header('Location: ../../index.php');
-    }
 ?>
 <!DOCTYPE html>
 <html>

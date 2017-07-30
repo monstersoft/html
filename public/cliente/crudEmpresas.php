@@ -12,13 +12,10 @@
             include '../../cliente/funciones.php';
             $perfil = datosPerfil($_SESSION['datos']['correo']);
             $empresas = empresas();
-            echo '<div class="sButton sPlus agregarEmpresa"><div><i class="fa fa-plus"></i></div></div>';
         }
     }
-    else {
-        echo '<script>console.log("No existe la sesión")</script>';
+    else
         header('Location: ../../index.php');
-    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,12 +25,13 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="theme-color" content="#262626"/>
     <link rel="stylesheet" href="../../recursos/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../recursos/select2/select2.min.css">
     <link rel="stylesheet" href="../../recursos/select2/select2-bootstrap.css">
-    <link rel="stylesheet" href="../../css/menuBarra.css">
+    <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../recursos/animate/animate.css">
     <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/menuBarra.css">
     <link rel="stylesheet" href="../../css/tables.css">
     <style>
         .dropdown-menu {
@@ -85,7 +83,7 @@
                     </div></div>';
             }
     ?>
-
+    <?php echo '<div class="sButton sPlus agregarEmpresa"><div><i class="fa fa-plus"></i></div></div>'; ?>
     </div>
 <!-- VENTANAS MODALES -->
     <!-- MODAL AGREGAR EMPRESA --> 
