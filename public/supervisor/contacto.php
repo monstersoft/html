@@ -44,7 +44,7 @@
                 </div>
             </form>
             <div class="clearfix">
-                <button type="submit" class="btn btn-normal pull-right montserrat" id="btnEnviar"><i class="cargar fa fa-send"></i>Enviar</button>
+                <button type="submit" class="btn btn-default btn-normal pull-right montserrat" id="btnEnviar"><i class="cargar fa fa-send"></i>Enviar</button>
             </div>
             <div class="message" style="margin: 15px 0px 0px 0px"></div>
         </div>

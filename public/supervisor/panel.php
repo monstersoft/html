@@ -12,7 +12,6 @@
             include("../../supervisor/funciones.php");
             $perfil = datosPerfil($_SESSION['datos']['correo']);
             $email = $_SESSION['datos']['correo'];
-            echo '<input id="idSupervisor" type="text" value="'.$perfil["id"].'" hidden>';
         }
     }
     else {
@@ -107,6 +106,7 @@
                 echo'</div></div>';
                 }
             ?>
+            <?php echo '<input id="idSupervisor" type="text" value="'.$perfil["id"].'" hidden>'; ?>
                 <!-- ............................................................................................................................ -->
         </div>
         <!-- VENTANAS MODALES -->
@@ -188,6 +188,7 @@
         <script src="../../supervisor/js/modalAgregarMaquina.js"></script>
         <script src="../../supervisor/js/modalSubirArchivo.js"></script>
         <script src="../../supervisor/js/descargarIdZona.js"></script>
+        <script src="../../recursos/fileSaver/FileSaver.min.js"></script>
         <script src="../../js/funciones.js"></script>
         <script src="../../js/tables.js"></script>
         <script src="../../js/compruebaInputs.js"></script>

@@ -12,8 +12,7 @@ $('.datepicker').pickadate({
             dataType: 'json',
             cache: false,
             beforeSend: function(){
-                $('.picker__wrap').append('<div class="capa"><div class="contLoader"><i style="color: #F5A214;" class="loader fa-2x fa fa-refresh fa-spin"></i></div></div>');
-                console.log('cargando');
+                $('.picker__wrap').append('<div class="capa"><div style=" height: 100%; display: flex; align-items: center; justify-content: center;"><i style="color: #F5A214;" class="loader fa-2x fa fa-refresh fa-spin"></i></div></div>');
             },
             success: function(arr) {
                 currentCalendar.set({
@@ -24,7 +23,6 @@ $('.datepicker').pickadate({
                 console.log(devuelveUrl('cliente/ajax/fechasDisponibles.php'));
             },
             complete: function() {
-                console.log('se han cargado los días');
                 $('.picker__wrap .capa').remove();
             },
             error: function(xhr) {console.log(xhr.responseText);}

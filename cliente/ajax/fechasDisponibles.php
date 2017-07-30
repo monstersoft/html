@@ -1,5 +1,4 @@
 <?php
-    sleep(3);
 	include '../../php/conexion.php'; 
 	$idZone = $_POST['idZona'];
     $arr = array('firstDayAvailable' => array(), 'lastDayAvailable' => array(), 'availableDays' => array());

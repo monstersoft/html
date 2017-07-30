@@ -55,7 +55,7 @@
 <!-- ............................................................................................................................ -->
         <div class="col-xs-12" style="margin-top: 20px;">
             <form id="formularioCambiarPassword">
-                <div class="form-group ">
+                <div class="form-group">
                     <label class="control-label " for="email">Contraseña actual</label>
                     <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-lock"></i></div>
