@@ -141,7 +141,7 @@
                     </form>
                     <div class="clearfix">
                         <button type="submit" class="btn btn-primary pull-right montserrat" id="btnAñadirZona"><i class="cargar fa fa-plus"></i>Agregar</button>
-                        <button type="button" class="btn btn-inverse pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                        <button type="button" class="btn btn-default pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
                 </div>
@@ -170,7 +170,7 @@
                         </form>
                         <div class="clearfix">
                             <button type="submit" class="btn btn-primary pull-right montserrat" id="btnEditarZona"><i class="cargar fa fa-pencil"></i>Editar</button>
-                            <button type="button" class="btn btn-inverse pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                            <button type="button" class="btn btn-default pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                         <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
@@ -201,7 +201,7 @@
                     </form>
                     <div class="clearfix">
                         <button type="submit" class="btn btn-primary pull-right montserrat" id="btnAñadirSupervisor"><i class="cargar fa fa-plus"></i>Agregar</button>
-                        <button type="button" class="btn btn-inverse pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                        <button type="button" class="btn btn-default pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
                 </div>
@@ -224,7 +224,7 @@
                     </form>
                     <div class="clearfix">
                         <button type="submit" class="btn btn-primary pull-right" id="btnEliminarZona"><i class="cargar fa fa-trash"></i>Eliminar</button>
-                        <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                        <button type="button" class="btn btn-default pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
                 </div>
@@ -251,42 +251,10 @@
                     </form>
                     <div class="clearfix">
                         <button type="submit" class="btn btn-primary pull-right" id="btnDesvincularSupervisor"><i class="cargar fa fa-remove"></i>Desvincular</button>
-                        <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                        <button type="button" class="btn btn-default pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ASIGNAR ZONAS A SUPERVISOR -->
-    <div class="modalAsignarZonas modal fade" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <i class="fa fa-globe"></i>Asignar zonas
-                </div>
-                <div class="modal-body">
-                    <form id="formularioAsignarZonas">
-                        <div class="form-group">
-                            <label for="zonas" class="control-label">Asignar Zonas</label>
-                            <select id="nuevasZonasAsociadas" name="nuevasZonasAsociadas[]" class="form-control select2-multiple" multiple>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>ID ZONA</label>
-                            <input type="text" class="form-control" name="idZona" id="idEliminarZona">
-                        </div>
-                        <div class="form-group">
-                            <label>ID SUPERVISOR</label>
-                            <input type="hidden" class="form-control" name="idZona" id="idEliminarZona">
-                        </div>
-                    </form>
-                    <div class="clearfix">
-                        <button type="submit" class="btn btn-primary pull-right" id="btnAsignarZonas"><i class="cargar fa fa-plus"></i>Asignar</button>
-                        <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
-                    </div>
-                    <div class="message" style="margin: 15px 0px 0px 0px"></div>
                 </div>
             </div>
         </div>

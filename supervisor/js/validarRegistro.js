@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    $('#btnConfirmar').click(function(){
-        $('.message').html('');
+    $('#btnReestablecer').click(function(){
+        $('.ui .message').remove();
         var arreglo = new Array();
         var nueva = $('#nuevoPassword').val();
         var confirmar = $('#confirmarPassword').val();
@@ -45,22 +45,21 @@ $(document).ready(function() {
                 data: data,
                 dataType: 'json',
                 beforeSend: function() {
-                    $('#btnConfirmar').addClass('disabled');
-                    $('#btnConfirmar').html('<i class="fa fa-cog fa-spin fa-2x fa-fw" style="color: white"></i>');
+                    $('#btnReestablecer').addClass('disabled');
+                    $('#btnReestablecer i').removeClass('fa-address-book').addClass('fa-cog fa-spin');
                 },
                 success: function(returnedData) {
-                    console.log(JSON.stringify(returnedData));
                     if(returnedData.exito == 1) {
-                        successMessage('Habilitación con éxito',returnedData.mensaje);
+                        successUi('Registro activado con éxito','haz click <strong><a href="'+raiz()+'">AQUÍ</a></strong> para ir a inicio de sesión.');
                     }
                     else {
-                        oneWarningMessage(returnedData.mensaje);
+                        errorUi('<div class="item">'+returnedData.mensaje+'</div>');
                     }
                 },
                 error: function(xhr) {console.log(xhr.responseText);},
                 complete: function() {
-                    $('#btnConfirmar').removeClass('disabled');
-                    $('#btnConfirmar').html('Confirmar');
+                    $('#btnReestablecer').removeClass('disabled');
+                    $('#btnReestablecer i').removeClass('fa-cog fa-spin').addClass('fa-address-book');
                 }
             }).fail(function( jqXHR, textStatus, errorThrown ){
                 if (jqXHR.status === 0){
@@ -81,10 +80,7 @@ $(document).ready(function() {
             });
         }
         else {
-            errorMessage(arreglo);
+            errorUi(arreglo);
         }
     });
 });
-function redireccionar() {
-    window.location="http://localhost/html/";
-}

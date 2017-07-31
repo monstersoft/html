@@ -13,7 +13,7 @@ $('#btnReestablecer').click(function() {
         arreglo.push('<div>Confirmar contraseña es requerido</div>');
     if(maxMinValue(confirmada, 12, 6))
         arreglo.push('<div>Contraseña confirmada debe tener mínimo 6 y máximo 12</div>');
-    if(celular) {
+    if(document.getElementById('telefono')) {
         if(isEmpty(celular))
             arreglo.push('<div>Celular es requerido</div>');
         if(isExactly(celular))
@@ -22,7 +22,7 @@ $('#btnReestablecer').click(function() {
             arreglo.push('<div>Celular no es un número o no está en un formato adecuado</div>');
     }
     if(areEqual(nueva,confirmada))
-        arreglo.push('<div>Las contraseña no son iguales</div>');
+        arreglo.push('<div>Las contraseñas no coinciden</div>');
     if(arreglo.length == 0) {
         $.ajax({                  
             url: devuelveUrl('ajax/validaReinicio.php'),

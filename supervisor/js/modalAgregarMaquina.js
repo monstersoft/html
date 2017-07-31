@@ -2,7 +2,7 @@ var exito  = 0;
 $('.modalAgregarMaquina').on('click','#btnVolverMaquina',function(){
     $('#formularioAgregarMaquina')[0].reset();
     $('.alert').remove();
-    $('#btnVolverMaquina').removeClass('btn-success').addClass('btn-primary').attr('id','btnAñadirMaquina').html('<i class="cargar fa fa-repeat"></i>Agregar');
+    $('#btnVolverMaquina').removeClass('btn-success').addClass('btn-primary').attr('id','btnAñadirMaquina').html('<i class="cargar fa fa-plus"></i>Agregar');
 });
 $('.agregarMaquina').click(function(){
     $('#idZonaAgregarMaquina').val($(this).attr('id'));
@@ -44,8 +44,7 @@ $('.modalAgregarMaquina').on('click','#btnAñadirMaquina',function(){
                 console.log(JSON.stringify(arreglo));
                 if(arreglo.exito == 1) {
                     successMessage('Registro realizado con éxito, ','se ha ingresado la máquina  a la base de datos');
-                    $('#btnAñadirMaquina').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverMaquina').html('<i class="fa fa-repeat"></i>Volver a agregar');
-                    $('#btnAñadirMaquina').remove();
+                    $('#btnAñadirMaquina').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverMaquina').html('<i class="fa fa-repeat"></i>Agregar otra');
                     exito = 1;
                 }
                 else {

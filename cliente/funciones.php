@@ -128,7 +128,7 @@
         return $cantidad;
     }
     /*
-        SE APLICA EN : CRUDZONAS.PHP
+        SE APLICA EN : ZONAS.PHP
         OBJETIVO     : RESCATAR LAS ZONAS ASOCIADAS A UNA EMPRESA.
         RETORNA      : ARREGLO CON DATOS DE LAS ZONAS ASOCIADAS A UNA EMPRESA.
     */
@@ -185,6 +185,11 @@
         mysqli_close($conexion);
         return $arreglo;
     }
+    /*
+        SE APLICA EN : CRUDZONAS.PHP
+        OBJETIVO     : RESCATAR CANTIDAD DE SUPERVISORES ASOCIADOS A UNA ZONA.
+        RETORNA      : CANTIDAD DE SUPERVISORES POR CADA ZONA.
+    */
 	function cantidadSupervisores($idZona) {
         $conexion = conectar();
         $cantidad;
@@ -200,6 +205,11 @@
         mysqli_close($conexion);
         return $cantidad;
 	}
+    /*
+        SE APLICA EN : CRUDZONAS.PHP
+        OBJETIVO     : RESCATAR LOS SUPERVISORES ASOCIADOS A UNA ZONA.
+        RETORNA      : ARREGLO CON SUPERVISORES ASOCIADOS A UNA ZONA.
+    */
 	function supervisores($idZona) {
         $conexion = conectar();
         $arreglo = array();
@@ -210,12 +220,26 @@
         			 WHERE zonas.idZona = '$idZona'"; 
         if($resultado = mysqli_query($conexion,$consulta)) {
             while($r = mysqli_fetch_array($resultado)) {
-                array_push($arreglo,array('idZona' => $r['idZona'], 'idSupervisor' => $r['idSupervisor'], 'nombreSupervisor' => utf8_encode($r['nombreSupervisor']), 'correoSupervisor' => $r['correoSupervisor'], 'celular' => $r['celular'], 'status' => $r['status']));
+                array_push($arreglo,array('idZona' => $r['idZona'], 'idSupervisor' => $r['idSupervisor'], 'nombreSupervisor' => $r['nombreSupervisor'], 'correoSupervisor' => $r['correoSupervisor'], 'celular' => $r['celular'], 'status' => $r['status']));
             }
         }
         mysqli_close($conexion);
         return $arreglo;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // maquinas.php
     function maquinasPorFecha($idArchivo, $fechaDatos) {
         $c = conectar();

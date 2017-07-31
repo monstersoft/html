@@ -45,6 +45,12 @@
             justify-content: center;
             align-items: center;
         }
+        .select2-search select2-search--inline {
+            width: 100% !important;
+        }
+        .select2-search__field {
+            width: 100% !important;
+        }
     </style>
 </head>
 <body>
@@ -62,7 +68,7 @@
                       <li><i class="fa fa-send"></i><?php echo $supervisor['correoSupervisor']; ?></li>
                       <li><i class="fa fa-check"></i><?php echo $supervisor['status']; ?></li>
                       <li><i class="fa fa-phone"></i><?php echo $supervisor['celular']; ?></li>
-                      <li><?php if(zonasSinAsociar($idEmpresa,$idZona,$idSupervisor) == 0) echo 'No hay zonas para asociar'; else echo '<button type="button" class="btn btn-normal desvincularSupervisor montserrat asignarZonas">Asignar zonas</button>'; ?></li> 
+                      <li><?php if(zonasSinAsociar($idEmpresa,$idZona,$idSupervisor) == 0) echo '<br>No hay zonas para asociar'; else echo '<br><button type="button" class="btn btn-default desvincularSupervisor montserrat asignarZonas"><i class="fa fa-plus" style="margin-right: 10px;"></i>Asignar zonas</button>'; ?></li> 
                     </ul>
                 </div>
             </div>
@@ -95,7 +101,7 @@
                     </form>
                     <div class="clearfix">
                         <button type="submit" class="btn btn-primary pull-right" id="btnAsignarZonas"><i class="cargar fa fa-plus"></i>Asignar</button>
-                        <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                        <button type="button" class="btn btn-default pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
                 </div>
@@ -130,7 +136,7 @@
     <script>
         $.fn.select2.defaults.set( "theme", "bootstrap" );
         $( ".select2-multiple" ).select2( {
-            placeholder: "Seleccionar",
+            placeholder: "Seleccionar Zona",
             width: null,
             containerCssClass: ':all:',
             closeOnSelect: false,
@@ -148,29 +154,5 @@
             }
         });
     </script>
-    <script>
-       $(document).ready(function(){
-           $('.btnPlus').click(function(){
-               var accordion = $(this).parent().parent().next();
-               if(accordion.hasClass('unActivated')) {
-                   $('.accordion').removeClass('activated');
-                   $('.accordion').addClass('unActivated');
-                   accordion.removeClass('unActivated');
-                   accordion.addClass('activated');
-               }
-               else {
-                   $('.accordion').removeClass('activated');
-                   $('.accordion').addClass('unActivated');
-                   accordion.removeClass('activated');
-                   accordion.addClass('unActivated');
-               }
-           });
-           $(window).resize(function(){
-               if($(window).width() > 970)
-                   if($('.accordion').hasClass('activated')) 
-                        $($('.accordion').removeClass('activated').addClass('unActivated'));
-           });
-       });
-   </script>
 </body>
 </html>

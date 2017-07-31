@@ -118,7 +118,7 @@
 .message {
     font-family: 'Montserrat', fantasy;
 }
-.clearfix .btn-inverse {
+.clearfix .btn-default {
     margin-right: 20px;
 }
 .clearfix button i {

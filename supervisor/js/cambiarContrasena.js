@@ -35,7 +35,6 @@ $('body').on('click','#btnCambiarContraseña',function() {
             },
             cache: false,
             success: function(arreglo) {
-                console.log(JSON.stringify(arreglo));
                 if(arreglo.exito == true) {
                     successMessage('Actualización con éxito, ','se ha cambiado tu contraseña en el sistema');
                     $('#btnCambiarContraseña').addClass('btn-success').html('<i class="cargar fa fa-repeat"></i>  Volver a cambiar').attr('id','btnVolverCambiarContraseña');

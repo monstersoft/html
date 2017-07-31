@@ -12,26 +12,7 @@
         <link rel="stylesheet" href="../../recursos/semantic/semantic.min.css">
         <link rel="stylesheet" href="../../recursos/toast/toast.css">
         <link rel="stylesheet" href="../../recursos/awesome/css/font-awesome.min.css">
-        <style type="text/css">
-            body {
-                background-color: #262626;
-            }
-            .column {
-                max-width: 500px;
-            }
-            .margen {
-                margin-top: 50px;
-            }
-            #btnLogin {
-                background: #F5A214;
-                color: white;
-            }
-            .titulo {
-            	color: white;
-            	border-right: 3px solid #F5A214;
-            	border-left: 3px solid #F5A214;
-            }
-        </style>
+        <link rel="stylesheet" href="../../css/index.css">
     </head>
     <body>
         <div class="ui aligned center aligned grid">
@@ -67,17 +48,15 @@
                         <?php 
                         	echo'<input type="hidden" name="idSupervisor" id="idSupervisor" placeholder="ID Supervisor" value='.$id.'>';
                         ?>
-                        <div class="carga">
-                            <div id="btnConfirmar" style="color: white;background: #262626;" class="ui fluid large submit button">Confirmar</div>
-                        </div>
-                        <div class="message" style="margin: 5px 0px 0px 0px"></div>
+                        <div id="btnReestablecer" style="background: #262626;" class="ui fluid large submit button montserrat"><i class="fa fa-address-book" style="margin-right: 10px;"></i>Confirmar</div>
                     </div>
                 </form>
             </div>
         </div>  
         <script src="../../recursos/jquery/jquery.min.js"></script>
         <script src="../../recursos/semantic/semantic.min.js"></script>
-        <script src="../../supervisor/js/validarRegistro.js"></script>	
+        <script src="../../supervisor/js/validarRegistro.js"></script>
+        <script src="../../js/raiz.js"></script>
         <script src="../../js/funciones.js"></script>
         <script src="../../js/compruebaInputs.js"></script>
         <script src="../../js/mensajes.js"></script>

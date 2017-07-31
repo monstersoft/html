@@ -1,5 +1,11 @@
 <?php 
     include('../../php/conexion.php');
+    /*
+        SE APLICA EN : TODAS LAS SECCIONES DEL MÓDULO SUPERVISOR (PANEL.PHP, CONTACTO.PHP, CONTRASEÑA.PHP ETC..)
+        OBJETIVO     : IMPRIMIR LA BARRA DE NAVEGACIÓN DEL SUPERVISOR
+        ENTRADA      : ARREGLO LLAMADO PERFIL QUE CONTIENE EL CORREO Y LA EMPRESA A LA CUAL PERTENECE EL CLIENTE
+        ENTRADA      : NOMBRE DE LA PÁGINA QUE ESTÁ ACTIVA, EN EL MENÚ DE NAVEGACIÓN SE LE AÑADE LA CLASE SELECTED SEGÚN LA PÁGINA
+    */
     function barraMenu($perfil,$nombrePagina) {
             echo
             '<div id="bar"><a id="clickMenu"><i class="fa fa-bars"></i></a>
@@ -41,6 +47,12 @@
                 </ul>
                </nav>';
     }
+    /*
+        SE APLICA EN : TODAS LAS SECCIONES DEL MÓDULO SUPERVISOR (PANEL.PHP, CONTACTO.PHP, CONTRASEÑA.PHP ETC..)
+        OBJETIVO     : RESCATAR LOS DATOS DEL PERFIL DEL SUPERVISOR
+        ENTRADA      : CORREO DEL SUPERVISOR
+        RETORNA      : ARREGLO CON LOS DATOS DEL SUPERVISOR
+    */
     function datosPerfil($correo) {
         $arreglo = array();
         $conexion = conectar();
@@ -53,11 +65,17 @@
                         GROUP BY supervisores.idSupervisor";
         if($resultado = mysqli_query($conexion,$consulta)) {
             $row = mysqli_fetch_assoc($resultado);
-            $arreglo = array('id' => $row['id'], 'correo' => $row['correo'], 'empresa' => utf8_encode($row['empresa']));
+            $arreglo = array('id' => $row['id'], 'correo' => $row['correo'], 'empresa' => $row['empresa']);
         }
         mysqli_close($conexion);
         return $arreglo;
     }
+    /*
+        SE APLICA EN : PANEL.PHP
+        OBJETIVO     : RESCATAR LAS ZONAS QUE TIENE ASIGNADAS EL SUPERVISOR
+        ENTRADA      : CORREO DEL SUPERVISOR
+        RETORNA      : ARREGLO CON LOS DATOS DE LAS ZONAS
+    */
     function zonas($correo) {
         $conexion = conectar();
         $arreglo = array();
@@ -68,12 +86,18 @@
                     WHERE supervisores.correoSupervisor = '$correo'";
         if($resultado = mysqli_query($conexion,$consulta)) {
             while($r = mysqli_fetch_array($resultado)) {
-                array_push($arreglo,array('idZona' => $r['idZona'], 'nombre' => utf8_encode($r['nombre'])));
+                array_push($arreglo,array('idZona' => $r['idZona'], 'nombre' => $r['nombre']));
             }
         }
         mysqli_close($conexion);
         return $arreglo;
     }
+    /*
+        SE APLICA EN : PANEL.PHP
+        OBJETIVO     : RESCATAR LA CANTIDAD DE MÁQUINAS ASOCIADAS A UNA ZONA
+        ENTRADA      : ID DE LA ZONA
+        RETORNA      : CANTIDAD DE MÁQUINAS ASOCIADAS A UNA ZONA
+    */
     function cantidadMaquinas($idZona) {
         $con = conectar();
         $qua;
@@ -89,6 +113,12 @@
         mysqli_close($con);
         return $qua;
     }
+    /*
+        SE APLICA EN : PANEL.PHP
+        OBJETIVO     : RESCATAR LAS MÁQUINAS ASOCIADAS A LAS ZONAS
+        ENTRADA      : ID DE LA ZONA
+        RETORNA      : ARREGLO CON LOS DATOS DE LA MÁQUINAS
+    */
     function maquinas($idZona) {
         $con = conectar();
         $arr = array();
@@ -101,87 +131,26 @@
         mysqli_close($con);
         return $arr;
     }
-    function supervisores($idZona) {
+    /*
+        SE APLICA EN : PANEL.PHP
+        OBJETIVO     : RESCATAR LOS SUPERVISORES ASOCIADOS A UNA ZONA, SE EXCLUYE AL SUPERVISOR DE LA SESIÓN ACTUAL
+        ENTRADA      : ID DE LA ZONA
+        RETORNA      : ARREGLO CON LOS DATOS DE LOS SUPERVISORES ASOCIADOS A UNA ZONA
+    */
+    function supervisores($idZona,$correoSupervisor) {
         $con = conectar();
         $arr = array();
-        $qry = "SELECT zonas.idZona, supervisores.idSupervisor, supervisores.nombreSupervisor, supervisores.correoSupervisor, supervisores.celular, supervisores.status, supervisores.fechaMailEnviado 
+        $qry = "SELECT zonas.idZona, supervisores.idSupervisor, supervisores.nombreSupervisor, supervisores.correoSupervisor, supervisores.celular, supervisores.status 
                      FROM zonas 
                      LEFT JOIN supervisores_zonas ON zonas.idZona = supervisores_zonas.idZona 
                      LEFT JOIN supervisores ON supervisores_zonas.idSupervisor = supervisores.idSupervisor 
-                     WHERE zonas.idZona = '$idZona'"; 
+                     WHERE zonas.idZona = '$idZona' AND supervisores.correoSupervisor != '$correoSupervisor'"; 
         if($res = mysqli_query($con,$qry)) {
             while($r = mysqli_fetch_array($res)) {
-                array_push($arr,array('idZona' => $r['idZona'], 'idSupervisor' => $r['idSupervisor'], 'nombreSupervisor' => utf8_encode($r['nombreSupervisor']), 'correoSupervisor' => $r['correoSupervisor'], 'celular' => $r['celular'], 'status' => $r['status'], 'fechaMailEnviado' => $r['fechaMailEnviado']));
+                array_push($arr,array('idZona' => $r['idZona'], 'idSupervisor' => $r['idSupervisor'], 'nombreSupervisor' => $r['nombreSupervisor'], 'correoSupervisor' => $r['correoSupervisor'], 'celular' => $r['celular'], 'status' => $r['status']));
             }
         }
         mysqli_close($con);
         return $arr;
-    }
-
-    function proyectos($idEmpresa) {
-        $conexion = conectar();
-        $arreglo = array();
-        $consulta = "SELECT proyectos.idProyecto, proyectos.nombre AS nombreProyecto
-                     FROM proyectos
-                     WHERE proyectos.idEmpresa = '$idEmpresa'"; 
-        if($resultado = mysqli_query($conexion,$consulta)) {
-            $i = 0;
-            while($row = mysqli_fetch_array($resultado)) {
-                $arreglo[$i]['idProyecto']= $row['idProyecto'];
-                $arreglo[$i]['nombreProyecto']= $row['nombreProyecto'];
-                $i++;
-            }
-        }
-        mysqli_close($conexion);
-        return $arreglo;
-    }
-    function verifica($arreglo) {
-        $conexion = conectar();
-        $arreglo = array();
-        $arreglo['fracaso'] = 0;
-        $arreglo['exito'] = 0;
-        $arreglo['error'] = 0;
-        if($arreglo[0]['nombre']['cambio'] == 1){
-            $nombre = $arreglo[0]['nombre']['modificado'];
-            $consulta = "SELECT COUNT(*) AS nombres FROM empresas WHERE empresas.nombre = '$nombre'";
-            if($resultado = mysqli_query($conexion,$consulta)) {
-                $nombres = mysqli_fetch_assoc($resultado);
-                if($nombres['nombres'] >= 1) {
-                    $arreglo['msgFracaso'][] = 'El nombre ingresado ya está en uso';
-                    $arreglo['fracaso']++;
-                }
-                else {
-                    $arreglo['msgExito'][] = 'Nombre editado correctamente';
-                    $arreglo['exito']++;
-                }
-            }
-            else
-                $arreglo['msgError'] = 'Error de consulta en nombre';
-                $arreglo['error']++;
-
-        }
-        mysqli_close($conexion);
-        return $arreglo;
-    }
-
-    function datosEmpresa($id) {
-        $conexion = conectar();
-        $consulta = "SELECT * FROM empresas WHERE empresas.idEmpresa = '$id'"; 
-        if($resultado = mysqli_query($conexion,$consulta)) {
-            $arreglo = array();
-            while($row = mysqli_fetch_assoc($resultado)) {
-                $arreglo['idEmpresa'] = $row['idEmpresa'];
-                $arreglo['rut'] = $row['rut'];
-                $arreglo['nombre'] = $row['nombre'];
-                $arreglo['correo'] = $row['correo'];
-                $arreglo['telefono'] = $row['telefono'];
-            }
-        }
-        mysqli_close($conexion);
-        return $arreglo;
-    }
-
-    function debug($var) { 
-        echo "<pre>"; print_r($var); echo "</pre>";
     }
 ?>

@@ -115,7 +115,7 @@
                     </form>
                     <div class="clearfix">
                         <button type="submit" class="btn btn-primary pull-right" id="btnAñadirEmpresa"><i class="cargar fa fa-plus"></i>Agregar</button>
-                        <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                        <button type="button" class="btn btn-default pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
                 </div>
@@ -154,7 +154,7 @@
                     </form>
                     <div class="clearfix">
                         <button type="submit" class="btn btn-primary pull-right" id="btnEditarEmpresa"><i class="cargar fa fa-pencil"></i>Editar</button>
-                        <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                        <button type="button" class="btn btn-default pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
@@ -178,7 +178,7 @@
                     </form>
                     <div class="clearfix">
                         <button type="submit" class="btn btn-primary pull-right" id="btnEliminarEmpresa"><i class="cargar fa fa-trash"></i>Eliminar</button>
-                        <button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                        <button type="button" class="btn btn-default pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     <div class="messageError" style="margin: 15px 0px 0px 0px"></div>

@@ -1,7 +1,7 @@
 <?php
 	include '../../php/conexion.php';
 	$idZona = $_POST['id'];
-	$patente = $_POST['patente'];
+	$patente = mb_strtoupper($_POST['patente']);
 	$fechaRegistro = date("Y-m-d");
 	$tara = $_POST['tara'];
 	$carga = $_POST['carga'];

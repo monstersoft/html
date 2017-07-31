@@ -14,10 +14,8 @@
             $email = $_SESSION['datos']['correo'];
         }
     }
-    else {
-        echo '<script>console.log("No existe la sesión")</script>';
+    else
         header("Location:../../index.php");
-    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -92,17 +90,21 @@
                                 </div>';
                             }
                         }
-                        foreach(supervisores($value['idZona']) as $value) {
-                        echo'<div class="col-xs-12 col-md-6 cardContent a">
-                                <div class="flex-parent">
-                                    <i class="fa fa-user-circle pull-left"></i>
-                                    <div class="long-and-truncated-with-child-corrected">
-                                        <a class="montserrat">'.$value['nombreSupervisor'].'</a>
-                                    </div>
-                                    <br>
-                                </div>
-                            </div>';
-                        }
+                        $s = supervisores($value['idZona'],$_SESSION['datos']['correo']);
+                        if(sizeof($s) == 0)
+                                echo '<div class="col-xs-12 text-center montserrat" style="font-size: 12px;padding: 5px;">No existen más supervisores asociados</div>';
+                        else
+                            foreach($s as $value) {
+                                echo'<div class="col-xs-12 col-md-6 cardContent a">
+                                        <div class="flex-parent">
+                                            <i class="fa fa-user-circle pull-left"></i>
+                                            <div class="long-and-truncated-with-child-corrected">
+                                                <div class="montserrat">'.$value['nombreSupervisor'].'</div>
+                                            </div>
+                                            <br>
+                                        </div>
+                                    </div>';
+                            }
                 echo'</div></div>';
                 }
             ?>
@@ -136,7 +138,7 @@
                         </form>
                         <div class="clearfix">
                             <button type="submit" class="btn btn-primary pull-right montserrat" id="btnAñadirMaquina"><i class="cargar fa fa-plus"></i>Agregar</button>
-                            <button type="button" class="btn btn-inverse pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                            <button type="button" class="btn btn-default pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
@@ -169,7 +171,7 @@
                         </form>
                         <div class="clearfix">
                             <button type="submit" class="btn btn-primary pull-right montserrat" id="btnSubirArchivo"><i class="cargar fa fa-upload"></i>Subir</button>
-                            <button type="button" class="btn btn-inverse pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                            <button type="button" class="btn btn-default pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
@@ -224,7 +226,7 @@
                 today: 'Hoy',
                 clear: '',
                 close: 'Cerrar',
-                min: new Date(2017,1,1),
+                min: new Date(2016,1,1),
                 max: [parseInt(moment().format('YYYY')),parseInt(moment().format('MM'))-1, parseInt(moment().format('DD'))],
                 format: 'dddd dd , mmmm yyyy',
                 formatSubmit: 'yyyy-mm-dd',

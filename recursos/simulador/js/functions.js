@@ -78,14 +78,9 @@ function generarObjetos(cantidadFormularios) {
     return arreglo;
     }
 function descargar(data,nombreArchivo,idZona){
-    var flag = 0;
     var csvData = new Array();
+    csvData.push(idZona);
     $.each(data,function(index) {
-        if(flag == 0) {
-            csvData.push(idZona);
-            flag = 1;
-        }
-        else {
             csvData.push(
                 data[index].identificador+';'+
                 data[index].horaDato+';'+
@@ -98,7 +93,6 @@ function descargar(data,nombreArchivo,idZona){
                 data[index].cambio+';'+
                 data[index].alturaFrontal+';'+
                 data[index].alturaTrasera);
-        }
     });
     var buffer = csvData.join("\r\n");
     var blob = new Blob([buffer], {"type": "text/csv;charset=utf8;"});
@@ -106,7 +100,7 @@ function descargar(data,nombreArchivo,idZona){
     document.getElementById('descargar').setAttribute('download',nombreArchivo+'.csv');
 }
 function generarObjetoDatos(o){
-    var objRegistros = [] 
+    var objRegistros = []
     var hora = 8;
     var minuto = 0;
     var cantidadRegistros = 0;

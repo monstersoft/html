@@ -8,11 +8,8 @@
             echo "Error de conexión: ".mysqli_connect_error();
             exit();
         }
-        
-        mysqli_select_db($conexion,$nombre) or die ("No se encontró la base de datos");
-        
-        mysqli_set_charset($conexion,"utf-8");
-        
+        mysqli_set_charset($conexion,"utf8");
+        mysqli_select_db($conexion,$nombre) or die ("No se encontró la base de datos");    
         return $conexion;
     }
 ?>

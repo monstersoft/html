@@ -58,7 +58,7 @@
                                 echo '<div class="field" style="display: none"><div class="ui left icon input"><i class="hide icon"></i><input type="hidden" value="'.$datos['idUsuario'].'" name="id"></input></div></div>';
                             }
                             if($datos['cantidadToken'] == 1 and $datos['tipoUsuario'] == 'Supervisor' and $datos['status'] == 'deshabilitado') {
-                                echo '<div class="field" style="display: none;"><div class="ui left icon input"><i class="phone icon"></i><input type="hidden" placeholder="Teléfono Móvil - 9 9 500 78 12" id="telefono" name="celular"></input></div></div>';
+                                echo '<div class="field"><div class="ui left icon input"><i class="phone icon"></i><input type="text" placeholder="(*) Celular 9 9 500 78 12" id="telefono" name="celular"></input></div></div>';
                             }
                             if($datos['cantidadToken'] == 1 and $datos['tipoUsuario'] == 'Supervisor') {
                                 echo '<div class="field" style="display: none;"><div class="ui left icon input"><i class="hide icon"></i><input type="hidden" value="'.$datos['tipoUsuario'].'" name="tipoUsuario"></input></div></div>';
@@ -69,7 +69,7 @@
                     </div>
                 </form>
             </div>
-        </div>  
+        </div>
         <script src="recursos/jquery/jquery.min.js"></script>
         <script src="recursos/semantic/semantic.min.js"></script>
         <script src="recursos/toast/toast.js"></script>
