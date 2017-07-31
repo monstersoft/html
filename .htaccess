@@ -1,5 +1,4 @@
-RewriteEngine On
-RewriteCond %{HTTP_HOST}^mmonitors.com$[OR]
-RewriteCond %{HTTP_HOST}^mmonitors.com$[OR]$
-RewriteCond %{REQUEST_URI} !^/public
-RewriteRule ^.*$ "http://mmonitors.com/public" [R=301,L]
+<Files reinicio.php>
+	Order allow,deny
+	Deny from all
+</Files>
