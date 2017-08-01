@@ -18,42 +18,42 @@
                         <br><span id="nameProfile">'.$perfil['empresa'].'</span></li>'; 
                     if($nombrePagina == 'zonas') { echo '
                         <li class="selected"><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                        <li><a href="crudEmpresas.php"><i class="fa fa fa-cog icons"></i>Ajustes</a></li>
-                        <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
-                        <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-                        <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
+                        <li><a href="crudEmpresas"><i class="fa fa fa-cog icons"></i>Ajustes</a></li>
+                        <li><a href="contacto"><i class="fa fa-send icons"></i>Contacto</a></li>
+                        <li><a href="password"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+                        <li><a href="cerrar"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
 
                     }
                     if($nombrePagina == 'registro') { echo '
-                        <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                        <li><a href="zonas"><i class="fa fa-globe icons"></i>Zonas</a></li>
                         <li class="selected"><a href="crudEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
-                        <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
-                        <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-                        <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
+                        <li><a href="contacto"><i class="fa fa-send icons"></i>Contacto</a></li>
+                        <li><a href="password"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+                        <li><a href="cerrar"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
 
                     }
                     if($nombrePagina == 'contacto') { echo '
-                        <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                        <li><a href="crudEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
+                        <li><a href="zonas"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                        <li><a href="crudEmpresas"><i class="fa fa-cog icons"></i>Ajustes</a></li>
                         <li class="selected"><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
-                        <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-                        <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
+                        <li><a href="password"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+                        <li><a href="cerrar"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
 
                     }
                     if($nombrePagina == 'contraseña') { echo '
-                        <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                        <li><a href="crudEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
-                        <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
+                        <li><a href="zonas"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                        <li><a href="crudEmpresas"><i class="fa fa-cog icons"></i>Ajustes</a></li>
+                        <li><a href="contacto"><i class="fa fa-send icons"></i>Contacto</a></li>
                         <li class="selected"><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-                        <li><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
+                        <li><a href="cerrar"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
 
                     }
                     if($nombrePagina == 'cerrar') { echo '
-                        <li><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
-                        <li><a href="crudEmpresas.php"><i class="fa fa-cog icons"></i>Ajustes</a></li>
-                        <li><a href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>
-                        <li><a href="password.php"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
-                        <li class="selected"><a href="cerrar.php"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
+                        <li><a href="zonas"><i class="fa fa-globe icons"></i>Zonas</a></li>
+                        <li><a href="crudEmpresas"><i class="fa fa-cog icons"></i>Ajustes</a></li>
+                        <li><a href="contacto"><i class="fa fa-send icons"></i>Contacto</a></li>
+                        <li><a href="password"><i class="fa fa-unlock icons"></i>Contraseña</a></li>
+                        <li class="selected"><a href="cerrar"><i class="fa fa-sign-out icons"></i>Cerrar</a></li>';
 
                     } echo '
                 </ul>
