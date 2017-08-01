@@ -21,6 +21,7 @@
                     </div>
                 </h2>
                 <h1 class="titulo montserrat cent"><i class="fa fa-exclamation-circle" style="margin-right: 20px;"></i>ERROR 404</h1>
+                <h6 class="titulo montserrat cent">Page not found</h6>
             </div>
         </div>
         <script src="../recursos/jquery/jquery.min.js"></script>
