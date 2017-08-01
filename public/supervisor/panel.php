@@ -137,8 +137,8 @@
                             </div>
                         </form>
                         <div class="clearfix">
-                            <button type="submit" class="btn btn-primary pull-right montserrat" id="btnAñadirMaquina"><i class="cargar fa fa-plus"></i>Agregar</button>
-                            <button type="button" class="btn btn-default pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-primary pull-right" id="btnAñadirMaquina"><i class="cargar fa fa-plus"></i>Agregar</button>
+                            <button type="button" class="btn btn-default pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>
@@ -170,8 +170,8 @@
                             </div>
                         </form>
                         <div class="clearfix">
-                            <button type="submit" class="btn btn-primary pull-right montserrat" id="btnSubirArchivo"><i class="cargar fa fa-upload"></i>Subir</button>
-                            <button type="button" class="btn btn-default pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-primary pull-right" id="btnSubirArchivo"><i class="cargar fa fa-upload"></i>Subir</button>
+                            <button type="button" class="btn btn-default pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                     </div>

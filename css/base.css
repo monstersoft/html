@@ -100,10 +100,7 @@
     padding: 20px 20px 10px 20px;
     font-family: 'Montserrat', fantasy;
 }
-.modal-body label, input {
-    font-family: 'Montserrat', fantasy;
-}
-.clearfix {
+.modal-body label {
     font-family: 'Montserrat', fantasy;
 }
 .modal-header > i {

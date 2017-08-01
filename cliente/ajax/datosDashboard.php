@@ -11,7 +11,6 @@
     $cantidadTorta = 0;
     $cantidadBarra = 0;
     $cantidadLinea = 0;
-    $cantidadHistoricos = 0;
     $c = conectar();
     $a = array();
     $q = "SELECT DATE_FORMAT(datos.hora, '%i') AS hora, datos.gradosPalaFrontal, datos.gradosPalaTrasera, datos.alturaPalaFrontal, datos.alturaPalaTrasera FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' AND datos.hora BETWEEN '08:00:00' AND '08:59:00'";
@@ -46,12 +45,12 @@
             $i++;
         }
     }
-    $count = 0;
+    $cantidadSemanasConResultados = 0;
+    $cantidadSemanasSinResultados = 0;
     foreach($semanas as $value) {
         if($value['available'] == 'true') {
             $q = "SELECT AVG(resultados.pGpf) AS pGpf, AVG(resultados.pGpt) AS pGpt, AVG(resultados.pApf) AS pApf, AVG(resultados.pApt)  AS pApt, AVG(resultados.tRecorridos) AS pTre FROM resultados WHERE resultados.patente = '".$patente."' AND resultados.fechaDatos BETWEEN '".$value['startWeek']."' AND '".$value['endWeek']."'";
             if($res = mysqli_query($c,$q)) {
-                $cantidadHistoricos = mysqli_num_rows($res);
                 $r = mysqli_fetch_assoc($res);
                 if($r['pGpf'] == -1 or $r['pGpf'] == null) {
                     $lineaHistorico['pGpf'][]= null;
@@ -60,7 +59,7 @@
                     $lineaHistorico['pApt'][] = null;
                     $lineaHistorico['pTre'][] = null;
                     $lineaHistorico['semanas'][] = $value['week'].' s/d';
-                    $count++;
+                    $cantidadSemanasSinResultados++;
                 }
                 else {
                     $q2 = "SELECT AVG(resultados.pGpf) AS pGpf, AVG(resultados.pGpt) AS pGpt, AVG(resultados.pApf) AS pApf, AVG(resultados.pApt)  AS pApt, AVG(resultados.tRecorridos) AS pTre FROM resultados WHERE resultados.patente = '".$patente."' AND resultados.fechaDatos BETWEEN '".$value['startWeek']."' AND '".$value['endWeek']."' AND resultados.existeEnArchivo = 1";
@@ -72,12 +71,11 @@
                     $lineaHistorico['pApt'][] = intval($r1['pApt']);
                     $lineaHistorico['pTre'][] = intval($r1['pTre']);
                     $lineaHistorico['semanas'][] = $value['week'];
-                    $count++;        
+                    $cantidadSemanasConResultados++;       
                 }
             }
         }
-    }
-
+    } 
     $a['torta'] = $torta;
     $a['barra'] = $barra;
     $a['linea'] = $linea2;   
@@ -86,11 +84,12 @@
     $a['cantidadTorta'] = $cantidadTorta;
     $a['cantidadBarra'] = $cantidadBarra;
     $a['cantidadLinea'] = $cantidadLinea;
-    $a['cantidadHistoricos'] = $cantidadHistoricos;
+    $a['cantidadSemanasConResultados'] = $cantidadSemanasConResultados;
+    $a['cantidadSemanasSinResultados'] = $cantidadSemanasSinResultados;
     echo json_encode($a);
     function completaConCeros($minuto, $gradosPalaFrontal, $gradosPalaTrasera, $alturaPalaFrontal, $alturaPalaTrasera, $arr) {
         for($i = sizeof($arr['hora']); $i < $minuto; $i++) {
-            $arr['hora'][] = $i."' s/d";
+            $arr['hora'][] = $i.".s/d";
             $arr['gradosPalaFrontal'][] = null;
             $arr['gradosPalaTrasera'][] = null;
             $arr['alturaPalaFrontal'][] = null;
@@ -105,7 +104,7 @@
     }
     function completaConCerosDespues($arr) {
         for($i = sizeof($arr['hora']); $i <= 59; $i++) {
-            $arr['hora'][] = $i."' s/d";
+            $arr['hora'][] = $i.".s/d";
             $arr['gradosPalaFrontal'][] = null;
             $arr['gradosPalaTrasera'][] = null;
             $arr['alturaPalaFrontal'][] = null;

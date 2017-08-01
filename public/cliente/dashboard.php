@@ -172,13 +172,13 @@
                     <div class="motorLegend">TRASERA</div>
                 </div>
             </div>
-            <div class="col-xs-12 cardContent" style="padding: 20px 20px 0px 20px;">
+            <div class="col-xs-12 cardContent fondo" style="padding: 20px 20px 0px 20px;">
                 <div class="chartLineContainer">
                     <div class="chartLineSticky"><div id="chartLineSticky"></div><div class="chartLineBackground"></div></div>
                     <div class="chartLine"><div id="chartLine"></div></div>
                 </div>
             </div>
-            <div class="col-xs-12 cardContent" style="padding: 0px 0px 30px 0px;">
+            <div class="col-xs-12 cardContent fondo2" style="padding: 0px 0px 30px 0px;">
                <div class="col-xs-12 cardContent"><div class="yearContainer"><i class="degrees leftDegrees fa fa-2x fa-arrow-circle-o-left"></i><div class="degreesLegend"></div><i class="degrees rightDegrees fa fa-2x fa-arrow-circle-o-right"></i></div></div>
            </div>
          </div>
@@ -201,13 +201,13 @@
                     <div class="motorLegend">TRASERA</div>
                 </div>
             </div>
-            <div class="col-xs-12 cardContent" style="padding: 20px 20px 0px 20px;">
+            <div class="col-xs-12 cardContent fondo" style="padding: 20px 20px 0px 20px;">
                 <div class="chartLineContainer">
                     <div class="chartLineSticky"><div id="chartLineSticky2"></div><div class="chartLineBackground"></div></div>
                     <div class="chartLine"><div id="chartLine2"></div></div>
                 </div>
             </div>
-            <div class="col-xs-12 cardContent" style="padding: 0px 0px 30px 0px;">
+            <div class="col-xs-12 cardContent fondo2" style="padding: 0px 0px 30px 0px;">
                <div class="col-xs-12 cardContent"><div class="yearContainer"><i class="height leftHeight fa fa-2x fa-arrow-circle-o-left"></i><div class="heightLegend"></div><i class="height rightHeight fa fa-2x fa-arrow-circle-o-right"></i></div></div>
            </div>
          </div>
@@ -219,9 +219,9 @@
                 <p>Históricos</p>
             </div>
            <div class="containerHistorical">
-            <div id="chart1"><div class="historicalLegend" style="top: -10px"><div class="cuadroAmarillo"></div><div style="padding-right: 5px;padding-left: 5px;">G. P. FRONTAL</div><div class="cuadroNegro"></div><div style="padding-left: 5px;">G. P. TRASERA</div></div></div>
-            <div id="chart2"><div class="historicalLegend" style="top: -20px"><div class="cuadroAmarillo"></div><div style="padding-right: 5px;padding-left: 5px;">A. P. FRONTAL</div><div class="cuadroNegro"></div><div style="padding-left: 5px;">A. P. TRASERA</div></div></div>
-            <div id="chart3"><div class="historicalLegend" style="top: -20px"><div class="cuadroAmarillo"></div><div style="padding-right: 5px;padding-left: 5px;">RECORRIDO</div></div></div>
+            <div id="chart1" class="sinResultados"><div class="historicalLegend" style="top: -10px"><div class="cuadroAmarillo"></div><div style="padding-right: 5px;padding-left: 5px;">G. P. FRONTAL</div><div class="cuadroNegro"></div><div style="padding-left: 5px;">G. P. TRASERA</div></div></div>
+            <div id="chart2" class="sinResultados"><div class="historicalLegend" style="top: -20px"><div class="cuadroAmarillo"></div><div style="padding-right: 5px;padding-left: 5px;">A. P. FRONTAL</div><div class="cuadroNegro"></div><div style="padding-left: 5px;">A. P. TRASERA</div></div></div>
+            <div id="chart3" class="sinResultados"><div class="historicalLegend" style="top: -20px"><div class="cuadroAmarillo"></div><div style="padding-right: 5px;padding-left: 5px;">RECORRIDO [kilómetros]</div></div></div>
            </div>
             <div class="col-xs-12 cardContent" style="padding: 0px 0px 30px 0px;">
                <div class="col-xs-6 cardContent"><div class="yearContainer"><i class="yearButton leftYear fa fa-2x fa-arrow-circle-o-left"></i><div class="yearLegend"></div><i class="yearButton rightYear fa fa-2x fa-arrow-circle-o-right"></i></div></div>

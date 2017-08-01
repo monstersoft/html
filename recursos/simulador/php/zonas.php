@@ -9,7 +9,6 @@
         }
     }
     $idZona = $arr['zonas'][0]['idZona'];
-    $idZona = 6;
     $q = "SELECT maquinas.idMaquina, maquinas.patente FROM maquinas WHERE maquinas.idZona = '$idZona'";
     if($re = mysqli_query($c,$q)) {
         while($r = mysqli_fetch_assoc($re)) {

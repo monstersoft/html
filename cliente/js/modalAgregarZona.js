@@ -1,11 +1,7 @@
 var exito = 0;
-$('.modalAgregarZona').on('click','.volverAgregar',function(){
-    $('#formularioAgregarZona')[0].reset();
+$('.modalAgregarZona').on('click','#btnVolverAñadir',function(){
     $('.alert').remove();
-    $('.volverAgregar').remove();
-    $('.cancelar').remove();
-    $('.clearfix').append('<button type="submit" class="btn btn-primary pull-right" id="btnAñadirZona"><i class="cargar fa fa-plus"></i>Agregar</button>');
-    $('.clearfix').append('<button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>');
+    $('#btnVolverAñadir').removeClass('btn-success').addClass('btn-primary').attr('id','btnAñadirZona').html('<i class="cargar fa fa-plus"></i> Agregar');
 });
 $('.agregarZona').click(function(){
     $('#idEmpresaAgregarZona').val($(this).attr('id'));
@@ -35,10 +31,7 @@ $('.modalAgregarZona').on('click','#btnAñadirZona',function(){
             success: function(arreglo) {
                 if(arreglo.exito == 1) {
                     successMessage('Registro realizado con éxito ','se ha ingresado la zona a la base de datos');
-                    $('.cancelar').remove();
-                    $('#btnAñadirZona').remove();
-                    $('.clearfix').append('<button type="button" class="btn btn-success pull-right volverAgregar"><i class="fa fa-repeat"></i>Agregar otra</button>');
-                    $('.clearfix').append('<button type="button" class="btn btn-inverse pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>');
+                    $('#btnAñadirZona').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverAñadir').html('<i class="fa fa-repeat"></i> Agregar otra');
                     exito = 1;
                 }
                 else {

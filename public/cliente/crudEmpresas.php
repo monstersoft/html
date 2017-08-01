@@ -110,7 +110,7 @@
                         </div>
                         <div class="form-group">
                             <label for="celular">Celular</label>
-                            <input type="text" placeholder="(*) 995007812" class="form-control" name="celular" id="celularAgregarEmpresa">
+                            <input type="text" placeholder="(*) 995007812" class="form-control join-form" name="celular" id="celularAgregarEmpresa">
                         </div>
                     </form>
                     <div class="clearfix">
@@ -169,10 +169,10 @@
                 <div class="modal-header">
                     <i class="fa fa-industry"></i>Eliminar Empresa
                 </div>
-                <div class="modal-body montserrat"> ¿Estás seguro que quieres eliminar esta empresa? , se borrarán todos los datos asociados a ella.
+                <div class="modal-body"> ¿Estás seguro que quieres eliminar esta empresa? , se borrarán todos los datos asociados a ella.
                     <form id="formularioEliminarEmpresa">
-                        <div class="form-group" style="display: none;">
-                            <label>ID EMPRESA</label>
+                        <div class="form-group">
+                            <label style="display: none;">ID EMPRESA</label>
                             <input type="hidden" class="form-control" name="idEmpresa" id="idEliminarEmpresa">
                         </div>
                     </form>

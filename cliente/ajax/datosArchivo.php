@@ -9,7 +9,7 @@
         $row = mysqli_fetch_assoc($res);
         $arr['idArchivo'] = $row['idArchivo'];
         $arr['idSupervisor'] = $row['idSupervisor'];
-        $arr['nombreSupervisor'] = utf8_encode($row['nombreSupervisor']);
+        $arr['nombreSupervisor'] = $row['nombreSupervisor'];
         $arr['fechaSubida'] = $row['fechaSubida'];
         $arr['fechaDatos'] = $row['fechaDatos'];
         $arr['horaSubida'] = $row['horaSubida'];  

@@ -2,9 +2,9 @@
     session_start();
     if(isset($_SESSION['datos'])) {
         if($_SESSION['datos']['tipoUsuario'] == 'Cliente')
-            header('Location: cliente/zonas.php');
+            header('Location: public/cliente/zonas.php');
         if($_SESSION['datos']['tipoUsuario'] == 'Supervisor')
-            header('Location: supervisor/panel.php');
+            header('Location: public/supervisor/panel.php');
     }
 ?>
 <!DOCTYPE html>

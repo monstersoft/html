@@ -75,7 +75,7 @@
     }
     function completaConCeros($minuto, $gradosPalaFrontal, $gradosPalaTrasera, $arr) {
         for($i = sizeof($arr['hora']); $i < $minuto; $i++) {
-            $arr['hora'][] = $i."' s/d";
+            $arr['hora'][] = $i.".s/d";
             $arr['gradosPalaFrontal'][] = null;
             $arr['gradosPalaTrasera'][] = null;
         }
@@ -86,7 +86,7 @@
     }
     function completaConCerosDespues($arr) {
         for($i = sizeof($arr['hora']); $i <= 59; $i++) {
-            $arr['hora'][] = $i."' s/d";
+            $arr['hora'][] = $i.".s/d";
             $arr['gradosPalaFrontal'][] = null;
             $arr['gradosPalaTrasera'][] = null;
         }
@@ -94,7 +94,7 @@
     }
     function completaConCeros2($minuto, $alturaPalaFrontal, $alturaPalaTrasera, $arr) {
         for($i = sizeof($arr['hora']); $i < $minuto; $i++) {
-            $arr['hora'][] = $i."' s/d";
+            $arr['hora'][] = $i.".s/d";
             $arr['alturaPalaFrontal'][] = null;
             $arr['alturaPalaTrasera'][] = null;
         }
@@ -105,7 +105,7 @@
     }
     function completaConCerosDespues2($arr) {
         for($i = sizeof($arr['hora']); $i <= 59; $i++) {
-            $arr['hora'][] = $i."' s/d";
+            $arr['hora'][] = $i.".s/d";
             $arr['alturaPalaFrontal'][] = null;
             $arr['alturaPalaTrasera'][] = null;
         }

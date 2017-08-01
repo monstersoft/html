@@ -57,28 +57,31 @@ $.ajax({
         $('.loader').html('<i class="fa fa-refresh fa-spin fa-2x" style="color: #F5A214;opacity: 0.5;"></i>');
     },
     success: function(arr) {
-        console.log(arr);
+        var string = 'AL CARGAR LA PAGINA\n';
+        $.each(arr.semanas,function(i,v){
+            string += ' [Semana'+arr.semanas[i]['week']+']Se muestra:'+arr.semanas[i]['available']+' Inicio:'+arr.semanas[i]['startWeek']+' Fin:'+arr.semanas[i]['endWeek']+'\n';
+        });
+        console.log(string);
         var res = json2array(arr);
         donut('#donutChart',{series: res[0]['frecuencia']});
         bar('#barChart',{labels: res[1]['cambio'], series: [res[1]['frecuencia']]});
         line('#chartLineSticky', true, true, {labels: res[2]['hora'], series: [res[2]['gradosPalaFrontal'],res[2]['gradosPalaTrasera']]}, '°', false,'gradosPala');
         line('#chartLine', false, true,{labels: res[2]['hora'], series: [res[2]['gradosPalaFrontal'],res[2]['gradosPalaTrasera']]}, '°', false,'gradosPala'); 
         line('#chartLineSticky2', true, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false,'alturaPala');
-        line('#chartLine2', false, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false,'alturaPala');
-        
+        line('#chartLine2', false, true,{labels: res[2]['hora'], series: [res[2]['alturaPalaFrontal'],res[2]['alturaPalaTrasera']]}, 'm', false,'alturaPala');  
         lineHistorical('#chart1', {labels: res[3]['semanas'],series: [res[3]['pGpf'],res[3]['pGpt']]},false, 'Semanas', -10, 'gradosHistoricos');
         lineHistorical('#chart2', {labels: res[3]['semanas'],series: [res[3]['pApf'],res[3]['pApt']]},false, 'Semanas', -10,'alturaHistoricos');
         lineHistorical('#chart3', {labels: res[3]['semanas'],series: [res[3]['pTre']]},true, 'Semanas', 10,'recorridoHistoricos');
         if(arr.barra.cambio.length == 0) 
-            $('#barChart').html('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;">No existen datos</div>');
-        if(arr.barra.cambio.length == 0) 
-            $('#barChart').html('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;">No existen datos</div>');
+            $('#barChart').html('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;" class="Montserrat"><i class="fa fa-exclamation-circle fa-2x" style="margin-right: 10px;"></i>No existen datos</div>');
         if(arr.torta.length == 0) 
-            $('#donutChart').html('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;">No existen datos</div>');
-        if(arr.barra.cambio.length == 0) 
-            $('#barChart').html('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;">No existen datos</div>');
-        if(arr.torta.length == 0) 
-            $('#donutChart').html('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;">No existen datos</div>');
+            $('#donutChart').html('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;" class="Montserrat"><i class="fa fa-exclamation-circle fa-2x" style="margin-right: 10px;"></i>No existen datos</div>');
+        if(arr.cantidadLinea == 0) {
+            $('.fondo').append('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;" class="Montserrat"><i class="fa fa-exclamation-circle fa-2x" style="margin-right: 10px;"></i>No existen datos</div>');
+            $('.fondo2').append('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;" class="Montserrat"></div>');
+        /*if(arr.cantidadSemanasConResultados == 0)
+            $('.sinResultados').append('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;" class="Montserrat"><i class="fa fa-exclamation-circle fa-2x" style="margin-right: 10px;"></i>No existen datos</div>');*/
+        }
     },
     complete: function(){
         $('.loader').remove();
@@ -94,6 +97,7 @@ function ajaxHours(hora, opcion) {
         dataType: 'json',
         cache: false,
         success: function(arr) {
+            console.log()
             var res = json2array(arr);
             if(res[4] == 0) {
                 line('#chartLineSticky', true, true, {labels: res[0], series: [res[1],res[2]]}, '°', false);
@@ -116,10 +120,17 @@ function ajaxHistorical(weeks) {
         dataType: 'json',
         cache: false,
         success: function(arr) {
+            var string = 'OTRO MES Y AÑO\n';
+            $.each(arr.semanas,function(i,v){
+                string += ' [Semana'+arr.semanas[i]['week']+']Se muestra:'+arr.semanas[i]['available']+' Inicio:'+arr.semanas[i]['startWeek']+' Fin:'+arr.semanas[i]['endWeek']+'\n';
+            });
+            console.log(string);
             var res = json2array(arr);
             lineHistorical('#chart1', {labels: res[0]['semanas'],series: [res[0]['pGpf'],res[0]['pGpt']]},false, 'Semanas', -10);
             lineHistorical('#chart2', {labels: res[0]['semanas'],series: [res[0]['pApf'],res[0]['pApt']]},false, 'Semanas', -10);
             lineHistorical('#chart3', {labels: res[0]['semanas'],series: [res[0]['pTre']]},true, 'Semanas', 10);
+            /*if(arr.cantidadSemanasConResultados == 0)
+                $('.sinResultados').append('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;" class="Montserrat"><i class="fa fa-exclamation-circle fa-2x" style="margin-right: 10px;"></i>No existen datos</div>');*/
         },
         error: function(xhr) {console.log(xhr.responseText);}
     }); 
@@ -197,6 +208,15 @@ function line(idChart, axisShowY, axisShowX, data, unidad, fullwidth, grafico) {
     var options = {
         lineSmooth: Chartist.Interpolation.cardinal({tension: 0.2}),
         axisY: {showLabel: axisShowY,labelInterpolationFnc: function(value) {return value + unidad;}},
+        axisX: {labelInterpolationFnc: function(value){ 
+                        var parseString = value.toString(); 
+                        var split = parseString.split(".");
+                        if(split[1] == undefined)
+                            return split+"'";
+                        else 
+                            return split[0]+"' s/d";
+                    }
+        },
         fullWidth: fullwidth}
     var chart = new Chartist.Line(idChart, data, options);
     chart.on('draw', function(data) {
@@ -326,8 +346,8 @@ function weeksInYear(year) {
 function a(weeks) {
     if(weeks[0].available == false) {
         beforeMonth = moment().subtract('1','months').format('MMM');
-        beforeYear = moment().subtract('1','years').format('YYYY');
-        newWeeks = returnWeeksRangesAvailable(parseInt(beforeYear),beforeMonth);
+        //beforeYear = moment().subtract('1','years').format('YYYY');
+        newWeeks = returnWeeksRangesAvailable(2017,beforeMonth);
         return newWeeks;
     }
     else {

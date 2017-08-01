@@ -2,17 +2,20 @@
     if(isset($_GET['token'])) {
         $token = $_GET['token'];
         include ('php/raiz.php');
-        if(!(strlen($token) == 65 and (substr($token, -1) == 'c' or substr($token, -1) == 's'))) 
+        if(!(strlen($token) == 65 and (substr($token, -1) == 'c' or substr($token, -1) == 's'))) {
             header('Location: '.raiz());
+        }
         else {
             include ('php/funciones.php');
             $datos = valida($token,substr($token,-1));
-            if($datos['cantidadToken'] == 0)
+            if($datos['cantidadToken'] == 0) {
                 header('Location: '.raiz());
+            }
         }
     }
-    else
+    else {
         header('Location: '.raiz());
+    }
 ?>
 <!DOCTYPE html>
 <html>

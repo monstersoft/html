@@ -67,8 +67,8 @@
                                 <div class="dropdown pull-right">
                                     <div class="btn dropdown-toogle" style="background-color: white;" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></div>
                                     <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a id="'.$value['idZona'].'" class="editarZona"><i class="fa fa-pencil pull-left"></i><div class="aAction">Editar</div></a></li>
-                                        <li><a id="'.$value['idZona'].'" class="eliminarZona"><i class="fa fa-trash pull-left"></i><div class="aAction">Eliminar</div></a></li>
+                                        <li><a id="'.$value['idZona'].'" class="editarZona"><i class="fa fa-pencil pull-left"></i><div class="aAction">editar</div></a></li>
+                                        <li><a id="'.$value['idZona'].'" class="eliminarZona"><i class="fa fa-trash pull-left"></i><div class="aAction">eliminar</div></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -140,8 +140,8 @@
                         </div>
                     </form>
                     <div class="clearfix">
-                        <button type="submit" class="btn btn-primary pull-right montserrat" id="btnAñadirZona"><i class="cargar fa fa-plus"></i>Agregar</button>
-                        <button type="button" class="btn btn-default pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                        <button type="submit" class="btn btn-primary pull-right" id="btnAñadirZona"><i class="cargar fa fa-plus"></i>Agregar</button>
+                        <button type="button" class="btn btn-default pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
                 </div>
@@ -169,8 +169,8 @@
                             </div>
                         </form>
                         <div class="clearfix">
-                            <button type="submit" class="btn btn-primary pull-right montserrat" id="btnEditarZona"><i class="cargar fa fa-pencil"></i>Editar</button>
-                            <button type="button" class="btn btn-default pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                            <button type="submit" class="btn btn-primary pull-right" id="btnEditarZona"><i class="cargar fa fa-pencil"></i>Editar</button>
+                            <button type="button" class="btn btn-default pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                         </div>
                         <div class="message" style="margin: 15px 0px 0px 0px"></div>
                         <div class="messageError" style="margin: 15px 0px 0px 0px"></div>
@@ -200,8 +200,8 @@
                         </div>
                     </form>
                     <div class="clearfix">
-                        <button type="submit" class="btn btn-primary pull-right montserrat" id="btnAñadirSupervisor"><i class="cargar fa fa-plus"></i>Agregar</button>
-                        <button type="button" class="btn btn-default pull-right montserrat cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
+                        <button type="submit" class="btn btn-primary pull-right" id="btnAñadirSupervisor"><i class="cargar fa fa-plus"></i>Agregar</button>
+                        <button type="button" class="btn btn-default pull-right cancelar" data-dismiss="modal"><i class="fa fa-times"></i>Cerrar</button>
                     </div>
                     <div class="message" style="margin: 15px 0px 0px 0px"></div>
                 </div>
@@ -215,7 +215,7 @@
                 <div class="modal-header">
                     <i class="fa fa-globe"></i>Eliminar Zona
                 </div>
-                <div class="modal-body montserrat"> ¿Estás seguro que quieres eliminar esta zona? , se borrarán todos los datos asociados a ella.
+                <div class="modal-body"> ¿Estás seguro que quieres eliminar esta zona? , se borrarán todos los datos asociados a ella.
                     <form id="formularioEliminarZona">
                         <div class="form-group" style="display: none;">
                             <label>ID ZONA</label>
@@ -238,7 +238,7 @@
                 <div class="modal-header">
                     <i class="fa fa-globe"></i>Desvincular Supervisor
                 </div>
-                <div class="modal-body"> <div class="montserrat text-center">¿Estás seguro que quieres desvincular a este supervisor de esta zona?</div>
+                <div class="modal-body"> <div class="text-center">¿Estás seguro que quieres desvincular a este supervisor de esta zona?</div>
                     <form id="formularioDesvincularSupervisor">
                         <div style="display: none;" class="form-group">
                             <label>ID ZONA</label>
