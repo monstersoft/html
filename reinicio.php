@@ -25,10 +25,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="theme-color" content="#262626" />
         <title>Machine Monitors</title>
-        <link rel="stylesheet" href="../recursos/semantic/semantic.css">
-        <link rel="stylesheet" href="../recursos/toast/toast.css">
-        <link rel="stylesheet" href="../recursos/awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../css/index.css">
+        <link rel="stylesheet" href="recursos/semantic/semantic.css">
+        <link rel="stylesheet" href="recursos/toast/toast.css">
+        <link rel="stylesheet" href="recursos/awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
         <div class="ui aligned center aligned grid">
@@ -73,14 +73,14 @@
                 </form>
             </div>
         </div>
-        <script src="../recursos/jquery/jquery.min.js"></script>
-        <script src="../recursos/semantic/semantic.min.js"></script>
-        <script src="../recursos/toast/toast.js"></script>
-        <script src="../recursos/hammer/hammer.min.js"></script>
-        <script src="../js/funciones.js"></script>
-        <script src="../js/raiz.js"></script>
-        <script src="../js/compruebaInputs.js"></script>
-        <script src="../js/mensajes.js"></script>
-        <script src="../js/validaReinicio.js"></script>
+        <script src="recursos/jquery/jquery.min.js"></script>
+        <script src="recursos/semantic/semantic.min.js"></script>
+        <script src="recursos/toast/toast.js"></script>
+        <script src="recursos/hammer/hammer.min.js"></script>
+        <script src="js/funciones.js"></script>
+        <script src="js/raiz.js"></script>
+        <script src="js/compruebaInputs.js"></script>
+        <script src="js/mensajes.js"></script>
+        <script src="js/validaReinicio.js"></script>
     </body>
 </html>
