@@ -21,7 +21,7 @@
                     </div>
                 </h2>
                 <h1 class="titulo montserrat cent"><i class="fa fa-exclamation-circle" style="margin-right: 20px;"></i>ERROR 404</h1>
-                <h4 class="montserrat cent" style="color: white;">Page not found</h4>
+                <h4 class="montserrat cent" style="color: white;">Página no encontrada</h4>
             </div>
         </div>
         <script src="http://www.mmonitors.com/recursos/jquery/jquery.min.js"></script>
