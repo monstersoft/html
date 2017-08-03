@@ -27,7 +27,7 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="at icon"></i>
-                                <input type="text" id="txtCorreo" placeholder="Correo electrónico">
+                                <input type="text" id="txtCorreo" placeholder="(*) Correo electrónico">
                             </div>
                         </div>
                         <div id="btnReestablecer" style="background: #262626;" class="ui fluid large submit button montserrat"><i class="fa fa-send" style="margin-right: 10px;"></i>Enviar correo</div>
