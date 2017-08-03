@@ -38,8 +38,11 @@
             foreach($fileContent[$key] as $k => $r) {
                     $aux[$k] = $r['hora'];
             }
-            if(sizeof($fileContent[$key]) > 1)
+            $tam = sizeof($fileContent[$key]); 
+            if($tam > 2) {
                 array_multisort($aux, SORT_ASC, $fileContent[$key]);
+                array_push($arr,array('patente' => $key, 'tam' => sizeof($fileContent[$key]), 'ordeno' => 'si'));
+            }
         }
         //CALCULAMOS LOS PROMEDIOS Y LA DISTANCIA RECORRIDA ENTRE LA HORA ANTERIOR Y POSTERIOR, SE ALMACENA EN EL ARREGLO RESULTADOS
         foreach($fileContent as $key => $value) {

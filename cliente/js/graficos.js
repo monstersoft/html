@@ -57,6 +57,7 @@ $.ajax({
         $('.loader').html('<i class="fa fa-refresh fa-spin fa-2x" style="color: #F5A214;opacity: 0.5;"></i>');
     },
     success: function(arr) {
+        console.log(arr);
         var string = 'AL CARGAR LA PAGINA\n';
         $.each(arr.semanas,function(i,v){
             string += ' [Semana'+arr.semanas[i]['week']+']Se muestra:'+arr.semanas[i]['available']+' Inicio:'+arr.semanas[i]['startWeek']+' Fin:'+arr.semanas[i]['endWeek']+'\n';
@@ -76,7 +77,7 @@ $.ajax({
             $('#barChart').html('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;" class="Montserrat"><i class="fa fa-exclamation-circle fa-2x" style="margin-right: 10px;"></i>No existen datos</div>');
         if(arr.torta.length == 0) 
             $('#donutChart').html('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;" class="Montserrat"><i class="fa fa-exclamation-circle fa-2x" style="margin-right: 10px;"></i>No existen datos</div>');
-        if(arr.cantidadLinea == 0) {
+        if(arr.cantidadTotalDatos == 0) {
             $('.fondo').append('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;" class="Montserrat"><i class="fa fa-exclamation-circle fa-2x" style="margin-right: 10px;"></i>No existen datos</div>');
             $('.fondo2').append('<div style="text-align: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; -ms-display: flex; display: flex; align-items: center; justify-content: center;" class="Montserrat"></div>');
         /*if(arr.cantidadSemanasConResultados == 0)

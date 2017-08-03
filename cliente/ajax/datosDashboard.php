@@ -13,6 +13,9 @@
     $cantidadLinea = 0;
     $c = conectar();
     $a = array();
+    $qr = "SELECT COUNT(datos.idDato) AS cantidad FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente'";
+    $t1 = mysqli_query($c,$qr);
+    $t2 = mysqli_fetch_assoc($t1);
     $q = "SELECT DATE_FORMAT(datos.hora, '%i') AS hora, datos.gradosPalaFrontal, datos.gradosPalaTrasera, datos.alturaPalaFrontal, datos.alturaPalaTrasera FROM datos WHERE datos.idArchivo = '$idArchivo' AND datos.patente = '$patente' AND datos.hora BETWEEN '08:00:00' AND '08:59:00'";
     if($res = mysqli_query($c,$q)) {
         $linea2 = array('hora' => array(), 'gradosPalaFrontal' => array(), 'gradosPalaTrasera' => array(), 'alturaPalaFrontal' => array(), 'alturaPalaTrasera' => array());
@@ -86,6 +89,7 @@
     $a['cantidadLinea'] = $cantidadLinea;
     $a['cantidadSemanasConResultados'] = $cantidadSemanasConResultados;
     $a['cantidadSemanasSinResultados'] = $cantidadSemanasSinResultados;
+    $a['cantidadTotalDatos'] = $t2['cantidad'];
     echo json_encode($a);
     function completaConCeros($minuto, $gradosPalaFrontal, $gradosPalaTrasera, $alturaPalaFrontal, $alturaPalaTrasera, $arr) {
         for($i = sizeof($arr['hora']); $i < $minuto; $i++) {
