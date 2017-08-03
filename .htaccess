@@ -1,5 +1,5 @@
 Options -Indexes
 RewriteEngine On
-ErrorDocument 403 /public/errores/403.php
-ErrorDocument 404 /public/errores/404.php
-ErrorDocument 500 /public/errores/500.php
+ErrorDocument 403 /http://www.mmonitors.com/public/errores/403.php
+ErrorDocument 404 /http://www.mmonitors.com/public/errores/404.php
+ErrorDocument 500 /http://www.mmonitors.com/public/errores/500.php
