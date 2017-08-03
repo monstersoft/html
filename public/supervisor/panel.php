@@ -120,15 +120,15 @@
                     <div class="modal-body">
                         <form id="formularioAgregarMaquina">
                             <div class="form-group">
-                                <label>Patente</label>
+                                <label>Patente (*)</label>
                                 <input type="text" placeholder="ABCDEF" class="form-control" name="patente" id="patenteAgregarMaquina">
                             </div>
                             <div class="form-group">
-                                <label>Tara [kg]</label>
+                                <label>Tara [kg] (*)</label>
                                 <input type="text" placeholder="1000" class="form-control" name="tara" id="taraAgregarMaquina">
                             </div>
                             <div class="form-group">
-                                <label>Carga Máxima [kg]</label>
+                                <label>Carga Máxima [kg] (*)</label>
                                 <input type="text" placeholder="1000" class="form-control" name="carga" id="cargaAgregarMaquina">
                             </div>
                             <div class="form-group" style="display: none;">
@@ -153,11 +153,11 @@
                     <div class="modal-body">
                         <form id="formularioSubirArchivo" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label>Seleccionar fecha de datos</label>
+                                <label>Seleccionar fecha de datos (*)</label>
                                 <input type="text" placeholder="2017-03-03" class="datepicker form-control" name="fechaDatos" id="fechaDatos">
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Seleccionar Archivo</label>
+                                <label class="control-label">Seleccionar Archivo (*)</label>
                                 <input type="file" class="file" name="archivo" id="archivoSubirArchivo" data-show-preview="false" data-show-upload="false" data-show-remove="false">
                             </div>
                             <div class="form-group" style="display: none;">

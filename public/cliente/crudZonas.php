@@ -134,7 +134,7 @@
                 <div class="modal-body">
                     <form id="formularioAgregarZona">
                         <div class="form-group">
-                            <label>Nombre</label>
+                            <label>Nombre (*)</label>
                             <input type="text" placeholder="Nueva Zona" class="form-control" name="nombre" id="nombreAgregarZona">
                         </div>
                         <div class="form-group" style="display: none;">
@@ -189,15 +189,15 @@
                 <div class="modal-body">
                     <form id="formularioAgregarSupervisor">
                         <div class="form-group">
-                            <label>Nombre</label>
+                            <label>Nombre (*)</label>
                             <input type="text" placeholder="Nuevo Supervisor" class="form-control" name="nombre" id="nombreAgregarSupervisor">
                         </div>
                         <div class="form-group">
-                            <label>Correo</label>
+                            <label>Correo (*)</label>
                             <input type="text" placeholder=". . . . . . . . @ . . . . . . . ." class="form-control" name="correo" id="correoAgregarSupervisor">
                         </div>
                         <div class="form-group">
-                            <label for="zonas" class="control-label">Zonas Asociadas</label>
+                            <label for="zonas" class="control-label">Zonas Asociadas (*)</label>
                             <select id="zonasAsociadas" name="zonasAsociadas[]" class="form-control select2-multiple" multiple>
                             </select>
                         </div>

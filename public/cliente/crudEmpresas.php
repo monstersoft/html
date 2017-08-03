@@ -97,20 +97,20 @@
                 <div class="modal-body">
                     <form id="formularioAgregarEmpresa">
                         <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" placeholder="(*) Empresa" class="form-control" name="nombre" id="nombreAgregarEmpresa">
+                            <label>Nombre (*)</label>
+                            <input type="text" placeholder="Empresa" class="form-control" name="nombre" id="nombreAgregarEmpresa">
                         </div>
                         <div class="form-group">
-                            <label for="rut">Rut</label>
-                            <input type="text" placeholder="(*) 17286211-K" class="form-control" name="rut" id="rutAgregarEmpresa">
+                            <label for="rut">Rut (*)</label>
+                            <input type="text" placeholder="17286211-K" class="form-control" name="rut" id="rutAgregarEmpresa">
                         </div>
                         <div class="form-group">
-                            <label for="email">Correo</label>
-                            <input type="text" placeholder="(*) . . . . . @ . . . . . " class="form-control" name="email" id="emailAgregarEmpresa">
+                            <label for="email">Correo (*)</label>
+                            <input type="text" placeholder=". . . . . @ . . . . . " class="form-control" name="email" id="emailAgregarEmpresa">
                         </div>
                         <div class="form-group">
-                            <label for="celular">Celular</label>
-                            <input type="text" placeholder="(*) 995007812" class="form-control join-form" name="celular" id="celularAgregarEmpresa">
+                            <label for="celular">Celular (*)</label>
+                            <input type="text" placeholder="995007812" class="form-control join-form" name="celular" id="celularAgregarEmpresa">
                         </div>
                     </form>
                     <div class="clearfix">
