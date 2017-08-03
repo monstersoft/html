@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+.cent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+/* AUX */
+.borde {
+    border: 1px solid red;
+}
+.montserrat {
+    font-family: 'Montserrat', fantasy;
+}
+
+.capa {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    overflow: hidden;
+}
+/* CARD */
+.card {
+    padding: 5px;
+}
+.titleCard {
+    border-bottom: 1px solid #D4D4D5;
+    padding: 10px 10px 0px 10px;
+    height: 45px;
+    
+}
+.titleCard p {
+    color: #262626;
+    font-size: 15px;
+    margin-left: 10px;
+    display: inline;
+    margin-bottom: 0px;
+    position: absolute;
+    padding-top: 5px;
+    font-weight: bold;
+    font-family: 'Montserrat';
+}
+.titleCard > i {
+    color: #F5A214;
+    font-size: 20px;
+}
+.cardContent {
+	padding: 0px;
+}
+.shadow {
+    border-top: 1px solid #D4D4D5;
+    border-left: 1px solid #D4D4D5;
+    border-right: 1px solid #D4D4D5;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #D4D4D5;
+}
+.shadowButtonDown {
+    border-top: 1px solid #D4D4D5;
+    border-left: 1px solid #D4D4D5;
+    border-right: 1px solid #D4D4D5;
+    background-color: #FFFFFF;
+}
+ /*DROPDOWN */
+.aAction {
+    text-align: right;
+}
+/* BUTTON LONG DOWN CARD */
+.boton {
+    background: rgb(224, 225, 226);
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    outline-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+    font-family: 'Montserrat';
+}
+.boton:hover {
+    text-decoration: none;
+    background-color: rgba(0,0,0,0.2);
+    color: rgba(0, 0, 0, 0.87);
+}
+/* MODALS */
+.modal-header {
+    position: relative;
+    padding: 20px 20px 10px 20px;
+    font-family: 'Montserrat', fantasy;
+}
+.modal-body label {
+    font-family: 'Montserrat', fantasy;
+}
+.modal-header > i {
+    float: right;
+}
+.modal-header {
+    display: block;
+    margin: 0px;
+    font-size: 20px;
+}
+
+.message {
+    font-family: 'Montserrat', fantasy;
+}
+.clearfix .btn-default {
+    margin-right: 20px;
+}
+.clearfix button i {
+    margin-right: 10px;
+}
+
+/* CONTENT */
+#content {
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    overflow-y: auto;
+}
+.leftContent {
+    left: 250px;
+}
+.unLeftContent {
+    left: 0px;
+}
+/* STICKY BUTTON */
+.sButton {
+    position: fixed;
+    width: 45px;
+    height: 45px;
+    /*border-radius: 5px;*/
+    color: white;
+    background: #F5A214;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 3px 6px #666; 
+}
+.sButton i {
+    font-size: 20px;
+}
+.sButton:hover {
+    cursor: pointer;
+    background: #262626;
+    -moz-transition: .4s linear;
+    -webkit-transition: .4s ease-out;
+    transition: .4s linear;
+}
+.sPlus {
+    bottom: 10px;
+    right: 10px;
+}
+.sOne {
+    bottom: 60px;
+    right: -45px;
+    transition: all 0.5s;
+}
+.sTwo {
+    bottom: 110px;
+    right: -45px;
+    transition: all 0.6s;
+}
+.displaySticky {
+    right: 10px;
+}
+.displayBlock {
+    display: block;
+}
+.displayNone {
+    display: none;
+}
+/* BACKGROUND OPACITY MENU*/
+.shadowDisplay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.7);
+}
+.mBottom15 {
+    margin-bottom: 15px;
+}
+.mTop15 {
+    margin-top: 15px;
+}
+.emptyMessage {
+    font-family: 'Montserrat';
+    padding: 20px;
+    text-align: center;
+}
+
+
