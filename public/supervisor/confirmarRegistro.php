@@ -19,7 +19,7 @@
             <div class="margen column">
                 <h2 class="ui icon header">
                     <i class="settings icon" style="color: #F5A214;"></i>
-                    <div class="content" style="color: white;">
+                    <div class="content montserrat" style="color: white;">
                     	Machine Monitors
                         <div class="sub header" style="color: white;">Plan de vigilancia de maquinaria pesada</div>
                     </div>
