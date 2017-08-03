@@ -149,7 +149,7 @@
         }
     }
     function isCsv($fileType,&$msg) {
-        if($fileType == 'application/vnd.ms-excel') return true;
+        if($fileType == 'application/vnd.ms-excel' or $fileType == 'text/comma-separated-values') return true;
         else {
             $msg[] = 'El archivo no está en formato CSV';
             return false;

@@ -1,5 +1,6 @@
 var exito = 0;
 $('.modalAgregarZona').on('click','#btnVolverAñadir',function(){
+    $('#formularioAgregarZona')[0].reset();
     $('.alert').remove();
     $('#btnVolverAñadir').removeClass('btn-success').addClass('btn-primary').attr('id','btnAñadirZona').html('<i class="cargar fa fa-plus"></i> Agregar');
 });
