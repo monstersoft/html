@@ -1,5 +1,4 @@
 <?php
-    sleep(1);
 	include('../../php/conexion.php'); 
 	$idSupervisor = $_POST['idSupervisor'];
 	$nuevo = $_POST['nuevoPassword'];

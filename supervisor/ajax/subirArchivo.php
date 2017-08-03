@@ -1,6 +1,6 @@
 <?php
 	include ('../../php/conexion.php');
-    set_time_limit(1200);
+    //set_time_limit(1200);
     $arr = array('msg' => array(), 'nameDateMatch' => false, 'insertData' => false);
 	$con = conectar();
 	$dateData = $_POST['fechaDatos'];
