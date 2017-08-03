@@ -214,6 +214,12 @@
         </script>
         <script>
             $('.datepicker').pickadate({
+                onOpen: function(){
+                    $(document.activeElement).blur();
+                },
+                onClose: function(){
+                    $(document.activeElement).blur();
+                },
                 onStart: function() {
                     $('.picker').appendTo('body').css('font-family','"Montserrat"');
                 },
