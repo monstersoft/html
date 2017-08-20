@@ -11,7 +11,7 @@
         // 2 = client and server messages
         $e->SMTPDebug = 1;
         $e->Host = 'smtp.gmail.com';
-        $e->Port = 587;
+        $e->Port = 465;
         $e->SMTPSecure = 'tls';
         $e->SMTPAuth = true;
         $e->Username = "mmonitors17@gmail.com";
@@ -22,5 +22,5 @@
         $e->MsgHTML('<h1>Hola</h1>');
         if ($e->send())
             $arr = true;
-        echo $e->ErrorInfo;
+        print_r ($e->ErrorInfo);
 ?>
