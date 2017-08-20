@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="theme-color" content="#262626"/>
         <title>Machine Monitors</title>
-        <link rel="stylesheet" href="http://www.mmonitors.com/recursos/semantic/semantic.css">
-        <link rel="stylesheet" href="http://www.mmonitors.com/css/index.css">
+        <link rel="stylesheet" href="http://localhost/html/recursos/semantic/semantic.css">
+        <link rel="stylesheet" href="http://localhost/html/css/index.css">
     </head>
     <body>
         <div class="ui aligned center aligned grid">
@@ -23,7 +23,7 @@
                 <h4 class="montserrat" style="color: white;">Acceso no autorizado</h4>
             </div>
         </div>  
-        <script src="http://www.mmonitors.com/recursos/jquery/jquery.min.js"></script>
-        <script src="http://www.mmonitors.comrecursos/semantic/semantic.min.js"></script>
+        <script src="http://localhost/html/recursos/jquery/jquery.min.js"></script>
+        <script src="http://localhost/html/recursos/semantic/semantic.min.js"></script>
     </body>
 </html>
