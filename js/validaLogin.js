@@ -12,7 +12,7 @@ $('#btnLogin').click(function(){
             if(correo == '')
                 msg({mensaje: 'Correo es requerido para inciar sesión',titulo: 'Campo Vacío',accion: 'negative'});
             else {
-                if(!expresion.test(correo)) 
+                if(!expresion.test(correo))
                     msg({mensaje: 'Correo no está en un formato adecuado',titulo: 'Error de formato'});
             }
             if(pass == '')
@@ -28,14 +28,16 @@ $('#btnLogin').click(function(){
             if(!expresion.test(correo) && (pass.length < 6 || pass.length >12))
                 msg({mensaje: 'Correo no está en un formato adecuado<br>Contraseña debe tener mínimo 6 y máximo 12 caracteres',titulo: 'Errores de formato',accion: 'warning'});
             else {
-                if(!expresion.test(correo))  
+                if(!expresion.test(correo))
                     msg({mensaje: 'Correo no está en un formato adecuado',titulo: 'Error de formato',accion: 'warning'});
                 if(pass.length < 6 || pass.length >12)
                     msg({mensaje: 'Contraseña debe tener mínimo 6 y máximo 12 caracteres',titulo: 'Error de formato',accion: 'warning'});
             }
         }
         else {
-            $.ajax({                  
+            var a = devuelveUrl('ajax/compruebaLogin.php');
+            alert('pagina es: 'a);
+            $.ajax({
             url: devuelveUrl('ajax/compruebaLogin.php'),
             data: {txtCorreo: correo, txtPassword: pass},
             type: "POST",
@@ -89,4 +91,3 @@ function msg(mensaje) {
 	if(mensaje.accion == 'errorAjax')
 		toast('<div class="ui mini icon message"><i class="fa fa-bomb fa-3x"></i><i class="cerrar close icon"></i><div class="content"><div class="header">'+mensaje.titulo+'</div>'+mensaje.mensaje+'</div>',2000);
 }
-
