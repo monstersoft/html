@@ -9,7 +9,7 @@
 	$mail->addCustomHeader('X-SES-CONFIGURATION-SET', 'ConfigSet');
 	$mail->Host = 'ec2-34-211-242-250.us-west-2.compute.amazonaws.com';
 	$mail->SMTPDebug = 2;
-	$mail->Port = 587;
+	$mail->Port = 487;
 	$mail->Subject = 'Amazon SES test (SMTP interface accessed using PHP)';
 	$mail->Body = '<h1>Email Test</h1>
 	    <p>This email was sent through the 
