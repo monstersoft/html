@@ -83,7 +83,7 @@
         $e->SMTPSecure = 'tls';
         $e->SMTPAuth = true;
         $e->Username = "mmonitors17@gmail.com";
-        $e->Password = "Monsterinc2";
+        $e->Password = "Monsterinc3";
         $e->FromName = "Machine Monitors";
         $e->addAddress($emailSupervisor);
         $e->Subject = 'Reestablecer Contraseña';
