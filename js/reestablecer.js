@@ -21,11 +21,11 @@ $('#btnReestablecer').click(function() {
                 $('#btnReestablecer i').removeClass('fa-send').addClass('fa-cog fa-spin');
             },
             success: function(arreglo) {
-                if(arreglo.exito == true) {
+                if(arreglo.existeCorreo == true) {
                     if(arreglo.mailEnviado == true)
                         successUi('Envío de mail con éxito','Debes revisar tu correo electrónico para reestablecer tu contraseña');
                     else
-                        errorUi('<div class="item">El correo no pudo ser enviado, debes comunicarte con el administrador dele sistema o verificar tu conexión</div>');
+                        errorUi('<div class="item">El correo no pudo ser enviado, debes comunicarte con el administrador del sistema o verificar tu conexión</div>');
                 }
                 else
                     errorUi('<div class="item">El correo no está registrado en el sistema</div>');
