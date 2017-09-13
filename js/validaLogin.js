@@ -36,7 +36,6 @@ $('#btnLogin').click(function(){
         }
         else {
             var a = devuelveUrl('ajax/compruebaLogin.php');
-            alert('pagina es: 'a);
             $.ajax({
             url: devuelveUrl('ajax/compruebaLogin.php'),
             data: {txtCorreo: correo, txtPassword: pass},
