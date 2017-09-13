@@ -15,7 +15,7 @@
     $mail->setFrom('plandevigilancia@gmail.com', 'Machine Monitors');
     $mail->addAddress('pavillanueva@ing.ucsc.cl', 'John Doe');
     $mail->Subject = 'PHPMailer GMail SMTP test';
-    $mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
+    $mail->msgHTML('<h1>Al fin !</h1>');
     $mail->AltBody = 'This is a plain-text message body';
     if (!$mail->send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
