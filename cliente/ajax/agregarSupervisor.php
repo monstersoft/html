@@ -15,7 +15,7 @@
 			$arreglo['exito'] = 0;
     }
     else {
-        $consulta = "INSERT INTO supervisores (nombreSupervisor,correoSupervisor,password,celular,status) VALUES ('$nombre','$email',null,null,2)";
+        $consulta = "INSERT INTO supervisores (nombreSupervisor,correoSupervisor,password,celular,status) VALUES ('$nombre','$email',null,null,2,'')";
         if(mysqli_query($conexion,$consulta)) {
             $ultimoId = mysqli_insert_id($conexion);
             $link = raiz().'public/supervisor/confirmarRegistro.php?id='.$ultimoId;
