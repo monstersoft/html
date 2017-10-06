@@ -1,25 +1,25 @@
 <?php
-    include ('php/conexion.php');
-    include ('php/raiz.php');
-	include ('recursos/mailer/PHPMailerAutoload.php');
-    $mail = new PHPMailer;
-    $mail->isSMTP();
-    $mail->SMTPDebug = 2;
-    $mail->Host = 'smtp.gmail.com';
-    // $mail->Host = gethostbyname('smtp.gmail.com');
-    $mail->Port = 587;
-    $mail->SMTPSecure = 'tls';
-    $mail->SMTPAuth = true;
-    $mail->Username = "plandevigilancia@gmail.com";
-    $mail->Password = "Monsterinc2";
-    $mail->setFrom('plandevigilancia@gmail.com', 'Machine Monitors');
-    $mail->addAddress('pavillanueva@ing.ucsc.cl', 'John Doe');
-    $mail->Subject = 'PHPMailer GMail SMTP test';
-    $mail->msgHTML('<h1>Al fin !</h1>');
-    $mail->AltBody = 'This is a plain-text message body';
-    if (!$mail->send()) {
-        echo "Mailer Error: " . $mail->ErrorInfo;
-    } else {
-        echo "Message sent!";
-    }
+    include 'recursos/mailer/PHPMailerAutoload.php';
+    $arr = false;
+    date_default_timezone_set('Etc/UTC');
+    $e = new PHPMailer;
+    $e->isSMTP();
+    $e->CharSet = 'UTF-8';
+    //Enable SMTP debugging
+    // 0 = off (for production use)
+    // 1 = client messages
+    // 2 = client and server messages
+    $e->SMTPDebug = 2;
+    $e->Host = 'smtp.gmail.com';
+    $e->Port = 587;
+    $e->SMTPSecure = 'tls';
+    $e->SMTPAuth = true;
+    $e->Username = "machinemonitors2017@gmail.com";
+    $e->Password = "Monsterinc2";
+    $e->FromName = "Machine Monitors";
+    $e->addAddress($emailSupervisor);
+    $e->Subject = 'Registro de Supervisores';
+    $e->MsgHTML('<h1>Hello</h1>');
+    if ($e->send()) echo 'Email enviado !';
+    else echo 'Fail !'.'<table>'.$e->ErrorInfo.'</table>';
 ?>
