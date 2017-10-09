@@ -22,7 +22,7 @@
         $e->Username = $_SESSION['datos']['mailMachineMonitors'];
         $e->Password = "Monsterinc2";
         $e->From = $_SESSION['datos']['mailMachineMonitors'];
-        $e->FromName = "Machine Monitors"; 
+        $e->FromName = "Machine Monitors";
         $e->addAddress($_SESSION['datos']['mailMachineMonitors']);
         $e->Subject = 'Soporte Cliente: '.$usuario;
         $e->MsgHTML('<!DOCTYPE html>
