@@ -1,4 +1,5 @@
 <?php
+    define("MAIL_MACHINEMONITORS","machinemonitors2017@gmail.com");
     include("../php/conexion.php");
     $datos = array();
     $correo = $_POST['txtCorreo'];
@@ -10,6 +11,7 @@
         if($arreglo['esCliente'] == true) {
             $respuesta = iniciaSesionCliente($correo,$password);
             if($respuesta['error'] == false) {
+                $respuesta['mailMachineMonitors'] = MAIL_MACHINEMONITORS;
                 session_start();
                 $_SESSION['datos'] = $respuesta;
             }
@@ -17,6 +19,7 @@
         if($arreglo['esSupervisor'] == true) {
             $respuesta = iniciaSesionSupervisor($correo,$password);
             if($respuesta['error'] == false) {
+                $respuesta['mailMachineMonitors'] = MAIL_MACHINEMONITORS;
                 session_start();
                 $_SESSION['datos'] = $respuesta;
             }

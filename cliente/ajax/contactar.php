@@ -19,9 +19,11 @@
         $e->Port = 587;
         $e->SMTPSecure = 'tls';
         $e->SMTPAuth = true;
-        $e->Username = "mmonitors17@gmail.com";
+        $e->Username = $_SESSION['datos']['mailMachineMonitors'];
         $e->Password = "Monsterinc2";
-        $e->addAddress('mmonitors17@gmail.com');
+        $e->From = $_SESSION['datos']['mailMachineMonitors'];
+        $e->FromName = "Machine Monitors"; 
+        $e->addAddress($_SESSION['datos']['mailMachineMonitors']);
         $e->Subject = 'Soporte Cliente: '.$usuario;
         $e->MsgHTML('<!DOCTYPE html>
                                     <html>
