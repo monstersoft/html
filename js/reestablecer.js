@@ -21,6 +21,7 @@ $('#btnReestablecer').click(function() {
                 $('#btnReestablecer i').removeClass('fa-send').addClass('fa-cog fa-spin');
             },
             success: function(arreglo) {
+                console.log(JSON.stringify(arreglo));
                 if(arreglo.existeCorreo == true) {
                     if(arreglo.mailEnviado == true)
                         successUi('Envío de mail con éxito','Debes revisar tu correo electrónico para reestablecer tu contraseña');
