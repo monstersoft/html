@@ -14,7 +14,7 @@ $('body').on('click','#btnEnviar',function() {
         arreglo.push('<li>Mensaje debe tener máximo 2000 caracteres</li>');
     if(arreglo.length == 0) {
         $.ajax({                  
-            url: devuelveUrl('cliente/ajax/contactar.php'),
+            url: devuelveUrl('supervisor/ajax/contactar.php'),
             data: $('#formularioEnviar').serialize(),
             type: "POST",
             dataType: "json",
