@@ -101,8 +101,8 @@
         $e->Port = 587;
         $e->SMTPSecure = 'tls';
         $e->SMTPAuth = true;
-        $e->Username = "mmonitors17@gmail.com";
-        $e->Password = "Monsterinc3";
+        $e->Username = "machinemonitors2017@gmail.com";
+        $e->Password = "FUCKSociety17";
         $e->FromName = "Machine Monitors";
         $e->addAddress($emailSupervisor);
         $e->Subject = 'Registro de Supervisores';
