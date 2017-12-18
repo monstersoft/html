@@ -11,8 +11,8 @@
 <script>
     $(document).ready(function(){
         $("#descargar").click(function(){
-            var blob = new Blob(["Hello"], {type: "text/csv;charset=utf-8"});
-            saveAs(blob,"hwllo.csv");
+var file = new File(["Hello, world!"], "hello world.txt", {type: "text/plain;charset=utf-8"});
+saveAs(file);
         });
     });
 </script>
