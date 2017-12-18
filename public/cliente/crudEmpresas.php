@@ -83,8 +83,8 @@
                     </div></div>';
             }
     ?>
-    <?php echo '<div class="sButton sPlus agregarEmpresa"><div><i class="fa fa-plus"></i></div></div>'; ?>
     </div>
+    <?php echo '<div class="sButton sPlus agregarEmpresa"><div><i class="fa fa-plus"></i></div></div>'; ?>
 <!-- VENTANAS MODALES -->
     <!-- MODAL AGREGAR EMPRESA --> 
     <div class="modalAgregarEmpresa modal fade" data-backdrop="static" data-keyboard="false">
