@@ -109,6 +109,7 @@
                 }
             ?>
             <?php echo '<input id="idSupervisor" type="text" value="'.$perfil["id"].'" hidden>'; ?>
+            <?php print_r($perfil); ?>
                 <!-- ............................................................................................................................ -->
         </div>
         <!-- VENTANAS MODALES -->
