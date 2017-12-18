@@ -9,6 +9,8 @@ $('.subirArchivo').click(function(){
     $('#idSupervisorSubirArchivo').val($('#idSupervisor').val());
     $('.modalSubirArchivo').modal();
     fechaHoy();
+    alert($('#idZonaSubirArchivo'));
+    alert($('$idSupervisorSubirArchivo'));
 });
 $('.modalSubirArchivo').on('click','#btnSubirArchivo',function(){
     $('.alert').remove();
@@ -18,7 +20,6 @@ $('.modalSubirArchivo').on('click','#btnSubirArchivo',function(){
     var idZona = $('#idZonaSubirArchivo').val();
     var idSupervisor = $('#idSupervisorSubirArchivo').val();
     var numberErrors = 0;
-    alert(idSupervisor);
     if(isEmpty(fecha))
         arreglo.push('<li>Fecha es obigatorio</li>');
     if(extensions(archivo))
