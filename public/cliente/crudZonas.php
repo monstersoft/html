@@ -119,8 +119,8 @@
                 echo'</div></div>';
                 }
     ?>
-    <?php echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div><div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div><div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>'; ?>
     </div>
+    <?php echo '<div class="sButton sPlus agregar"><div><i class="fa fa-plus"></i></div></div><div id="'.$idEmpresa.'" class="sButton sOne agregarZona"><div><i class="fa fa-globe"></i></div></div><div id="'.$idEmpresa.'" class="sButton sTwo agregarSupervisor"><div><i class="fa fa-user"></i></div></div>'; ?>
  <!-- VENTANAS MODALES --> 
     <!-- MODAL AGREGAR ZONA -->
     <div class="modalAgregarZona modal fade" data-backdrop="static" data-keyboard="false">
