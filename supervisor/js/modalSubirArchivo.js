@@ -44,6 +44,7 @@ $('.modalSubirArchivo').on('click','#btnSubirArchivo',function(){
             beforeSend: function() {activarLoaderBotones('fa-upload','fa-refresh');},
             success: function(arreglo) {
                 console.log(JSON.stringify(arreglo));
+                alert(arreglo.fileInfo);
                 if(arreglo.success == true) {
                     successMessage('Subida exitosa, ','se han subido los datos a la base de datos');
                     $('#btnSubirArchivo').removeClass('btn-primary').addClass('btn-success').attr('id','btnVolverSubir').html('<i class="fa fa-repeat"></i>Subir otro');
