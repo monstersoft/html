@@ -1,25 +1,17 @@
 <?php
-    include 'recursos/mailer/PHPMailerAutoload.php';
-    $arr = false;
-    date_default_timezone_set('Etc/UTC');
-    $e = new PHPMailer;
-    $e->isSMTP();
-    $e->CharSet = 'UTF-8';
-    //Enable SMTP debugging
-    // 0 = off (for production use)
-    // 1 = client messages
-    // 2 = client and server messages
-    $e->SMTPDebug = 2;
-    $e->Host = 'smtp.gmail.com';
-    $e->Port = 587;
-    $e->SMTPSecure = 'tls';
-    $e->SMTPAuth = true;
-    $e->Username = "machinemonitors2017@gmail.com";
-    $e->Password = "Monsterinc2";
-    $e->FromName = "Machine Monitors";
-    $e->addAddress($emailSupervisor);
-    $e->Subject = 'Registro de Supervisores';
-    $e->MsgHTML('<h1>Hello</h1>');
-    if ($e->send()) echo 'Email enviado !';
-    else echo 'Fail !'.'<table>'.$e->ErrorInfo.'</table>';
+    $arr['nameDateMatch'] = nameDateMatch($file['name'],$dateData,$arr['msg']);
+    $arr['isCsv'] = isCsv($file['type'], $arr['msg']);
+    while ($d = fgetcsv($file2,150,";")) {
+        if($info['firstCsvRow'] == true)
+            generateQueryStringAndFileContent($arr['idFileGenerate'],null,null,null,null,null,null,null,null,null,null,null,$info,$fileContent,$d[0]);
+        else
+            generateQueryStringAndFileContent($arr['idFileGenerate'],$d[0],$d[1],$d[2],$d[3],$d[4],$d[5],$d[6],$d[7],$d[8],$d[9],$d[10],$info,$fileContent,$d[0]);
+    }
+    function isCsv($fileType,&$msg) {
+        if($fileType == 'application/vnd.ms-excel' or $fileType == 'text/comma-separated-values') return true;
+        else {
+            $msg[] = 'El archivo no está en formato CSV';
+            return false;
+        }
+    }
 ?>

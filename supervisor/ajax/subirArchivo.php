@@ -14,6 +14,7 @@
     $arr['isCsv'] = isCsv($file['type'], $arr['msg']);
     $arr['itAlreadyExists'] = itAlreadyExists($idZone,$dateData,$arr['msg'], $con);
     $arr['infoZoneFile'] = isZone($idZone,$file,$arr['msg']);
+    $arr['fileInfo'] = $file;
     if(($arr['nameDateMatch'] == false) or ($arr['isCsv'] == false) or ($arr['itAlreadyExists'] == true) or ($arr['infoZoneFile']['isZone'] == false) or ($arr['infoZoneFile']['secondRowCsvEmpty'] == true) or ($arr['infoZoneFile']['secondRowCsvEmpty'] == true))
         $arr['success'] = false;
     else {
