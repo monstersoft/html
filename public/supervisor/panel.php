@@ -108,7 +108,7 @@
                 echo'</div></div>';
                 }
             ?>
-            <?php echo '<input id="idSupervisor" type="text" value="'.$perfil["id"].'">'; ?>
+            <?php echo '<input id="idSupervisor" type="text" value="'.$perfil["id"].'" hidden>'; ?>
                 <!-- ............................................................................................................................ -->
         </div>
         <!-- VENTANAS MODALES -->
