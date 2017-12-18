@@ -9,7 +9,6 @@ $('.subirArchivo').click(function(){
     $('#idSupervisorSubirArchivo').val($('#idSupervisor').val());
     $('.modalSubirArchivo').modal();
     fechaHoy();
-    alert('ID SUPERVISOR:'+$('#idSupervisorSubirArchivo').val());
 });
 $('.modalSubirArchivo').on('click','#btnSubirArchivo',function(){
     $('.alert').remove();

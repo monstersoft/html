@@ -61,8 +61,7 @@
                         LEFT JOIN zonas ON empresas.idEmpresa = zonas.idEmpresa
                         LEFT JOIN supervisores_zonas ON zonas.idZona = supervisores_zonas.idZona
                         LEFT JOIN supervisores ON supervisores_zonas.idSupervisor = supervisores.idSupervisor
-                        WHERE supervisores.correoSupervisor = '$correo'
-                        GROUP BY supervisores.idSupervisor";
+                        WHERE supervisores.correoSupervisor = '$correo'";
         if($resultado = mysqli_query($conexion,$consulta)) {
             $row = mysqli_fetch_assoc($resultado);
             $arreglo = array('id' => $row['id'], 'correo' => $row['correo'], 'empresa' => $row['empresa']);
