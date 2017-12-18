@@ -18,6 +18,7 @@ $('.modalSubirArchivo').on('click','#btnSubirArchivo',function(){
     var idZona = $('#idZonaSubirArchivo').val();
     var idSupervisor = $('#idSupervisorSubirArchivo').val();
     var numberErrors = 0;
+    alert(idSupervisor);
     if(isEmpty(fecha))
         arreglo.push('<li>Fecha es obigatorio</li>');
     if(extensions(archivo))
