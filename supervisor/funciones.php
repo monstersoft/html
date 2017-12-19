@@ -15,7 +15,7 @@
                 <ul>
                     <li id="profile"><i class="fa fa-user fa-4x" id="iconProfile"></i>
                         <br><span id="titleProfile">'.$perfil['correo'].'</span>
-                        <br><span id="nameProfile">'.$perfil['empresa'].'</span></li>'; 
+                        <br><span id="nameProfile" style="display: none;">'.$perfil['empresa'].'</span></li>'; 
                 if($nombrePagina == 'zonas') { echo '
                     <li class="selected"><a href="panel.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
                     <li><a style="color: white;" href="contacto.php"><i class="fa fa-send icons"></i>Contacto</a></li>

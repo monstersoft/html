@@ -36,7 +36,7 @@
                 <ul>
                     <li id="profile"><i class="fa fa-cogs fa-4x" id="iconProfile"></i>
                         <br><span id="titleProfile">'.$perfil['correo'].'</span>
-                        <br><span id="nameProfile">'.$perfil['empresa'].'</span></li>'; 
+                        <br><span id="nameProfile" style="display:none;">'.$perfil['empresa'].'</span></li>'; 
                     if($nombrePagina == 'zonas') { echo '
                         <li class="selected"><a href="zonas.php"><i class="fa fa-globe icons"></i>Zonas</a></li>
                         <li><a href="crudEmpresas.php"><i class="fa fa fa-cog icons"></i>Ajustes</a></li>
