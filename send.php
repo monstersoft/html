@@ -20,7 +20,7 @@ var saveData = (function () {
     a.style = "display: none";
     return function (data, fileName) {
         var json = JSON.stringify(data),
-            blob = new Blob([json], {type: "octet/stream"}),
+            blob = new Blob([json], {type: "text/csv"}),
             url = window.URL.createObjectURL(blob);
         a.href = url;
         a.download = fileName;
@@ -29,10 +29,7 @@ var saveData = (function () {
     };
 }());
 
-var data = { x: 42, s: "hello, world", d: new Date() },
-    fileName = "my-download.json";
-
-saveData(data, fileName);
+saveData(20, "asdasdsd.csv");
             });
         });
     </script>
